@@ -8,8 +8,8 @@ var log = new LOG();
 var cmd = 'cd ' + env.root_space + 'site && git pull';
 exec(cmd, function(error, stdout, stderr) {
     if (error) {
-			log.write("/var/log/shusiou_cron.log", 'cron::'+cmd,  JSON.stringify(error));
+		log.write("/var/log/shusiou_cron.log", 'cron::'+cmd,  JSON.stringify(error));
 	} else {
-        log.write("/var/log/cron_git.log", 'git cron :: ' + cmd, stdout); 
-    }
+        	log.write("/var/log/cron_git.log", 'git cron :: ' + cmd, stdout); 
+    	}
 });
