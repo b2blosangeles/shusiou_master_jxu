@@ -90,7 +90,7 @@ _f['D0'] = function(cbk) {
 		// var url = CP.data.P2.code;
 		var video = ytdl(url, {quality:'18'}, function(err) {
 		});
-		video.pipe(pkg.fs.createWriteStream(video_folder+ CP.data.P2.code +'.mp4'));	
+		video.pipe(pkg.fs.createWriteStream(video_folder+ CP.data.P2.id +'.mp4'));	
 
 
 		video.on('data', function(info) {
