@@ -1,6 +1,6 @@
 var exec = require('child_process').exec;
 var path = require('path');
-var env = {root_space:path.join(__dirname, '../../')};
+var env = {root_space:path.join(__dirname, '../..')};
 
 var LOG = require(env.root_space + 'package/log/log.js');
 var log = new LOG();
