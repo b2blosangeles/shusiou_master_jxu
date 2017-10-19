@@ -1,5 +1,6 @@
 var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core');
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql');
+var cfg0 = require(env.site_path + '/api/cfg/db.json');
 
 var video_folder = '/var/video/';
 
@@ -27,7 +28,6 @@ _f['S0'] = function(cbk) {
 
 
 _f['P0'] = function(cbk) {
-	var cfg0 = require(env.site_path + '/api/cfg/db.json');
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'UPDATE `download_queue` SET `status` = 9 WHERE `holder_ip` = "' + holder_ip + '" AND `status` = 1';
@@ -46,7 +46,6 @@ _f['P0'] = function(cbk) {
 	});  
 };
 _f['P1'] = function(cbk) {
-	var cfg0 = require(env.site_path + '/api/cfg/db.json');
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'UPDATE  download_queue SET `holder_ip` = "' + holder_ip + '", `status` = 1, hold_time = NOW() ' + 
@@ -67,7 +66,6 @@ _f['P1'] = function(cbk) {
 	});  
 };
 _f['P2'] = function(cbk) {
-	var cfg0 = require(env.site_path + '/api/cfg/db.json');
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'SELECT * FROM `download_queue` WHERE `holder_ip` = "' + holder_ip + '" AND `status` = 1';
@@ -113,7 +111,6 @@ _f['D0'] = function(cbk) {
 	}	
 };
 _f['D1'] = function(cbk) {
-	var cfg0 = require(env.site_path + '/api/cfg/db.json');
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'UPDATE `download_queue` SET `status` = 8 WHERE `id` = "' + CP.data.P2.id + '"';
