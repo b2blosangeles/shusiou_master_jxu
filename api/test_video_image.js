@@ -1,7 +1,5 @@
-var file_video = '/tmp/' + encodeURIComponent('https://youtu.be/phpT_yukNks')+'.mp4';
-    // env.root_path + '/api/SampleVideo_1280x720_5mb.mp4';
 var video_folder = '/var/video/';
-file_video =  video_folder + encodeURIComponent('https://youtu.be/phpT_yukNks')+'.mp4';
+file_video =  video_folder +'1.mp4';
 
 var folder_image = '/tmp/images/';
 
