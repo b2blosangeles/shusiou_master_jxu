@@ -1,5 +1,6 @@
 var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core');
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql');
+var cfg0 = require(env.site_path + '/api/cfg/db.json');
 
 function getServerIP() {
     var ifaces = require('os').networkInterfaces(), address=[];
@@ -16,7 +17,6 @@ var CP = new pkg.crowdProcess();
 var _f = {};
 
 _f['P0'] = function(cbk) {
-	var cfg0 = require(env.site_path + '/api/cfg/db.json');
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'UPDATE `download_queue` SET `status` = 0, `holder_ip` = "", `hold_time` = NULL';
