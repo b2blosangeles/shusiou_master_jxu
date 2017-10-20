@@ -3,7 +3,7 @@ pkg.request({
   headers: {
     "content-type": "application/json"
   },
-  data:{ip:1234}
+  form:{ip:1234}
 }, function (error, resp, body) { 
   res.send(body);
 });
