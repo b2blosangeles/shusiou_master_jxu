@@ -6,6 +6,7 @@ var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core');
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql');
 var cfg0 = require(env.site_path + '/api/cfg/db.json');
 var crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess');
+var fs = require('fs');
 			    
 var video_folder = '/var/video/';
 
@@ -95,7 +96,7 @@ _f['D0'] = function(cbk) {
 		// var url = CP.data.P2.code;
 		var video = ytdl(url, {quality:'18'}, function(err) {
 		});
-		video.pipe(pkg.fs.createWriteStream(video_folder+ CP.data.P2.id +'.mp4'));	
+		video.pipe(fs.createWriteStream(video_folder+ CP.data.P2.id +'.mp4'));	
 
 
 		video.on('data', function(info) {
