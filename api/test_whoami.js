@@ -13,5 +13,5 @@ pkg.request({
   },
   form:{ip:getServerIP()}
 }, function (error, resp, body) { 
-    res.send(body.P_0);
+    res.send(typeOf body);
 });
