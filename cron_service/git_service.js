@@ -1,4 +1,5 @@
 var exec = require('child_process').exec;
+process.stdout.write("hello: ");
 var path = require('path');
 var env = {root_path:path.join(__dirname, '../..')};
 
