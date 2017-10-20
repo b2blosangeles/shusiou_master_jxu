@@ -6,8 +6,6 @@ function getServerIP() {
     }
     return address;
 };
-res.send(getServerIP());
-
 pkg.request({
   url: 'http://root.qalet.com/api/whoami.js',
   headers: {
