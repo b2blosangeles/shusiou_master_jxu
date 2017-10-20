@@ -17,7 +17,7 @@ function isIp(ip) {
 }
 var host = req.headers.host;
 // res.send(host.indexOf(getServerIP()));
-res.send(getServerIP());
+res.send(typeof getServerIP());
 return true;
 if (!env.who) env.who = new Date().getTime();
 res.send(env);
