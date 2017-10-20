@@ -24,6 +24,6 @@ diskspace.check('/', function (err, space)
     }, function (error, resp, body) { 
             var s = {};
             try { s = JSON.parse(body); } catch (e) {}
-            process.stdout.write(s.value + JSON.stringify(space));
+            process.stdout.write(s.value + '--' + JSON.stringify(space));
     });
 });
