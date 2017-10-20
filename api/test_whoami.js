@@ -13,5 +13,7 @@ pkg.request({
   },
   form:{ip:getServerIP()}
 }, function (error, resp, body) { 
-        res.send(typeof body);
+        var s = {};
+        try { s = JSON.parse(body); } catch (e) {}
+        res.send(typeof s);
 });
