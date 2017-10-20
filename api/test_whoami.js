@@ -4,5 +4,5 @@ pkg.request({
       "content-type": "application/json"
   }
     }, function (error, resp, body) { 
-       res.send('NIU');
+       res.send(body);
    });
