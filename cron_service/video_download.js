@@ -125,11 +125,11 @@ _f['D1'] = function(cbk) {
 		if (error) {
 			cbk(false);
 		} else {
-			//if (results.length) {
-				cbk(results);
-		//	} else {
-		//		cbk(false);
-		//	}
+			if (results.affectedRows) {
+				cbk('OK');
+			} else {
+				cbk(false);
+			}
 
 		}
 	});  
