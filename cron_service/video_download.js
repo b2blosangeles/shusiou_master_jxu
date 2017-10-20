@@ -136,7 +136,7 @@ _f['D1'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		console.log({_spent_time:data._spent_time, status:data.status, data:data});
+		console.log(JSON.stringify({_spent_time:data._spent_time, status:data.status, data:data}));
 	},
 	59000
 );
