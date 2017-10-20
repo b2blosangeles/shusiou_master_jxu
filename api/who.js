@@ -6,5 +6,18 @@ function getServerIP() {
     }
     return address;
 };
+function isIp(ip) {
+    var arrIp = ip.split(".");
+    if (arrIp.length !== 4) return "Invalid IP";
+    for (let oct of arrIp) {
+        if ( isNaN(oct) || Number(oct) < 0 || Number(oct) > 255)
+            return false;
+    }
+    return true;
+}
+
+var os = require("os");
+res.send(os.hostname());
+return true;
 if (!env.who) env.who = new Date().getTime();
 res.send(env);
