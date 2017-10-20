@@ -1,4 +1,4 @@
-var opt = req.param('opt'), code = req.param('code');
+var opt = req.query['opt'], code = req.query['code'];
 if (!code) {
    res.send('missing code!!');
 } else {   
