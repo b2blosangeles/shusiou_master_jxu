@@ -1,5 +1,5 @@
 var path = require('path');
-var env = {root_path:path.join(__dirname, '../../')};
+var env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + 'site';
 console.log(JSON.stringify(env));
 /*===
