@@ -12,6 +12,8 @@ function getServerIP() {
     }
     return address;
 };
+res.send(getServerIP());
+return true;
 
 var holder_ip = getServerIP();
 
