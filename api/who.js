@@ -21,7 +21,7 @@ res.send(isIp(host));
 
 if (!env.who) env.who = [];
 if (ips.indexOf(host) !== -1) {
-    env.who[emv.who.length] = host;
+    env.who[env.who.length] = host;
 }
 
 res.send(env);
