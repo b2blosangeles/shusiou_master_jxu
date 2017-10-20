@@ -5,7 +5,8 @@ env.site_path = env.root_path + '/site';
 var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core');
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql');
 var cfg0 = require(env.site_path + '/api/cfg/db.json');
-
+var crowdProcess =  require('root_path + '/package/crowdProcess/crowdProcess'),
+			    
 var video_folder = '/var/video/';
 
 function getServerIP() {
@@ -19,7 +20,7 @@ function getServerIP() {
 
 var holder_ip = getServerIP();
 
-var CP = new pkg.crowdProcess();
+var CP = new crowdProcess();
 var _f = {};
 
 _f['S0'] = function(cbk) {
