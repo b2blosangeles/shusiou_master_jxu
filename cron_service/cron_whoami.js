@@ -2,7 +2,7 @@ var path = require('path');
 var env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
 var request =  require(env.root_path + '/package/request/node_modules/request');
-var diskspace = require(env.root_path + '/package/diskspace/node_modules/diskspace'),
+var diskspace = require(env.root_path + '/package/diskspace/node_modules/diskspace');
     
 function getServerIP() {
     var ifaces = require('os').networkInterfaces(), address=[];
