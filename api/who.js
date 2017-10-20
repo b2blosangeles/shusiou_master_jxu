@@ -6,5 +6,5 @@ function getServerIP() {
     }
     return address;
 };
-env.who = new Date().getTime();
+if (!env.who) env.who = new Date().getTime();
 res.send(env);
