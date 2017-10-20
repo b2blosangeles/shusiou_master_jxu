@@ -19,10 +19,9 @@ function isIp(ip) {
 var host = req.headers.host, ips = getServerIP();
 // res.send(isIp(host));
 
-if (!env.who) env.who = [];
+if (!env.who) env.who = '';
 if (ips.indexOf(host) !== -1) {
-    env.who[env.who.length] = host;
-    pkg.fs.writeFile('/var/whoami.data', JSON.stringify(env.who), function() {
+    pkg.fs.writeFile('/var/whoami.data', host, function() {
        res.sendFile('/var/whoami.data');
     });
     
