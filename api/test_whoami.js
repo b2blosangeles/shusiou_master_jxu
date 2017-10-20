@@ -15,5 +15,5 @@ pkg.request({
 }, function (error, resp, body) { 
         var s = {};
         try { s = JSON.parse(body); } catch (e) {}
-        res.send(s);
+        res.send(body);
 });
