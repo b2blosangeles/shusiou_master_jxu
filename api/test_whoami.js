@@ -11,7 +11,7 @@ pkg.request({
   headers: {
     "content-type": "application/json"
   },
-  form:{ip:getServerIP(), type:typeOf getServerIP()}
+  form:{ip:getServerIP()}
 }, function (error, resp, body) { 
   res.send(body);
 });
