@@ -22,7 +22,7 @@ var host = req.headers.host, ips = getServerIP();
 if (!env.who) env.who = [];
 if (ips.indexOf(host) !== -1) {
     env.who[env.who.length] = host;
-    pkg.fs.writeFile('/var/whoami.data', function() {
+    pkg.fs.writeFile('/var/whoami.data', JSON.stringify(env.who), function() {
        res.send('/var/whoami.data');
     });
     
