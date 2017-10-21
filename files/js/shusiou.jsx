@@ -9,6 +9,6 @@ var r = '<video width="640" height="480" controls autoplay>' +
 
 setTimeout(
 	function() {
- 		setVideo('/api/test_video_section.js', 10, 6);
+ 		setVideo('/api/video/play_video_section.api', 10, 6);
  }, 1000
 )
