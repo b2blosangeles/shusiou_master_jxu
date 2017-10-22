@@ -1,13 +1,14 @@
 var video_folder = '/var/video/';
-file_video =  video_folder +'3.mp4';
+var vid = 3;
+file_video =  video_folder + vid + '.mp4';
 
-var folder_image = '/tmp/images/';
+var folder_image = '/tmp/images/ '+ vid;
 
 if (!req.query['s']) {
 	res.send('S error');
 	return true;
 }
-var s=req.query['s'], fn = '/tmp/images/' + s + '.png'; 
+var s=req.query['s'], fn = '/tmp/images/' + vid + '/' + s + '.png'; 
     
 var CP = new pkg.crowdProcess();
 
