@@ -1,8 +1,8 @@
 var video_folder = '/var/video/';
-var vid = 1;
+var vid = 2;
 file_video =  video_folder + vid + '.mp4';
 
-var folder_image = '/tmp/images/ '+ vid;
+var folder_image = '/tmp/images/ '+ vid + '.mp4';
 
 if (!req.query['s']) {
 	res.send('S error');
