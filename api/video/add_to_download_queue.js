@@ -20,13 +20,15 @@ _f['P0'] = function(cbk) {
 };
 _f['P1'] = function(cbk) {
 	var cfg0 = require(env.root_path + '/api/cfg/db.json');
-	var connection = mysql.createConnection(cfg0);
-	connection.connect();
+//	var connection = mysql.createConnection(cfg0);
+//	connection.connect();
 	
 	var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`,`created`, `status`) ' +
 				'values ("' + source + '", "' + encodeURIComponent(code) + '", "' + uid + '", ' +
 	    			"'" + encodeURIComponent(JSON.stringify(CP.data.P0))  + "'" + 
 				'NOW(), 0 ); ';
+	cbk(str);
+	return true
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
