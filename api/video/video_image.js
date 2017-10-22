@@ -50,8 +50,11 @@ _f['S2'] = function(cbk) {
 
 CP.serial(
 	_f,
-	function(data) {			
+	function(data) {	
+		res.send(data);
+		return false;
 		pkg.fs.stat(fn, function(err, data1) {
+			
 		      if (err) {
 			      res.send(fn + ' does not exist');
 		      } else {
