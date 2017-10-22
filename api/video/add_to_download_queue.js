@@ -15,7 +15,7 @@ _f['P0'] = function(cbk) {
 		  
 	  } else {
 		   CP.skip = 1;
-		cbk({vid:info.video_id + " jh'ii", title:info.title, length_seconds:parseInt(info.length_seconds), thumbnail_url:info.thumbnail_url});
+		cbk({vid:info.video_id, title:info.title, length_seconds:parseInt(info.length_seconds), thumbnail_url:info.thumbnail_url});
 	  }
 	});	  
 };
@@ -23,10 +23,10 @@ _f['P0'] = function(cbk) {
 _f['P1'] = function(cbk) {
 	var cfg0 = require(env.site_path + '/api/cfg/db.json');
 	var connection = mysql.createConnection(cfg0);
-	connection.connect();
+	// connection.connect();
 	
 	var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`,`created`, `status`) ' +
-				'values ("' + source + '", "' + encodeURIComponent(code) + '", "' + uid + '", ' +
+				'values ("' + source + '", "' + JSON.stringify(code + "ads'niu" + ) + '", "' + uid + '", ' +
 	    			"'" + JSON.stringify(CP.data.P0)  + "'" + 
 				'NOW(), 0 ); ';
 	cbk(str);
