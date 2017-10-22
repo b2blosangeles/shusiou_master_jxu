@@ -29,14 +29,14 @@ _f['S0'] = function(cbk) {
 		
 _f['S1'] = function(cbk) {
 	pkg.fs.stat(fn, function(err, stat) {
-		if (err) {
+	//	if (err) {
 			var ls = childProcess.exec('ffmpeg  -i ' + s_file + ' -ss '+ s + ' -t ' + l + ' -c copy ' + fn +' -y ', 		   
 				function (error, stdout, stderr) {
 					cbk(true);
 				});
-		} else {
-			cbk(true);
-		}
+	//	} else {
+	//		cbk(true);
+	//	}
 	});
 }
 
