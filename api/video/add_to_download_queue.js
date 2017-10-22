@@ -10,7 +10,7 @@ var _f = {};
 _f['P0'] = function(cbk) {
 	ytdl.getInfo(code, {},  function(err, info){	
 	  if (err) {  
-		  CP.exit = 1;
+		  CP.skip = 1;
 		cbk(false);  
 		  
 	  } else {
