@@ -30,7 +30,7 @@ _f['P1'] = function(cbk) {
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
-			cbk(false);
+			cbk(str);
 		} else {
 			if (results.length) {
 				cbk(results[0]);
