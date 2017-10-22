@@ -24,7 +24,7 @@ _f['P1'] = function(cbk) {
 	connection.connect();
 	
 	var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`,`created`, `status`) ' +
-				'values ("' + source + '", "' + JSON.stringify(code).replace(/\'/g, "\\\'") + '", "' + uid + '", ' +
+				"values ('" + source + "', '" + JSON.stringify(code).replace(/\'/g, "\\\'") + "', '" + uid + '", ' +
 	    			"'" + JSON.stringify(CP.data.P0).replace(/\'/g, "\\\'")  + "', " + 
 				'NOW(), 0 ); ';
 	
