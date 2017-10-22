@@ -19,6 +19,7 @@ _f['P0'] = function(cbk) {
 	  }
 	});	  
 };
+/*
 _f['P1'] = function(cbk) {
 	var cfg0 = require(env.root_path + '/api/cfg/db.json');
 //	var connection = mysql.createConnection(cfg0);
@@ -44,7 +45,7 @@ _f['P1'] = function(cbk) {
 		}
 	});  
 };
-
+*/
 CP.serial(
 	_f,
 	function(data) {
