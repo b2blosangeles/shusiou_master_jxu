@@ -14,6 +14,7 @@ _f['P0'] = function(cbk) {
 		cbk(false);  
 		  
 	  } else {
+		   CP.skip = 1;
 		cbk({vid:info.video_id, title:info.title, length_seconds:parseInt(info.length_seconds), thumbnail_url:info.thumbnail_url});
 	  }
 	});	  
@@ -30,7 +31,7 @@ _f['P1'] = function(cbk) {
 	cbk(str);
 	return true
 	connection.query(str, function (error, results, fields) {
-		connection.end();
+	//	connection.end();
 		if (error) {
 			cbk(false);
 		} else {
