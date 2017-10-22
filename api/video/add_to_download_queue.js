@@ -10,11 +10,9 @@ var _f = {};
 _f['P0'] = function(cbk) {
 	ytdl.getInfo(code, {},  function(err, info){	
 	  if (err) {  
-		  CP.skip = 1;
 		cbk(false);  
 		  
 	  } else {
-		   CP.skip = 1;
 		cbk({vid:info.video_id, title:info.title, length_seconds:parseInt(info.length_seconds), thumbnail_url:info.thumbnail_url});
 	  }
 	});	  
