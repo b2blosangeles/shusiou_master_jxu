@@ -7,8 +7,18 @@ var uid = 1,
 
 var CP = new pkg.crowdProcess();
 var _f = {};
-
 _f['P0'] = function(cbk) {
+	ytdl.getInfo(code, {},  function(err, info){
+		CP.exit = 1;	
+	  if (err) {  
+		cbk(false);  
+		  
+	  } else {
+		cbk({vid:info.video_id, title:info.title, length_seconds:parseInt(info.length_seconds), thumbnail_url:info.thumbnail_url});
+	  }
+	});	  
+};
+_f['P1'] = function(cbk) {
 	var cfg0 = require(env.root_path + '/api/cfg/db.json');
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
