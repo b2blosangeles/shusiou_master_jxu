@@ -36,7 +36,7 @@ _f['P1'] = function(cbk) {
 			if (results.length) {
 				cbk(results[0]);
 			} else {
-				cbk(false);
+				cbk(true);
 			}
 
 		}
