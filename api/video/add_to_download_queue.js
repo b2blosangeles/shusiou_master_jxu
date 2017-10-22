@@ -25,7 +25,7 @@ _f['P1'] = function(cbk) {
 	
 	var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`,`created`, `status`) ' +
 				'values ("' + source + '", "' + encodeURIComponent(code) + '", "' + uid + '", ' +
-	    			"'" + 'encodeURIComponent(JSON.stringify(CP.data.P0))'  + "'" + 
+	    		//	"'" + 'encodeURIComponent(JSON.stringify(CP.data.P0))'  + "'" + 
 				'NOW(), 0 ); ';
 	cbk(str);
 	return true
