@@ -8,9 +8,9 @@ var uid = 1,
 var CP = new pkg.crowdProcess();
 var _f = {};
 _f['P0'] = function(cbk) {
-	ytdl.getInfo(code, {},  function(err, info){
-		CP.exit = 1;	
+	ytdl.getInfo(code, {},  function(err, info){	
 	  if (err) {  
+		  CP.exit = 1;
 		cbk(false);  
 		  
 	  } else {
