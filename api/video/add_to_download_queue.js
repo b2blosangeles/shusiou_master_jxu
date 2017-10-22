@@ -27,6 +27,8 @@ _f['P1'] = function(cbk) {
 				'values ("' + source + '", "' + JSON.stringify(code) + '", "' + uid + '", ' +
 	    			'"' + JSON.stringify(CP.data.P0)  + '"' + 
 				'NOW(), 0 ); ';
+	return str;
+	return true;
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
