@@ -3,7 +3,7 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql');
 
 var uid = 1, 
     source = 'ytdl-core',
-    code = 'https://youtu.be/phpT_yukNks';
+    code = 'https://youtu.be/K7AUKcrIdWU';
 
 var CP = new pkg.crowdProcess();
 var _f = {};
