@@ -18,6 +18,7 @@ if (!source[req.body.code]) {
 	fn0 = 'document/en/' + source[req.body.code].fn;
 res.send(fn);
 	return true;
+	/*
 	pkg.fs.readFile(env.site_path + fn, 'utf8', function(err, contents) {
 		if (err) {
 			pkg.fs.readFile(env.site_path + fn0, 'utf8', function(err, contents) {
@@ -40,5 +41,5 @@ res.send(fn);
 			});
 		}
 	});
-	
+	*/
 }
