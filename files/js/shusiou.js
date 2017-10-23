@@ -7,7 +7,7 @@ function setVideo(vid, s, l) {
 		'</video>';
   	document.getElementById('niu').innerHTML = r;
 	var img = ''
-	for (var i = 0; i < 1000; i+=10) {
+	for (var i = 0; i < 1000; i+=50) {
 		img += '<img src="/api/video/video_image.api?vid='+vid+'&s='+i+'" width="90"/>'
 	}
 	document.getElementById('img').innerHTML = img;
