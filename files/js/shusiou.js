@@ -6,7 +6,7 @@ var r = '<video width="640" height="480" controls autoplay>' +
 '	Your browser does not support the video tag.' +
 	'</video>';
   document.getElementById('niu').innerHTML = r;
-	alert(vid);
+	
 }
 
 setTimeout(
