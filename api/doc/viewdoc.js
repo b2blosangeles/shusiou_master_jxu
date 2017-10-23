@@ -14,7 +14,6 @@ var source = {
 if (!source[req.body.code]) {
 	res.send({title: req.body.code, body:' Undefined document <b>' +req.body.code+ '</b>!!'});
 } else {
-	res.send('fn');
 	var fn = 'document/' + req.body.lang + '/' + source[req.body.code].fn,
 	fn0 = 'document/en/' + source[req.body.code].fn;
 	
