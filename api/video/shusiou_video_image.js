@@ -1,6 +1,6 @@
 
 var vid = req.query['vid'];
-var video_folder = '/mnt/shusiou-video/';
+var video_folder = '/mnt/shusiou-video/videos/';
 file_video =  video_folder + vid + '/video/video.mp4';
 
 var folder_image = '/tmp/images/'+ vid + '/';
