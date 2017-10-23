@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>时空Editor</title>
+    <meta charset="utf-8" />
+	<link rel="stylesheet" href="/js/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/bootstrap.3.3.7/Bootstrap.3.3.7.css">
+	<script src="/package/qalet_bootstrap.js"></script>	
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				<div id="niu1"></div>
+			</td>
+			<td>
+				<div id="niu2"></div>
+				<div id="niu3"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button type="button" class="btn btn-warning" onClick="getC()">
+					<i class="fa fa-scissors" aria-hidden="true"></i> Cut
+				</button>
+				&nbsp;
+				<button type="button" class="btn btn-warning" onClick="playC()">
+					<i class="fa fa-play" aria-hidden="true"></i> Play
+				</button>				
+			</td>
+			<td>
+				<button type="button" class="btn btn-success" onClick="expand(-3)">
+					<i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+					- 3 sec
+				</button>
+				&nbsp;
+				<button type="button" class="btn btn-success" onClick="expand(-1)">
+					<i class="fa fa-angle-left" aria-hidden="true"></i>
+					- 1 sec
+				</button>
+				&nbsp;
+				<button type="button" class="btn btn-success" onClick="expand(1)">
+					<i class="fa fa-arrows-h" aria-hidden="true"></i>
+					+ 1 sec
+				</button>
+				&nbsp;
+				<button type="button" class="btn btn-success" onClick="expand(3)">
+					<i class="fa fa-arrows-h" aria-hidden="true"></i>
+					+ 3 sec
+				</button>
+			</td>
+		</tr>	
+		<tr>
+			<td colspan="2">
+				
+			</td>
+		</tr>			
+	</table>	
+</body>
+</html> 
+<script>
+	var ss, to=6;
+	function cut(s, t) {
+			ss = s;
+			to = t;
+			var str = '<video id="video2" width="480" height="180" controls><source src="http://shusiou.qalet.com/api/lang_space/vr_cut.js?video=sample.mp4|'+s+'|'+t+'"  type="video/mp4"></video>';
+			$('#niu2').html(str).hide();
+			$('#video2')[0].play();
+			var str2 = '';
+			for (var i=0; i<=t; i++) {
+				str2 += '<img src="http://shusiou.qalet.com/api/lang_space/vr_img.js?video=sample.mp4|'+(s+i)+'|"/>';
+			}
+			
+			$('#niu3').html(str2);
+	}
+	function getC() {
+		var c = $('#video1')[0].currentTime;
+		c = Math.floor(c);
+		cut(c, to);
+		$('#video1')[0].pause();
+	}
+	function expand(v) {
+		cut(ss, to+v);
+	}
+	function playC() {
+		$('#video1')[0].play();
+	}
+
+	$(document).ready(
+
+		function() {
+			var s='';
+			// http://shusiou.qalet.com/api/lang_space/vr_cut.js?video=sample.mp4|131|30&tm='+new Date().getTime()+'
+			s += '<video id="video1" width="480" height="180" controls><source src="http://shusiou.qalet.com/api/lang_space/vr.js?video=sample.mp4"  type="video/mp4"></video>';
+
+			$('#niu1').html(s);
+		}
+	);	
+</script>

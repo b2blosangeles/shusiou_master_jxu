@@ -1,0 +1,14 @@
+.qalet_box { background-color:#ccc; height: 100%; overflow-y: scroll; }
+.qalet_box p { padding:0.5em; }
+[if $solution == 1]
+.qalet_box { background-color:lightgreen;}
+[/if]
+[if $solution == 2]
+.qalet_box { background-color:lightyellow; color:darkgreen; }
+[/if]
+[if $solution == 3]
+.qalet_box { background-color:lightblue; ; color:red;}
+[/if]
+[if $solution == 4]
+.qalet_box { background-color:pink;}
+[/if]

@@ -1,0 +1,18 @@
+{
+  "zh-TW":{
+      cn:"國語(台灣)",
+      en:"Mandarin(Taiwan)"
+   },   
+  "zh-CN":{
+      cn:"普通话(中国大陆)",
+      en:"Mandarin(China)"
+   },
+  "en-GB":{
+      cn:"English(Great Britain)",
+      en:"English(Great Britain)"
+   },
+  "en-US":{
+      cn:"English(United States)",
+      en:"English(United States)"
+   }
+}

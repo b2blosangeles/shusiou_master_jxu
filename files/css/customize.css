@@ -1,0 +1,57 @@
+.info_bg { max-height:200px;}
+[if $solution == 1]
+.info_bg { background-color:#ccc; padding:1em; font-size:1em;}
+[/if]
+[if $solution == 2]
+.info_bg { background-color:lightgreen; padding:1em; font-size:1em;}
+[/if]
+[if $solution == 3]
+.info_bg { background-color:lightblue; padding:1em; font-size:1em;}
+[/if]
+[if $solution == 4]
+.info_bg { background-color:pink; padding:1em; font-size:1em;}
+[/if]
+@media only screen 
+    and (min-device-width : 414px) 
+    and (max-device-width : 736px) 
+    and (orientation : landscape) 
+    and (-webkit-min-device-pixel-ratio : 3) 
+{ 
+    [if $solution == 1]
+    .info_bg { background-color:#ccc; padding:1em; font-size:2em;}
+    [/if]
+    [if $solution == 2]
+    .info_bg { background-color:lightgreen; padding:1em; font-size:2em;}
+    [/if]
+    [if $solution == 3]
+    .info_bg { background-color:lightblue; padding:1em; font-size:2em;}
+    [/if]
+    [if $solution == 4]
+    .info_bg { background-color:pink; padding:1em; font-size:2em;}
+    [/if]
+}
+
+@media only screen 
+    and (min-device-width : 414px) 
+    and (max-device-width : 736px)
+    and (device-width : 414px)
+    and (device-height : 736px)
+    and (orientation : portrait) 
+    and (-webkit-min-device-pixel-ratio : 3) 
+    and (-webkit-device-pixel-ratio : 3)
+{
+    [if $solution == 1]
+    .info_bg { background-color:#ccc; padding:1em; font-size:3em;}
+    [/if]
+    [if $solution == 2]
+    .info_bg { background-color:lightgreen; padding:1em; font-size:3em;}
+    [/if]
+    [if $solution == 3]
+    .info_bg { background-color:lightblue; padding:1em; font-size:3em;}
+    [/if]
+    [if $solution == 4]
+    .info_bg { background-color:pink; padding:1em; font-size:3em;}
+    [/if]
+}
+/*img { max-width:380px;} */
+.col-sm-12 .col-sx-12 { font-size:2em}

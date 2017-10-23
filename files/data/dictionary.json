@@ -1,0 +1,140 @@
+{
+	site_name:{
+		cn:"速修语言",
+		en:"Shusiou Language"
+	},
+	my_channel:{
+		cn:"我的时空",
+		en:"My Channel"
+	},
+	menu_courses:{
+		cn:"教学课程",
+		en:"Courses"
+	},
+	menu_payment:{
+		cn:"在线付费",
+		en:"Payment"
+	},
+	menu_videoadmin:{
+		cn:"视频管理",
+		en:"Video Admin"
+	},
+	menu_useradmin:{
+		cn:"会员管理",
+		en:"User Admin"
+	},
+	menu_login:{
+		cn:"用户登录",
+		en:"Login"
+	},
+	menu_logout:{
+		cn:"登出",
+		en:"Logout"
+	},	
+	menu_language:{
+		cn:"选择语言",
+		en:"Choose a language",
+		es:"Elija un idioma",
+		fr:"Choisissez une langue"
+	},
+	menu_privacy: {
+		cn:"隐私",
+		en:"Privacy"	
+	},
+	menu_terms: {
+		cn:"条款",
+		en:"Terms"	
+	},
+	menu_aboutus: {
+		cn:"关于我们",
+		en:"About Us"	
+	},
+	menu_contact: {
+		cn:"联系我们",
+		en:"Contact"	
+	},
+	menu_qna: {
+		cn:"常见问题",
+		en:"Q & A"	
+	},
+	menu_help: {
+		cn:"帮助",
+		en:"Help"	
+	},
+	menu_testimony: {
+		cn:"成功案例",
+		en:"Testimony"	
+	},
+	login_form_help:{
+		cn:"需要帮助",
+		en:"Need help"		
+	},
+	login_form_signup:{
+		cn:"注册新用户",
+		en:"New Registration"
+	},
+	login_form_signin_button:{
+		cn:"登录",
+		en:"Sign In"
+	},
+	login_form_username:{
+		cn:"用户名 / 电子邮件 / 电话号码",
+		en:"User name / Email / Phone number"
+	},
+	login_form_password:{
+		cn:"密码",
+		en:"Password"
+	},
+	site_legal_name: {
+		cn:"速修语言",
+		en:"Shusiou Language"
+	},
+	virtual_language_lab:{
+		cn:"速修语言",
+		en:"Shusiou Language"
+	},
+	user_role: {
+		cn:"用户角色",
+		en:"User Role"
+	},	
+	link_does_not_exist:{
+		cn:"错误! 该链接不存在",
+		en:"Error! The link does not exist"	
+	},
+	what_to_study:{
+		cn:"学习什么",
+		en:"WHAT TO STUDY"		
+	},
+	how_to_study:{
+		cn:"如何学习",
+		en:"HOW TO STUDY"		
+	},
+	how_i_studied:{
+		cn:"我怎么学",
+		en:"HOW I STUDIED"
+	},
+	more_detail:{
+		cn:"详细信息",
+		en:"More Info"
+	},
+	my_videos:{
+		cn:"我的影片",
+		en:"My Videos"		
+	},
+	my_curriculums:{
+		cn:"我的教程",
+		en:"My Curriculums"		
+	},
+	my_course:{
+		cn:"我的课程",
+		en:"My Course"		
+	},
+	public_courses:{
+		cn:"公共课程",
+		en:"Public Courses"		
+	},	
+	menu_tuition:{
+		cn:"我的学费",
+		en:"Tuition"		
+	}
+}

@@ -1,0 +1,11 @@
+{
+    "tpls":[],
+    "filelist":[
+		"/js/json2/json2.min.js",
+		"/js/jquery-2.1.3/jquery-2.1.3.min.js",
+	    	"/js/jsmarty/smart-2.9.min.js",
+		"/js/UIQALET/css.js",
+	    	"/js/bootstrap.3.3.7/bootstrap.3.3.7.js",
+	   	"/js/qalet_bootstrap.js"
+    ]
+}

@@ -1,0 +1,14 @@
+{
+  how_i_studied:{
+    cn:"学生所有的课程都保存在自己的个课程人账户下,分为 初级 中级 和高级, 学生可根据自己的水平选择等级, 课程等级是根据视频的难度划分的 ,系统会根据学生的学习记录(大数据) 自动给你匹配课程,当然学生和可以手动设定,  随着学生水平的提高 课程自动升级 知道高级.",
+    en:"Your lessons will be recorded and saved under your personal account for you to review later. You can also share these videos with your friends and classmates as you want.<p style=\"padding:5px;\"/> To achieve a better result, we are able to provide customized lessons for your consideration, also based on these recorded lessons only under your approval."
+    },
+  how_to_study:{
+    cn:"学习方式非常简单 ,根据视频的内容重复或回答问题,系统用语音识别系统来判断你是否正确, 答案正确即可继续观看视频,否则重复,知道通过",
+    en:"\“We will take you on an immersive journey to China given by the magic power of our holographic characters. Through our journey together, we will learn more about your unique learning patterns and customize a fun, natural and relaxing learning experience just for you!"
+  },
+  what_to_study:{
+    cn:"语言的快速学习方法一直是人们不断探索的问题。迄今为止各种方法曾出不穷,大都是围绕强调记忆的. 但是人们忽略了学习的最好老师 不是外教 不是强迫自己大喊大叫,而是兴趣. 本语音识别 视频学习 方法 充分利用当前的先进人工智能语音识别系统 ,基于当前网络大量的影视视频资源, 同时利用大数据分析技术,利用学生想看电影的情趣来学习语言.",
+    en:"\"Live Chinese\" is a learning material that we build based on Chinese people's daily communication and update in real time. <p style=\"padding:5px;\"/>On this website, you will have the access to all of our \"Live Chinese\" videos that will give you an understanding of the true Chinese society, culture and language environment."
+  }
+}

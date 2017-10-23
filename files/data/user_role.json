@@ -1,0 +1,14 @@
+{
+  learner:{
+    cn:"学生",
+    en:"Learner"
+    },
+  teacher:{
+    cn:"教师",
+    en:"Teacher"
+  },
+  advisor:{
+    cn:"顾问",
+    en:"Advisor"
+   }
+}
