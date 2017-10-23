@@ -1,4 +1,5 @@
-var c_folder =  '/tmp/tmp_section/';
+var vid = 3;
+var c_folder =  '/tmp/tmp_section/' + vid;
 var s = 1000.5, l =  3.5;
 var video_folder = '/var/video/';
 
