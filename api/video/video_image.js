@@ -1,5 +1,5 @@
 var video_folder = '/var/video/';
-var vid = 3;
+var vid = req.query['vid'];
 file_video =  video_folder + vid + '.mp4';
 
 var folder_image = '/tmp/images/'+ vid + '/';
