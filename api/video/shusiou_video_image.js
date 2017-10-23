@@ -11,6 +11,10 @@ if (!req.query['s']) {
 }
 var s=req.query['s'], fn = '/tmp/images/' + vid + '/' + s + '_' + w + '.png' 
     
+
+		res.send(fn);
+		return true;
+
 var CP = new pkg.crowdProcess();
 
 var _f = {};
@@ -54,8 +58,7 @@ _f['S2'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		res.send(data);
-		return true;
+
 		pkg.fs.stat(fn, function(err, data1) {
 			
 		      if (err) {
