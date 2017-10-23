@@ -22,6 +22,7 @@ try {
 		loadDocument:function(code, lang) {
 			var me = this;
 			var url = '/api/doc/viewdoc.api';
+			alert(url);
 			$.ajax({url: url, data:{code:code, lang:lang},
 				dataType:'json', 
 				method:'POST',
