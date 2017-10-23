@@ -42,7 +42,7 @@ try {
 			var me = this;
 			var idx = Math.floor(Math.random()*me.state.adlist.length);
 			// $('.content_bg').find('video').attr("src", 'https://secure.meetupstatic.com/s/img/457419671895069178/guest_home/video.mp4');
-			var l = shusiou_config.api_server + '/api/video/shusiou_video_tmp_section.api?vid='+me.state.adlist[idx].id+'|15|30';
+			var l = shusiou_config.api_server + '/api/video/shusiou_video_tmp_section.api?video='+me.state.adlist[idx].id+'|15|30';
 			$('.content_bg').find('video').attr("src", l);
 		},
 		render: function() {
