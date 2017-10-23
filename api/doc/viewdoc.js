@@ -9,12 +9,15 @@ var source = {
 	Terms:		{title:'menu_terms', fn:'Terms.html'}
 }
 
+
+
 if (!source[req.body.code]) {
 	res.send({title: req.body.code, body:' Undefined document <b>' +req.body.code+ '</b>!!'});
 } else {
 	var fn = 'document/' + req.body.lang + '/' + source[req.body.code].fn,
 	fn0 = 'document/en/' + source[req.body.code].fn;
-
+res.send(fn);
+	return true;
 	pkg.fs.readFile(env.site_path + fn, 'utf8', function(err, contents) {
 		if (err) {
 			pkg.fs.readFile(env.site_path + fn0, 'utf8', function(err, contents) {
