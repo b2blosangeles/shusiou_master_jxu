@@ -57,8 +57,9 @@ CP.serial(
 		      if (err) {
 			      res.send(fn + ' does not exist');
 		      } else {
-				var file = pkg.fs.createReadStream(fn);
-				file.pipe(res);		      
+			//	var file = pkg.fs.createReadStream(fn);
+			//	file.pipe(res);	
+			      res.sendFile(fn);
 			}
 		});
 	},
