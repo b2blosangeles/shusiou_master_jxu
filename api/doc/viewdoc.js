@@ -14,9 +14,10 @@ var source = {
 if (!source[req.body.code]) {
 	res.send({title: req.body.code, body:' Undefined document <b>' +req.body.code+ '</b>!!'});
 } else {
-	var fn = 'document/' + req.body.lang + '/' + source[req.body.code].fn,
-	fn0 = 'document/en/' + source[req.body.code].fn;
-res.send(fn);
+	res.send('fn');
+//	var fn = 'document/' + req.body.lang + '/' + source[req.body.code].fn,
+//	fn0 = 'document/en/' + source[req.body.code].fn;
+
 	return true;
 	/*
 	pkg.fs.readFile(env.site_path + fn, 'utf8', function(err, contents) {
