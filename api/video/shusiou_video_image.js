@@ -40,7 +40,8 @@ _f['S2'] = function(cbk) {
 	//	 } else {
 		 
 			var childProcess = require('child_process');
-			var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' + w + '  -preset ultrafast ' +  fn +' -y ', 		   
+			//var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' + w + '  -preset ultrafast ' +  fn +' -y ', 
+			var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' + w + '  ' +  fn +' -y ',
 				function (error, stdout, stderr) {
 					cbk(true);
 				});
