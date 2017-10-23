@@ -41,7 +41,7 @@ try {
 		playVideo: function() {
 			var me = this;
 			var idx = Math.floor(Math.random()*me.state.adlist.length);
-			var l = shusiou_config.api_server + '/api/video/shusiou_video_section.api?video='+me.state.adlist[idx].id+'|15|30';
+			var l = shusiou_config.api_server + '/api/video/shusiou_video_section.api?video='+me.state.adlist[idx].code+'|15|30';
 			$('.content_bg').find('video').attr("src", l);
 		},
 		render: function() {
