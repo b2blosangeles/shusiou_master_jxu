@@ -1,6 +1,6 @@
-var vid = 3;
+var vid = req.query['vid'];
 var c_folder =  '/tmp/tmp_section/' + vid + '/';
-var s = 1000.5, l =  3.5;
+var s = 0, l =  0;
 var video_folder = '/var/video/';
 
 if (req.query['s']) {
