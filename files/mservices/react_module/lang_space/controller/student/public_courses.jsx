@@ -19,7 +19,7 @@ try {
 		getDataApi: function(opt) {
 			var me = this, A = me.state.list;
 			$.ajax({
-				url: shusiou_config.api_server + '/api/shusiou_curriculum.js',
+				url: shusiou_config.api_server + '/api/curriculum/get_public_list.api',
 				method: "POST",
 				data: {cmd:'getPublicList'},
 				dataType: "JSON"
