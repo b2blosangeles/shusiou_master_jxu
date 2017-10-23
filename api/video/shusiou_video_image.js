@@ -11,10 +11,6 @@ if (!req.query['s']) {
 }
 var s=req.query['s'], fn = '/tmp/images/' + vid + '/' + s + '_' + w + '.png' 
     
-
-		res.send(fn);
-		return true;
-
 var CP = new pkg.crowdProcess();
 
 var _f = {};
