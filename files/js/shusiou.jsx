@@ -1,4 +1,5 @@
-function setVideo(url, s, l) {
+function setVideo(vid, s, l) {
+	var url = '/api/video/play_video_section.api?vid=' + vid
 var r = '<video width="640" height="480" controls autoplay>' +
 	 ' <source src="'+url+'?s='+s+'&l='+l+'" type="video/mp4">' +
 	'  <source src="movie.ogg" type="video/ogg">' +
@@ -9,6 +10,6 @@ var r = '<video width="640" height="480" controls autoplay>' +
 
 setTimeout(
 	function() {
- 		setVideo('/api/video/play_video_section.api', 10, 6);
+ 		setVideo(1, 10, 6);
  }, 1000
 )
