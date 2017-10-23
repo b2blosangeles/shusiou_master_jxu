@@ -16,7 +16,7 @@ function getServerIP() {
 diskspace.check('/', function (err, space)
 {
     request({
-      url: 'http://root.qalet.com/api/whoami.js',
+      url: 'http://root.qalet.com/api/whoami.api',
       headers: {
         "content-type": "application/json"
       },
