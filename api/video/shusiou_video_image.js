@@ -45,7 +45,7 @@ _f['S2'] = function(cbk) {
 				function (error, stdout, stderr) {
 				//	cbk(true);
 				});
-			ls.on('close', function(code) {
+			ls.on('end', function(code) {
 			  	cbk(true);
 			});
 
