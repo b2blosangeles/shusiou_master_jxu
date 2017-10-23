@@ -56,7 +56,7 @@ try {
 			return url;
 		},
 		bgFilmStyle:function(t) {
-			var url = 'http://shusiou.com/api/lang_space/video_image180.js?video=sample.mp4|'+t;
+			var url = 'http://shusiou.com/api/lang_space/video_image.api?video=sample.mp4|'+t;
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
 		},		
