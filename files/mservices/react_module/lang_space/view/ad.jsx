@@ -11,7 +11,7 @@ try {
 			// .attr('muted', false);
 			
 			$.ajax({
-				url: shusiou_config.api_server + '/api/shusiou_get_default_ad.js',
+				url: shusiou_config.api_server + '/api/ad/get_default_ad.api',
 				method: "POST",
 				dataType: "JSON"
 			}).done(function(data) {
