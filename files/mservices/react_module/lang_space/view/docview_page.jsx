@@ -21,7 +21,7 @@ try {
 		},
 		loadDocument:function(code, lang) {
 			var me = this;
-			var url = '/api/lang_space/viewdoc.js';
+			var url = '/api/doc/viewdoc.api';
 			$.ajax({url: url, data:{code:code, lang:lang},
 				dataType:'json', 
 				method:'POST',
