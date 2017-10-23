@@ -11,7 +11,7 @@ if (req.query['l']) {
 	l = req.query['l']
 }
 
-var s_file =  video_folder + '3.mp4';
+var s_file =  video_folder + vid +'.mp4';
 var fn = c_folder + s + '_' + l + '.mp4';
 
 
