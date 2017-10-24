@@ -74,13 +74,13 @@ _f['S2'] = function(cbk) {
 						 }		 
 						
 					 } else {
-						/*
+						
 						if ((env.ffmpeg_t) && new Date().getTime() - env.ffmpeg_t > 1000) {
 							env.ffmpeg = 0;	 
 							env.ffmpeg_t = 0;
 							clearInterval(_itv);
 						}
-						*/
+						
 					}
 				});
 				
