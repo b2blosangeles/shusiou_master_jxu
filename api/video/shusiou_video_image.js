@@ -50,15 +50,16 @@ _f['S2'] = function(cbk) {
 	
 						});
 					pkg.fs.watch(fn, 
-						     (function(env) {
-							return function(event, filename) {
+						//     (function(env) {
+						//	return 
+							function(event, filename) {
 							var d = new Date().getTime() - env.ffmpeg;
 							cbk(env.ffmpeg);
 						//	env.ffmpeg = 0;
 							//res.send(d);
 							 clearInterval(_itv);
-							
-							}})(env)
+					}
+						//	}})(env)
 									
 					);						
 				}					
