@@ -63,7 +63,7 @@ _f['S2'] = function(cbk) {
 						
 						pkg.fs.stat(fn, function(err, stat) {
 							 if(!err) {
-								env.ffmpeg = 0;
+							//	env.ffmpeg = 0;
 								cbk('env.ffmpegB-B');
 							 } else {
 								
@@ -73,8 +73,17 @@ _f['S2'] = function(cbk) {
 						
 					});
 					
-				}					
+				}
+				pkg.fs.stat(fn, function(err, stat) {
+					 if(!err) {
+						env.ffmpeg = 0;
+					 } else {
+
+
+					}
+				});					
 			}, 100)
+		
 		// }
 	});
 };
