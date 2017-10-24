@@ -52,13 +52,13 @@ _f['S2'] = function(cbk) {
 	
 						});
 					pkg.fs.stat(fn, function(err, stat) {
-					
+						if (!err) {
 							var d = new Date().getTime() - env.ffmpeg;
 							env.ffmpeg = 0;
 							// res.send(d);
 							 clearInterval(_itv);
 							cbk(d);				
-					
+						}
 					});	
 				}
 			}, 100)
