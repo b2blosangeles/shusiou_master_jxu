@@ -54,7 +54,7 @@ _f['S2'] = function(cbk) {
 						env.ffmpeg = 0;
 						//res.send(d);
 						 clearInterval(_itv);
-						cbk(d);								
+						cbk(env.ffmpeg);								
 					});						
 				}					
 			}, 100)
