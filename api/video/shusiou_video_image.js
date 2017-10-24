@@ -47,17 +47,7 @@ _f['S2'] = function(cbk) {
 					env.ffmpeg = fn;
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y > /dev/null 2>&1 ', 
 						function (error, stdout, stderr) {
-						//  cbk('env.ffmpegAA');
-							pkg.fs.watch(fn, 
-							//	     (function(env) {
-								//	return 
-									function(event, filename) {
-							//		var d = new Date().getTime() - env.ffmpeg;
-							//		cbk('env.ffmpeg');
-							//		env.ffmpeg = 0;
-									//res.send(d);
-							//		 clearInterval(_itv);
-							});		
+						//  cbk('env.ffmpegAA');		
 						});
 					ls.on('close', function(code) {
 						cbk('env.ffmpegB-B');
