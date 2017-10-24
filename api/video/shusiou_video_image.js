@@ -36,9 +36,9 @@ _f['S1'] = function(cbk) {
 _f['S2'] = function(cbk) {
 	
 	pkg.fs.stat(fn, function(err, stat) {
-		if(!err) {
-			cbk(fn);
-		 } else {
+		//if(!err) {
+		//	cbk(fn);
+		// } else {
 		 
 			var childProcess = require('child_process');
 		
@@ -61,10 +61,7 @@ _f['S2'] = function(cbk) {
 					});
 				}	
 			}, 100)
-		
-
-
-		}
+		// }
 	});
 };
 
