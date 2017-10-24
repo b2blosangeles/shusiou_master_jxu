@@ -46,20 +46,22 @@ _f['S2'] = function(cbk) {
 				if (!env.ffmpeg) {
 					env.ffmpeg = new Date().getTime();
 					var ls = childProcess.exec('rm '+fn+' && ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
-						function (error, stdout, stderr) {});
+						function (error, stdout, stderr) {
+						
+				
+
+						});
 	
 				}
-				if (env.ffmpeg) {
-					pkg.fs.stat(fn, function(err, stat) {
-						if (!err) {
-							var d = new Date().getTime() - env.ffmpeg;
-							env.ffmpeg = 0;
-							// res.send(d);
-							 clearInterval(_itv);
-							cbk(d);				
-						}
-					});
-				}	
+				pkg.fs.stat(fn, function(err, stat) {
+					if (!err) {
+						var d = new Date().getTime() - env.ffmpeg;
+						env.ffmpeg = 0;
+						// res.send(d);
+						 clearInterval(_itv);
+						cbk(d);				
+					}
+				});					
 			}, 50)
 		// }
 	});
