@@ -47,14 +47,11 @@ _f['S2'] = function(cbk) {
 					env.ffmpeg = new Date().getTime();
 					var ls = childProcess.exec('rm '+fn+' && ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 						function (error, stdout, stderr) {
-							setTimeout(
-								function() {
-									var d = new Date().getTime() - env.ffmpeg;
-									env.ffmpeg = 0;
-									// res.send(d);
-									 clearInterval(_itv);
-									cbk(d);										
-								}, 100);
+							var d = new Date().getTime() - env.ffmpeg;
+							env.ffmpeg = 0;
+							// res.send(d);
+							 clearInterval(_itv);
+							cbk(d);										
 						});
 	
 				}					
