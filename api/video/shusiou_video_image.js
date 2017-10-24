@@ -50,7 +50,7 @@ _f['S2'] = function(cbk) {
 						function (error, stdout, stderr) {
 
 						});
-					ls.on('close', function() {
+					ls.on('exit', function() {
 							var d = new Date().getTime() - env.ffmpeg;
 							env.ffmpeg = 0;
 							// res.send(d);
