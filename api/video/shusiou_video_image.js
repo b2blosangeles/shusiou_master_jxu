@@ -49,6 +49,7 @@ _f['S2'] = function(cbk) {
 					//var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' + w + '  ' +  fn +' -y ',
 						function (error, stdout, stderr) {
 							env.ffmpeg = 0;
+							res.send('NIUU');
 							 clearInterval(_itv);
 							cbk(true);
 						});				
