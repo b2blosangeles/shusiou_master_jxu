@@ -66,7 +66,7 @@ _f['S2'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-
+		env.ffmpeg = 0;
 		pkg.fs.stat(fn, function(err, data1) {
 			
 		      if (err) {
