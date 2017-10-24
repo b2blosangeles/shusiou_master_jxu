@@ -47,10 +47,10 @@ _f['S2'] = function(cbk) {
 					env.ffmpeg = fn;
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y </dev/null > /dev/null 2>&1 & ', 
 						function (error, stdout, stderr) {
-						//  cbk('env.ffmpegAA');		
+						  cbk('env.ffmpegAA');		
 						});
-					ls.on('close', function(code) {
-						cbk('env.ffmpegB-B');
+					//ls.on('close', function(code) {
+					//	cbk('env.ffmpegB-B');
 						/*
 						pkg.fs.stat(fn, function(err, stat) {
 							 if(!err) {
@@ -62,7 +62,7 @@ _f['S2'] = function(cbk) {
 							}
 						});
 						*/
-					});
+				//	});
 					
 			//	}
 		/*
