@@ -44,7 +44,7 @@ _f['S2'] = function(cbk) {
 		
 			var _itv = setInterval(function() {
 				if (!env.ffmpeg) {
-					env.ffmpeg = new Date().getTime();
+					env.ffmpeg = fn;
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 						function (error, stdout, stderr) {
 						//  cbk('env.ffmpegAA');
@@ -77,7 +77,10 @@ _f['S2'] = function(cbk) {
 				}
 				pkg.fs.stat(fn, function(err, stat) {
 					 if(!err) {
-						//env.ffmpeg = 0;
+						 if (env.ffmpeg == fn) {
+							env.ffmpeg = 0;
+							 
+						 }		 
 						clearInterval(_itv);
 					 } else {
 
@@ -93,7 +96,7 @@ _f['S2'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		env.ffmpeg = 0;
+	//	env.ffmpeg = 0;
 	//	res.send(data);
 	//	return true;
 		pkg.fs.stat(fn, function(err, data1) {
