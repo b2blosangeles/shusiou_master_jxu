@@ -51,6 +51,9 @@ _f['S2'] = function(cbk) {
 							
 	
 						});
+	
+				}
+				if (env.ffmpeg) {
 					pkg.fs.stat(fn, function(err, stat) {
 						if (!err) {
 							var d = new Date().getTime() - env.ffmpeg;
@@ -59,8 +62,8 @@ _f['S2'] = function(cbk) {
 							 clearInterval(_itv);
 							cbk(d);				
 						}
-					});	
-				}
+					});
+				}	
 			}, 100)
 		
 
