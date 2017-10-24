@@ -46,7 +46,7 @@ _f['S2'] = function(cbk) {
 				if (!env.ffmpeg) {
 					env.ffmpeg = fn;
 					env.ffmpeg_t = new Date().getTime();
-					var ls = childProcess.exec('rm '+fn+' && ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
+					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 						function (error, stdout, stderr) {
 						  cbk('env.ffmpegAA');		
 						});
