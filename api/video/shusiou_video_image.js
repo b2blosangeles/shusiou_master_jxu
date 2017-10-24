@@ -60,7 +60,16 @@ _f['S2'] = function(cbk) {
 							});		
 						});
 					ls.on('close', function(code) {
-						cbk('env.ffmpegBB');
+						
+						pkg.fs.stat(fn, function(err, stat) {
+							 if(!err) {
+								cbk('env.ffmpegB-B');
+							 } else {
+								cbk('env.ffmpegBAB');
+								
+							}
+						});
+						
 					});
 					
 			//	}					
