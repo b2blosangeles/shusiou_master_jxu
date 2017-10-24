@@ -49,13 +49,17 @@ _f['S2'] = function(cbk) {
 						function (error, stdout, stderr) {
 	
 						});
-					pkg.fs.watch(fn, function(event, filename) {
-						var d = new Date().getTime() - env.ffmpeg;
-						env.ffmpeg = 0;
-						//res.send(d);
-						 clearInterval(_itv);
-						cbk(env.ffmpeg);								
-					});						
+					pkg.fs.watch(fn, 
+						     (function(env) {
+							return function(event, filename) {
+							var d = new Date().getTime() - env.ffmpeg;
+							env.ffmpeg = 0;
+							//res.send(d);
+							 clearInterval(_itv);
+							cbk(env.ffmpeg);
+							})(env)
+									
+					);						
 				}					
 			}, 100)
 		// }
