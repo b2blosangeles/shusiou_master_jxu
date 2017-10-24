@@ -47,21 +47,18 @@ _f['S2'] = function(cbk) {
 					env.ffmpeg = new Date().getTime();
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 						function (error, stdout, stderr) {
-	
+							pkg.fs.watch(fn, 
+								//     (function(env) {
+								//	return 
+									function(event, filename) {
+									var d = new Date().getTime() - env.ffmpeg;
+									cbk(env.ffmpeg);
+									env.ffmpeg = 0;
+									//res.send(d);
+									 clearInterval(_itv);
+							});		
 						});
-					pkg.fs.watch(fn, 
-						//     (function(env) {
-						//	return 
-							function(event, filename) {
-							var d = new Date().getTime() - env.ffmpeg;
-							cbk(env.ffmpeg);
-						//	env.ffmpeg = 0;
-							//res.send(d);
-							 clearInterval(_itv);
-					}
-						//	}})(env)
-									
-					);						
+					
 				}					
 			}, 100)
 		// }
