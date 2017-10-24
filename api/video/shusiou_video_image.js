@@ -42,25 +42,25 @@ _f['S2'] = function(cbk) {
 		 
 			var childProcess = require('child_process');
 		
-			var _itv = setInterval(function() {
-				if (!env.ffmpeg) {
-					env.ffmpeg = new Date().getTime();
+			//var _itv = setInterval(function() {
+			//	if (!env.ffmpeg) {
+			//		env.ffmpeg = new Date().getTime();
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 						function (error, stdout, stderr) {
-							pkg.fs.watch(fn, 
+							//pkg.fs.watch(fn, 
 								//     (function(env) {
 								//	return 
-									function(event, filename) {
-									var d = new Date().getTime() - env.ffmpeg;
+							//		function(event, filename) {
+							//		var d = new Date().getTime() - env.ffmpeg;
 									cbk(env.ffmpeg);
-									env.ffmpeg = 0;
+							//		env.ffmpeg = 0;
 									//res.send(d);
-									 clearInterval(_itv);
-							});		
+							//		 clearInterval(_itv);
+							//});		
 						});
 					
-				}					
-			}, 100)
+			//	}					
+			//}, 100)
 		// }
 	});
 };
