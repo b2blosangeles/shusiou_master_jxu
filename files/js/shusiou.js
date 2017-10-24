@@ -5,7 +5,7 @@ function setVideo(vid, s, l) {
 		'  <source src="movie.ogg" type="video/ogg">' +
 	'	Your browser does not support the video tag.' +
 		'</video>';
-  	document.getElementById('niu').innerHTML = r;
+  	// document.getElementById('niu').innerHTML = r;
 	var img = ''
 	for (var i = 0; i < 10; i+=1) {
 		img += '<img src="/api/video/shusiou_video_image.api?vid=P'+i+'&s=10&w=180&_'+new Date().getTime()+'" width="90" '+
