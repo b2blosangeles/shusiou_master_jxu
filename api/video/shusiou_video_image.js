@@ -66,9 +66,6 @@ _f['S2'] = function(cbk) {
 					// });
 					
 				}
-				if (env.ffmpeg_t) && (new Date().getTime() - env.ffmpeg_t > 1000) {
-					
-				}
 				pkg.fs.stat(fn, function(err, stat) {
 					 if(!err) {
 						 if (env.ffmpeg == fn) {
