@@ -44,11 +44,7 @@ _f['S2'] = function(cbk) {
 			var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 			//var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' + w + '  ' +  fn +' -y ',
 				function (error, stdout, stderr) {
-					setTimeout(
-						function() {
-							cbk(true);
-						}, 500
-					);	
+					cbk(true);	
 				cbk(true);
 				});
 
