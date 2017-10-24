@@ -45,6 +45,7 @@ _f['S2'] = function(cbk) {
 			var _itv = setInterval(function() {
 				if (!env.ffmpeg) {
 					env.ffmpeg = fn;
+					env.ffmpeg_t = new Date().getTime();
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 						function (error, stdout, stderr) {
 						  cbk('env.ffmpegAA');		
@@ -65,16 +66,22 @@ _f['S2'] = function(cbk) {
 					// });
 					
 				}
-		
+				if (env.ffmpeg_t) && (new Date().getTime() - env.ffmpeg_t > 1000) {
+					
+				}
 				pkg.fs.stat(fn, function(err, stat) {
 					 if(!err) {
 						 if (env.ffmpeg == fn) {
 							env.ffmpeg = 0;	 
+							 env.ffmpeg_t = 0;
 						 }		 
-						clearInterval(_itv);
+						
 					 } else {
-
-
+						if ((env.ffmpeg == fn) && (env.ffmpeg_t) && new Date().getTime() - env.ffmpeg_t > 1000) {
+							env.ffmpeg = 0;	 
+							env.ffmpeg_t = 0;
+							clearInterval(_itv);
+						}
 					}
 				});
 				
