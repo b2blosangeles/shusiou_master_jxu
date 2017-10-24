@@ -45,18 +45,15 @@ _f['S2'] = function(cbk) {
 			var _itv = setInterval(function() {
 				if (!env.ffmpeg) {
 					env.ffmpeg = new Date().getTime();
-					var ls = childProcess.exec('rm '+ fn +'&& ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
+					var ls = childProcess.exec('rm '+ fn +' && ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 					//var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' + w + '  ' +  fn +' -y ',
 						function (error, stdout, stderr) {
-
-						});
-					ls.on('exit', function() {
 							var d = new Date().getTime() - env.ffmpeg;
 							env.ffmpeg = 0;
 							// res.send(d);
 							 clearInterval(_itv);
-							cbk(d);					
-					});
+							cbk(d);	
+						});
 				}
 			}, 50)
 		
@@ -83,5 +80,5 @@ CP.serial(
 			}
 		});
 	},
-	6000
+	10000
 );
