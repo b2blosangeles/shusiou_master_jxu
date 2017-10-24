@@ -53,7 +53,7 @@ _f['S2'] = function(cbk) {
 						     (function(env) {
 							return function(event, filename) {
 							var d = new Date().getTime() - env.ffmpeg;
-							cbk(env.ffmpeg);
+							cbk(d);
 							env.ffmpeg = 0;
 							//res.send(d);
 							 clearInterval(_itv);
