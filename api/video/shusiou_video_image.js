@@ -48,12 +48,15 @@ _f['S2'] = function(cbk) {
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 					//var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' + w + '  ' +  fn +' -y ',
 						function (error, stdout, stderr) {
+
+						});
+					ls.on('close', function() {
 							var d = new Date().getTime() - env.ffmpeg;
 							env.ffmpeg = 0;
 							// res.send(d);
 							 clearInterval(_itv);
-							cbk(d);
-						});				
+							cbk(d);					
+					});
 				}
 			}, 50)
 		
