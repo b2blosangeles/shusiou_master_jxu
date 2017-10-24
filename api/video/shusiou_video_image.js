@@ -50,7 +50,7 @@ _f['S2'] = function(cbk) {
 							pkg.fs.watch(fn, 
 							//	     (function(env) {
 								//	return 
-							//		function(event, filename) {
+									function(event, filename) {
 							//		var d = new Date().getTime() - env.ffmpeg;
 									cbk('env.ffmpeg');
 							//		env.ffmpeg = 0;
