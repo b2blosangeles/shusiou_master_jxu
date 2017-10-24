@@ -42,8 +42,8 @@ _f['S2'] = function(cbk) {
 		 
 			var childProcess = require('child_process');
 		
-			var _itv = setInterval(function() {
-				if (!env.ffmpeg) {
+		//	var _itv = setInterval(function() {
+		//		if (!env.ffmpeg) {
 					env.ffmpeg = new Date().getTime();
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 						function (error, stdout, stderr) {
@@ -54,8 +54,8 @@ _f['S2'] = function(cbk) {
 							cbk(d);										
 						});
 	
-				}					
-			}, 100)
+		//		}					
+		//	}, 100)
 		// }
 	});
 };
