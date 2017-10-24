@@ -54,7 +54,7 @@ _f['S2'] = function(cbk) {
 									// res.send(d);
 									 clearInterval(_itv);
 									cbk(d);										
-								}, 50);
+								}, 100);
 						});
 	
 				}					
