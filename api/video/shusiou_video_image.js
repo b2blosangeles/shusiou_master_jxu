@@ -67,7 +67,7 @@ CP.serial(
 	_f,
 	function(data) {
 		env.ffmpeg = 0;
-		res.send(data);
+	//	res.send(data);
 		
 		pkg.fs.stat(fn, function(err, data1) {
 			
