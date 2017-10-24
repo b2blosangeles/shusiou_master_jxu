@@ -50,9 +50,9 @@ _f['S2'] = function(cbk) {
 						function (error, stdout, stderr) {
 							var d = new Date().getTime() - env.ffmpeg;
 							env.ffmpeg = 0;
-							res.send(d);
+							// res.send(d);
 							 clearInterval(_itv);
-							cbk(true);
+							cbk(d);
 						});				
 				}
 			}, 50)
@@ -67,6 +67,8 @@ CP.serial(
 	_f,
 	function(data) {
 		env.ffmpeg = 0;
+		res.send(data);
+		
 		pkg.fs.stat(fn, function(err, data1) {
 			
 		      if (err) {
