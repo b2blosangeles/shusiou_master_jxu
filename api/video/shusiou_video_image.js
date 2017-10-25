@@ -41,16 +41,24 @@ _f['S2'] = function(cbk) {
 		// } else {
 		 
 			var childProcess = require('child_process');
-		
+		/*
 			var _itv = setInterval(function() {
 				if (!env.ffmpeg) {
 					env.ffmpeg = fn;
 					env.ffmpeg_t = new Date().getTime();
+		*/			
+					
+					var ls = childProcess.spawn('ffmpe',
+					['-ss', s, '-i', file_video, '-vf', 'scale=-1:' +  w, '-preset', 'ultrafast', fn, '-y']
+					)
+					
+					/*
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 						function (error, stdout, stderr) {
 						  cbk('env.ffmpegAA');		
 						});
-					//ls.on('close', function(code) {
+					*/	
+					ls.on('close', function(code) {
 					//	cbk('env.ffmpegB-B');
 						/*
 						pkg.fs.stat(fn, function(err, stat) {
@@ -63,8 +71,9 @@ _f['S2'] = function(cbk) {
 							}
 						});
 						*/
-					// });
-					
+						console.log('niu');
+					 });
+			/*		
 				}
 				pkg.fs.stat(fn, function(err, stat) {
 					 if(!err) {
@@ -85,7 +94,7 @@ _f['S2'] = function(cbk) {
 				});
 				
 			}, 50)
-		
+		*/
 		// }
 	});
 };
@@ -93,6 +102,8 @@ _f['S2'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
+		res.send(data);
+		return true;
 		 if (env.ffmpeg == fn) {
 			env.ffmpeg = 0;	 
 		 }
