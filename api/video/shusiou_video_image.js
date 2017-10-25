@@ -72,7 +72,7 @@ _f['S2'] = function(cbk) {
 						});
 						*/
 						// cbk('niu');
-						ls.disconnect();
+						
 						qq[qq.length] = 'niu';
 					 });
 					ls.on('exit', function(code) {
@@ -81,8 +81,8 @@ _f['S2'] = function(cbk) {
 					ls.on('error', function(code) {
 						qq[qq.length] = 'error';
 					 });	
-					ls.on('disconnect', function(code) {
-						qq[qq.length] = 'disconnect';
+					ls.on('close', function(code) {
+						qq[qq.length] = 'close';
 					 });	
 				setTimeout(
 					function() {
