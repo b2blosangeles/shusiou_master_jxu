@@ -41,7 +41,7 @@ _f['S2'] = function(cbk) {
 		 
 			var childProcess = require('child_process');
 			
-			if  (new Date().getTime() - env.ffmpeg  > 2000) env.ffmpeg = 0;
+			if  (new Date().getTime() - env.ffmpeg  > 1000) env.ffmpeg = 0;
 		
 			env._itv = setInterval(function() {
 				if (!env.ffmpeg) {
@@ -60,20 +60,20 @@ _f['S2'] = function(cbk) {
 					ls.on('close', function(code) {
 						env.ffmpeg = 0;
 						clearInterval(env._itv);
-						setTimeout(cbk, 500);
+						setTimeout(cbk, 100);
 					 });
 					ls.on('exit', function(code) {
 						env.ffmpeg = 0;
 						clearInterval(env._itv);
-						setTimeout(cbk, 500);	
+						setTimeout(cbk, 100);	
 					 });	
 					ls.on('error', function(code) {
 						env.ffmpeg = 0;
 						clearInterval(env._itv);
-						setTimeout(cbk, 500);						
+						setTimeout(cbk, 100);						
 					 });
 				}	
-			}, 100);
+			}, 50);
 		
 	//	}
 	});
