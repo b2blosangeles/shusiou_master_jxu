@@ -34,6 +34,8 @@ _f['S1'] = function(cbk) {
 };
 
 _f['S2'] = function(cbk) {
+	cbk('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ');
+	return true;
 	pkg.fs.stat(fn, function(err, stat) {
 		//if(!err) {
 		//	cbk(fn);
