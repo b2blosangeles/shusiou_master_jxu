@@ -40,13 +40,10 @@ _f['S2'] = function(cbk) {
 		// } else {
 		 
 			var childProcess = require('child_process');
-		/*
+		
 			var _itv = setInterval(function() {
 				if (!env.ffmpeg) {
-					env.ffmpeg = fn;
-					env.ffmpeg_t = new Date().getTime();
-		*/			
-		
+					env.ffmpeg = new Date().getTime();
 					var ls = childProcess.spawn('ffmpeg',
 					['-ss', s, '-i', file_video, '-vf', 'scale=-1:' +  w, '-preset', 'ultrafast', fn, '-y']
 					);
@@ -57,7 +54,7 @@ _f['S2'] = function(cbk) {
 						  cbk('env.ffmpegAA');		
 						});
 					*/
-		var qq = [];
+		
 					ls.on('close', function(code) {
 					//	cbk('env.ffmpegB-B');
 						/*
@@ -71,30 +68,28 @@ _f['S2'] = function(cbk) {
 							}
 						});
 						*/
-						// cbk('niu');
+						env.ffmpeg = 0;
+						clearInterval(_itv);
+						cbk('niu');
 						
-						qq[qq.length] = 'close'+new Date().getTime();
+						
 					 });
 					ls.on('exit', function(code) {
-						qq[qq.length] = 'exit'+new Date().getTime();
+						env.ffmpeg = 0;
+						clearInterval(_itv);
+						cbk('niu');
+					//	
 					 });	
 					ls.on('error', function(code) {
-						qq[qq.length] = 'error'+new Date().getTime();
+						env.ffmpeg = 0;
+						clearInterval(_itv);
+						cbk('niu');						
+						
 					 });
-		/*
-					ls.on('close', function(code) {
-						qq[qq.length] = 'close'+new Date().getTime();
-					 });	
-		*/
-				setTimeout(
-					function() {
-						cbk(qq);
-					},2000
-				);
 		
-		
-			/*		
+					
 				}
+				/*
 				pkg.fs.stat(fn, function(err, stat) {
 					 if(!err) {
 						 if (env.ffmpeg == fn) {
@@ -112,10 +107,10 @@ _f['S2'] = function(cbk) {
 						
 					}
 				});
-				
+				*/	
 			}, 50)
-		*/
-		// }
+		
+		}
 	});
 };
 
