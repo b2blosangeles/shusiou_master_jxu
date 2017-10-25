@@ -41,7 +41,7 @@ _f['S2'] = function(cbk) {
 		 
 			var childProcess = require('child_process');
 		
-			var _itv = setInterval(function() {
+			var env._itv = setInterval(function() {
 				if (!env.ffmpeg) {
 					env.ffmpeg = new Date().getTime();
 					var ls = childProcess.spawn('ffmpeg',
@@ -57,17 +57,17 @@ _f['S2'] = function(cbk) {
 		
 					ls.on('close', function(code) {
 						env.ffmpeg = 0;
-						clearInterval(_itv);
+						clearInterval(env._itv);
 						cbk('niu');
 					 });
 					ls.on('exit', function(code) {
 						env.ffmpeg = 0;
-						clearInterval(_itv);
+						clearInterval(env._itv);
 						cbk('niu');	
 					 });	
 					ls.on('error', function(code) {
 						env.ffmpeg = 0;
-						clearInterval(_itv);
+						clearInterval(env._itv);
 						cbk('niu');						
 					 });
 				}	
