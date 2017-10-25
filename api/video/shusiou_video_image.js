@@ -40,11 +40,6 @@ _f['S2'] = function(cbk) {
 		// } else {
 		 
 			var childProcess = require('child_process');
-			var cbk_q = function(cbk) {
-				setTimeout(
-					cbk()
-				),
-			};
 		
 			env._itv = setInterval(function() {
 				if (!env.ffmpeg) {
