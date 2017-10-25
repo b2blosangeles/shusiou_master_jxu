@@ -70,7 +70,7 @@ _f['S2'] = function(cbk) {
 							}
 						});
 						*/
-						console.log('niu');
+						cbk('niu');
 					 });
 			/*		
 				}
