@@ -34,7 +34,8 @@ _f['S1'] = function(cbk) {
 };
 
 _f['S2'] = function(cbk) {
-	
+	cbk('rr')
+	return true;
 	pkg.fs.stat(fn, function(err, stat) {
 		//if(!err) {
 		//	cbk(fn);
@@ -48,7 +49,7 @@ _f['S2'] = function(cbk) {
 					env.ffmpeg_t = new Date().getTime();
 		*/			
 					
-					var ls = childProcess.spawn('ffmpe',
+					var ls = childProcess.spawn('ffmpeg',
 					['-ss', s, '-i', file_video, '-vf', 'scale=-1:' +  w, '-preset', 'ultrafast', fn, '-y']
 					)
 					
