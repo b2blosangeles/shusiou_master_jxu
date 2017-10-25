@@ -98,12 +98,12 @@ CP.serial(
 	_f,
 	function(data) {
 		// res.send(data);
-		
+		/*
 			res.writeHead(500, {'Content-Type': 'text/html'});
 			res.write('output-> ' +JSON.stringify(data));
 			res.end();					
 		return true;
-		
+		*/
 		pkg.fs.stat(fn, function(err, data1) {
 			
 		      if (err) {
