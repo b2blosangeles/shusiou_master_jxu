@@ -56,7 +56,8 @@ _f['S2'] = function(cbk) {
 						function (error, stdout, stderr) {
 						  cbk('env.ffmpegAA');		
 						});
-					*/	
+					*/
+		var qq = [];
 					ls.on('close', function(code) {
 					//	cbk('env.ffmpegB-B');
 						/*
@@ -70,17 +71,25 @@ _f['S2'] = function(cbk) {
 							}
 						});
 						*/
-						cbk('niu');
+						// cbk('niu');
+						qq[qq.length] = 'niu';
 					 });
 					ls.on('exit', function(code) {
-						cbk('exit');
+						qq[qq.length] = 'exit';
 					 });	
 					ls.on('error', function(code) {
-						cbk('error');
+						qq[qq.length] = 'error';
 					 });	
 					ls.on('disconnect', function(code) {
-						cbk('disconnect');
-					 });		
+						qq[qq.length] = 'disconnect';
+					 });	
+				setTimeout(
+					function() {
+						cbk(qq);
+					},2000
+				);
+		
+		
 			/*		
 				}
 				pkg.fs.stat(fn, function(err, stat) {
