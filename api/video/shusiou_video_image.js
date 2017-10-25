@@ -40,6 +40,11 @@ _f['S2'] = function(cbk) {
 		// } else {
 		 
 			var childProcess = require('child_process');
+			var cbk_q = function(cbk) {
+				setTimeout(
+					cbk()
+				),
+			};
 		
 			env._itv = setInterval(function() {
 				if (!env.ffmpeg) {
@@ -58,17 +63,17 @@ _f['S2'] = function(cbk) {
 					ls.on('close', function(code) {
 						env.ffmpeg = 0;
 						clearInterval(env._itv);
-						cbk('niu');
+						setTimeout(cbk, 500);
 					 });
 					ls.on('exit', function(code) {
 						env.ffmpeg = 0;
 						clearInterval(env._itv);
-						cbk('niu');	
+						setTimeout(cbk, 500);	
 					 });	
 					ls.on('error', function(code) {
 						env.ffmpeg = 0;
 						clearInterval(env._itv);
-						cbk('niu');						
+						setTimeout(cbk, 500);						
 					 });
 				}	
 			}, 100);
