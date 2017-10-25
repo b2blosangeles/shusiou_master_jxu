@@ -47,16 +47,22 @@ _f['S2'] = function(cbk) {
 					['-ss', s, '-i', file_video, '-vf', 'scale=-1:' +  w, '-preset', 'ultrafast', fn, '-y']
 					);
 			*/		
-					
+					var dd='';
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 						function (error, stdout, stderr) {
 						//  cbk('env.ffmpegAA');		
 						});
-					
+		
+					ls.on('data', function(code) {
+						env.ffmpeg = 0;
+						dd += code;
+						// clearInterval(env._itv);
+						//setTimeout(cbk, 100);
+					 });
 		
 					ls.on('close', function(code) {
 						env.ffmpeg = 0;
-						cbk('env.ffmpegBB');
+						cbk(dd);
 						// clearInterval(env._itv);
 						//setTimeout(cbk, 100);
 					 });
