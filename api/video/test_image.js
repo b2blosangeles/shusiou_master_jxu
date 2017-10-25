@@ -52,11 +52,16 @@ _f['S2'] = function(cbk) {
 					);
 					*/
 					var dd='==';
-					
+					/*
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 						function (error, stdout, stderr) {
 						  cbk(transformText(stdout));		
 						});
+					*/	
+					var ls = childProcess.exec('ls -l', 
+						function (error, stdout, stderr) {
+						  cbk(transformText(stdout));		
+						});	
 					/*
 					ls.on('data', function(code) {
 						env.ffmpeg = 0;
