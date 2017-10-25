@@ -46,7 +46,7 @@ _f['S2'] = function(cbk) {
 					env.ffmpeg = fn;
 					env.ffmpeg_t = new Date().getTime();
 		*/			
-			return true;
+		
 					var ls = childProcess.spawn('ffmpeg',
 					['-ss', s, '-i', file_video, '-vf', 'scale=-1:' +  w, '-preset', 'ultrafast', fn, '-y']
 					);
