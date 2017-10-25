@@ -56,18 +56,21 @@ _f['S2'] = function(cbk) {
 		
 					ls.on('close', function(code) {
 						env.ffmpeg = 0;
-						clearInterval(env._itv);
-						setTimeout(cbk, 100);
+						cbk('env.ffmpegBB');
+						// clearInterval(env._itv);
+						//setTimeout(cbk, 100);
 					 });
 					ls.on('exit', function(code) {
 						env.ffmpeg = 0;
-						clearInterval(env._itv);
-						setTimeout(cbk, 100);	
+						cbk('env.ffmpegCC');
+						// clearInterval(env._itv);
+						//setTimeout(cbk, 100);	
 					 });	
 					ls.on('error', function(code) {
 						env.ffmpeg = 0;
-						clearInterval(env._itv);
-						setTimeout(cbk, 100);						
+						cbk('env.ffmpegDD');
+						// clearInterval(env._itv);
+						//setTimeout(cbk, 100);						
 					 });
 			//	}	
 		//	}, 50);
