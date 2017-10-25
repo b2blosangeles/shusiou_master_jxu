@@ -58,7 +58,7 @@ _f['S2'] = function(cbk) {
 						  cbk(transformText(stdout));		
 						});
 					*/	
-					var ls = childProcess.exec('ls -l', 
+					var ls = childProcess.exec('echo "==niu=="', 
 						function (error, stdout, stderr) {
 						  cbk(transformText(stdout));		
 						});	
