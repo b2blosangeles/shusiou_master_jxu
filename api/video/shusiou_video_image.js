@@ -120,7 +120,10 @@ _f['S2'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		res.send(data);
+		// res.send(data);
+			res.writeHead(500, {'Content-Type': 'text/html'});
+			res.write('Error! ' +JSON.stringify(data));
+			res.end();					
 		return true;
 		pkg.fs.stat(fn, function(err, data1) {
 			
