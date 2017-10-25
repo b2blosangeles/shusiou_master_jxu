@@ -41,7 +41,7 @@ _f['S2'] = function(cbk) {
 		 
 			var childProcess = require('child_process');
 		
-			var env._itv = setInterval(function() {
+			env._itv = setInterval(function() {
 				if (!env.ffmpeg) {
 					env.ffmpeg = new Date().getTime();
 					var ls = childProcess.spawn('ffmpeg',
