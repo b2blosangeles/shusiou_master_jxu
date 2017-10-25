@@ -40,6 +40,8 @@ _f['S2'] = function(cbk) {
 		// } else {
 		 
 			var childProcess = require('child_process');
+			
+			if  (new Date().getTime() - env.ffmpeg  > 2000) env.ffmpeg = 0;
 		
 			env._itv = setInterval(function() {
 				if (!env.ffmpeg) {
