@@ -1,3 +1,7 @@
+var transformText = function(contents) {
+	return contents.toString().replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '\\$&').
+		replace(/[\n\r]/g, '\\n')
+};
 
 var vid = 'P1', w = req.query['w'] || 180;
 var video_folder = '/mnt/shusiou-video/videos/';
@@ -63,7 +67,7 @@ _f['S2'] = function(cbk) {
 		
 					ls.on('close', function(code) {
 						env.ffmpeg = 0;
-						cbk(dd);
+						transformText(dd);
 						// clearInterval(env._itv);
 						//setTimeout(cbk, 100);
 					 });
