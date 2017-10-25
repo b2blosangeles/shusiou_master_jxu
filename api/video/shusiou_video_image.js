@@ -72,6 +72,7 @@ _f['S2'] = function(cbk) {
 						});
 						*/
 						// cbk('niu');
+						ls.disconnect();
 						qq[qq.length] = 'niu';
 					 });
 					ls.on('exit', function(code) {
