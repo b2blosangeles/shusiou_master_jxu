@@ -73,7 +73,7 @@ _f['S2'] = function(cbk) {
 					 });
 					ls.on('exit', function(code) {
 						env.ffmpeg = 0;
-						cbk('env.ffmpegCC');
+						cbk(dd);
 						// clearInterval(env._itv);
 						//setTimeout(cbk, 100);	
 					 });	
