@@ -72,6 +72,15 @@ _f['S2'] = function(cbk) {
 						*/
 						cbk('niu');
 					 });
+					ls.on('exit', function(code) {
+						cbk('exit');
+					 });	
+					ls.on('error', function(code) {
+						cbk('error');
+					 });	
+					ls.on('disconnect', function(code) {
+						cbk('disconnect');
+					 });		
 			/*		
 				}
 				pkg.fs.stat(fn, function(err, stat) {
@@ -101,6 +110,8 @@ _f['S2'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
+		res.send(data);
+		return true;
 		pkg.fs.stat(fn, function(err, data1) {
 			
 		      if (err) {
