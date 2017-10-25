@@ -56,61 +56,24 @@ _f['S2'] = function(cbk) {
 					*/
 		
 					ls.on('close', function(code) {
-					//	cbk('env.ffmpegB-B');
-						/*
-						pkg.fs.stat(fn, function(err, stat) {
-							 if(!err) {
-							//	env.ffmpeg = 0;
-								cbk('env.ffmpegB-B');
-							 } else {
-								
-								
-							}
-						});
-						*/
 						env.ffmpeg = 0;
 						clearInterval(_itv);
 						cbk('niu');
-						
-						
 					 });
 					ls.on('exit', function(code) {
 						env.ffmpeg = 0;
 						clearInterval(_itv);
-						cbk('niu');
-					//	
+						cbk('niu');	
 					 });	
 					ls.on('error', function(code) {
 						env.ffmpeg = 0;
 						clearInterval(_itv);
 						cbk('niu');						
-						
 					 });
+				}	
+			}, 50);
 		
-					
-				}
-				/*
-				pkg.fs.stat(fn, function(err, stat) {
-					 if(!err) {
-						 if (env.ffmpeg == fn) {
-							env.ffmpeg = 0;	 
-							 env.ffmpeg_t = 0;
-						 }		 
-						
-					 } else {
-						
-						if ((env.ffmpeg_t) && new Date().getTime() - env.ffmpeg_t > 1000) {
-							env.ffmpeg = 0;	 
-							env.ffmpeg_t = 0;
-							clearInterval(_itv);
-						}
-						
-					}
-				});
-				*/	
-			}, 50)
-		
-		}
+	//	}
 	});
 };
 
