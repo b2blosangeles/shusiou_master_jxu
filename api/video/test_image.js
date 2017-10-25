@@ -57,7 +57,7 @@ _f['S2'] = function(cbk) {
 						function (error, stdout, stderr) {
 						  cbk(transformText(stdout));		
 						});
-					
+					/*
 					ls.on('data', function(code) {
 						env.ffmpeg = 0;
 						dd += code;
@@ -83,6 +83,7 @@ _f['S2'] = function(cbk) {
 						// clearInterval(env._itv);
 						//setTimeout(cbk, 100);						
 					 });
+					 */
 			//	}	
 		//	}, 50);
 		
