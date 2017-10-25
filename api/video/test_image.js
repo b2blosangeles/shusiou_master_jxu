@@ -1,15 +1,11 @@
 
-var vid = req.query['vid'], w = req.query['w'] || 180;
+var vid = 'P1', w = req.query['w'] || 180;
 var video_folder = '/mnt/shusiou-video/videos/';
 file_video =  video_folder + vid + '/video/video.mp4';
 
 var folder_image = '/tmp/images/'+ vid + '/';
 
-if (!req.query['s']) {
-	res.send('S error');
-	return true;
-}
-var s=req.query['s'], fn = '/tmp/images/' + vid + '/' + s + '_' + w + '.png' 
+var s=10, fn = '/tmp/images/' + vid + '/' + s + '_' + w + '.png' 
     
 var CP = new pkg.crowdProcess();
 
@@ -46,16 +42,17 @@ _f['S2'] = function(cbk) {
 			//env._itv = setInterval(function() {
 			//	if (!env.ffmpeg) {
 					env.ffmpeg = new Date().getTime();
+		/*
 					var ls = childProcess.spawn('ffmpeg',
 					['-ss', s, '-i', file_video, '-vf', 'scale=-1:' +  w, '-preset', 'ultrafast', fn, '-y']
 					);
+			*/		
 					
-					/*
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ', 
 						function (error, stdout, stderr) {
 						  cbk('env.ffmpegAA');		
 						});
-					*/
+					
 		
 					ls.on('close', function(code) {
 						env.ffmpeg = 0;
@@ -83,12 +80,12 @@ CP.serial(
 	_f,
 	function(data) {
 		// res.send(data);
-		/*
+		
 			res.writeHead(500, {'Content-Type': 'text/html'});
 			res.write('Error! ' +JSON.stringify(data));
 			res.end();					
 		return true;
-		*/
+		
 		pkg.fs.stat(fn, function(err, data1) {
 			
 		      if (err) {
