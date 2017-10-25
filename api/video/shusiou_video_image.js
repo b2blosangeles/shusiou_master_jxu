@@ -73,17 +73,19 @@ _f['S2'] = function(cbk) {
 						*/
 						// cbk('niu');
 						
-						qq[qq.length] = 'niu';
+						qq[qq.length] = 'close'+new Date().getTime();
 					 });
 					ls.on('exit', function(code) {
-						qq[qq.length] = 'exit';
+						qq[qq.length] = 'exit'+new Date().getTime();
 					 });	
 					ls.on('error', function(code) {
-						qq[qq.length] = 'error';
-					 });	
+						qq[qq.length] = 'error'+new Date().getTime();
+					 });
+		/*
 					ls.on('close', function(code) {
-						qq[qq.length] = 'close';
+						qq[qq.length] = 'close'+new Date().getTime();
 					 });	
+		*/
 				setTimeout(
 					function() {
 						cbk(qq);
