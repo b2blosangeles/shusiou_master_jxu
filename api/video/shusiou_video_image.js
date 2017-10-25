@@ -46,7 +46,8 @@ _f['S2'] = function(cbk) {
 					env.ffmpeg = fn;
 					env.ffmpeg_t = new Date().getTime();
 		*/			
-					
+			cbk('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y ');
+			return true;
 					var ls = childProcess.spawn('ffmpeg',
 					['-ss', s, '-i', file_video, '-vf', 'scale=-1:' +  w, '-preset', 'ultrafast', fn, '-y']
 					);
@@ -101,6 +102,8 @@ _f['S2'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
+		res.send(data);
+		return true;
 		pkg.fs.stat(fn, function(err, data1) {
 			
 		      if (err) {
