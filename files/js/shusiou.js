@@ -9,7 +9,7 @@ function setVideo(vid, s, l) {
 	var img = ''
 	for (var i = 1; i < 10; i+=1) {
 		// if (i == 10) continue;
-		img += '<img src="/api/video/shusiou_video_image.api?vid=P'+1+'&s=10&w=180&'+i+'_'+new Date().getTime()+'" width="90" '+
+		img += '<img src="/api/video/shusiou_video_image.api?vid=P'+i+'&s=10&w=180&'+i+'_'+new Date().getTime()+'" width="90" '+
 			' onClick="setVideo('+vid+', '+i+', 180)"' +
 			'/>'
 	}
