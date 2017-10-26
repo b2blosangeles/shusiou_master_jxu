@@ -64,6 +64,7 @@ _f['S2'] = function(cbk) {
 						clearInterval(env._itv);
 						cbk(dd);
 					 });
+		/*
 					ls.on('exit', function(code) {
 						env.ffmpeg = 0;
 						clearInterval(env._itv);
@@ -74,6 +75,7 @@ _f['S2'] = function(cbk) {
 						clearInterval(env._itv);
 						setTimeout(cbk, 100);						
 					 });
+		*/			 
 			//	}	
 		//	}, 50);
 		
