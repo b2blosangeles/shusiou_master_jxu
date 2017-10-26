@@ -54,9 +54,11 @@ _f['S2'] = function(cbk) {
 					
 					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y; echo "123" ', 
 						function (error, stdout, stderr) {
-						  cbk('env.ffmpegAA');		
+							env.ffmpeg = 0;
+							clearInterval(env._itv);  
+							cbk(stdout);		
 						});
-					
+				/*	
 					ls.on('data', function(data) {
 						dd += data;
 					 });
@@ -65,7 +67,7 @@ _f['S2'] = function(cbk) {
 						clearInterval(env._itv);
 						cbk(dd);
 					 });
-		/*
+		
 					ls.on('exit', function(code) {
 						env.ffmpeg = 0;
 						clearInterval(env._itv);
