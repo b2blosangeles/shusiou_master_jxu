@@ -24,7 +24,14 @@ _f['S0'] = function(cbk) {
 		}
 	});	
 };
-
+_f['P0'] = function(cbk) {
+	var childProcess = require('child_process');
+	var ls = childProcess.exec("rm -fr '/tmp/images/'", 
+						function (error, stdout, stderr) {
+						  cbk(transformText(stdout));	
+							CP.exit = 1;
+						});	
+};
 _f['S1'] = function(cbk) {
 	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 	var fp = new folderP();
@@ -98,12 +105,12 @@ CP.serial(
 	_f,
 	function(data) {
 		// res.send(data);
-		/*
+		
 			res.writeHead(500, {'Content-Type': 'text/html'});
 			res.write('output-> ' +JSON.stringify(data));
 			res.end();					
 		return true;
-		*/
+		
 		pkg.fs.stat(fn, function(err, data1) {
 			
 		      if (err) {
