@@ -35,9 +35,9 @@ _f['S1'] = function(cbk) {
 
 _f['S2'] = function(cbk) {
 	pkg.fs.stat(fn, function(err, stat) {
-		//if(!err) {
-		//	cbk(fn);
-		// } else {
+		if(!err) {
+			cbk(fn);
+		 } else {
 			var childProcess = require('child_process');
 			var ls = childProcess.spawn('ffmpeg',
 			['-ss', s, '-i', file_video, '-vf', 'scale=-1:' +  w, '-preset', 'ultrafast', fn, '-y']
@@ -52,7 +52,7 @@ _f['S2'] = function(cbk) {
 				cbk(true);						
 			 });			 
 
-	//	}
+		}
 	});
 };
 
@@ -64,9 +64,9 @@ CP.serial(
 		      if (err) {
 			      res.send(fn + ' does not exist');
 		      } else {
-			//	var file = pkg.fs.createReadStream(fn);
-			//	file.pipe(res);	
-			      res.sendFile(fn);
+				var file = pkg.fs.createReadStream(fn);
+				file.pipe(res);	
+			  //    res.sendFile(fn);
 			}
 		});
 	},
