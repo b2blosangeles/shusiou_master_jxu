@@ -43,8 +43,8 @@ _f['S2'] = function(cbk) {
 			
 			if  (new Date().getTime() - env.ffmpeg  > 1000) env.ffmpeg = 0;
 		
-			//env._itv = setInterval(function() {
-			//	if (!env.ffmpeg) {
+			env._itv = setInterval(function() {
+				if (!env.ffmpeg) {
 					env.ffmpeg = new Date().getTime();
 					/*
 					var ls = childProcess.spawn('ffmpeg',
@@ -79,8 +79,8 @@ _f['S2'] = function(cbk) {
 						setTimeout(cbk, 100);						
 					 });
 		*/			 
-			//	}	
-		//	}, 50);
+				}	
+			}, 50);
 		
 	//	}
 	});
