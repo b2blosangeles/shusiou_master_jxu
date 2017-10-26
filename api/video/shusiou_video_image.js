@@ -46,19 +46,9 @@ _f['S2'] = function(cbk) {
 			env._itv = setInterval(function() {
 				if (!env.ffmpeg) {
 					env.ffmpeg = new Date().getTime();
-					/*
 					var ls = childProcess.spawn('ffmpeg',
-					['-ss', s, '-i', file_video, '-vf', 'scale=-1:' +  w, '-preset', 'ultrafast', fn, '-y', ';ls', '-l']
-					);
-					*/
-					
-					var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  fn +' -y; echo "123" ', 
-						function (error, stdout, stderr) {
-							env.ffmpeg = 0;
-							clearInterval(env._itv);  
-							cbk(stdout);		
-						});
-				/*	
+					['-ss', s, '-i', file_video, '-vf', 'scale=-1:' +  w, '-preset', 'ultrafast', fn, '-y']
+					);	
 					ls.on('data', function(data) {
 						dd += data;
 					 });
@@ -77,8 +67,7 @@ _f['S2'] = function(cbk) {
 						env.ffmpeg = 0;
 						clearInterval(env._itv);
 						setTimeout(cbk, 100);						
-					 });
-		*/			 
+					 });			 
 				}	
 			}, 50);
 		
