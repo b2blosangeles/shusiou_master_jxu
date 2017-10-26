@@ -38,39 +38,20 @@ _f['S2'] = function(cbk) {
 		//if(!err) {
 		//	cbk(fn);
 		// } else {
-		 	var dd = '-=-';
 			var childProcess = require('child_process');
-			
-			if  (new Date().getTime() - env.ffmpeg  > 1000) env.ffmpeg = 0;
-		
-			env._itv = setInterval(function() {
-				if (!env.ffmpeg) {
-					env.ffmpeg = new Date().getTime();
-					var ls = childProcess.spawn('ffmpeg',
-					['-ss', s, '-i', file_video, '-vf', 'scale=-1:' +  w, '-preset', 'ultrafast', fn, '-y']
-					);	
-					ls.on('data', function(data) {
-						dd += data;
-					 });
-					ls.on('close', function(code) {
-						env.ffmpeg = 0;
-						clearInterval(env._itv);
-						cbk(dd);
-					 });
-		
-					ls.on('exit', function(code) {
-						env.ffmpeg = 0;
-						clearInterval(env._itv);
-						setTimeout(cbk, 100);	
-					 });	
-					ls.on('error', function(code) {
-						env.ffmpeg = 0;
-						clearInterval(env._itv);
-						setTimeout(cbk, 100);						
-					 });			 
-				}	
-			}, 50);
-		
+			var ls = childProcess.spawn('ffmpeg',
+			['-ss', s, '-i', file_video, '-vf', 'scale=-1:' +  w, '-preset', 'ultrafast', fn, '-y']
+			);	
+			ls.on('close', function(code) {
+				cbk(true);
+			 });
+			ls.on('exit', function(code) {
+				cbk(true);	
+			 });	
+			ls.on('error', function(code) {
+				cbk(true);						
+			 });			 
+
 	//	}
 	});
 };
@@ -78,13 +59,6 @@ _f['S2'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		// res.send(data);
-		/*
-			res.writeHead(500, {'Content-Type': 'text/html'});
-			res.write('Error! ' +JSON.stringify(data));
-			res.end();					
-		return true;
-		*/
 		pkg.fs.stat(fn, function(err, data1) {
 			
 		      if (err) {
