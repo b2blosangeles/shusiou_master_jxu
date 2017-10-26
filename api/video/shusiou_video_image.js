@@ -38,7 +38,7 @@ _f['S2'] = function(cbk) {
 		//if(!err) {
 		//	cbk(fn);
 		// } else {
-		 	var dd = '--';
+		 	var dd = '-=-';
 			var childProcess = require('child_process');
 			
 			if  (new Date().getTime() - env.ffmpeg  > 1000) env.ffmpeg = 0;
