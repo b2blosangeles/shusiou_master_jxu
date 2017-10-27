@@ -8,7 +8,7 @@ var cfg0 = require(env.site_path + '/api/cfg/db.json');
 var crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess');
 var fs = require('fs');
 			    
-var video_folder = '/var/video/';
+var video_folder = '/var/videos/';
 
 function getServerIP() {
     var ifaces = require('os').networkInterfaces(), address=[];
@@ -23,15 +23,15 @@ var holder_ip = getServerIP();
 
 var CP = new crowdProcess();
 var _f = {};
-
+/*
 _f['S0'] = function(cbk) {
 	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 	var fp = new folderP();
-	fp.build(video_folder, function() {
+	fp.build(video_folder+'video/', function() {
 		cbk(true);
 	});
 };
-
+*/
 
 _f['P0'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
@@ -90,15 +90,28 @@ _f['P2'] = function(cbk) {
 	});  
 };
 
+_f['DR1'] = function(cbk) {
+	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
+	var fp = new folderP();
+	fp.build(video_folder + CP.data.P2.id + '/video/', function() {
+		cbk(video_folder + CP.data.P2.id + '/video/');
+	});
+};
+_f['DR2'] = function(cbk) {
+	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
+	var fp = new folderP();
+	fp.build(video_folder + CP.data.P2.id + + 'images/' , function() {
+		cbk(video_folder + CP.data.P2.id + 'images/');
+	});
+};
+
 _f['D0'] = function(cbk) {
 	if ((CP.data.P2) && (CP.data.P2.code)) {
 		var url = decodeURIComponent(CP.data.P2.code);
 		// var url = CP.data.P2.code;
 		var video = ytdl(url, {quality:'18'}, function(err) {
 		});
-		video.pipe(fs.createWriteStream(video_folder+ CP.data.P2.id +'.mp4'));	
-
-
+		video.pipe(fs.createWriteStream(CP.data.DR1 +'video.mp4'));	
 		video.on('data', function(info) {
 		}); 
 
@@ -117,31 +130,27 @@ _f['D0'] = function(cbk) {
 	}	
 };
 
-_f['DR1'] = function(cbk) {
-	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
-	var fp = new folderP();
-	fp.build(video_folder + CP.data.P2.id + '/', function() {
-		cbk(video_folder + CP.data.P2.id + '/');
-	});
-};
-_f['DR2'] = function(cbk) {
-	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
-	var fp = new folderP();
-	fp.build(CP.data.DR1 + 'images/' , function() {
-		cbk(CP.data.DR1 + 'images/');
-	});
-};
+
 
 _f['D1'] = function(cbk) {
 	var childProcess = require('child_process');
-	var file_video = video_folder+ CP.data.P2.id +'.mp4', w = 180, s = 10, f_n = CP.data.DR1 + CP.data.P2.id + '_' + s + '_.png';
+	var file_video = CP.data.DR1 +'video.mp4', w = 180, s = 10, f_n = CP.data.DR2 + w + '_' + s + '_.png';
 	var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  f_n +' -y ; echo "123"', 
 		function (error, stdout, stderr) {
 		  cbk('=niu=');		
 		});	
 };
 
-_f['D1'] = function(cbk) {
+_f['D2'] = function(cbk) {
+	var childProcess = require('child_process');
+	var file_video = CP.data.DR1 +'video.mp4', w = 90, s = 10, f_n = CP.data.DR2 + w + '_' + s + '_.png';
+	var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  f_n +' -y ; echo "123"', 
+		function (error, stdout, stderr) {
+		  cbk('=niu=');		
+		});	
+};
+
+_f['E1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'UPDATE `download_queue` SET `status` = 8 WHERE `id` = "' + CP.data.P2.id + '"';
