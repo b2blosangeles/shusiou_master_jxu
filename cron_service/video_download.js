@@ -102,8 +102,8 @@ _f['DR1'] = function(cbk) {
 _f['DR2'] = function(cbk) {
 	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 	var fp = new folderP();
-	fp.build(video_folder + CP.data.P2.id + 'images/' , function() {
-		cbk(video_folder + CP.data.P2.id + 'images/');
+	fp.build(video_folder + CP.data.P2.id + '/images/' , function() {
+		cbk(video_folder + CP.data.P2.id + '/images/');
 	});
 };
 
