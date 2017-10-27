@@ -79,11 +79,13 @@ _f['P2'] = function(cbk) {
 		connection.end();
 		if (error) {
 			cbk(false);
+			CP.exit = 1;
 		} else {
 			if (results.length) {
 				cbk(results[0]);
 			} else {
 				cbk(false);
+				CP.exit = 1;
 			}
 
 		}
