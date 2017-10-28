@@ -137,6 +137,7 @@ _f['D1'] = function(cbk) {
 	
 	var s0 = 'ffmpeg ';
 	var s1 = ' -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + s + '_.png' +' ';
+	var s1A = ' -ss ' + 11 + ' -i ' + file_video + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + 11 + '_.png' +' ';
 	var s2 = ' -vf scale=-1:' +  90 + '  -preset ultrafast ' + CP.data.DR2 + 90 + '_' + s + '_.png'+' ';
 	var s2 = ' -vf scale=-1:' +  480 + '  -preset ultrafast ' + CP.data.DR2 + 480 + '_' + s + '_.png'+' ';
 	var s3 = ' -vf scale=-1:' +  360 + '  -preset ultrafast ' +  CP.data.DR2 + 360 + '_' + s + '_.png'+' -y ;';	
@@ -147,7 +148,7 @@ _f['D1'] = function(cbk) {
 	}
 	s += ' -y'
 	
-	var ls = childProcess.exec(s0 + s1 + s2 + s3, 
+	var ls = childProcess.exec(s0 + s1 +  s1A +  s2 + s3, 
 		function (error, stdout, stderr) {
 		  cbk('=niu=');		
 		});	
