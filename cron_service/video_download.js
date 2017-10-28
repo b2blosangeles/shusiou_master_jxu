@@ -143,7 +143,7 @@ _f['D1'] = function(cbk) {
 	var s3 = ' -vf scale=-1:' +  360 + '  -preset ultrafast ' +  CP.data.DR2 + 360 + '_' + s + '_.png'+' -y ;';	
 	
 	var s = 'ffmpeg ';
-	var I = [1, 10, 30, 60, 90, 180, 300], W = ['', 90, 180, 360];
+	var I = [1, 10, 30, 60, 90, 180, 300], W = ['', 90, 180, 300];
 	for (var i = 0; i < I.length; i++) {
 		s+= ' -ss ' + I[i] + ' -i ' + file_video;
 		for (j = 0; j < W.length; j++) {
