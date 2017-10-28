@@ -148,7 +148,7 @@ _f['D1'] = function(cbk) {
 		s+= ' -ss ' + I[i] + ' -i ' + file_video;
 		for (j = 0; j < W.length; j++) {
 			if (W[j]) s += ' -vf scale=-1:' +  W[j] + '  -preset ultrafast ' +  CP.data.DR2 + W[j] + '_' + I[i] + '.png ';
-			else s += ' -vf scale=-1:100%   -preset ultrafast ' +  CP.data.DR2 +'FULL_' + I[i] + '.png ';
+			else s += ' -vframes 1 ' +  CP.data.DR2 +'FULL_' + I[i] + '.png ';
 		}
 	}
 	s += ' -y'
