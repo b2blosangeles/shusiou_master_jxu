@@ -111,8 +111,8 @@ _f['D0'] = function(cbk) {
 	if ((CP.data.P2) && (CP.data.P2.code)) {
 		var url = decodeURIComponent(CP.data.P2.code);
 		// var url = CP.data.P2.code;
-		var video = ytdl(url, {quality:'18'}, function(err) {
-		});
+	//	var video = ytdl(url, {quality:'18'}, function(err) {});
+		var video = ytdl(url, {quality:'highest'}, function(err) { });
 		video.pipe(fs.createWriteStream(CP.data.DR1 +'video.mp4'));	
 		video.on('data', function(info) {
 		}); 
