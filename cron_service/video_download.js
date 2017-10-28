@@ -135,15 +135,13 @@ _f['D1'] = function(cbk) {
 	var childProcess = require('child_process');
 	var file_video = CP.data.DR1 +'video.mp4', w = 180, s = 10, f_n = CP.data.DR2 + w + '_' + s + '_.png';
 	
-	var s0 = 'ffmpeg -ss ' + 11 + ' -i ' + file_video + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + 11 + '_.png' +' ';
-	var s1 = ' -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + s + '_.png' +' ';
-	var s2 = ' -vf scale=-1:' +  90 + '  -preset ultrafast ' + CP.data.DR2 + 90 + '_' + s + '_.png'+' ';
-	var s3 = ' -vf scale=-1:' +  480 + '  -preset ultrafast ' + CP.data.DR2 + 480 + '_' + s + '_.png'+' ';
-	var s4 = ' -vf scale=-1:' +  360 + '  -preset ultrafast ' +  CP.data.DR2 + 360 + '_' + s + '_.png'+' -y ;';
-
+	var s = 'ffmpeg ';
+	for (var i = 0; i < 100; i++) {
+		s+= 'ffmpeg -ss ' + i + ' -i ' + file_video + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + i + '_.png' +' ';
+	}
+	s += ' -y'
 	
-	
-	var ls = childProcess.exec(s0 + s1 + s2 + s3 + s4, 
+	var ls = childProcess.exec(s, 
 		function (error, stdout, stderr) {
 		  cbk('=niu=');		
 		});	
