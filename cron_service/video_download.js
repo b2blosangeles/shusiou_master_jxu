@@ -137,7 +137,10 @@ _f['D1'] = function(cbk) {
 	
 	var s1 = 'ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + s + '_.png' +' ';
 	var s2 = ' -vf scale=-1:' +  90 + '  -preset ultrafast ' + CP.data.DR2 + 90 + '_' + s + '_.png'+' ';
+	var s2 = ' -vf scale=-1:' +  480 + '  -preset ultrafast ' + CP.data.DR2 + 480 + '_' + s + '_.png'+' ';
 	var s3 = ' -vf scale=-1:' +  360 + '  -preset ultrafast ' +  CP.data.DR2 + 360 + '_' + s + '_.png'+' -y ;';
+
+	
 	
 	var ls = childProcess.exec(s1 + s2 + s3, 
 		function (error, stdout, stderr) {
