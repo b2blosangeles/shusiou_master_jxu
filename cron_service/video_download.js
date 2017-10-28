@@ -135,20 +135,20 @@ _f['D1'] = function(cbk) {
 	var childProcess = require('child_process');
 	var file_video = CP.data.DR1 +'video.mp4', w = 180, s = 10, f_n = CP.data.DR2 + w + '_' + s + '_.png';
 	
-	var s0 = 'ffmpeg ' + ' -i ' + file_video;
-	var s1 = ' -ss ' + s  + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + s + '_.png' +' ';
-	var s1A = ' -ss ' + 12+ ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + 12 + '_.png' +' ';
+	var s0 = 'ffmpeg ';
+	var s1 = ' -ss ' + s  + ' -i ' + file_video + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + s + '_.png' +' ';
+	var s1A = ' -ss ' + 12  + ' -i ' + file_video + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + 12 + '_.png' +' ';
 	var s2 = ' -vf scale=-1:' +  90 + '  -preset ultrafast ' + CP.data.DR2 + 90 + '_' + s + '_.png'+' ';
 	var s2 = ' -vf scale=-1:' +  480 + '  -preset ultrafast ' + CP.data.DR2 + 480 + '_' + s + '_.png'+' ';
 	var s3 = ' -vf scale=-1:' +  360 + '  -preset ultrafast ' +  CP.data.DR2 + 360 + '_' + s + '_.png'+' -y ;';	
 	
-	var s = 'ffmpeg -i ' + file_video;
+	var s = 'ffmpeg ';
 	for (var i = 0; i < 100; i++) {
-		s+= ' -ss ' + i + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + i + '_.png' +' ';
+		s+= ' -ss ' + i + ' -i ' + file_video +  ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + i + '_.png' +' ';
 	}
 	s += ' -y'
 	
-	var ls = childProcess.exec(s0 + s1 +  s1A +  s2 + s3, 
+	var ls = childProcess.exec(s, 
 		function (error, stdout, stderr) {
 		  cbk('=niu=');		
 		});	
