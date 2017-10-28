@@ -143,11 +143,12 @@ _f['D1'] = function(cbk) {
 	var s3 = ' -vf scale=-1:' +  360 + '  -preset ultrafast ' +  CP.data.DR2 + 360 + '_' + s + '_.png'+' -y ;';	
 	
 	var s = 'ffmpeg ';
-	var I = [1, 10, 30, 60, 90, 180, 300], W = [90, 180, 480];
+	var I = [1, 10, 30, 60, 90, 180, 300], W = [90, 180, 360, ''];
 	for (var i = 0; i < I.length; i++) {
 		s+= ' -ss ' + I[i] + ' -i ' + file_video;
 		for (j = 0; j < W.length; j++) {
-			s += ' -vf scale=-1:' +  W[j] + '  -preset ultrafast ' +  CP.data.DR2 + W[j] + '_' + I[i] + '_.png ';
+			if (W[j]) s += ' -vf scale=-1:' +  W[j] + '  -preset ultrafast ' +  CP.data.DR2 + W[j] + '_' + I[i] + '.png ';
+			else s += ' -vf  -preset ultrafast ' +  CP.data.DR2 +'FULL_' + I[i] + '.png ';
 		}
 	}
 	s += ' -y'
