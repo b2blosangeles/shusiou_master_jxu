@@ -137,7 +137,7 @@ _f['D1'] = function(cbk) {
 	
 	var s = 'ffmpeg ';
 	for (var i = 0; i < 100; i++) {
-		s+= 'ffmpeg -ss ' + i + ' -i ' + file_video + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + i + '_.png' +' ';
+		s+= ' -ss ' + i + ' -i ' + file_video + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + i + '_.png' +' ';
 	}
 	s += ' -y'
 	
