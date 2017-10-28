@@ -131,9 +131,16 @@ _f['D0'] = function(cbk) {
 		cbk(false);
 	}	
 };
+_f['D1'] = function(cbk) {
+	var childProcess = require('child_process');
+	var file_video = CP.data.DR1 +'video.mp4', w = 180, s = 10, f_n = CP.data.DR2 + w + '_' + s + '_%05d.png';
+	var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf  -preset ultrafast ' +  f_n +' -y ', 
+		function (error, stdout, stderr) {
+		  cbk('=niu=');		
+		});	
+};
 
-
-
+/*
 _f['D1'] = function(cbk) {
 	var childProcess = require('child_process');
 	var file_video = CP.data.DR1 +'video.mp4', w = 180, s = 10, f_n = CP.data.DR2 + w + '_' + s + '_%05d.png';
@@ -151,7 +158,7 @@ _f['D2'] = function(cbk) {
 		  cbk('=niu=');		
 		});	
 };
-
+*/
 _f['E1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
