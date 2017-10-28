@@ -131,19 +131,10 @@ _f['D0'] = function(cbk) {
 		cbk(false);
 	}	
 };
-_f['D1'] = function(cbk) {
-	var childProcess = require('child_process');
-	var file_video = CP.data.DR1 +'video.mp4', w = 180, s = 10, f_n = CP.data.DR2 + w + '_' + s + '_%05d.png';
-	var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf  fps=1 -preset ultrafast ' +  f_n +' -y ', 
-		function (error, stdout, stderr) {
-		  cbk('=niu=');		
-		});	
-};
 
-/*
 _f['D1'] = function(cbk) {
 	var childProcess = require('child_process');
-	var file_video = CP.data.DR1 +'video.mp4', w = 180, s = 10, f_n = CP.data.DR2 + w + '_' + s + '_%05d.png';
+	var file_video = CP.data.DR1 +'video.mp4', w = 180, s = 10, f_n = CP.data.DR2 + w + '_' + s + '_.png';
 	var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  f_n +' -y ; echo "123"', 
 		function (error, stdout, stderr) {
 		  cbk('=niu=');		
@@ -152,13 +143,13 @@ _f['D1'] = function(cbk) {
 
 _f['D2'] = function(cbk) {
 	var childProcess = require('child_process');
-	var file_video = CP.data.DR1 +'video.mp4', w = 90, s = 10, f_n = CP.data.DR2 + w + '_' + s + '_%05d.png';
+	var file_video = CP.data.DR1 +'video.mp4', w = 90, s = 10, f_n = CP.data.DR2 + w + '_' + s + '_.png';
 	var ls = childProcess.exec('ffmpeg -ss ' + s + ' -i ' + file_video + ' -vf scale=-1:' +  w + '  -preset ultrafast ' +  f_n +' -y ; echo "123"', 
 		function (error, stdout, stderr) {
 		  cbk('=niu=');		
 		});	
 };
-*/
+
 _f['E1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
