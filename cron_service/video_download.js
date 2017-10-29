@@ -164,11 +164,17 @@ _f['D2'] = function(cbk) {
 	var childProcess = require('child_process');
 	var file_video = CP.data.DR1 +'video.mp4';
 	var AD = {s:150, t:300};
-	s = 'ffmpeg -i ' + file_video + ' -ss '+ AD.s + '  -t ' + AD.t + ' -c copy ' + CP.data.DR3 + AD.s + '_' + AD.t + '.mp4 -y ';
-	
+	var fn = CP.data.DR3 + AD.s + '_' + AD.t + '.mp4';
+	s = 'ffmpeg -i ' + file_video + ' -ss '+ AD.s + '  -t ' + AD.t + ' -c copy ' + fn + ' -y ';
 	var ls = childProcess.exec(s, 
 		function (error, stdout, stderr) {
-		  cbk(s);		
+			pkg.fs.stat(fn, function(err, stat) {
+			  if(err) {
+			    cbk(false); 
+			  } else {
+			  	cbk(stat.size);
+			  }			  
+			});	
 		});	
 };
 
