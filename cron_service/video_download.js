@@ -44,12 +44,12 @@ _f['P1'] = function(cbk) {
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
-			cbk(false);
+			cbk(false); CP.exit = 1;
 		} else {
 			if (results.length) {
 				cbk(results[0]);
 			} else {
-				cbk(false);
+				cbk(false); CP.exit = 1;
 			}
 		}
 	});  
