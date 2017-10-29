@@ -22,6 +22,18 @@ var holder_ip = getServerIP();
 
 var CP = new crowdProcess();
 var _f = {};
+
+_f['S0'] = function(cbk) {
+    fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+	if (err) {
+		cbk(false);
+		CP.exit = 1;
+	} else {
+		cbk(data);
+	}
+	    
+    });	 
+};
 /*
 
 _f['P0'] = function(cbk) {
