@@ -35,7 +35,7 @@ _f['P0'] = function(cbk) {
 	});  
 };
 
-_f['P0'] = function(cbk) {
+_f['P1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'UPDATE `download_queue` SET `status` = 0, `holder_ip` = "", `hold_time` = NULL';
