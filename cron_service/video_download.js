@@ -17,7 +17,7 @@ function getServerIP() {
     }
     return address;
 };
-var holder_ip = getServerIP();
+var ips = getServerIP();
 var CP = new crowdProcess(), _f = {};
 
 _f['P0'] = function(cbk) {
@@ -25,7 +25,12 @@ _f['P0'] = function(cbk) {
 	if (err) {
 		cbk(false); CP.exit = 1;
 	} else {
-		cbk(data);
+		if ((data) && ips.indexOf(data) != -1) {
+			cbk(data);
+		} else {
+			cbk(false); CP.exit = 1;
+		}
+		
 	}
     });	 
 };
@@ -33,7 +38,7 @@ _f['P0'] = function(cbk) {
 _f['P1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = 'UPDATE  download_queue SET `holder_ip` = "' + holder_ip + '", `status` = 1, hold_time = NOW() ' + 
+	var str = 'UPDATE  download_queue SET `holder_ip` = "' + CP.data.P0 + '", `status` = 1, hold_time = NOW() ' + 
 		' WHERE  `status` = 0 AND `holder_ip` = "" OR `holder_ip` IS NULL ORDER BY `created` ASC LIMIT 1';
 	
 	connection.query(str, function (error, results, fields) {
@@ -52,7 +57,7 @@ _f['P1'] = function(cbk) {
 _f['P2'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = 'SELECT * FROM `download_queue` WHERE `holder_ip` = "' + holder_ip + '" AND `status` = 1';
+	var str = 'SELECT * FROM `download_queue` WHERE `holder_ip` = "' + CP.data.P0 + '" AND `status` = 1';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
