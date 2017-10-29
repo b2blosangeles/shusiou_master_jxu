@@ -200,7 +200,8 @@ _f['D2'] = function(cbk) {
 _f['E1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = 'UPDATE `download_queue` SET `status` = 8 WHERE `id` = "' + CP.data.P2.id + '"';
+	var status = (CP.data.D2)?8:9;
+	var str = 'UPDATE `download_queue` SET `status` = "' + status + '" WHERE `id` = "' + CP.data.P2.id + '"';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
