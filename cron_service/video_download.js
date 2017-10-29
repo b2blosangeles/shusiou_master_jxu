@@ -212,7 +212,7 @@ _f['E2'] = function(cbk) {
 	    '"' + CP.data.P2.holder_ip + '",' +
 	    '"' + CP.data.P2.info + '",' +
 	    '"' + CP.data.P2.id + '",' +
-	    '"' + ((info.length_seconds)?info.length_seconds:'') + '",' +
+	    '"' + ((info.length_seconds)?info.length_seconds:0) + '",' +
 	    'NOW())';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
