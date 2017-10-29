@@ -144,7 +144,7 @@ _f['D1'] = function(cbk) {
 	var file_video = CP.data.DR1 +'video.mp4', w = 180;
 	
 	var s = 'ffmpeg ';
-	var I = [1, 10, 30, 60, 90, 180, 300], W = ['', 90, 180, 480], AD = {s:15, t:30};
+	var I = [1, 10, 30, 60, 90, 180, 300], W = ['', 90, 180, 480], AD = {s:150, t:300};
 	for (var i = 0; i < I.length; i++) {
 		s+= ' -ss ' + I[i] + ' -i ' + file_video;
 		for (j = 0; j < W.length; j++) {
