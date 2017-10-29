@@ -23,7 +23,7 @@ var holder_ip = getServerIP();
 var CP = new crowdProcess();
 var _f = {};
 
-_f['S0'] = function(cbk) {
+_f['P0'] = function(cbk) {
     fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 	if (err) {
 		cbk(false);
@@ -34,27 +34,7 @@ _f['S0'] = function(cbk) {
 	    
     });	 
 };
-/*
 
-_f['P0'] = function(cbk) {
-	var connection = mysql.createConnection(cfg0);
-	connection.connect();
-	var str = 'UPDATE `download_queue` SET `status` = 9 WHERE `holder_ip` = "' + holder_ip + '" AND `status` = 1';
-	connection.query(str, function (error, results, fields) {
-		connection.end();
-		if (error) {
-			cbk(false);
-		} else {
-			if (results.length) {
-				cbk(results[0]);
-			} else {
-				cbk(false);
-			}
-
-		}
-	});  
-};
-*/
 _f['P1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
