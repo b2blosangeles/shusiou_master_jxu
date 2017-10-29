@@ -207,12 +207,12 @@ _f['E2'] = function(cbk) {
 	try { info = JSON.parse(CP.data.P2.info); } catch(e) {}
 	var str = 'INSERT INTO `download_success` ' +
 	    '(`source`, `code`, `server_ip`, `video_info`, `video_code`, `video_length`, `uploaded`) VALUES (' +
-	    '"' + CP.data.P2.source + '",' +
-	    '"' + CP.data.P2.code + '",' +
-	    '"' + CP.data.P2.holder_ip + '",' +
-	    '"' + CP.data.P2.info + '",' +
-	    '"' + CP.data.P2.id + '",' +
-	    '"' + ((info.length_seconds)?info.length_seconds:0) + '",' +
+	    "'" + CP.data.P2.source + "'," +
+	    "'" + CP.data.P2.code + "'," +
+	    "'" + CP.data.P2.holder_ip + "'," +
+	    "'" + CP.data.P2.info + "'," +
+	    "'" + CP.data.P2.id + "'," +
+	    "'" + ((info.length_seconds)?info.length_seconds:0) + "'," +
 	    'NOW())';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
