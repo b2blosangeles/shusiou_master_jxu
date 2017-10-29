@@ -67,7 +67,7 @@ _f['P1'] = function(cbk) {
 			cbk(false); 
 		} else {
 			if (results) {
-				cbk(results.affectdRows);
+				cbk(results.affectedRows);
 			} else {
 				cbk(false); 
 			}
