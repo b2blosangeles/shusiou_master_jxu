@@ -168,7 +168,7 @@ _f['D2'] = function(cbk) {
 	s = 'ffmpeg -i ' + file_video + ' -ss '+ AD.s + '  -t ' + AD.t + ' -c copy ' + fn + ' -y ';
 	var ls = childProcess.exec(s, 
 		function (error, stdout, stderr) {
-			pkg.fs.stat(fn, function(err, stat) {
+			fs.stat(fn, function(err, stat) {
 			  if(err) {
 			    cbk(false); 
 			  } else {
