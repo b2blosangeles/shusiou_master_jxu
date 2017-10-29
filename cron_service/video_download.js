@@ -31,7 +31,7 @@ _f['S0'] = function(cbk) {
 		cbk(true);
 	});
 };
-*/
+
 
 _f['P0'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
@@ -51,6 +51,7 @@ _f['P0'] = function(cbk) {
 		}
 	});  
 };
+*/
 _f['P1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
