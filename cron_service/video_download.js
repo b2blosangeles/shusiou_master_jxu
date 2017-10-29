@@ -64,12 +64,12 @@ _f['P1'] = function(cbk) {
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
-			cbk(false); 
+			cbk(false); CP.exit = 1;
 		} else {
-			if (results) {
+			if ((results) && (results.affectedRows)) {
 				cbk(results.affectedRows);
 			} else {
-				cbk(false); 
+				cbk(false); CP.exit = 1;
 			}
 		}
 	});  
