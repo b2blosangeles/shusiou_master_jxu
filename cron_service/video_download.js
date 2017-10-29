@@ -44,8 +44,8 @@ _f['I0'] = function(cbk) {
 		if (error) {
 			cbk(false);
 		} else {
-			if (results.length) {
-				cbk(results[0]);
+			if (results) {
+				cbk(results);
 			} else {
 				cbk(false);
 			}
