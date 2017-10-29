@@ -133,8 +133,7 @@ _f['D0'] = function(cbk) {
 		});		
 		
 	} else {
-		CP.exit = 1;
-		cbk(false);
+		CP.exit = 1; cbk(false);
 	}	
 };
 
@@ -200,6 +199,36 @@ _f['E1'] = function(cbk) {
 		}
 	});  
 };
+
+_f['E2'] = function(cbk) {
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var info = {};
+	try { info = JSON.parse(CP.data.P2.info); } catch(e) {}
+	var str = 'INSERT INTO `download_success` ' +
+	    '(`source`, `code`, `server_ip`, `video_info`, `video_code`, `video_length`, `uploaded`) VALUES ' +
+	    '"' + CP.data.P2.source + '"' +
+	    '"' + CP.data.P2.code + '"' +
+	    '"' + CP.data.P2.holder_ip + '"' +
+	    '"' + CP.data.P2.info + '"' +
+	    '"' + CP.data.P2.id + '"' +
+	    '"' + (info.length_seconds)?info.length_seconds:'' + '"' +
+	    'NOW()';
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		if (error) {
+			cbk(false);
+		} else {
+			if (results.affectedRows) {
+				cbk(true);
+			} else {
+				cbk(false);
+			}
+
+		}
+	});  
+};
+
 CP.serial(
 	_f,
 	function(data) {
