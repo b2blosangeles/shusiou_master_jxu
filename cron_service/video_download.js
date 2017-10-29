@@ -107,6 +107,14 @@ _f['DR2'] = function(cbk) {
 	});
 };
 
+_f['DR3'] = function(cbk) {
+	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
+	var fp = new folderP();
+	fp.build(video_folder + CP.data.P2.id + '/sections/' , function() {
+		cbk(video_folder + CP.data.P2.id + '/sections/');
+	});
+};
+
 _f['D0'] = function(cbk) {
 	if ((CP.data.P2) && (CP.data.P2.code)) {
 		var url = decodeURIComponent(CP.data.P2.code);
