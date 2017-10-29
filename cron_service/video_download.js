@@ -141,17 +141,10 @@ _f['D0'] = function(cbk) {
 };
 _f['D1'] = function(cbk) {
 	var childProcess = require('child_process');
-	var file_video = CP.data.DR1 +'video.mp4', w = 180, s = 10, f_n = CP.data.DR2 + w + '_' + s + '_.png';
-	
-	var s0 = 'ffmpeg ';
-	var s1 = ' -ss ' + s  + ' -i ' + file_video + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + s + '_.png' +' ';
-	var s1A = ' -ss ' + 12  + ' -i ' + file_video + ' -vf scale=-1:' +  180 + '  -preset ultrafast ' +  CP.data.DR2 + 180 + '_' + 12 + '_.png' +' ';
-	var s2 = ' -vf scale=-1:' +  90 + '  -preset ultrafast ' + CP.data.DR2 + 90 + '_' + s + '_.png'+' ';
-	var s2 = ' -vf scale=-1:' +  480 + '  -preset ultrafast ' + CP.data.DR2 + 480 + '_' + s + '_.png'+' ';
-	var s3 = ' -vf scale=-1:' +  360 + '  -preset ultrafast ' +  CP.data.DR2 + 360 + '_' + s + '_.png'+' -y ;';	
+	var file_video = CP.data.DR1 +'video.mp4', w = 180;
 	
 	var s = 'ffmpeg ';
-	var I = [1, 10, 30, 60, 90, 180, 300], W = ['', 90, 180, 480];
+	var I = [1, 10, 30, 60, 90, 180, 300], W = ['', 90, 180, 480], AD = {s:15, t:30};
 	for (var i = 0; i < I.length; i++) {
 		s+= ' -ss ' + I[i] + ' -i ' + file_video;
 		for (j = 0; j < W.length; j++) {
@@ -159,6 +152,7 @@ _f['D1'] = function(cbk) {
 			else s += ' -vframes 1 ' +  CP.data.DR2 +'FULL_' + I[i] + '.png ';
 		}
 	}
+	s += ' -i ' + file_video + ' -ss '+ AD.s + ' -t ' + AD.t + ' -c copy ' + CP.data.DR3 + AD.s + '_' + AD.t + '.mp4 ';
 	s += ' -y'
 	
 	var ls = childProcess.exec(s, 
