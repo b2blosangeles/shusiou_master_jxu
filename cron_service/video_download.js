@@ -133,13 +133,11 @@ _f['D1'] = function(cbk) {
 		function (error, stdout, stderr) {
 			fs.stat(fn, function(err, stat) {
 			  if(err) {
-				CP.exit = 1;  
-			    	cbk(false); 
+				CP.exit = 1;  cbk(false); 
 				  
 			  } else {
 				  if (!stat.size) {
-					 CP.exit = 1;  
-			    		cbk(false); 
+					 CP.exit = 1; cbk(false); 
 				  } else {
 			  		cbk(stat.size);
 				  }	  
