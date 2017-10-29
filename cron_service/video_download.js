@@ -168,7 +168,7 @@ _f['D2'] = function(cbk) {
 	
 	var ls = childProcess.exec(s, 
 		function (error, stdout, stderr) {
-		  cbk('=niu 2=');		
+		  cbk(s);		
 		});	
 };
 
