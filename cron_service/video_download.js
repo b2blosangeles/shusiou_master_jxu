@@ -22,10 +22,10 @@ var CP = new crowdProcess(), _f = {};
 
 _f['P0'] = function(cbk) {
     fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
-	if (err) {
+	if ((err) || !data) {
 		cbk(false); CP.exit = 1;
 	} else {
-		if ((data) && ips.indexOf(data) != -1) {
+		if (ips.indexOf(data) != -1) {
 			cbk(data);
 		} else {
 			cbk(false); CP.exit = 1;
