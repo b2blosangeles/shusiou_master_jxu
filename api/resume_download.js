@@ -19,6 +19,25 @@ var _f = {};
 _f['P0'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
+	var str = 'SELECT * FROM `download_success` WHERE 1;
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		if (error) {
+			cbk('falseB');
+		} else {
+			if (results.length) {
+				cbk(results);
+			} else {
+				cbk('falseA');
+			}
+
+		}
+	});  
+};
+
+_f['P0'] = function(cbk) {
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
 	var str = 'UPDATE `download_queue` SET `status` = 0, `holder_ip` = "", `hold_time` = NULL';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
