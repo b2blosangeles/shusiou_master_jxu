@@ -153,7 +153,7 @@ _f['D1'] = function(cbk) {
 		}
 	}
 	s += ' -y ;'
-	s += ' -ss '+ AD.s + ' -i ' + file_video +  ' -t ' + AD.t + ' -c copy ' + CP.data.DR3 + AD.s + '_' + AD.t + '.mp4 -y ';
+	s += 'ffmpeg -ss '+ AD.s + ' -i ' + file_video +  ' -t ' + AD.t + ' -c copy ' + CP.data.DR3 + AD.s + '_' + AD.t + '.mp4 -y ';
 	
 	var ls = childProcess.exec(s, 
 		function (error, stdout, stderr) {
