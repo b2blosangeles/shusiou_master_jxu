@@ -139,7 +139,6 @@ _f['D0'] = function(cbk) {
 		cbk(false);
 	}	
 };
-/*
 _f['D1'] = function(cbk) {
 	var childProcess = require('child_process');
 	var file_video = CP.data.DR1 +'video.mp4';
@@ -159,13 +158,13 @@ _f['D1'] = function(cbk) {
 		  cbk('=niu=');		
 		});	
 };
-*/
+
 _f['D2'] = function(cbk) {
 	var childProcess = require('child_process');
 	var file_video = CP.data.DR1 +'video.mp4';
-	var AD = {s:150, t:300};
-	var fn = CP.data.DR3 + AD.s + '_' + AD.t + '.mp4';
-	s = 'ffmpeg -i ' + file_video + ' -ss '+ AD.s + '  -t ' + AD.t + ' -c copy ' + fn + ' -y ';
+	var AD = {start:30, length:30};
+	var fn = CP.data.DR3 + AD.s + '_' + AD.length + '.mp4';
+	s = 'ffmpeg -i ' + file_video + ' -ss '+ AD.start + '  -t ' + AD.length + ' -c copy ' + fn + ' -y ';
 	var ls = childProcess.exec(s, 
 		function (error, stdout, stderr) {
 			fs.stat(fn, function(err, stat) {
