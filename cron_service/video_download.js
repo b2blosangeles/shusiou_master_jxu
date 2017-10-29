@@ -17,7 +17,6 @@ function getServerIP() {
     }
     return address;
 };
-
 var holder_ip = getServerIP();
 
 var CP = new crowdProcess();
@@ -31,7 +30,6 @@ _f['P0'] = function(cbk) {
 	} else {
 		cbk(data);
 	}
-	    
     });	 
 };
 
@@ -51,7 +49,6 @@ _f['P1'] = function(cbk) {
 			} else {
 				cbk(false);
 			}
-
 		}
 	});  
 };
