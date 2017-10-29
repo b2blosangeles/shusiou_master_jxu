@@ -139,7 +139,33 @@ _f['D0'] = function(cbk) {
 		cbk(false);
 	}	
 };
+
 _f['D1'] = function(cbk) {
+	var childProcess = require('child_process');
+	var file_video = CP.data.DR1 +'video.mp4';
+	var AD = {start:30, length:30};
+	var fn = CP.data.DR3 + AD.s + '_' + AD.length + '.mp4';
+	s = 'ffmpeg -i ' + file_video + ' -ss '+ AD.start + '  -t ' + AD.length + ' -c copy ' + fn + ' -y ';
+	var ls = childProcess.exec(s, 
+		function (error, stdout, stderr) {
+			fs.stat(fn, function(err, stat) {
+			  if(err) {
+				CP.exit = 1;  
+			    	cbk(false); 
+				  
+			  } else {
+				  if (!stat.size) {
+					 CP.exit = 1;  
+			    		cbk(false); 
+				  } else {
+			  		cbk(stat.size);
+				  }	  
+			  }			  
+			});	
+		});	
+};
+
+_f['D2'] = function(cbk) {
 	var childProcess = require('child_process');
 	var file_video = CP.data.DR1 +'video.mp4';
 	
@@ -156,24 +182,6 @@ _f['D1'] = function(cbk) {
 	var ls = childProcess.exec(s, 
 		function (error, stdout, stderr) {
 		  cbk('=niu=');		
-		});	
-};
-
-_f['D2'] = function(cbk) {
-	var childProcess = require('child_process');
-	var file_video = CP.data.DR1 +'video.mp4';
-	var AD = {start:30, length:30};
-	var fn = CP.data.DR3 + AD.s + '_' + AD.length + '.mp4';
-	s = 'ffmpeg -i ' + file_video + ' -ss '+ AD.start + '  -t ' + AD.length + ' -c copy ' + fn + ' -y ';
-	var ls = childProcess.exec(s, 
-		function (error, stdout, stderr) {
-			fs.stat(fn, function(err, stat) {
-			  if(err) {
-			    cbk(false); 
-			  } else {
-			  	cbk(stat.size);
-			  }			  
-			});	
 		});	
 };
 
@@ -199,7 +207,7 @@ _f['D2'] = function(cbk) {
 _f['E1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var status = (CP.data.D2)?8:9;
+	var status = (CP.data.D1)?8:9;
 	var str = 'UPDATE `download_queue` SET `status` = "' + status + '" WHERE `id` = "' + CP.data.P2.id + '"';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
@@ -207,7 +215,7 @@ _f['E1'] = function(cbk) {
 			cbk(false);
 		} else {
 			if (results.affectedRows) {
-				cbk('OK');
+				cbk(true);
 			} else {
 				cbk(false);
 			}
