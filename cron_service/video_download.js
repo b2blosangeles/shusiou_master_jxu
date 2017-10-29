@@ -152,8 +152,8 @@ _f['D1'] = function(cbk) {
 			else s += ' -vframes 1 ' +  CP.data.DR2 +'FULL_' + I[i] + '.png ';
 		}
 	}
-	s += ' -ss '+ AD.s + ' -i ' + file_video +  ' -t ' + AD.t + ' -c copy ' + CP.data.DR3 + AD.s + '_' + AD.t + '.mp4 ';
-	s += ' -y'
+	s += ' -y ;'
+	s += ' -ss '+ AD.s + ' -i ' + file_video +  ' -t ' + AD.t + ' -c copy ' + CP.data.DR3 + AD.s + '_' + AD.t + '.mp4 -y ';
 	
 	var ls = childProcess.exec(s, 
 		function (error, stdout, stderr) {
