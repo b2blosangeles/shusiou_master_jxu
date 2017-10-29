@@ -23,14 +23,6 @@ var holder_ip = getServerIP();
 var CP = new crowdProcess();
 var _f = {};
 /*
-_f['S0'] = function(cbk) {
-	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
-	var fp = new folderP();
-	fp.build(video_folder+'video/', function() {
-		cbk(true);
-	});
-};
-
 
 _f['P0'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
