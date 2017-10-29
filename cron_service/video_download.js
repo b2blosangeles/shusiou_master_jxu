@@ -139,6 +139,7 @@ _f['D0'] = function(cbk) {
 		cbk(false);
 	}	
 };
+/*
 _f['D1'] = function(cbk) {
 	var childProcess = require('child_process');
 	var file_video = CP.data.DR1 +'video.mp4';
@@ -158,7 +159,7 @@ _f['D1'] = function(cbk) {
 		  cbk('=niu=');		
 		});	
 };
-
+*/
 _f['D2'] = function(cbk) {
 	var childProcess = require('child_process');
 	var file_video = CP.data.DR1 +'video.mp4';
