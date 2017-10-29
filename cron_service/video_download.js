@@ -61,17 +61,12 @@ _f['P2'] = function(cbk) {
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
-			cbk(false);
-			CP.exit = 1;
-		} else {
-			if (results.length) {
+			cbk(false); CP.exit = 1;
+		} else if (results.length) {
 				cbk(results[0]);
 			} else {
-				cbk(false);
-				CP.exit = 1;
+				cbk(false); CP.exit = 1;
 			}
-
-		}
 	});  
 };
 
