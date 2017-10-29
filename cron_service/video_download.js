@@ -217,12 +217,12 @@ _f['E2'] = function(cbk) {
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
-			cbk(false);
+			cbk(str);
 		} else {
 			if (results.affectedRows) {
 				cbk(true);
 			} else {
-				cbk(false);
+				cbk(str + 'B');
 			}
 
 		}
