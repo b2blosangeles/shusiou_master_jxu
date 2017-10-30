@@ -38,7 +38,7 @@ _f['P1'] = function(cbk) {
 _f['P2'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = 'INSERT INTO `download_queue` (`source`, `code`, `info`) SELECT `source`, `code`, `video_info` FROM `download_success` ';
+	var str = 'INSERT INTO `download_failure` (`source`, `code`, `info`) SELECT `source`, `code`, `video_info` FROM `download_success` ';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
