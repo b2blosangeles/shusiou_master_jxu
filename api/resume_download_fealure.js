@@ -1,6 +1,6 @@
-var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core');
-var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql');
-var cfg0 = require(env.site_path + '/api/cfg/db.json');
+var 	ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
+	mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+	cfg0 = require(env.site_path + '/api/cfg/db.json');
 
 var CP = new pkg.crowdProcess();
 var _f = {};
