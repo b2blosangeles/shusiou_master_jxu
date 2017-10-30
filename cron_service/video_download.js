@@ -210,20 +210,10 @@ _f['E2'] = function(cbk) {
 	
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var status = (CP.data.D1)?8:9;
 	var str = 'DELETE FROM `download_queue`  WHERE `id` = "' + CP.data.P2.id + '"';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (error) {
-			cbk(false);
-		} else {
-			if (results.affectedRows) {
-				cbk(true);
-			} else {
-				cbk(false);
-			}
-
-		}
+		cbk(true);
 	});  
 };
 _f['E3'] = function(cbk) {
