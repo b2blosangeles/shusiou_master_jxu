@@ -13,15 +13,10 @@ _f['P0'] = function(cbk) {
 	var str = 'INSERT INTO `download_queue` (`source`, `code`, `info`) SELECT `source`, `code`, `video_info` FROM `download_success` ';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (error) {
-			cbk('falseB');
+		if (results) {
+			cbk(results);
 		} else {
-			if (results) {
-				cbk(results);
-			} else {
-				cbk('falseA');
-			}
-
+			cbk('falseA');
 		}
 	});  
 };
