@@ -245,8 +245,7 @@ _f['E2'] = function(cbk) {
 		    "'" + CP.data.P2.source + "'," +
 		    "'" + CP.data.P2.code.replace(/\'/g, "\\\'") + "'," +
 		    "'" + info.replace(/\'/g, "\\\'") + "'," +
-		    "'" + ((json_info.length_seconds)?json_info.length_seconds:0) + "'," +
-		    'NOW())';
+		    "'" + ((json_info.length_seconds)?json_info.length_seconds:0) + "')";
 	
 	}
 	connection.query(str, function (error, results, fields) {
@@ -264,6 +263,28 @@ _f['E2'] = function(cbk) {
 	});  
 };
 
+_f['E3'] = function(cbk) {
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var message = '';
+	var str = 'INSERT INTO `download_failure` ' +
+	    '(`source`, `code`, `video_info`, `message`) SELECT `source`, `code`, `info`, "Over 1 minute time limutation" FROM `download_queue` WHERE `status` = 9' +
+	
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		if (error) {
+			cbk(false);
+		} else {
+			if (results.affectedRows) {
+				cbk(results);
+			} else {
+				cbk(false);
+			}
+
+		}
+	});  
+};	
+	
 CP.serial(
 	_f,
 	function(data) {
