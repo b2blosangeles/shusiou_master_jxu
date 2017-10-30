@@ -76,7 +76,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'SELECT * FROM  `download_success` WHERE `uid` = "' + uid +' "';
+			var str = 'SELECT * FROM  `download_success` WHERE 1';
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
