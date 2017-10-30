@@ -2,6 +2,9 @@ var path = require('path'), env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
 var video_folder = '/var/videos/';
 
+var folderP = require(env.site_path + '/api/inc/folderP/folderP');
+var fp = new folderP(); 
+
 var 	ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
 	mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     	crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
@@ -67,23 +70,17 @@ _f['P2'] = function(cbk) { /* --- get the one from queue --- */
 };
 
 _f['DR1'] = function(cbk) {
-	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
-	var fp = new folderP();
 	fp.build(video_folder + CP.data.P2.id + '/video/', function() {
 		cbk(video_folder + CP.data.P2.id + '/video/');
 	});
 };
 _f['DR2'] = function(cbk) {
-	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
-	var fp = new folderP();
 	fp.build(video_folder + CP.data.P2.id + '/images/' , function() {
 		cbk(video_folder + CP.data.P2.id + '/images/');
 	});
 };
 
 _f['DR3'] = function(cbk) {
-	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
-	var fp = new folderP();
 	fp.build(video_folder + CP.data.P2.id + '/sections/' , function() {
 		cbk(video_folder + CP.data.P2.id + '/sections/');
 	});
