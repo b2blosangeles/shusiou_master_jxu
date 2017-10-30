@@ -6,6 +6,26 @@ var 	ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core')
 var opt = req.query['opt'];
 
 var _f = {};
+
+_f['P0'] = function(cbk) {
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = 'INSERT INTO `download_queue` (`source`, `code`, `info`) SELECT `source`, `code`, `video_info` FROM `download_success` ';
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		if (error) {
+			cbk('falseB');
+		} else {
+			if (results) {
+				cbk(results);
+			} else {
+				cbk('falseA');
+			}
+
+		}
+	});  
+};
+
 _f['P1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
@@ -25,24 +45,7 @@ _f['P1'] = function(cbk) {
 	});  
 };
 
-_f['P2'] = function(cbk) {
-	var connection = mysql.createConnection(cfg0);
-	connection.connect();
-	var str = 'INSERT INTO `download_queue` (`source`, `code`, `info`) SELECT `source`, `code`, `video_info` FROM `download_success` ';
-	connection.query(str, function (error, results, fields) {
-		connection.end();
-		if (error) {
-			cbk('falseB');
-		} else {
-			if (results) {
-				cbk(results);
-			} else {
-				cbk('falseA');
-			}
 
-		}
-	});  
-};
 
 CP.serial(
 	_f,
