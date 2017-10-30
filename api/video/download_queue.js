@@ -1,7 +1,8 @@
 var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
     mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql');
 
-var uid = req.body.uid | 1, 
+var opt = req.query['opt'],
+    uid = req.body.uid | 1, 
     source = req.body.source | 'ytdl-core',
     code = req.body.code | 'https://youtu.be/K7AUKcrIdWU';
 
