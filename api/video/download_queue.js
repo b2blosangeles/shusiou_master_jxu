@@ -88,7 +88,7 @@ switch(opt) {
 			_f,
 			function(data) {
 				//res.send(CP.data.P1);
-				res.send(data);
+				res.send('data');
 			},
 			3000
 		);
