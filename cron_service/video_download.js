@@ -232,7 +232,7 @@ _f['E2'] = function(cbk) {
 	    "'" + CP.data.P2.source + "'," +
 	    "'" + CP.data.P2.code.replace(/\'/g, "\\\'") + "'," +
 	    "'" + CP.data.P2.holder_ip + "'," +
-	    "'" + info + "'," +
+	    "'" + info.replace(/\'/g, "\\\'") + "'," +
 	    "'" + CP.data.P2.id + "'," +
 	    "'" + ((info.length_seconds)?info.length_seconds:0) + "'," +
 	    'NOW())';
