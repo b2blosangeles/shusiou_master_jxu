@@ -228,15 +228,26 @@ _f['E2'] = function(cbk) {
 	var info = (CP.data.P2.info)?CP.data.P2.info:'';
 	var json_info = {};
 	try { json_info = JSON.parse(info); } catch (e) {}
-	var str = 'INSERT INTO `download_success` ' +
-	    '(`source`, `code`, `server_ip`, `video_info`, `video_code`, `video_length`, `uploaded`) VALUES (' +
-	    "'" + CP.data.P2.source + "'," +
-	    "'" + CP.data.P2.code.replace(/\'/g, "\\\'") + "'," +
-	    "'" + CP.data.P2.holder_ip + "'," +
-	    "'" + info.replace(/\'/g, "\\\'") + "'," +
-	    "'" + CP.data.P2.id + "'," +
-	    "'" + ((json_info.length_seconds)?json_info.length_seconds:0) + "'," +
-	    'NOW())';
+	if (CP.data.D1) {
+		var str = 'INSERT INTO `download_success` ' +
+		    '(`source`, `code`, `server_ip`, `video_info`, `video_code`, `video_length`, `uploaded`) VALUES (' +
+		    "'" + CP.data.P2.source + "'," +
+		    "'" + CP.data.P2.code.replace(/\'/g, "\\\'") + "'," +
+		    "'" + CP.data.P2.holder_ip + "'," +
+		    "'" + info.replace(/\'/g, "\\\'") + "'," +
+		    "'" + CP.data.P2.id + "'," +
+		    "'" + ((json_info.length_seconds)?json_info.length_seconds:0) + "'," +
+		    'NOW())';
+	} else {
+		var str = 'INSERT INTO `download_failure` ' +
+		    '(`source`, `code`, `video_info`, `message`) VALUES (' +
+		    "'" + CP.data.P2.source + "'," +
+		    "'" + CP.data.P2.code.replace(/\'/g, "\\\'") + "'," +
+		    "'" + info.replace(/\'/g, "\\\'") + "'," +
+		    "'" + ((json_info.length_seconds)?json_info.length_seconds:0) + "'," +
+		    'NOW())';
+	
+	}
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
