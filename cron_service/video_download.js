@@ -226,7 +226,8 @@ _f['E2'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var info = (CP.data.P2.info)?CP.data.P2.info:'';
-
+	var json_info = {};
+	try { json_info = JSON.parse(info); } catch (e) {}
 	var str = 'INSERT INTO `download_success` ' +
 	    '(`source`, `code`, `server_ip`, `video_info`, `video_code`, `video_length`, `uploaded`) VALUES (' +
 	    "'" + CP.data.P2.source + "'," +
@@ -234,7 +235,7 @@ _f['E2'] = function(cbk) {
 	    "'" + CP.data.P2.holder_ip + "'," +
 	    "'" + info.replace(/\'/g, "\\\'") + "'," +
 	    "'" + CP.data.P2.id + "'," +
-	    "'" + ((info.length_seconds)?info.length_seconds:0) + "'," +
+	    "'" + ((json_info.length_seconds)?json_info.length_seconds:0) + "'," +
 	    'NOW())';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
