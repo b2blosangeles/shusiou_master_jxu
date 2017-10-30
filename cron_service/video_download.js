@@ -36,7 +36,7 @@ _f['I0'] = function(cbk) { /* --- mark overtime --- */
 	});  
 };
 
-_f['P1'] = function(cbk) {
+_f['P1'] = function(cbk) { /* --- pickup one from queue --- */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'UPDATE  download_queue SET `holder_ip` = "' + CP.data.P0 + '", `status` = 1, hold_time = NOW() ' + 
@@ -44,14 +44,10 @@ _f['P1'] = function(cbk) {
 	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (error) {
-			cbk(false); CP.exit = 1;
+		if ((results) && (results.affectedRows)) {
+			cbk(results.affectedRows);
 		} else {
-			if ((results) && (results.affectedRows)) {
-				cbk(results.affectedRows);
-			} else {
-				cbk(false); CP.exit = 1;
-			}
+			cbk(false); CP.exit = 1;
 		}
 	});  
 };
