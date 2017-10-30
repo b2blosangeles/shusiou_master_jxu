@@ -221,7 +221,9 @@ _f['E3'] = function(cbk) {
 	connection.connect();
 	var message = '';
 	var str = 'INSERT INTO `download_failure` ' +
-	    '(`source`, `code`, `video_info`, `message`) SELECT `source`, `code`, `info`, "Over 1 minute time limutation" FROM `download_queue` WHERE `status` = 9' +
+	    '(`source`, `code`, `video_info`, `message`) '+
+	    'SELECT `source`, `code`, `info`, "Over 1 minute time limutation" FROM `download_queue` '+
+	    ' WHERE `holder_ip` = "' +  CP.data.P0 + '" AND `status` = 9';
 	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
@@ -237,7 +239,14 @@ _f['E3'] = function(cbk) {
 		}
 	});  
 };	
-	
+_f['I1'] = function(cbk) { /* --- mark overtime --- */
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = 'DELETE FROM `download_queue` WHERE `holder_ip` = "' +  CP.data.P0 + '" AND `status` = 9';
+	connection.query(str, function (error, results, fields) {
+		connection.end(); cbk(false);
+	});  
+};	
 CP.serial(
 	_f,
 	function(data) {
