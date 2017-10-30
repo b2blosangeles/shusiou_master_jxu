@@ -55,9 +55,9 @@ switch(opt) {
 			30000
 		);
 		break;
-	case 'getQueue':
+	case 'getMyVideos':
 		var uid = req.body.uid | 1;
-		
+	
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 		_f['P1'] = function(cbk) {
@@ -65,26 +65,14 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`,`created`, `status`) ' +
-						"values ('" + source + "', '" + code.replace(/\'/g, "\\\'") + "', '" + uid + "', "+
-						"'" + JSON.stringify(CP.data.P0).replace(/\'/g, "\\\'")  + "', " + 
-						'NOW(), 0 ); ';
+			var str = 'SELECT * FROM  `download_queue` WHERE `uid` = "' + uid +' "';
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (error) {
-					cbk(str);
-				} else {
-					if (results.length) {
-						cbk(results[0]);
-					} else {
-						cbk(true);
-					}
-
-				}
+				if (results.length)  cbk(results);
+				else cbk(false);
 			});  
 		};
-
 		CP.serial(
 			_f,
 			function(data) {
