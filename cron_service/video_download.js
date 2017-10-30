@@ -234,7 +234,7 @@ _f['E3'] = function(cbk) {
 		}
 	});  
 };	
-_f['I1'] = function(cbk) { /* --- mark overtime --- */
+_f['I1'] = function(cbk) { /* --- clean overtime --- */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'DELETE FROM `download_queue` WHERE `holder_ip` = "' +  CP.data.P0 + '" AND `status` = 9';
