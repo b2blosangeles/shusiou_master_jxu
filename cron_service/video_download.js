@@ -239,6 +239,9 @@ _f['E2'] = function(cbk) {
 		    "'" + ((json_info.length_seconds)?json_info.length_seconds:0) + "'," +
 		    'NOW())';
 	} else {
+		var message = '';
+		if (!CP.data.D1) { message = 'Wrong video format!'
+
 		var str = 'INSERT INTO `download_failure` ' +
 		    '(`source`, `code`, `video_info`, `message`) VALUES (' +
 		    "'" + CP.data.P2.source + "'," +
