@@ -1,5 +1,6 @@
 var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
-    mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql');
+    mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+    cfg0 = require(env.site_path + '/api/cfg/db.json');
 
 var opt = req.query['opt'];
 
@@ -57,11 +58,9 @@ switch(opt) {
 		break;
 	case 'getMyVideos':
 		var uid = req.body.uid | 1;
-	
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 		_f['P1'] = function(cbk) {
-			var cfg0 = require(env.site_path + '/api/cfg/db.json');
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
@@ -73,8 +72,7 @@ switch(opt) {
 				else cbk(false);
 			});  
 		};
-		_f['P1'] = function(cbk) {
-			var cfg0 = require(env.site_path + '/api/cfg/db.json');
+		_f['P2'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
