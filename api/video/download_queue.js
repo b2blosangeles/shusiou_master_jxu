@@ -89,7 +89,8 @@ switch(opt) {
 		CP.serial(
 			_f,
 			function(data) {
-				res.send(CP.data.P1);
+				//res.send(CP.data.P1);
+				res.send(data);
 			},
 			3000
 		);
