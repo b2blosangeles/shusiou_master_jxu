@@ -3,6 +3,8 @@ var 	ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core')
 	cfg0 = require(env.site_path + '/api/cfg/db.json'),
     	CP = new pkg.crowdProcess();
 
+var opt = req.query['opt'];
+
 var _f = {};
 _f['P1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
