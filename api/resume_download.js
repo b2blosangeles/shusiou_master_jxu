@@ -1,17 +1,6 @@
-var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core');
-var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql');
-var cfg0 = require(env.site_path + '/api/cfg/db.json');
-
-function getServerIP() {
-    var ifaces = require('os').networkInterfaces(), address=[];
-    for (var dev in ifaces) {
-        var v =  ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false);
-        for (var i=0; i < v.length; i++) address[address.length] = v[i].address;
-    }
-    return address;
-};
-
-var holder_ip = getServerIP();
+var 	ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
+	mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+	cfg0 = require(env.site_path + '/api/cfg/db.json');
 
 var CP = new pkg.crowdProcess();
 var _f = {};
