@@ -2,8 +2,8 @@ var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
     mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql');
 
 var uid = req.body.uid | 1, 
-    source = 'ytdl-core',
-    code = 'https://youtu.be/K7AUKcrIdWU';
+    source = req.body.source | 'ytdl-core',
+    code = req.body.url | 'https://youtu.be/K7AUKcrIdWU';
 
 var CP = new pkg.crowdProcess();
 var _f = {};
