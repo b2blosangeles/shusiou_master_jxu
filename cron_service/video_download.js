@@ -68,24 +68,24 @@ _f['P2'] = function(cbk) { /* --- get the one from queue --- */
 	});  
 };
 
-_f['DR1'] = function(cbk) {
+_f['DR1'] = function(cbk) { /* create video path */
 	fp.build(video_folder + CP.data.P2.id + '/video/', function() {
 		cbk(video_folder + CP.data.P2.id + '/video/');
 	});
 };
-_f['DR2'] = function(cbk) {
+_f['DR2'] = function(cbk) { /* create miange path */
 	fp.build(video_folder + CP.data.P2.id + '/images/' , function() {
 		cbk(video_folder + CP.data.P2.id + '/images/');
 	});
 };
 
-_f['DR3'] = function(cbk) {
+_f['DR3'] = function(cbk) { /* create sections path */
 	fp.build(video_folder + CP.data.P2.id + '/sections/' , function() {
 		cbk(video_folder + CP.data.P2.id + '/sections/');
 	});
 };
 
-_f['D0'] = function(cbk) {
+_f['D0'] = function(cbk) {  /* downlod video */
 	if ((CP.data.P2) && (CP.data.P2.code)) {
 		var url = decodeURIComponent(CP.data.P2.code);
 		var video = ytdl(url, {quality:'highest'}, function(err) { });
