@@ -13,16 +13,8 @@ _f['P0'] = function(cbk) {
 	var str = 'DELETE FROM `download_queue` WHERE `id` IN (SELECT `video_code` FROM `download_success`) ';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (error) {
-			cbk(false);
-		} else {
-			if (results) {
-				cbk(results);
-			} else {
-				cbk(false);
-			}
-
-		}
+		if (results) cbk(results);
+		else cbk(false);
 	});  
 };
 
@@ -32,11 +24,8 @@ _f['P1'] = function(cbk) {
 	var str = 'INSERT INTO `download_queue` (`source`, `code`, `info`) SELECT `source`, `code`, `video_info` FROM `download_success` ';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (results) {
-			cbk(results);
-		} else {
-			cbk('falseA');
-		}
+		if (results) cbk(results);
+		else cbk(false);
 	});  
 };
 
@@ -46,11 +35,8 @@ _f['P2'] = function(cbk) {
 	var str = 'INSERT INTO `download_queue` (`source`, `code`, `info`) SELECT `source`, `code`, `video_info` FROM `download_failure` ';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (results) {
-			cbk(results);
-		} else {
-			cbk('falseA');
-		}
+		if (results) cbk(results);
+		else cbk(false);
 	});  
 };
 
@@ -62,16 +48,8 @@ _f['D1'] = function(cbk) {
 	var str = 'TRUNCATE `download_failure` ';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (error) {
-			cbk(false);
-		} else {
-			if (results) {
-				cbk(results);
-			} else {
-				cbk(false);
-			}
-
-		}
+		if (results) cbk(results);
+		else cbk(false);
 	});  
 };
 _f['D2'] = function(cbk) {
