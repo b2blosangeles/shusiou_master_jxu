@@ -1,13 +1,12 @@
 var path = require('path'), env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
+var video_folder = '/var/videos/';
 
 var 	ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
 	mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     	crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
     	fs = require('fs'),
     	cfg0 = require(env.site_path + '/api/cfg/db.json');
-
-var video_folder = '/var/videos/';
 
 function getServerIP() {
     var ifaces = require('os').networkInterfaces(), address=[];
