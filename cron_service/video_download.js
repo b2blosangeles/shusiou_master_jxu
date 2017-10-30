@@ -20,24 +20,21 @@ function getServerIP() {
 var ips = getServerIP();
 var CP = new crowdProcess(), _f = {};
 
-_f['P0'] = function(cbk) {
+_f['P0'] = function(cbk) { /* --- get server IP --- */
     fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 	if ((data) && ips.indexOf(data) != -1)  cbk(data);
 	else { cbk(false); CP.exit = 1; }
     });	 
 };
 
-/* --- mark overtime --- */
-_f['I0'] = function(cbk) {
+_f['I0'] = function(cbk) { /* --- mark overtime --- */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'UPDATE `download_queue` SET `status` = 9 WHERE `holder_ip` = "' +  CP.data.P0 + '" AND `status` = 1';
 	connection.query(str, function (error, results, fields) {
-		connection.end();
-		cbk(false);
+		connection.end(); cbk(false);
 	});  
 };
-
 
 _f['P1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
