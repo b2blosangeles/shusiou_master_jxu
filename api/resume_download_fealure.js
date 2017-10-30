@@ -25,5 +25,5 @@ CP.serial(
 	function(data) {
 		res.send({_spent_time:data._spent_time, status:data.status, data:data});
 	},
-	59000
+	2000
 );
