@@ -13,12 +13,12 @@ _f['P1'] = function(cbk) {
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
-			cbk('falseB');
+			cbk(false);
 		} else {
 			if (results) {
 				cbk(results);
 			} else {
-				cbk('falseA');
+				cbk(false);
 			}
 
 		}
