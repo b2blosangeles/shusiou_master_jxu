@@ -77,9 +77,8 @@ switch(opt) {
 			_f,
 			function(data) {
 				res.send(CP.data.P1);
-				// res.send({_spent_time:data._spent_time, status:data.status, data:data});
 			},
-			30000
+			3000
 		);
 		break;		
 	default:
