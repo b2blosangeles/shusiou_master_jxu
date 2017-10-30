@@ -162,28 +162,9 @@ _f['D2'] = function(cbk) {
 		  cbk('=niu=');		
 		});	
 };
+
+
 _f['E1'] = function(cbk) {
-	
-	var connection = mysql.createConnection(cfg0);
-	connection.connect();
-	var status = (CP.data.D1)?8:9;
-	var str = 'DELETE FROM `download_queue`  WHERE `id` = "' + CP.data.P2.id + '"';
-	connection.query(str, function (error, results, fields) {
-		connection.end();
-		if (error) {
-			cbk(false);
-		} else {
-			if (results.affectedRows) {
-				cbk(true);
-			} else {
-				cbk(false);
-			}
-
-		}
-	});  
-};
-
-_f['E2'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var info = (CP.data.P2.info)?CP.data.P2.info:'';
@@ -225,7 +206,26 @@ _f['E2'] = function(cbk) {
 		}
 	});  
 };
+_f['E2'] = function(cbk) {
+	
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var status = (CP.data.D1)?8:9;
+	var str = 'DELETE FROM `download_queue`  WHERE `id` = "' + CP.data.P2.id + '"';
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		if (error) {
+			cbk(false);
+		} else {
+			if (results.affectedRows) {
+				cbk(true);
+			} else {
+				cbk(false);
+			}
 
+		}
+	});  
+};
 _f['E3'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
