@@ -116,8 +116,6 @@ _f['DR3'] = function(cbk) {
 _f['D0'] = function(cbk) {
 	if ((CP.data.P2) && (CP.data.P2.code)) {
 		var url = decodeURIComponent(CP.data.P2.code);
-		// var url = CP.data.P2.code;
-	//	var video = ytdl(url, {quality:'18'}, function(err) {});
 		var video = ytdl(url, {quality:'highest'}, function(err) { });
 		video.pipe(fs.createWriteStream(CP.data.DR1 +'video.mp4'));	
 		video.on('data', function(info) {
@@ -147,11 +145,11 @@ _f['D1'] = function(cbk) {
 		function (error, stdout, stderr) {
 			fs.stat(fn, function(err, stat) {
 			  if(err) {
-				CP.exit = 1;  cbk(false); 
+				cbk(false); 
 				  
 			  } else {
 				  if (!stat.size) {
-					 CP.exit = 1; cbk(false); 
+					 cbk(false); 
 				  } else {
 			  		cbk(stat.size);
 				  }	  
