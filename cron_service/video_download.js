@@ -51,7 +51,7 @@ _f['P1'] = function(cbk) { /* --- pickup one from queue --- */
 		}
 	});  
 };
-_f['P2'] = function(cbk) {
+_f['P2'] = function(cbk) { /* --- get the one from queue --- */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'SELECT * FROM `download_queue` WHERE `holder_ip` = "' + CP.data.P0 + '" AND `status` = 1';
@@ -113,6 +113,10 @@ _f['D0'] = function(cbk) {
 };
 
 _f['D1'] = function(cbk) {
+	if (!CP.data.D0 || !CP.data.P2.code || CP.data.D0 != CP.data.P2.code) {
+		cbk(false); CP.exit = 1;
+	}
+		
 	var childProcess = require('child_process');
 	var file_video = CP.data.DR1 +'video.mp4';
 	var AD = {start:30, length:30};
@@ -136,6 +140,10 @@ _f['D1'] = function(cbk) {
 };
 
 _f['D2'] = function(cbk) {
+	if (!CP.data.D0 || !CP.data.P2.code || CP.data.D0 != CP.data.P2.code) {
+		cbk(false); CP.exit = 1;
+	}
+	
 	var childProcess = require('child_process');
 	var file_video = CP.data.DR1 +'video.mp4';
 	
