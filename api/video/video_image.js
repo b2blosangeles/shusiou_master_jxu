@@ -8,7 +8,7 @@ if (!req.query['s']) {
 	res.send('S error');
 	return true;
 }
-var s=req.query['s'], fn = '/tmp/images/' + vid + '/' + s + '_' + w + '.png'; 
+var s=req.query['s'], fn = '/tmp/images/' + vid + '/' + w + '_' + s + '.png'; 
     
 var CP = new pkg.crowdProcess();
 
