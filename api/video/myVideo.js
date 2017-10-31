@@ -17,7 +17,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = "SELECT A.`*`, B.`*` FROM `download_failure` A LEFT JOIN `video_user` B ON A.`id` = B.`video_code` WHERE 1; ";
+			var str = "SELECT A.`*`, B.`uid` FROM `download_failure` A LEFT JOIN `video_user` B ON A.`id` = B.`video_code` WHERE 1; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (results.length) { cbk(results); }
