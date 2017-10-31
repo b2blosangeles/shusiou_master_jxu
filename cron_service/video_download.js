@@ -243,23 +243,6 @@ _f['E1'] = function(cbk) {
 	});  
 };
 _f['E2'] = function(cbk) {
-	if ((CP.data.D1) && (CP.data.E1)) {
-		var connection = mysql.createConnection(cfg0);
-		connection.connect();
-		var str = 'INSERT INTO `video_user` ' +
-		    '(`video_code`, `uid`, `created`) VALUES (' +
-		     "'" + CP.data.P2.id + "'," +
-		     "'" + CP.data.P2.uid + "'," +
-		    'NOW())  ON DUPLICATE KEY UPDATE  `created` = `created';
-		connection.query(str, function (error, results, fields) {
-			connection.end();
-			cbk(true);
-		}); 
-	} else {
-		cbk(false);
-	}	
-};
-_f['E3'] = function(cbk) {
 	
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
