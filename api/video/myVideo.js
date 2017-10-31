@@ -85,10 +85,12 @@ switch(opt) {
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					cbk(code); 
-				}); 				
+				}); 
+				CP.exit = 1;
 			} else {
 				cbk(false);
 			}
+			
 		};
 		
 		_f['P2'] = function(cbk) {
