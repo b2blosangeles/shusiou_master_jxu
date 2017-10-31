@@ -29,13 +29,13 @@ switch(opt) {
 			var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`, `video_length`, `org_thumbnail`, `created`, `status`) ' +
 						"values ('" + source + "', '" + code.replace(/\'/g, "\\\'") + "', '" + uid + "', "+
 						"'" + JSON.stringify(CP.data.P0).replace(/\'/g, "\\\'")  + "', " + 
-			    			"'" + CP.data.P0.length_seconds  + "', " + "'" + CP.data.P0.thumbnail_url  + "', "
+			    			"'" + CP.data.P0.length_seconds  + "', '" + CP.data.P0.thumbnail_url  + "', "
 						'NOW(), 0 ); ';
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (error) {
-					cbk(str);
+					cbk(error.message);
 				} else {
 					if (results.length) {
 						cbk(results[0]);
