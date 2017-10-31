@@ -21,7 +21,7 @@ var CP = new pkg.crowdProcess();
 var _f = {};
 
 _f['I0'] = function(cbk) { /* --- check mnt exist --- */
-	fs.stat(mnt_folder, function (err, stats){
+	pkg.fs.stat(mnt_folder, function (err, stats){
 		if (err) { cbk(false); CP.exit = 1;}
 		else if (!stats.isDirectory()) {
 			cbk(false); CP.exit = 1;
