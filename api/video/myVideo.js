@@ -30,7 +30,7 @@ switch(opt) {
 						v[v.length] = results[i].id;
 					}
 					
-					cbk(v); }
+					cbk(v.join(',')); }
 				else cbk(false);
 			});  
 			CP.exit = 1;
