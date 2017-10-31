@@ -35,7 +35,7 @@ switch(opt) {
 				else cbk(false);
 			});  
 		};
-		_f['PV'] = function(cbk) {
+		_f['pv'] = function(cbk) {
 			if ((CP.data.P0) || (CP.data.P1)) {
 				var code = '';
 				if (CP.data.P1) code = CP.data.P1.video_code;
@@ -51,7 +51,7 @@ switch(opt) {
 				    'NOW()) ON DUPLICATE KEY UPDATE  `created` = `created` ';
 				connection.query(str, function (error, results, fields) {
 					connection.end();
-					cbk({P0:CP.data.P0, P1:CP.data.P1, code:code}); 
+					cbk(code); 
 				}); 				
 				
 				
@@ -107,9 +107,7 @@ switch(opt) {
 		CP.serial(
 			_f,
 			function(data) {
-				res.send(data);
-				return true;
-				if (!data.results.P2) {
+				if (data.results.pv) {
 					res.send({status:'error', _spent_time:data._spent_time, message:'video exists'});
 				} else if (data.results.P2 == 'ERR') {
 					res.send({status:'error', _spent_time:data._spent_time, message:'video url ' + code + ' error'});
