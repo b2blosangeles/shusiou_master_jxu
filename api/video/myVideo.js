@@ -59,15 +59,17 @@ switch(opt) {
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (results.insertId) cbk(results.insertId);
-				else cbk(str);
+				else cbk(false);
 			});  
 		};
 
 		CP.serial(
 			_f,
 			function(data) {
-				if (!data.results.P3) {
+				if (!data.results.P2 && data.results.P2 === false) {
 					res.send({status:'error', _spent_time:data._spent_time, message:'video exists'});
+				} else if (typeof data.results.P2 == 'undefined') {
+					res.send({status:'error', _spent_time:data._spent_time, message:'video url error'});
 				} else {
 					res.send({status:'success', _spent_time:data._spent_time, id:data.results.P3});
 				}
