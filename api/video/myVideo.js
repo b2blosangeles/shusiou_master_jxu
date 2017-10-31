@@ -65,7 +65,7 @@ switch(opt) {
 			  if (err) {  
 				cbk('ERR');  CP.exit = 1;	  
 			  } else {
-				cbk({vid:info.video_id, title:info.title + "asd'asd", length_seconds:parseInt(info.length_seconds), thumbnail_url:info.thumbnail_url});
+				cbk({vid:info.video_id, title:info.title, length_seconds:parseInt(info.length_seconds), thumbnail_url:info.thumbnail_url});
 			  }
 			});	  
 		};
