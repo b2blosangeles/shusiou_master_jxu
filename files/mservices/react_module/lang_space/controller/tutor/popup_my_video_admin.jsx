@@ -35,14 +35,15 @@ try {
 		},
 		videoUrlSubmit:function(){
 			var me = this;
-			alert(shusiou_config.api_server + '/api/shusiou_video_add_queue.js');
+			alert(shusiou_config.api_server + '/api/video/myVideo.api?opt=add');
 			$.ajax({
-				url: shusiou_config.api_server + '/api/shusiou_video_add_queue.js',
+				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=add',
 				method: "POST",
-				data: {vurl: me.state.video_url, vid: me.state.vid, thumbnail_url:me.state.thumbnail_url,  uid:'1', token:'xxxxx'},
+				data: {code: me.state.video_url, uid:'1', token:'xxxxx'},
 				dataType: "JSON"
 			}).done(function( data) {
 				// me.videoDownload();
+				console.log(data);
 				me.props.parent.pullList();
 				me.close_admin();
 				me.initState();	
