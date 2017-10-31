@@ -39,7 +39,37 @@ _f['I0'] = function(cbk) { /* --- check mnt exist --- */
 		}
 	});
 };
+_f['CL1'] = function(cbk) {
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var message = '';
+	var str = 'INSERT INTO `download_failure` ' +
+	    '(`source`, `code`, `video_info`, `message`) '+
+	    'SELECT `source`, `code`, `info`, "Over 1 minute time limutation" FROM `download_queue` '+
+	    ' WHERE `status` = 9';
+	
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		if (error) {
+			cbk(false);
+		} else {
+			if (results.affectedRows) {
+				cbk(results);
+			} else {
+				cbk(false);
+			}
 
+		}
+	});  
+};	
+_f['CL2'] = function(cbk) { /* --- clean overtime --- */
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = 'DELETE FROM `download_queue` WHERE `status` = 9';
+	connection.query(str, function (error, results, fields) {
+		connection.end(); cbk(false);
+	});  
+};
 _f['I1'] = function(cbk) { /* --- mark overtime --- */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
@@ -222,37 +252,7 @@ _f['E2'] = function(cbk) {
 		cbk(true);
 	});  
 };
-_f['E3'] = function(cbk) {
-	var connection = mysql.createConnection(cfg0);
-	connection.connect();
-	var message = '';
-	var str = 'INSERT INTO `download_failure` ' +
-	    '(`source`, `code`, `video_info`, `message`) '+
-	    'SELECT `source`, `code`, `info`, "Over 1 minute time limutation" FROM `download_queue` '+
-	    ' WHERE `holder_ip` = "' +  CP.data.P0 + '" AND `status` = 9';
 	
-	connection.query(str, function (error, results, fields) {
-		connection.end();
-		if (error) {
-			cbk(false);
-		} else {
-			if (results.affectedRows) {
-				cbk(results);
-			} else {
-				cbk(false);
-			}
-
-		}
-	});  
-};	
-_f['I2'] = function(cbk) { /* --- clean overtime --- */
-	var connection = mysql.createConnection(cfg0);
-	connection.connect();
-	var str = 'DELETE FROM `download_queue` WHERE `holder_ip` = "' +  CP.data.P0 + '" AND `status` = 9';
-	connection.query(str, function (error, results, fields) {
-		connection.end(); cbk(false);
-	});  
-};	
 CP.serial(
 	_f,
 	function(data) {
