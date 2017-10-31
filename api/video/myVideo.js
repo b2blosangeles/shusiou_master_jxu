@@ -35,7 +35,7 @@ switch(opt) {
 						connection.end();
 						cbk(results);
 					});	
-				else cbk(false);
+				} else cbk(false);
 			});  
 			CP.exit = 1;
 		};		
