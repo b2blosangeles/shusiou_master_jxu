@@ -48,7 +48,7 @@ switch(opt) {
 				    '(`video_code`, `uid`, `created`) VALUES (' +
 				     "'" + code + "'," +
 				     "'" + uid + "'," +
-				    'NOW()) ON DUPLICATE KEY UPDATE  `created` = NOW() ';
+				    'NOW()) ON DUPLICATE KEY UPDATE  `created` = `created` ';
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					cbk({P0:CP.data.P0, P1:CP.data.P1, code:code}); 
