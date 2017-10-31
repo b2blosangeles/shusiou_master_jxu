@@ -66,7 +66,12 @@ switch(opt) {
 		CP.serial(
 			_f,
 			function(data) {
-				res.send(data);
+				if (!data.results.P3) {
+					res.send({status:'error', _spent_time:data._spent_time message:'video exists'});
+				} else {
+					res.send({status:'success', _spent_time:data._spent_time, data:data.results.P3});
+				}
+				
 				// res.send({_spent_time:data._spent_time, status:data.status, data:data});
 			},
 			30000
