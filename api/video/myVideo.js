@@ -8,7 +8,7 @@ switch(opt) {
 	case 'add':
 		var uid = req.body.uid || 1, 
 		    source = req.body.source || 'ytdl-core',
-		    code = req.body.code || 'hhttps://youtu.be/K7AUKcrIdWU';
+		    code = req.body.code || 'https://youtu.be/CmVty_4qFZw';
 
 		var CP = new pkg.crowdProcess();
 		var _f = {};
