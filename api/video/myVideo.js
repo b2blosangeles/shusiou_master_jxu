@@ -28,7 +28,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = "SELECT `id` FROM `video` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
+			var str = "SELECT `id`, `video_code` FROM `video` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (results.length) { cbk(results[0]);}
@@ -37,7 +37,10 @@ switch(opt) {
 		};
 		_f['PV'] = function(cbk) {
 			if ((CP.data.P0) || (CP.data.P1)) {
-				cbk({P0:CP.data.P0, P1:CP.data.P1});  CP.exit = 1; 
+				var code = '';
+				if (CP.data.P1) code = video_code;
+				else if (CP.data.P0) code = data.P0.id;
+				cbk({P0:CP.data.P0, P1:CP.data.P1, code:code});  CP.exit = 1; 
 			} else {
 				cbk(false);
 			}
