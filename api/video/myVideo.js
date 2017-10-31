@@ -75,7 +75,6 @@ switch(opt) {
 				if (CP.data.P1) code = CP.data.P1.video_code;
 				else if (CP.data.P0) code = CP.data.P0.id;
 				
-				CP.exit = 1; 
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = 'INSERT INTO `video_user` ' +
