@@ -173,7 +173,7 @@ switch(opt) {
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (results.length)  cbk(results);
-				else cbk(false);
+				else cbk([]);
 			});  
 		};
 		_f['P2'] = function(cbk) {
@@ -185,7 +185,7 @@ switch(opt) {
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (results.length)  cbk(results);
-				else cbk(false);
+				else cbk([]);
 			});  
 		};		
 		CP.serial(
