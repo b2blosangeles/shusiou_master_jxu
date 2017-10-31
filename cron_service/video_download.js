@@ -8,7 +8,7 @@ var 	ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core')
     	fs = require('fs'),
     	folderP = require(env.site_path + '/api/inc/folderP/folderP'),
     	cfg0 = require(env.site_path + '/api/cfg/db.json'),
-    	fp = new folderP()
+    	fp = new folderP();
 
 function getServerIP() {
     var ifaces = require('os').networkInterfaces(), address=[];
@@ -58,13 +58,11 @@ _f['P2'] = function(cbk) { /* --- get the one from queue --- */
 	var str = 'SELECT * FROM `download_queue` WHERE `holder_ip` = "' + CP.data.P0 + '" AND `status` = 1';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (error) {
+		if (results.length) {
+			cbk(results[0]);
+		} else {
 			cbk(false); CP.exit = 1;
-		} else if (results.length) {
-				cbk(results[0]);
-			} else {
-				cbk(false); CP.exit = 1;
-			}
+		}
 	});  
 };
 
