@@ -1,7 +1,7 @@
 var vid = req.query['vid'];
-var c_folder =  '/tmp/tmp_section/' + vid + '/';
+var c_folder =  '/var/videos/' + vid + '/sections/';
 var s = 0, l =  0;
-var video_folder = '/var/video/';
+var video_folder = '/var/videos/' + vid + '/video/';
 
 if (req.query['s']) {
 	s = req.query['s']
@@ -11,7 +11,7 @@ if (req.query['l']) {
 	l = req.query['l']
 }
 
-var s_file =  video_folder + vid +'.mp4';
+var s_file =  video_folder + 'video.mp4';
 var fn = c_folder + s + '_' + l + '.mp4';
 
 
