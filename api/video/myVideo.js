@@ -26,9 +26,10 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`,`created`, `status`) ' +
+			var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`, `video_length`, `org_thumbnail`, `created`, `status`) ' +
 						"values ('" + source + "', '" + code.replace(/\'/g, "\\\'") + "', '" + uid + "', "+
 						"'" + JSON.stringify(CP.data.P0).replace(/\'/g, "\\\'")  + "', " + 
+			    			"'" + CP.data.P0.length_seconds  + "', " + "'" + CP.data.P0.thumbnail_url  + "', "
 						'NOW(), 0 ); ';
 
 			connection.query(str, function (error, results, fields) {
