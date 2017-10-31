@@ -198,7 +198,7 @@ switch(opt) {
 				for (var i = 0; i < data.results.P2.length; i++) {
 					d[d.length] = data.results.P2[i];
 				}				
-				res.send({status:data.status, _spent_time:data._spent_time; data:d});
+				res.send({status:data.status, _spent_time:data._spent_time, data:d});
 			},
 			3000
 		);
