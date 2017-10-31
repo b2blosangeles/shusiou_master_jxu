@@ -20,7 +20,7 @@ switch(opt) {
 			var str = "SELECT `id` FROM `download_queue` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (results.length) cbk(results[0]);
+				if (results.length) { cbk(results[0]); CP.exit = 1; }
 				else cbk(false);
 			});  
 		};
@@ -31,7 +31,7 @@ switch(opt) {
 			var str = "SELECT `id` FROM `video` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (results.length) cbk(results[0]);
+				if (results.length) { cbk(results[0]); CP.exit = 1; }
 				else cbk(false);
 			});  
 		};		
