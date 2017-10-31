@@ -12,6 +12,20 @@ switch(opt) {
 
 		var CP = new pkg.crowdProcess();
 		var _f = {};
+		
+		_f['P0'] = function(cbk) {
+			var connection = mysql.createConnection(cfg0);
+			connection.connect();
+
+			var str = "SELECT `id` FROM `download_queue` WHERE `source` = '" + source + "' AND code = '" + code + "'; ";
+
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				if (results.length) cbk(results[0]);
+				else cbk(false);
+			});  
+		};
+		
 		_f['P1'] = function(cbk) {
 			ytdl.getInfo(code, {},  function(err, info){	
 			  if (err) {  
