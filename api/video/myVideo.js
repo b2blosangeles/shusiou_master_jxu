@@ -23,7 +23,8 @@ switch(opt) {
 				" WHERE B.`uid` = '" + uid + "' AND NOW() - B.`created` > 86400); ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (results) { cbk(results); }
+				if (error)  cbk(error.message);
+				else if (results) { cbk(results); }
 				else cbk(false);
 			});  
 			CP.exit = 1;
