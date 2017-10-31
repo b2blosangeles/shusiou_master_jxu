@@ -35,6 +35,7 @@ try {
 		},
 		videoUrlSubmit:function(){
 			var me = this;
+			alert(shusiou_config.api_server + '/api/shusiou_video_add_queue.js');
 			$.ajax({
 				url: shusiou_config.api_server + '/api/shusiou_video_add_queue.js',
 				method: "POST",
