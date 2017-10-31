@@ -17,7 +17,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = "SELECT A.`id`, A.`code`, B.`uid`, NOW() - B.`created` AS D "+
+			var str = "SELECT A.`id`, A.`code`, B.`uid`, B.`video_code`, B.`created`"+
 				" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`id` = B.`video_code` " +
 				" WHERE B.`uid` = '" + uid + "' AND NOW() - B.`created` < 86400; ";
 			connection.query(str, function (error, results, fields) {
