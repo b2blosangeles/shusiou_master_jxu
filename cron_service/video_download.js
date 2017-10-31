@@ -166,7 +166,7 @@ _f['E1'] = function(cbk) {
 	var json_info = {};
 	try { json_info = JSON.parse(info); } catch (e) {}
 	if (CP.data.D1) {
-		var str = 'INSERT INTO `download_success` ' +
+		var str = 'INSERT INTO `video` ' +
 		    '(`source`, `code`, `server_ip`, `video_info`, `video_code`, `video_length`, `uploaded`) VALUES (' +
 		    "'" + CP.data.P2.source + "'," +
 		    "'" + CP.data.P2.code.replace(/\'/g, "\\\'") + "'," +
