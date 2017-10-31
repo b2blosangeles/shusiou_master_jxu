@@ -15,7 +15,7 @@ switch(opt) {
 		_f['P0'] = function(cbk) {
 			ytdl.getInfo(code, {},  function(err, info){	
 			  if (err) {  
-				cbk(false);  	  
+				cbk(false);  CP.exit = 1;	  
 			  } else {
 				cbk({vid:info.video_id, title:info.title + "asd'asd", length_seconds:parseInt(info.length_seconds), thumbnail_url:info.thumbnail_url});
 			  }
