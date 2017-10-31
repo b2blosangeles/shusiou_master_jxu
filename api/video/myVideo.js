@@ -67,7 +67,7 @@ switch(opt) {
 			_f,
 			function(data) {
 				if (!data.results.P3) {
-					res.send({status:'error', _spent_time:data._spent_time message:'video exists'});
+					res.send({status:'error', _spent_time:data._spent_time, message:'video exists'});
 				} else {
 					res.send({status:'success', _spent_time:data._spent_time, data:data.results.P3});
 				}
