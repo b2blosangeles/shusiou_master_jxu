@@ -44,8 +44,8 @@ _f['CL1'] = function(cbk) {
 	connection.connect();
 	var message = '';
 	var str = 'INSERT INTO `download_failure` ' +
-	    '(`source`, `code`, `video_info`, `message`) '+
-	    'SELECT `source`, `code`, `info`, "Over 1 minute time limutation" FROM `download_queue` '+
+	    '(`id`, `source`, `code`, `video_info`, `message`) '+
+	    'SELECT `id`, `source`, `code`, `info`, "Over 1 minute time limutation" FROM `download_queue` '+
 	    ' WHERE `status` = 9';
 	
 	connection.query(str, function (error, results, fields) {
@@ -221,7 +221,8 @@ _f['E1'] = function(cbk) {
 		if (!CP.data.D1) message = 'Wrong video format!'
 
 		var str = 'INSERT INTO `download_failure` ' +
-		    '(`source`, `code`, `video_info`, `message`) VALUES (' +
+		    '(`id`,`source`, `code`, `video_info`, `message`) VALUES (' +
+		    "'" + CP.data.P2.id + "'," +
 		    "'" + CP.data.P2.source + "'," +
 		    "'" + CP.data.P2.code.replace(/\'/g, "\\\'") + "'," +
 		    "'" + info.replace(/\'/g, "\\\'") + "'," +
