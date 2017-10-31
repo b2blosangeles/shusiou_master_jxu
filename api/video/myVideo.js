@@ -39,7 +39,7 @@ switch(opt) {
 			if ((CP.data.P0) || (CP.data.P1)) {
 				var code = '';
 				if (CP.data.P1) code = CP.data.P1.video_code;
-				else if (CP.data.P0) code = data.P0.id;
+				else if (CP.data.P0) code = CP.data.P0.id;
 				
 				CP.exit = 1; 
 				var connection = mysql.createConnection(cfg0);
