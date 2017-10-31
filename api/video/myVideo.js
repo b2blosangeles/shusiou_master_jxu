@@ -31,9 +31,9 @@ switch(opt) {
 					}
 					var str1 = "SELECT * FROM `video_user` WHERE `video_code` IN (" + v.join(',') + "); ";
 					connection.connect();
-					connection.query(str1, function (error, results, fields) {
+					connection.query(str1, function (error1, results1, fields1) {
 						connection.end();
-						cbk(results);
+						cbk(results1);
 					});	
 				} else cbk(false);
 			});  
