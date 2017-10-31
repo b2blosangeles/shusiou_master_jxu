@@ -19,7 +19,7 @@ switch(opt) {
 			var str = "SELECT `*` FROM `download_failure` WHERE 1; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (results.length) { cbk(results]); }
+				if (results.length) { cbk(results); }
 				else cbk(false);
 			});  
 			CP.exit = 1;
