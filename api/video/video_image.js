@@ -40,7 +40,7 @@ _f['S2'] = function(cbk) {
 	//		cbk(fn);
 	//	 } else {
 			if (w != 'FULL') s = 'ffmpeg -ss ' + s + ' -i ' + file_video +' -vf scale=-1:' +  w + '  -preset ultrafast ' +  folder_image + w + '_' + s + '.png ';
-			else s = 'ffmpeg -ss ' + s + ' -i ' + file_video +' -vframes 1 ' +  folder_image +'FULL_' + I[i] + '.png ';
+			else s = 'ffmpeg -ss ' + s + ' -i ' + file_video +' -vframes 1 ' +  folder_image +'FULL_' + s + '.png ';
 			var childProcess = require('child_process');
 			var ls = childProcess.exec(s, 		   
 				function (error, stdout, stderr) {
