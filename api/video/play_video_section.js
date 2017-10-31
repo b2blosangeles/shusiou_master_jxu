@@ -1,7 +1,8 @@
 var vid = req.query['vid'];
-var c_folder =  '/var/videos/' + vid + '/sections/';
+var mnt_folder = '/mnt/shusiou-video/';
+var c_folder =   mnt_folder + 'videos/' + vid + '/sections/';
 var s = 0, l =  0;
-var video_folder = '/var/videos/' + vid + '/video/';
+var video_folder = mnt_folder + 'videos/' + vid + '/video/';
 
 if (req.query['s']) {
 	s = req.query['s']
@@ -18,6 +19,17 @@ var fn = c_folder + s + '_' + l + '.mp4';
 var childProcess = require('child_process');
 var CP = new pkg.crowdProcess();
 var _f = {};
+
+_f['I0'] = function(cbk) { /* --- check mnt exist --- */
+	fs.stat(mnt_folder, function (err, stats){
+		if (err) { cbk(false); CP.exit = 1;}
+		else if (!stats.isDirectory()) {
+			cbk(false); CP.exit = 1;
+		} else {
+			cbk(true);
+		}
+	});
+};
 
 _f['S0'] = function(cbk) {
 	var folderP = require(env.site_path + '/api/inc/folderP/folderP');
