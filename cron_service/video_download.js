@@ -172,7 +172,7 @@ _f['E1'] = function(cbk) {
 		    "'" + info.replace(/\'/g, "\\\'") + "'," +
 		    "'" + CP.data.P2.id + "'," +
 		    "'" +  CP.data.P2.video_length + "'," +
-		    "'" +  CP.data.P2.video_thumbnail + "'," +
+		    "'" +  CP.data.P2.org_thumbnail + "'," +
 		    'NOW())';
 	} else {
 		var message = '';
