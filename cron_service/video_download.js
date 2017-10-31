@@ -1,7 +1,7 @@
 var path = require('path'), env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
 var mnt_folder = '/mnt/shusiou-video/';
-var video_folder = mnt_forder + 'videos/';
+var video_folder = mnt_folder + 'videos/';
 
 var 	ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
 	mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
