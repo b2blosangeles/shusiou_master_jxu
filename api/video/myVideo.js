@@ -191,8 +191,14 @@ switch(opt) {
 		CP.serial(
 			_f,
 			function(data) {
-				//res.send(CP.data.P1);
-				res.send(data);
+				var d = [];
+				for (var i = 0; i < data.results.P1.length; i++) {
+					d[d.length] = data.results.P1[i];
+				}
+				for (var i = 0; i < data.results.P2.length; i++) {
+					d[d.length] = data.results.P2[i];
+				}				
+				res.send({status:data.status, _spent_time:data._spent_time; data:d});
 			},
 			3000
 		);
