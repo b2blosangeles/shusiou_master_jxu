@@ -167,13 +167,14 @@ _f['E1'] = function(cbk) {
 	try { json_info = JSON.parse(info); } catch (e) {}
 	if (CP.data.D1) {
 		var str = 'INSERT INTO `video` ' +
-		    '(`source`, `code`, `server_ip`, `video_info`, `video_code`, `video_length`, `uploaded`) VALUES (' +
+		    '(`source`, `code`, `server_ip`, `video_info`, `video_code`, `video_length`, `org_thumbnail`, `uploaded`) VALUES (' +
 		    "'" + CP.data.P2.source + "'," +
 		    "'" + CP.data.P2.code.replace(/\'/g, "\\\'") + "'," +
 		    "'" + CP.data.P2.holder_ip + "'," +
 		    "'" + info.replace(/\'/g, "\\\'") + "'," +
 		    "'" + CP.data.P2.id + "'," +
-		    "'" + ((json_info.length_seconds)?json_info.length_seconds:0) + "'," +
+		    "'" +  CP.data.P2.video_length + "'," +
+		    "'" +  CP.data.P2.video_thumbnail + "'," +
 		    'NOW())';
 	} else {
 		var message = '';
