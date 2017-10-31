@@ -1,5 +1,6 @@
 var path = require('path'), env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
+var mnt_forder = '/mnt/shusiou-video1';
 var video_folder = '/var/videos/';
 
 var 	ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
@@ -28,7 +29,18 @@ _f['P0'] = function(cbk) { /* --- get server IP --- */
     });	 
 };
 
-_f['I0'] = function(cbk) { /* --- mark overtime --- */
+_f['I0'] = function(cbk) { /* --- check mnt exist --- */
+	fs.stat(mnt_forder, function (err, stats){
+		if (err) { cbk(false); CP.exit = 1;}
+		else if (!stats.isDirectory()) {
+			cbk(false); CP.exit = 1;
+		} else {
+			cbk(true);
+		}
+	});
+};
+
+_f['I1'] = function(cbk) { /* --- mark overtime --- */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'UPDATE `download_queue` SET `status` = 9 WHERE `holder_ip` = "' +  CP.data.P0 + '" AND `status` = 1';
@@ -233,7 +245,7 @@ _f['E3'] = function(cbk) {
 		}
 	});  
 };	
-_f['I1'] = function(cbk) { /* --- clean overtime --- */
+_f['I2'] = function(cbk) { /* --- clean overtime --- */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'DELETE FROM `download_queue` WHERE `holder_ip` = "' +  CP.data.P0 + '" AND `status` = 9';
