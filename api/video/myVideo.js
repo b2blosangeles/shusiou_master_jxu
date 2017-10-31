@@ -19,7 +19,7 @@ switch(opt) {
 
 			var str = "SELECT A.`id`, A.`code`, B.`uid`, NOW() - B.`created` AS D "+
 				" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`id` = B.`video_code` " +
-				" WHERE B.`uid` = '" + uid + "' AND D > 3600 * 24; ";
+				" WHERE B.`uid` = '" + uid + "' AND D > 36000; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (results.length) { cbk(results); }
