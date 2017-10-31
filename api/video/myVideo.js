@@ -23,7 +23,6 @@ switch(opt) {
 		};
 
 		_f['P1'] = function(cbk) {
-			var cfg0 = require(env.site_path + '/api/cfg/db.json');
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
@@ -50,7 +49,7 @@ switch(opt) {
 		CP.serial(
 			_f,
 			function(data) {
-				res.send(CP.data.P1);
+				res.send(data);
 				// res.send({_spent_time:data._spent_time, status:data.status, data:data});
 			},
 			30000
