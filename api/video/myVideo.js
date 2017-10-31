@@ -16,8 +16,6 @@ switch(opt) {
 		_f['A0'] = function(cbk) {  /* Clean old download_falure related record */
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
-
-			// var str = "SELECT A.`id`, A.`code`, B.`uid`, B.`video_code`, B.`created`"+
 			var str = "SELECT A.`id`"+    
 				" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`id` = B.`video_code` " +
 				" WHERE B.`uid` = '" + uid + "' AND NOW() - B.`created` > 3600; ";
@@ -37,7 +35,7 @@ switch(opt) {
 			if (CP.data.A0) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
-				var str ="SELECT * FROM `video_user` WHERE `video_code` IN (" + CP.data.A0 + "); ";
+				var str ="DELETE FROM `video_user` WHERE `video_code` IN (" + CP.data.A0 + "); ";
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error)  cbk(false);
