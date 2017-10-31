@@ -55,7 +55,7 @@ try {
 		videoUrlDecode:function(){
 			var me = this;
 			$.ajax({
-				url: shusiou_config.api_server + '/api/shusiou_get_youtube_info.js',
+				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=getYouTubeInfo',
 				method: "POST",
 				data: {video_url: me.state.video_url},
 				dataType: "JSON"
