@@ -9,8 +9,7 @@ switch(opt) {
 		var uid = req.body.uid || 1, 
 		    source = req.body.source || 'ytdl-core',
 		    code = req.body.code || 'https://youtu.be/K7AUKcrIdWU';
-		res.send(code);
-		return true;
+
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 		_f['P0'] = function(cbk) {
@@ -57,7 +56,7 @@ switch(opt) {
 		);
 		break;
 	case 'getMyVideos':
-		var uid = req.body.uid | 1;
+		var uid = req.body.uid || 1;
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 		_f['P1'] = function(cbk) {
