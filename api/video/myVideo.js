@@ -38,7 +38,7 @@ switch(opt) {
 		_f['P2'] = function(cbk) {
 			ytdl.getInfo(code, {},  function(err, info){	
 			  if (err) {  
-				cbk(false);  CP.exit = 1;	  
+				cbk('ERR');  CP.exit = 1;	  
 			  } else {
 				cbk({vid:info.video_id, title:info.title + "asd'asd", length_seconds:parseInt(info.length_seconds), thumbnail_url:info.thumbnail_url});
 			  }
@@ -66,9 +66,9 @@ switch(opt) {
 		CP.serial(
 			_f,
 			function(data) {
-				if (!data.results.P2 && data.results.P2 !== false) {
+				if (!data.results.P2) {
 					res.send({status:'error', _spent_time:data._spent_time, message:'video exists'});
-				} else if (typeof data.results.P2 == 'undefined') {
+				} else if (data.results.P2 == 'ERR') {
 					res.send({status:'error', _spent_time:data._spent_time, message:'video url error'});
 				} else {
 					res.send({status:'success', _spent_time:data._spent_time, id:data.results.P3});
