@@ -23,20 +23,31 @@ switch(opt) {
 				" WHERE B.`uid` = '" + uid + "' AND NOW() - B.`created` < 86400; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (error)  cbk(error.message);
+				if (error)  cbk(false);
 				else if (results) { 
 					var v = [];
 					for (var i = 0; i < results.length; i++) {
 						v[v.length] = results[i].id;
 					}
-					var str1 = "SELECT * FROM `video_user` WHERE `video_code` IN (" + v.join(',') + "); ";
-					connection.connect();
-					connection.query(str1, function (error1, results1, fields1) {
-						connection.end();
-						cbk(results1);
-					});	
+					cbk(v.join(','));
 				} else cbk(false);
 			});  
+		};
+		_f['A1'] = function(cbk) {  /* Clean old download_falure related record */
+			if (CP.data.A0) {
+				var connection = mysql.createConnection(cfg0);
+				connection.connect();
+				var str ="SELECT * FROM `video_user` WHERE `video_code` IN (" + CP.data.A0 + "); ";
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					if (error)  cbk(false);
+					else if (results) { 
+						cbk(results);
+					} else cbk(false);
+				});  
+			} else {
+				cbk(false);
+			}
 			CP.exit = 1;
 		};		
 		_f['P0'] = function(cbk) {
