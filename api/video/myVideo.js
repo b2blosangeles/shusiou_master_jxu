@@ -87,8 +87,6 @@ switch(opt) {
 					connection.end();
 					cbk(code); 
 				}); 				
-				
-				
 			} else {
 				cbk(false);
 			}
@@ -107,7 +105,6 @@ switch(opt) {
 		_f['P3'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
-
 			var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`, `video_length`, `org_thumbnail`, `created`, `status`) ' +
 						"values ('" + source + "', '" + code.replace(/\'/g, "\\\'") + "', '" + uid + "', "+
 						"'" + JSON.stringify(CP.data.P2).replace(/\'/g, "\\\'")  + "', " + 
