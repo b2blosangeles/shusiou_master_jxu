@@ -194,7 +194,7 @@ _f['E1'] = function(cbk) {
 			if (results.affectedRows) {
 				cbk(true);
 			} else {
-				cbk(str + 'B');
+				cbk(false);
 			}
 
 		}
