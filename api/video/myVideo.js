@@ -58,7 +58,7 @@ switch(opt) {
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (results) cbk(results);
+				if (results.insertId) cbk(results.insertId);
 				else cbk(str);
 			});  
 		};
@@ -69,7 +69,7 @@ switch(opt) {
 				if (!data.results.P3) {
 					res.send({status:'error', _spent_time:data._spent_time, message:'video exists'});
 				} else {
-					res.send({status:'success', _spent_time:data._spent_time, data:data.results.P3});
+					res.send({status:'success', _spent_time:data._spent_time, id:data.results.P3});
 				}
 				
 				// res.send({_spent_time:data._spent_time, status:data.status, data:data});
