@@ -115,5 +115,5 @@ switch(opt) {
 		);
 		break;		
 	default:
-        	res.send('Wrong opt value!');
+		res.send({status:'error', message:'Wrong opt value!'});
 }
