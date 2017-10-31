@@ -36,8 +36,8 @@ switch(opt) {
 			});  
 		};
 		_f['PV'] = function(cbk) {
-			if (CP.data.P0 || CP.data.P1) {
-				cbk({P0:CP.data.P0}, P1:CP.data.P1);  CP.exit = 1; 
+			if ((CP.data.P0) || (CP.data.P1)) {
+				cbk({P0:CP.data.P0, P1:CP.data.P1});  CP.exit = 1; 
 			} else {
 				cbk(false);
 			}
