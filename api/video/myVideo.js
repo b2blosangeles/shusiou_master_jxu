@@ -20,7 +20,7 @@ switch(opt) {
 			var str = "SELECT `id` FROM `download_queue` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (results.length) { cbk(results[0]); CP.exit = 1; }
+				if (results.length) { cbk(results[0]); }
 				else cbk(false);
 			});  
 		};
@@ -31,10 +31,18 @@ switch(opt) {
 			var str = "SELECT `id` FROM `video` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (results.length) { cbk(results[0]); CP.exit = 1; }
+				if (results.length) { cbk(results[0]);}
 				else cbk(false);
 			});  
-		};		
+		};
+		_f['PV'] = function(cbk) {
+			if (CP.data.P0 || CP.data.P2) {
+				cbk(true);  CP.exit = 1; 
+			} else {
+				cbk(false);
+			}
+		};
+		
 		_f['P2'] = function(cbk) {
 			ytdl.getInfo(code, {},  function(err, info){	
 			  if (err) {  
