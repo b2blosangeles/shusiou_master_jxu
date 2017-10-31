@@ -18,7 +18,7 @@ switch(opt) {
 			connection.connect();
 
 			var str = "SELECT A.`code`, B.`uid`, NOW() - B.`created` AS D "+
-				" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`id` = B.`video_code` "+
+				" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`id` = B.`video_code` " +
 				" WHERE B.`uid` = '" + uid + "'; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
