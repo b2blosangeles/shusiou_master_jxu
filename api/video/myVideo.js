@@ -17,16 +17,25 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = "SELECT `id` FROM `download_queue` WHERE `source` = '" + source + "' AND code = '" + code + "'; ";
-
+			var str = "SELECT `id` FROM `download_queue` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (results.length) cbk(results[0]);
 				else cbk(false);
 			});  
 		};
-		
 		_f['P1'] = function(cbk) {
+			var connection = mysql.createConnection(cfg0);
+			connection.connect();
+
+			var str = "SELECT `id` FROM `video` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				if (results.length) cbk(results[0]);
+				else cbk(false);
+			});  
+		};		
+		_f['P2'] = function(cbk) {
 			ytdl.getInfo(code, {},  function(err, info){	
 			  if (err) {  
 				cbk(false);  CP.exit = 1;	  
@@ -36,7 +45,7 @@ switch(opt) {
 			});	  
 		};
 
-		_f['P2'] = function(cbk) {
+		_f['P3'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
