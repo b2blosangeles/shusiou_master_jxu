@@ -13,7 +13,7 @@ switch(opt) {
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 		
-		_f['A0'] = function(cbk) {
+		_f['A0'] = function(cbk) {  /* Clean old download_falure related record */
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
