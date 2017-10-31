@@ -137,6 +137,8 @@ switch(opt) {
 		CP.serial(
 			_f,
 			function(data) {
+				res.send(data);
+				return true;
 				if (data.results.PV) {
 					res.send({status:'error', _spent_time:data._spent_time, message:'video exists'});
 				} else if (data.results.P2 == 'ERR') {
