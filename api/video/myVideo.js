@@ -46,8 +46,8 @@ switch(opt) {
 				connection.connect();
 				var str = 'INSERT INTO `video_user` ' +
 				    '(`video_code`, `uid`, `created`) VALUES (' +
-				     "'" + CP.data.P2.id + "'," +
-				     "'" + CP.data.P2.uid + "'," +
+				     "'" + code + "'," +
+				     "'" + uid + "'," +
 				    'NOW()) ON DUPLICATE KEY UPDATE  `created` = NOW() ';
 				connection.query(str, function (error, results, fields) {
 					connection.end();
