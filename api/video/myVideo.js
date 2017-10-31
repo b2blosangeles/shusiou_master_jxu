@@ -87,7 +87,23 @@ switch(opt) {
 				else cbk(false);
 			});  
 		};
-
+		_f['P4'] = function(cbk) {
+			if (CP.data.P3) {
+				var connection = mysql.createConnection(cfg0);
+				connection.connect();
+				var str = 'INSERT INTO `video_user` ' +
+				    '(`video_code`, `uid`, `created`) VALUES (' +
+				     "'" + CP.data.P3 + "'," +
+				     "'" + uid + "'," +
+				    'NOW()) ON DUPLICATE KEY UPDATE  `created` = `created` ';
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					cbk(true); 
+				});			
+			} else {
+				cbk(false);
+			}
+		};
 		CP.serial(
 			_f,
 			function(data) {
