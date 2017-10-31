@@ -150,6 +150,16 @@ switch(opt) {
 			30000
 		);
 		break;
+	case 'getYouTubeInfo':
+		ytdl.getInfo(req.body.video_url, {},  function(err, info){
+		  if ((err) || !info) {
+		    res.send(false);
+		  } else {
+		    var r = {vid:info.video_id, title:info.title, length_seconds:parseInt(info.length_seconds), thumbnail_url:info.thumbnail_url};
+		    res.send(r);
+		  }  
+		});		
+		break;
 	case 'getMyVideos':
 		var uid = req.body.uid || 1;
 		var CP = new pkg.crowdProcess();
