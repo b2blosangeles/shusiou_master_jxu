@@ -17,12 +17,12 @@ try {
 		pullList:function() {
 			var me = this;
 			$.ajax({
-				url: shusiou_config.api_server + '/api/shusiou_get_videos.js',
+				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=getMyVideos',
 				method: "POST",
 				data: {uid:1, token:'xxxxx'},
 				dataType: "JSON"
 			}).done(function( data) {
-				me.setState({list:data.data});
+				//me.setState({list:data.data});
 				console.log(data);
 			}).fail(function( jqXHR, textStatus ) {
 				console.log('error');
