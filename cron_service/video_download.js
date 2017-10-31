@@ -176,14 +176,14 @@ _f['E1'] = function(cbk) {
 		    'NOW())';
 	} else {
 		var message = '';
-		if (!CP.data.D1) { message = 'Wrong video format!'
+		if (!CP.data.D1) message = 'Wrong video format!'
 
 		var str = 'INSERT INTO `download_failure` ' +
 		    '(`source`, `code`, `video_info`, `message`) VALUES (' +
 		    "'" + CP.data.P2.source + "'," +
 		    "'" + CP.data.P2.code.replace(/\'/g, "\\\'") + "'," +
 		    "'" + info.replace(/\'/g, "\\\'") + "'," +
-		    "'" + ((json_info.length_seconds)?json_info.length_seconds:0) + "')";
+		    "'" + message.replace(/\'/g, "\\\'") + "')";
 	
 	}
 	connection.query(str, function (error, results, fields) {
