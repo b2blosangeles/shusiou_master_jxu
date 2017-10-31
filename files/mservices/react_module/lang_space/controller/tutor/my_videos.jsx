@@ -22,7 +22,7 @@ try {
 				data: {uid:1, token:'xxxxx'},
 				dataType: "JSON"
 			}).done(function( data) {
-				//me.setState({list:data.data});
+				me.setState({list:data.data});
 				console.log(data);
 			}).fail(function( jqXHR, textStatus ) {
 				console.log('error');
