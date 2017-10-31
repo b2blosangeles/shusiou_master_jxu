@@ -58,7 +58,7 @@ switch(opt) {
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (results.length) cbk(results[0]);
+				if (results) cbk(results);
 				else cbk(str);
 			});  
 		};
