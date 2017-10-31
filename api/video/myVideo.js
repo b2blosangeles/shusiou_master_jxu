@@ -66,7 +66,7 @@ switch(opt) {
 		CP.serial(
 			_f,
 			function(data) {
-				if (!data.results.P2 && data.results.P2 === false) {
+				if (!data.results.P2 && data.results.P2 == false) {
 					res.send({status:'error', _spent_time:data._spent_time, message:'video exists'});
 				} else if (typeof data.results.P2 == 'undefined') {
 					res.send({status:'error', _spent_time:data._spent_time, message:'video url error'});
