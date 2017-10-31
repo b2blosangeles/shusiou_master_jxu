@@ -18,9 +18,9 @@ switch(opt) {
 			connection.connect();
 
 			// var str = "SELECT A.`id`, A.`code`, B.`uid`, B.`video_code`, B.`created`"+
-			var str = "SELECT B.`id`"+    
+			var str = "SELECT B.`video_code`"+    
 				" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`id` = B.`video_code` " +
-				" WHERE B.`uid` = '" + uid + "' AND NOW() - B.`created` > 86400; ";
+				" WHERE B.`uid` = '" + uid + "' AND NOW() - B.`created` < 86400; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (error)  cbk(error.message);
