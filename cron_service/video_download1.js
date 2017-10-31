@@ -53,7 +53,7 @@ _f['P1'] = function(cbk) { /* --- pickup one from queue --- */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'UPDATE  download_queue SET `holder_ip` = "' + CP.data.P0 + '", `status` = 1, hold_time = NOW() ' + 
-		' WHERE  `status` = 0 AND `holder_ip` = "" OR `holder_ip` IS NULL ORDER BY `created` ASC LIMIT 1';
+		' WHERE  `status` = 0 AND (`holder_ip` = "" OR `holder_ip` IS NULL) ORDER BY `created` ASC LIMIT 1';
 	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
