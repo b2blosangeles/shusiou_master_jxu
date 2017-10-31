@@ -250,7 +250,7 @@ _f['E2'] = function(cbk) {
 		    '(`video_code`, `uid`, `created`) VALUES (' +
 		     "'" + CP.data.P2.id + "'," +
 		     "'" + CP.data.P2.uid + "'," +
-		    'NOW())';
+		    'NOW())  ON DUPLICATE KEY UPDATE  `created` = `created';
 		connection.query(str, function (error, results, fields) {
 			connection.end();
 			cbk(true);
