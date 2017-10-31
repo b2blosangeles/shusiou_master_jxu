@@ -69,12 +69,10 @@ switch(opt) {
 				if (!data.results.P2) {
 					res.send({status:'error', _spent_time:data._spent_time, message:'video exists'});
 				} else if (data.results.P2 == 'ERR') {
-					res.send({status:'error', _spent_time:data._spent_time, message:'video url error'});
+					res.send({status:'error', _spent_time:data._spent_time, message:'video url ' + code + ' error'});
 				} else {
 					res.send({status:'success', _spent_time:data._spent_time, id:data.results.P3});
 				}
-				
-				// res.send({_spent_time:data._spent_time, status:data.status, data:data});
 			},
 			30000
 		);
