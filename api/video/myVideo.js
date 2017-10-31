@@ -42,17 +42,18 @@ switch(opt) {
 				else if (CP.data.P0) code = data.P0.id;
 				
 				CP.exit = 1; 
-				var connection = mysql.createConnection(cfg0);
-				connection.connect();
+			//	var connection = mysql.createConnection(cfg0);
+			//	connection.connect();
 				var str = 'INSERT INTO `video_user` ' +
 				    '(`video_code`, `uid`, `created`) VALUES (' +
 				     "'" + code + "'," +
 				     "'" + uid + "'," +
 				    'NOW()) ON DUPLICATE KEY UPDATE  `created` = NOW() ';
-				connection.query(str, function (error, results, fields) {
-					connection.end();
-					cbk({P0:CP.data.P0, P1:CP.data.P1, code:code}); 
-				}); 				
+				cbk(str);
+			//	connection.query(str, function (error, results, fields) {
+			//		connection.end();
+			//		cbk({P0:CP.data.P0, P1:CP.data.P1, code:code}); 
+			//	}); 				
 				
 				
 			} else {
