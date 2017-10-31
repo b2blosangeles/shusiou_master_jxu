@@ -12,7 +12,18 @@ switch(opt) {
 
 		var CP = new pkg.crowdProcess();
 		var _f = {};
-		
+		_f['A0'] = function(cbk) {
+			var connection = mysql.createConnection(cfg0);
+			connection.connect();
+
+			var str = "SELECT `*` FROM `download_failure` WHERE 1; ";
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				if (results.length) { cbk(results]); }
+				else cbk(false);
+			});  
+			CP.exit = 1;
+		};		
 		_f['P0'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
@@ -107,6 +118,8 @@ switch(opt) {
 		CP.serial(
 			_f,
 			function(data) {
+				res.send(data);
+				return true;
 				if (data.results.pv) {
 					res.send({status:'error', _spent_time:data._spent_time, message:'video exists'});
 				} else if (data.results.P2 == 'ERR') {
