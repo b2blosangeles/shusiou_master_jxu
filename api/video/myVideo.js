@@ -29,9 +29,12 @@ switch(opt) {
 					for (var i = 0; i < results.length; i++) {
 						v[v.length] = results[i].id;
 					}
-					var str = "SELECT * "+    
-						" FROM `video_user` WHERE `video_code` IN (" + v.join(',') + "); ";
-					cbk(str); }
+					var str1 = "SELECT * FROM `video_user` WHERE `video_code` IN (" + v.join(',') + "); ";
+					connection.connect();
+					connection.query(str1, function (error, results, fields) {
+						connection.end();
+						cbk(results);
+					});	
 				else cbk(false);
 			});  
 			CP.exit = 1;
