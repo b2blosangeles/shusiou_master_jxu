@@ -1,14 +1,16 @@
-var video_folder = '/var/video/';
-var vid = req.query['vid'], w = req.query['w'] || 180
-file_video =  video_folder + vid + '.mp4';
 
-var folder_image = '/tmp/images/'+ vid + '/';
+var vid = req.query['vid'], 
+    w = req.query['w'] || 180,
+    video_folder = '/var/videos/' + vid + '/',
+    file_video =  video_folder + 'video/video.mp4';
+
+var folder_image = video_folder + 'images/';
 
 if (!req.query['s']) {
 	res.send('S error');
 	return true;
 }
-var s=req.query['s'], fn = '/tmp/images/' + vid + '/' + w + '_' + s + '.png'; 
+var s=req.query['s'], fn = folder_image + w + '_' + s + '.png'; 
     
 var CP = new pkg.crowdProcess();
 
