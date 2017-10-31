@@ -12,7 +12,7 @@ switch(opt) {
 
 		var CP = new pkg.crowdProcess();
 		var _f = {};
-		_f['P0'] = function(cbk) {
+		_f['P1'] = function(cbk) {
 			ytdl.getInfo(code, {},  function(err, info){	
 			  if (err) {  
 				cbk(false);  CP.exit = 1;	  
@@ -22,7 +22,7 @@ switch(opt) {
 			});	  
 		};
 
-		_f['P1'] = function(cbk) {
+		_f['P2'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
