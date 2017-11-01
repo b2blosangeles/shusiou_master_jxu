@@ -38,7 +38,7 @@ try {
 			$.ajax({
 				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=add',
 				method: "POST",
-				data: {code: me.state.video_url, uid:'1', token:'xxxxx'},
+				data: {code: me.state.video_url, auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}).done(function( data) {
 				// me.videoDownload();
@@ -54,8 +54,6 @@ try {
 		},		
 		videoUrlDecode:function(){
 			var me = this;
-			console.log('----me.props.parent.route.env.state.auth---->');
-			console.log(me.props.parent.props.route.env.state.auth);
 			$.ajax({
 				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=getYouTubeInfo',
 				method: "POST",
