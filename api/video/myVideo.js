@@ -18,7 +18,7 @@ switch(opt) {
 			connection.connect();
 			var str = "SELECT A.`id`"+    
 				" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`id` = B.`video_code` " +
-				" WHERE B.`uid` = '" + uid + "' AND NOW() - B.`created` > 360; ";
+				" WHERE B.`uid` = '" + uid + "' AND NOW() - B.`created` > 36000; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (error)  cbk(false);
@@ -180,7 +180,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'SELECT A.* FROM  `download_failure` A  LEFT JOIN `video_user` B on A.`video_code` = B.`video_code` ' +
+			var str = 'SELECT A.* FROM  `download_failure` A  LEFT JOIN `video_user` B on A.`id` = B.`video_code` ' +
 			    " WHERE B.`uid` = '" + uid +" '";
 
 
