@@ -99,7 +99,7 @@ try {
 			$.ajax({
 				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=removeUserVideo',
 				method: "POST",
-				data: {vid: vid},
+				data: {auth: me.props.route.env.state.auth},
 				dataType: "JSON"
 			}).done(function( data) {
 				me.pullList();
