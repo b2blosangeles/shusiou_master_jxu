@@ -50,7 +50,7 @@ try {
 			}
 		},		
 		bgFilmStyle:function(t, a) {
-			var url = shusiou_config.api_server + '/api/video/video_image.api?vid='+a+'&s='+t;
+			var url = 'http://' + a.server_ip + '/api/video/video_image.api?vid='+ a.video_code +'&s='+t;
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
 		},
