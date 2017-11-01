@@ -8,7 +8,7 @@ _f['Q0'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 
-	var str = 'SELECT * FROM  `video` WHERE 1 LIMIT 3';
+	var str = 'SELECT * FROM  `video` WHERE 1 ORDER BY `uploaded` DESC LIMIT 3';
 
 	connection.query(str, function (error, results, fields) {
 		connection.end();
