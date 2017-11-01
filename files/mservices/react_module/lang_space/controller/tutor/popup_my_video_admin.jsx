@@ -54,8 +54,8 @@ try {
 		},		
 		videoUrlDecode:function(){
 			var me = this;
-			console.log('----me.props.route.penv.state.auth---->');
-			console.log(me.props.parent.route.penv.state.auth);
+			console.log('----me.props.route.env.state.auth---->');
+			console.log(me.props.parent.route.env.state.auth);
 			$.ajax({
 				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=getYouTubeInfo',
 				method: "POST",
