@@ -222,7 +222,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = "DELETE FROM  `video_user` WHERE `uid` = '" + uid +"'  AND video_code = '" + video_code + "'";
+			var str = "DELETE FROM  `video_user` WHERE `uid` = '" + uid +"'  AND `video_code` = '" + video_code + "'";
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
