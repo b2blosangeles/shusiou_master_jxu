@@ -1,19 +1,14 @@
-if (!req.query['video']) {
-	res.send('Url error');
+if (!req.query['vid']) {
+	res.send('vid error');
 	return true;
 }
-
-var video = req.query['video'].split('|'), fn;
-var base = '/var/video/';
-
-var c_folder = base + video[0] + '/tmp_section/';
-var s_file = base + video[0] + '/video/video.mp4',  s =  video[1], l =  video[2];
-var fn = c_folder + s + '_' + l + '.mp4';
+var mnt_folder = '/mnt/shusiou-video/';
+var fn = mnt_folder + 'videos/' + vid + '/video/video.mp4';
 
 pkg.fs.stat(fn, function(err, data) {
-    if (err) 
-      res.redirect('http://api.shusiou.com'+req.url);
-    else {
+    if (err) {
+      res.send('Video does not exist');
+    } else {
 	      var total = data.size;
 	      var range = req.headers.range;
 	      if (range) {
