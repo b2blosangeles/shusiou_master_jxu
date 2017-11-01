@@ -164,7 +164,7 @@ switch(opt) {
 		var uid = req.body.uid || 1;
 		var CP = new pkg.crowdProcess();
 		var _f = {};
-		_f['P1'] = function(cbk) {
+		_f['P0'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
@@ -176,6 +176,20 @@ switch(opt) {
 				else cbk([]);
 			});  
 		};
+		_f['P1'] = function(cbk) {
+			var connection = mysql.createConnection(cfg0);
+			connection.connect();
+
+			var str = 'SELECT A.* FROM  `download_failure` A  LEFT JOIN `video_user` B on A.`video_code` = B.`video_code` ' +
+			    " WHERE B.`uid` = '" + uid +" '";
+
+
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				if (results.length)  cbk(results);
+				else cbk([]);
+			});  
+		};		
 		_f['P2'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
@@ -193,6 +207,9 @@ switch(opt) {
 			_f,
 			function(data) {
 				var d = [];
+				for (var i = 0; i < data.results.P0.length; i++) {
+					d[d.length] = data.results.P0[i];
+				}				
 				for (var i = 0; i < data.results.P1.length; i++) {
 					d[d.length] = data.results.P1[i];
 				}
