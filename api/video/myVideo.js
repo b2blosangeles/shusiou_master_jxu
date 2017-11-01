@@ -180,7 +180,8 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'SELECT * FROM  `video` WHERE 1';
+			var str = 'SELECT * FROM  `video` A LEFT JOIN `video_code` B on A.`video_code` = B.`video_code` ' +
+			    " WHERE B.`uid` = '" + uid +" '";
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
