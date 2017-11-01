@@ -16,6 +16,7 @@ try {
 		},
 		pullList:function() {
 			var me = this;
+			console.log('===niu===');
 			$.ajax({
 				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=getMyVideos',
 				method: "POST",
