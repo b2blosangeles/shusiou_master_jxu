@@ -216,14 +216,8 @@ switch(opt) {
 				for (var i = 0; i < data.results.P2.length; i++) {
 					d[d.length] = data.results.P2[i];
 				}
-				d = d.sort(function(a,b) {
-				    if ( a.addtime < b.addtime )
-					return -1;
-				    if ( a.addtime > b.addtime )
-					return 1;
-				    return 0;
-				} );
-				res.send({status:data.status, _spent_time:data._spent_time, data:d});
+				res.send({status:data.status, _spent_time:data._spent_time, 
+					data:d})d.sort(function(a,b) { return ( a.addtime < b.addtime )?1:-1} );
 			},
 			3000
 		);
