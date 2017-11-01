@@ -56,12 +56,6 @@ try {
 		},
 		bgFilmThumbnail:function(v) {
 			return {width:'100%', height:'100%', background:'url('+v+')','background-size':'contain'}	
-		},
-		bgFilmStyle:function(t, a) {
-			var dt = Math.floor((Math.random() * 100) + 1);
-			var url = shusiou_config.api_server + '/api/shusiou_video_image180.js?video='+a+'|'+dt;
-			return {width:'100%', background:'url('+url+')',
-				'background-size':'cover'}
 		},		
 		bgFilmAddStyle:function(t) {
 			var url = '/images/movie_add.png';
