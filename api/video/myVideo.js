@@ -6,7 +6,7 @@ var opt = req.query['opt'];
 
 switch(opt) {
 	case 'add':
-		var uid = req.body.uid || 1, 
+		var uid = req.body.auth.uid, 
 		    source = req.body.source || 'ytdl-core',
 		    code = req.body.code || 'https://youtu.be/K7AUKcrIdWU';
 
