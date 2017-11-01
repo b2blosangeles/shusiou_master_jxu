@@ -141,7 +141,7 @@ try {
 								<div className="overlayer_box homepage_box" style={{'margin-bottom':'1em', 'padding':'0.5em'}}>
 									<img src="/images/film_bg.png" style={me.bgFilmThumbnail(a.org_thumbnail)} />	
 									<div className="video_thumbnail_text video_thumbnail_text_bg pull-right">
-										{(a.message)?a.message:'Pulling ...'}
+										<i className="fa fa-info-circle"></i> {(a.message)?a.message:'Pulling ...'}
 									</div>
 								</div>
 
