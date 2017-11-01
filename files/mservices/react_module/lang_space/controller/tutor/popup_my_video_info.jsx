@@ -7,8 +7,7 @@ try {
 		},
 		componentDidMount:function() {
 			var me = this;
-			console.log('----me.props.route.env.state.auth---->');
-			console.log(me.props.route.env.state.auth);
+
 			$('.pop_preview')[0].src = me.videoLink();
 			$('.pop_preview')[0].play();
 		},
