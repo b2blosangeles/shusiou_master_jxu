@@ -28,6 +28,7 @@ try {
 				console.log('error');
 			});			
 		},
+		/*
 		dataApi: function(opt) {
 			var me = this, A = me.state.list;
 			$.ajax({
@@ -41,7 +42,8 @@ try {
 			}).fail(function( jqXHR, textStatus ) {
 				console.log( "Request failed: " + textStatus );
 			});
-		},			
+		},
+		*/
 		componentDidUpdate:function() {
 			var me = this;
 		},		
