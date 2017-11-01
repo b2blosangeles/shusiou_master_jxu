@@ -1,5 +1,5 @@
 if (!req.query['vid']) {
-	res.send('vid error');
+	res.send('vid error ');
 	return true;
 }
 var mnt_folder = '/mnt/shusiou-video/';
