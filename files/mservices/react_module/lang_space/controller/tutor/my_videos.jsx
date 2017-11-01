@@ -28,22 +28,6 @@ try {
 				console.log('error');
 			});			
 		},
-		/*
-		dataApi: function(opt) {
-			var me = this, A = me.state.list;
-			$.ajax({
-				url: '/api/lang_space/data_api.js',
-				method: "POST",
-				data: { opt:opt, lesson_code:'sample.mp4', list:me.state.list},
-				dataType: "JSON"
-			}).done(function( data) {
-				me.setState({list:data.list});
-				console.log(data);
-			}).fail(function( jqXHR, textStatus ) {
-				console.log( "Request failed: " + textStatus );
-			});
-		},
-		*/
 		componentDidUpdate:function() {
 			var me = this;
 		},		
@@ -66,7 +50,7 @@ try {
 			}
 		},		
 		bgFilmStyle:function(t, a) {
-			var url = shusiou_config.api_server + '/api/video_image180.js?video='+a+'|'+t;
+			var url = shusiou_config.api_server + '/api/video/video_image.api?vid='+a+'&t='+t;
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
 		},
@@ -153,7 +137,7 @@ try {
 											<i className="fa fa-play" aria-hidden="true"></i>
 										</button>										
 									</div>
-									<img src="/images/film_bg.png" style={me.bgFilmStyle(2, a.video_code)} />
+									<img src="/images/film_bg.png" style={me.bgFilmStyle(30, a.video_code)} />
 								</div>
 
 							</div>							
