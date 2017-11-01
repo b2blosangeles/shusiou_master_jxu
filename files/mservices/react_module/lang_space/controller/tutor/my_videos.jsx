@@ -17,7 +17,7 @@ try {
 		pullList:function() {
 			var me = this;
 			console.log('===niu===>');
-			console.log(this.props.route);
+			console.log(this.props.route.env.state);
 			$.ajax({
 				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=getMyVideos',
 				method: "POST",
