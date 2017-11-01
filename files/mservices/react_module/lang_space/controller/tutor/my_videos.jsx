@@ -144,7 +144,7 @@ try {
 							</div>			
 						</div>
 						{me.state.list.map(function(a){ 
-							if (a.type == 'local') return(
+							if (a.type != 'local') return(
 							<div className="col-sm-4 col-lg-4 col-md-4"> 
 								<div className="overlayer_box homepage_box" style={{'margin-bottom':'1em', 'padding':'0.5em'}}>
 									<div className="video_thumbnail_icon_group">
