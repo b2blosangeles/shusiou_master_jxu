@@ -217,7 +217,8 @@ switch(opt) {
 					d[d.length] = data.results.P2[i];
 				}
 				res.send({status:data.status, _spent_time:data._spent_time, 
-					data:d})d.sort(function(a,b) { return ( a.addtime < b.addtime )?1:-1} );
+					data:d.sort(function(a,b) { return ( a.addtime < b.addtime )?1:-1} )});
+					  
 			},
 			3000
 		);
