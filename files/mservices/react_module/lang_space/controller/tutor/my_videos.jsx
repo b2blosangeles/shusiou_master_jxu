@@ -97,7 +97,7 @@ try {
 		videoDelete:function(vid){
 			var me = this;
 			$.ajax({
-				url: shusiou_config.api_server + '/api/shusiou_delete_video.js',
+				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=removeUserVideo',
 				method: "POST",
 				data: {vid: vid},
 				dataType: "JSON"
