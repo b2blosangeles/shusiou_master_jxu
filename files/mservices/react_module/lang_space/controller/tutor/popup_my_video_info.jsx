@@ -26,7 +26,7 @@ try {
 		},		
 		videoLink:function(){
 			var me = this; 
-			return shusiou_config.api_server + '/api/shusiou_play_video.js?vid=' + me.props.rec.code;
+			return shusiou_config.api_server + '/api/shusiou_play_video.js?vid=' + me.props.rec.video_code;
 		},			
 		render:function() {
 			var me = this;
