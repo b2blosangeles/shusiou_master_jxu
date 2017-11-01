@@ -131,7 +131,7 @@ try {
 											<i className="fa fa-play" aria-hidden="true"></i>
 										</button>										
 									</div>
-									<img src="/images/film_bg.png" style={me.bgFilmStyle(30, a.video_code)} />
+									<img src="/images/film_bg.png" style={me.bgFilmStyle(60, a.video_code)} />
 								</div>
 
 							</div>							
