@@ -168,7 +168,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'SELECT * FROM  `download_queue` WHERE `uid` = "' + uid +'"';
+			var str = 'SELECT *, `created` AS addtime FROM  `download_queue` WHERE `uid` = "' + uid +'"';
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
@@ -180,7 +180,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'SELECT A.* FROM  `download_failure` A  LEFT JOIN `video_user` B on A.`id` = B.`video_code` ' +
+			var str = 'SELECT A.*, B.`created` AS addtime FROM  `download_failure` A  LEFT JOIN `video_user` B on A.`id` = B.`video_code` ' +
 			    " WHERE B.`uid` = '" + uid +" '";
 
 
@@ -194,7 +194,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'SELECT A.* FROM  `video` A LEFT JOIN `video_user` B on A.`video_code` = B.`video_code` ' +
+			var str = 'SELECT A.*, B.`created` AS addtime FROM  `video` A LEFT JOIN `video_user` B on A.`video_code` = B.`video_code` ' +
 			    " WHERE B.`uid` = '" + uid +" '";
 
 			connection.query(str, function (error, results, fields) {
