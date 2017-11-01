@@ -214,7 +214,7 @@ switch(opt) {
 		  }  
 		});		
 		break;
-	case 'removeUserVideos':
+	case 'removeUserVideo':
 		var uid = req.body.auth.uid, video_code = req.body.video_code;
 		var CP = new pkg.crowdProcess();
 		var _f = {};
