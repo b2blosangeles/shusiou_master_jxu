@@ -168,7 +168,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'SELECT * FROM  `download_queue` WHERE `uid` = "' + uid +' "';
+			var str = 'SELECT * FROM  `download_queue` WHERE `uid` = "' + uid +'"';
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
@@ -203,7 +203,41 @@ switch(opt) {
 			},
 			3000
 		);
-		break;		
+		break;	
+	case 'getYouTubeInfo':
+		ytdl.getInfo(req.body.video_url, {},  function(err, info){
+		  if ((err) || !info) {
+		    res.send(false);
+		  } else {
+		    var r = {vid:info.video_id, title:info.title, length_seconds:parseInt(info.length_seconds), thumbnail_url:info.thumbnail_url};
+		    res.send(r);
+		  }  
+		});		
+		break;
+	case 'removeUserVideos':
+		var uid = req.body.auth.uid, video_code = req.body.video_code;
+		var CP = new pkg.crowdProcess();
+		var _f = {};
+		_f['P1'] = function(cbk) {
+			var connection = mysql.createConnection(cfg0);
+			connection.connect();
+
+			var str = "DELETE FROM  `video_user` WHERE `uid` = '" + uid +"'  AND video_code = '" + video_code + "'";
+
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				if (results)  cbk(results);
+				else cbk(false);
+			});  
+		};		
+		CP.serial(
+			_f,
+			function(data) {				
+				res.send({status:data.status, _spent_time:data._spent_time, data:data.results});
+			},
+			3000
+		);
+		break;			
 	default:
 		res.send({status:'error', message:'Wrong opt value!'});
 }
