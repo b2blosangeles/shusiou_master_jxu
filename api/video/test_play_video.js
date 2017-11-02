@@ -5,6 +5,6 @@ var http = require('http');
 var request = http.get('http://shusiou.com/api/video/test_pipe.api?', function(response) {
 	response.pipe(file);
 	response.on('end', function() {
-		res.send('pulled  at: ' + (new Date().getTime() - tm) + ' ms');	
+		res.send('pulled  at: ' + new Date().getTime() + ' ms');	
 	});
 });
