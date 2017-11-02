@@ -1,4 +1,7 @@
 var fn = '/var/log/cron_git.log';
+res.send(fn);
+return true;
+
 pkg.fs.stat(fn, function(err, data) {
 	if (err) {
 		//      res.redirect('http://api.shusiou.com'+req.url);
