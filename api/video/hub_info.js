@@ -1,4 +1,4 @@
-if (!req.query['fn']) {
+if (!req.body['fn']) {
 	res.send('fn error ');
 	return true;
 }
