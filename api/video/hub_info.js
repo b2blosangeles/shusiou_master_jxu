@@ -1,9 +1,9 @@
-if (!req.query['vid']) {
-	res.send('vid error ');
+if (!req.query['fn']) {
+	res.send('fn error ');
 	return true;
 }
 var mnt_folder = '/mnt/shusiou-video/';
-var fn = mnt_folder + 'videos/'+req.query['vid']+'/video/video.mp4';
+var fn = mnt_folder + fn;
 
 pkg.fs.stat(fn, function(err, data) {
 	if (err) {
