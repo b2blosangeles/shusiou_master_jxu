@@ -3,7 +3,7 @@ if (!req.body['fn']) {
 	return true;
 }
 var mnt_folder = '/mnt/shusiou-video/';
-var fn = mnt_folder + fn;
+var fn = mnt_folder + req.body['fn'];
 
 pkg.fs.stat(fn, function(err, data) {
 	if (err) {
