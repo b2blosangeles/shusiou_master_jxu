@@ -7,7 +7,7 @@ var fn = mnt_folder + fn;
 
 pkg.fs.stat(fn, function(err, data) {
 	if (err) {
-		res.send({status:'error', message:'File does not exist!'});
+		res.send({status:'error', message:fn + ' -- File does not exist!'});
 	} else {
 		res.send({status:'success', size:data.size});
 	}
