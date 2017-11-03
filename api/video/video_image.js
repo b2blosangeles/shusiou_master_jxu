@@ -68,10 +68,12 @@ CP.serial(
 	_f,
 	function(data) {	
 		pkg.fs.stat(fn, function(err, data1) {
-			
 		      if (err) {
-			      res.send(fn + ' does not exist');
+				res.writeHead(404, {'Content-Type': 'text/html'});
+				res.write(fn + ' does not exist');
+				res.end();
 		      } else {
+				res.writeHead(200); 
 				var file = pkg.fs.createReadStream(fn);
 				file.pipe(res);		      
 			}
