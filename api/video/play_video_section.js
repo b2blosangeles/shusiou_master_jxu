@@ -62,7 +62,6 @@ CP.serial(
 			res.write('Section does not exist');
 			res.end();
 		    } else {
-			    res.writeHead(200); 
 			      var total = data.size;
 			      var range = req.headers.range;
 			      if (range) {
@@ -73,7 +72,6 @@ CP.serial(
 					var end = partialend ? parseInt(partialend, 10) : total-1;
 					var chunksize = (end-start)+1;
 					var file = pkg.fs.createReadStream(fn, {start:start, end:end});
-
 					res.writeHead(206, {'Content-Range': 'bytes ' + start + '-' + end + '/' + total, 
 						'Accept-Ranges': 'bytes', 'Content-Length': chunksize, 'Content-Type': 'video/mp4' });
 				       file.pipe(res);
