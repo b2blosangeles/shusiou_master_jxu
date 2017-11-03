@@ -57,9 +57,12 @@ CP.serial(
 	_f,
 	function(data) {
 		pkg.fs.stat(fn, function(err, data) {
-		    if (err) 
-		      res.send('it does not exist');
-		    else {
+		    if (err) {
+			res.writeHead(404, {'Content-Type': 'text/html'});
+			res.write('Section does not exist');
+			res.end();
+		    } else {
+			    res.writeHead(200); 
 			      var total = data.size;
 			      var range = req.headers.range;
 			      if (range) {
