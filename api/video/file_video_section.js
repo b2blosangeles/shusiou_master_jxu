@@ -57,7 +57,7 @@ CP.serial(
 	_f,
 	function(data) {
 		pkg.fs.stat(fn, function(err, data) {
-		    if ((err) || data.size == 0) {
+		    if ((err) || data.size == 1024) {
 			res.writeHead(404, {'Content-Type': 'text/html'});
 			res.write('Section does not exist::' + (err.message)?err.message:' as 0 size');
 			res.end();
