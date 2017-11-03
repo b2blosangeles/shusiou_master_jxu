@@ -59,7 +59,7 @@ CP.serial(
 		pkg.fs.stat(fn, function(err, data) {
 		    if (err) {
 			res.writeHead(404, {'Content-Type': 'text/html'});
-			res.write('it does not exist');
+			res.write('Section does not exist::' + err.message);
 			res.end();
 		    } else {
 			res.writeHead(200);    
