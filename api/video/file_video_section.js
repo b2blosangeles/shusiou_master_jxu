@@ -62,6 +62,7 @@ CP.serial(
 			res.write('it does not exist');
 			res.end();
 		    } else {
+			res.writeHead(200);    
 			var file = pkg.fs.createReadStream(fn);
 			file.pipe(res);
 			}
