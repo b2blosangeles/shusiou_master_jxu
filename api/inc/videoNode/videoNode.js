@@ -58,16 +58,20 @@
 				for (var i = 0; i < w.length; i++) {
 					w[i] = '('+vid + ",'" + w[i] + "')";
 				}
-				var str = 'INSERT INTO `video_node` (`vid`, `node_ip`) VALUES ' + w.join(',');
-				var connection = mysql.createConnection(cfg0);
-				connection.connect();	
-				connection.query(str, function (error, results, fields) {
-					connection.end();
-					if (error) { cbk(str); } 
-					else if (results) { 
-						cbk(results);
-					} else { cbk(str + '==');  }
-				});  			
+				if (w) {
+					var str = 'INSERT INTO `video_node` (`vid`, `node_ip`) VALUES ' + w.join(',');
+					var connection = mysql.createConnection(cfg0);
+					connection.connect();	
+					connection.query(str, function (error, results, fields) {
+						connection.end();
+						if (error) { cbk(str); } 
+						else if (results) { 
+							cbk(results);
+						} else { cbk(str + '==');  }
+					});  
+				else {
+					cbk(false);
+				}
 			};	
 			CP.serial(
 				_f,
