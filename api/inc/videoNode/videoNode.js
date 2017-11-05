@@ -13,25 +13,26 @@
 			_f['P0'] = function(cbk) {  
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
-				var str = "SELECT * FROM `video_node` WHERE `vid` = '" + vid + "' ";
+				var str = "SELECT `node_ip`, `status` FROM `video_node` WHERE `vid` = '" + vid + "' ";
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error) { cbk(false); CP.exit = 1;
 					} else if (results) { 
-						var v = [];
+						var v = [], rv = [];
 						for (var i = 0; i < results.length; i++) {
 							v[v.length] = results[i]['node_ip'];
+							if (results[i]['status']) rv[rv.length] = results[i]['node_ip'];
 						}
-						cbk(v);
+						cbk({list:v, cached:rv});
 					} else { cbk(false); CP.exit = 1; }
 				});  
 			};
 			_f['P1'] = function(cbk) {  
-				var cnt = CP.data.P0.length, max = 2;
+				var cnt = CP.data.P0.list.length, max = 2;
 				if ((max - cnt) > 0) {
 					var connection = mysql.createConnection(cfg0);
 					connection.connect();
-					var w = JSON.parse(JSON.stringify(CP.data.P0));
+					var w = JSON.parse(JSON.stringify(CP.data.P0.list));
 
 					for (var i = 0; i < w.length; i++) {
 						w[i] = "'" + w[i] + "'";
@@ -76,10 +77,13 @@
 			CP.serial(
 				_f,
 				function(data) {
-					var d = [];
-					if (CP.data.P0) d = d.concat(CP.data.P0);
+					var d = [], cached = [];
+					if (CP.data.P0) {
+						d = d.concat(CP.data.P0.list);
+						cached = cached.concat(CP.data.P0.cached)
+					}	
 					if ((CP.data.P1) && (CP.data.P2)) d = d.concat(CP.data.P1);
-					callback({status:'success', _spent_time:data._spent_time, data:d});
+					callback({status:'success', _spent_time:data._spent_time, data:d, cached:cached});
 				},
 				6000
 			);
