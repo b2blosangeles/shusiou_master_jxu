@@ -58,7 +58,7 @@
 				for (var i = 0; i < w.length; i++) {
 					w[i] = '('+vid + ",'" + w[i] + "')";
 				}
-				if (w) {
+				if (w.length) {
 					var str = 'INSERT INTO `video_node` (`vid`, `node_ip`) VALUES ' + w.join(',');
 					var connection = mysql.createConnection(cfg0);
 					connection.connect();	
