@@ -35,8 +35,9 @@ switch(opt) {
 				
 				for (var i = 0; i < w.length; i++) {
 					w[i] = "'" + w[i] + "'";
-				}				
-				var str = "SELECT * FROM `cloud_node` WHERE `node_ip` NOT IN (''," + w.join(',') + ") LIMIT " + max + " ";
+				}
+				var wstr = (w.join(',');
+				var str = "SELECT * FROM `cloud_node` WHERE `node_ip` NOT IN (" + ((wstr)?wstr:"''") + ") LIMIT " + max + " ";
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error) { cbk(str); CP.exit = 1;} 
