@@ -11,8 +11,6 @@ switch(opt) {
 		vn.getIP(1, function(data){
 			res.send(data);
 		});
-		res.send(opt);
-		return true;
 		var vid = req.query['vid'];
 		if (!vid) {
 			res.send({status:'failure', message:'Missing vid'});
