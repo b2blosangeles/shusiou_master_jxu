@@ -7,7 +7,7 @@ switch(opt) {
 	case 'getVideoNode':
 		delete require.cache[env.site_path + '/api/inc/videoNode/videoNode.js'];
 		var videoNode = require(env.site_path + '/api/inc/videoNode/videoNode.js');
-		var vn = new  videoNode();
+		var vn = new  videoNode(env);
 		vn.getIP(1, function(data){
 			res.send(data);
 		});
