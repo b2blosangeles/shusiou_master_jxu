@@ -1,5 +1,5 @@
 (function () { 
-	var obj =  function () {
+	var obj =  function (env) {
 		var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     		cfg0 = require(env.site_path + '/api/cfg/db.json');		
 		this.getIP = function(vid, callback) {
