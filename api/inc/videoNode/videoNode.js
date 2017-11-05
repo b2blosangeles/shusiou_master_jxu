@@ -76,7 +76,10 @@
 			CP.serial(
 				_f,
 				function(data) {
-					callback({status:'success', _spent_time:data._spent_time, data:CP.data.P0.concat(CP.data.P1)});
+					var d = [];
+					if (data:CP.data.P0) d.concat(data:CP.data.P0);
+					if (data:CP.data.P1) d.concat(data:CP.data.P1);
+					callback({status:'success', _spent_time:data._spent_time, data:d});
 				},
 				6000
 			);
