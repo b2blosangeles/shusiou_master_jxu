@@ -32,10 +32,10 @@ switch(opt) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var w = JSON.parse(JSON.stringify(CP.data.P0));
-				/*
+				
 				for (var i = 0; i < w.length; i++) {
-					w[i] = "'" + w['i'] + "'";
-				}*/				
+					w[i] = "'" + w[i] + "'";
+				}				
 				var str = "SELECT * FROM `cloud_node` WHERE `node_ip` NOT IN (" + w.join(',') + ") LIMIT " + max + " ";
 				connection.query(str, function (error, results, fields) {
 					connection.end();
