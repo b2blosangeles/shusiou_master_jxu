@@ -17,12 +17,27 @@ switch(opt) {
 			var str = "SELECT * FROM `video_node` WHERE `vid` = '" + vid + "' ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (error)  cbk(false);
-				else if (results) { 
+				if (error) { cbk(false); CP.exit = 1;
+				} else if (results) { 
 					cbk(results);
-				} else cbk(false);
+				} else { cbk(false); CP.exit = 1; }
 			});  
 		};
+		_f['P1'] = function(cbk) {  
+			var cnt = CP.data.P0.length, max = 2;
+			if ((max - cnt) > 0) {
+				var connection = mysql.createConnection(cfg0);
+				connection.connect();
+				var str = "SELECT * FROM `cloud_node` WHERE 1 LIMIT " + max + " ";
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					if (error) { cbk(false); CP.exit = 1;
+					} else if (results) { 
+						cbk(results);
+					} else { cbk(false); CP.exit = 1; }
+				});  
+			}	
+		};		
 		CP.serial(
 			_f,
 			function(data) {
