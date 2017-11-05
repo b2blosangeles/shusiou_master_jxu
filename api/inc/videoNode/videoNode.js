@@ -3,7 +3,7 @@
 		var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     		cfg0 = require(env.site_path + '/api/cfg/db.json');		
 		this.getIP = function(vid, callback) {
-			callback('hh');
+			callback('hhs');
 			/*
 			return true;
 			if (!vid) {
