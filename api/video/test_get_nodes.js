@@ -57,7 +57,15 @@ switch(opt) {
 				w[i] = '('+vid + ",'" + w[i] + "')";
 			}
 			var str = 'INSERT INTO `video_node` (`vid`, `node_ip`) VALUES ' + w.join(',');
-			cbk(str);
+			var connection = mysql.createConnection(cfg0);
+			connection.connect();	
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				if (error) { cbk(str); } 
+				else if (results) { 
+					cbk(results);
+				} else { cbk(str + '==');  }
+			});  			
 		};	
 		CP.serial(
 			_f,
