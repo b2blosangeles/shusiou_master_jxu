@@ -49,7 +49,9 @@ switch(opt) {
 						cbk(v);
 					} else { cbk(str); CP.exit = 1; }
 				});  
-			}	
+			} else {
+				cbk(false); CP.exit = 1;
+			}
 		};
 		_f['P2'] = function(cbk) {  
 			var w = JSON.parse(JSON.stringify(CP.data.P1));	
@@ -72,7 +74,7 @@ switch(opt) {
 			function(data) {
 				res.send({status:'success', _spent_time:data._spent_time, data:data.results});
 			},
-			3000
+			6000
 		);
 		break;
 	default:
