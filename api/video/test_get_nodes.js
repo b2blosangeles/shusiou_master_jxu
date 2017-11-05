@@ -20,7 +20,7 @@ switch(opt) {
 				} else if (results) { 
 					var v = [];
 					for (var i = 0; i < results.length; i++) {
-						v[v.length] = results[i]['node_ip'];
+						v[v.length] = "'"+results[i]['node_ip']+"'";
 					}
 					cbk(v);
 				} else { cbk(false); CP.exit = 1; }
