@@ -7,7 +7,6 @@ var opt = req.query['opt'];
 switch(opt) {
 	case 'getVideoNode':
 		var vid = req.query['vid'];
-
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 		
