@@ -72,7 +72,7 @@ switch(opt) {
 			function(data) {
 				res.send({status:'success', _spent_time:data._spent_time, data:data.results});
 			},
-			30000
+			3000
 		);
 		break;
 	default:
