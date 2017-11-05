@@ -4,6 +4,7 @@
     		//cfg0 = require(env.site_path + '/api/cfg/db.json');		
 		this.getIP = function(vid, callback) {
 			callback('hh');
+			/*
 			return true;
 			if (!vid) {
 				callback({status:'failure', message:'Missing vid'});
@@ -12,7 +13,7 @@
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 
-			_f['P0'] = function(cbk) {  /* Clean old download_falure related record */
+			_f['P0'] = function(cbk) {  
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = "SELECT * FROM `video_node` WHERE `vid` = '" + vid + "' ";
@@ -80,6 +81,7 @@
 			);			
 			
 			callback('getIP');
+			*/
 		};	
 	};
 	module.exports = obj;
