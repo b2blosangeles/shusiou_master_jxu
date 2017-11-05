@@ -77,8 +77,8 @@
 				_f,
 				function(data) {
 					var d = [];
-					if (CP.data.P0) d.concat(CP.data.P0);
-					if (CP.data.P1) d.concat(CP.data.P1);
+					if (CP.data.P0) d = d.concat(CP.data.P0);
+					if (CP.data.P1) d = d.concat(CP.data.P1);
 					callback({status:'success', _spent_time:data._spent_time, data:d});
 				},
 				6000
