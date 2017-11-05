@@ -53,9 +53,9 @@ switch(opt) {
 		_f['P2'] = function(cbk) {  
 			var w = JSON.parse(JSON.stringify(CP.data.P1));	
 			for (var i = 0; i < w.length; i++) {
-				w[i] = vid + ",'" + w[i] + "'";
+				w[i] = '('+vid + ",'" + w[i] + "')";
 			}			
-			cbk(w);
+			cbk(w.join(,));
 		};	
 		CP.serial(
 			_f,
