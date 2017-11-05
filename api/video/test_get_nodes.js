@@ -33,10 +33,17 @@ switch(opt) {
 					connection.end();
 					if (error) { cbk(false); CP.exit = 1;
 					} else if (results) { 
-						cbk(results);
+						var v = [];
+						for (var i = 0; i < results.length; i++) {
+							v[v.length] = results[i]['node_ip'];
+						}
+						cbk(v);
 					} else { cbk(false); CP.exit = 1; }
 				});  
 			}	
+		};
+		_f['P2'] = function(cbk) {  
+			for 	
 		};		
 		CP.serial(
 			_f,
