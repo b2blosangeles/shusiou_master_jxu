@@ -9,8 +9,7 @@
 			}
 			var CP = new pkg.crowdProcess();
 			var _f = {};
-			callback('niu');
-			return true;
+
 			_f['P0'] = function(cbk) {  
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
