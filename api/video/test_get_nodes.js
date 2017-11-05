@@ -54,8 +54,9 @@ switch(opt) {
 			var w = JSON.parse(JSON.stringify(CP.data.P1));	
 			for (var i = 0; i < w.length; i++) {
 				w[i] = '('+vid + ",'" + w[i] + "')";
-			}			
-			cbk(w.join(,));
+			}
+			var str = 'INSERT INTO `video_node` (`vid`, `node_ip`) VALUES ' + w.join(',');
+			cbk(str);
 		};	
 		CP.serial(
 			_f,
