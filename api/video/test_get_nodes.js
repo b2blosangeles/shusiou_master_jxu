@@ -36,12 +36,12 @@ switch(opt) {
 				for (var i = 0; i < w.length; i++) {
 					w[i] = "'" + w[i] + "'";
 				}
-				var wstr = (w.join(',');
+				var wstr = w.join(',');
 				var str = "SELECT * FROM `cloud_node` WHERE `node_ip` NOT IN (" + ((wstr)?wstr:"''") + ") LIMIT " + max + " ";
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error) { cbk(str); CP.exit = 1;} 
-					else if (results) { 
+					else if (results.length) { 
 						var v = [];
 						for (var i = 0; i < results.length; i++) {
 							v[v.length] = results[i]['node_ip'];
