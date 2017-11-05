@@ -31,7 +31,7 @@ switch(opt) {
 			if ((max - cnt) > 0) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
-				var str = "SELECT * FROM `cloud_node` WHERE `node_ip` IS NOT IN () LIMIT " + max + " ";
+				var str = "SELECT * FROM `cloud_node` WHERE `node_ip` IS NOT IN ('') LIMIT " + max + " ";
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error) { cbk(false); CP.exit = 1;} 
