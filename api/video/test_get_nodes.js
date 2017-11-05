@@ -31,7 +31,7 @@ switch(opt) {
 			if ((max - cnt) > 0) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
-				var w = CP.data.P0;
+				var w = JSON.parse(JSON.stringify(CP.data.P0));
 				for (var i = 0; i < w.length; i++) {
 					w[i] = "'" + w['node_ip'] + "'";
 				}				
