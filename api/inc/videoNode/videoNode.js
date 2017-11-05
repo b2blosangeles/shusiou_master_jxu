@@ -83,7 +83,7 @@
 						cached = cached.concat(CP.data.P0.cached)
 					}	
 					if ((CP.data.P1) && (CP.data.P2)) d = d.concat(CP.data.P1);
-					callback({status:'success', _spent_time:data._spent_time, data:d, cached:cached});
+					callback({status:'success', _spent_time:data._spent_time, list:d, cached_list:cached});
 				},
 				6000
 			);
