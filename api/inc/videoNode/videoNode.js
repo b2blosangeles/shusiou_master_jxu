@@ -3,9 +3,6 @@
 		var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     		cfg0 = require(env.site_path + '/api/cfg/db.json');		
 		this.getIP = function(vid, callback) {
-			callback('hhs');
-			/*
-			return true;
 			if (!vid) {
 				callback({status:'failure', message:'Missing vid'});
 				return true;
@@ -78,10 +75,7 @@
 					callback({status:'success', _spent_time:data._spent_time, data:data.results});
 				},
 				6000
-			);			
-			
-			callback('getIP');
-			*/
+			);
 		};	
 	};
 	module.exports = obj;
