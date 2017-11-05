@@ -37,7 +37,7 @@
 						w[i] = "'" + w[i] + "'";
 					}
 					var wstr = w.join(',');
-					var str = "SELECT * FROM `cloud_node` WHERE `free` < 50 AND `node_ip` NOT IN (" + ((wstr)?wstr:"''") + ") LIMIT " + max + " ";
+					var str = "SELECT * FROM `cloud_node` WHERE `free` > 50 AND `node_ip` NOT IN (" + ((wstr)?wstr:"''") + ") LIMIT " + max + " ";
 					connection.query(str, function (error, results, fields) {
 						connection.end();
 						if (error) { cbk(str); CP.exit = 1;} 
