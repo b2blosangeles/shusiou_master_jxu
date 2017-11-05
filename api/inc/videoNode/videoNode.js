@@ -69,7 +69,7 @@
 							cbk(results);
 						} else { cbk(str + '==');  }
 					});  
-				else {
+				} else {
 					cbk(false);
 				}
 			};	
