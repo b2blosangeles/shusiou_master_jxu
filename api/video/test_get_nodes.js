@@ -34,14 +34,14 @@ switch(opt) {
 				var str = "SELECT * FROM `cloud_node` WHERE `node_ip` IS NOT IN ('') LIMIT " + max + " ";
 				connection.query(str, function (error, results, fields) {
 					connection.end();
-					if (error) { cbk(false); CP.exit = 1;} 
+					if (error) { cbk(str); CP.exit = 1;} 
 					else if (results) { 
 						var v = [];
 						for (var i = 0; i < results.length; i++) {
 							v[v.length] = results[i]['node_ip'];
 						}
 						cbk(v);
-					} else { cbk(false); CP.exit = 1; }
+					} else { cbk(str); CP.exit = 1; }
 				});  
 			}	
 		};
