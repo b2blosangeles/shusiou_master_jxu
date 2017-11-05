@@ -6,7 +6,7 @@ var opt = req.query['opt'];
 switch(opt) {
 	case 'getVideoNode':
 		var videoNode = require(env.site_path + '/api/inc/videoNode/videoNode.js');
-		var vn = new  videoNode(env);
+		var vn = new  videoNode();
 		vn.getIP(1, function(data){
 			res.send(data);
 		});
