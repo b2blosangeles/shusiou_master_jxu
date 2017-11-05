@@ -7,6 +7,10 @@ var opt = req.query['opt'];
 switch(opt) {
 	case 'getVideoNode':
 		var vid = req.query['vid'];
+		if (!vid) {
+			res.send({status:'failure', message:'Missing vid'});
+			return true;
+		}
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 		
