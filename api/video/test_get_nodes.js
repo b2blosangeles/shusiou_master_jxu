@@ -1,11 +1,12 @@
-var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
-    mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     cfg0 = require(env.site_path + '/api/cfg/db.json');
 
 var opt = req.query['opt'];
 
 switch(opt) {
 	case 'getVideoNode':
+		res.send(opt);
+		return true;
 		var vid = req.query['vid'];
 		if (!vid) {
 			res.send({status:'failure', message:'Missing vid'});
