@@ -31,8 +31,8 @@ switch(opt) {
 				var str = "SELECT * FROM `cloud_node` WHERE 1 LIMIT " + max + " ";
 				connection.query(str, function (error, results, fields) {
 					connection.end();
-					if (error) { cbk(false); CP.exit = 1;
-					} else if (results) { 
+					if (error) { cbk(false); CP.exit = 1;} 
+					else if (results) { 
 						var v = [];
 						for (var i = 0; i < results.length; i++) {
 							v[v.length] = results[i]['node_ip'];
@@ -41,9 +41,6 @@ switch(opt) {
 					} else { cbk(false); CP.exit = 1; }
 				});  
 			}	
-		};
-		_f['P2'] = function(cbk) {  
-			for 	
 		};		
 		CP.serial(
 			_f,
