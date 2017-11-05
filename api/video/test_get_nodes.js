@@ -44,7 +44,10 @@ switch(opt) {
 					} else { cbk(false); CP.exit = 1; }
 				});  
 			}	
-		};		
+		};
+		_f['P2'] = function(cbk) {  
+			cbk('niu');
+		};	
 		CP.serial(
 			_f,
 			function(data) {
