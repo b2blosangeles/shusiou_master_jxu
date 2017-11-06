@@ -62,6 +62,8 @@ switch(opt) {
 											list[ list.length] = results[j].vid;
 											// else list_null[ list_null.length] = results[j].vid;
 										}
+										cbk('http:/'+results[i].node_ip+'/api/whoami.api'); 
+										/*
 										request({
 										      url: 'http:/'+results[i].node_ip+'/api/whoami.api',
 										      headers: {
@@ -72,7 +74,7 @@ switch(opt) {
 											    var s = {};
 											    try { s = JSON.parse(body); } catch (e) {}
 											    cbk(s.value + '--' + JSON.stringify(space));
-										    });										
+										    });	*/									
 									} else { cbk(false); }
 								});  
 							}	
