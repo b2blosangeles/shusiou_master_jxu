@@ -69,9 +69,8 @@ switch(opt) {
 										      },
 										      form:{list:list}
 										    }, function (error, resp, body) { 
-											    var s = {};
-											    try { s = JSON.parse(body); } catch (e) {}
-											    cbk(body);
+											    if (error) cbk(error.message);
+											    else cbk(body);
 										    });									
 									} else { cbk(false); }
 								});  
