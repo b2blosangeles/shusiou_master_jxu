@@ -31,9 +31,11 @@ switch(opt) {
 				var CP = new pkg.crowdProcess();
 				var _f = {};
 				for (var i = 0; i < results.length; i++) {
-					_f['D_' + i] = function(cbk) {
-						cbk(results[i].node_ip);
-					}
+					_f['D_' + i] = (function(i) {
+						return function(cbk) {
+							cbk(results[i].node_ip);
+						}	
+					})(i);
 				}
 				CP.serial(
 			//	CP.parallel(
