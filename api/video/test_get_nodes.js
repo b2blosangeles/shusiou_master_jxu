@@ -72,7 +72,7 @@ switch(opt) {
 											    if (error) cbk({status:'failure', message:error.message});
 											    else {
 												var v = [];
-												try { v = JSON.parse('bodys'); } catch(e) {
+												try { v = JSON.parse(body); } catch(e) {
 													v = {status:'failure', message:e.message}
 												}
 												cbk(v);
