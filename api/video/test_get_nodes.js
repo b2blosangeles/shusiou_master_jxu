@@ -30,7 +30,6 @@ switch(opt) {
 			else if (results) { 
 				var CP = new pkg.crowdProcess();
 				var _f = {};
-				res.send(results); 
 				for (var i = 0; i < results.length; i++) {
 					_f['D_' + i] = function(cbk) {
 						cbk(results[i].node_ip);
