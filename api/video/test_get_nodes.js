@@ -20,9 +20,7 @@ switch(opt) {
 		
 		var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     		cfg0 = require(env.site_path + '/api/cfg/db.json');		
-		
-		
-		
+
 		var connection = mysql.createConnection(cfg0);
 		connection.connect();
 		var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
@@ -30,23 +28,22 @@ switch(opt) {
 			connection.end();
 			if (error) { res.send(false); } 
 			else if (results) { 
-				res.send(results); 
-				/*
 				var CP = new pkg.crowdProcess();
 				var _f = {};
+				res.send(results); 
 				for (var i = 0; i < results.length; i++) {
 					_f['D_' + i] = function(cbk) {
 						cbk(results[i].node_ip);
 					}
 				}
-				CP.parallel(
+				CP.serial(
+			//	CP.parallel(
 					_f,
 					function(data) {
 						res.send(data);
 					},
 					6000
 				);
-				*/
 			} else { res.send(false); }
 		});  
 		return true;		
