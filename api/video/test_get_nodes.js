@@ -24,7 +24,7 @@ switch(opt) {
 		
 		var CP_s = new pkg.crowdProcess();
 		var _f_s = {};		
-		var _f_s['ip']  = function(cbk_s) {
+		_f_s['ip']  = function(cbk_s) {
 		    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 			if ((err) || !data) {
 				cbk_s(false); CPs.exit = 1;		
@@ -33,7 +33,7 @@ switch(opt) {
 			}
 		    });
 		}
-		var _f_s['P0']  = function(cbk_s) {
+		_f_s['P0']  = function(cbk_s) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 			var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
