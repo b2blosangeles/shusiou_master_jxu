@@ -17,6 +17,22 @@ switch(opt) {
 		return true;
 		break;
 	case 'getVideoNodeStatus':
+		
+		var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+    		cfg0 = require(env.site_path + '/api/cfg/db.json');		
+		
+		var connection = mysql.createConnection(cfg0);
+		connection.connect();
+		var str = "SELECT `node_ip`, `vid`, `status` FROM `video_node` WHERE 1 ";
+		connection.query(str, function (error, results, fields) {
+			connection.end();
+			if (error) { res.send(false); } 
+			else if (results) { 
+				res.send(results);
+			} else { res.send(false); }
+		});  
+		return true;
+		
 		delete require.cache[env.site_path + '/api/inc/videoNode/videoNode.js'];
 		var videoNode = require(env.site_path + '/api/inc/videoNode/videoNode.js');
 
