@@ -21,7 +21,7 @@ switch(opt) {
 		var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     		cfg0 = require(env.site_path + '/api/cfg/db.json');		
 		
-		var CP = new pkg.crowdProcess();
+		
 		
 		var connection = mysql.createConnection(cfg0);
 		connection.connect();
@@ -30,6 +30,7 @@ switch(opt) {
 			connection.end();
 			if (error) { res.send(false); } 
 			else if (results) { 
+				var CP = new pkg.crowdProcess();
 				var _f = {};
 				for (var i = 0; i < results.length; i++) {
 					_f['D_' + i] = function(cbk) {
