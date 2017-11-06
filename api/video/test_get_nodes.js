@@ -64,9 +64,9 @@ switch(opt) {
 										}
 										pkg.request({
 										      url: 'http://'+results[i].node_ip+'/api/node_audit.api?opt=files_status',
-										      headers: {
-											"content-type": "application/json"
-										      },
+										  //    headers: {
+										//	"content-type": "application/json"
+										  //    },
 										      form:{list:list}
 										    }, function (error, resp, body) { 
 											    if (error) cbk({status:'failure', message:error.message});
