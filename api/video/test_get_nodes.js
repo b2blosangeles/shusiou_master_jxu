@@ -22,9 +22,9 @@ switch(opt) {
     		cfg0 = require(env.site_path + '/api/cfg/db.json');		
 
 		
-		var CPs = new pkg.crowdProcess();
-		var _fs = {};		
-		var _fs['ip']  = function(cbk_s) {
+		var CP_s = new pkg.crowdProcess();
+		var _f_s = {};		
+		var _f_s['ip']  = function(cbk_s) {
 		    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 			if ((err) || !data) {
 				cbk_s(false); CPs.exit = 1;		
@@ -33,25 +33,16 @@ switch(opt) {
 			}
 		    });
 		}
-		var _fs['P0']  = function(cbk_s) {
+		var _f_s['P0']  = function(cbk_s) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 			var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (error) { res.send(false); } 
+				if (error) { cbk_s(false); } 
 				else if (results) { 
 					var CP = new pkg.crowdProcess();
-					var _f = {};
-					_f['P0'] = function(cbk) {
-					    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
-						if ((err) || !data) {
-							cbk(false);		
-						} else {
-							cbk(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
-						}
-					    });
-					};				
+					var _f = {};				
 					for (var i = 0; i < results.length; i++) {
 						_f[results[i].node_ip] = (function(i) {
 							return function(cbk) {
@@ -78,8 +69,8 @@ switch(opt) {
 				} else { cbk_s(false); }
 			}); 
 		}
-		CPs.serial(
-			_fs,
+		CP_s.serial(
+			_f_s,
 			function(data_s) {
 				res.send(data_s.results);
 			},
