@@ -69,7 +69,7 @@ switch(opt) {
 										      },
 										      form:{list:list}
 										    }, function (error, resp, body) { 
-											    if (error) cbk(error.message);
+											    if (error) cbk({status:'failure', message:error.message});
 											    else cbk(body);
 										    });									
 									} else { cbk(false); }
