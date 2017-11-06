@@ -52,14 +52,14 @@ switch(opt) {
 								    "LEFT JOIN `video` B ON A.`vid` = B.`video_code` "+
 								    "WHERE A.`node_ip` = '" + results[i].node_ip + "' "+
 								    " AND B.server_ip = '" + CP_s.data.ip + "'";
-								connection.query(str, function (error, results, fields) {
+								connection.query(str, function (error, results1, fields) {
 									connection.end();
 									if (error) { cbk(false); } 
 									else if (results) {
 										var list = [], list_done = [];
-										for (var j = 0; j < results.length;j++) {
+										for (var j = 0; j < results1.length;j++) {
 											// if (results[j].status)  
-											list[ list.length] = results[j].vid;
+											list[ list.length] = results1[j].vid;
 											// else list_null[ list_null.length] = results[j].vid;
 										}
 										cbk('http:/'+results[i].node_ip+'/api/whoami.api'); 
