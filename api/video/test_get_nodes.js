@@ -21,49 +21,70 @@ switch(opt) {
 		var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     		cfg0 = require(env.site_path + '/api/cfg/db.json');		
 
-		var connection = mysql.createConnection(cfg0);
-		connection.connect();
-		var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
-		connection.query(str, function (error, results, fields) {
-			connection.end();
-			if (error) { res.send(false); } 
-			else if (results) { 
-				var CP = new pkg.crowdProcess();
-				var _f = {};
-				_f['P0'] = function(cbk) {
-				    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
-					if ((err) || !data) {
-						cbk(false);		
-					} else {
-						cbk(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
+		
+		var CPs = new pkg.crowdProcess();
+		var _fs = {};		
+		var _fs['ip']  = function(cbk_s) {
+		    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+			if ((err) || !data) {
+				cbk_s(false); CPs.exit = 1;		
+			} else {
+				cbk_s(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
+			}
+		    });
+		}
+		var _fs['P0']  = function(cbk_s) {
+			var connection = mysql.createConnection(cfg0);
+			connection.connect();
+			var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				if (error) { res.send(false); } 
+				else if (results) { 
+					var CP = new pkg.crowdProcess();
+					var _f = {};
+					_f['P0'] = function(cbk) {
+					    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+						if ((err) || !data) {
+							cbk(false);		
+						} else {
+							cbk(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
+						}
+					    });
+					};				
+					for (var i = 0; i < results.length; i++) {
+						_f[results[i].node_ip] = (function(i) {
+							return function(cbk) {
+								var connection = mysql.createConnection(cfg0);
+								connection.connect();
+								var str = "SELECT `vid`, `status` FROM `video_node` WHERE node_ip = '" + results[i].node_ip + "' ";
+								connection.query(str, function (error, results, fields) {
+									connection.end();
+									if (error) { cbk(false); } 
+									else if (results) { 
+										cbk(results);
+									} else { cbk(false); }
+								});  
+							}	
+						})(i);
 					}
-				    });
-				};				
-				for (var i = 0; i < results.length; i++) {
-					_f[results[i].node_ip] = (function(i) {
-						return function(cbk) {
-							var connection = mysql.createConnection(cfg0);
-							connection.connect();
-							var str = "SELECT `vid`, `status` FROM `video_node` WHERE node_ip = '" + results[i].node_ip + "' ";
-							connection.query(str, function (error, results, fields) {
-								connection.end();
-								if (error) { cbk(false); } 
-								else if (results) { 
-									cbk(results);
-								} else { cbk(false); }
-							});  
-						}	
-					})(i);
-				}
-				CP.parallel(
-					_f,
-					function(data) {
-						res.send(data.results);
-					},
-					6000
-				);
-			} else { res.send(false); }
-		});  
+					CP.parallel(
+						_f,
+						function(data) {
+							cbk_s(data.results);
+						},
+						6000
+					);
+				} else { cbk_s(false); }
+			}); 
+		}
+		CPs.serial(
+			_fs,
+			function(data_s) {
+				res.send(data_s.results);
+			},
+			6000
+		);		
 		return true;		
 		
 		var connection = mysql.createConnection(cfg0);
