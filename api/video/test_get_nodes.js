@@ -20,6 +20,18 @@ switch(opt) {
 		
 		var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     		cfg0 = require(env.site_path + '/api/cfg/db.json');		
+	
+		var connection = mysql.createConnection(cfg0);
+		connection.connect();
+		var str = "SELECT A.* FROM `cloud_node` A LEFT JOIN `video_node` B ON A.`node_ip` = B.`node_ip`  WHERE 1 ";
+		connection.query(str, function (error, results, fields) {
+			connection.end();
+			if (error) { res.send(false); } 
+			else if (results) { 
+				res.send(results);
+			} else { res.send(false); }
+		});  
+		return true;		
 		
 		var connection = mysql.createConnection(cfg0);
 		connection.connect();
