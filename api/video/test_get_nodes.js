@@ -63,7 +63,7 @@ switch(opt) {
 											// else list_null[ list_null.length] = results[j].vid;
 										}
 										pkg.request({
-										      url: 'http:/'+results[i].node_ip+'/api/whoami.api',
+										      url: '34http:/'+results[i].node_ip+'/api/whoami.api',
 										      headers: {
 											"content-type": "application/json"
 										      },
@@ -71,7 +71,7 @@ switch(opt) {
 										    }, function (error, resp, body) { 
 											    var s = {};
 											    try { s = JSON.parse(body); } catch (e) {}
-											    cbk(s.value);
+											    cbk(s.value +'34');
 										    });									
 									} else { cbk(false); }
 								});  
