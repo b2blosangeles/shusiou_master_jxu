@@ -73,7 +73,7 @@ switch(opt) {
 											    else {
 												var v = [];
 												try { v = JSON.parse(bodys); } catch(e) {
-													v = {status:'failure', e.message}
+													v = {status:'failure', message:e.message}
 												}
 												cbk(v);
 											    }    
