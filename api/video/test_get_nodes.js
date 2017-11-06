@@ -23,7 +23,7 @@ switch(opt) {
 	
 		var connection = mysql.createConnection(cfg0);
 		connection.connect();
-		var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN SELECT `node_ip` FROM `video_node` ";
+		var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
 		connection.query(str, function (error, results, fields) {
 			connection.end();
 			if (error) { res.send(false); } 
