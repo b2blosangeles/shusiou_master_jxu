@@ -31,7 +31,7 @@ switch(opt) {
 		var vn = new  videoNode(env, pkg);
 		vn.getIP(vid, function(data){
 			pkg.fs.stat(fn, function(err, stat) {
-				res.send({path:data, state:stat});
+				res.send({ips:data.list, state:stat.size});
 			});			
 		});
 		return true;
