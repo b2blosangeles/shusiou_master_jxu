@@ -71,7 +71,7 @@ switch(opt) {
 										    }, function (error, resp, body) { 
 											    var s = {};
 											    try { s = JSON.parse(body); } catch (e) {}
-											    cbk(s.value + '--' + JSON.stringify(space));
+											    cbk(s.value);
 										    });									
 									} else { cbk(false); }
 								});  
