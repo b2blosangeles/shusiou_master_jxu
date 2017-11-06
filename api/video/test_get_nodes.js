@@ -23,7 +23,7 @@ switch(opt) {
 	
 		var connection = mysql.createConnection(cfg0);
 		connection.connect();
-		var str = "SELECT A.* FROM `cloud_node` A LEFT JOIN `video_node` B ON A.`node_ip` = B.`node_ip`  WHERE 1 ";
+		var str = "SELECT A.`node_ip` FROM `cloud_node` A LEFT JOIN `video_node` B ON A.`node_ip` = B.`node_ip`  WHERE 1 ";
 		connection.query(str, function (error, results, fields) {
 			connection.end();
 			if (error) { res.send(false); } 
