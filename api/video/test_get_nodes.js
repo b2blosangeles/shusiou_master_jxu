@@ -62,7 +62,17 @@ switch(opt) {
 											list[ list.length] = results[j].vid;
 											// else list_null[ list_null.length] = results[j].vid;
 										}
-										cbk(list);
+										request({
+										      url: 'http:/'+results[i].node_ip+'/api/whoami.api',
+										      headers: {
+											"content-type": "application/json"
+										      },
+										      form:{list:list}
+										    }, function (error, resp, body) { 
+											    var s = {};
+											    try { s = JSON.parse(body); } catch (e) {}
+											    cbk(s.value + '--' + JSON.stringify(space));
+										    });										
 									} else { cbk(false); }
 								});  
 							}	
