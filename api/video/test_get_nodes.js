@@ -50,11 +50,18 @@ switch(opt) {
 								connection.connect();
 								var str = "SELECT A.`vid`, A.`status`, B.`server_ip` FROM `video_node` A "+
 								    "LEFT JOIN `video` B ON A.`vid` = B.`video_code` "+
-								    "WHERE A.`node_ip` = '" + results[i].node_ip + "' ";
+								    "WHERE A.`node_ip` = '" + results[i].node_ip + "' "+
+								    " AND B.server_ip = '" + CP.data.ip + "'";
 								connection.query(str, function (error, results, fields) {
 									connection.end();
 									if (error) { cbk(false); } 
-									else if (results) { 
+									else if (results) {
+										/*
+										var list = [];
+										for (var j = 0; j < results.length;j++) {
+											if 
+										}
+										*/
 										cbk(results);
 									} else { cbk(false); }
 								});  
