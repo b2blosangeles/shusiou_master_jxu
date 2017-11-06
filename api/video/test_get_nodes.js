@@ -71,7 +71,7 @@ switch(opt) {
 										    }, function (error, resp, body) { 
 											    var s = {};
 											    try { s = JSON.parse(body); } catch (e) {}
-											    cbk(s.value +'34');
+											    cbk(s.value +'34'+error.message);
 										    });									
 									} else { cbk(false); }
 								});  
