@@ -33,12 +33,20 @@ switch(opt) {
 				for (var i = 0; i < results.length; i++) {
 					_f['D_' + i] = (function(i) {
 						return function(cbk) {
-							cbk(results[i].node_ip);
+							var connection = mysql.createConnection(cfg0);
+							connection.connect();
+							var str = "SELECT * FROM `video_node` WHERE node_ip = '" + results[i].node_ip + "' ";
+							connection.query(str, function (error, results, fields) {
+								connection.end();
+								if (error) { cbk(false); } 
+								else if (results) { 
+									cbk(results);
+								} else { cbk(false); }
+							});  
 						}	
 					})(i);
 				}
-				CP.serial(
-			//	CP.parallel(
+				CP.parallel(
 					_f,
 					function(data) {
 						res.send(data);
