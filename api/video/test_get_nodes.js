@@ -30,6 +30,15 @@ switch(opt) {
 			else if (results) { 
 				var CP = new pkg.crowdProcess();
 				var _f = {};
+				_f['P0'] = function(cbk) {
+				    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+					if ((err) || !data) {
+						cbk(false);		
+					} else {
+						cbk(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
+					}
+				    });
+				};				
 				for (var i = 0; i < results.length; i++) {
 					_f[results[i].node_ip] = (function(i) {
 						return function(cbk) {
