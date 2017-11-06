@@ -30,6 +30,8 @@ switch(opt) {
 			connection.end();
 			if (error) { res.send(false); } 
 			else if (results) { 
+				res.send(results); 
+				/*
 				var CP = new pkg.crowdProcess();
 				var _f = {};
 				for (var i = 0; i < results.length; i++) {
@@ -44,6 +46,7 @@ switch(opt) {
 					},
 					6000
 				);
+				*/
 			} else { res.send(false); }
 		});  
 		return true;		
