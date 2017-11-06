@@ -56,12 +56,11 @@ switch(opt) {
 									connection.end();
 									if (error) { cbk(false); } 
 									else if (results) {
-										/*
-										var list = [];
+										var list = [], list_null = [];
 										for (var j = 0; j < results.length;j++) {
-											if 
+											if (results[j].status)  list[ list.length] = results[j].vid;
+											else list_null[ list_null.length] = results[j].vid;
 										}
-										*/
 										cbk(results);
 									} else { cbk(false); }
 								});  
