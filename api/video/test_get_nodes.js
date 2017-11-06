@@ -31,7 +31,7 @@ switch(opt) {
 				var CP = new pkg.crowdProcess();
 				var _f = {};
 				for (var i = 0; i < results.length; i++) {
-					_f['D_' + i] = (function(i) {
+					_f[results[i].node_ip] = (function(i) {
 						return function(cbk) {
 							var connection = mysql.createConnection(cfg0);
 							connection.connect();
