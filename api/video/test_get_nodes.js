@@ -25,15 +25,15 @@ switch(opt) {
 		var mnt_folder = '/mnt/shusiou-video/';
 		var fn = mnt_folder + 'videos/' + vid + '/video/video.mp4';
 		
-		pkg.fs.stat(fn, function(err, stat) {
-			res.send(stat);
+
+		
+		
+		var vn = new  videoNode(env, pkg);
+		vn.getIP(vid, function(data){
+			pkg.fs.stat(fn, function(err, stat) {
+				res.send({path:data, state:stat});
+			});			
 		});
-		
-		
-	//	var vn = new  videoNode(env, pkg);
-	//	vn.getIP(vid, function(data){
-	//		res.send(data);
-	//	});
 		return true;
 		break;		
 	default:
