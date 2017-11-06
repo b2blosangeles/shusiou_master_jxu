@@ -62,7 +62,7 @@ switch(opt) {
 											list[ list.length] = results1[j].vid;
 											// else list_null[ list_null.length] = results[j].vid;
 										}
-										request({
+										pkg.request({
 										      url: 'http:/'+results[i].node_ip+'/api/whoami.api',
 										      headers: {
 											"content-type": "application/json"
