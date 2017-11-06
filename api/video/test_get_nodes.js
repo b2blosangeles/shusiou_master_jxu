@@ -70,7 +70,7 @@ switch(opt) {
 										      form:{list:list}
 										    }, function (error, resp, body) { 
 											    if (error) cbk({status:'failure', message:error.message});
-											    else cbk(body);
+											    else cbk(JSON.parse(body));
 										    });									
 									} else { cbk(false); }
 								});  
