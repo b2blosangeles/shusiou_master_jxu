@@ -61,7 +61,7 @@ switch(opt) {
 											if (results[j].status)  list[ list.length] = results[j].vid;
 											else list_null[ list_null.length] = results[j].vid;
 										}
-										cbk(results);
+										cbk(list);
 									} else { cbk(false); }
 								});  
 							}	
