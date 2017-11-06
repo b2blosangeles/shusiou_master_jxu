@@ -19,8 +19,13 @@ switch(opt) {
 	case 'getVideoNodeStatus':
 		delete require.cache[env.site_path + '/api/inc/videoNode/videoNode.js'];
 		var videoNode = require(env.site_path + '/api/inc/videoNode/videoNode.js');
-		
+
 		var vid = req.query['vid'];
+		
+		var mnt_folder = '/mnt/shusiou-video/';
+		var fn = mnt_folder + 'videos/' + vid + '/video/video.mp4';
+		
+		
 		
 		var vn = new  videoNode(env, pkg);
 		vn.getIP(vid, function(data){
