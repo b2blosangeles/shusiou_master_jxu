@@ -49,7 +49,7 @@ switch(opt) {
 				CP.parallel(
 					_f,
 					function(data) {
-						res.send(data);
+						res.send(data.results);
 					},
 					6000
 				);
