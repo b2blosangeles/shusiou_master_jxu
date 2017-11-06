@@ -63,7 +63,7 @@ switch(opt) {
 											// else list_null[ list_null.length] = results[j].vid;
 										}
 										pkg.request({
-										      url: 'http:/'+results[i].node_ip+'/api/node_audit.api?files_status',
+										      url: 'http:/'+results[i].node_ip+'/api/node_audit.api?opt=files_status',
 										      headers: {
 											"content-type": "application/json"
 										      },
