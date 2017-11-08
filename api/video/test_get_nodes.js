@@ -34,6 +34,15 @@ switch(opt) {
 			}
 		    });
 		};
+		_f_s['local_video']  = function(cbk_s) {
+			var connection = mysql.createConnection(cfg0);
+			connection.connect();
+			var str = "SELECT * FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "' ";
+			connection.query(str, function (error, results, fields) {
+				connection.connect();
+				cbk_s(results);
+			});
+		};		
 		_f_s['local_flist']  = function(cbk_s) {
 			pkg.fs.readdir(videos_folder, function(err, files) {
 				if (err) cbk([]);
