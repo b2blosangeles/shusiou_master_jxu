@@ -38,6 +38,8 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 			var str = "SELECT * FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "' ";
+			cbk_s(str);
+			return true;
 			connection.query(str, function (error, results, fields) {
 				connection.connect();
 				cbk_s(results);
