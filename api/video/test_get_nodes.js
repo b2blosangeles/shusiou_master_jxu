@@ -37,7 +37,25 @@ switch(opt) {
 		_f_s['local_flist']  = function(cbk_s) {
 			pkg.fs.readdir(videos_folder, function(err, files) {
 				if (err) cbk([]);
-				else cbk_s(files);
+				else {
+					var CP = new pkg.crowdProcess();
+					var _f = {};				
+					for (var i = 0; i < files.length; i++) {
+						_f[files[i]] = (function(i) {
+							return function(cbk) {
+								cbk(i)
+							}	
+						})(i);
+					}
+					CP.parallel(
+						_f,
+						function(data) {
+							cbk_s(data);
+						},
+						6000
+					);				
+				};
+				
 			});			
 		};		
 		_f_s['P0']  = function(cbk_s) {
