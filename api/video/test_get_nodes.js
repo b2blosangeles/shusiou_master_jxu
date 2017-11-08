@@ -83,7 +83,7 @@ switch(opt) {
 										cbk_s({diff:need_remove, files:files,data:data});
 									});
 							} else {
-								cbk_s({diff:need_remove, files:files,data:data});
+								cbk_s({diff:need_remove, files:files,data:data.results});
 							}							
 							
 						},
