@@ -68,7 +68,8 @@ switch(opt) {
 					CP.parallel(
 						_f,
 						function(data) {
-							cbk_s(data);
+							var v = [];
+							cbk_s({files:files,data:data});
 						},
 						6000
 					);				
