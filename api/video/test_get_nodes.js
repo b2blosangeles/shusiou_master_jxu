@@ -80,10 +80,10 @@ switch(opt) {
 							if (need_remove.length) {
 								var ls = childProcess.exec(remove_cmd, 		   
 									function (error, stdout, stderr) {
-										cbk_s({remove_cmd:remove_cmd, diff:need_remove, files:files,data:data});
+										cbk_s({diff:need_remove, files:files,data:data});
 									});
 							} else {
-								cbk_s({remove_cmd:remove_cmd, diff:need_remove, files:files,data:data});
+								cbk_s({diff:need_remove, files:files,data:data});
 							}							
 							
 						},
@@ -158,7 +158,7 @@ switch(opt) {
 			function(data_s) {
 				res.send(data_s.results);
 			},
-			6000
+			12000
 		);
 		break;	
 	default:
