@@ -43,6 +43,14 @@ switch(opt) {
 					for (var i = 0; i < files.length; i++) {
 						_f[files[i]] = (function(i) {
 							return function(cbk) {
+								var fn = videos_folder + files[i] + '/video/video.mp4';
+								pkg.fs.stat(fn, function(err, st) {
+									if (err) {
+										cbk(false);
+									} else {
+										cbk((st)?st.size:'');
+									}	
+								});								
 								cbk(i)
 							}	
 						})(i);
