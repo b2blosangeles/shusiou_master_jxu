@@ -68,8 +68,8 @@ switch(opt) {
 					CP.parallel(
 						_f,
 						function(data) {
-							var v = [];
-							cbk_s({files:files,data:data});
+							var diff =  files.filter(x => cbk_s.local_video.indexOf(x) < 0 ); ;
+							cbk_s({diff:diff, files:files,data:data});
 						},
 						6000
 					);				
