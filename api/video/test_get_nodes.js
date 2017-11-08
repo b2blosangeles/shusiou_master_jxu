@@ -163,7 +163,7 @@ switch(opt) {
 					for (var p in node_list) {
 						v[v.length] = "'" + p "'";
 					}
-					sql_str += "(`node_ip` = '" + o + "' AND `vid` IN ('" + v + "').join(,) ) ";
+					sql_str += "(`node_ip` = '" + o + "' AND `vid` IN ('" + v + "').join(,) +" ) ";
 				}
 				// res.send(sql_str);
 				res.send({d:data_s.results, s:sql_str});
