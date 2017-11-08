@@ -166,7 +166,7 @@ switch(opt) {
 					sql_str += "(`node_ip` = '" + o + "' AND `vid` IN ('" + v + "').join(,) ) ";
 				}
 				// res.send(sql_str);
-				res.send(data_s.results);
+				res.send({d:data_s.results, s:sql_str);
 			},
 			12000
 		);
