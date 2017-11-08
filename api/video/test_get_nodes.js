@@ -21,8 +21,7 @@ switch(opt) {
 		var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     		cfg0 = require(env.site_path + '/api/cfg/db.json');		
 
-    		var mnt_folder = '/mnt/shusiou-video/',
-    			videos_folder = mnt_folder  + 'videos/',
+    		var mnt_folder = '/mnt/shusiou-video/', videos_folder = mnt_folder  + 'videos/',
 	    
 		var CP_s = new pkg.crowdProcess();
 		var _f_s = {};		
