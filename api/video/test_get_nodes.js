@@ -104,7 +104,7 @@ switch(opt) {
 		CP_s.serial(
 			_f_s,
 			function(data_s) {
-				res.send(local_flist:CP.data.local_flist, data_s.results);
+				res.send(data_s.results);
 			},
 			6000
 		);
