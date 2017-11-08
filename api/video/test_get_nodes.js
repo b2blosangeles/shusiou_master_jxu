@@ -157,7 +157,7 @@ switch(opt) {
 			_f_s,
 			function(data_s) {
 				var sql_str = '';
-				for (var o in CP_s.cached) {
+				for (var o in CP_s.data.cached) {
 					sql_str += o;
 				}
 				res.send(sql_str);
