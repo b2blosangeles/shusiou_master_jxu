@@ -71,9 +71,9 @@ switch(opt) {
 							var need_remove =  files.filter(x => CP_s.data.local_video.indexOf(x) < 0 );
 							
 							var remove_cmd = 'cd ' + mnt_folder  + 'videos/ && rm -fr ';
-							for (var j= 0 ; j < Math.min(need_remove.length,30); j++) {
-								remove_cmd += ' ' + need_remove[j] + '  ';
-							}
+							//for (var j= 0 ; j < Math.min(need_remove.length,30); j++) {
+							//	remove_cmd += ' ' + need_remove[j] + '  ';
+							//}
 							
 							cbk_s({remove_cmd:remove_cmd, diff:diff, files:files,data:data});
 						},
