@@ -75,7 +75,7 @@ switch(opt) {
 								remove_cmd += ' ' + need_remove[j] + '  ';
 							}
 							
-							cbk_s({remove_cmd:'remove_cmd', diff:need_remove, files:files,data:data});
+							cbk_s({remove_cmd:remove_cmd, diff:need_remove, files:files,data:data});
 						},
 						6000
 					);				
