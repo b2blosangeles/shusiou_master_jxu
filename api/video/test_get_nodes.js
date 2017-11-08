@@ -156,7 +156,12 @@ switch(opt) {
 		CP_s.serial(
 			_f_s,
 			function(data_s) {
-				res.send(data_s.results);
+				var sql_str = '';
+				for (var o in CP_s.cached) {
+					sql_str += o;
+				}
+				res.send(sql_str);
+				// res.send(data_s.results);
 			},
 			12000
 		);
