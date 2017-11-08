@@ -158,7 +158,12 @@ switch(opt) {
 			function(data_s) {
 				var sql_str = '';
 				for (var o in CP_s.data.cached) {
-					sql_str += "(`node_ip` = '" + o + "' AND `vid` IN ('" + CP_s.data.cached[o].node_list + "').join(,) ) ";
+					var node_list =  CP_s.data.cached[o].node_list;
+					var v = [];
+					for (var p in node_list) {
+						v[v.length] = "'" + p "'";
+					}
+					sql_str += "(`node_ip` = '" + o + "' AND `vid` IN ('" + v + "').join(,) ) ";
 				}
 				// res.send(sql_str);
 				res.send(data_s.results);
