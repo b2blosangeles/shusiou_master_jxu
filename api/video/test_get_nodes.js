@@ -146,7 +146,7 @@ switch(opt) {
 					CP.parallel(
 						_f,
 						function(data) {
-							cbk_s(data);
+							cbk_s(data.results);
 						},
 						6000
 					);
