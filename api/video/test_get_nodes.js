@@ -51,7 +51,6 @@ switch(opt) {
 										cbk((st)?st.size:'');
 									}	
 								});								
-								cbk(i)
 							}	
 						})(i);
 					}
