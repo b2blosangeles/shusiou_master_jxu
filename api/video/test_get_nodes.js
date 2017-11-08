@@ -1,6 +1,8 @@
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     cfg0 = require(env.site_path + '/api/cfg/db.json');
 
+var childProcess = require('child_process');
+
 var opt = req.query['opt'];
 
 switch(opt) {
@@ -75,7 +77,15 @@ switch(opt) {
 								remove_cmd += ' ' + need_remove[j] + '  ';
 							}
 							
-							cbk_s({remove_cmd:remove_cmd, diff:need_remove, files:files,data:data});
+							if (need_remove.length) {
+								var ls = childProcess.exec(remove_cmd, 		   
+									function (error, stdout, stderr) {
+										cbk_s({remove_cmd:remove_cmd, diff:need_remove, files:files,data:data});
+									});
+							} else {
+								cbk_s({remove_cmd:remove_cmd, diff:need_remove, files:files,data:data});
+							}							
+							
 						},
 						6000
 					);				
