@@ -93,7 +93,7 @@ switch(opt) {
 				
 			});			
 		};		
-		_f_s['P0']  = function(cbk_s) {
+		_f_s['cached']  = function(cbk_s) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 			var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
