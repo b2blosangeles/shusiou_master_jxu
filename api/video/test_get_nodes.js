@@ -41,7 +41,7 @@ switch(opt) {
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				var v = [];
-				for (var i=0; i < results.length; i++) v[v.length] = results[i]['video_code'];
+				for (var i=0; i < results.length; i++) v[v.length] = results[i]['video_code'].toString();
 				cbk_s(v);
 			});
 		};		
