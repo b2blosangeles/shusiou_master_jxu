@@ -40,7 +40,9 @@ switch(opt) {
 			var str = "SELECT `video_code` FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "' ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				cbk_s(results);
+				var v = [];
+				for (var i=0; i < results.length; i++) v[v.length] = results[i]['video_code'];
+				cbk_s(v);
 			});
 		};		
 		_f_s['local_flist']  = function(cbk_s) {
