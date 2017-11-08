@@ -160,8 +160,8 @@ switch(opt) {
 				for (var o in CP_s.data.cached) {
 					sql_str += "(`node_ip` = '" + o + "' AND `vid` IN ('" + CP_s.data.cached[o].node_list + "').join(,) ) ";
 				}
-				res.send(sql_str);
-				// res.send(data_s.results);
+				// res.send(sql_str);
+				res.send(data_s.results);
 			},
 			12000
 		);
