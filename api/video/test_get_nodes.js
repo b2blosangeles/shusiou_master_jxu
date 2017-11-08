@@ -107,7 +107,7 @@ switch(opt) {
 			},
 			6000
 		);
-			
+		break;	
 	default:
 		res.send({status:'error', message:'Wrong opt value!'});
 }
