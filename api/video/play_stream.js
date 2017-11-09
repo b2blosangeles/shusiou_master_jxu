@@ -15,18 +15,6 @@ var mnt_folder = '/mnt/shusiou-video/',
 
 var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 
-function checkFolder(cbk) {
-	pkg.fs.stat(mnt_folder, function (err, stats){
-		if (err) cbk({status:'failure', message:err.message});
-		else if (!stats.isDirectory()) return cbk({status:'failure', message:err.message});
-		else {
-		      pkg.fs.stat(file_video, function(err, stat) {
-			 if(err) cbk({status:'failure', message:err.message});
-			 else cbk(true);
-		      });
-		}
-	});
-};
 switch(type) {
 	case 'image':
 		var w = req.query['w'], s = req.query['s'];
@@ -37,9 +25,15 @@ switch(type) {
 		var _f = {};
 
 		_f['S0'] = function(cbk) { 
-			checkFolder(function(s) {
-				if (s === true) cbk(true);
-				else {  cbk(s); CP.exit = 1; }
+			pkg.fs.stat(mnt_folder, function (err, stats){
+				if (err) { cbk({status:'failure', message:err.message});  CP.exit = 1; }
+				else if (!stats.isDirectory()){ cbk({status:'failure', message:err.message});  CP.exit = 1; }
+				else {
+				      pkg.fs.stat(file_video, function(err, stat) {
+					 if(err) { cbk({status:'failure', message:err.message});  CP.exit = 1; }
+					 else cbk(true);
+				      });
+				}
 			});
 		};		
 		
@@ -92,9 +86,15 @@ switch(type) {
 		var _f = {};
 		
 		_f['S0'] = function(cbk) { 
-			checkFolder(function(s) {
-				if (s === true) cbk(true);
-				else {  cbk(s); CP.exit = 1; }
+			pkg.fs.stat(mnt_folder, function (err, stats){
+				if (err) { cbk({status:'failure', message:err.message});  CP.exit = 1; }
+				else if (!stats.isDirectory()){ cbk({status:'failure', message:err.message});  CP.exit = 1; }
+				else {
+				      pkg.fs.stat(file_video, function(err, stat) {
+					 if(err) { cbk({status:'failure', message:err.message});  CP.exit = 1; }
+					 else cbk(true);
+				      });
+				}
 			});
 		};		
 		
