@@ -119,7 +119,7 @@ switch(type) {
 					}
 				});
 			},
-			6000
+			30000
 		);    
 		break;		
 	default:
