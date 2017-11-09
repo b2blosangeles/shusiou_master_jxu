@@ -165,7 +165,7 @@ switch(opt) {
 		CP_s.serial(
 			_f_s,
 			function(data_s) {
-		res.send('==niu3==');
+		res.send(data_s);
 		return true;			
 			
 				/*
@@ -192,7 +192,7 @@ switch(opt) {
 				}
 				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ');
 				sql_str += 'UPDATE `video_node` SET `status` = 0 WHERE ' + diff_a.join(' OR ');
-				/*
+				
 				connection.connect();
 				connection_m.query(sql_str, function (error, results_m, fields__m) {
 					connection_m.end();
