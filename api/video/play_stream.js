@@ -123,5 +123,5 @@ switch(type) {
 		);    
 		break;		
 	default:
-		res.send('type error');  
+		 write404('type error');  
 }
