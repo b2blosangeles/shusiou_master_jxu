@@ -165,7 +165,7 @@ switch(opt) {
 						v[v.length] = "'"+p+"'";
 					}
 					
-					sql_a[sql_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(',') +")";
+					sql_a[sql_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(',') +"))";
 				}
 				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ');
 				res.send({d:data_s.results, s:sql_str});
