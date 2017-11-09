@@ -192,7 +192,7 @@ switch(opt) {
 					res.send({results_m:results_m});
 				});
 				*/
-				res.send({d:data_s.results, s:sql_str, results_m:results_m});
+				res.send({d:data_s.results, s:sql_str});
 			},
 			22000
 		);
