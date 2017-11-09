@@ -1,5 +1,5 @@
 function write404(msg) {
-	res.writeHead(404, {'Content-Type': 'text/html'});
+	res.writeHead(404);
 	res.write(msg);
 	res.end();	
 }
