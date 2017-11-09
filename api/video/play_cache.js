@@ -12,7 +12,7 @@ var connection = mysql.createConnection(cfg0);
 	         " WHERE A.`vid` = '" + vid + "'; ";
 		// " WHERE A.`vid` = '" + vid + "' AND A.`status` = '1'; ";
 	 str = "SELECT A.* "+    
-	    	 " FROM `video_node` A  " + '';
+	    	 " FROM `video_node` A  " + 
 	      //   " WHERE A.`vid` = '" + vid + "'; ";
 		 " WHERE A.`vid` = '" + vid + "'; ";
 	connection.query(str, function (error, results, fields) {
