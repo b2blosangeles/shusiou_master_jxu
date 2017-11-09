@@ -8,7 +8,7 @@ var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
 var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT A.`vid`, A.`node_id`, B.`*` "+    
-	    	 " FROM `video_node` AS A LEFT JOIN `video` AS B ON A.`vid` = B.`video_code` " +
+	    	 " FROM `video_node` AS A LEFT JOIN `video` AS B  " +
 		 " WHERE A.`vid` = '" + vid + "' AND A.`status` = '1'; ";
 	str = "SELECT A.`vid`, A.`node_id` "+    
 	    	 " FROM `video_node` AS A LEFT JOIN `video` AS B ON A.`vid` = B.`video_code` " +
