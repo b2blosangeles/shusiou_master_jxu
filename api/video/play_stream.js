@@ -24,6 +24,8 @@ pkg.fs.stat(mnt_folder, function (err, stats){
 	      });
 	}
 });
+res.send(fn);
+return true;
 switch(type) {
 	case 'image':
 		var w = req.query['w'], s = req.query['s'];
