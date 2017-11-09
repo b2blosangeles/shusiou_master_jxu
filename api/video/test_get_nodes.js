@@ -22,7 +22,8 @@ switch(opt) {
 		return true;
 		break;
 	case 'getVideoNodeStatus':
-		
+		res.send('==niu==');
+		return true;
 		var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 		    cfg0 = require(env.site_path + '/api/cfg/db.json'),
 		    mnt_folder = '/mnt/shusiou-video/', 
