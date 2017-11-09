@@ -21,7 +21,7 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 var CP_s = new pkg.crowdProcess();
 var _f_s = {};		
 _f_s['ip']  = function(cbk_s) {
-    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+    fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 	if ((err) || !data) {
 		cbk_s(false); CPs.exit = 1;		
 	} else {
@@ -41,7 +41,7 @@ _f_s['local_video']  = function(cbk_s) {
 	});
 };		
 _f_s['local_flist']  = function(cbk_s) {
-	pkg.fs.readdir(videos_folder, function(err, files) {
+	fs.readdir(videos_folder, function(err, files) {
 		if (err) cbk([]);
 		else {
 			var CP = new pkg.crowdProcess();
