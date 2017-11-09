@@ -45,7 +45,7 @@ switch(opt) {
 		};
 		_f_s['local_video']  = function(cbk_s) {
 			
-			cbk('AAA');
+			CP_s('AAA');
 			return true;
 			
 			connection.connect();
@@ -59,7 +59,7 @@ switch(opt) {
 		};		
 		_f_s['local_flist']  = function(cbk_s) {
 			
-			cbk('BBB');
+			CP_s('BBB');
 			return true;
 			
 			pkg.fs.readdir(videos_folder, function(err, files) {
@@ -111,7 +111,7 @@ switch(opt) {
 				
 		_f_s['cached']  = function(cbk_s) {
 
-			cbk('CCC');
+			CP_s('CCC');
 			return true;			
 			
 			connection.connect();
