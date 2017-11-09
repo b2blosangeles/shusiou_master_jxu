@@ -11,16 +11,15 @@ var connection = mysql.createConnection(cfg0);
 	    	 " FROM `video_node` AS A LEFT JOIN `video` AS B  ON A.`vid` = B.`video_code` " +
 		 " WHERE A.`vid` = '" + vid + "' AND A.`status` = '1'; ";
 
-	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error)  res.send(str );
 		else if (results) { 
 			var v = [];
 			for (var i = 0; i < results.length; i++) {
-				v[v.length] = results[i].vid;
+				v[v.length] = results[i];
 			}
-			res.send(results);
+			res.send(v);
 		} else res.send(str );
 	});  
 return true;
