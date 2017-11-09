@@ -86,6 +86,7 @@ switch(type) {
 			pkg.fs.stat(fn, function(err, stat) {
 				if(!err) { cbk(fn);
 				} else {
+					var childProcess = require('child_process');
 					var ls = childProcess.exec('ffmpeg  -i ' + file_video + ' -ss '+ s + ' -t ' + l + ' -c copy ' + fn +' -y ', 		   
 						function (error, stdout, stderr) {
 							cbk(true);
