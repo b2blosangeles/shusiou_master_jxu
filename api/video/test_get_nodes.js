@@ -3,8 +3,8 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 
 var childProcess = require('child_process');
 
-var cfg_m = JSON.parse(JSON.stringify(cfg0 )),
-   cfg_m.multipleStatements =  true;	
+//var cfg_m = JSON.parse(JSON.stringify(cfg0 )),
+//   cfg_m.multipleStatements =  true;	
 
 var opt = req.query['opt'];
 
