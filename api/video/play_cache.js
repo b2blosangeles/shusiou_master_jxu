@@ -10,7 +10,7 @@ var connection = mysql.createConnection(cfg0);
 	var str = "SELECT A.`vid`, A.`node_id`, B.`server_ip` "+    
 	    	 " FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`video_code` " +
 	         " WHERE A.`vid` = '" + vid + "'; ";
-		// " WHERE A.`vid` = '" + vid + "' AND A.`status` = '1'; ";
+		// " WHERE A.`vid` = '" + vid + "' AND A.`status` = 1; ";
 	 str = "SELECT A.* "+    
 	    	 " FROM `video_node` A  " + 
 	      //   " WHERE A.`vid` = '" + vid + "'; ";
