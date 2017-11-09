@@ -4,18 +4,21 @@ var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
 
 var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT * "+    
-		" FROM `video_node` " +
+	var str = "SELECT A.* "+    
+		" FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`video_code ` " +
 		" WHERE 1; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error)  res.send(false);
 		else if (results) { 
+			res.send(results);
+			/*
 			var v = [];
 			for (var i = 0; i < results.length; i++) {
-				v[v.length] = results[i].id;
+				v[v.length] = results[i].vid;
 			}
 			res.send(v.join(','));
+			*/
 		} else res.send(false);
 	});  
 return true;
