@@ -22,13 +22,13 @@ switch(opt) {
 		return true;
 		break;
 	case 'getVideoNodeStatus':
-		res.send('==niu==');
-		return true;
+
 		var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 		    cfg0 = require(env.site_path + '/api/cfg/db.json'),
 		    mnt_folder = '/mnt/shusiou-video/', 
 		    videos_folder = mnt_folder  + 'videos/';
-	    
+	 
+	
 		// var connection_m = mysql.createConnection(cfg_m);
 		var connection = mysql.createConnection(cfg0);
 		
@@ -98,7 +98,11 @@ switch(opt) {
 				};
 				
 			});			
-		};		
+		};	
+		
+	res.send('==niu1==');
+		return true;		
+				
 		_f_s['cached']  = function(cbk_s) {
 
 			connection.connect();
