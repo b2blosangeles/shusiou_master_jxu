@@ -3,8 +3,8 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 
 var childProcess = require('child_process');
 
-// var cfg_m = JSON.parse(JSON.stringify(cfg0 ));
-// cfg_m.multipleStatements =  true;	
+var cfg_m = JSON.parse(JSON.stringify(cfg0 ));
+cfg_m.multipleStatements =  true;	
 
 var opt = req.query['opt'];
 
@@ -182,6 +182,10 @@ switch(opt) {
 				}
 				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ');
 				sql_str += 'UPDATE `video_node` SET `status` = 0 WHERE ' + diff_a.join(' OR ');
+				
+				var connection_m = mysql.createConnection(cfg_m);
+				
+				
 				res.send({d:data_s.results, s:sql_str});
 			},
 			22000
