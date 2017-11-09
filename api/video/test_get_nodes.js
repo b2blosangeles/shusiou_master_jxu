@@ -1,7 +1,7 @@
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     cfg0 = require(env.site_path + '/api/cfg/db.json');
 	
-    cfg_m = JSON.parse(JSON.stingify(cfg0 ));
+    cfg_m = JSON.parse(JSON.stringify(cfg0 ));
     cfg_m.multipleStatements =  true;	
     
 var childProcess = require('child_process');
