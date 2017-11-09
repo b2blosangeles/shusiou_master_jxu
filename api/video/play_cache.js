@@ -9,8 +9,8 @@ var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT A.* "+    
 	    	// " FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`video_code ` " +
-	     	 " FROM `video` A  " + '';
-	//	" WHERE A.`vid` = '" + vid + "'; ";
+	     	 " FROM `video` A  " + 
+		" WHERE A.`video_code` = '" + vid + "'; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error)  res.send(false);
