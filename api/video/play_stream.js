@@ -17,11 +17,11 @@ var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 
 function checkFolder(cbk) {
 	pkg.fs.stat(mnt_folder, function (err, stats){
-		if (err) return cbk({status:'failure'});
+		if (err) cbk({status:'failure', message:err.message});
 		else if (!stats.isDirectory()) return cbk({status:'failure', message:err.message});
 		else {
 		      pkg.fs.stat(file_video, function(err, stat) {
-			 if(err) {  cbk({status:'failure', message:err.message});
+			 if(err) cbk({status:'failure', message:err.message});
 			 else cbk(true);
 		      });
 		}
