@@ -92,7 +92,7 @@ switch(type) {
 							cbk(true);
 						});
 			//	}
-			//});
+			});
 		};
 		CP.serial(
 			_f,
