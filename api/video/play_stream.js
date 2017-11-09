@@ -91,7 +91,7 @@ switch(type) {
 						function (error, stdout, stderr) {
 							cbk(true);
 						});
-				}
+			//	}
 			//});
 		};
 		CP.serial(
