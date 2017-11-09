@@ -159,7 +159,7 @@ switch(opt) {
 				var sql_a = [];
 				for (var o in CP_s.data.cached) {
 					var node_list =  CP_s.data.cached[o].node_list;
-					var v = [];
+					var v = [''];
 					
 					if (node_list) {
 						for (var p in node_list) {
@@ -168,7 +168,7 @@ switch(opt) {
 					}
 					sql_a[sql_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(',') +")";
 				}
-				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' AND ');
+				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ');
 				res.send({d:data_s.results, s:sql_str});
 			},
 			12000
