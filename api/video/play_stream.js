@@ -49,11 +49,11 @@ switch(type) {
 				}
 			});
 		};
-res.send('===' + fn); return true;
+
 		CP.serial(
 			_f,
 			function(data) {
-						
+					res.send('=A==' + fn); return true;	
 				pkg.fs.stat(fn, function(err, data1) {
 					if (err) {  write404(fn + ' does not exist'); }
 					else {
