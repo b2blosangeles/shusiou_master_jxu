@@ -156,20 +156,28 @@ switch(opt) {
 		CP_s.serial(
 			_f_s,
 			function(data_s) {
-				var sql_a = [];
+				var sql_a = [], diff_a;
 				for (var o in CP_s.data.cached) {
 					var node_list =  CP_s.data.cached[o].node_list;
-					var v = [];
+					var server_list = ((CP_s.data.local_flist) && CP_s.data.local_flist.server_list)? CP_s.data.local_flist.server_list:[];
+					var v = [], diff_v = [];
 					
-					for (var p in node_list) {
-						if ((CP_s.data.local_flist) && node_list[p] == CP_s.data.local_flist.server_list[p])  
-							v[v.length] = "'"+p+"'";
+					for (var p in server_list) {
+						if (node_list[p] == server_list[p])  v[v.length] = "'"+p+"'";
+						else diff_v[diff_v.length] = "'"+p+"'";
 					}
+					
+					
 					if (v.length) {
 						sql_a[sql_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(',') +"))";
 					}
+					if (diff_v.length) {
+						diff_a[diff_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + diff_v.join(',') +"))";
+					}
+					
 				}
 				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ');
+				sql_str += 'UPDATE `video_node` SET `status` = 0 WHERE ' + diff_a.join(' OR ');
 				res.send({d:data_s.results, s:sql_str});
 			},
 			12000
