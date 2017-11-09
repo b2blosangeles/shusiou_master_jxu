@@ -1,11 +1,17 @@
+function write404(msg) {
+	res.writeHead(404, {'Content-Type': 'text/html'});
+	res.write(msg);
+	res.end();	
+}
+
 var type= req.query['type'], vid = req.query['vid'];
-if (!type || !vid) { res.send('vid or type error '); return true; }
+if (!type || !vid) {  write404('vid or type error '); return true; }
 
 var mnt_folder = '/mnt/shusiou-video/',  
     video_folder = mnt_folder  + 'videos/' + vid + '/', 
     file_video =  video_folder + 'video/video.mp4',
     folder_image = video_folder + 'images/';
-                    
+
 pkg.fs.stat(mnt_folder, function (err, stats){
 	if (err) { res.send({status:'failure'}); return true; }
 	else if (!stats.isDirectory()) { res.send({status:'failure'}); return true; } 
@@ -18,16 +24,14 @@ pkg.fs.stat(mnt_folder, function (err, stats){
 switch(type) {
 	case 'image':
 		var w = req.query['w'], s = req.query['s'];
-		if (!s || [90|180, 480].indexOf(w) !== -1) {  res.send('wrong s or w'); return true; }
+		if (!s || [90|180, 480].indexOf(w) !== -1) { write404('wrong s or w'); return true; }
 		var fn = folder_image + w + '_' + s + '.png';
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 
 		_f['S1'] = function(cbk) { 
 			var fp = new folderP();
-			fp.build(folder_image, function() {
-			    cbk(true);
-			});
+			fp.build(folder_image, function() { cbk(true);});
 		};
 
 		_f['S2'] = function(cbk) {
@@ -49,11 +53,8 @@ switch(type) {
 			_f,
 			function(data) {	
 				pkg.fs.stat(fn, function(err, data1) {
-					if (err) {
-						res.writeHead(404, {'Content-Type': 'text/html'});
-						res.write(fn + ' does not exist');
-						res.end();
-					} else {
+					if (err) {  write404(fn + ' does not exist'); }
+					else {
 						res.writeHead(200); 
 						var file = pkg.fs.createReadStream(fn);
 						file.pipe(res);
