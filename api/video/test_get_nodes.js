@@ -159,13 +159,12 @@ switch(opt) {
 				var sql_a = [];
 				for (var o in CP_s.data.cached) {
 					var node_list =  CP_s.data.cached[o].node_list;
-					var v = [0];
+					var v = ['0'];
 					
-					if (node_list) {
-						for (var p in node_list) {
-							v[v.length] = "'"+p+"'";
-						}
+					for (var p in node_list) {
+						v[v.length] = "'"+p+"'";
 					}
+					
 					sql_a[sql_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(',') +")";
 				}
 				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ');
