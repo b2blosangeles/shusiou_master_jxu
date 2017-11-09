@@ -1,6 +1,9 @@
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     cfg0 = require(env.site_path + '/api/cfg/db.json');
-
+	
+    cfg_m = JSON.parse(JSON.stingify(cfg0 ));
+    cfg_m.multipleStatements =  true;	
+    
 var childProcess = require('child_process');
 
 var opt = req.query['opt'];
@@ -95,6 +98,8 @@ switch(opt) {
 		};		
 		_f_s['cached']  = function(cbk_s) {
 			var connection = mysql.createConnection(cfg0);
+			var connection_m = mysql.createConnection(cfg_m);
+
 			connection.connect();
 			var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
 			connection.query(str, function (error, results, fields) {
@@ -179,7 +184,11 @@ switch(opt) {
 				}
 				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ');
 				sql_str += 'UPDATE `video_node` SET `status` = 0 WHERE ' + diff_a.join(' OR ');
-				res.send({d:data_s.results, s:sql_str});
+				connection_m.query(sql_str, function (error, results_m, fields__m) {
+					connection.end();
+					res.send({d:data_s.results, s:sql_str, results_m:results_m});
+				}
+				
 			},
 			22000
 		);
