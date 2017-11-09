@@ -143,7 +143,7 @@ switch(type) {
 						      	function() {
 								file.destroy();
 								write404('timeout')
-							}, 1
+							}, 1000
 						      );
 						} else {
 							res.send('Need streaming player');
