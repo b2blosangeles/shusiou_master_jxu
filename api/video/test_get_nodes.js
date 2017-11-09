@@ -1,9 +1,6 @@
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     cfg0 = require(env.site_path + '/api/cfg/db.json');
-	
-   // cfg_m = JSON.parse(JSON.stringify(cfg0 )),
-   // cfg_m.multipleStatements =  true;	
-    
+
 var childProcess = require('child_process');
 
 var opt = req.query['opt'];
@@ -22,16 +19,12 @@ switch(opt) {
 		return true;
 		break;
 	case 'getVideoNodeStatus':
-
+		
 		var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 		    cfg0 = require(env.site_path + '/api/cfg/db.json'),
 		    mnt_folder = '/mnt/shusiou-video/', 
 		    videos_folder = mnt_folder  + 'videos/';
-	 
-	
-		// var connection_m = mysql.createConnection(cfg_m);
-		var connection = mysql.createConnection(cfg0);
-		
+	    
 		var CP_s = new pkg.crowdProcess();
 		var _f_s = {};		
 		_f_s['ip']  = function(cbk_s) {
@@ -44,10 +37,7 @@ switch(opt) {
 		    });
 		};
 		_f_s['local_video']  = function(cbk_s) {
-			
-			CP_s('AAA');
-			return true;
-			
+			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 			var str = "SELECT `video_code` FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "' ";
 			connection.query(str, function (error, results, fields) {
@@ -58,10 +48,6 @@ switch(opt) {
 			});
 		};		
 		_f_s['local_flist']  = function(cbk_s) {
-			
-			CP_s('BBB');
-			return true;
-			
 			pkg.fs.readdir(videos_folder, function(err, files) {
 				if (err) cbk([]);
 				else {
@@ -106,14 +92,9 @@ switch(opt) {
 				};
 				
 			});			
-		};	
-	
-				
+		};		
 		_f_s['cached']  = function(cbk_s) {
-
-			CP_s('CCC');
-			return true;			
-			
+			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 			var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
 			connection.query(str, function (error, results, fields) {
@@ -171,15 +152,10 @@ switch(opt) {
 					);
 				} else { cbk_s(false); }
 			}); 
-		};
-		
+		}
 		CP_s.serial(
 			_f_s,
 			function(data_s) {
-				res.send(data_s);
-				return true;			
-
-				/*
 				var sql_a = [], diff_a = [];
 				for (var o in CP_s.data.cached) {
 					var node_list =  CP_s.data.cached[o].node_list;
@@ -203,15 +179,7 @@ switch(opt) {
 				}
 				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ');
 				sql_str += 'UPDATE `video_node` SET `status` = 0 WHERE ' + diff_a.join(' OR ');
-				
-				connection.connect();
-				connection_m.query(sql_str, function (error, results_m, fields__m) {
-					connection_m.end();
-					res.send({results_m:results_m});
-				});
-				
 				res.send({d:data_s.results, s:sql_str});
-				*/
 			},
 			22000
 		);
