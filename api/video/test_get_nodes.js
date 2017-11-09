@@ -27,9 +27,6 @@ switch(opt) {
 		    cfg0 = require(env.site_path + '/api/cfg/db.json'),
 		    mnt_folder = '/mnt/shusiou-video/', 
 		    videos_folder = mnt_folder  + 'videos/';
-	    
-		var connection = mysql.createConnection(cfg0);
-		// var connection_m = mysql.createConnection(cfg_m);
 		
 		var CP_s = new pkg.crowdProcess();
 		var _f_s = {};		
@@ -43,6 +40,7 @@ switch(opt) {
 		    });
 		};
 		_f_s['local_video']  = function(cbk_s) {
+			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 			var str = "SELECT `video_code` FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "' ";
 			connection.query(str, function (error, results, fields) {
@@ -99,6 +97,7 @@ switch(opt) {
 			});			
 		};		
 		_f_s['cached']  = function(cbk_s) {
+			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 			var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
 			connection.query(str, function (error, results, fields) {
