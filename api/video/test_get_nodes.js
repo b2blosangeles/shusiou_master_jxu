@@ -156,10 +156,11 @@ switch(opt) {
 		CP_s.serial(
 			_f_s,
 			function(data_s) {
-				var sql_a = [], diff_a;
+				var sql_a = [], diff_a = [];
 				for (var o in CP_s.data.cached) {
 					var node_list =  CP_s.data.cached[o].node_list;
-					var server_list = ((CP_s.data.local_flist) && CP_s.data.local_flist.server_list)? CP_s.data.local_flist.server_list:[];
+					var server_list = ((CP_s.data.local_flist) && (CP_s.data.local_flist.server_list))?
+					    	CP_s.data.local_flist.server_list:[];
 					var v = [], diff_v = [];
 					
 					for (var p in server_list) {
@@ -180,7 +181,7 @@ switch(opt) {
 				// sql_str += 'UPDATE `video_node` SET `status` = 0 WHERE ' + diff_a.join(' OR ');
 				res.send({d:data_s.results, s:sql_str});
 			},
-			12000
+			22000
 		);
 		break;	
 	default:
