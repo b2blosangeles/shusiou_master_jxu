@@ -161,14 +161,14 @@ switch(opt) {
 				} else { cbk_s(false); }
 			}); 
 		};
-	res.send('==niu2==');
-		return true;			
+		
 		CP_s.serial(
 			_f_s,
 			function(data_s) {
+		res.send('==niu3==');
+		return true;			
 			
-			
-				
+				/*
 				var sql_a = [], diff_a = [];
 				for (var o in CP_s.data.cached) {
 					var node_list =  CP_s.data.cached[o].node_list;
@@ -198,8 +198,9 @@ switch(opt) {
 					connection_m.end();
 					res.send({results_m:results_m});
 				});
-				*/
+				
 				res.send({d:data_s.results, s:sql_str});
+				*/
 			},
 			22000
 		);
