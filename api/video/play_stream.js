@@ -11,7 +11,7 @@ switch(type) {
   case 'image':
     var w = req.query['w'], s = req.query['s'];
     
-    if (!s || !w) {  res.send('wrong s or w'); return true; 
+    if (!s || [90|180, 480].indexOf(w) !== -1) {  res.send('wrong s or w'); return true; 
                   }
     var fn = folder_image + w + '_' + s + '.png'; 
     var CP = new pkg.crowdProcess();
