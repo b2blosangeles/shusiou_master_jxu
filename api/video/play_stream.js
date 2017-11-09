@@ -6,8 +6,15 @@ var mnt_folder = '/mnt/shusiou-video/',
     file_video =  video_folder + 'video/video.mp4',
     folder_image = video_folder + 'images/';
                     
-var folderP = require(env.site_path + '/api/inc/folderP/folderP');
-
+pkg.fs.stat(mnt_folder, function (err, stats){
+	if (err) { res.send({status:'failure'}); return true; }
+	else if (!stats.isDirectory()) { res.send({status:'failure'}); return true; } 
+	else {
+	      pkg.fs.stat(file_video, function(err, stat) {
+		 if(err) {  res.send({status:'failure', message:err.message}); return true; }
+	      });
+	}
+});
 switch(type) {
 	case 'image':
 		var w = req.query['w'], s = req.query['s'];
@@ -15,17 +22,6 @@ switch(type) {
 		var fn = folder_image + w + '_' + s + '.png';
 		var CP = new pkg.crowdProcess();
 		var _f = {};
-
-		_f['I0'] = function(cbk) { /* --- check mnt exist --- */
-			pkg.fs.stat(mnt_folder, function (err, stats){
-			if (err) { cbk(false); CP.exit = 1;}
-			else if (!stats.isDirectory()) {  cbk(false); CP.exit = 1; } else {
-			      pkg.fs.stat(file_video, function(err, stat) {
-				 if(!err) { cbk(true); } else {  cbk(err.message); CP.exit = 1; }
-			      });
-			}
-			});
-		};
 
 		_f['S1'] = function(cbk) { 
 			var fp = new folderP();
