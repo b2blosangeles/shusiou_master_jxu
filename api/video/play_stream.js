@@ -82,11 +82,13 @@ switch(type) {
 		};
 
 		_f['S2'] = function(cbk) {
-			cbk('AA');
-			return true;
+
 			pkg.fs.stat(fn, function(err, stat) {
 				if(!err) { cbk(fn);
 				} else {
+					
+								cbk('CC');
+			return true;
 					var ls = childProcess.exec('ffmpeg  -i ' + file_video + ' -ss '+ s + ' -t ' + l + ' -c copy ' + fn +' -y ', 		   
 						function (error, stdout, stderr) {
 							cbk(true);
