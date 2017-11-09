@@ -38,6 +38,7 @@ switch(type) {
 
 		_f['S0'] = function(cbk) { 
 			checkFolder(function(s) {
+				cbk(s); CP.exit = 1;  return true;
 				if (s === true) cbk(true);
 				else {  cbk(s); CP.exit = 1; }
 			});
