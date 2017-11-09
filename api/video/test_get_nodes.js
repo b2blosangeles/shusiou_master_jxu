@@ -156,7 +156,7 @@ switch(opt) {
 		CP_s.serial(
 			_f_s,
 			function(data_s) {
-				var sql_str = '';
+				var sql_a = [];
 				for (var o in CP_s.data.cached) {
 					var node_list =  CP_s.data.cached[o].node_list;
 					var v = [];
@@ -166,10 +166,9 @@ switch(opt) {
 							v[v.length] = "'"+p+"'";
 						}
 					}
-					sql_str += "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(',') +")";
-				//	sql_str +=  typeof node_list +'--';
+					sql_a[sql_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(',') +")";
 				}
-				// res.send(sql_str);
+				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' AND ');
 				res.send({d:data_s.results, s:sql_str});
 			},
 			12000
