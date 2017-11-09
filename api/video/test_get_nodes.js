@@ -99,8 +99,6 @@ switch(opt) {
 			});			
 		};		
 		_f_s['cached']  = function(cbk_s) {
-			
-			
 
 			connection.connect();
 			var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
@@ -187,6 +185,7 @@ switch(opt) {
 				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ');
 				sql_str += 'UPDATE `video_node` SET `status` = 0 WHERE ' + diff_a.join(' OR ');
 				/*
+				connection.connect();
 				connection_m.query(sql_str, function (error, results_m, fields__m) {
 					connection_m.end();
 					res.send({results_m:results_m});
