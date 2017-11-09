@@ -3,6 +3,8 @@ var env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
 
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+    crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
+    request =  require(env.root_path + '/package/request/node_modules/request'),
     cfg0 = require(env.site_path + '/api/cfg/db.json');
 
 var fs = require('fs');
@@ -18,7 +20,7 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     mnt_folder = '/mnt/shusiou-video/', 
     videos_folder = mnt_folder  + 'videos/';
 
-var CP_s = new pkg.crowdProcess();
+var CP_s = new crowdProcess();
 var _f_s = {};		
 _f_s['ip']  = function(cbk_s) {
     fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
@@ -44,13 +46,13 @@ _f_s['local_flist']  = function(cbk_s) {
 	fs.readdir(videos_folder, function(err, files) {
 		if (err) cbk([]);
 		else {
-			var CP = new pkg.crowdProcess();
+			var CP = new crowdProcess();
 			var _f = {};				
 			for (var i = 0; i < files.length; i++) {
 				_f[files[i]] = (function(i) {
 					return function(cbk) {
 						var fn = videos_folder + files[i] + '/video/video.mp4';
-						pkg.fs.stat(fn, function(err, st) {
+						fs.stat(fn, function(err, st) {
 							if (err) {
 								cbk(false);
 							} else {
@@ -94,7 +96,7 @@ _f_s['cached']  = function(cbk_s) {
 		connection.end();
 		if (error) { cbk_s(false); } 
 		else if (results) { 
-			var CP = new pkg.crowdProcess();
+			var CP = new crowdProcess();
 			var _f = {};				
 			for (var i = 0; i < results.length; i++) {
 				_f[results[i].node_ip] = (function(i) {
@@ -115,7 +117,7 @@ _f_s['cached']  = function(cbk_s) {
 									list[ list.length] = results1[j].vid;
 									// else list_null[ list_null.length] = results[j].vid;
 								}
-								pkg.request({
+								request({
 								      url: 'http://'+results[i].node_ip+'/api/node_audit.api?opt=files_status',
 								      headers: {
 									"content-type": "application/json"
