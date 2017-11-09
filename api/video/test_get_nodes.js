@@ -29,7 +29,7 @@ switch(opt) {
 		    videos_folder = mnt_folder  + 'videos/';
 	    
 		var connection = mysql.createConnection(cfg0);
-		var connection_m = mysql.createConnection(cfg_m);
+		// var connection_m = mysql.createConnection(cfg_m);
 		
 		var CP_s = new pkg.crowdProcess();
 		var _f_s = {};		
