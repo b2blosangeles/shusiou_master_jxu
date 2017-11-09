@@ -1,6 +1,3 @@
-res.send('fn');
-return true;
-
 function write404(msg) {
 	res.writeHead(404);
 	res.write(msg);
@@ -18,16 +15,19 @@ var mnt_folder = '/mnt/shusiou-video/',
 
 var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 
-pkg.fs.stat(mnt_folder, function (err, stats){
-	if (err) { res.send({status:'failure'}); return true; }
-	else if (!stats.isDirectory()) { res.send({status:'failure', message:err.message}); return true; } 
-	else {
-	      pkg.fs.stat(file_video, function(err, stat) {
-		 if(err) {  res.send({status:'failure', message:err.message}); return true; }
-	      });
-	}
-});
-res.send(fn);
+function checkFolder(cbk) {
+	pkg.fs.stat(mnt_folder, function (err, stats){
+		if (err) return cbk({status:'failure'});
+		else if (!stats.isDirectory()) return cbk({status:'failure', message:err.message});
+		else {
+		      pkg.fs.stat(file_video, function(err, stat) {
+			 if(err) {  cbk({status:'failure', message:err.message});
+			 else cbk(true);
+		      });
+		}
+	});
+};
+res.send(fn + '---niu---');
 return true;
 switch(type) {
 	case 'image':
@@ -38,6 +38,13 @@ switch(type) {
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 
+		_f['S0'] = function(cbk) { 
+			checkFolder(function(s) {
+				if (s === true) cbk(true);
+				else {  cbk(s); CP.exit = 1; }
+			});
+		};		
+		
 		_f['S1'] = function(cbk) { 
 			var fp = new folderP();
 			fp.build(folder_image, function() { cbk(true);});
@@ -80,7 +87,14 @@ switch(type) {
 
 		var CP = new pkg.crowdProcess();
 		var _f = {};
-
+		
+		_f['S0'] = function(cbk) { 
+			checkFolder(function(s) {
+				if (s === true) cbk(true);
+				else {  cbk(s); CP.exit = 1; }
+			});
+		};	
+		
 		_f['S1'] = function(cbk) { 
 			var fp = new folderP();
 			fp.build(folder_section, function() { cbk(true);});
