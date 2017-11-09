@@ -1,3 +1,6 @@
+var type= req.query['type'], vid = req.query['vid'];
+if (!type || !vid) {  write404('vid or type error '); return true; }
+
 var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
     mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     cfg0 = require(env.site_path + '/api/cfg/db.json');
@@ -7,7 +10,7 @@ var connection = mysql.createConnection(cfg0);
 	var str = "SELECT A.* "+    
 	//	" FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`video_code ` " +
 	     	" FROM `video_node` A  " +
-		" WHERE 1; ";
+		" WHERE A.`vid` = '" + vid + "'; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error)  res.send(false);
