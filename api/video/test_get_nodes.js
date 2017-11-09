@@ -160,9 +160,10 @@ switch(opt) {
 				for (var o in CP_s.data.cached) {
 					var node_list =  CP_s.data.cached[o].node_list;
 					var v = [];
-					
-					for (var p in node_list) {
-						v[v.length] = "'" + p "'";
+					if (node_list) {
+						for (var p in node_list) {
+							v[v.length] = "'" + p "'";
+						}
 					}
 				//	sql_str += "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(,) +")";
 					
