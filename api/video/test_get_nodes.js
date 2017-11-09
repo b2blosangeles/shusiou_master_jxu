@@ -99,9 +99,7 @@ switch(opt) {
 				
 			});			
 		};	
-		
-	res.send('==niu1==');
-		return true;		
+	
 				
 		_f_s['cached']  = function(cbk_s) {
 
@@ -166,6 +164,10 @@ switch(opt) {
 		CP_s.serial(
 			_f_s,
 			function(data_s) {
+			
+	res.send('==niu2==');
+		return true;				
+				
 				var sql_a = [], diff_a = [];
 				for (var o in CP_s.data.cached) {
 					var node_list =  CP_s.data.cached[o].node_list;
