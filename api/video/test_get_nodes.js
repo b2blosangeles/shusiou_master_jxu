@@ -28,7 +28,7 @@ switch(opt) {
 		    mnt_folder = '/mnt/shusiou-video/', 
 		    videos_folder = mnt_folder  + 'videos/';
 	    
-		var connection_m = mysql.createConnection(cfg_m);
+		// var connection_m = mysql.createConnection(cfg_m);
 		var connection = mysql.createConnection(cfg0);
 		
 		var CP_s = new pkg.crowdProcess();
