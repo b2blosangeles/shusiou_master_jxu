@@ -167,7 +167,7 @@ switch(opt) {
 						}
 					}*/
 				//	sql_str += "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(,) +")";
-					
+					sql_str +=  typeof node_list;
 				}
 				// res.send(sql_str);
 				res.send({d:data_s.results, s:sql_str});
