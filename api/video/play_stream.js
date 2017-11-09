@@ -59,7 +59,7 @@ switch(type) {
 				pkg.fs.stat(fn, function(err, data1) {
 					if (err) {  write404(fn + ' does not exist'); }
 					else {
-						res.writeHead(200, {'Content-Type': 'image/png'}); 
+						res.writeHead(200); 
 						var file = pkg.fs.createReadStream(fn);
 						file.pipe(res);
 					}
