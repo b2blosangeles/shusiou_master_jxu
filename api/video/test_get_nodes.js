@@ -159,7 +159,7 @@ switch(opt) {
 				var sql_a = [];
 				for (var o in CP_s.data.cached) {
 					var node_list =  CP_s.data.cached[o].node_list;
-					var v = [''];
+					var v = [0];
 					
 					if (node_list) {
 						for (var p in node_list) {
