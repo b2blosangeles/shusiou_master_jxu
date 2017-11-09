@@ -138,7 +138,7 @@ switch(type) {
 							var file = pkg.fs.createReadStream(fn, {start:start, end:end});
 							res.writeHead(206, {'Content-Range': 'bytes ' + start + '-' + end + '/' + total, 
 								'Accept-Ranges': 'bytes', 'Content-Length': chunksize, 'Content-Type': 'video/mp4' });
-						       file.pipe(res);
+						//       file.pipe(res);
 						      setTimeout(
 						      	function() {
 								file.destroy();
