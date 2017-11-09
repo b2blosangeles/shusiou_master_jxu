@@ -44,6 +44,10 @@ switch(opt) {
 		    });
 		};
 		_f_s['local_video']  = function(cbk_s) {
+			
+			cbk('AAA');
+			return true;
+			
 			connection.connect();
 			var str = "SELECT `video_code` FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "' ";
 			connection.query(str, function (error, results, fields) {
