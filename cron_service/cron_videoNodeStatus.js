@@ -179,7 +179,7 @@ CP_s.serial(
 		connection_m.connect();
 		connection_m.query(sql_str, function (error_m, results_m, fields_m) {
 			connection_m.end();
-			res.send({d:data_s.results, s:sql_str, results_m:results_m});
+			console.log({d:data_s.results, s:sql_str, results_m:results_m});
 		});
 	},
 	22000
