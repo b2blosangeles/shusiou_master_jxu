@@ -1,3 +1,5 @@
+res.send(req.url);
+
 function write404(msg) {
 	res.writeHead(404);
 	res.write(msg);
