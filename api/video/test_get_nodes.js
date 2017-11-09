@@ -165,16 +165,16 @@ switch(opt) {
 					
 					for (var p in server_list) {
 						if (node_list[p] == server_list[p])  v[v.length] = "'"+p+"'";
-					//	else diff_v[diff_v.length] = "'"+p+"'";
+						else diff_v[diff_v.length] = "'"+p+"'";
 					}
 					
 					
 					if (v.length) {
 						sql_a[sql_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(',') +"))";
 					}
-				//	if (diff_v.length) {
-				//		diff_a[diff_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + diff_v.join(',') +"))";
-				//	}
+					if (diff_v.length) {
+						diff_a[diff_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + diff_v.join(',') +"))";
+					}
 					
 				}
 				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ');
