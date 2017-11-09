@@ -26,6 +26,7 @@ switch(type) {
 		var w = req.query['w'], s = req.query['s'];
 		if (!s || [90|180, 480].indexOf(w) !== -1) { write404('wrong s or w'); return true; }
 		var fn = folder_image + w + '_' + s + '.png';
+		res.send(fn); return true;
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 
@@ -61,7 +62,7 @@ switch(type) {
 					}
 				});
 			},
-		6000
+			6000
 		);    
 		break;
 	default:
