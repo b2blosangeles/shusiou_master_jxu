@@ -27,7 +27,7 @@ pkg.fs.stat(mnt_folder, function (err, stats){
 switch(type) {
 	case 'image':
 		var w = req.query['w'], s = req.query['s'];
-		if (!s || ['90', '180', '480'].indexOf(w) === -1) { write404('wrong s or w'); return true; }
+		if (!s || ['90', '180', '480', 'FULL'].indexOf(w) === -1) { write404('wrong s or w'); return true; }
 		var fn = folder_image + w + '_' + s + '.png';
 
 		var CP = new pkg.crowdProcess();
