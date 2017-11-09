@@ -7,7 +7,7 @@ var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
 
 var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT A.* "+    
+	var str = "SELECT A.*, B.server_ip "+    
 	    	 " FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`video_code` " +
 	     	// " FROM `video` A  " + 
 		" WHERE A.`vid` = '" + vid + "'; ";
