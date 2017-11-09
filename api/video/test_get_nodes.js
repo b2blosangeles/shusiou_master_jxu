@@ -162,7 +162,7 @@ switch(opt) {
 					var v = [];
 					
 					for (var p in node_list) {
-					//	if (node_list[p] == CP_s.data.local_file.server_list[p])  
+						if ((CP_s.data.local_flist) && node_list[p] == CP_s.data.local_flist.server_list[p])  
 							v[v.length] = "'"+p+"'";
 					}
 					if (v.length) {
