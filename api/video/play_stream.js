@@ -142,7 +142,7 @@ switch(type) {
 						      setTimeout(
 						      	function() {
 								file.destroy();
-								res.send('timeout')
+								write404('timeout')
 							}, 1
 						      );
 						} else {
