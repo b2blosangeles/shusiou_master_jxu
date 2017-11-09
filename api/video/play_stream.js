@@ -70,6 +70,8 @@ switch(type) {
 					res.send('CP.data.S0');
 					return true;
 				}
+				res.send(data);
+				return true;
 				pkg.fs.stat(fn, function(err, data1) {
 					if (err) {  write404(fn + ' does not exist'); }
 					else {
