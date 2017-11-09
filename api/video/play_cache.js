@@ -11,6 +11,10 @@ var connection = mysql.createConnection(cfg0);
 	    	 " FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`video_code` " +
 	         " WHERE A.`vid` = '" + vid + "'; ";
 		// " WHERE A.`vid` = '" + vid + "' AND A.`status` = '1'; ";
+	 str = "SELECT A.`vid`, A.`node_id` "+    
+	    	 " FROM `video_node` A  " +
+	         " WHERE A.`vid` = '" + vid + "'; ";
+		// " WHERE A.`vid` = '" + vid + "' AND A.`status` = '1'; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error)  res.send(false);
