@@ -160,13 +160,14 @@ switch(opt) {
 					);
 				} else { cbk_s(false); }
 			}); 
-		}
+		};
+	res.send('==niu2==');
+		return true;			
 		CP_s.serial(
 			_f_s,
 			function(data_s) {
 			
-	res.send('==niu2==');
-		return true;				
+			
 				
 				var sql_a = [], diff_a = [];
 				for (var o in CP_s.data.cached) {
