@@ -24,8 +24,8 @@ var connection = mysql.createConnection(cfg0);
 				res.send(url);
 			} else {
 				var vi =  v[Math.floor(Math.random() * v.length)];
-				url = ('http://'+ vi['node_ip'] + url).replace(/server\=(^\&|^\$+)/ig, 'server=' + vi['server_ip'] );
-				res.send('http://'+ vi['node_ip'] + url);
+				url = ('http://'+ vi['node_ip'] + url).replace(/server\=(^\&|^\$+)/ig,'') + '&server=' + vi['server_ip'] );
+				res.send(url);
 			}	
 		} else res.send(false);
 	});  
