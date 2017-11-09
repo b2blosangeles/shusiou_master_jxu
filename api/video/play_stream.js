@@ -71,6 +71,12 @@ switch(type) {
 						res.writeHead(200); 
 						var file = pkg.fs.createReadStream(fn);
 						file.pipe(res);
+						setTimeout(
+						function() {
+							file.destroy();
+							write404('timeout')
+						}, 30000
+						);						
 					}
 				});
 			},
@@ -139,12 +145,12 @@ switch(type) {
 							res.writeHead(206, {'Content-Range': 'bytes ' + start + '-' + end + '/' + total, 
 								'Accept-Ranges': 'bytes', 'Content-Length': chunksize, 'Content-Type': 'video/mp4' });
 						       file.pipe(res);
-						      setTimeout(
-						      	function() {
-								file.destroy();
-								write404('timeout')
-							}, 1000
-						      );
+							setTimeout(
+								function() {
+									file.destroy();
+									write404('timeout')
+								}, 30000
+							);
 						} else {
 							res.send('Need streaming player');
 						}
