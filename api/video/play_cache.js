@@ -1,4 +1,5 @@
-res.send(req.url.replace('/play_cache.api?', '/play_stream.api?'));
+res.redirect(req.url.replace('/play_cache.api?', '/play_stream.api?'));
+return true;
 
 function write404(msg) {
 	res.writeHead(404);
