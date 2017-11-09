@@ -26,7 +26,7 @@ switch(type) {
 		var w = req.query['w'], s = req.query['s'];
 		if (!s || [90|180, 480].indexOf(w) !== -1) { write404('wrong s or w'); return true; }
 		var fn = folder_image + w + '_' + s + '.png';
-		res.send(fn); return true;
+
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 
@@ -52,7 +52,8 @@ switch(type) {
 
 		CP.serial(
 			_f,
-			function(data) {	
+			function(data) {
+						res.send('===' + fn); return true;
 				pkg.fs.stat(fn, function(err, data1) {
 					if (err) {  write404(fn + ' does not exist'); }
 					else {
