@@ -13,14 +13,21 @@ var connection = mysql.createConnection(cfg0);
 
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (error)  res.send(str );
+		if (error)  res.send(false);
 		else if (results) { 
 			var v = [];
 			for (var i = 0; i < results.length; i++) {
 				v[v.length] = results[i];
 			}
-			res.send(v);
-		} else res.send(str );
+			var url = req.url.replace('/play_cache.api?', '/play_stream.api?');
+			if (!v.length) {
+				res.send(url);
+			} else {
+				var vi =  v[Math.floor(Math.random() * v.length)];
+				url = ('http://'+ vi['node_ip'] + url).replace(/server\=(^\&|^\$+)/ig, 'server=' + vi['server_ip'] );
+				res.send('http://'+ vi['node_ip'] + url);
+			}	
+		} else res.send(false);
 	});  
 return true;
 res.redirect(req.url.replace('/play_cache.api?', '/play_stream.api?'));
