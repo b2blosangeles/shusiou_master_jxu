@@ -185,9 +185,9 @@ switch(opt) {
 				var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ');
 				sql_str += 'UPDATE `video_node` SET `status` = 0 WHERE ' + diff_a.join(' OR ');
 				connection_m.query(sql_str, function (error, results_m, fields__m) {
-					connection.end();
+					connection_m.end();
 					res.send({d:data_s.results, s:sql_str, results_m:results_m});
-				}
+				});
 				
 			},
 			22000
