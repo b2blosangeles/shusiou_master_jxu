@@ -127,7 +127,7 @@ switch(type) {
 					if (err) {  write404(fn + ' does not exist'); }
 					else {
 						
-					      var total = data.size;
+					      var total = data1.size;
 						
 						res.send(fn + '--' + total); return true;
 						
