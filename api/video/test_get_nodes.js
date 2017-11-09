@@ -44,6 +44,9 @@ switch(opt) {
 		    });
 		};
 		_f_s['local_video']  = function(cbk_s) {
+			res.send('AAA');
+			return true;
+			
 			connection.connect();
 			var str = "SELECT `video_code` FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "' ";
 			connection.query(str, function (error, results, fields) {
@@ -54,6 +57,10 @@ switch(opt) {
 			});
 		};		
 		_f_s['local_flist']  = function(cbk_s) {
+			
+			res.send('BBB');
+			return true;
+			
 			pkg.fs.readdir(videos_folder, function(err, files) {
 				if (err) cbk([]);
 				else {
@@ -103,6 +110,9 @@ switch(opt) {
 				
 		_f_s['cached']  = function(cbk_s) {
 
+			res.send('CCC');
+			return true;			
+			
 			connection.connect();
 			var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
 			connection.query(str, function (error, results, fields) {
@@ -165,9 +175,9 @@ switch(opt) {
 		CP_s.serial(
 			_f_s,
 			function(data_s) {
-		res.send(data_s);
-		return true;			
-			
+				res.send(data_s);
+				return true;			
+
 				/*
 				var sql_a = [], diff_a = [];
 				for (var o in CP_s.data.cached) {
