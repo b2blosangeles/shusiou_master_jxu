@@ -14,7 +14,7 @@ var mnt_folder = '/mnt/shusiou-video/',
 
 pkg.fs.stat(mnt_folder, function (err, stats){
 	if (err) { res.send({status:'failure'}); return true; }
-	else if (!stats.isDirectory()) { res.send({status:'failure'}); return true; } 
+	else if (!stats.isDirectory()) { res.send({status:'failure', message:err.message}); return true; } 
 	else {
 	      pkg.fs.stat(file_video, function(err, stat) {
 		 if(err) {  res.send({status:'failure', message:err.message}); return true; }
@@ -24,7 +24,7 @@ pkg.fs.stat(mnt_folder, function (err, stats){
 switch(type) {
 	case 'image':
 		var w = req.query['w'], s = req.query['s'];
-		if (!s || [90|180, 480].indexOf(w) !== -1) { write404('wrong s or w'); return true; }
+		if (!s || [90, 180, 480].indexOf(w) !== -1) { write404('wrong s or w'); return true; }
 		var fn = folder_image + w + '_' + s + '.png';
 
 		var CP = new pkg.crowdProcess();
