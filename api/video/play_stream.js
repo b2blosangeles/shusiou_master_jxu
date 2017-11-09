@@ -92,7 +92,8 @@ switch(type) {
 				}
 			});
 		};
-
+		res.send(fn);
+		return true;
 		CP.serial(
 			_f,
 			function(data) {
