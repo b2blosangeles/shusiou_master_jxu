@@ -27,8 +27,6 @@ function checkFolder(cbk) {
 		}
 	});
 };
-res.send(fn + '---niu---');
-return true;
 switch(type) {
 	case 'image':
 		var w = req.query['w'], s = req.query['s'];
