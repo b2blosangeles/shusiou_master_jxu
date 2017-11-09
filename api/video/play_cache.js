@@ -7,9 +7,10 @@ var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
 
 var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT A.`vid`, A.`node_id`, B.server_ip "+    
+	var str = "SELECT A.`vid`, A.`node_id`, B.`server_ip` "+    
 	    	 " FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`video_code` " +
-		" WHERE A.`vid` = '" + vid + "' AND A.`status` = '1'; ";
+	         " WHERE A.`vid` = '" + vid + "'; ";
+		// " WHERE A.`vid` = '" + vid + "' AND A.`status` = '1'; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error)  res.send(false);
