@@ -12,6 +12,9 @@ var mnt_folder = '/mnt/shusiou-video/',
     file_video =  video_folder + 'video/video.mp4',
     folder_image = video_folder + 'images/';
 
+
+var folderP = require(env.site_path + '/api/inc/folderP/folderP');
+
 pkg.fs.stat(mnt_folder, function (err, stats){
 	if (err) { res.send({status:'failure'}); return true; }
 	else if (!stats.isDirectory()) { res.send({status:'failure', message:err.message}); return true; } 
