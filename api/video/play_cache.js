@@ -18,7 +18,7 @@ var connection = mysql.createConnection(cfg0);
 			for (var i = 0; i < results.length; i++) {
 				v[v.length] = results[i].vid;
 			}
-			res.send(v.join(','));
+			res.send(results);
 		} else res.send(false);
 	});  
 return true;
