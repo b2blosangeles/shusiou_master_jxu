@@ -126,11 +126,7 @@ switch(type) {
 				pkg.fs.stat(fn, function(err, data1) {
 					if (err) {  write404(fn + ' does not exist'); }
 					else {
-						
 					      var total = data1.size;
-						
-						res.send(fn + '--' + total); return true;
-						
 					      var range = req.headers.range;
 					      if (range) {
 							var parts = range.replace(/bytes=/, "").split("-");
