@@ -118,6 +118,10 @@ switch(type) {
 		CP.serial(
 			_f,
 			function(data) {
+				if (CP.data.S1 !== true) {
+					res.send(CP.data.S1);
+					return true;
+				}				
 				pkg.fs.stat(fn, function(err, data1) {
 					if (err) {  write404(fn + ' does not exist'); }
 					else {
