@@ -82,6 +82,8 @@ switch(type) {
 		};
 
 		_f['S2'] = function(cbk) {
+			cbk('AA');
+			return true;
 			pkg.fs.stat(fn, function(err, stat) {
 				if(!err) { cbk(fn);
 				} else {
