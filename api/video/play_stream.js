@@ -40,8 +40,8 @@ switch(type) {
 
 		_f['S2'] = function(cbk) {
 			pkg.fs.stat(fn, function(err, stat) {
-				if(!err) { cbk(fn);
-				} else {
+				//if(!err) { cbk(fn);
+				//} else {
 					if (w != 'FULL') s = 'ffmpeg -ss ' + s + ' -i ' + file_video +' -vf scale=-1:' +  w + '  -preset ultrafast ' + fn + ' -y ';
 					else s = 'ffmpeg -ss ' + s + ' -i ' + file_video +' -vframes 1 ' +  fn + ' -y ';
 					var childProcess = require('child_process');
@@ -49,7 +49,7 @@ switch(type) {
 					function (error, stdout, stderr) {
 						cbk(true);
 					});
-				}
+				//}
 			});
 		};
 
