@@ -185,7 +185,7 @@ switch(opt) {
 				
 				var connection_m = mysql.createConnection(cfg_m);
 				connection_m.connect();
-				connection.query(sql_str, function (error_m, results_m, fields_m) {
+				connection_m.query(sql_str, function (error_m, results_m, fields_m) {
 					connection_m.end();
 					res.send({d:data_s.results, s:sql_str, results_m:results_m});
 				});
