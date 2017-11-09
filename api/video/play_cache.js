@@ -14,14 +14,11 @@ var connection = mysql.createConnection(cfg0);
 		connection.end();
 		if (error)  res.send(false);
 		else if (results) { 
-			res.send(results);
-			/*
 			var v = [];
 			for (var i = 0; i < results.length; i++) {
 				v[v.length] = results[i].vid;
 			}
 			res.send(v.join(','));
-			*/
 		} else res.send(false);
 	});  
 return true;
