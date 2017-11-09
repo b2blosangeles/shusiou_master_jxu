@@ -95,7 +95,7 @@ switch(type) {
 				if (s === true) cbk(true);
 				else {  cbk(s); CP.exit = 1; }
 			});
-		};	
+		};		
 		
 		_f['S1'] = function(cbk) { 
 			var fp = new folderP();
