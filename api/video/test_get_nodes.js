@@ -173,10 +173,10 @@ switch(opt) {
 					
 					
 					if (v.length) {
-						sql_a[sql_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(',') +"));";
+						sql_a[sql_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(',') +")) ";
 					}
 					if (diff_v.length) {
-						diff_a[diff_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + diff_v.join(',') +"));";
+						diff_a[diff_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + diff_v.join(',') +")) ";
 					}
 					
 				}
