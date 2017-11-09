@@ -182,5 +182,5 @@ CP_s.serial(
 			process.stdout.write(JSON.stringify(data_s.results));
 		});
 	},
-	22000
+	50000
 );
