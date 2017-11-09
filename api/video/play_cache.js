@@ -13,14 +13,14 @@ var connection = mysql.createConnection(cfg0);
 	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (error)  res.send(false);
+		if (error)  res.send(str );
 		else if (results) { 
 			var v = [];
 			for (var i = 0; i < results.length; i++) {
 				v[v.length] = results[i].vid;
 			}
 			res.send(results);
-		} else res.send(false);
+		} else res.send(str );
 	});  
 return true;
 res.redirect(req.url.replace('/play_cache.api?', '/play_stream.api?'));
