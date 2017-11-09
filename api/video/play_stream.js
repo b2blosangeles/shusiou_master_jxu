@@ -38,7 +38,6 @@ switch(type) {
 
 		_f['S0'] = function(cbk) { 
 			checkFolder(function(s) {
-				res.send(s); CP.exit = 1;
 				if (s === true) cbk(true);
 				else {  cbk(s); CP.exit = 1; }
 			});
