@@ -10,8 +10,8 @@ if (!type || !vid) {  write404('vid or type error '); return true; }
 var mnt_folder = '/mnt/shusiou-video/',  
     video_folder = mnt_folder  + 'videos/' + vid + '/', 
     file_video =  video_folder + 'video/video.mp4',
-    folder_image = video_folder + 'images/';
-
+    folder_image = video_folder + 'images/',
+    folder_section =   video_folder + + 'sections/';
 
 var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 
@@ -69,7 +69,7 @@ switch(type) {
 		);    
 		break;
 	case 'section':
-		var w = req.query['w'], s = req.query['s'];
+		var l = req.query['l'], s = req.query['s'];
 		if (!s || ['90', '180', '480', 'FULL'].indexOf(w) === -1) { write404('wrong s or w'); return true; }
 		var fn = folder_image + w + '_' + s + '.png';
 
