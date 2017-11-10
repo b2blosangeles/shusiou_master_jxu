@@ -197,7 +197,7 @@ switch(type) {
 					var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 					cfg0 = require(env.site_path + '/api/cfg/db.json');					
 					var connection = mysql.createConnection(cfg0);
-					var inserted_id = '';
+					var inserted_id = '88';
 					
 					var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
 						 " ('" + 'video' + "', '" + req.url + "', NOW()) ";
@@ -220,7 +220,7 @@ switch(type) {
 					//	var str = "UPDATE `master_node_log` SET `finished` = NOW() "+
 					//	    "WHERE `id` = '" + inserted_id + "' ";
 						var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
-						 " ('" + 'video' + "', '" + 'inserted_id' + "', NOW()) ";
+						 " ('" + 'video' + "', '" + inserted_id + "', NOW()) ";
 						connection.query(str, function (error, results, fields) {
 							connection.end();
 						}); 						
