@@ -122,7 +122,7 @@ switch(opt) {
 					connection.query(str1, function (error1, results1, fields1) {
 						connection.end();
 						cbk(vid);
-					}	
+					});	
 					
 				} else cbk(false);
 			});  
