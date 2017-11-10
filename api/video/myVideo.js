@@ -17,7 +17,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 			var str = "SELECT A.`id`"+    
-				" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`id` = B.`video_code` " +
+				" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`vid` = B.`vid` " +
 				" WHERE B.`uid` = '" + uid + "' AND NOW() - B.`created` > 36000; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
@@ -35,7 +35,7 @@ switch(opt) {
 			if (CP.data.A0) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
-				var str ="DELETE FROM `video_user` WHERE `video_code` IN (" + CP.data.A0 + "); ";
+				var str ="DELETE FROM `video_user` WHERE `vid` IN (" + CP.data.A0 + "); ";
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error)  cbk(false);
@@ -62,7 +62,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = "SELECT `id`, `video_code` FROM `video` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
+			var str = "SELECT `id`, `vid` FROM `video` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (results.length) { cbk(results[0]);}
@@ -72,13 +72,13 @@ switch(opt) {
 		_f['PV'] = function(cbk) {
 			if ((CP.data.P0) || (CP.data.P1)) {
 				var code = '';
-				if (CP.data.P1) code = CP.data.P1.video_code;
-				else if (CP.data.P0) code = CP.data.P0.id;
+				if (CP.data.P1) code = CP.data.P1.vid;
+				else if (CP.data.P0) code = CP.data.P0.vid;
 				
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = 'INSERT INTO `video_user` ' +
-				    '(`video_code`, `uid`, `created`) VALUES (' +
+				    '(`vid`, `uid`, `created`) VALUES (' +
 				     "'" + code + "'," +
 				     "'" + uid + "'," +
 				    'NOW()) ON DUPLICATE KEY UPDATE  `created` = `created` ';
@@ -124,7 +124,7 @@ switch(opt) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = 'INSERT INTO `video_user` ' +
-				    '(`video_code`, `uid`, `created`) VALUES (' +
+				    '(`vid`, `uid`, `created`) VALUES (' +
 				     "'" + CP.data.P3 + "'," +
 				     "'" + uid + "'," +
 				    'NOW()) ON DUPLICATE KEY UPDATE  `created` = `created` ';
