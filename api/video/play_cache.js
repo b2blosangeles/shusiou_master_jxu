@@ -5,6 +5,7 @@ var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
     mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     cfg0 = require(env.site_path + '/api/cfg/db.json');
 
+var url = req.url.replace('/play_cache.api', '/play_stream.api');
 var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT A.`vid`, A.`node_ip`, B.`server_ip` "+    
@@ -13,13 +14,13 @@ var connection = mysql.createConnection(cfg0);
 
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (error)  res.send(false);
+		if (error)  res.redirect(url);
 		else if (results) { 
 			var v = [];
 			for (var i = 0; i < results.length; i++) {
 				v[v.length] = results[i];
 			}
-			var url = req.url.replace('/play_cache.api', '/play_stream.api');
+			
 			if (!v.length) {
 				res.redirect(url);
 			} else {
@@ -28,7 +29,7 @@ var connection = mysql.createConnection(cfg0);
 				else url = 'http://'+ vi['node_ip'] + url + '&server=' + vi['server_ip'];
 				res.send(url);
 			}	
-		} else res.send(false);
+		} else res.redirect(url);
 	});  
 
 return true;
