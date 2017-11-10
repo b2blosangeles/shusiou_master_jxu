@@ -82,7 +82,8 @@ _f['I1'] = function(cbk) { /* --- mark overtime --- */
 _f['P1'] = function(cbk) { /* --- pickup one from queue --- */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = 'UPDATE  download_queue SET `holder_ip` = "' + CP.data.P0 + '", `status` = 1, hold_time = NOW() ' + 
+	var str = 'UPDATE  download_queue SET `holder_ip` = "' + CP.data.P0 + '", `status` = 1, '+
+	    	' `video_code` = `id` * 100000000000  + ' + (Math.floor(new Date().getTime() * 0.001)) + ', hold_time = NOW() ' + 
 		' WHERE  `status` = 0 AND (`holder_ip` = "" OR `holder_ip` IS NULL) ORDER BY `created` ASC LIMIT 1';
 	
 	connection.query(str, function (error, results, fields) {
@@ -101,7 +102,8 @@ _f['P2'] = function(cbk) { /* --- get the one from queue --- */
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (results.length) {
-			cbk(results[0]);
+			var rec = results[0], rec.video_vode = results[0].id + '_' + Math.floor(new Date().getTime() * 0.001);
+			cbk(rec);
 		} else {
 			cbk(false); CP.exit = 1;
 		}
@@ -109,7 +111,7 @@ _f['P2'] = function(cbk) { /* --- get the one from queue --- */
 };
 
 _f['DR1'] = function(cbk) { /* create video path */
-	fp.build(video_folder + CP.data.P2.id + '/video/', function() {
+	fp.build(video_folder + CP.data.P2.video_vode + '/video/', function() {
 		cbk(video_folder + CP.data.P2.id + '/video/');
 	});
 };
