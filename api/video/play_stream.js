@@ -206,7 +206,7 @@ switch(type) {
 						connection.connect();
 						var running_time = new Date.getTime() - t;
 						var str = "INSERT INTO `master_node_log` (`type`, `url`, `is_error`, `running_time`, `finished`) VALUES "+    
-						 " ('" + 'video' + "', '" + req.url + "', '" + had_error + "', '" + new Date.getTime() + "', NOW()) ";
+						 " ('" + 'video' + "', '" + req.url + "', '" + had_error + "', '" + running_time + "', NOW()) ";
 						connection.query(str, function (error, results, fields) {
 							connection.end();	
 						}); 									
