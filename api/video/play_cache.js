@@ -19,9 +19,9 @@ var connection = mysql.createConnection(cfg0);
 			for (var i = 0; i < results.length; i++) {
 				v[v.length] = results[i];
 			}
-			var url = req.url.replace('/play_cache.api?', '/play_stream.api?');
+			var url = req.url.replace('/play_cache.api', '/play_stream.api');
 			if (!v.length) {
-				res.send(url);
+				res.redirect(url);
 			} else {
 				var vi =  v[Math.floor(Math.random() * v.length)], patt = /([?&]server)=([^#&]*)/i;
 				if (patt.test(url)) url = ('http://'+ vi['node_ip'] + url).replace(patt,'$1=' + vi['server_ip']);
@@ -30,8 +30,7 @@ var connection = mysql.createConnection(cfg0);
 			}	
 		} else res.send(false);
 	});  
-return true;
-res.redirect(req.url.replace('/play_cache.api?', '/play_stream.api?'));
+
 return true;
 
 function write404(msg) {
