@@ -14,7 +14,7 @@ var mnt_folder = '/mnt/shusiou-video/',
     folder_section =   video_folder + 'sections/';
 
 var folderP = require(env.site_path + '/api/inc/folderP/folderP');
-var cache_only = req.body.cache_only;
+var cache_only = (req.query['cache_only'])?true:false;
 switch(type) {
 	case 'image':
 		var w = req.query['w'], s = req.query['s'];
