@@ -199,21 +199,7 @@ switch(type) {
 					
 					var inserted_id = '88';
 					var dataLength = 0;
-					/*
-					file.on('data', function (chunk) {
-						if (dataLength) return true;
-						var connection = mysql.createConnection(cfg0);
-						var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
-						 	" ('" + 'video' + "', '" + req.url + "', NOW()) ";
-						connection.connect();
-						connection.query(str, function (error, results, fields) {
-							
-							inserted_id = 'results.insertId';
-							connection.end();
-						}); 
-						dataLength += chunk.length;
-					});					
-					*/
+
 					var had_error = '';
 					file.on('error', function(err){
 						had_error = '1';
