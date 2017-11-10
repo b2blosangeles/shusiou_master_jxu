@@ -166,27 +166,26 @@ switch(type) {
 				if (cache_only)	{
 					var file = pkg.fs.createReadStream(file_video);
 					file.pipe(res);
-					/*
+					
 					var had_error = false;
 					file.on('error', function(err){
 						had_error = true;
 					});
-					*/
+					
+					file.on('close', function(){
+						//if (!had_error) fs.unlink('<filepath>/example.pdf');
 						var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     						cfg0 = require(env.site_path + '/api/cfg/db.json');
 						var connection = mysql.createConnection(cfg0);
 							connection.connect();
 							var str = "INSERT INTO `cross_link` (`url`, `created`) VALUES "+    
-								 " ('" + req.url + "', NOW()) ";
+								 " ('" + req.url+'===' + "', NOW()) ";
 
 							connection.query(str, function (error, results, fields) {
 								connection.end();
-							}); 					
-					/*
-					file.on('close', function(){
-						//if (!had_error) fs.unlink('<filepath>/example.pdf');
+							}); 						
  						
-					});*/					
+					});					
 				} else {				
 					var total = data1.size;
 					var range = req.headers.range;
