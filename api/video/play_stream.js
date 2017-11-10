@@ -194,8 +194,8 @@ switch(type) {
 					var file = pkg.fs.createReadStream(file_video);
 					file.pipe(res);
 					
-					// var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-					// cfg0 = require(env.site_path + '/api/cfg/db.json');					
+					var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+					cfg0 = require(env.site_path + '/api/cfg/db.json');					
 					
 					var inserted_id = '88';
 					var dataLength = 0;
@@ -220,13 +220,11 @@ switch(type) {
 					});
 
 					file.on('close', function(){
-						var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-						cfg0 = require(env.site_path + '/api/cfg/db.json');
 						connection.connect();
 					//	var str = "UPDATE `master_node_log` SET `finished` = NOW() "+
 					//	    "WHERE `id` = '" + inserted_id + "' ";
 						var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
-						 " ('" + 'video' + "', '" + inserted_id + "', NOW()) ";
+						 " ('" + 'video' + "', '" + 'inserted_id' + "', NOW()) ";
 						connection.query(str, function (error, results, fields) {
 							connection.end();
 						}); 						
