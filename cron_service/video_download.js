@@ -115,14 +115,14 @@ _f['DR1'] = function(cbk) { /* create video path */
 	});
 };
 _f['DR2'] = function(cbk) { /* create miange path */
-	fp.build(video_folder + CP.data.P2.id + '/images/' , function() {
-		cbk(video_folder + CP.data.P2.id + '/images/');
+	fp.build(video_folder + CP.data.P2.video_vode + '/images/' , function() {
+		cbk(video_folder + CP.data.P2.video_vode + '/images/');
 	});
 };
 
 _f['DR3'] = function(cbk) { /* create sections path */
 	fp.build(video_folder + CP.data.P2.id + '/sections/' , function() {
-		cbk(video_folder + CP.data.P2.id + '/sections/');
+		cbk(video_folder + CP.data.P2.video_vode + '/sections/');
 	});
 };
 
@@ -213,7 +213,7 @@ _f['E1'] = function(cbk) {
 		    "'" + CP.data.P2.code.replace(/\'/g, "\\\'") + "'," +
 		    "'" + CP.data.P2.holder_ip + "'," +
 		    "'" + info.replace(/\'/g, "\\\'") + "'," +
-		    "'" + CP.data.P2.id + "'," +
+		    "'" + CP.data.P2.video_code + "'," +
 		    "'" +  CP.data.P2.video_length + "'," +
 		    "'" +  CP.data.P2.org_thumbnail + "'," +
 		    'NOW())';
