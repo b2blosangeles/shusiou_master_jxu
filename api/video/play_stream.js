@@ -193,26 +193,9 @@ switch(type) {
 				if (cache_only)	{
 					var file = pkg.fs.createReadStream(file_video);
 					file.pipe(res);
-					
+					var t = new Date.getTime();
 					var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 					cfg0 = require(env.site_path + '/api/cfg/db.json');	
-					var connection = mysql.createConnection(cfg0);
-
-					connection.connect();
-					//	var str = "UPDATE `master_node_log` SET `finished` = NOW() "+
-					//	    "WHERE `id` = '" + inserted_id + "' ";
-						var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
-						 " ('" + 'video' + "', 'niua', NOW()) ";
-						connection.query(str, function (error, results, fields) {
-							connection.end();
-
-							inserted_id = results.insertId;
-							
-						}); 					
-					
-					var inserted_id = '88';
-					var dataLength = 0;
-
 					var had_error = '';
 					file.on('error', function(err){
 						had_error = '1';
@@ -221,13 +204,12 @@ switch(type) {
 					file.on('close', function(){
 						var connection = mysql.createConnection(cfg0);
 						connection.connect();
-					//	var str = "UPDATE `master_node_log` SET `finished` = NOW() "+
-					//	    "WHERE `id` = '" + inserted_id + "' ";
-						var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
-						 " ('" + 'video' + "', '" + inserted_id + "', NOW()) ";
+						var running_time = new Date.getTime() - t;
+						var str = "INSERT INTO `master_node_log` (`type`, `url`, `is_error`, `running_time`, `finished`) VALUES "+    
+						 " ('" + 'video' + "', '" + req.url + "', '" + had_error + "', '" + new Date.getTime() + "', NOW()) ";
 						connection.query(str, function (error, results, fields) {
-							connection.end();
-						}); 										
+							connection.end();	
+						}); 									
 					});	
 					
 					
