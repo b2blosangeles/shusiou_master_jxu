@@ -205,6 +205,9 @@ switch(type) {
 						 " ('" + 'video' + "', 'niua', NOW()) ";
 						connection.query(str, function (error, results, fields) {
 							connection.end();
+
+							inserted_id = results.insertId;
+							
 						}); 					
 					
 					var inserted_id = '88';
@@ -221,7 +224,7 @@ switch(type) {
 					//	var str = "UPDATE `master_node_log` SET `finished` = NOW() "+
 					//	    "WHERE `id` = '" + inserted_id + "' ";
 						var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
-						 " ('" + 'video' + "', 'niub', NOW()) ";
+						 " ('" + 'video' + "', '" + inserted_id + "', NOW()) ";
 						connection.query(str, function (error, results, fields) {
 							connection.end();
 						}); 										
