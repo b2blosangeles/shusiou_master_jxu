@@ -24,7 +24,7 @@ var connection = mysql.createConnection(cfg0);
 				res.send(url);
 			} else {
 				var vi =  v[Math.floor(Math.random() * v.length)], patt = /([?&]server)=([^#&]*)/i;
-				if (ptt.test(url)) url = ('http://'+ vi['node_ip'] + url).replace(patt,'$1=' + vi['server_ip']);
+				if (patt.test(url)) url = ('http://'+ vi['node_ip'] + url).replace(patt,'$1=' + vi['server_ip']);
 				else url = 'http://'+ vi['node_ip'] + url + '&server=' + vi['server_ip'];
 				res.send(url);
 			}	
