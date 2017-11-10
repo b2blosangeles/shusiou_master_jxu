@@ -44,8 +44,8 @@ _f['CL1'] = function(cbk) {
 	connection.connect();
 	var message = '';
 	var str = 'INSERT INTO `download_failure` ' +
-	    '(`id`, `source`, `code`, `video_info`, `message`) '+
-	    'SELECT `id`, `source`, `code`, `info`, "Over 1 minute time limutation" FROM `download_queue` '+
+	    '(`vid`, `source`, `code`, `video_info`, `message`) '+
+	    'SELECT `vid`, `source`, `code`, `info`, "Over 1 minute time limutation" FROM `download_queue` '+
 	    ' WHERE `status` = 9';
 	
 	connection.query(str, function (error, results, fields) {
