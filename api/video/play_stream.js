@@ -192,7 +192,7 @@ switch(type) {
 			else {
 				if (cache_only)	{
 					var file = pkg.fs.createReadStream(file_video);
-					/*
+					
 					var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 					cfg0 = require(env.site_path + '/api/cfg/db.json');					
 					var connection = mysql.createConnection(cfg0);
@@ -204,7 +204,7 @@ switch(type) {
 						connection.end();
 						inserted_id = results.insertId;
 					}); 
-
+					/*
 					var had_error = '';
 					file.on('error', function(err){
 						had_error = '1';
