@@ -165,7 +165,15 @@ switch(type) {
 			else {
 				if (cache_only)	{
 					var file = pkg.fs.createReadStream(file_video);
-					file.pipe(res);
+					var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+    					cfg0 = require(env.site_path + '/api/cfg/db.json');					
+					var connection = mysql.createConnection(cfg0);
+					var vv = '';
+					var str = "INSERT INTO `cross_link` (`url`, `created`) VALUES "+    
+						 " ('" + req.url + "', NOW()) ";
+					connection.query(str, function (error, results, fields) {
+						vv = JSON.stringify(results);
+					}); 
 					
 					var had_error = false;
 					file.on('error', function(err){
@@ -174,18 +182,17 @@ switch(type) {
 					
 					file.on('close', function(){
 						//if (!had_error) fs.unlink('<filepath>/example.pdf');
-						var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-    						cfg0 = require(env.site_path + '/api/cfg/db.json');
-						var connection = mysql.createConnection(cfg0);
+	
+						
 							connection.connect();
 							var str = "INSERT INTO `cross_link` (`url`, `created`) VALUES "+    
-								 " ('" + req.url+'===' + "', NOW()) ";
-
+								 " ('" + vv +'===' + "', NOW()) ";
 							connection.query(str, function (error, results, fields) {
 								connection.end();
 							}); 						
  						
-					});					
+					});	
+					file.pipe(res);
 				} else {				
 					var total = data1.size;
 					var range = req.headers.range;
