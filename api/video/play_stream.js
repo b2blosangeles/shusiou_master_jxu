@@ -198,13 +198,12 @@ switch(type) {
 					var connection = mysql.createConnection(cfg0);
 					var inserted_id = '';
 					var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
-						 " ('" + 'video' + "', '" + req.url + "', NOW()) ";
+						 " ('" + 'video' + "', '" + 'req.url' + "', NOW()) ";
 					connection.connect();
 					connection.query(str, function (error, results, fields) {
 						connection.end();
 						inserted_id = results.insertId;
 					}); 
-					/*
 					var had_error = '';
 					file.on('error', function(err){
 						had_error = '1';
@@ -218,7 +217,7 @@ switch(type) {
 							connection.end();
 						}); 						
 					});	
-					*/
+					
 					file.pipe(res);
 				} else {				
 					var total = data1.size;
