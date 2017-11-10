@@ -198,7 +198,7 @@ switch(type) {
 					var connection = mysql.createConnection(cfg0);
 					var inserted_id = '';
 					var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
-						 " ('" + 'video' + "', '" + 'req.url' + "', NOW()) ";
+						 " ('" + 'video' + "', '" + req.url + "', NOW()) ";
 					connection.connect();
 					connection.query(str, function (error, results, fields) {
 						connection.end();
