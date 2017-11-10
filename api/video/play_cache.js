@@ -1,8 +1,7 @@
 var type= req.query['type'], vid = req.query['vid'];
 if (!type || !vid) {  write404('vid or type error '); return true; }
 
-var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
-    mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     cfg0 = require(env.site_path + '/api/cfg/db.json');
 
 var url = req.url.replace('/play_cache.api', '/play_stream.api');
