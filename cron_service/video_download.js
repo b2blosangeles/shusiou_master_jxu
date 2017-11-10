@@ -102,8 +102,7 @@ _f['P2'] = function(cbk) { /* --- get the one from queue --- */
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (results.length) {
-			var rec = results[0], rec.video_vode = results[0].id + '_' + Math.floor(new Date().getTime() * 0.001);
-			cbk(rec);
+			cbk(results[0]);
 		} else {
 			cbk(false); CP.exit = 1;
 		}
