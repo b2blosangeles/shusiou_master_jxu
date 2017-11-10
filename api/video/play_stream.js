@@ -168,11 +168,11 @@ switch(type) {
 					var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     					cfg0 = require(env.site_path + '/api/cfg/db.json');					
 					var connection = mysql.createConnection(cfg0);
-					var vv = '';
+					var inserted_id = '';
 					var str = "INSERT INTO `cross_link` (`url`, `created`) VALUES "+    
 						 " ('" + req.url + "', NOW()) ";
 					connection.query(str, function (error, results, fields) {
-						vv = JSON.stringify(results);
+						inserted_id = JSON.stringify(results.insertId);
 					}); 
 					
 					var had_error = false;
@@ -182,14 +182,11 @@ switch(type) {
 					
 					file.on('close', function(){
 						//if (!had_error) fs.unlink('<filepath>/example.pdf');
-	
-						
-							connection.connect();
-							var str = "INSERT INTO `cross_link` (`url`, `created`) VALUES "+    
-								 " ('" + vv +'===' + "', NOW()) ";
-							connection.query(str, function (error, results, fields) {
-								connection.end();
-							}); 						
+						connection.connect();
+						var str = "UPDATE `cross_link` SET `finifhed` = NOW() WHERE `id` = '" + inserted_id + "' ";
+						connection.query(str, function (error, results, fields) {
+							connection.end();
+						}); 						
  						
 					});	
 					file.pipe(res);
