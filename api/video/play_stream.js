@@ -195,15 +195,9 @@ switch(type) {
 					file.pipe(res);
 					
 					var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-					cfg0 = require(env.site_path + '/api/cfg/db.json');					
-						connection.connect();
-					//	var str = "UPDATE `master_node_log` SET `finished` = NOW() "+
-					//	    "WHERE `id` = '" + inserted_id + "' ";
-						var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
-						 " ('" + 'video' + "', 'niu', NOW()) ";
-						connection.query(str, function (error, results, fields) {
-							connection.end();
-						}); 					
+					cfg0 = require(env.site_path + '/api/cfg/db.json');	
+					var connection = mysql.createConnection(cfg0);
+				
 					var inserted_id = '88';
 					var dataLength = 0;
 
@@ -213,7 +207,14 @@ switch(type) {
 					});
 
 					file.on('close', function(){
-									
+						connection.connect();
+					//	var str = "UPDATE `master_node_log` SET `finished` = NOW() "+
+					//	    "WHERE `id` = '" + inserted_id + "' ";
+						var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
+						 " ('" + 'video' + "', 'niu', NOW()) ";
+						connection.query(str, function (error, results, fields) {
+							connection.end();
+						}); 										
 					});	
 					
 					
