@@ -193,7 +193,7 @@ switch(type) {
 				if (cache_only)	{
 					var file = pkg.fs.createReadStream(file_video);
 					file.pipe(res);
-					var t = new Date.getTime();
+					var t = new Date().getTime();
 					var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 					cfg0 = require(env.site_path + '/api/cfg/db.json');	
 					var had_error = '';
@@ -204,7 +204,7 @@ switch(type) {
 					file.on('close', function(){
 						var connection = mysql.createConnection(cfg0);
 						connection.connect();
-						var running_time = new Date.getTime() - t;
+						var running_time = new Date().getTime() - t;
 						var str = "INSERT INTO `master_node_log` (`type`, `url`, `is_error`, `running_time`, `finished`) VALUES "+    
 						 " ('" + 'video' + "', '" + req.url + "', '" + had_error + "', '" + running_time + "', NOW()) ";
 						connection.query(str, function (error, results, fields) {
