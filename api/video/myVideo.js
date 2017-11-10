@@ -51,7 +51,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = "SELECT `id` FROM `download_queue` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
+			var str = "SELECT `id`, `vid` FROM `download_queue` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (results.length) { cbk(results[0]); }
@@ -115,8 +115,16 @@ switch(opt) {
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (results.insertId) cbk(results.insertId);
-				else cbk(false);
+				if (results.insertId) {
+					var vid = results.insertId * 1000000000000 + Math.floor(new Date().getTime() * 0.001);
+					var str1 = 'UPDATE `download_queue` SET `vid` = "' + vid + '" WHERE `id` = "' + results.insertId + '"';
+					connection.connect();
+					connection.query(str, function (error1, results1, fields1) {
+						connection.end();
+						cbk(vid);
+					}	
+					
+				} else cbk(false);
 			});  
 		};
 		_f['P4'] = function(cbk) {
