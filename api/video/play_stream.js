@@ -207,8 +207,9 @@ switch(type) {
 						 	" ('" + 'video' + "', '" + req.url + "', NOW()) ";
 						connection.connect();
 						connection.query(str, function (error, results, fields) {
-							connection.end();
+							
 							inserted_id = 'results.insertId';
+							connection.end();
 						}); 
 						dataLength += chunk.length;
 					});					
