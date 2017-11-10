@@ -210,7 +210,7 @@ switch(type) {
 					//	var str = "UPDATE `master_node_log` SET `finished` = NOW() "+
 					//	    "WHERE `id` = '" + inserted_id + "' ";
 						var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
-						 " ('" + 'video' + "', '" + 'inserted_id' + "', NOW()) ";
+						 " ('" + 'video' + "', 'niu', NOW()) ";
 						connection.query(str, function (error, results, fields) {
 							connection.end();
 						}); 						
