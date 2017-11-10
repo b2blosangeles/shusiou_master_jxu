@@ -216,6 +216,7 @@ switch(type) {
 					});
 
 					file.on('close', function(){
+						var connection = mysql.createConnection(cfg0);
 						connection.connect();
 					//	var str = "UPDATE `master_node_log` SET `finished` = NOW() "+
 					//	    "WHERE `id` = '" + inserted_id + "' ";
