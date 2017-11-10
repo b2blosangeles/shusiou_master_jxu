@@ -82,8 +82,7 @@ _f['I1'] = function(cbk) { /* --- mark overtime --- */
 _f['P1'] = function(cbk) { /* --- pickup one from queue --- */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = 'UPDATE  download_queue SET `holder_ip` = "' + CP.data.P0 + '", `status` = 1, '+
-	    	' `video_code` = `id` * 1000000000000  + ' + (Math.floor(new Date().getTime() * 0.001)) + ', hold_time = NOW() ' + 
+	var str = 'UPDATE  download_queue SET `holder_ip` = "' + CP.data.P0 + '", `status` = 1 ' + 
 		' WHERE  `status` = 0 AND (`holder_ip` = "" OR `holder_ip` IS NULL) ORDER BY `created` ASC LIMIT 1';
 	
 	connection.query(str, function (error, results, fields) {
@@ -213,7 +212,7 @@ _f['E1'] = function(cbk) {
 		    "'" + CP.data.P2.code.replace(/\'/g, "\\\'") + "'," +
 		    "'" + CP.data.P2.holder_ip + "'," +
 		    "'" + info.replace(/\'/g, "\\\'") + "'," +
-		    "'" + CP.data.P2.video_code + "'," +
+		    "'" + CP.data.P2.vid + "'," +
 		    "'" +  CP.data.P2.video_length + "'," +
 		    "'" +  CP.data.P2.org_thumbnail + "'," +
 		    'NOW())';
@@ -222,8 +221,8 @@ _f['E1'] = function(cbk) {
 		if (!CP.data.D1) message = 'Wrong video format!'
 
 		var str = 'INSERT INTO `download_failure` ' +
-		    '(`id`,`source`, `code`, `video_info`, `message`) VALUES (' +
-		    "'" + CP.data.P2.id + "'," +
+		    '(`vid`,`source`, `code`, `video_info`, `message`) VALUES (' +
+		    "'" + CP.data.P2.vid + "'," +
 		    "'" + CP.data.P2.source + "'," +
 		    "'" + CP.data.P2.code.replace(/\'/g, "\\\'") + "'," +
 		    "'" + info.replace(/\'/g, "\\\'") + "'," +
