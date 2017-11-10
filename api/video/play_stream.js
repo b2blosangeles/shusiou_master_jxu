@@ -196,18 +196,23 @@ switch(type) {
 					
 					var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 					cfg0 = require(env.site_path + '/api/cfg/db.json');					
-					var connection = mysql.createConnection(cfg0);
+					
 					var inserted_id = '88';
+					var dataLength = 0;
 					
-					var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
-						 " ('" + 'video' + "', '" + req.url + "', NOW()) ";
-					
-					connection.connect();
-					connection.query(str, function (error, results, fields) {
-						connection.end();
-						inserted_id = 'results.insertId';
-					}); 
-					
+					file.on('data', function (chunk) {
+						if (dataLength) return true;
+						var connection = mysql.createConnection(cfg0);
+						var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
+						 	" ('" + 'video' + "', '" + req.url + "', NOW()) ";
+						connection.connect();
+						connection.query(str, function (error, results, fields) {
+							connection.end();
+							inserted_id = 'results.insertId';
+						}); 
+						dataLength += chunk.length;
+					});					
+
 					var had_error = '';
 					file.on('error', function(err){
 						had_error = '1';
