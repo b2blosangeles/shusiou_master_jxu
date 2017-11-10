@@ -199,7 +199,7 @@ switch(type) {
 					
 					var inserted_id = '88';
 					var dataLength = 0;
-					
+					/*
 					file.on('data', function (chunk) {
 						if (dataLength) return true;
 						var connection = mysql.createConnection(cfg0);
@@ -213,7 +213,7 @@ switch(type) {
 						}); 
 						dataLength += chunk.length;
 					});					
-
+					*/
 					var had_error = '';
 					file.on('error', function(err){
 						had_error = '1';
