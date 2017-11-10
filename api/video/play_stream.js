@@ -205,7 +205,7 @@ switch(type) {
 					connection.connect();
 					connection.query(str, function (error, results, fields) {
 						connection.end();
-						inserted_id = 'results.insertId'+results.insertId;
+						inserted_id = 'results.insertId';
 					}); 
 					
 					var had_error = '';
