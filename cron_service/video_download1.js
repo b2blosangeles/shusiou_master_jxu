@@ -110,18 +110,18 @@ _f['P2'] = function(cbk) { /* --- get the one from queue --- */
 
 _f['DR1'] = function(cbk) { /* create video path */
 	fp.build(video_folder + CP.data.P2.video_vode + '/video/', function() {
-		cbk(video_folder + CP.data.P2.id + '/video/');
+		cbk(video_folder + CP.data.P2.vid + '/video/');
 	});
 };
 _f['DR2'] = function(cbk) { /* create miange path */
 	fp.build(video_folder + CP.data.P2.video_vode + '/images/' , function() {
-		cbk(video_folder + CP.data.P2.video_vode + '/images/');
+		cbk(video_folder + CP.data.P2.vid + '/images/');
 	});
 };
 
 _f['DR3'] = function(cbk) { /* create sections path */
 	fp.build(video_folder + CP.data.P2.id + '/sections/' , function() {
-		cbk(video_folder + CP.data.P2.video_vode + '/sections/');
+		cbk(video_folder + CP.data.P2.vid + '/sections/');
 	});
 };
 
