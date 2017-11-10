@@ -15,6 +15,33 @@ var mnt_folder = '/mnt/shusiou-video/',
 
 var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 var cache_only = (req.query['cache_only'])?true:false;
+
+function master_node_log (file, type, url) {
+	var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+	cfg0 = require(env.site_path + '/api/cfg/db.json');					
+	var connection = mysql.createConnection(cfg0);
+	var inserted_id = '';
+	var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
+		 " ('" + type + "', '" + url + "', NOW()) ";
+	connection.query(str, function (error, results, fields) {
+		inserted_id = JSON.stringify(results.insertId);
+	}); 
+
+	var had_error = '';
+	file.on('error', function(err){
+		had_error = 1;
+	});
+
+	file.on('close', function(){
+		connection.connect();
+		var str = "UPDATE `master_node_log` SET `finished` = NOW(), `is_error` = '" + had_error + "' "+
+		    "WHERE `id` = '" + inserted_id + "' ";
+		connection.query(str, function (error, results, fields) {
+			connection.end();
+		}); 						
+	});	
+}
+
 switch(type) {
 	case 'image':
 		var w = req.query['w'], s = req.query['s'];
@@ -165,30 +192,7 @@ switch(type) {
 			else {
 				if (cache_only)	{
 					var file = pkg.fs.createReadStream(file_video);
-					var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-    					cfg0 = require(env.site_path + '/api/cfg/db.json');					
-					var connection = mysql.createConnection(cfg0);
-					var inserted_id = '';
-					var str = "INSERT INTO `cross_link` (`url`, `created`) VALUES "+    
-						 " ('" + req.url + "', NOW()) ";
-					connection.query(str, function (error, results, fields) {
-						inserted_id = JSON.stringify(results.insertId);
-					}); 
-					
-					var had_error = false;
-					file.on('error', function(err){
-						had_error = true;
-					});
-					
-					file.on('close', function(){
-						//if (!had_error) fs.unlink('<filepath>/example.pdf');
-						connection.connect();
-						var str = "UPDATE `cross_link` SET `finished` = NOW() WHERE `id` = '" + inserted_id + "' ";
-						connection.query(str, function (error, results, fields) {
-							connection.end();
-						}); 						
- 						
-					});	
+					master_node_log(file, 'video', req.url);
 					file.pipe(res);
 				} else {				
 					var total = data1.size;
