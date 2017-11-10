@@ -14,7 +14,7 @@ var mnt_folder = '/mnt/shusiou-video/',
     folder_section =   video_folder + 'sections/';
 
 var folderP = require(env.site_path + '/api/inc/folderP/folderP');
-
+var cache_only = req.body.cache_only;
 switch(type) {
 	case 'image':
 		var w = req.query['w'], s = req.query['s'];
@@ -132,22 +132,27 @@ switch(type) {
 				pkg.fs.stat(fn, function(err, data1) {
 					if (err) {  write404(fn + ' does not exist'); }
 					else {
-					      var total = data1.size;
-					      var range = req.headers.range;
-					      if (range) {
-							var parts = range.replace(/bytes=/, "").split("-");
-							var partialstart = parts[0]; var partialend;
-							  partialend =  parts[1];
-							var start = parseInt(partialstart, 10);
-							var end = partialend ? parseInt(partialend, 10) : total-1;
-							var chunksize = (end-start)+1;
-							var file = pkg.fs.createReadStream(fn, {start:start, end:end});
-							res.writeHead(206, {'Content-Range': 'bytes ' + start + '-' + end + '/' + total, 
-								'Accept-Ranges': 'bytes', 'Content-Length': chunksize, 'Content-Type': 'video/mp4' });
-						       file.pipe(res);
+						if (cache_only)	{
+							var file = pkg.fs.createReadStream(fn);
+							file.pipe(res);
 						} else {
-							res.send('Need streaming player');
-						}
+							var total = data1.size;
+							var range = req.headers.range;
+							if (range) {
+								var parts = range.replace(/bytes=/, "").split("-");
+								var partialstart = parts[0]; var partialend;
+								  partialend =  parts[1];
+								var start = parseInt(partialstart, 10);
+								var end = partialend ? parseInt(partialend, 10) : total-1;
+								var chunksize = (end-start)+1;
+								var file = pkg.fs.createReadStream(fn, {start:start, end:end});
+								res.writeHead(206, {'Content-Range': 'bytes ' + start + '-' + end + '/' + total, 
+									'Accept-Ranges': 'bytes', 'Content-Length': chunksize, 'Content-Type': 'video/mp4' });
+							       file.pipe(res);
+							} else {
+								res.send('Need streaming player');
+							}
+						}	
 					}
 				});
 			},
@@ -158,21 +163,26 @@ switch(type) {
 		pkg.fs.stat(file_video, function(err, data1) {
 			if (err) {  write404(file_video + ' does not exist'); }
 			else {
-			      var total = data1.size;
-			      var range = req.headers.range;
-			      if (range) {
-					var parts = range.replace(/bytes=/, "").split("-");
-					var partialstart = parts[0]; var partialend;
-					  partialend =  parts[1];
-					var start = parseInt(partialstart, 10);
-					var end = partialend ? parseInt(partialend, 10) : total-1;
-					var chunksize = (end-start)+1;
-					var file = pkg.fs.createReadStream(file_video, {start:start, end:end});
-					res.writeHead(206, {'Content-Range': 'bytes ' + start + '-' + end + '/' + total, 
-						'Accept-Ranges': 'bytes', 'Content-Length': chunksize, 'Content-Type': 'video/mp4' });
-				       file.pipe(res);
-				} else {
-					res.send('Need streaming player');
+				if (cache_only)	{
+					var file = pkg.fs.createReadStream(file_video);
+					file.pipe(res);
+				} else {				
+					var total = data1.size;
+					var range = req.headers.range;
+					if (range) {
+						var parts = range.replace(/bytes=/, "").split("-");
+						var partialstart = parts[0]; var partialend;
+						  partialend =  parts[1];
+						var start = parseInt(partialstart, 10);
+						var end = partialend ? parseInt(partialend, 10) : total-1;
+						var chunksize = (end-start)+1;
+						var file = pkg.fs.createReadStream(file_video, {start:start, end:end});
+						res.writeHead(206, {'Content-Range': 'bytes ' + start + '-' + end + '/' + total, 
+							'Accept-Ranges': 'bytes', 'Content-Length': chunksize, 'Content-Type': 'video/mp4' });
+					       file.pipe(res);
+					} else {
+						res.send('Need streaming player');
+					}
 				}
 			}
 		});
