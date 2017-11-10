@@ -183,7 +183,7 @@ switch(type) {
 					file.on('close', function(){
 						//if (!had_error) fs.unlink('<filepath>/example.pdf');
 						connection.connect();
-						var str = "UPDATE `cross_link` SET `finifhed` = NOW() WHERE `id` = '" + inserted_id + "' ";
+						var str = "UPDATE `cross_link` SET `finished` = NOW() WHERE `id` = '" + inserted_id + "' ";
 						connection.query(str, function (error, results, fields) {
 							connection.end();
 						}); 						
