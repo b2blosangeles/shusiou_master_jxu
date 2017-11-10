@@ -114,11 +114,11 @@ switch(opt) {
 						'NOW(), 0 ); ';
 
 			connection.query(str, function (error, results, fields) {
-				connection.end();
+				// connection.end();
 				if (results.insertId) {
 					var vid = results.insertId * 1000000000000 + Math.floor(new Date().getTime() * 0.001);
 					var str1 = 'UPDATE `download_queue` SET `vid` = "' + vid + '" WHERE `id` = "' + results.insertId + '"';
-					connection.connect();
+				//	connection.connect();
 					connection.query(str1, function (error1, results1, fields1) {
 						connection.end();
 						cbk(vid);
