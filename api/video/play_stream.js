@@ -192,6 +192,7 @@ switch(type) {
 			else {
 				if (cache_only)	{
 					var file = pkg.fs.createReadStream(file_video);
+					file.pipe(res);
 					
 					var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 					cfg0 = require(env.site_path + '/api/cfg/db.json');					
@@ -220,7 +221,7 @@ switch(type) {
 						}); 						
 					});	
 					
-					file.pipe(res);
+					
 				} else {				
 					var total = data1.size;
 					var range = req.headers.range;
