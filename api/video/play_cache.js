@@ -54,7 +54,7 @@ _f['S1'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		res.send(data);
+		res.redirect(CP.data.S1);
 	},
 	30000
 );   
