@@ -17,23 +17,22 @@ var connection = mysql.createConnection(cfg0);
 		 " WHERE 1 ORDER BY `free` ASC; ";
 
 	connection.query(str, function (error, results, fields) {
-		res.send(results);
-		return true;
-		connection.end();
-		if (error)  res.redirect(url);
+		// res.send(results);
+		// return true;
+		// connection.end();
+		if (error)  res.send(url);
 		else if (results) { 
 			var v = [];
 			for (var i = 0; i < results.length; i++) {
 				v[v.length] = results[i];
 			}
-			
 			if (!v.length) {
-				res.redirect(url);
+				res.send(url);
 			} else {
 				var vi =  v[Math.floor(Math.random() * v.length)], patt = /([?&]server)=([^#&]*)/i;
 				if (patt.test(url)) url = ('http://'+ vi['node_ip'] + url).replace(patt,'$1=' + vi['server_ip']);
 				else url = 'http://'+ vi['node_ip'] + url + '&server=' + vi['server_ip'];
-				res.redirect(url);
+				res.send(url);
 			}	
 		} else res.redirect(url);
 	});  
