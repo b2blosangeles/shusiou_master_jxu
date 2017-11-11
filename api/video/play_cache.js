@@ -25,6 +25,7 @@ _f['S1'] = function(cbk) {
 			 " WHERE 1 ORDER BY `free` ASC; ";
 
 		connection.query(str, function (error, results, fields) {
+			connection.end()
 			if (error)  cbk(url);
 			else if (results) { 
 				var v = [];
