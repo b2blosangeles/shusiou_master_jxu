@@ -12,6 +12,8 @@ var connection = mysql.createConnection(cfg0);
 		 " WHERE A.`vid` = '" + vid + "' AND A.`status` = '1'; ";
 
 	connection.query(str, function (error, results, fields) {
+		res.send(results);
+		return true;
 		connection.end();
 		if (error)  res.redirect(url);
 		else if (results) { 
