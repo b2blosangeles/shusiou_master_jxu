@@ -20,19 +20,19 @@ var connection = mysql.createConnection(cfg0);
 		// res.send(results);
 		// return true;
 		// connection.end();
-		if (error)  res.send(url);
+		if (error)  res.redirect(url);
 		else if (results) { 
 			var v = [];
 			for (var i = 0; i < results.length; i++) {
 				v[v.length] = results[i];
 			}
 			if (!v.length) {
-				res.send(url);
+				res.redirect(url);
 			} else {
 				var vi =  v[Math.floor(Math.random() * v.length)], patt = /([?&]server)=([^#&]*)/i;
 				if (patt.test(url)) url = ('http://'+ vi['node_ip'] + url).replace(patt,'$1=' + vi['server_ip']);
 				else url = 'http://'+ vi['node_ip'] + url + '&server=' + vi['server_ip'];
-				res.send(url);
+				res.redirect(url);
 			}	
 		} else res.redirect(url);
 	});  
