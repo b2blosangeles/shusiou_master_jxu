@@ -15,7 +15,7 @@ _f['S0'] = function(cbk) {
 	var str = "SELECT * FROM `video` WHERE `vid` =  '" + vid + "'; ";	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		cbk(results);
+		cbk(results[0].server_ip);
 	});	
 };
 _f['S1'] = function(cbk) { 
@@ -31,7 +31,7 @@ _f['S1'] = function(cbk) {
 			 " WHERE 1 ORDER BY `free` ASC; ";
 
 		connection.query(str, function (error, results, fields) {
-			connection.end()
+			connection.end();
 			if (error)  cbk(url);
 			else if (results) { 
 				var v = [];
@@ -41,9 +41,10 @@ _f['S1'] = function(cbk) {
 				if (!v.length) {
 					cbk(url);
 				} else {
+					var server_ip = CP.data.S0;
 					var vi =  v[Math.floor(Math.random() * v.length)], patt = /([?&]server)=([^#&]*)/i;
-					if (patt.test(url)) url = ('http://'+ vi['node_ip'] + url).replace(patt,'$1=' + vi['server_ip']);
-					else url = 'http://'+ vi['node_ip'] + url + '&server=' + vi['server_ip'];
+					if (patt.test(url)) url = ('http://'+ vi['node_ip'] + url).replace(patt,'$1=' + server_ip);
+					else url = 'http://'+ vi['node_ip'] + url + '&server=' + server_ip;
 					cbk(url);
 				}	
 			} else cbk(url);
