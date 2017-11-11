@@ -27,7 +27,7 @@ try {
 		},		
 		videoLink:function(){
 			var me = this; 
-			return 'http://' + me.props.rec.server_ip + '/api/video/play_stream_video.api?vid=' + me.props.rec.video_code;
+			return 'http://' + me.props.rec.server_ip + '/api/video/play_stream.api?type=video&vid=' + me.props.rec.vid;
 		},			
 		render:function() {
 			var me = this;
