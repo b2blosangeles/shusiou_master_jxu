@@ -10,7 +10,13 @@ var CP = new pkg.crowdProcess();
 var _f = {};
 
 _f['S0'] = function(cbk) { 
-	cbk(true);
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = "SELECT * FROM `video` WHERE `vid` =  '" + vid + "' ORDER BY `free` ASC; ";	
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		cbk(results);
+	});	
 };
 _f['S1'] = function(cbk) { 
 	var connection = mysql.createConnection(cfg0);
