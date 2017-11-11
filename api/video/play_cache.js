@@ -14,7 +14,7 @@ var connection = mysql.createConnection(cfg0);
 */
 	var str = "SELECT * "+    
 	    	 " FROM `cloud_node`  " +
-		 " WHERE 1; ";
+		 " WHERE 1 ORDER BY `free` ASC; ";
 
 	connection.query(str, function (error, results, fields) {
 		res.send(results);
