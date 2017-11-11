@@ -43,7 +43,7 @@ try {
 			var idx = Math.floor(Math.random()*me.state.adlist.length);
 		//	var l = shusiou_config.api_server + '/api/video/shusiou_video_section.api?video='+me.state.adlist[idx].code+'|15|30';
 			var l = 'http://' + me.state.adlist[idx].server_ip + '/api/video/play_stream.api?type=section&vid='+
-			    me.state.adlist[idx].video_code+'&s=30&l=30';
+			    me.state.adlist[idx].vid+'&s=30&l=30';
 			$('.content_bg').find('video').attr("src", l);
 		},
 		render: function() {
