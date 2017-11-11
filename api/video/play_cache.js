@@ -7,9 +7,14 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 var url = req.url.replace('/play_cache.api', '/play_stream.api');
 var connection = mysql.createConnection(cfg0);
 	connection.connect();
+/*
 	var str = "SELECT A.`vid`, A.`node_ip`, B.`server_ip` "+    
 	    	 " FROM `video_node` AS A LEFT JOIN `video` AS B  ON A.`vid` = B.`vid` " +
 		 " WHERE A.`vid` = '" + vid + "' AND A.`status` = '1'; ";
+*/
+	var str = "SELECT * "+    
+	    	 " FROM `cloud_node`  " +
+		 " WHERE 1; ";
 
 	connection.query(str, function (error, results, fields) {
 		res.send(results);
