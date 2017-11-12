@@ -175,7 +175,7 @@ switch(type) {
 								connection.connect();
 								var running_time = new Date().getTime() - t;
 								var str = "INSERT INTO `master_node_log` (`type`, `url`, `is_error`, `running_time`, `finished`) VALUES "+    
-								 " ('" + 'section' + "', '" + req.url + "', '" + had_error + "', '" + running_time + "', NOW()) ";
+								 " ('" + 'section' + "', '" + req.url  + req.connection.remoteAddress + "', '" + had_error + "', '" + running_time + "', NOW()) ";
 								connection.query(str, function (error, results, fields) {
 									connection.end();	
 								}); 									
@@ -224,7 +224,7 @@ switch(type) {
 						connection.connect();
 						var running_time = new Date().getTime() - t;
 						var str = "INSERT INTO `master_node_log` (`type`, `url`, `is_error`, `running_time`, `finished`) VALUES "+    
-						 " ('" + 'video' + "', '" + req.url + "', '" + had_error + "', '" + running_time + "', NOW()) ";
+						 " ('" + 'video' + "', '" + req.url + req.connection.remoteAddress + "', '" + had_error + "', '" + running_time + "', NOW()) ";
 						connection.query(str, function (error, results, fields) {
 							connection.end();	
 						}); 									
