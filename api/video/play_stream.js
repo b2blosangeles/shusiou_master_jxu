@@ -16,32 +16,6 @@ var mnt_folder = '/mnt/shusiou-video/',
 var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 var cache_only = (req.query['cache_only'])?true:false;
 
-function master_node_log (file, type, url) {
-	var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-	cfg0 = require(env.site_path + '/api/cfg/db.json');					
-	var connection = mysql.createConnection(cfg0);
-	var inserted_id = '';
-	var str = "INSERT INTO `master_node_log` (`type`, `url`, `started`) VALUES "+    
-		 " ('" + type + "', '" + url + "', NOW()) ";
-	connection.query(str, function (error, results, fields) {
-		inserted_id = JSON.stringify(results.insertId);
-	}); 
-
-	var had_error = '';
-	file.on('error', function(err){
-		had_error = 1;
-	});
-
-	file.on('close', function(){
-		connection.connect();
-		var str = "UPDATE `master_node_log` SET `finished` = NOW(), `is_error` = '" + had_error + "' "+
-		    "WHERE `id` = '" + inserted_id + "' ";
-		connection.query(str, function (error, results, fields) {
-			connection.end();
-		}); 						
-	});	
-}
-
 switch(type) {
 	case 'image':
 		var w = req.query['w'], s = req.query['s'];
@@ -95,15 +69,38 @@ switch(type) {
 				pkg.fs.stat(fn, function(err, data1) {
 					if (err) {  write404(fn + ' does not exist'); }
 					else {
-						res.writeHead(200); 
-						var file = pkg.fs.createReadStream(fn);
-						file.pipe(res);
-						setTimeout(
-							function() {
-								file.destroy();
-								write404('timeout')
-							}, 30000
-						);						
+						if (cache_only)	{
+							var file = pkg.fs.createReadStream(fn);
+							file.pipe(res);
+							var t = new Date().getTime();
+							var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+							cfg0 = require(env.site_path + '/api/cfg/db.json');	
+							var had_error = '';
+							file.on('error', function(err){
+								had_error = '1';
+							});
+
+							file.on('close', function(){
+								var connection = mysql.createConnection(cfg0);
+								connection.connect();
+								var running_time = new Date().getTime() - t;
+								var str = "INSERT INTO `master_node_log` (`type`, `url`, `is_error`, `running_time`, `finished`) VALUES "+    
+								 " ('" + 'image' + "', '" + req.url + "', '" + had_error + "', '" + running_time + "', NOW()) ";
+								connection.query(str, function (error, results, fields) {
+									connection.end();	
+								}); 									
+							});								
+						} else {
+							res.writeHead(200); 
+							var file = pkg.fs.createReadStream(fn);
+							file.pipe(res);
+							setTimeout(
+								function() {
+									file.destroy();
+									write404('timeout')
+								}, 6000
+							);
+						}
 					}
 				});
 			},
@@ -175,7 +172,7 @@ switch(type) {
 								connection.connect();
 								var running_time = new Date().getTime() - t;
 								var str = "INSERT INTO `master_node_log` (`type`, `url`, `is_error`, `running_time`, `finished`) VALUES "+    
-								 " ('" + 'section' + "', '" + req.url  + req.connection.remoteAddress + "', '" + had_error + "', '" + running_time + "', NOW()) ";
+								 " ('" + 'section' + "', '" + req.url + "', '" + had_error + "', '" + running_time + "', NOW()) ";
 								connection.query(str, function (error, results, fields) {
 									connection.end();	
 								}); 									
@@ -224,7 +221,7 @@ switch(type) {
 						connection.connect();
 						var running_time = new Date().getTime() - t;
 						var str = "INSERT INTO `master_node_log` (`type`, `url`, `is_error`, `running_time`, `finished`) VALUES "+    
-						 " ('" + 'video' + "', '" + req.url + req.connection.remoteAddress + "', '" + had_error + "', '" + running_time + "', NOW()) ";
+						 " ('" + 'video' + "', '" + req.url + "', '" + had_error + "', '" + running_time + "', NOW()) ";
 						connection.query(str, function (error, results, fields) {
 							connection.end();	
 						}); 									
