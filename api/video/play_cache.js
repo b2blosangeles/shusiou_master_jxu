@@ -74,10 +74,3 @@ CP.serial(
 	},
 	30000
 );   
-return true;
-
-function write404(msg) {
-	res.writeHead(404);
-	res.write(msg);
-	res.end();	
-}
