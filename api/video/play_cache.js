@@ -93,7 +93,7 @@ CP.serial(
 		} else {
 			url = 'http://'+ server_ip + url;
 		}
-		res.send(url);
+		res.redirect(url);
 	},
 	30000
 );   
