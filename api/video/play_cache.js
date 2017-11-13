@@ -27,7 +27,7 @@ _f['S1'] = function(cbk) {
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (results.length > 1) {
-			cbk(results); CP.exit = 1;
+			cbk(results); 
 		} else {
 			cbk(results);
 		}
