@@ -95,7 +95,11 @@ _f['S6'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		res.send(data);
+		var server_ip = CP.data.S0;
+		var ips = [];
+		for (var i = 0; i<CP.data.S1.length; i++) { ips[ips.length] = CP.data.S1[i].node_ip; }
+		for (var i = 0; i< CP.data.NS0.length; i++) { ips[ips.length] = CP.data.NS0[i].node_ip; }
+		ers.send(ips);
 		// res.redirect(CP.data.S6);
 	},
 	30000
