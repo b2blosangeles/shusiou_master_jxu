@@ -57,36 +57,6 @@ _f['NS1'] = function(cbk) {
 		cbk(true); 	
 	});	
 };
-_f['S6'] = function(cbk) { 
-	cbk(CP.data.S1);
-	return true;
-	
-	var connection = mysql.createConnection(cfg0);
-		connection.connect();
-		var str = "SELECT * "+    
-			 " FROM `cloud_node`  " +
-			 " WHERE 1 ORDER BY `free` ASC; ";
-
-		connection.query(str, function (error, results, fields) {
-			connection.end();
-			if (error)  cbk(url);
-			else if (results) { 
-				var v = [];
-				for (var i = 0; i < results.length; i++) {
-					v[v.length] = results[i];
-				}
-				if (!v.length) {
-					cbk(url);
-				} else {
-					var server_ip = CP.data.S0;
-					var vi =  v[Math.floor(Math.random() * v.length)], patt = /([?&]server)=([^#&]*)/i;
-					if (patt.test(url)) url = ('http://'+ vi['node_ip'] + url).replace(patt,'$1=' + server_ip);
-					else url = 'http://'+ vi['node_ip'] + url + '&server=' + server_ip;
-					cbk(url);
-				}	
-			} else cbk(url);
-		});  
-}
 
 CP.serial(
 	_f,
@@ -98,11 +68,9 @@ CP.serial(
 			ips[ips.length] = CP.data.NS0[i].node_ip;
 		}
 		var ip = ips[Math.floor(Math.random() * ips.length)], patt = /([?&]server)=([^#&]*)/i;
-		if (patt.test(url)) url = ('http://'+ vi['node_ip'] + url).replace(patt,'$1=' + server_ip);
-		else url = 'http://'+ vi['node_ip'] + url + '&server=' + server_ip;
+		if (patt.test(url)) url = ('http://'+ ip + url).replace(patt,'$1=' + server_ip);
+		else url = 'http://'+ ip + url + '&server=' + server_ip;
 		cbk(url);
-		// res.send(ip);
-		// res.redirect(CP.data.S6);
 	},
 	30000
 );   
