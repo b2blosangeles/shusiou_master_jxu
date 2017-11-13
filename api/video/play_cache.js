@@ -45,20 +45,14 @@ _f['NS0'] = function(cbk) {
 	});	
 };
 _f['NS1'] = function(cbk) { 
-	var CP1 = new pkg.crowdProcess();
-	var _f1 = {};	
-
+	var v = [];
 	for (var i=0; i<CP.data.NS0.length; i++) {
-		_f1['P_' + i] = (function(i) {
-			return function(cbk1) {
-				cbk1(true);
-			}
-		})(i);		
+		v[v.length] = "('" + CP.data.NS0[i].node_ip +"', '" + vid + "')";
 	}
 	CP1.serial(
 		_f1,
 		function(data) {
-			cbk(data);
+			cbk(v.join(','));
 		},
 		10000
 	); 	
