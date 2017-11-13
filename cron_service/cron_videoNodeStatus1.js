@@ -91,6 +91,8 @@ _f_s['cached']  = function(cbk_s) {
 	connection.connect();
 	var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
 	connection.query(str, function (error, results, fields) {
+		cbk_s(results);
+		return true;
 		connection.end();
 		if (error) { cbk_s(false); } 
 		else if (results) { 
