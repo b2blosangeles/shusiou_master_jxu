@@ -32,7 +32,7 @@ _f_s['ip']  = function(cbk_s) {
 _f_s['local_video']  = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT `video_code` FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "' ";
+	var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "' ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		var v = [];
