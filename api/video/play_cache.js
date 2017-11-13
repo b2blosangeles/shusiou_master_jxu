@@ -1,3 +1,10 @@
+
+function write404(msg) {
+	res.writeHead(404);
+	res.write(msg);
+	res.end();	
+}
+
 var type= req.query['type'], vid = req.query['vid'];
 if (!type || !vid) {  write404('vid or type error '); return true; }
 
@@ -15,7 +22,8 @@ _f['S0'] = function(cbk) {
 	var str = "SELECT * FROM `video` WHERE `vid` =  '" + vid + "'; ";	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		cbk(results[0].server_ip);
+		if (!error && (results.length)) cbk(results[0].server_ip);
+		else { cbk(false); CP.exit = 1; }
 	});	
 };
 _f['S1'] = function(cbk) { 
@@ -61,7 +69,11 @@ _f['NS1'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		var server_ip = CP.data.S0;
+		if (CP.data.S0) var server_ip = CP.data.S0;
+		else {
+			write404('Wrong vid '+ vid);
+			return true;
+		}
 		var ips = [];
 		for (var i = 0; i<CP.data.S1.length; i++) { ips[ips.length] = CP.data.S1[i].node_ip; }
 		for (var i = 0; i< Math.min(2 -CP.data.S1.length, CP.data.NS0.length); i++) { 
