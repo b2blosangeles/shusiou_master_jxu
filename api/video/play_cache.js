@@ -26,14 +26,18 @@ _f['S1'] = function(cbk) {
 			 " WHERE A.`vid` = '" + vid + "'; ";	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		cbk(results);
+		if (results.length > 1) {
+			cbk(results); CP.exit = 1;
+		} else {
+			cbk(results);
+		}
 	});	
 };
-_f['S2'] = function(cbk) { 
-	cbk(CP.data.S1);
-	CP.exit = 1;
-};
+
 _f['S6'] = function(cbk) { 
+	cbk(CP.data.S1);
+	return true;
+	
 	var connection = mysql.createConnection(cfg0);
 		connection.connect();
 	/*
