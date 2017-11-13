@@ -51,7 +51,7 @@ _f['NS1'] = function(cbk) {
 	}
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "INSERT INTO `cloud_node` (`node_ip`, `vid`) VALUES " +  cbk(v.join(',') + 
+	var str = "INSERT INTO `cloud_node` (`node_ip`, `vid`) VALUES " +  v.join(',') + 
 	" ON DUPLCATE KEY UPDATE `vid` = '" + vid + "'";
 	connection.query(str, function (error, results, fields) {									       
 		cbk(results); 	
