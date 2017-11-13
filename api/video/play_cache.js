@@ -33,7 +33,16 @@ _f['S1'] = function(cbk) {
 		}
 	});	
 };
-
+_f['NS'] = function(cbk) { 
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = "SELECT *  ROM `cloud_node`  " +
+		 " WHERE `score` < 1000 ORDER BY `free` ASC LIMIT 2; ";
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		cbk(results);
+	});	
+};
 _f['S6'] = function(cbk) { 
 	cbk(CP.data.S1);
 	return true;
