@@ -74,11 +74,11 @@ CP.serial(
 			write404('Wrong vid '+ vid);
 			return true;
 		}
-		var ips = [], ip_not_completed = {};
+		var ips = [], ip_cache_uncompleted = {};
 		for (var i = 0; i<CP.data.S1.length; i++) { 
 			ips[ips.length] = CP.data.S1[i].node_ip; 
-			if (CP.data.S1[i].status) {
-				ip_not_completed[CP.data.S1[i].node_ip] = 1;
+			if (!CP.data.S1[i].status) {
+				ip_cache_uncompleted[CP.data.S1[i].node_ip] = 1;
 			}
 		}
 		
@@ -87,7 +87,7 @@ CP.serial(
 		}
 				
 		var ip = ips[Math.floor(Math.random() * ips.length)], patt = /([?&]server)=([^#&]*)/i;
-		if (!ip_not_completed[ip]) {
+		if (!ip_cache_uncompleted[ip]) {
 			if (patt.test(url)) url = ('http://'+ ip + url).replace(patt,'$1=' + server_ip);
 			else url = 'http://'+ ip + url + '&server=' + server_ip;
 		} else {
