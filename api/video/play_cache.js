@@ -54,7 +54,7 @@ _f['NS1'] = function(cbk) {
 	var str = "INSERT INTO `video_node` (`node_ip`, `vid`) VALUES " +  v.join(',') + 
 	" ON DUPLICATE KEY UPDATE `vid` = '" + vid + "'";
 	connection.query(str, function (error, results, fields) {									       
-		cbk(results); 	
+		cbk(true); 	
 	});	
 };
 _f['S6'] = function(cbk) { 
