@@ -49,7 +49,13 @@ _f['NS1'] = function(cbk) {
 	for (var i=0; i<CP.data.NS0.length; i++) {
 		v[v.length] = "('" + CP.data.NS0[i].node_ip +"', '" + vid + "')";
 	}
-	cbk(v.join(',')); 	
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = "INSERT INTO `cloud_node` (`node_ip`, `vid`) VALUES " +  cbk(v.join(',') + 
+	" ON DUPLCATE KEY UPDATE `vid` = '" + vid + "'";
+	connection.query(str, function (error, results, fields) {									       
+		cbk(results); 	
+	});	
 };
 _f['S6'] = function(cbk) { 
 	cbk(CP.data.S1);
