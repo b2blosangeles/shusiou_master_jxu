@@ -21,13 +21,17 @@ _f['S0'] = function(cbk) {
 _f['S1'] = function(cbk) { 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT A.`vid`, A.`node_ip`, B.`server_ip` "+    
+	var str = "SELECT A.`vid`, A.`node_ip`, B.`server_ip`, A.`status` "+    
 			 " FROM `video_node` AS A LEFT JOIN `video` AS B  ON A.`vid` = B.`vid` " +
-			 " WHERE A.`vid` = '" + vid + "' AND A.`status` = '1'; ";	
+			 " WHERE A.`vid` = '" + vid + "'; ";	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		cbk(results[0].server_ip);
+		cbk(results);
 	});	
+};
+_f['S2'] = function(cbk) { 
+	cbk(CP.data.S1);
+	CP.exit = 1;
 };
 _f['S6'] = function(cbk) { 
 	var connection = mysql.createConnection(cfg0);
@@ -65,7 +69,8 @@ _f['S6'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		res.redirect(CP.data.S6);
+		res.send(data);
+		// res.redirect(CP.data.S6);
 	},
 	30000
 );   
