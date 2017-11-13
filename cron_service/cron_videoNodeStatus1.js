@@ -36,7 +36,7 @@ _f_s['local_video']  = function(cbk_s) {
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		var v = [];
-		for (var i=0; i < results.length; i++) v[v.length] = results[i]['video_code'].toString();
+		for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
 		cbk_s(v);
 	});
 };		
@@ -102,7 +102,7 @@ _f_s['cached']  = function(cbk_s) {
 						var connection = mysql.createConnection(cfg0);
 						connection.connect();
 						var str = "SELECT A.`vid`, A.`status` FROM `video_node` A "+
-						    "LEFT JOIN `video` B ON A.`vid` = B.`video_code` "+
+						    "LEFT JOIN `video` B ON A.`vid` = B.`vid` "+
 						    "WHERE A.`node_ip` = '" + results[i].node_ip + "' "+
 						    " AND B.server_ip = '" + CP_s.data.ip + "'";
 						connection.query(str, function (error, results1, fields) {
