@@ -40,7 +40,7 @@ _f['NS'] = function(cbk) {
 		 " WHERE `score` < 1000 ORDER BY `free` ASC LIMIT 2; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (!error) cbk('results');
+		if (!error) cbk(results);
 		else cbk([]);
 	});	
 };
