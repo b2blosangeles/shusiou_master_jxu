@@ -51,7 +51,7 @@ _f['NS1'] = function(cbk) {
 	for (var i=0; i<CP.data.NS0.length; i++) {
 		_f1['P_' + i] = (function(i) {
 			return function(cbk1) {
-				cbk(true);
+				cbk1(true);
 			}
 		})(i);		
 	}
