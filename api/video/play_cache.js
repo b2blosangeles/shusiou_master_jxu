@@ -75,14 +75,18 @@ CP.serial(
 			return true;
 		}
 		var ips = [];
-		for (var i = 0; i<CP.data.S1.length; i++) { ips[ips.length] = CP.data.S1[i].node_ip; }
+		for (var i = 0; i<CP.data.S1.length; i++) { 
+			if (CP.data.S1[i].status) ips[ips.length] = CP.data.S1[i].node_ip; 
+		}
+		/*
 		for (var i = 0; i< Math.min(2 -CP.data.S1.length, CP.data.NS0.length); i++) { 
 			ips[ips.length] = CP.data.NS0[i].node_ip;
 		}
+		*/
 		var ip = ips[Math.floor(Math.random() * ips.length)], patt = /([?&]server)=([^#&]*)/i;
 		if (patt.test(url)) url = ('http://'+ ip + url).replace(patt,'$1=' + server_ip);
 		else url = 'http://'+ ip + url + '&server=' + server_ip;
-		res.redirect(url);
+		res.send(url);
 	},
 	30000
 );   
