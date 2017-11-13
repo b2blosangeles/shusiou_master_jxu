@@ -171,7 +171,7 @@ CP_s.serial(
 
 		}
 		var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ') + ';';
-		sql_str += 'UPDATE `video_node` SET `status` = null WHERE ' + diff_a.join(' OR ');
+		// sql_str += 'UPDATE `video_node` SET `status` = null WHERE ' + diff_a.join(' OR ');
 
 		var connection_m = mysql.createConnection(cfg_m);
 		connection_m.connect();
