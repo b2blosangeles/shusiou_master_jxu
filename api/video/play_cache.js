@@ -94,8 +94,14 @@ CP.serial(
 		var server_ip = CP.data.S0;
 		var ips = [];
 		for (var i = 0; i<CP.data.S1.length; i++) { ips[ips.length] = CP.data.S1[i].node_ip; }
-		for (var i = 0; i< CP.data.NS0.length; i++) { ips[ips.length] = CP.data.NS0[i].node_ip; }
-		res.send(ips);
+		for (var i = 0; i< Math.min(2 -CP.data.S1.length, CP.data.NS0.length); i++) { 
+			ips[ips.length] = CP.data.NS0[i].node_ip;
+		}
+		var ip = ips[Math.floor(Math.random() * ips.length)], patt = /([?&]server)=([^#&]*)/i;
+		if (patt.test(url)) url = ('http://'+ vi['node_ip'] + url).replace(patt,'$1=' + server_ip);
+		else url = 'http://'+ vi['node_ip'] + url + '&server=' + server_ip;
+		cbk(url);
+		// res.send(ip);
 		// res.redirect(CP.data.S6);
 	},
 	30000
