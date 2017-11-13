@@ -26,11 +26,7 @@ _f['S1'] = function(cbk) {
 			 " WHERE A.`vid` = '" + vid + "'; ";	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (results.length > 1) {
-			cbk(results); 
-		} else {
-			cbk(results);
-		}
+		cbk(results);
 	});	
 };
 _f['NS0'] = function(cbk) { 
@@ -99,7 +95,7 @@ CP.serial(
 		var ips = [];
 		for (var i = 0; i<CP.data.S1.length; i++) { ips[ips.length] = CP.data.S1[i].node_ip; }
 		for (var i = 0; i< CP.data.NS0.length; i++) { ips[ips.length] = CP.data.NS0[i].node_ip; }
-		ers.send(ips);
+		res.send(ips);
 		// res.redirect(CP.data.S6);
 	},
 	30000
