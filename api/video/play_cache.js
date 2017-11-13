@@ -34,7 +34,7 @@ _f['S1'] = function(cbk) {
 	});	
 };
 _f['NS0'] = function(cbk) { 
-	var ips = [''];
+	var ips = [false];
 	for(var i=0; i < CP.data.S1.length; i++) {
 		ips[ips.length] = "'" + CP.data.S1[i].node_ip + "'";
 	}
