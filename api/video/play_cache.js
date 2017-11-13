@@ -49,13 +49,7 @@ _f['NS1'] = function(cbk) {
 	for (var i=0; i<CP.data.NS0.length; i++) {
 		v[v.length] = "('" + CP.data.NS0[i].node_ip +"', '" + vid + "')";
 	}
-	CP1.serial(
-		_f1,
-		function(data) {
-			cbk(v.join(','));
-		},
-		10000
-	); 	
+	cbk(v.join(',')); 	
 };
 _f['S6'] = function(cbk) { 
 	cbk(CP.data.S1);
