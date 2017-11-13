@@ -109,16 +109,11 @@ _f_s['cached']  = function(cbk_s) {
 							connection.end();
 							if (error) { cbk(false); } 
 							else if (results1) {
-								console.log('---results1---');
-								console.log(results1);
 								var list = [], list_done = [];
 								for (var j = 0; j < results1.length;j++) {
-									// if (results[j].status)  
 									list[ list.length] = results1[j].vid;
-									// else list_null[ list_null.length] = results[j].vid;
 								}
-								console.log('===list===>' + results[i].node_ip);
-								console.log(list);
+								
 								request({
 								      url: 'http://'+results[i].node_ip+'/api/node_audit.api?opt=files_status',
 								      headers: {
@@ -132,6 +127,8 @@ _f_s['cached']  = function(cbk_s) {
 										try { v = JSON.parse(body); } catch(e) {
 											v = {status:'failure', message:e.message}
 										}
+										console.log('===v==>' + results[i].node_ip);
+										console.log(v);
 										cbk(v);
 									    }    
 								    });									
