@@ -45,7 +45,7 @@ _f['NS0'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `node_ip`  FROM `cloud_node`  " +
-		 " WHERE `node_ip` NOT IN (" + ips.join(',') + ") AND `score` < 1000 ORDER BY `free` ASC LIMIT 2; ";
+		 " WHERE `node_ip` NOT IN (" + ips.join(',') + ") AND `free` > 50 AND `score` < 1000 ORDER BY `free` ASC LIMIT 2; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (!error) cbk(results);
