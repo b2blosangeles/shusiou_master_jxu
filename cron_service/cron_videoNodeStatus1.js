@@ -37,6 +37,7 @@ _f_s['local_video']  = function(cbk_s) {
 		connection.end();
 		var v = [];
 		for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
+		console.log(v);
 		cbk_s(v);
 	});
 };		
