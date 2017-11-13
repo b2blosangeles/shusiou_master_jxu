@@ -108,7 +108,7 @@ _f_s['cached']  = function(cbk_s) {
 						connection.query(str, function (error, results1, fields) {
 							connection.end();
 							if (error) { cbk(false); } 
-							else if (results) {
+							else if (results1) {
 								console.log('---results1---');
 								console.log(results1);
 								var list = [], list_done = [];
