@@ -10,16 +10,12 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     cfg0 = require(env.site_path + '/api/cfg/db.json');
 
 var fs = require('fs');
-
 var childProcess = require('child_process');
 
 var cfg_m = JSON.parse(JSON.stringify(cfg0 ));
 cfg_m.multipleStatements =  true;	
 
-
-var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-    cfg0 = require(env.site_path + '/api/cfg/db.json'),
-    mnt_folder = '/mnt/shusiou-video/', 
+var mnt_folder = '/mnt/shusiou-video/', 
     videos_folder = mnt_folder  + 'videos/';
 
 var CP_s = new crowdProcess();
