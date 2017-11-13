@@ -33,7 +33,7 @@ _f['S1'] = function(cbk) {
 		}
 	});	
 };
-_f['NS'] = function(cbk) { 
+_f['NS0'] = function(cbk) { 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `node_ip`  FROM `cloud_node`  " +
@@ -44,17 +44,15 @@ _f['NS'] = function(cbk) {
 		else cbk([]);
 	});	
 };
+_f['NS1'] = function(cbk) { 
+	 cbk(CP.data.NS1)	
+};
 _f['S6'] = function(cbk) { 
 	cbk(CP.data.S1);
 	return true;
 	
 	var connection = mysql.createConnection(cfg0);
 		connection.connect();
-	/*
-		var str = "SELECT A.`vid`, A.`node_ip`, B.`server_ip` "+    
-			 " FROM `video_node` AS A LEFT JOIN `video` AS B  ON A.`vid` = B.`vid` " +
-			 " WHERE A.`vid` = '" + vid + "' AND A.`status` = '1'; ";
-	*/
 		var str = "SELECT * "+    
 			 " FROM `cloud_node`  " +
 			 " WHERE 1 ORDER BY `free` ASC; ";
