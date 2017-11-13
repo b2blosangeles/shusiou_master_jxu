@@ -115,6 +115,8 @@ _f_s['cached']  = function(cbk_s) {
 									list[ list.length] = results1[j].vid;
 									// else list_null[ list_null.length] = results[j].vid;
 								}
+								console.log('===list===>');
+								console.log(list);
 								request({
 								      url: 'http://'+results[i].node_ip+'/api/node_audit.api?opt=files_status',
 								      headers: {
