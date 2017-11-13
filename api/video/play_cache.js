@@ -45,7 +45,7 @@ _f['NS0'] = function(cbk) {
 	});	
 };
 _f['NS1'] = function(cbk) { 
-	 cbk(CP.data.NS1)	
+	 cbk(CP.data.NS0);	
 };
 _f['S6'] = function(cbk) { 
 	cbk(CP.data.S1);
