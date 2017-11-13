@@ -45,7 +45,23 @@ _f['NS0'] = function(cbk) {
 	});	
 };
 _f['NS1'] = function(cbk) { 
-	 cbk(CP.data.NS0);	
+	var CP1 = new pkg.crowdProcess();
+	var _f1 = {};	
+
+	for (var i=0; i<CP.data.NS0.length; i++) {
+		_f1['P_' + i] = (function(i) {
+			return function(cbk1) {
+				cbk(true);
+			}
+		})(i);		
+	}
+	CP1.serial(
+		_f1,
+		function(data) {
+			cbk(data);
+		},
+		10000
+	); 	
 };
 _f['S6'] = function(cbk) { 
 	cbk(CP.data.S1);
