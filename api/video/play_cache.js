@@ -44,7 +44,7 @@ _f['NS0'] = function(cbk) {
 		 " WHERE `node_ip` NOT IN (" + ips.join(',') + ") AND `score` < 1000 ORDER BY `free` ASC LIMIT 2; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (!error) cbk(result);
+		if (!error) cbk(results);
 		else cbk([]);
 	});	
 };
