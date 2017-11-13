@@ -109,6 +109,8 @@ _f_s['cached']  = function(cbk_s) {
 							connection.end();
 							if (error) { cbk(false); } 
 							else if (results) {
+								console.log('---results1---');
+								console.log(results1);
 								var list = [], list_done = [];
 								for (var j = 0; j < results1.length;j++) {
 									// if (results[j].status)  
