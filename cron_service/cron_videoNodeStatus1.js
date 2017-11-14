@@ -29,7 +29,7 @@ _f_s['ip']  = function(cbk_s) {
 	}
     });
 };
-_f_s['local_video']  = function(cbk_s) { /* get database catched local videos */
+_f_s['db_videos']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "'";
@@ -46,7 +46,7 @@ _f_s['local_video']  = function(cbk_s) { /* get database catched local videos */
 _f_s['local_flist']  = function(cbk_s) { 
 	// 1 - clean local video which is not associate with database record 
 	// 2 - get local videos which is associate with database record 
-	var local_videos = CP_s.data.local_video;
+	var db_videos = CP_s.data.db_videos;
 	fs.readdir(videos_folder, function(err, files) {
 		if (err) cbk([]);
 		else {
@@ -69,7 +69,7 @@ _f_s['local_flist']  = function(cbk_s) {
 			CP.parallel(
 				_f,
 				function(data) {
-					var need_remove =  files.filter(x => local_videos.indexOf(x) < 0 );
+					var need_remove =  files.filter(x => db_videos.indexOf(x) < 0 );
 
 					var remove_cmd = 'cd ' + mnt_folder  + 'videos/ && rm -fr ';
 					for (var j= 0 ; j < Math.min(need_remove.length,30); j++) {
@@ -96,7 +96,7 @@ _f_s['local_flist']  = function(cbk_s) {
 
 _f_s['node_videos']  = function(cbk_s) {
 	// cache a video if not cached 
-	var local_flist = cbk_s.data.local_flist.server_list;
+	var local_flist = CP_s.data.local_flist.server_list;
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT A.`vid`, A.`node_ip`, A.`status`,  B.`server_ip` FROM `video_node` A "+
