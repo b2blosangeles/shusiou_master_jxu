@@ -94,7 +94,7 @@ _f_s['local_flist']  = function(cbk_s) {
 	});			
 };
 
-_f_s['node_video']  = function(cbk_s) {
+_f_s['node_videos']  = function(cbk_s) {
 	// cache a video if not cached 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
