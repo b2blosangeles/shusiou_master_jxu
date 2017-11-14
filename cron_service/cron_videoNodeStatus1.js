@@ -104,6 +104,11 @@ _f_s['node_video']  = function(cbk_s) {
 		    "WHERE B.`server_ip` = '" + CP_s.data.ip + "'";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
+		var v = {};
+		for (var i = 0; i < results.length; i++ ) {
+			if (!v[results[i].node_ip]) v[results[i].node_ip] = [];
+			else v[results[i].node_ip][v[results[i].node_ip].length] = results[i].node_ip.vid;
+		}
 		cbk_s(results);
 	});
 }
