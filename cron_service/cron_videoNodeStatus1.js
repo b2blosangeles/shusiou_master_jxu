@@ -85,7 +85,8 @@ _f_s['local_flist']  = function(cbk_s) {
 		};
 
 	});			
-};	
+};
+/*
 _f_s['cache_video']  = function(cbk_s) {
 	/* cache a video if not cached */
 	var connection = mysql.createConnection(cfg0);
@@ -96,6 +97,7 @@ _f_s['cache_video']  = function(cbk_s) {
 		cbk_s(results);
 	});
 }
+*/
 _f_s['cached']  = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
@@ -160,10 +162,6 @@ _f_s['cached']  = function(cbk_s) {
 CP_s.serial(
 	_f_s,
 	function(data_s) {
-		console.log('======data_s=======');
-		console.log(data_s);
-		return true;
-		
 		var sql_a = [], diff_a = [];
 		for (var o in CP_s.data.cached) {
 			var node_list =  CP_s.data.cached[o].node_list;
@@ -186,7 +184,7 @@ CP_s.serial(
 
 		}
 		var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ') + ';';
-		// sql_str += 'UPDATE `video_node` SET `status` = null WHERE ' + diff_a.join(' OR ');
+		 sql_str += 'UPDATE `video_node` SET `status` = null WHERE ' + diff_a.join(' OR ');
 
 		var connection_m = mysql.createConnection(cfg_m);
 		connection_m.connect();
