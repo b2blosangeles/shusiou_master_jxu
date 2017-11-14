@@ -29,7 +29,7 @@ _f_s['ip']  = function(cbk_s) {
 	}
     });
 };
-_f_s['local_video']  = function(cbk_s) {
+_f_s['local_video']  = function(cbk_s) { /* get local video list from data base */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "'";
@@ -40,7 +40,8 @@ _f_s['local_video']  = function(cbk_s) {
 		cbk_s(v);
 	});
 };		
-_f_s['local_flist']  = function(cbk_s) {
+_f_s['local_flist']  = function(cbk_s) { /* clean non database record local video */
+	var local_videos = CP_s.data.local_video;
 	fs.readdir(videos_folder, function(err, files) {
 		if (err) cbk([]);
 		else {
@@ -63,7 +64,7 @@ _f_s['local_flist']  = function(cbk_s) {
 			CP.parallel(
 				_f,
 				function(data) {
-					var need_remove =  files.filter(x => CP_s.data.local_video.indexOf(x) < 0 );
+					var need_remove =  files.filter(x => local_videos.indexOf(x) < 0 );
 
 					var remove_cmd = 'cd ' + mnt_folder  + 'videos/ && rm -fr ';
 					for (var j= 0 ; j < Math.min(need_remove.length,30); j++) {
