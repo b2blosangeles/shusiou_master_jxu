@@ -173,7 +173,7 @@ _f_s['after_cached']  = function(cbk_s) {
 		connection.end();
 		var v = {};
 		for (var i = 0; i < results.length; i++) {
-			if (!v[results[i].node_id]) v[results[i].node_id] = results[i];
+			if (!v[results[i].node_ip]) v[results[i].node_ip] = results[i];
 		}
 		
 		// node_video_cache_only.js;
