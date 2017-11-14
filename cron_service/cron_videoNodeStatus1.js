@@ -43,7 +43,7 @@ _f_s['db_videos']  = function(cbk_s) { /* get database catched local videos */
 		cbk_s(v);
 	});
 };		
-_f_s['local_flist']  = function(cbk_s) { 
+_f_s['local_videos']  = function(cbk_s) { 
 	// 1 - clean local video which is not associate with database record 
 	// 2 - get local videos which is associate with database record 
 	var db_videos = CP_s.data.db_videos;
@@ -94,9 +94,9 @@ _f_s['local_flist']  = function(cbk_s) {
 	});			
 };
 
-_f_s['node_videos']  = function(cbk_s) {
-	// cache a video if not cached 
-	var local_flist = CP_s.data.local_flist.server_list;
+_f_s['node_videos']  = function(cbk_s) { 
+	// get local_videos by node_ip
+	var local_videos = CP_s.data.local_videos.server_list;
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT A.`vid`, A.`node_ip`, A.`status`,  B.`server_ip` FROM `video_node` A "+
@@ -107,7 +107,7 @@ _f_s['node_videos']  = function(cbk_s) {
 		var v = {};
 		for (var i = 0; i < results.length; i++ ) {
 			if (!v[results[i].node_ip]) v[results[i].node_ip] = [];
-			var o = {}; o[results[i].vid] = local_flist[results[i].vid];
+			var o = {}; o[results[i].vid] = local_videos[results[i].vid];
 			v[results[i].node_ip][v[results[i].node_ip].length] = o;
 		}
 		cbk_s(JSON.stringify(v));
