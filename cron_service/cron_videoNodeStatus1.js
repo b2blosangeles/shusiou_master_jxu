@@ -168,7 +168,8 @@ _f_s['after_cached']  = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `*` FROM `video_node` WHERE `status` <> '1' ";
-	connection.query(str, function (error, results, fields) {	
+	connection.query(str, function (error, results, fields) {
+		connection.end();
 		cbk_s(results);
 	});
 }
