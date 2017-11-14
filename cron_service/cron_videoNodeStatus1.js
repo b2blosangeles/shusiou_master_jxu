@@ -47,8 +47,8 @@ _f_s['local_videos']  = function(cbk_s) {
 	// 1 - clean local video which is not associate with database record 
 	// 2 - get local videos which is associate with database record 
 	var db_videos = CP_s.data.db_videos;
-	fs.readdir(videos_folder, function(err, files) {
-		if (err) cbk([]);
+	fs.readdir(videos_folder, function(error, files) {
+		if (error) { cbk_s({status:'failure',message:error.message}); CP_s.exit = 1; return true; }
 		else {
 			var CP = new crowdProcess();
 			var _f = {};				
@@ -104,17 +104,22 @@ _f_s['node_videos']  = function(cbk_s) {
 		    "WHERE B.`server_ip` = '" + CP_s.data.ip + "'";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
+		if (error) { cbk_s({status:'failure',message:error.message}); CP_s.exit = 1; return true; }
 		var v = {};
 		for (var i = 0; i < results.length; i++ ) {
 			if (!v[results[i].node_ip]) v[results[i].node_ip] = [];
 			var o = {}; o[results[i].vid] = local_videos[results[i].vid];
 			v[results[i].node_ip][v[results[i].node_ip].length] = o;
 		}
-		cbk_s(JSON.stringify(v));
+		cbk_s(v);
 	});
 }
-/*
+
 _f_s['cached']  = function(cbk_s) {
+	var node_videos = CP_s.data.node_videos;
+	
+	cbk_s(node_videos);
+	
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
