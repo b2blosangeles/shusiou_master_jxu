@@ -70,16 +70,16 @@ _f_s['local_flist']  = function(cbk_s) {
 						remove_cmd += ' ' + need_remove[j] + '  ';
 					}
 
-					//if (need_remove.length) {
-						/*
+					if (need_remove.length) {
+						
 						var ls = childProcess.exec(remove_cmd, 		   
 							function (error, stdout, stderr) {
 								cbk_s({need_remove:need_remove, files:files, server_list:data.results});
 							});
-						*/	
-					//} else {
+							
+					} else {
 						cbk_s({need_remove:need_remove, files:files, server_list:data.results});
-					//}							
+					}							
 
 				},
 				6000
