@@ -117,8 +117,14 @@ _f_s['node_videos']  = function(cbk_s) {
 
 _f_s['cached']  = function(cbk_s) {
 	var node_videos = CP_s.data.node_videos;
+	var v = [];
+	for (var o in node_videos) {
+		v[v.length] = 'http://'+o+'/api/node_audit.api?opt=files_status'+JSON.stringfi(node_videos[o]);
+	}
 	
-	cbk_s(node_videos);
+	
+	
+	cbk_s(v);
 	
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
