@@ -214,7 +214,7 @@ CP_s.serial(
 	_f_s,
 	function(data_s) {
 		cbk(data_s);
-		reture false;
+		return false;
 		var sql_a = [], diff_a = [];
 		for (var o in CP_s.data.cached) {
 			var node_list =  CP_s.data.cached[o].node_list;
