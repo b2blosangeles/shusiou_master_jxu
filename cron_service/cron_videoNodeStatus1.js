@@ -165,7 +165,7 @@ _f_s['cached']  = function(cbk_s) {
 }
 
 _f_s['after_cached']  = function(cbk_s) {
-	cbk(CP.data.cached);
+	cbk_s(CP_s.data.cached);
 }
 
 CP_s.serial(
