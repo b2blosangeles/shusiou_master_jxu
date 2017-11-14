@@ -107,9 +107,8 @@ _f_s['node_videos']  = function(cbk_s) {
 		if (error) { cbk_s({status:'failure',message:error.message}); CP_s.exit = 1; return true; }
 		var v = {};
 		for (var i = 0; i < results.length; i++ ) {
-			if (!v[results[i].node_ip]) v[results[i].node_ip] = [];
-			var o = {}; o[results[i].vid] = local_videos[results[i].vid];
-			v[results[i].node_ip][v[results[i].node_ip].length] = o;
+			if (!v[results[i].node_ip]) v[results[i].node_ip] = {};
+			v[results[i].node_ip][results[i].vid] = local_videos[results[i].vid];
 		}
 		cbk_s(v);
 	});
