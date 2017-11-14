@@ -62,7 +62,7 @@ switch(type) {
 			_f,
 			function(data) {
 				if (CP.data.S0 !== true) {
-					res.send('CP.data.S0');
+					res.send(CP.data.S0);
 					return true;
 				}
 				
