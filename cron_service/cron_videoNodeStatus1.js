@@ -167,13 +167,17 @@ _f_s['cached']  = function(cbk_s) {
 _f_s['after_cached']  = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT A.`*`, B.`server_ip` FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`vid` WHERE A.`status` <> '1' OR A.`status` IS NULL ORDER BY `updated`";
+	var str = "SELECT A.`*`, B.`server_ip` FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`vid` "+
+	    "WHERE A.`status` <> '1' OR A.`status` IS NULL ORDER BY `updated` ASC ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		var v = [];
+		var v = {};
 		for (var i = 0; i < results.length; i++) {
-			v[v.length] = results[i];
+			if (!v[results[i].node_id]) v[results[i].node_id] = results[i];
 		}
+		
+		// node_video_cache_only.js;
+		
 		cbk_s(v);
 	});
 }
