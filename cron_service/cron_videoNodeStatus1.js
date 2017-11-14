@@ -172,13 +172,26 @@ _f_s['after_cached']  = function(cbk_s) {
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		var v = {};
+		var CP = new crowdProcess(), _f={};
+		
 		for (var i = 0; i < results.length; i++) {
-			if (!v[results[i].node_ip]) v[results[i].node_ip] = results[i];
+			if (!v[results[i].node_ip]) {
+				v[results[i].node_ip] = results[i];
+				_f[results[i].node_ip] = (function(i) {
+					retur funciton(cbk) {
+						return i;
+					}
+				});
+				
+			}	
 		}
-		
-		// node_video_cache_only.js;
-		
-		cbk_s(v);
+		CP.parallel(
+			_f,
+			function(data) {
+				cbk_s(data.results);
+			},
+			50000
+		);		
 	});
 }
 
