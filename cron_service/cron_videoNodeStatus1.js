@@ -170,7 +170,11 @@ _f_s['after_cached']  = function(cbk_s) {
 	var str = "SELECT `*` FROM `video_node` WHERE `status` <> '1' OR `status` IS NULL ORDER BY `updated`";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		cbk_s(results);
+		var v = [];
+		for (var i = 0; i < results.length; i++) {
+			v[v.length] = results[i];
+		}
+		cbk_s(v);
 	});
 }
 
