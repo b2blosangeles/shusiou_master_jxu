@@ -148,7 +148,7 @@ _f_s['cached']  = function(cbk_s) {
 		6000
 	);	
 	return true;
-	
+	/*
 	cbk_s(v);
 	
 	var connection = mysql.createConnection(cfg0);
@@ -210,6 +210,7 @@ _f_s['cached']  = function(cbk_s) {
 			);
 		} else { cbk_s(false); }
 	}); 
+	*/
 }
 /*
 _f_s['after_cached']  = function(cbk_s) {
