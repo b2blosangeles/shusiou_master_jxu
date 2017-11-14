@@ -88,7 +88,7 @@ _f_s['local_flist']  = function(cbk_s) {
 };
 /*
 _f_s['cache_video']  = function(cbk_s) {
-	/* cache a video if not cached */
+	// cache a video if not cached 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT * FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "' ";
