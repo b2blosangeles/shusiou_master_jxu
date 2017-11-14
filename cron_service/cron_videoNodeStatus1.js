@@ -170,7 +170,7 @@ _f_s['after_cached']  = function(cbk_s) {
 	var str = "SELECT `*` FROM `video_node` WHERE `status` <> '1' ";
 	connection.query(str, function (error, results, fields) {	
 		cbk_s(results);
-	}
+	});
 }
 
 CP_s.serial(
