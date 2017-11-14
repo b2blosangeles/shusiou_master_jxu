@@ -40,7 +40,7 @@ _f_s['local_video']  = function(cbk_s) { /* get local video list from data base 
 		cbk_s(v);
 	});
 };		
-_f_s['local_flist']  = function(cbk_s) { /* clean non database record local video */
+_f_s['local_flist']  = function(cbk_s) { /* clean local video which is not associate with database record */
 	var local_videos = CP_s.data.local_video;
 	fs.readdir(videos_folder, function(err, files) {
 		if (err) cbk([]);
