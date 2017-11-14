@@ -167,7 +167,7 @@ _f_s['cached']  = function(cbk_s) {
 _f_s['after_cached']  = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT `*` FROM `video_node` WHERE `status` <> '1' OR `status` IS NULL ORDER BY `updated`";
+	var str = "SELECT A.`*`, B.`server_ip` FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`vid` WHERE A.`status` <> '1' OR A.`status` IS NULL ORDER BY `updated`";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		var v = [];
