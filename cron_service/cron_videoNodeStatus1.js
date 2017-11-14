@@ -130,11 +130,10 @@ _f_s['cached']  = function(cbk_s) {
 				    }, function (error, resp, body) { 
 					    if (error) cbk({status:'failure', message:error.message});
 					    else {
-						var v = [];
+						var v = {};
 						try { v = JSON.parse(body); } catch(e) {
 							v = {status:'failure', message:e.message}
 						}
-						console.log('===v==>' + results[i].node_ip);
 						console.log(v);
 						cbk(v);
 					    }    
