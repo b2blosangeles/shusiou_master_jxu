@@ -109,7 +109,7 @@ _f_s['node_video']  = function(cbk_s) {
 			if (!v[results[i].node_ip]) v[results[i].node_ip] = [];
 			else v[results[i].node_ip][v[results[i].node_ip].length] = results[i].node_ip.vid;
 		}
-		cbk_s(results);
+		cbk_s(v);
 	});
 }
 /*
