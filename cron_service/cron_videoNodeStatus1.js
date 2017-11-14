@@ -96,6 +96,7 @@ _f_s['local_flist']  = function(cbk_s) {
 
 _f_s['node_videos']  = function(cbk_s) {
 	// cache a video if not cached 
+	var local_flist = cbk_s.data.local_flist.server_list;
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT A.`vid`, A.`node_ip`, A.`status`,  B.`server_ip` FROM `video_node` A "+
@@ -106,7 +107,7 @@ _f_s['node_videos']  = function(cbk_s) {
 		var v = {};
 		for (var i = 0; i < results.length; i++ ) {
 			if (!v[results[i].node_ip]) v[results[i].node_ip] = [];
-			var o = {}; o[results[i].vid] = CP.data.local_flist.server_list[results[i].vid];
+			var o = {}; o[results[i].vid] = local_flist[results[i].vid];
 			v[results[i].node_ip][v[results[i].node_ip].length] = o;
 		}
 		cbk_s(JSON.stringify(v));
