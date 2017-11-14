@@ -178,10 +178,10 @@ _f_s['after_cached']  = function(cbk_s) {
 			if (!v[results[i].node_ip]) {
 				v[results[i].node_ip] = results[i];
 				_f[results[i].node_ip] = (function(i) {
-					retur funciton(cbk) {
+					retur function(cbk) {
 						return i;
 					}
-				});
+				})(i);
 				
 			}	
 		}
