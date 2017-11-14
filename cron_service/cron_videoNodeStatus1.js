@@ -180,11 +180,11 @@ _f_s['after_cached']  = function(cbk_s) {
 				_f[results[i].node_ip] = (function(i) {
 					return function(cbk) {
 						request({
-						      url: 'http://'+results[i].node_ip+'/api/node_video_cache_only.api',
+						      url: 'http://'+results[i].node_ip+'/api/video/play_stream.api?type=video&vid='+
+							results[i].vid + '&node_cache_only=1&server='+results[i].server_ip,
 						      headers: {
 							"content-type": "application/json"
 						      },
-						      form:{rec:results[i]}
 						    }, function (error1, resp1, body1) {
 								cbk(body1);
 							});
