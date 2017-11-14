@@ -135,7 +135,7 @@ _f_s['cached']  = function(cbk_s) {
 							v = {status:'failure', message:e.message}
 						}
 						console.log(v);
-						cbk(JSON.stringify(v));
+						cbk(JSON.stringify(v)+'==');
 					    }    
 				    });	
 				}	
