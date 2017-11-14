@@ -29,18 +29,23 @@ _f_s['ip']  = function(cbk_s) {
 	}
     });
 };
-_f_s['local_video']  = function(cbk_s) { /* get local video list from data base */
+_f_s['local_video']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "'";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
+		if (error || !results.length) {
+			cbk_s(false); CPs.exit = 1;
+		}
 		var v = [];
 		for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
 		cbk_s(v);
 	});
 };		
-_f_s['local_flist']  = function(cbk_s) { /* clean local video which is not associate with database record */
+_f_s['local_flist']  = function(cbk_s) { 
+	// 1 - clean local video which is not associate with database record 
+	// 2 - get local videos which is associate with database record 
 	var local_videos = CP_s.data.local_video;
 	fs.readdir(videos_folder, function(err, files) {
 		if (err) cbk([]);
