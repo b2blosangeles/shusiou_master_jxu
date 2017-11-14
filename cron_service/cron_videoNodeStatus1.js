@@ -118,11 +118,38 @@ _f_s['node_videos']  = function(cbk_s) {
 _f_s['cached']  = function(cbk_s) {
 	var node_videos = CP_s.data.node_videos;
 	var v = [];
+	var CP = new crowdProcess(), _f={};
 	for (var o in node_videos) {
-		v[v.length] = 'http://'+o+'/api/node_audit.api?opt=files_status'+JSON.stringify(node_videos[o]);
+		_f(o) = (function(o)  {
+			return function(cbk) {
+				request({url:  'http://'+o+'/api/node_audit.api?opt=files_status',
+				      headers: {
+					"content-type": "application/json"
+				      },
+				      form:{list:node_videos[o]}
+				    }, function (error, resp, body) { 
+					    if (error) cbk({status:'failure', message:error.message});
+					    else {
+						var v = [];
+						try { v = JSON.parse(body); } catch(e) {
+							v = {status:'failure', message:e.message}
+						}
+						console.log('===v==>' + results[i].node_ip);
+						console.log(v);
+						cbk(v);
+					    }    
+				    });	
+				}	
+		})(o);	
 	}
-	
-	
+	CP.parallel(
+		_f,
+		function(data) {
+			cbk_s(data.results);
+		},
+		6000
+	);	
+	return true;
 	
 	cbk_s(v);
 	
