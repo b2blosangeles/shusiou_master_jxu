@@ -77,7 +77,6 @@ _f_s['local_flist']  = function(cbk_s) {
 					}
 
 					if (need_remove.length) {
-						
 						var ls = childProcess.exec(remove_cmd, 		   
 							function (error, stdout, stderr) {
 								cbk_s({need_remove:need_remove, files:files, server_list:data.results});
@@ -109,7 +108,7 @@ _f_s['node_video']  = function(cbk_s) {
 			if (!v[results[i].node_ip]) v[results[i].node_ip] = [];
 			else v[results[i].node_ip][v[results[i].node_ip].length] = results[i].node_ip.vid;
 		}
-		cbk_s(v);
+		cbk_s(JSON.stringify(v));
 	});
 }
 /*
