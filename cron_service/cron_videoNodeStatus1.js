@@ -99,10 +99,9 @@ _f_s['node_video']  = function(cbk_s) {
 	// cache a video if not cached 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT A.`vid`, A.`status` FROM `video_node` A "+
+	var str = "SELECT A.`vid`, A.`node_ip`, A.`status`,  B.`server_ip` FROM `video_node` A "+
 		    "LEFT JOIN `video` B ON A.`vid` = B.`vid` "+
-		    "WHERE A.`node_ip` = '" + results[i].node_ip + "' "+
-		    " AND B.server_ip = '" + CP_s.data.ip + "'";
+		    "WHERE B.`server_ip` = '" + CP_s.data.ip + "'";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		cbk_s(results);
