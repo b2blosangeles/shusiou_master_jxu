@@ -210,7 +210,7 @@ _f_s['after_cached2']  = function(cbk_s) {
 	    "WHERE A.`status` <> '1' OR A.`status` IS NULL ORDER BY `updated` ASC ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		cbk_s(data.results);		
+		cbk_s(results);		
 	});
 }
 CP_s.serial(
