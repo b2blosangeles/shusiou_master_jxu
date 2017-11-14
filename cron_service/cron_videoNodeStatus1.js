@@ -99,15 +99,16 @@ _f_s['node_video']  = function(cbk_s) {
 	// cache a video if not cached 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT A.`vid`,A.`node_ip`, A.`status` FROM `video_node` A "+
-						    "LEFT JOIN `video` B ON A.`vid` = B.`vid` "+
-						    "WHERE B.server_ip = '" + CP_s.data.ip + "'";
+	var str = "SELECT A.`vid`, A.`status` FROM `video_node` A "+
+		    "LEFT JOIN `video` B ON A.`vid` = B.`vid` "+
+		    "WHERE A.`node_ip` = '" + results[i].node_ip + "' "+
+		    " AND B.server_ip = '" + CP_s.data.ip + "'";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		cbk_s(results);
 	});
 }
-
+/*
 _f_s['cached']  = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
@@ -209,10 +210,12 @@ _f_s['after_cached']  = function(cbk_s) {
 		);		
 	});
 }
-
+*/
 CP_s.serial(
 	_f_s,
 	function(data_s) {
+		cbk(data_s);
+		reture false;
 		var sql_a = [], diff_a = [];
 		for (var o in CP_s.data.cached) {
 			var node_list =  CP_s.data.cached[o].node_list;
