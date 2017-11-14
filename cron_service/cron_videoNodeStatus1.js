@@ -120,7 +120,7 @@ _f_s['cached']  = function(cbk_s) {
 	var v = [];
 	var CP = new crowdProcess(), _f={};
 	for (var o in node_videos) {
-		_f(o) = (function(o)  {
+		_f[o] = (function(o)  {
 			return function(cbk) {
 				request({url:  'http://'+o+'/api/node_audit.api?opt=files_status',
 				      headers: {
