@@ -106,7 +106,8 @@ _f_s['node_videos']  = function(cbk_s) {
 		var v = {};
 		for (var i = 0; i < results.length; i++ ) {
 			if (!v[results[i].node_ip]) v[results[i].node_ip] = [];
-			else v[results[i].node_ip][v[results[i].node_ip].length] = {results[i].vid:CP.data.local_flist.server_list[results[i].vid]};
+			var o = {}; o[results[i].vid] = vid:CP.data.local_flist.server_list[results[i].vid];
+			v[results[i].node_ip][v[results[i].node_ip].length] = o;
 		}
 		cbk_s(JSON.stringify(v));
 	});
