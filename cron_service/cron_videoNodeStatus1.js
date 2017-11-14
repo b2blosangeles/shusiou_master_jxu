@@ -178,8 +178,17 @@ _f_s['after_cached']  = function(cbk_s) {
 			if (!v[results[i].node_ip]) {
 				v[results[i].node_ip] = results[i];
 				_f[results[i].node_ip] = (function(i) {
-					retur function(cbk) {
-						return i;
+					return function(cbk) {
+						request({
+						      url: 'http://'+results[i].node_ip+'/api/node_audit.api?opt=files_status',
+						      headers: {
+							"content-type": "application/json"
+						      },
+						      form:{list:list}
+						    }, function (error1, resp1, body1) {
+								cbk(body1);
+							});
+						
 					}
 				})(i);
 				
