@@ -213,7 +213,7 @@ _f_s['after_cached']  = function(cbk_s) {
 CP_s.serial(
 	_f_s,
 	function(data_s) {
-		cbk(data_s);
+		res.send(data_s);
 		return false;
 		var sql_a = [], diff_a = [];
 		for (var o in CP_s.data.cached) {
