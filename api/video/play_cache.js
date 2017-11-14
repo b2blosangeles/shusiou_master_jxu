@@ -31,7 +31,7 @@ _f['S1'] = function(cbk) {
 	connection.connect();
 	var str = "SELECT A.`vid`, A.`node_ip`, B.`server_ip`, A.`status` "+    
 			 " FROM `video_node` AS A LEFT JOIN `video` AS B  ON A.`vid` = B.`vid` " +
-			 " WHERE A.`vid` = '" + vid + "'; ";	
+			 " WHERE  A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) AND A.`vid` = '" + vid + "'; ";	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		cbk(results);
