@@ -184,7 +184,7 @@ _f_s['after_cached']  = function(cbk_s) {
 						      headers: {
 							"content-type": "application/json"
 						      },
-						      form:{vid:results[i].vid}
+						      form:{rec:results[i]}
 						    }, function (error1, resp1, body1) {
 								cbk(body1);
 							});
