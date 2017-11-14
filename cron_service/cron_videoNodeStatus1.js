@@ -163,6 +163,11 @@ _f_s['cached']  = function(cbk_s) {
 		} else { cbk_s(false); }
 	}); 
 }
+
+_f_s['after_cached']  = function(cbk_s) {
+	cbk(CP.data.cached);
+}
+
 CP_s.serial(
 	_f_s,
 	function(data_s) {
