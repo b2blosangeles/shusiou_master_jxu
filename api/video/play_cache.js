@@ -55,11 +55,11 @@ _f['NS0'] = function(cbk) {
 _f['NS1'] = function(cbk) { 
 	var v = [];
 	for (var i=0; i<CP.data.NS0.length; i++) {
-		v[v.length] = "('" + CP.data.NS0[i].node_ip +"', '" + vid + "')";
+		v[v.length] = "('" + CP.data.NS0[i].node_ip +"', '" + vid + "', NOW())";
 	}
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "INSERT INTO `video_node` (`node_ip`, `vid`) VALUES " +  v.join(',') + 
+	var str = "INSERT INTO `video_node` (`node_ip`, `vid`, `updated`) VALUES " +  v.join(',') + 
 	" ON DUPLICATE KEY UPDATE `vid` = '" + vid + "'";
 	connection.query(str, function (error, results, fields) {									       
 		cbk(true); 	
