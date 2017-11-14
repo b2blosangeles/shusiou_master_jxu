@@ -88,18 +88,20 @@ _f_s['local_flist']  = function(cbk_s) {
 
 	});			
 };
-/*
-_f_s['cache_video']  = function(cbk_s) {
+
+_f_s['node_video']  = function(cbk_s) {
 	// cache a video if not cached 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT * FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "' ";
+	var str = "SELECT A.`vid`,A.`node_ip`, A.`status` FROM `video_node` A "+
+						    "LEFT JOIN `video` B ON A.`vid` = B.`vid` "+
+						    "WHERE B.server_ip = '" + CP_s.data.ip + "'";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		cbk_s(results);
 	});
 }
-*/
+
 _f_s['cached']  = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
