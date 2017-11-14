@@ -119,7 +119,7 @@ _f_s['cached']  = function(cbk_s) {
 	var node_videos = CP_s.data.node_videos;
 	var v = [];
 	for (var o in node_videos) {
-		v[v.length] = 'http://'+o+'/api/node_audit.api?opt=files_status'+JSON.stringfi(node_videos[o]);
+		v[v.length] = 'http://'+o+'/api/node_audit.api?opt=files_status'+JSON.stringify(node_videos[o]);
 	}
 	
 	
