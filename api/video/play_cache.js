@@ -91,10 +91,10 @@ CP.serial(
 				
 		var ip = ips[Math.floor(Math.random() * ips.length)], patt = /([?&]server)=([^#&]*)/i;
 		//if (!ip_cache_uncompleted[ip]) {
-			if (patt.test(url)) url = ('http://'+ ip + url).replace(patt,'$1=' + server_ip);
-			else url = 'http://'+ ip + url + '&server=' + server_ip;
+		//	if (patt.test(url)) url = ('http://'+ ip + url).replace(patt,'$1=' + server_ip);
+		//	else url = 'http://'+ ip + url + '&server=' + server_ip;
 		//} else {
-		//	url = 'http://'+ server_ip + url;
+			url = 'http://'+ server_ip + url;
 		//}
 	//	res.send(url)
 		res.redirect(url);
