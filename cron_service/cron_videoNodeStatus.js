@@ -159,18 +159,18 @@ _f_s['cached']  = function(cbk_s) {
 				}
 			}
 			if (cached.join(',')) {
-				str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ';
+				str += 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ';
 				str += cached.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 1 ;';
 			};
 			if (uncached.join(',')) {
-				str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ';
+				str += 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ';
 				str += uncached.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 0 ;';
 			};			
 			var connection = mysql.createConnection(cfg_m);
 			connection.connect();
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				cbk_s(JSON.stringify(data.results));
+				cbk_s(str);
 			});	
 		},
 		12000
