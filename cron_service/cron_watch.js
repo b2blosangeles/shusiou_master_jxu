@@ -20,12 +20,20 @@ fs.readFile('/var/.qalet_cron_watch.data', 'utf8', function(err,data) {
     } 
   }
 });	 
-
-request({
-    url: 'http://root.qalet.com/api/cron_watch.api',
-    headers: {
-      "content-type": "application/json"
-    },
-    form:{}
-  }, function (error, resp, body) { 
-  });
+function randomInt(min,max) {
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+var delay = randomInt(0,300) * 10;
+setTimeout(
+  function() {
+      request({
+        url: 'http://root.qalet.com/api/cron_watch.api',
+        headers: {
+          "content-type": "application/json"
+        },
+        form:{}
+      }, function (error, resp, body) { 
+        console.log(delay + '--' + body);
+      });
+  }, delay
+);
