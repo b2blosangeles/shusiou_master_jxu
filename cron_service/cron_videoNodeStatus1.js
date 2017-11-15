@@ -6,7 +6,10 @@ env.site_path = env.root_path + '/site';
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
     request =  require(env.root_path + '/package/request/node_modules/request'),
-    cfg0 = require(env.site_path + '/api/cfg/db.json');
+    cfg0 = require(env.site_path + '/api/cfg/db.json'),
+    cfgm = JSON.parse(JSON.stringify(cfg0)),
+    cfgm.multipleStatements = true;
+ 		
 
 var fs = require('fs');
 var childProcess = require('child_process');
@@ -166,13 +169,12 @@ _f_s['cached']  = function(cbk_s) {
 				str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ';
 				str += uncached.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 0 ;';
 			};			
-			cbk_s(str);
-		//	var connection = mysql.createConnection(cfg0);
-		//	connection.connect();
-		//	connection.query(str, function (error, results, fields) {
-		//		connection.end();
-		//		cbk_s(results);
-		//	});	
+			var connection = mysql.createConnection(cfgm);
+			connection.connect();
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				cbk_s(results);
+			});	
 		},
 		12000
 	);
