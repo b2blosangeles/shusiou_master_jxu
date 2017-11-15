@@ -148,7 +148,7 @@ _f_s['cached']  = function(cbk_s) {
 					v[v.length] = obj.cached_files;
 				//}
 			}
-			cbk_s(v);
+			cbk_s(JSON.stringify(v));
 		},
 		12000
 	);
