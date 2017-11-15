@@ -14,8 +14,6 @@ var childProcess = require('child_process');
 var cfg_m = JSON.parse(JSON.stringify(cfg0 ));
 cfg_m.multipleStatements =  true;	
 
-console.log(cfg_m);
-
 var mnt_folder = '/mnt/shusiou-video/', 
     videos_folder = mnt_folder  + 'videos/';
 
