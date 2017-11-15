@@ -141,7 +141,14 @@ _f_s['cached']  = function(cbk_s) {
 	CP.parallel(
 		_f,
 		function(data) {
-			cbk_s(data.results);
+			var v = [];
+			for (var o in data.results) {
+				var obj = data.results[o];
+				if (obj.status == 'success') {
+					v[v.length] = obj.cached_files;
+				}
+			}
+			cbk_s(v);
 		},
 		12000
 	);
