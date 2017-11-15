@@ -22,10 +22,15 @@ switch(opt) {
 			});  
 		};	
 		_f['P1'] = function(cbk) {
+			var vstr = '0';
+			for (var i = 0; i < CP.data.P0.length; i++) {
+				vstr += ',' +  CP.data.P0[i].vid; 
+			}
+
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'SELECT * FROM  `video_node` WHERE `vid` IN (SELECT `vid`  FROM  `video` LIMIT 3)';
+			var str = 'SELECT * FROM  `video_node` WHERE `vid` IN (' + vstr + ')';
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
