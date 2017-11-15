@@ -160,11 +160,11 @@ _f_s['cached']  = function(cbk_s) {
 			}
 			if (cached.join(',')) {
 				str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ';
-				str += cached.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 1 ';
+				str += cached.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 1 ;';
 			};
 			if (uncached.join(',')) {
 				str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ';
-				str += uncached.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 0 ';
+				str += uncached.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 0 ;';
 			};			
 			cbk_s(str);
 		//	var connection = mysql.createConnection(cfg0);
