@@ -144,9 +144,9 @@ _f_s['cached']  = function(cbk_s) {
 			var v = [];
 			for (var o in data.results) {
 				var obj = data.results[o];
-				//if (obj.status == 'success') {
-					v[v.length] = "('" + o + "','" + obj.cached_files + "')";
-				//}
+				if (obj.status == 'success') {
+					v[v.length] = "(`node_ip` ='" + o + "','" + obj.cached_files + "', 1)";
+				}
 			}
 			cbk_s(v.join(','));
 		},
