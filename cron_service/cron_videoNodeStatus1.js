@@ -6,17 +6,15 @@ env.site_path = env.root_path + '/site';
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
     request =  require(env.root_path + '/package/request/node_modules/request'),
-    cfg0 = require(env.site_path + '/api/cfg/db.json'),
-    cfgm = JSON.parse(JSON.stringify(cfg0));
-console.log(cfgm);
-    cfgm.multipleStatements = true;
- 		
+    cfg0 = require(env.site_path + '/api/cfg/db.json'); 		
 
 var fs = require('fs');
 var childProcess = require('child_process');
 
 var cfg_m = JSON.parse(JSON.stringify(cfg0 ));
 cfg_m.multipleStatements =  true;	
+
+console.log(cfg_m);
 
 var mnt_folder = '/mnt/shusiou-video/', 
     videos_folder = mnt_folder  + 'videos/';
