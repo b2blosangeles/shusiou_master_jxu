@@ -34,7 +34,14 @@ switch(opt) {
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (results.length)  cbk(results);
+				if (results.length) {
+					var v = {};
+					for (var i = 0; i < results.length; i++) {
+						if (!v[results[i].vid]) v[results[i].vid] = [];
+						v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
+					}
+					cbk(results);
+				}	
 				else cbk([]);
 			});  
 		};		
