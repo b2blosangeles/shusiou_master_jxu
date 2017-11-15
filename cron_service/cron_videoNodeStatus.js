@@ -114,6 +114,9 @@ _f_s['node_videos']  = function(cbk_s) {
 }
 
 _f_s['cached']  = function(cbk_s) {
+	
+	// retreave cached status from cloud node
+	
 	var node_videos = CP_s.data.node_videos;
 	var v = [];
 	var CP = new crowdProcess(), _f={};
@@ -209,5 +212,5 @@ CP_s.serial(
 	function(data_s) {
 		console.log(data_s);
 	},
-	50000
+	58000
 );
