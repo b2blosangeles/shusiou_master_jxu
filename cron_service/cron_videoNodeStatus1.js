@@ -146,7 +146,7 @@ _f_s['cached']  = function(cbk_s) {
 				var str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ', 
 				    obj = data.results[o];
 				if (obj.status == 'success') {
-					var files = obj.cached_files.split(',');
+					// var files = obj.cached_files.split(',');
 					for (var i = 0; i < obj.cached_files.length; i++) {
 						v[v.length] = '("' + o + '","' + obj.cached_files[i] + '", 1)';
 					}
