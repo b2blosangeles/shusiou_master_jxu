@@ -212,7 +212,7 @@ _f_s['cached']  = function(cbk_s) {
 	}); 
 	*/
 }
-/*
+
 _f_s['after_cached']  = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
@@ -252,7 +252,7 @@ _f_s['after_cached']  = function(cbk_s) {
 		);		
 	});
 }
-*/
+
 CP_s.serial(
 	_f_s,
 	function(data_s) {
