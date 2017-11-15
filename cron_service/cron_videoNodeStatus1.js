@@ -154,7 +154,7 @@ _f_s['cached']  = function(cbk_s) {
 			connection.connect();
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				cbk_s(results);
+				cbk_s(str);
 			});	
 		},
 		12000
