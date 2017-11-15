@@ -160,7 +160,7 @@ _f_s['cached']  = function(cbk_s) {
 				str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ';
 				str += v.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 1 ';
 			};
-			cbk_s(str);
+			cbk_s(data.results);
 		//	var connection = mysql.createConnection(cfg0);
 		//	connection.connect();
 		//	connection.query(str, function (error, results, fields) {
