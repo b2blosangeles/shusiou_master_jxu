@@ -144,9 +144,9 @@ _f_s['cached']  = function(cbk_s) {
 			var v = [];
 			for (var o in data.results) {
 				var obj = data.results[o];
-				if (obj.status == 'success') {
+				//if (obj.status == 'success') {
 					v[v.length] = obj.cached_files;
-				}
+				//}
 			}
 			cbk_s(v);
 		},
