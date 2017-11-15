@@ -143,12 +143,14 @@ _f_s['cached']  = function(cbk_s) {
 		function(data) {
 			var v = [];
 			for (var o in data.results) {
-				var obj = data.results[o];
+				var str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ', 
+				    obj = data.results[o];
 				if (obj.status == 'success') {
-					v[v.length] = "(`node_ip` ='" + o + "','" + obj.cached_files + "', 1)";
+					v[v.length] = "('" + o + "','" + obj.cached_files + "', 1)";
 				}
 			}
-			cbk_s(v.join(','));
+			str += v.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 1 ';
+			cbk_s(str);
 		},
 		12000
 	);
