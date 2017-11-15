@@ -133,7 +133,12 @@ _f_s['cached']  = function(cbk_s) {
 						try { v = JSON.parse(body); } catch(e) {
 							v = {status:'failure', message:e.message}
 						}
-						cbk(body.status);
+					//	for (var i = 0; i < body.)    
+						if (v.status == 'success') {
+							cbk(v.cached_files)
+						} else {
+							cbk(v);
+						}
 					    }    
 				    });	
 				}	
@@ -142,9 +147,9 @@ _f_s['cached']  = function(cbk_s) {
 	CP.parallel(
 		_f,
 		function(data) {
-			cbk_s(data.results);
+			cbk(data.results);
 		},
-		6000
+		12000
 	);	
 	return true;
 	/*
