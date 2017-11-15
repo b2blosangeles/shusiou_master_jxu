@@ -170,7 +170,7 @@ _f_s['cached']  = function(cbk_s) {
 			connection.connect();
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				cbk_s(results);
+				cbk_s(JSON.stringify(data.results));
 			});	
 		},
 		12000
