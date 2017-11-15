@@ -146,7 +146,11 @@ _f_s['cached']  = function(cbk_s) {
 				var str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ', 
 				    obj = data.results[o];
 				if (obj.status == 'success') {
-					v[v.length] = '("' + o + '","' + obj.cached_files + '", 1)';
+					var files = obj.cached_files.split(',');
+					for (var i = 0; i < files.length; i++) {
+						v[v.length] = '("' + o + '","' + files[i] + '", 1)';
+					}
+					
 				}
 			}
 			str += v.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 1 ';
