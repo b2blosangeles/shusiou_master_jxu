@@ -156,12 +156,13 @@ _f_s['cached']  = function(cbk_s) {
 				}
 			}
 			str += v.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 1 ';
-			var connection = mysql.createConnection(cfg0);
-			connection.connect();
-			connection.query(str, function (error, results, fields) {
-				connection.end();
-				cbk_s(results);
-			});	
+			cbk_s(str);
+		//	var connection = mysql.createConnection(cfg0);
+		//	connection.connect();
+		//	connection.query(str, function (error, results, fields) {
+		//		connection.end();
+		//		cbk_s(results);
+		//	});	
 		},
 		12000
 	);
