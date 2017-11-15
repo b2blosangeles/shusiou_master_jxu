@@ -147,74 +147,10 @@ _f_s['cached']  = function(cbk_s) {
 	CP.parallel(
 		_f,
 		function(data) {
-			cbk(data.results);
+			cbk_s(data.results);
 		},
 		12000
-	);	
-	return true;
-	/*
-	cbk_s(v);
-	
-	var connection = mysql.createConnection(cfg0);
-	connection.connect();
-	var str = "SELECT `node_ip` FROM `cloud_node` WHERE `node_ip` IN (SELECT `node_ip` FROM `video_node`) ";
-	connection.query(str, function (error, results, fields) {
-		connection.end();
-		if (error) { cbk_s(false); } 
-		else if (results) { 
-			var CP = new crowdProcess();
-			var _f = {};				
-			for (var i = 0; i < results.length; i++) {
-				_f[results[i].node_ip] = (function(i) {
-					return function(cbk) {
-						var connection = mysql.createConnection(cfg0);
-						connection.connect();
-						var str = "SELECT A.`vid`, A.`status` FROM `video_node` A "+
-						    "LEFT JOIN `video` B ON A.`vid` = B.`vid` "+
-						    "WHERE A.`node_ip` = '" + results[i].node_ip + "' "+
-						    " AND B.server_ip = '" + CP_s.data.ip + "'";
-						connection.query(str, function (error, results1, fields) {
-							connection.end();
-							if (error) { cbk(false); } 
-							else if (results1) {
-								var list = [], list_done = [];
-								for (var j = 0; j < results1.length;j++) {
-									list[ list.length] = results1[j].vid;
-								}
-								
-								request({
-								      url: 'http://'+results[i].node_ip+'/api/node_audit.api?opt=files_status',
-								      headers: {
-									"content-type": "application/json"
-								      },
-								      form:{list:list}
-								    }, function (error, resp, body) { 
-									    if (error) cbk({status:'failure', message:error.message});
-									    else {
-										var v = [];
-										try { v = JSON.parse(body); } catch(e) {
-											v = {status:'failure', message:e.message}
-										}
-										console.log('===v==>' + results[i].node_ip);
-										console.log(v);
-										cbk(v);
-									    }    
-								    });									
-							} else { cbk(false); }
-						});  
-					}	
-				})(i);
-			}
-			CP.parallel(
-				_f,
-				function(data) {
-					cbk_s(data.results);
-				},
-				6000
-			);
-		} else { cbk_s(false); }
-	}); 
-	*/
+	);
 }
 
 _f_s['after_cached']  = function(cbk_s) {
