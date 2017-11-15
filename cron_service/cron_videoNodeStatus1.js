@@ -144,23 +144,29 @@ _f_s['cached']  = function(cbk_s) {
 	CP.parallel(
 		_f,
 		function(data) {
-			var v = [];
+			var cached = [], uncached = [];
 			var str = '';
 				
 			for (var o in data.results) {
 				var  obj = data.results[o];
 				if (obj.status == 'success') {
-					for (var i = 0; i < obj.uncached_files.length; i++) {
-						v[v.length] = '("' + o + '","' + obj.cached_files[i] + '", 1)';
+					for (var i = 0; i < obj.cached_files.length; i++) {
+						cached[v.length] = '("' + o + '","' + obj.cached_files[i] + '", 1)';
 					}
-
+					for (var i = 0; i < obj.uncached_files.length; i++) {
+						uncached[v.length] = '("' + o + '","' + obj.uncached_files[i] + '", 0)';
+					}
 				}
 			}
-			if (v.join(',')) {
+			if (cached.join(',')) {
 				str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ';
-				str += v.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 1 ';
+				str += cached.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 1 ';
 			};
-			cbk_s(JSON.stringify(data.results));
+			if (uncached.join(',')) {
+				str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ';
+				str += uncached.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 0 ';
+			};			
+			cbk_s(str);
 		//	var connection = mysql.createConnection(cfg0);
 		//	connection.connect();
 		//	connection.query(str, function (error, results, fields) {
