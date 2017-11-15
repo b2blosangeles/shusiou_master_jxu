@@ -113,6 +113,46 @@ _f_s['node_videos']  = function(cbk_s) {
 	});
 }
 
+_f_s['before_cached']  = function(cbk_s) {
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = "SELECT A.`*`, B.`server_ip` FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`vid` "+
+	    "WHERE A.`status` <> '1' OR A.`status` IS NULL ORDER BY `updated` ASC ";
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		var v = {};
+		var CP = new crowdProcess(), _f={};
+		
+		for (var i = 0; i < results.length; i++) {
+			if (!v[results[i].node_ip]) {
+				v[results[i].node_ip] = results[i];
+				_f[results[i].node_ip] = (function(i) {
+					return function(cbk) {
+						request({
+						      url: 'http://'+results[i].node_ip+'/api/video/play_stream.api?type=video&vid='+
+							results[i].vid + '&node_cache_only=1&server='+results[i].server_ip,
+						      headers: {
+							"content-type": "application/json"
+						      },
+						    }, function (error1, resp1, body1) {
+								cbk(body1);
+							});
+						
+					}
+				})(i);
+				
+			}	
+		}
+		CP.parallel(
+			_f,
+			function(data) {
+				cbk_s(data.results);
+			},
+			50000
+		);		
+	});
+}
+
 _f_s['cached']  = function(cbk_s) {
 	
 	// retreave cached status from cloud node
@@ -177,45 +217,7 @@ _f_s['cached']  = function(cbk_s) {
 	);
 }
 
-_f_s['after_cached']  = function(cbk_s) {
-	var connection = mysql.createConnection(cfg0);
-	connection.connect();
-	var str = "SELECT A.`*`, B.`server_ip` FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`vid` "+
-	    "WHERE A.`status` <> '1' OR A.`status` IS NULL ORDER BY `updated` ASC ";
-	connection.query(str, function (error, results, fields) {
-		connection.end();
-		var v = {};
-		var CP = new crowdProcess(), _f={};
-		
-		for (var i = 0; i < results.length; i++) {
-			if (!v[results[i].node_ip]) {
-				v[results[i].node_ip] = results[i];
-				_f[results[i].node_ip] = (function(i) {
-					return function(cbk) {
-						request({
-						      url: 'http://'+results[i].node_ip+'/api/video/play_stream.api?type=video&vid='+
-							results[i].vid + '&node_cache_only=1&server='+results[i].server_ip,
-						      headers: {
-							"content-type": "application/json"
-						      },
-						    }, function (error1, resp1, body1) {
-								cbk(body1);
-							});
-						
-					}
-				})(i);
-				
-			}	
-		}
-		CP.parallel(
-			_f,
-			function(data) {
-				cbk_s(data.results);
-			},
-			50000
-		);		
-	});
-}
+
 
 CP_s.serial(
 	_f_s,
