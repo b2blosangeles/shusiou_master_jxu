@@ -133,8 +133,7 @@ _f_s['cached']  = function(cbk_s) {
 						try { v = JSON.parse(body); } catch(e) {
 							v = {status:'failure', message:e.message}
 						}
-						console.log(v);
-						cbk(body);
+						cbk(body.status);
 					    }    
 				    });	
 				}	
