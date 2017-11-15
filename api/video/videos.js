@@ -13,7 +13,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'SELECT A.*, B.`created` AS addtime FROM  `video` A LEFT JOIN `video_user` B on A.`vid` = B.`vid` LIMIT 3';
+			var str = 'SELECT A.*, B.`created` AS addtime FROM  `video_node` A LEFT JOIN `video` B on A.`vid` = B.`vid` LIMIT 3';
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
