@@ -7,7 +7,8 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
     request =  require(env.root_path + '/package/request/node_modules/request'),
     cfg0 = require(env.site_path + '/api/cfg/db.json'),
-    cfgm = JSON.parse(JSON.stringify(cfg0)),
+    cfgm = JSON.parse(JSON.stringify(cfg0));
+console.log(cfgm);
     cfgm.multipleStatements = true;
  		
 
