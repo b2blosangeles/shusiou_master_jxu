@@ -145,7 +145,7 @@ _f_s['cached']  = function(cbk_s) {
 			for (var o in data.results) {
 				var obj = data.results[o];
 				//if (obj.status == 'success') {
-					v[v.length] = obj.cached_files;
+					v[v.length] = o + ',' + obj.cached_files;
 				//}
 			}
 			cbk_s(JSON.stringify(v));
