@@ -5,7 +5,7 @@ var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
 var opt = req.query['opt'];
 
 switch(opt) {
-	case 'getMyVideos':
+	case 'getVideos':
 		var uid = req.body.uid || 1;
 		var CP = new pkg.crowdProcess();
 		var _f = {};		
@@ -13,8 +13,7 @@ switch(opt) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'SELECT A.*, B.`created` AS addtime FROM  `video` A LEFT JOIN `video_user` B on A.`vid` = B.`vid` ' +
-			    " WHERE B.`uid` = '" + uid +" '";
+			var str = 'SELECT A.*, B.`created` AS addtime FROM  `video` A LEFT JOIN `video_user` B on A.`vid` = B.`vid` LIMIT 3';
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
