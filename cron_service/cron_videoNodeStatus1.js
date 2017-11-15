@@ -147,8 +147,8 @@ _f_s['cached']  = function(cbk_s) {
 				    obj = data.results[o];
 				if (obj.status == 'success') {
 					var files = obj.cached_files.split(',');
-					for (var i = 0; i < files.length; i++) {
-						v[v.length] = '("' + o + '","' + files[i] + '", 1)';
+					for (var i = 0; i < obj.cached_files.length; i++) {
+						v[v.length] = '("' + o + '","' + obj.cached_files[i] + '", 1)';
 					}
 					
 				}
