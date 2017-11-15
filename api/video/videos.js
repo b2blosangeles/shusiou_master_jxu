@@ -9,11 +9,23 @@ switch(opt) {
 		var uid = req.body.uid || 1;
 		var CP = new pkg.crowdProcess();
 		var _f = {};		
-		_f['P2'] = function(cbk) {
+		_f['P0'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'SELECT A.*  FROM  `video_node` A LEFT JOIN `video` B on A.`vid` = B.`vid` LIMIT 3';
+			var str = 'SELECT *  FROM  `video` LIMIT 3';
+
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				if (results.length)  cbk(results);
+				else cbk([]);
+			});  
+		};	
+		_f['P1'] = function(cbk) {
+			var connection = mysql.createConnection(cfg0);
+			connection.connect();
+
+			var str = 'SELECT * FROM  `video_node` WHERE `vid` IN SELECT *  FROM  `video` LIMIT 3';
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
@@ -25,8 +37,8 @@ switch(opt) {
 			_f,
 			function(data) {
 				var d = [];
-				for (var i = 0; i < data.results.P2.length; i++) {
-					d[d.length] = data.results.P2[i];
+				for (var i = 0; i < data.results.P1.length; i++) {
+					d[d.length] = data.results.P1[i];
 				}
 				res.send({status:data.status, _spent_time:data._spent_time, 
 					data:d.sort(function(a,b) { return ( a.addtime < b.addtime )?1:-1} )});
