@@ -40,7 +40,7 @@ switch(opt) {
 						if (!v[results[i].vid]) v[results[i].vid] = [];
 						v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
 					}
-					cbk(results);
+					cbk(v);
 				}	
 				else cbk([]);
 			});  
