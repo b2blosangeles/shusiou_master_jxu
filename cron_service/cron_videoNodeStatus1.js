@@ -168,7 +168,7 @@ _f_s['cached']  = function(cbk_s) {
 				str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ';
 				str += uncached.join(',') + ' ON DUPLICATE KEY UPDATE `status` = 0 ;';
 			};			
-			var connection = mysql.createConnection(cfgm);
+			var connection = mysql.createConnection(cfg_m);
 			connection.connect();
 			connection.query(str, function (error, results, fields) {
 				connection.end();
