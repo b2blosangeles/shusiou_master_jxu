@@ -151,10 +151,10 @@ _f_s['cached']  = function(cbk_s) {
 				var  obj = data.results[o];
 				if (obj.status == 'success') {
 					for (var i = 0; i < obj.cached_files.length; i++) {
-						cached[v.length] = '("' + o + '","' + obj.cached_files[i] + '", 1)';
+						cached[cached.length] = '("' + o + '","' + obj.cached_files[i] + '", 1)';
 					}
 					for (var i = 0; i < obj.uncached_files.length; i++) {
-						uncached[v.length] = '("' + o + '","' + obj.uncached_files[i] + '", 0)';
+						uncached[uncached.length] = '("' + o + '","' + obj.uncached_files[i] + '", 0)';
 					}
 				}
 			}
