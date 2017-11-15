@@ -1,5 +1,4 @@
 /* ---  This is final version to catch cached video status  between master server and node side */
-
 var path = require('path');
 var env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
@@ -133,7 +132,7 @@ _f_s['cached']  = function(cbk_s) {
 						try { v = JSON.parse(body); } catch(e) {
 							v = {status:'failure', message:e.message}
 						}
-						cbk(v);
+						cbk(JSON.stringify(v));
 					    }    
 				    });	
 				}	
