@@ -146,7 +146,6 @@ _f_s['cached']  = function(cbk_s) {
 				var str = 'INSERT INTO `video_node` (`node_ip`, `vid`, `status`) VALUES ', 
 				    obj = data.results[o];
 				if (obj.status == 'success') {
-					// var files = obj.cached_files.split(',');
 					for (var i = 0; i < obj.cached_files.length; i++) {
 						v[v.length] = '("' + o + '","' + obj.cached_files[i] + '", 1)';
 					}
@@ -158,7 +157,7 @@ _f_s['cached']  = function(cbk_s) {
 			connection.connect();
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				cbk_s(str);
+				cbk_s(results);
 			});	
 		},
 		12000
@@ -209,37 +208,6 @@ CP_s.serial(
 	_f_s,
 	function(data_s) {
 		console.log(data_s);
-		return false;
-		var sql_a = [], diff_a = [];
-		for (var o in CP_s.data.cached) {
-			var node_list =  CP_s.data.cached[o].node_list;
-			var server_list = ((CP_s.data.local_flist) && (CP_s.data.local_flist.server_list))?
-				CP_s.data.local_flist.server_list:[];
-			var v = [], diff_v = [];
-
-			for (var p in server_list) {
-				if (node_list[p] == server_list[p])  v[v.length] = "'"+p+"'";
-				else diff_v[diff_v.length] = "'"+p+"'";
-			}
-
-
-			if (v.length) {
-				sql_a[sql_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + v.join(',') +")) ";
-			}
-			if (diff_v.length) {
-				diff_a[diff_a.length] = "(`node_ip` = '" + o + "' AND `vid` IN (" + diff_v.join(',') +")) ";
-			}
-
-		}
-		var sql_str = 'UPDATE `video_node` SET `status` = 1 WHERE ' + sql_a.join(' OR ') + ';';
-		 sql_str += 'UPDATE `video_node` SET `status` = null WHERE ' + diff_a.join(' OR ');
-
-		var connection_m = mysql.createConnection(cfg_m);
-		connection_m.connect();
-		connection_m.query(sql_str, function (error_m, results_m, fields_m) {
-			connection_m.end();
-			process.stdout.write(JSON.stringify(data_s.results));
-		});
 	},
 	50000
 );
