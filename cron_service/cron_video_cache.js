@@ -93,8 +93,14 @@ _f_s['local_videos']  = function(cbk_s) {
 	});			
 };
 
+_f_s['find_uncached']  = function(cbk_s) { 
+	// appoint cache node if any video did not do cache
+	console.log({vlist:CP_s.data:db_videos, module:'find_uncached'});
+	cbk({vlist:CP_s.data:db_videos, module:'find_uncached'});
+}
+
 _f_s['node_videos']  = function(cbk_s) { 
-	// get local_videos by node_ip
+	// get db local_videos by node_ip
 	var local_videos = CP_s.data.local_videos.server_list;
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
