@@ -41,8 +41,7 @@ switch(opt) {
 						v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
 					}
 					cbk(v);
-				}	
-				else cbk([]);
+				} else cbk([]);
 			});  
 		};		
 		CP.serial(
@@ -53,7 +52,9 @@ switch(opt) {
 					d[d.length] = data.results.P1[i];
 				}
 				res.send({status:data.status, _spent_time:data._spent_time, 
-					data:d.sort(function(a,b) { return ( a.addtime < b.addtime )?1:-1} )});
+					data:d});
+			//	res.send({status:data.status, _spent_time:data._spent_time, 
+			//		data:d.sort(function(a,b) { return ( a.addtime < b.addtime )?1:-1} )});
 					  
 			},
 			3000
