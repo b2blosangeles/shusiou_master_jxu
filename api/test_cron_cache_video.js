@@ -16,7 +16,7 @@ _f_s['ip']  = function(cbk_s) {
 _f_s['db_videos']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT `vid`,  count(`vid`) as CNT FROM  `video_node` GROUP BY `vid` HAVING CNT > 2  ORDER BY CNT  ASC";
+	var str = "SELECT A.`vid`,  count(A.`vid`) as CNT FROM `video_node` A LEFT JOIN `video` B ON A.`vid` = B.`vid`  GROUP BY A.`vid` HAVING CNT < 3  ORDER BY CNT  ASC";
 	// var str = "SELECT `vid` FROM `tmp_video_cached` WHERE 1";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
