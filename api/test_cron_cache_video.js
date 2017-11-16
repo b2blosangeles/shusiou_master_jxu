@@ -23,7 +23,7 @@ _f_s['db_videos']  = function(cbk_s) { /* get database catched local videos */
 		//return true;
 		connection.end();
 		if (error || !results.length) {
-			cbk_s(false); CPs.exit = 1;
+			cbk_s(false); CP_s.exit = 1;
 		}
 		var v = [];
 		for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
