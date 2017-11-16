@@ -48,11 +48,13 @@ switch(opt) {
 			_f,
 			function(data) {
 				var d = [];
-				for (var i = 0; i < data.results.P1.length; i++) {
-					d[d.length] = data.results.P1[i];
+				for (var i = 0; i < data.results.P0.length; i++) {
+					var rec = data.results.P0[i];
+					rec.node_ip = data.results.P1[ data.results.P0[i].vid]
+					d[d.length] = data.results.P0[i];
 				}
 				res.send({status:data.status, _spent_time:data._spent_time, 
-					data:data.results.P1});
+					data:d});
 			//	res.send({status:data.status, _spent_time:data._spent_time, 
 			//		data:d.sort(function(a,b) { return ( a.addtime < b.addtime )?1:-1} )});
 					  
