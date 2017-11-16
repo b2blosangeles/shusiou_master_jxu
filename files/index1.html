@@ -17,7 +17,7 @@
 				 $.get("/api/video/videos.api?opt=getVideos", function(data, status){
 					 var v = data.data;
 					 for (var i=0; i < v.length; i++) {
-					 	console.log(vid);
+					 	console.log(v[i].vid);
 					 }
 					console.log(data.data);
 				    });				
