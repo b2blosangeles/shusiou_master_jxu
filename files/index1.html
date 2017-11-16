@@ -18,11 +18,14 @@
 					 var v = data.data;
 					 var str = '';
 					 for (var i=0; i < v.length; i++) {
-					 	console.log(v[i].vid);
 						 str+='<video width="320" height="240" controls autoplay>' +
+	'<source src="http://67.205.189.126/api/video/play_cache.api?type=video&vid='+v[i].vid+'" type="video/mp4">' +
+	'<source src="movie.ogg" type="video/ogg">'+
+	'</video>';
+	/*					 str+='<video width="320" height="240" controls autoplay>' +
 	'<source src="http://67.205.189.126/api/video/play_cache.api?type=section&vid='+v[i].vid+'&s=120&l=180" type="video/mp4">' +
 	'<source src="movie.ogg" type="video/ogg">'+
-	'</video>'	
+	'</video>'	*/					 
 					 }
 					$('#niu').html(str);
 				    });				
