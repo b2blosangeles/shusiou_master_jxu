@@ -20,6 +20,8 @@ _f_s['db_videos']  = function(cbk_s) { /* get database catched local videos */
 	// var str = "SELECT `vid` FROM `tmp_cache_video` WHERE 1";
 	var str = "SHOW TABLES";
 	connection.query(str, function (error, results, fields) {
+		cbk_s(results);
+		return true;
 		connection.end();
 		if (error || !results.length) {
 			cbk_s(false); CPs.exit = 1;
