@@ -97,7 +97,7 @@ _f_s['find_uncached']  = function(cbk_s) {
 	// appoint cache node if any video did not do cache
 	console.log('===== find_uncached =====');
 	console.log({vlist:CP_s.data.db_videos, module:'find_uncached'});
-	cbk({vlist:CP_s.data.db_videos, module:'find_uncached'});
+	cbk_s({vlist:CP_s.data.db_videos, module:'find_uncached'});
 	console.log('===== find_uncached =done ====');
 }
 
