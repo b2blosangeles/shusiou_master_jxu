@@ -17,7 +17,8 @@ _f_s['db_videos']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	// var str = "SELECT `vid` FROM `tmp_cache_video` WHERE `server_ip` = '" + CP_s.data.ip + "'";
-	var str = "SELECT `vid` FROM `tmp_cache_video` WHERE 1";
+	// var str = "SELECT `vid` FROM `tmp_cache_video` WHERE 1";
+	var str = "SHOW TABLES";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error || !results.length) {
