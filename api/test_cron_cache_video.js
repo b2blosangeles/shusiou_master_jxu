@@ -1,12 +1,11 @@
-var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
-    mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     cfg0 = require(env.site_path + '/api/cfg/db.json');
 
 
 var CP_s = new pkg.crowdProcess();
 var _f_s = {};		
 _f_s['ip']  = function(cbk_s) {
-    fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 	if ((err) || !data) {
 		cbk_s(false); CPs.exit = 1;		
 	} else {
