@@ -15,7 +15,7 @@
 		$(document).ready(
 			function() {
 				 $.get("/api/video/videos.api?opt=getVideos", function(data, status){
-					console.log(data);
+					console.log(data.data);
 				    });				
 			}
 		);
