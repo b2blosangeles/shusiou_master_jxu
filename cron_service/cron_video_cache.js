@@ -22,7 +22,7 @@ var _f_s = {};
 _f_s['ip']  = function(cbk_s) {
     fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 	if ((err) || !data) {
-		cbk_s(false); CPs.exit = 1;		
+		cbk_s(false); CP_s.exit = 1;		
 	} else {
 		cbk_s(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
 	}
