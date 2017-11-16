@@ -29,7 +29,8 @@ _f_s['db_videos']  = function(cbk_s) { /* get database catched local videos */
 			cbk_s(false); CP_s.exit = 1;
 		}
 		var v = [];
-		for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
+		// for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
+		for (var i=0; i < results.length; i++) v[v.length] = results[i];
 		cbk_s(v);
 	});
 };
