@@ -100,11 +100,16 @@ Array.prototype.diff = function (a) {
 };
 _f_s['NS1'] = function(cbk_s) { 
 	var need_add = CP_s.data.need_add, ips = CP_s.data.NS0;
-	var v = {};
+	var v = [];
 	for (var o in need_add) {
-		v[o] = ips.diff(need_add[o]).slice(0, 2 - need_add.length);
+		var ip_a = ips.diff(need_add[o]).slice(0, 2 - need_add.length);
+		for (var i = 0; i < ip_a.length; i++) {
+			v[v.length] = "('" + ip_a[i] +"', '" + o + "', NOW())";
+		}
 	}
-	cbk_s(v);
+	var str = "INSERT INTO `video_node` (`node_ip`, `vid`, `updated`) VALUES " +  v.join(',') + 
+	" ON DUPLICATE KEY UPDATE `vid` = '" + vid + "'";
+	cbk_s(str);
 };
 /*
 _f['NS1'] = function(cbk) { 
