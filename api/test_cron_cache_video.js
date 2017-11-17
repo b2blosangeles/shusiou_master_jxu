@@ -98,13 +98,12 @@ function diff(a1, a2) {
   return a1.filter(function(x) { return !a2Set.has(x); });
 }
 _f_s['NS1'] = function(cbk_s) { 
-	var need_add = CP.data.need_add, ips = diff(CP.data.NS0, need_add);
-	cbk_s(ips);
-	/*
+	var need_add = CP.data.need_add, ips = CP.data.NS0;
+	var v = {};
 	for (var o in need_add) {
-		
+		v[o] = diff(need_add[o], ips);
 	}
-	*/
+	cbk_s(v);
 };
 /*
 _f['NS1'] = function(cbk) { 
