@@ -32,10 +32,10 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 		for (var i=0; i < results.length; i++) v[v.length] = results[i].vid;
 		if (v.length) {
 			var str = 'DELETE FROM `video_node` WHERE `vid` IN (' + v.join(',') + ')';
-			var connection = mysql.createConnection(cfg0);
-			connection.connect();
-			connection.query(str, function (error, results, fields) {
-				connection.end();
+			var connection1 = mysql.createConnection(cfg0);
+			connection1.connect();
+			connection1.query(str, function (error, results, fields) {
+				connection1.end();
 			//	if (error) {
 			//		cbk_s(error.message); CP_s.exit = 1;
 			//	} else {
