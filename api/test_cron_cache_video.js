@@ -81,7 +81,7 @@ _f_s['NS0'] = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `node_ip`  FROM `cloud_node`  " +
-		 " WHERE `free` > 50 AND `score` < 1000 ORDER BY `free` ASC LIMIT 2; ";
+		 " WHERE `free` > 50 AND `score` < 1000 ORDER BY `free` ASC; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (!error) {
