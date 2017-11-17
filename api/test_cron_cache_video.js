@@ -98,7 +98,7 @@ function diff(a1, a2) {
   return a1.filter(function(x) { return !a2Set.has(x); });
 }
 _f_s['NS1'] = function(cbk_s) { 
-	var need_add = CP.data.need_add, ips = CP.data.NS0;
+	var need_add = CP_s.data.need_add, ips = CP_s.data.NS0;
 	var v = {};
 	for (var o in need_add) {
 		v[o] = ips;
