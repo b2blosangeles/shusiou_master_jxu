@@ -30,7 +30,12 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 		}
 		var v = [];
 		for (var i=0; i < results.length; i++) v[v.length] = results[i].vid;
-		cbk_s(v);
+		if (v.length) {
+			var str = 'DELETE FROM `video_node` WHERE `vid` IN (' + v.join(',') + ')';
+			cbk_s(str);
+		} else {
+			cbk_s(false);
+		}	
 	});
 };
 _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
