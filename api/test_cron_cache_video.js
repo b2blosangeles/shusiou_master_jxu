@@ -52,12 +52,12 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 	connection.connect();
 	var str = 
 	    	'SELECT  `vid`, `node_ip` FROM `video_node` WHERE `vid` IN (' +
-			'SELECT A.`vid`,  count(A.`vid`) as CNT FROM `video_node` A LEFT JOIN `video` B ' +
+			'SELECT A.`vid` FROM `video_node` A LEFT JOIN `video` B ' +
 			' ON A.`vid` = B.`vid`  ' +
 			' WHERE  A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
 			' GROUP BY A.`vid` ' +
-			' HAVING CNT < (SELECT `cache` FROM `video_cache` WHERE `vid` = A.`vid` UNION SELECT 2 LIMIT 1)  ' +
-			' ORDER BY CNT  ASC '+
+			' HAVING  count(A.`vid`) < (SELECT `cache` FROM `video_cache` WHERE `vid` = A.`vid` UNION SELECT 2 LIMIT 1)  ' +
+			' ORDER BY  count(A.`vid`) ASC '+
 		' )';
 	
 		connection.query(str, function (error, results, fields) {
