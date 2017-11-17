@@ -109,7 +109,11 @@ _f_s['NS1'] = function(cbk_s) {
 	}
 	var str = "INSERT INTO `video_node` (`node_ip`, `vid`, `updated`) VALUES " +  v.join(',') + 
 	" ON DUPLICATE KEY UPDATE `vid` = `vid`";
-	cbk_s(str);
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	connection.query(str, function (error, results, fields) {									       
+		cbk(true); 	
+	});	
 };
 /*
 _f['NS1'] = function(cbk) { 
