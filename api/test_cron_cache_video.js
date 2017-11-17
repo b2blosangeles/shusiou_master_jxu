@@ -16,12 +16,12 @@ _f_s['ip']  = function(cbk_s) {
 _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = 'SELECT A.`vid`,  count(A.`vid`) as CNT FROM `video_node` A LEFT JOIN `video` B ' +
+	var str = 'SELECT A.`vid` FROM `video_node` A LEFT JOIN `video` B ' +
 		' ON A.`vid` = B.`vid`  ' +
 		' WHERE  B.`server_ip` = "' + CP_s.data.ip + '" AND A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
 		' GROUP BY A.`vid` ' +
-		' HAVING CNT > (SELECT `cache` FROM `video_cache` WHERE `vid` = A.`vid` UNION SELECT 1 LIMIT 1)  ' +
-		' ORDER BY CNT  ASC LIMIT 10';
+		' HAVING count(A.`vid`) > (SELECT `cache` FROM `video_cache` WHERE `vid` = A.`vid` UNION SELECT 1 LIMIT 1)  ' +
+		' ORDER BY count(A.`vid`) ASC LIMIT 10';
 	
 		connection.query(str, function (error, results, fields) {
 		connection.end();
