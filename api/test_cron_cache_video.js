@@ -115,6 +115,18 @@ _f_s['NS1'] = function(cbk_s) {
 		cbk(true); 	
 	});	
 };
+_f_s['NS2'] = function(cbk_s) { 
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = "SELECT `vid`  FROM `video` ";
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		if (!error) {
+			cbk_s( results);
+		} else cbk_s([]);
+	});	
+};
+
 
 CP_s.serial(
 	_f_s,
