@@ -65,9 +65,9 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 		if (error || !results.length) {
 			cbk_s(false); CP_s.exit = 1;
 		}
-		var v = [];
+		var v = {};
 		// for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
-		for (var i=0; i < results.length; i++) v[v.length] = results[i];
+		for (var i=0; i < results.length; i++) v[results[i].vid] = results[i].node_ip;
 		cbk_s(v);
 	});
 };
