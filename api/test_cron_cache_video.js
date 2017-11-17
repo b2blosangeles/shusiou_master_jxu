@@ -26,21 +26,21 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error || !results.length) {
-			cbk_s(false); CP_s.exit = 1;
+			cbk_s(false);
 		}
 		var v = [];
 		for (var i=0; i < results.length; i++) v[v.length] = results[i].vid;
 		if (v.length) {
-			var str = 'SELECT * FROM `video_node` WHERE `vid` IN (' + v.join(',') + ')';
+			var str = 'DELETE FROM `video_node` WHERE `vid` IN (' + v.join(',') + ')';
 			var connection1 = mysql.createConnection(cfg0);
 			connection1.connect();
-			connection1.query(str, function (error, results, fields) {
+			connection1.query(str, function (error1, results1, fields1) {
 				connection1.end();
-			//	if (error) {
-			//		cbk_s(error.message); CP_s.exit = 1;
-			//	} else {
+				if (error1) {
+					cbk_s(error1.message); CP_s.exit = 1;
+				} else {
 					cbk_s(str);
-			//	}
+				}
 			});	
 		} else {
 			cbk_s(false);
