@@ -32,7 +32,14 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 		for (var i=0; i < results.length; i++) v[v.length] = results[i].vid;
 		if (v.length) {
 			var str = 'DELETE FROM `video_node` WHERE `vid` IN (' + v.join(',') + ')';
-			cbk_s(str);
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				if (error || !results.length) {
+					cbk_s(false); CP_s.exit = 1;
+				} else {
+					cbk_s(str);
+				}
+			});	
 		} else {
 			cbk_s(false);
 		}	
