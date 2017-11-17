@@ -35,8 +35,8 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 			var connection = mysql.createConnection(cfg0);
 			connection.query(str, function (error, results, fields) {
 				connection.end();
-				if (error || !results.length) {
-					cbk_s(false); CP_s.exit = 1;
+				if (error) {
+					cbk_s(error.message); CP_s.exit = 1;
 				} else {
 					cbk_s(str);
 				}
