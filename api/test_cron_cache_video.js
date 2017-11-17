@@ -66,8 +66,13 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 			cbk_s(false); CP_s.exit = 1;
 		}
 		var v = {};
-		// for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
-		for (var i=0; i < results.length; i++) v[results[i].vid] = results[i].node_ip;
+
+		for (var i=0; i < results.length; i++) {
+			if (!v[results[i].vid])  v[results[i].vid] = [];
+			if (v[results[i].vid].indexOf(results[i].node_ip) == -1) {
+				v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
+			}	
+		}
 		cbk_s(v);
 	});
 };
