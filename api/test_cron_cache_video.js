@@ -23,7 +23,7 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 		' HAVING count(A.`vid`) > (SELECT `cache` FROM `video_cache` WHERE `vid` = A.`vid` UNION SELECT 1 LIMIT 1)  ' +
 		' ORDER BY count(A.`vid`) ASC LIMIT 10';
 	
-		connection.query(str, function (error, results, fields) {
+	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error || !results.length) {
 			cbk_s(false); CP_s.exit = 1;
@@ -32,7 +32,8 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 		for (var i=0; i < results.length; i++) v[v.length] = results[i].vid;
 		if (v.length) {
 			var str = 'DELETE FROM `video_node` WHERE `vid` IN (' + v.join(',') + ')';
-			var connection = mysql.createConnection(cfg0);
+			// var connection = mysql.createConnection(cfg0);
+			connection.connect();
 			connection.query(str, function (error, results, fields) {
 			//	connection.end();
 			//	if (error) {
