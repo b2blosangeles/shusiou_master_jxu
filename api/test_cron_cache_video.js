@@ -21,7 +21,7 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 		' WHERE  A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
 		' GROUP BY A.`vid` ' +
 		' HAVING CNT > (SELECT `cache` FROM `video_cache` WHERE `vid` = A.`vid` UNION SELECT 1 LIMIT 1)  ' +
-		' ORDER BY CNT  ASC ';
+		' ORDER BY CNT  ASC LIMIT 2';
 	
 		connection.query(str, function (error, results, fields) {
 		connection.end();
@@ -42,7 +42,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 		' WHERE  A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
 		' GROUP BY A.`vid` ' +
 		' HAVING CNT < (SELECT `cache` FROM `video_cache` WHERE `vid` = A.`vid` UNION SELECT 2 LIMIT 1)  ' +
-		' ORDER BY CNT  ASC ';
+		' ORDER BY CNT  ASC LIMIT 2';
 	
 		connection.query(str, function (error, results, fields) {
 		connection.end();
