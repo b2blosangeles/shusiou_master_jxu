@@ -115,6 +115,7 @@ _f_s['NS1'] = function(cbk_s) {
 		cbk(true); 	
 	});	
 };
+/*
 _f_s['NS2'] = function(cbk_s) { 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
@@ -126,7 +127,7 @@ _f_s['NS2'] = function(cbk_s) {
 		} else cbk_s([]);
 	});	
 };
-
+*/
 
 CP_s.serial(
 	_f_s,
