@@ -98,6 +98,7 @@ Array.prototype.diff = function (a) {
         return a.indexOf(i) === -1;
     });
 };
+/*
 _f_s['NS1'] = function(cbk_s) { 
 	var need_add = CP_s.data.need_add, ips = CP_s.data.NS0;
 	var v = [];
@@ -115,6 +116,7 @@ _f_s['NS1'] = function(cbk_s) {
 		cbk(true); 	
 	});	
 };
+*/
 /*
 _f_s['NS2'] = function(cbk_s) { 
 	var connection = mysql.createConnection(cfg0);
