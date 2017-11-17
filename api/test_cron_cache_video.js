@@ -98,7 +98,7 @@ Array.prototype.diff = function (a) {
         return a.indexOf(i) === -1;
     });
 };
-/*
+
 _f_s['NS1'] = function(cbk_s) { 
 	var need_add = CP_s.data.need_add, ips = CP_s.data.NS0;
 	var v = [];
@@ -108,16 +108,19 @@ _f_s['NS1'] = function(cbk_s) {
 			v[v.length] = "('" + ip_a[i] +"', '" + o + "', NOW())";
 		}
 	}
-	var str = "INSERT INTO `video_node` (`node_ip`, `vid`, `updated`) VALUES " +  v.join(',') + 
-	" ON DUPLICATE KEY UPDATE `vid` = `vid`";
-	var connection = mysql.createConnection(cfg0);
-	connection.connect();
-	connection.query(str, function (error, results, fields) {									       
-		cbk(true); 	
-	});	
+	if (v.length) {
+		var str = "INSERT INTO `video_node` (`node_ip`, `vid`, `updated`) VALUES " +  v.join(',') + 
+		" ON DUPLICATE KEY UPDATE `vid` = `vid`";
+		var connection = mysql.createConnection(cfg0);
+		connection.connect();
+		connection.query(str, function (error, results, fields) {									       
+			cbk(true); 	
+		});
+	} else {
+		cbk(false); 
+	}
 };
-*/
-/*
+
 _f_s['NS2'] = function(cbk_s) { 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
