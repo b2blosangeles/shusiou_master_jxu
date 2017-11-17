@@ -18,10 +18,10 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 	connection.connect();
 	var str = 'SELECT A.`vid`,  count(A.`vid`) as CNT FROM `video_node` A LEFT JOIN `video` B ' +
 		' ON A.`vid` = B.`vid`  ' +
-		' WHERE  A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
+		' WHERE  B.`server_ip` = "' + CP_s.data.ip + '" AND A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
 		' GROUP BY A.`vid` ' +
 		' HAVING CNT > (SELECT `cache` FROM `video_cache` WHERE `vid` = A.`vid` UNION SELECT 1 LIMIT 1)  ' +
-		' ORDER BY CNT  ASC LIMIT 2';
+		' ORDER BY CNT  ASC LIMIT 10';
 	
 		connection.query(str, function (error, results, fields) {
 		connection.end();
@@ -31,7 +31,7 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 		var v = [];
 		// for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
 		for (var i=0; i < results.length; i++) v[v.length] = results[i];
-		cbk_s(v);
+		cbk_s(str);
 	});
 };
 _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
