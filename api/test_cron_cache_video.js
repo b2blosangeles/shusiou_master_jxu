@@ -84,8 +84,13 @@ _f_s['NS0'] = function(cbk_s) {
 		 " WHERE `free` > 50 AND `score` < 1000 ORDER BY `free` ASC LIMIT 2; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (!error) cbk_s(results);
-		else cbk_s([]);
+		if (!error) {
+			var v = [];
+			for (var i = 0; i < results.length; i++) {
+				v.length = results[i].node_ip;
+			}
+			cbk_s(v);
+		} else cbk_s([]);
 	});	
 };
 /*
