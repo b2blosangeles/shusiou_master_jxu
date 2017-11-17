@@ -77,7 +77,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 	});
 };
 
-_f['NS0'] = function(cbk) { 
+_f_s['NS0'] = function(cbk_s) { 
 	var ips = [false];
 	for(var i=0; i < CP.data.S1.length; i++) {
 		ips[ips.length] = "'" + CP.data.S1[i].node_ip + "'";
@@ -88,8 +88,8 @@ _f['NS0'] = function(cbk) {
 		 " WHERE `free` > 50 AND `score` < 1000 ORDER BY `free` ASC LIMIT 2; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (!error) cbk(results);
-		else cbk([]);
+		if (!error) cbk_s(results);
+		else cbk_s([]);
 	});	
 };
 /*
