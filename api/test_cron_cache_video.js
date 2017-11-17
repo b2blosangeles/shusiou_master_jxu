@@ -13,7 +13,28 @@ _f_s['ip']  = function(cbk_s) {
 	}
     });
 };
-_f_s['db_videos']  = function(cbk_s) { /* get database catched local videos */
+_f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = 'SELECT A.`vid`,  count(A.`vid`) as CNT FROM `video_node` A LEFT JOIN `video` B ' +
+		' ON A.`vid` = B.`vid`  ' +
+		' WHERE  A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
+		' GROUP BY A.`vid` ' +
+		' HAVING CNT > (SELECT `cache` FROM `video_cache` WHERE `vid` = A.`vid` UNION SELECT 1 LIMIT 1)  ' +
+		' ORDER BY CNT  ASC ';
+	
+		connection.query(str, function (error, results, fields) {
+		connection.end();
+		if (error || !results.length) {
+			cbk_s(false); CP_s.exit = 1;
+		}
+		var v = [];
+		// for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
+		for (var i=0; i < results.length; i++) v[v.length] = results[i];
+		cbk_s(v);
+	});
+};
+_f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'SELECT A.`vid`,  count(A.`vid`) as CNT FROM `video_node` A LEFT JOIN `video` B ' +
