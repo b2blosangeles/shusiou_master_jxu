@@ -65,7 +65,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 		var v = [];
 		// for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
 		for (var i=0; i < results.length; i++) v[v.length] = results[i];
-		cbk_s(v);
+		cbk_s(str);
 	});
 };
 /*
