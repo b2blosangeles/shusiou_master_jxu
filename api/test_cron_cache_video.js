@@ -78,10 +78,6 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 };
 
 _f_s['NS0'] = function(cbk_s) { 
-	var ips = [false];
-	for(var i=0; i < CP.data.S1.length; i++) {
-		ips[ips.length] = "'" + CP.data.S1[i].node_ip + "'";
-	}
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `node_ip`  FROM `cloud_node`  " +
