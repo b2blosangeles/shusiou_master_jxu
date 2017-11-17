@@ -76,7 +76,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 		cbk_s(v);
 	});
 };
-/*
+
 _f['NS0'] = function(cbk) { 
 	var ips = [false];
 	for(var i=0; i < CP.data.S1.length; i++) {
@@ -85,13 +85,14 @@ _f['NS0'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `node_ip`  FROM `cloud_node`  " +
-		 " WHERE `node_ip` NOT IN (" + ips.join(',') + ") AND `free` > 50 AND `score` < 1000 ORDER BY `free` ASC LIMIT 2; ";
+		 " WHERE `free` > 50 AND `score` < 1000 ORDER BY `free` ASC LIMIT 2; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (!error) cbk(results);
 		else cbk([]);
 	});	
 };
+/*
 _f['NS1'] = function(cbk) { 
 	var v = [];
 	for (var i=0; i<CP.data.NS0.length; i++) {
