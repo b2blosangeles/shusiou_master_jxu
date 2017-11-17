@@ -63,7 +63,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 		connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error || !results.length) {
-			cbk_s(false); CP_s.exit = 1;
+			cbk_s(false);// CP_s.exit = 1;
 		}
 		var v = {};
 
