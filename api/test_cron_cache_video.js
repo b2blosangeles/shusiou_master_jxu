@@ -39,7 +39,7 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 				if (error1) {
 					cbk_s(error1.message); CP_s.exit = 1;
 				} else {
-					cbk_s(str);
+					cbk_s(true);
 				}
 			});	
 		} else {
