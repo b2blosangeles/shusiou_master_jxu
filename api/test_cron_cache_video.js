@@ -87,7 +87,7 @@ _f_s['NS0'] = function(cbk_s) {
 		if (!error) {
 			var v = [];
 			for (var i = 0; i < results.length; i++) {
-				v.length = results[i].node_ip;
+				v[v.length] = results[i].node_ip;
 			}
 			cbk_s(v);
 		} else cbk_s([]);
