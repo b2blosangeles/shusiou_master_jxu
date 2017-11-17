@@ -93,15 +93,16 @@ _f_s['NS0'] = function(cbk_s) {
 		} else cbk_s([]);
 	});	
 };
-function diff(a1, a2) {
-  var a2Set = new Set(a2);
-  return a1.filter(function(x) { return !a2Set.has(x); });
-}
+Array.prototype.diff = function (a) {
+    return this.filter(function (i) {
+        return a.indexOf(i) === -1;
+    });
+};
 _f_s['NS1'] = function(cbk_s) { 
 	var need_add = CP_s.data.need_add, ips = CP_s.data.NS0;
 	var v = {};
 	for (var o in need_add) {
-		v[o] = diff(need_add[o], ips);
+		v[o] = ips.diff(need_add[o]);
 	}
 	cbk_s(v);
 };
