@@ -102,7 +102,7 @@ _f_s['NS1'] = function(cbk_s) {
 	var need_add = CP_s.data.need_add, ips = CP_s.data.NS0;
 	var v = [];
 	for (var o in need_add) {
-		var ip_a = ips.diff(need_add[o]).slice(0, 2 - need_add.length);
+		var ip_a = ips.diff(need_add[o]).slice(0, 2 - need_add[0].length);
 		for (var i = 0; i < ip_a.length; i++) {
 			v[v.length] = "('" + ip_a[i] +"', '" + o + "', NOW())";
 		}
