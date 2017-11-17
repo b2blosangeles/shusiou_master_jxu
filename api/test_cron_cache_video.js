@@ -101,7 +101,8 @@ _f_s['NS1'] = function(cbk_s) {
 	var need_add = CP.data.need_add, ips = CP.data.NS0;
 	var v = {};
 	for (var o in need_add) {
-		v[o] = diff(need_add[o], ips);
+		v[o] = ips;
+			// diff(need_add[o], ips);
 	}
 	cbk_s(v);
 };
