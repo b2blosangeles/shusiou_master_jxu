@@ -177,7 +177,7 @@ _f_s['NS2'] = function(cbk_s) {
 		*/
 		var ip_a = ips.shuffle().slice(0, 1);
 		for (var i = 0; i < ip_a.length; i++) {
-			v[v.length] = "('" + ip_a[i] +"', '" + non_associated[j].id + "', NOW())";
+			v[v.length] = "('" + ip_a[i] +"', '" + non_associated[j].vid + "', NOW())";
 		}	
 	}
 	
