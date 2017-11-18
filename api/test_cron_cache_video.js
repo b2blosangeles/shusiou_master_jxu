@@ -117,13 +117,20 @@ _f_s['non_associated'] = function(cbk_s) {
 
 _f_s['NS2'] = function(cbk_s) { 
 
-	var need_add = CP_s.data.need_add, ips = CP_s.data.NS0;
+	var need_add = CP_s.data.need_add, non_associated =  CP_s.data.non_associated, ips = CP_s.data.NS0;
 	var v = [];
 	for (var o in need_add) {
 		var ip_a = ips.diff(need_add[o]).slice(0, 2 - need_add[o].length);
 		for (var i = 0; i < ip_a.length; i++) {
 			v[v.length] = "('" + ip_a[i] +"', '" + o + "', NOW())";
 		}
+	}
+	
+	for(var j = 0; j < non_associated.length; j++) {
+		var ip_a = ips.slice(0, 2);
+		for (var i = 0; i < ip_a.length; i++) {
+			v[v.length] = "('" + ip_a[i] +"', '" + non_associated[j] + "', NOW())";
+		}	
 	}
 	
 	if (v.length) {	
