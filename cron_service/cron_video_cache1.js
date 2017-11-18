@@ -138,7 +138,7 @@ _f_s['non_associated'] = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT R.`vid`, R.`server_ip`, C.`cache_count`, C.`channel` "+
-	    " FROM `video` R LEFT JOIN `video_cannel` C ON R.`vid` = C.`vid` "+
+	    " FROM `video` R LEFT JOIN `video_channel` C ON R.`vid` = C.`vid` "+
 	    " WHERE R.`vid` NOT IN (SELECT `vid` FROM `video_node`)";
 	
 	connection.query(str, function (error, results, fields) {
@@ -146,7 +146,7 @@ _f_s['non_associated'] = function(cbk_s) {
 		if (!error) {
 			var v = [];
 			for (var i = 0; i < results.length; i++) {
-				v[v.length] = results[i].vid;
+				v[v.length] = results[i];
 			}
 			cbk_s(v);
 		} else cbk_s([]);
@@ -169,9 +169,14 @@ _f_s['NS2'] = function(cbk_s) {
 	}
 	
 	for(var j = 0; j < non_associated.length; j++) {
+		/*
+		if ((need_add_cnt[o].cache_count) && !need_add_cnt[o].channel)
+			var cnt = Math.max(need_add_cnt[o].cache_count, 1);
+		else var cnt = 1;		
+		*/
 		var ip_a = ips.shuffle().slice(0, 1);
 		for (var i = 0; i < ip_a.length; i++) {
-			v[v.length] = "('" + ip_a[i] +"', '" + non_associated[j] + "', NOW())";
+			v[v.length] = "('" + ip_a[i] +"', '" + non_associated[j].id + "', NOW())";
 		}	
 	}
 	
