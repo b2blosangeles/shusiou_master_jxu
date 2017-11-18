@@ -88,7 +88,10 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 		var v = {}, cnt = {};
 
 		for (var i=0; i < results.length; i++) {
-			if (!v[results[i].vid])  v[results[i].vid] = [];
+			if (!v[results[i].vid]) {
+				v[results[i].vid] = [];
+				cnt[results[i].vid] = results[i];
+			}	
 			if (v[results[i].vid].indexOf(results[i].node_ip) == -1) {
 				v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
 			}	
