@@ -39,7 +39,7 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 		' WHERE  B.`server_ip` = "' + CP_s.data.ip + '" AND A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
 		' GROUP BY A.`vid` ' +
 		' HAVING count(A.`vid`) > (SELECT `cache_count` FROM `video_channel` WHERE `vid` = A.`vid` ' + 
-	    	'AND (`channel` IS NOT NULL)  UNION SELECT 1 LIMIT 1)  ' +
+	    	' 	AND (`channel` IS  NULL OR `channel` = '')  UNION SELECT 1 LIMIT 1)  ' +
 		' ORDER BY count(A.`vid`) ASC LIMIT 10';
 	
 	connection.query(str, function (error, results, fields) {
@@ -75,7 +75,8 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 			' ON A.`vid` = B.`vid`  ' +
 			' WHERE  A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
 			' GROUP BY A.`vid` ' +
-			' HAVING  count(A.`vid`) < (SELECT `channel` FROM `video_channel` WHERE `vid` = A.`vid` UNION SELECT 1 LIMIT 1)  ' +
+			' HAVING  count(A.`vid`) < (SELECT `cache_count` FROM `video_channel` WHERE `vid` = A.`vid` ' + 
+	    		'	AND (`channel` IS  NULL OR `channel` = '')  UNION SELECT 1 LIMIT 1)  ' +
 			' ORDER BY  count(A.`vid`) ASC '+
 		' )';
 	
