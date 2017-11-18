@@ -110,20 +110,16 @@ _f_s['NS1'] = function(cbk_s) {
 		}
 	}
 	
-	if (v.length) {
-		cbk_s(v.length+'--');
-	return true;	
+	if (v.length) {	
 		var str = "INSERT INTO `video_node` (`node_ip`, `vid`, `updated`) VALUES " +  v.join(',') + 
 		" ON DUPLICATE KEY UPDATE `vid` = `vid`";
 		var connection = mysql.createConnection(cfg0);
 		connection.connect();
 		connection.query(str, function (error, results, fields) {									       
-			cbk(true); 	
+			cbk_s(true); 	
 		});
-	} else {
-				cbk_s(v.length+'-A-');
-	return true;	
-		cbk(false); 
+	} else {	
+		cbk_s(false); 
 	}
 };
 
