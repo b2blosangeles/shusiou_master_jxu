@@ -133,8 +133,8 @@ Array.prototype.shuffle = function() {
 _f_s['non_associated'] = function(cbk_s) { 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT A.`vid`, A.`server_ip`, B.`cache_count`, B.`channel` "+
-	    " FROM `video` A LEFT JOIN `video_cannel` B ON A.`vid` = B.`vid` "+
+	var str = "SELECT R.`vid`, R.`server_ip`, C.`cache_count`, C.`channel` "+
+	    " FROM `video` R LEFT JOIN `video_cannel` C ON R.`vid` = C.`vid` "+
 	    " WHERE A.`vid` NOT IN (SELECT `vid` FROM `video_node`)";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
