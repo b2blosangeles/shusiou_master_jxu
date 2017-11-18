@@ -18,8 +18,13 @@
 					 var v = data.data;
 					 var str = '';
 					 for (var i=0; i < v.length; i++) {
+						 if (!v[i].node_ip.length) var url = "http://67.205.189.126/api/video/play_cache.api?type=video&vid='+v[i].vid+'";
+						 else {
+							 var randomIP = v[i].node_ip[Math.floor(Math.random()*v[i].node_ip.length)];
+							var url = "http://' + randomIP + '/api/video/play_stream.api?type=video&vid='+v[i].vid;
+						 }	 
 						 str+='<video width="320" height="240" controls autoplay>' +
-	'<source src="http://67.205.189.126/api/video/play_cache.api?type=video&vid='+v[i].vid+'" type="video/mp4">' +
+	'<source src="'+url+'" type="video/mp4">' +
 	'<source src="movie.ogg" type="video/ogg">'+
 	'</video>';
 	/*					 str+='<video width="320" height="240" controls autoplay>' +
