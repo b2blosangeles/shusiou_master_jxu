@@ -1,4 +1,4 @@
-/* ---  This is final version to catch cached video status  between master server and node side */
+/* ---  This cron is to appoint node for video. add database link only */
 var path = require('path');
 var env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
@@ -6,13 +6,11 @@ env.site_path = env.root_path + '/site';
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
     request =  require(env.root_path + '/package/request/node_modules/request'),
-    cfg0 = require(env.site_path + '/api/cfg/db.json'); 		
-
-var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-    cfg0 = require(env.site_path + '/api/cfg/db.json');
+    cfg0 = require(env.site_path + '/api/cfg/db.json'),
+    fs = require(fs);
 
 
-var CP_s = new pkg.crowdProcess();
+var CP_s = new crowdProcess();
 var _f_s = {};		
 _f_s['ip']  = function(cbk_s) {
     pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
