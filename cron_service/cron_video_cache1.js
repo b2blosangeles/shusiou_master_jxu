@@ -140,6 +140,10 @@ _f_s['non_associated'] = function(cbk_s) {
 	var str = "SELECT R.`vid`, R.`server_ip`, C.`cache_count`, C.`channel` "+
 	    " FROM `video` R LEFT JOIN `video_cannel` C ON R.`vid` = C.`vid` "+
 	    " WHERE A.`vid` NOT IN (SELECT `vid` FROM `video_node`)";
+	cbk_s(str);
+	CP_s.exit =1;
+	return true;
+	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (!error) {
