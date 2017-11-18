@@ -6,14 +6,13 @@ var opt = req.query['opt'];
 
 switch(opt) {
 	case 'getVideos':
-		var uid = req.body.uid || 1;
 		var CP = new pkg.crowdProcess();
 		var _f = {};		
 		_f['P0'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = 'SELECT *  FROM  `video` LIMIT 3';
+			var str = 'SELECT *  FROM  `video`';
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
