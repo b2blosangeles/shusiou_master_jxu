@@ -70,8 +70,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 
-	    	'SELECT  R.`vid`, R.`server_ip`, C.`cache_count`, C.`channel` ' +
-	    	' FROM `video_node` R LEFT JOIN  `video_cannel` C ON R.`vid` = C.`vid` WHERE R.`vid` IN (' +
+	    	'SELECT  R.`vid`, R.`server_ip`  FROM `video_node` R  WHERE R.`vid` IN (' +
 			'SELECT A.`vid` FROM `video_node` A LEFT JOIN `video` B ' +
 			' ON A.`vid` = B.`vid`  ' +
 			' WHERE  A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
