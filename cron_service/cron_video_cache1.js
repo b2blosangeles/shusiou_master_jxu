@@ -70,7 +70,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 
-	    	'SELECT  R.`vid`, R.`server_ip`  FROM `video_node` R  WHERE R.`vid` IN (' +
+	    	'SELECT  R.`vid`, C.*  FROM `video_node` R LEFT JOIN `video_channel` C ON R.`vid` = C.`vid`  WHERE R.`vid` IN (' +
 			'SELECT A.`vid` FROM `video_node` A LEFT JOIN `video` B ' +
 			' ON A.`vid` = B.`vid`  ' +
 			' WHERE  A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
@@ -79,7 +79,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 	    		'	AND (`channel` IS  NULL OR `channel` = "")  UNION SELECT 1 LIMIT 1)  ' +
 			' ORDER BY  count(A.`vid`) ASC '+
 		' )';
-	
+	/*
 	var str = 'SELECT A.`vid` FROM `video_node` A LEFT JOIN `video` B ' +
 		' ON A.`vid` = B.`vid`  ' +
 		' WHERE  B.`server_ip` = "' + CP_s.data.ip + '" AND A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
@@ -87,7 +87,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 		' HAVING count(A.`vid`) > (SELECT `cache_count` FROM `video_channel` WHERE `vid` = A.`vid` ' + 
 	    	' 	AND (`channel` IS  NULL OR `channel` = "")  UNION SELECT 1 LIMIT 1)  ' +
 		' ORDER BY count(A.`vid`) ASC LIMIT 10';
-	
+	*/
 		connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (error) {
