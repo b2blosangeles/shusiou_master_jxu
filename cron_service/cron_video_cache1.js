@@ -85,7 +85,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 		if (error) {
 			cbk_s(false); CP_s.exit = 1;
 		}
-		var v = {};
+		var v = {}, cnt = {};
 
 		for (var i=0; i < results.length; i++) {
 			if (!v[results[i].vid])  v[results[i].vid] = [];
@@ -93,7 +93,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 				v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
 			}	
 		}
-		cbk_s({ips:v});
+		cbk_s({ips:v, cnt:cnt});
 	});
 };
 
