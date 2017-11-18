@@ -81,7 +81,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 		' )';
 		
 		console.log('===== need_add =====');
-		console.log(sql);
+		console.log(str);
 		console.log('===== need_add =====');
 	
 		connection.query(str, function (error, results, fields) {
