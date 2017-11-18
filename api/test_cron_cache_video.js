@@ -100,6 +100,8 @@ Array.prototype.diff = function (a) {
 };
 
 _f_s['NS1'] = function(cbk_s) { 
+	cbk_s(CP_s.data.need_add);
+	return true;
 	var need_add = CP_s.data.need_add, ips = CP_s.data.NS0;
 	var v = [];
 	for (var o in need_add) {
