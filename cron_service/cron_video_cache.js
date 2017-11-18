@@ -105,7 +105,17 @@ Array.prototype.diff = function (a) {
         return a.indexOf(i) === -1;
     });
 };
-
+Array.prototype.shuffle = function() {
+  var i = this.length, j, temp;
+  if ( i == 0 ) return this;
+  while ( --i ) {
+     j = Math.floor( Math.random() * ( i + 1 ) );
+     temp = this[i];
+     this[i] = this[j];
+     this[j] = temp;
+  }
+  return this;
+}
 _f_s['non_associated'] = function(cbk_s) { 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
@@ -127,14 +137,14 @@ _f_s['NS2'] = function(cbk_s) {
 	var need_add = CP_s.data.need_add, non_associated =  CP_s.data.non_associated, ips = CP_s.data.NS0;
 	var v = [];
 	for (var o in need_add) {
-		var ip_a = ips.diff(need_add[o]).slice(0, 1 - need_add[o].length);
+		var ip_a = ips.diff(need_add[o]).shuffle().slice(0, 1 - need_add[o].length);
 		for (var i = 0; i < ip_a.length; i++) {
 			v[v.length] = "('" + ip_a[i] +"', '" + o + "', NOW())";
 		}
 	}
 	
 	for(var j = 0; j < non_associated.length; j++) {
-		var ip_a = ips.slice(0, 1);
+		var ip_a = ips.shuffle().slice(0, 1);
 		for (var i = 0; i < ip_a.length; i++) {
 			v[v.length] = "('" + ip_a[i] +"', '" + non_associated[j] + "', NOW())";
 		}	
