@@ -109,10 +109,10 @@ _f_s['NS1'] = function(cbk_s) {
 			v[v.length] = "('" + ip_a[i] +"', '" + o + "', NOW())";
 		}
 	}
-	
+		cbk_s(v.length+'--');
+	return true;		
 	if (v.length) {
-		cbk_s('AACP_s.data.need_add');
-	return true;	
+
 		var str = "INSERT INTO `video_node` (`node_ip`, `vid`, `updated`) VALUES " +  v.join(',') + 
 		" ON DUPLICATE KEY UPDATE `vid` = `vid`";
 		var connection = mysql.createConnection(cfg0);
