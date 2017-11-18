@@ -159,6 +159,6 @@ CP_s.serial(
 	function(data_s) {
 		console.log(data_s);
 	},
-	6000
+	10000
 );
 
