@@ -134,7 +134,7 @@ _f_s['NS2'] = function(cbk_s) {
 	}
 	
 	for(var j = 0; j < non_associated.length; j++) {
-		var ip_a = ips.slice(0, 2);
+		var ip_a = ips.slice(0, 1);
 		for (var i = 0; i < ip_a.length; i++) {
 			v[v.length] = "('" + ip_a[i] +"', '" + non_associated[j] + "', NOW())";
 		}	
