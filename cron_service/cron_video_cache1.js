@@ -158,7 +158,10 @@ _f_s['NS2'] = function(cbk_s) {
 	var need_add_ips = CP_s.data.need_add.ips, need_add_cnt = CP_s.data.need_add.cnt, non_associated =  CP_s.data.non_associated, ips = CP_s.data.NS0;
 	var v = [];
 	for (var o in need_add_ips) {
-		var cnt = Math.max(need_add_cnt[o].cache_count, 1);
+		if ((need_add_cnt[o].cache_count) && !need_add_cnt[o].channel)
+			var cnt = Math.max(need_add_cnt[o].cache_count, 1);
+		else var cnt = 1;
+
 		var ip_a = ips.diff(need_add_ips[o]).shuffle().slice(0, cnt - need_add_ips[o].length);
 		for (var i = 0; i < ip_a.length; i++) {
 			v[v.length] = "('" + ip_a[i] +"', '" + o + "', NOW())";
