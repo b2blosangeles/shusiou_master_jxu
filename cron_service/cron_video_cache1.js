@@ -184,7 +184,7 @@ _f_s['NS2'] = function(cbk_s) {
 CP_s.serial(
 	_f_s,
 	function(data_s) {
-		console.log(data_s);
+		console.log(JSON.stringify(data_s));
 	},
 	10000
 );
