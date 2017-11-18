@@ -100,8 +100,7 @@ Array.prototype.diff = function (a) {
 };
 
 _f_s['NS1'] = function(cbk_s) { 
-	cbk_s(CP_s.data.need_add);
-	return true;
+
 	var need_add = CP_s.data.need_add, ips = CP_s.data.NS0;
 	var v = [];
 	for (var o in need_add) {
@@ -110,6 +109,8 @@ _f_s['NS1'] = function(cbk_s) {
 			v[v.length] = "('" + ip_a[i] +"', '" + o + "', NOW())";
 		}
 	}
+	cbk_s('CP_s.data.need_add');
+	return true;	
 	if (v.length) {
 		var str = "INSERT INTO `video_node` (`node_ip`, `vid`, `updated`) VALUES " +  v.join(',') + 
 		" ON DUPLICATE KEY UPDATE `vid` = `vid`";
