@@ -79,6 +79,10 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 	    		'	AND (`channel` IS  NULL OR `channel` = "")  UNION SELECT 1 LIMIT 1)  ' +
 			' ORDER BY  count(A.`vid`) ASC '+
 		' )';
+		
+		consold.log('===== need_add =====');
+		consold.log(sql);
+		consold.log('===== need_add =====');
 	
 		connection.query(str, function (error, results, fields) {
 		connection.end();
