@@ -149,7 +149,6 @@ _f_s['non_associated'] = function(cbk_s) {
 			}
 			cbk_s(v);
 		} else cbk_s([]);
-		CP_s.exit =1;
 	});	
 };
 
