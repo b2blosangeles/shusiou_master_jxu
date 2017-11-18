@@ -1,11 +1,10 @@
-/* ---  This cron is to appoint node for video. add database link only */
+/* ---  This cron is to appoint node for video. add record link only */
 var path = require('path');
 var env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
 
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
-    request =  require(env.root_path + '/package/request/node_modules/request'),
     cfg0 = require(env.site_path + '/api/cfg/db.json'),
     fs = require('fs');
 
@@ -146,7 +145,8 @@ _f_s['NS2'] = function(cbk_s) {
 		" ON DUPLICATE KEY UPDATE `vid` = `vid`";
 		var connection = mysql.createConnection(cfg0);
 		connection.connect();
-		connection.query(str, function (error, results, fields) {									       
+		connection.query(str, function (error, results, fields) {	
+			connection.end();
 			cbk_s(true); 	
 		});
 	} else {	
@@ -154,13 +154,11 @@ _f_s['NS2'] = function(cbk_s) {
 	}
 };
 
-
-
-
 CP_s.serial(
 	_f_s,
 	function(data_s) {
 		console.log(data_s);
 	},
-	10000
+	6000
 );
+
