@@ -170,12 +170,12 @@ _f_s['NS2'] = function(cbk_s) {
 	}
 	
 	for(var j = 0; j < non_associated.length; j++) {
-		/*
-		if ((need_add_cnt[o].cache_count) && !need_add_cnt[o].channel)
-			var cnt = Math.max(need_add_cnt[o].cache_count, 1);
+		
+		if ((non_associated[j].cache_count) && !non_associated[j].channel)
+			var cnt = Math.max(non_associated[j].cache_count, 1);
 		else var cnt = 1;		
-		*/
-		var ip_a = ips.shuffle().slice(0, 1);
+		
+		var ip_a = ips.shuffle().slice(0, cnt);
 		for (var i = 0; i < ip_a.length; i++) {
 			v[v.length] = "('" + ip_a[i] +"', '" + non_associated[j].vid + "', NOW())";
 		}	
