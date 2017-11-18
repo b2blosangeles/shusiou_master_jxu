@@ -126,7 +126,7 @@ _f_s['NS1'] = function(cbk_s) {
 _f_s['NS2'] = function(cbk_s) { 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT `vid`  FROM `video` WHERE `vid` NOT IN (SELECT `vid` FROM `video_node`)";
+	var str = "SELECT `vid`, `server_ip`  FROM `video` WHERE `vid` NOT IN (SELECT `vid` FROM `video_node`)";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (!error) {
