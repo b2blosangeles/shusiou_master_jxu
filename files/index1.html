@@ -18,7 +18,7 @@
 					 var v = data.data;
 					 var str = '';
 					 for (var i=0; i < v.length; i++) {
-						 if (!v[i].node_ip.length) var url = "http://67.205.189.126/api/video/play_cache.api?type=video&vid='+v[i].vid+'";
+						 if (!v[i].node_ip.length) var url = "http://67.205.189.126/api/video/play_stream.api?type=video&vid='+v[i].vid+'";
 						 else {
 							 var randomIP = v[i].node_ip[Math.floor(Math.random()*v[i].node_ip.length)];
 							var url = 'http://' + randomIP + '/api/video/play_stream.api?type=video&vid='+v[i].vid;
