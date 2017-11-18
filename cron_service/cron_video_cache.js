@@ -20,6 +20,17 @@ _f_s['ip']  = function(cbk_s) {
 	}
     });
 };
+_f_s['remove_offline_node']  = function(cbk_s) { /* remove offline node  score < 1670 */  
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = 'DELETE FROM `video_node` ' +
+		' WHERE `node_ip` NOT IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1670) ';
+	
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		cbk_s(true);	
+	});
+};
 _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
