@@ -80,9 +80,9 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 			' ORDER BY  count(A.`vid`) ASC '+
 		' )';
 		
-		consold.log('===== need_add =====');
-		consold.log(sql);
-		consold.log('===== need_add =====');
+		console.log('===== need_add =====');
+		console.log(sql);
+		console.log('===== need_add =====');
 	
 		connection.query(str, function (error, results, fields) {
 		connection.end();
