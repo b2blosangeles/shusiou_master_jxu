@@ -7,13 +7,13 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
     request =  require(env.root_path + '/package/request/node_modules/request'),
     cfg0 = require(env.site_path + '/api/cfg/db.json'),
-    fs = require(fs);
+    fs = require('fs');
 
 
 var CP_s = new crowdProcess();
 var _f_s = {};		
 _f_s['ip']  = function(cbk_s) {
-    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+    fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 	if ((err) || !data) {
 		cbk_s(false); CP_s.exit = 1;		
 	} else {
