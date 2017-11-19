@@ -42,7 +42,6 @@ _f_s['clean_channel_node']  = function(cbk_s) { /* remove offline node  score < 
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		cbk_s(results);
-		CP_s.exit = 1;
 	});
 };
 
