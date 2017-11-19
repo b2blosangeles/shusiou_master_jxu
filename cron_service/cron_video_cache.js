@@ -38,7 +38,7 @@ _f_s['clean_channel_node']  = function(cbk_s) { /* remove offline node  score < 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'DELETE FROM `video_node` ' +
-		' WHERE `node_ip` NOT IN (SELECT `node_ip` FROM  `cloud_node` WHERE `channel` IS NOT NULL AND `channel` <> "") ';
+		' WHERE `node_ip` IN (SELECT `node_ip` FROM  `cloud_node` WHERE `channel` IS NOT NULL AND `channel` <> "") ';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		cbk_s(results);
