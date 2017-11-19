@@ -41,7 +41,7 @@ _f_s['clean_channel_node']  = function(cbk_s) { /* remove offline node  score < 
 	    	' AND `node_ip` NOT IN (SELECT `node_ip` FROM `channel` IS NOT NULL AND `channel` <> "") ';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		cbk_s(results);
+		cbk_s(str);
 		CP_s.exit = 1;
 	});
 };
