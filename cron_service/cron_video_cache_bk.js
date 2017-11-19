@@ -20,6 +20,7 @@ _f_s['ip']  = function(cbk_s) {
 	}
     });
 };
+
 _f_s['remove_offline_node']  = function(cbk_s) { /* remove offline node  score < 1670 */  
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
@@ -31,6 +32,19 @@ _f_s['remove_offline_node']  = function(cbk_s) { /* remove offline node  score <
 		cbk_s(true);	
 	});
 };
+
+_f_s['clean_channel_node']  = function(cbk_s) { /* remove offline node  score < 1670 */  
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = 'DELETE FROM `video_node` ' +
+		' WHERE `vid` IN (SELECT  `vid` FROM `video_channel` WHERE `channel` IS  NOT NULL OR `channel` <> "" ) ' +
+	    	' AND `node_ip` NOT IN (SELECT `node_ip` FROM  `cloud_node` WHERE `channel` IS NOT NULL AND `channel` <> "") ';
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		cbk_s(results);
+	});
+};
+
 _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
@@ -106,7 +120,7 @@ _f_s['NS0'] = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `node_ip`  FROM `cloud_node`  " +
-		 " WHERE `free` > 50 AND `score` < 1000 ORDER BY `free` ASC; ";
+		 " WHERE (`channel` IS NULL OR `channel` = '') AND `free` > 50 AND `score` < 1000 ORDER BY `free` ASC; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (!error) {
@@ -118,6 +132,7 @@ _f_s['NS0'] = function(cbk_s) {
 		} else cbk_s([]);
 	});	
 };
+
 Array.prototype.diff = function (a) {
     return this.filter(function (i) {
         return a.indexOf(i) === -1;
