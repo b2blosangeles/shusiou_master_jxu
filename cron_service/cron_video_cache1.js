@@ -38,7 +38,7 @@ _f_s['clean_channel_node']  = function(cbk_s) { /* remove offline node  score < 
 	connection.connect();
 	var str = 'SELECT * FROM `video_node` ' +
 		' WHERE `vid` IN (SELECT  `vid` FROM `video_channel` WHERE `channel` IS  NOT NULL OR `channel` <> "" ) ' +
-	    	' AND `node_ip` NOT IN (SELECT `node_ip` FROM `channel` IS NOT NULL AND `channel` <> "") ';
+	    	' AND `node_ip` NOT IN (SELECT `node_ip` FROM  `cloud_node` WHERE `channel` IS NOT NULL AND `channel` <> "") ';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		cbk_s(str);
