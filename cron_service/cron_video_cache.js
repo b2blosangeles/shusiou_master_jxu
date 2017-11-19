@@ -20,6 +20,7 @@ _f_s['ip']  = function(cbk_s) {
 	}
     });
 };
+
 _f_s['remove_offline_node']  = function(cbk_s) { /* remove offline node  score < 1670 */  
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
@@ -106,7 +107,7 @@ _f_s['NS0'] = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `node_ip`  FROM `cloud_node`  " +
-		 " WHERE `free` > 50 AND `score` < 1000 ORDER BY `free` ASC; ";
+		 " WHERE (`channel` IS NULL OR `channel` = '') AND `free` > 50 AND `score` < 1000 ORDER BY `free` ASC; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (!error) {
@@ -118,6 +119,24 @@ _f_s['NS0'] = function(cbk_s) {
 		} else cbk_s([]);
 	});	
 };
+
+_f_s['channel_ip']  = function(cbk_s) {
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = "SELECT `node_ip`  FROM `cloud_node`  " +
+		 " WHERE `free` > 50 AND `score` < 1000 ORDER BY `free` ASC; ";
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		if (!error) {
+			var v = [];
+			for (var i = 0; i < results.length; i++) {
+				v[v.length] = results[i].node_ip;
+			}
+			cbk_s(v);
+		} else cbk_s([]);
+	});
+};
+
 Array.prototype.diff = function (a) {
     return this.filter(function (i) {
         return a.indexOf(i) === -1;
