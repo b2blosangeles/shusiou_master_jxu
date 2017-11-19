@@ -49,8 +49,8 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 'SELECT A.`vid` FROM `video_node` A LEFT JOIN `video` B ' +
-		' ON A.`vid` = B.`vid`  LEFT JOIN `video_channel` C ON A.`vid` = C.`vid` ' +
-		' WHERE  (C.`channel` IS  NULL OR C.`channel` = "") AND '+
+		' ON A.`vid` = B.`vid`  LEFT JOIN `video_cache` C ON A.`vid` = C.`vid` ' +
+		' WHERE   '+
 	    	'  B.`server_ip` = "' + CP_s.data.ip + '" AND A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
 		' GROUP BY A.`vid` ' +
 		' HAVING count(A.`vid`) > (SELECT `cache_count` FROM `video_channel` WHERE `vid` = A.`vid` ' + 
@@ -85,8 +85,8 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = 
-	    	'SELECT  R.`vid`, C.`cache_count`, C.`channel`  FROM `video_node` R LEFT JOIN `video_channel` C ON R.`vid` = C.`vid`'+
-	    	'  WHERE (C.`channel` IS  NULL OR C.`channel` = "") AND R.`vid` IN (' +
+	    	'SELECT  R.`vid`, C.`count`  FROM `video_node` R LEFT JOIN `video_cache` C ON R.`vid` = C.`vid`'+
+	    	'  WHERE R.`vid` IN (' +
 			'SELECT A.`vid` FROM `video_node` A LEFT JOIN `video` B ' +
 			' ON A.`vid` = B.`vid`  ' +
 			' WHERE  A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
@@ -153,8 +153,8 @@ Array.prototype.shuffle = function() {
 _f_s['non_associated'] = function(cbk_s) { 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-	var str = "SELECT R.`vid`, R.`server_ip`, C.`cache_count`, C.`channel` "+
-	    " FROM `video` R LEFT JOIN `video_channel` C ON R.`vid` = C.`vid` "+
+	var str = "SELECT R.`vid`, R.`server_ip`, C.`count` "+
+	    " FROM `video` R LEFT JOIN `video_cache` C ON R.`vid` = C.`vid` "+
 	    " WHERE (C.`channel` IS  NULL OR C.`channel` = '') AND R.`vid` NOT IN (SELECT `vid` FROM `video_node`)";
 	
 	connection.query(str, function (error, results, fields) {
