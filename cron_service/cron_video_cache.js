@@ -124,7 +124,7 @@ _f_s['channel_ip']  = function(cbk_s) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str = "SELECT `node_ip`  FROM `cloud_node`  " +
-		 " WHERE `free` > 50 AND `score` < 1000 ORDER BY `free` ASC; ";
+		 " WHERE (`channel` IS NOT NULL AND `channel` <> '') ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
 		if (!error) {
