@@ -32,6 +32,20 @@ _f_s['remove_offline_node']  = function(cbk_s) { /* remove offline node  score <
 		cbk_s(true);	
 	});
 };
+
+_f_s['clean_channel_node']  = function(cbk_s) { /* remove offline node  score < 1670 */  
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str = 'SELECT * FROM `video_node` ' +
+		' WHERE `vid` IN (SELECT  `vid` FROM `video_channel` WHERE `channel` IS  NULL OR `channel` = "" ) ' +
+	    	' AND `node_ip` NOT IN (SELECT `node_ip` FROM `channel` IS NOT NULL AND `channel` <> '') ';
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		cbk_s(results);
+		CP_s.exit = 1;
+	});
+};
+
 _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
