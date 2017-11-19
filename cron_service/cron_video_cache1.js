@@ -1,4 +1,5 @@
 /* ---  This cron is to appoint node for video. add record link only */
+/* ---  chennel only related with user video, not related with video only */
 var path = require('path');
 var env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
