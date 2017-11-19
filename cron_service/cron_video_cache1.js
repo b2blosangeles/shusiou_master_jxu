@@ -155,7 +155,7 @@ _f_s['non_associated'] = function(cbk_s) {
 	connection.connect();
 	var str = "SELECT R.`vid`, R.`server_ip`, C.`count` "+
 	    " FROM `video` R LEFT JOIN `video_cache` C ON R.`vid` = C.`vid` "+
-	    " WHERE (C.`channel` IS  NULL OR C.`channel` = '') AND R.`vid` NOT IN (SELECT `vid` FROM `video_node`)";
+	    " WHERE R.`vid` NOT IN (SELECT `vid` FROM `video_node`)";
 	
 	connection.query(str, function (error, results, fields) {
 		connection.end();
@@ -175,8 +175,8 @@ _f_s['NS2'] = function(cbk_s) {
 	    ips = CP_s.data.NS0;
 	var v = [];
 	for (var o in need_add_ips) {
-		if ((need_add_cnt[o].cache_count) && !need_add_cnt[o].channel)
-			var cnt = Math.max(need_add_cnt[o].cache_count, 1);
+		if (need_add_cnt[o].count)
+			var cnt = Math.max(need_add_cnt[o].count, 1);
 		else var cnt = 1;
 
 		var ip_a = ips.diff(need_add_ips[o]).shuffle().slice(0, cnt - need_add_ips[o].length);
@@ -187,8 +187,8 @@ _f_s['NS2'] = function(cbk_s) {
 	
 	for(var j = 0; j < non_associated.length; j++) {
 		
-		if ((non_associated[j].cache_count) && !non_associated[j].channel)
-			var cnt = Math.max(non_associated[j].cache_count, 1);
+		if ((non_associated[j].count) && !non_associated[j].channel)
+			var cnt = Math.max(non_associated[j].count, 1);
 		else var cnt = 1;		
 		
 		var ip_a = ips.shuffle().slice(0, cnt);
