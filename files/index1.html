@@ -17,7 +17,7 @@
 				 $.get("/api/video/videos.api?opt=getVideos", function(data, status){
 					 var v = data.data;
 					 var str = '';
-					 for (var i=0; i < v.length; i++) {
+					 for (var i=0; i < Math.min(v.length,1); i++) {
 						 if (!v[i].node_ip.length) var url = "http://67.205.189.126/api/video/play_stream.api?type=video&vid='+v[i].vid+'";
 						 else {
 							 var randomIP = v[i].node_ip[Math.floor(Math.random()*v[i].node_ip.length)];
