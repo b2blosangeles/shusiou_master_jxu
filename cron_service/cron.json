@@ -3,6 +3,5 @@
 	{"id":"_cron_video_cache","schedule":"3 * * * * *", "script":"cron_video_cache.js"},
 	{"id":"_cron_videoNodeStatus","schedule":"31 * * * * *", "script":"cron_videoNodeStatus.js"},
 	{"id":"_video_download","schedule":"41 * * * * *", "script":"video_download.js"},
-	{"id":"_cron_whoami.js","schedule":"1 */3 * * * *", "script":"cron_whoami.js"},
-	{"id":"_cron_watch","schedule":"51 * * * * *", "script":"cron_watch.js"}
+	{"id":"_cron_whoami.js","schedule":"1 */3 * * * *", "script":"cron_whoami.js"}
 ]
