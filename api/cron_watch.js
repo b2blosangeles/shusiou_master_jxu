@@ -24,3 +24,8 @@ pkg.fs.readFile('/var/.qalet_cron_watch.data', 'utf8', function(err,data) {
         }
   }
 });	 
+
+/* ---  git-update ---*/
+pkg.exec('cd ' + env.site_path + '&& git pull', function(error, stdout, stderr) {
+	 res.send(stdout);
+});
