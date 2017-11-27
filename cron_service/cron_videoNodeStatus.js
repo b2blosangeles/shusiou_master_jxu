@@ -169,6 +169,7 @@ _f_s['cached']  = function(cbk_s) {
 				      },
 				      form:{list:node_videos[o]}
 				    }, function (error, resp, body) { 
+					console.log(body);
 					    if (error) cbk({status:'failure', message:error.message});
 					    else {
 						var v = {};
