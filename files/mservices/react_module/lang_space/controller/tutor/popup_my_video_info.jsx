@@ -27,7 +27,7 @@ try {
 		},		
 		videoLink:function(){
 			var me = this; 
-			console.log(me.props.rec.node_ip);
+			console.log(me.props.rec);
 			/*
 			if (!me.props.rec.node_ip.length) var url = "http://67.205.189.126/api/video/play_stream.api?type=video&vid='+v[i].vid+'";
 			else { var randomIP = v[i].node_ip[Math.floor(Math.random()*v[i].node_ip.length)]; 
