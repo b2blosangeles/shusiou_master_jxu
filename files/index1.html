@@ -18,7 +18,7 @@
 					 var v = data.data;
 					 var str = '';
 					 for (var i=0; i < v.length; i++) {
-						 if (i != 2) continue;
+						 if (i != 3) continue;
 						 if (!v[i].node_ip.length) var url = "http://67.205.189.126/api/video/play_stream.api?type=video&vid='+v[i].vid+'";
 						 else {
 							 var randomIP = v[i].node_ip[Math.floor(Math.random()*v[i].node_ip.length)];
@@ -26,7 +26,7 @@
 							var url = 'http://' + randomIP + '/api/video/play_stream.api?type=video&vid='+v[i].vid +
 							    '&server=' + v[i].server_ip;
 						 }	 
-						 str+='<video width="1024" height="768" controls autoplay>' +
+						 str+='<video width="512" height="384" controls autoplay>' +
 	'<source src="'+url+'" type="video/mp4">' +
 	'<source src="movie.ogg" type="video/ogg">'+
 	'</video>';
