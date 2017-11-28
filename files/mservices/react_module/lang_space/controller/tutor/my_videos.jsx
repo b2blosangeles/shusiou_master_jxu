@@ -94,12 +94,12 @@ try {
 			}});
 			return true;
 		},			
-		videoDelete:function(video_code){
+		videoDelete:function(vid){
 			var me = this;
 			$.ajax({
 				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=removeUserVideo',
 				method: "POST",
-				data: {video_code:video_code, auth: me.props.route.env.state.auth},
+				data: {vid:vid, auth: me.props.route.env.state.auth},
 				dataType: "JSON"
 			}).done(function( data) {
 				me.pullList();
