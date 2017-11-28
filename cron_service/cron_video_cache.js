@@ -4,7 +4,7 @@ var path = require('path');
 var env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
 
-var default_cnt = 2;
+var default_cnt = 1;
 console.log('---1---');
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
@@ -56,7 +56,7 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 	    	'  B.`server_ip` = "' + CP_s.data.ip + '" AND A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
 		' GROUP BY A.`vid` ' +
 		' HAVING count(A.`vid`) > (SELECT `count` FROM `video_cache` WHERE `vid` = A.`vid` ' + 
-	    	'   UNION SELECT 2 LIMIT 1)  ' +
+	    	'   UNION SELECT ' + default_cnt + ' LIMIT 1)  ' +
 		' ORDER BY count(A.`vid`) ASC LIMIT 10';
 	
 	connection.query(str, function (error, results, fields) {
@@ -94,7 +94,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 			' WHERE  A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
 			' GROUP BY A.`vid` ' +
 			' HAVING  count(A.`vid`) < (SELECT `count` FROM `video_cache` WHERE `vid` = A.`vid` ' + 
-	    		'     UNION SELECT 2 LIMIT 1)  ' +
+	    		'     UNION SELECT ' + default_cnt + ' LIMIT 1)  ' +
 			' ORDER BY  count(A.`vid`) ASC '+
 		' )';
 	
@@ -178,8 +178,8 @@ _f_s['NS2'] = function(cbk_s) {
 	var v = [];
 	for (var o in need_add_ips) {
 		if (need_add_cnt[o].count)
-			var cnt = Math.max(need_add_cnt[o].count,  2);
-		else var cnt =  2;
+			var cnt = Math.max(need_add_cnt[o].count,  default_cnt);
+		else var cnt =  default_cnt;
 
 		var ip_a = ips.diff(need_add_ips[o]).shuffle().slice(0, cnt - need_add_ips[o].length);
 		for (var i = 0; i < ip_a.length; i++) {
@@ -190,8 +190,8 @@ _f_s['NS2'] = function(cbk_s) {
 	for(var j = 0; j < non_associated.length; j++) {
 		
 		if ((non_associated[j].count) && !non_associated[j].channel)
-			var cnt = Math.max(non_associated[j].count, 2);
-		else var cnt = 2;		
+			var cnt = Math.max(non_associated[j].count, default_cnt);
+		else var cnt = default_cnt;		
 		
 		var ip_a = ips.shuffle().slice(0, cnt);
 		for (var i = 0; i < ip_a.length; i++) {
