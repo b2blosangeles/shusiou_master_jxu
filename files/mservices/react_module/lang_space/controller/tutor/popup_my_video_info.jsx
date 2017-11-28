@@ -21,7 +21,7 @@ try {
 		},
 		delete_video:function(){
 			var me = this;  
-			me.props.parent.videoDelete(me.props.rec.video_code);
+			me.props.parent.videoDelete(me.props.rec.vid);
 			me.close_admin();
 			
 		},		
