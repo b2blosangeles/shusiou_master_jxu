@@ -56,7 +56,7 @@ _f_s['need_remove']  = function(cbk_s) { /* get database catched local videos */
 	    	'  B.`server_ip` = "' + CP_s.data.ip + '" AND A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
 		' GROUP BY A.`vid` ' +
 		' HAVING count(A.`vid`) > (SELECT `count` FROM `video_cache` WHERE `vid` = A.`vid` ' + 
-	    	'   UNION SELECT 1 LIMIT 1)  ' +
+	    	'   UNION SELECT 2 LIMIT 1)  ' +
 		' ORDER BY count(A.`vid`) ASC LIMIT 10';
 	
 	connection.query(str, function (error, results, fields) {
