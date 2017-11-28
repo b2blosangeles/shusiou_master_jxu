@@ -27,14 +27,13 @@ try {
 		},		
 		videoLink:function(){
 			var me = this; 
-			console.log(me.props.rec);
-			var randomIP = me.props.rec.node_ip[Math.floor(Math.random() * me.props.rec.node_ip.length)];
-			
+			var IP = me.props.rec.node_ip[Math.floor(Math.random() * me.props.rec.node_ip.length)];
 			if (me.props.rec.node_ip.length) {
-				var url =  'http://' + randomIP + '/api/video/play_stream.api?type=video&vid=' + me.props.rec.vid +
+				var url =  'http://' + IP + '/api/video/play_stream.api?type=video&vid=' + me.props.rec.vid +
 				    '&server=' + me.props.rec.server_ip ;
 			} else { 
-				var url = 'http://' + me.props.rec.server_ip + '/api/video/play_stream.api?type=video&vid=' + me.props.rec.vid;
+				var url = 'http://' + me.props.rec.server_ip + 
+				    '/api/video/play_stream.api?type=video&vid=' + me.props.rec.vid;
 			}
 			return url;
 		},			
