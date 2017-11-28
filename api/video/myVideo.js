@@ -225,11 +225,11 @@ switch(opt) {
 
 			connection.query(str, function (error1, results1, fields1) {
 				connection.end();
-				if (results.length) {
+				if (results1.length) {
 					var v = {};
-					for (var i = 0; i < results.length; i++) {
-						if (!v[results[i].vid]) v[results[i].vid] = [];
-						v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
+					for (var i = 0; i < results1.length; i++) {
+						if (!v[results1[i].vid]) v[results1[i].vid] = [];
+						v[results1[i].vid][v[results1[i].vid].length] = results1[i].node_ip;
 					}
 					cbk(v);
 				} else cbk({});
