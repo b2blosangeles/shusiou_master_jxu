@@ -184,7 +184,7 @@ switch(opt) {
 				else cbk([]);
 			});  
 		};
-				
+		/*		
 		_f['P1'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
@@ -198,7 +198,8 @@ switch(opt) {
 				if (results.length)  cbk(results);
 				else cbk([]);
 			});  
-		};		
+		};
+		*/
 		_f['P2'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
