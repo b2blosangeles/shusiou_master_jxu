@@ -237,7 +237,7 @@ switch(opt) {
 					if (v[CP.data.P2[i].vid]) CP.data.P2[i].node_ip = v[CP.data.P2[i].vid];
 					else CP.data.P2[i].node_ip = [];
 				}	
-				
+				cbk(CP.data.P2);
 			});  
 		};		
 		CP.serial(
