@@ -214,8 +214,8 @@ switch(opt) {
 		};
 		_f['P2A'] = function(cbk) {
 			var vstr = '0';
-			for (var i = 0; i < CP.data.P0.length; i++) {
-				vstr += ',' +  CP.data.P0[i].vid; 
+			for (var i = 0; i < CP.data.P2.length; i++) {
+				vstr += ',' +  CP.data.P2[i].vid; 
 			}
 
 			var connection = mysql.createConnection(cfg0);
@@ -223,7 +223,7 @@ switch(opt) {
 
 			var str = 'SELECT * FROM  `video_node` WHERE `vid` IN (' + vstr + ')';
 
-			connection.query(str, function (error, results, fields) {
+			connection.query(str, function (error1, results1, fields1) {
 				connection.end();
 				if (results.length) {
 					var v = {};
@@ -232,7 +232,12 @@ switch(opt) {
 						v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
 					}
 					cbk(v);
-				} else cbk([]);
+				} else cbk({});
+				for (var i = 0; i < CP.data.P2.length; i++) {
+					if (v[CP.data.P2[i].vid]) CP.data.P2[i].node_ip = v[CP.data.P2[i].vid];
+					else CP.data.P2[i].node_ip = [];
+				}	
+				
 			});  
 		};		
 		CP.serial(
@@ -245,8 +250,8 @@ switch(opt) {
 				for (var i = 0; i < data.results.P1.length; i++) {
 					d[d.length] = data.results.P1[i];
 				}
-				for (var i = 0; i < data.results.P2A.length; i++) {
-					d[d.length] = data.results.P2A[i];
+				for (var i = 0; i < data.results.P2.length; i++) {
+					d[d.length] = data.results.P2[i];
 				}
 				res.send({status:data.status, _spent_time:data._spent_time, 
 					data:d.sort(function(a,b) { return ( a.addtime < b.addtime )?1:-1} )});
