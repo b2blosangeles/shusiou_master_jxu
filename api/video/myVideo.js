@@ -184,6 +184,29 @@ switch(opt) {
 				else cbk([]);
 			});  
 		};
+		_f['P0A'] = function(cbk) {
+			var vstr = '0';
+			for (var i = 0; i < CP.data.P0.length; i++) {
+				vstr += ',' +  CP.data.P0[i].vid; 
+			}
+
+			var connection = mysql.createConnection(cfg0);
+			connection.connect();
+
+			var str = 'SELECT * FROM  `video_node` WHERE `vid` IN (' + vstr + ')';
+
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				if (results.length) {
+					var v = {};
+					for (var i = 0; i < results.length; i++) {
+						if (!v[results[i].vid]) v[results[i].vid] = [];
+						v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
+					}
+					cbk(v);
+				} else cbk([]);
+			});  
+		};				
 		_f['P1'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
@@ -215,8 +238,8 @@ switch(opt) {
 			_f,
 			function(data) {
 				var d = [];
-				for (var i = 0; i < data.results.P0.length; i++) {
-					d[d.length] = data.results.P0[i];
+				for (var i = 0; i < data.results.P0A.length; i++) {
+					d[d.length] = data.results.P0A[i];
 				}				
 				for (var i = 0; i < data.results.P1.length; i++) {
 					d[d.length] = data.results.P1[i];
