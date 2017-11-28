@@ -94,7 +94,7 @@ _f_s['need_add']  = function(cbk_s) { /* get database catched local videos */
 			' WHERE  A.`node_ip` IN (SELECT `node_ip` FROM `cloud_node` WHERE score < 1000) ' +
 			' GROUP BY A.`vid` ' +
 			' HAVING  count(A.`vid`) < (SELECT `count` FROM `video_cache` WHERE `vid` = A.`vid` ' + 
-	    		'     UNION SELECT 1 LIMIT 1)  ' +
+	    		'     UNION SELECT 1 LIMIT 2)  ' +
 			' ORDER BY  count(A.`vid`) ASC '+
 		' )';
 	
