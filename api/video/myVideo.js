@@ -271,14 +271,14 @@ switch(opt) {
 		});		
 		break;
 	case 'removeUserVideo':
-		var uid = req.body.auth.uid, video_code = req.body.video_code;
+		var uid = req.body.auth.uid, vid = req.body.vid;
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 		_f['P1'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
-			var str = "DELETE FROM  `video_user` WHERE `uid` = '" + uid +"'  AND `video_code` = '" + video_code + "'";
+			var str = "DELETE FROM  `video_user` WHERE `uid` = '" + uid +"'  AND `vid` = '" + vid + "'";
 
 			connection.query(str, function (error, results, fields) {
 				connection.end();
