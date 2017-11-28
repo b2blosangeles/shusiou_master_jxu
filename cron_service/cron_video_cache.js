@@ -4,8 +4,8 @@ var path = require('path');
 var env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
 
-var default_cnt = 1;
-console.log('---1---');
+var default_cnt = 2;
+
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
     cfg0 = require(env.site_path + '/api/cfg/db.json'),
