@@ -247,10 +247,12 @@ switch(opt) {
 				var d = [];
 				for (var i = 0; i < data.results.P0.length; i++) {
 					d[d.length] = data.results.P0[i];
-				}				
+				}	
+				/*
 				for (var i = 0; i < data.results.P1.length; i++) {
 					d[d.length] = data.results.P1[i];
 				}
+				*/
 				for (var i = 0; i < data.results.P2.length; i++) {
 					d[d.length] = data.results.P2[i];
 				}
