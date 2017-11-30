@@ -37,7 +37,7 @@
 					 }
 					$('#niu').html(str);
 						var vid = document.getElementById("myVideo");
-						vid.onerror = function() {
+						vid.addEventListener("error", function(){
 						    alert("Error! Something went wrong");
 						};
 				 
