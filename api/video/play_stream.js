@@ -13,6 +13,8 @@ var mnt_folder = '/mnt/shusiou-video/',
     folder_image = video_folder + 'images/',
     folder_section =   video_folder + 'sections/';
 
+var config = require(env.config_path + '/config.json');
+
 var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 var cache_only = (req.query['cache_only'])?true:false;
 
@@ -74,7 +76,7 @@ switch(type) {
 							file.pipe(res);
 							var t = new Date().getTime();
 							var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-							cfg0 = require(env.site_path + '/api/cfg/db.json');	
+							cfg0 =  config.db;	
 							var had_error = '';
 							file.on('error', function(err){
 								had_error = '1';
@@ -161,7 +163,7 @@ switch(type) {
 							file.pipe(res);
 							var t = new Date().getTime();
 							var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-							cfg0 = require(env.site_path + '/api/cfg/db.json');	
+							cfg0 =  config.db;
 							var had_error = '';
 							file.on('error', function(err){
 								had_error = '1';
@@ -210,7 +212,7 @@ switch(type) {
 					file.pipe(res);
 					var t = new Date().getTime();
 					var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-					cfg0 = require(env.site_path + '/api/cfg/db.json');	
+					cfg0 =  config.db;	
 					var had_error = '';
 					file.on('error', function(err){
 						had_error = '1';
