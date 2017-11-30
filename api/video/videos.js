@@ -1,6 +1,7 @@
 var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
     mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-    cfg0 = require(env.site_path + '/api/cfg/db.json');
+    config = require(env.config_path + '/config.json'),
+    cfg0 = config.db;
 
 var opt = req.query['opt'];
 
