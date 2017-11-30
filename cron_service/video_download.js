@@ -1,5 +1,8 @@
 var path = require('path'), env = {root_path:path.join(__dirname, '../..')};
 env.site_path = env.root_path + '/site';
+env.config_path = '/var/qalet_config';
+var config = require(env.config_path + '/config.json');
+
 var mnt_folder = '/mnt/shusiou-video/';
 var video_folder = mnt_folder + 'videos/';
 
