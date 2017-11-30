@@ -1,6 +1,11 @@
 var path = require('path');
 var env = {root_path:path.join(__dirname, '../..')};
+
 env.site_path = env.root_path + '/site';
+env.config_path = '/var/qalet_config';
+
+var config = require(env.config_path + '/config.json');
+
 var request =  require(env.root_path + '/package/request/node_modules/request');
 var diskspace = require(env.root_path + '/package/diskspace/node_modules/diskspace');
     
@@ -16,7 +21,7 @@ function getServerIP() {
 diskspace.check('/', function (err, space)
 {
     request({
-      url: 'http://root.qalet.com/api/add_master.api',
+      url: 'http://' + config.root  + '/api/add_master.api',
       headers: {
         "content-type": "application/json"
       },
@@ -60,7 +65,7 @@ diskspace.check('/', function (err, space)
     setTimeout(
       function() {
           request({
-            url: 'http://root.qalet.com/api/cron_watch.api',
+            url: 'http://' + config.root  + '/api/cron_watch.api',
             headers: {
               "content-type": "application/json"
             },
