@@ -26,7 +26,7 @@
 							var url = 'http://' + randomIP + '/api/video/play_stream.api?type=video&vid='+v[i].vid +
 							    '&server=' + v[i].server_ip;
 						 }	 
-						 str+='<video width="512" height="384" controls autoplay>' +
+						 str+='<video  id="myVideo" width="512" height="384" controls autoplay>' +
 	'<source src="'+url+'" type="video/mp4">' +
 	'<source src="movie.ogg" type="video/ogg">'+
 	'</video>';
@@ -36,7 +36,13 @@
 	'</video>'	*/					 
 					 }
 					$('#niu').html(str);
-				    });				
+						var vid = document.getElementById("myVideo");
+						vid.onerror = function() {
+						    alert("Error! Something went wrong");
+						};
+				 
+				 
+				 });				
 			}
 		);
 	</script>	
