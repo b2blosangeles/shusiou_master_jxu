@@ -11,7 +11,7 @@ var 	ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core')
     	crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
     	fs = require('fs'),
     	folderP = require(env.site_path + '/api/inc/folderP/folderP'),
-    	cfg0 = require(env.site_path + '/api/cfg/db.json'),
+    	cfg0 = config.db,
     	fp = new folderP();
 
 function getServerIP() {
