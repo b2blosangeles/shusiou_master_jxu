@@ -1,10 +1,11 @@
-var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql');
+var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+    config = require(env.config_path + '/config.json'),
+    cfg0 = config.db;
 
 var CP = new pkg.crowdProcess();
 var _f = {};
 
 _f['Q0'] = function(cbk) {
-	var cfg0 = require(env.site_path + '/api/cfg/db.json');
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 
