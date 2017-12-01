@@ -103,7 +103,7 @@ try {
 									<table width="100%" style={{'margin-bottom':'6px'}}>
 										<tr>
 											<td width="100" valign="top">
-												<img src="/images/film_bg.png" style={me.bgFilmStyle(rec)}  width="90"/>
+												<img src="/images/film_bg.png" style={me.bgFilmStyle(a)}  width="90"/>
 											</td>
 											<td  width="6"></td>
 											<td  style={{'text-align':'left',whiteSpace: 'normal',wordWrap: 'break-word',
