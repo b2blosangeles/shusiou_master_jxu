@@ -33,7 +33,7 @@ try {
 		},
 		bgFilmStyle:function(rec) {
 			var dt = Math.floor((Math.random() * 100) + 1);
-			var url = shusiou_config.api_server + '/api/shusiou_video_image180.js?video=';
+			var url = 'http://' + rec.server_ip + '/api/video/play_stream.api?type=image*=&vid=' + rec.vid + '&s=20&w=90';
 			console.log('---url---');
 			console.log(url);
 			return {width:'90px', background:'url('+url+')',
