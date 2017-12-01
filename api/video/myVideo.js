@@ -171,6 +171,10 @@ switch(opt) {
 		break;
 	case 'getMyActiveVideos':
 		var uid = req.body.uid;
+		if (!uid) {
+			res.send({status:'failure', message:'Missing uid'});
+			return true;
+		}
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 		_f['P2'] = function(cbk) {
@@ -229,7 +233,7 @@ switch(opt) {
 		);
 		break;		
 	case 'getMyVideos':
-		var uid = req.body.uid || 1;
+		var uid = req.body.uid;
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 		_f['P0'] = function(cbk) {
