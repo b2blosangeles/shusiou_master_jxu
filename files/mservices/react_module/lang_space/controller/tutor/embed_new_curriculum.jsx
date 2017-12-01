@@ -31,9 +31,10 @@ try {
 				console.log('error');
 			});			
 		},
-		bgFilmStyle:function(t, a) {
+		bgFilmStyle:function(rec) {
 			var dt = Math.floor((Math.random() * 100) + 1);
-			var url = shusiou_config.api_server + '/api/shusiou_video_image180.js?video='+a+'|'+dt;
+			var url = shusiou_config.api_server + '/api/shusiou_video_image180.js?video=';
+			console.log(url);
 			return {width:'90px', background:'url('+url+')',
 				'background-size':'cover'}
 		},		
@@ -102,7 +103,7 @@ try {
 									<table width="100%" style={{'margin-bottom':'6px'}}>
 										<tr>
 											<td width="100" valign="top">
-												<img src="/images/film_bg.png" style={me.bgFilmStyle(2, a.code)}  width="90"/>
+												<img src="/images/film_bg.png" style={me.bgFilmStyle(rec)}  width="90"/>
 											</td>
 											<td  width="6"></td>
 											<td  style={{'text-align':'left',whiteSpace: 'normal',wordWrap: 'break-word',
