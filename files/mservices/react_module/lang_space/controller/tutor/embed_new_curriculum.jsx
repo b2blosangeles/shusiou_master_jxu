@@ -22,7 +22,8 @@ try {
 			$.ajax({
 				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=getMyActiveVideos',
 				method: "POST",
-				data: {uid:1, token:'xxxxx'},
+				data: {uid:2, token:'xxxxx'},
+			//	data: me.props.route.env.state.auth,
 				dataType: "JSON"
 			}).done(function( data) {
 				me.setState({list:data.data});
