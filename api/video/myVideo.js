@@ -170,7 +170,7 @@ switch(opt) {
 		});		
 		break;
 	case 'getMyActiveVideos':
-		var uid = req.body.uid || 1;
+		var uid = req.body.uid;
 		var CP = new pkg.crowdProcess();
 		var _f = {};
 		_f['P2'] = function(cbk) {
