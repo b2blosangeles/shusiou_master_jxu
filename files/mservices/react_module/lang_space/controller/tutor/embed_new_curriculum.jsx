@@ -20,7 +20,7 @@ try {
 		getVideos:function() {
 			var me = this;
 			$.ajax({
-				url: shusiou_config.api_server + '/api/shusiou_get_videos.js',
+				url: shusiou_config.api_server + '/api/myVideo.api?opt=getMyVideos',
 				method: "POST",
 				data: {uid:1, token:'xxxxx'},
 				dataType: "JSON"
