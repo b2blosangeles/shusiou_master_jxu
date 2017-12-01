@@ -38,8 +38,6 @@ try {
 			} else {	
 				var url = 'http://' + rec.server_ip + '/api/video/play_stream.api?type=image&vid=' + rec.vid + '&s=20&w=90';
 			}
-				console.log('---url---');
-			console.log(url);
 			return {width:'90px', background:'url('+url+')',
 				'background-size':'cover'}
 		},		
@@ -87,7 +85,7 @@ try {
 								<table className="container-fluid">
 									<tr>
 										<td width="90" valign="top">
-											<img src="/images/film_bg.png" style={me.bgFilmStyle(2, me.props.parent.state.video.code)} width="90"/>
+											<img src="/images/film_bg.png" style={me.bgFilmStyle(me.props.parent.state.video)} width="90"/>
 										</td>
 										<td  width="6"></td>
 										<td style={{'text-align':'left',whiteSpace: 'normal',wordWrap: 'break-word', 
