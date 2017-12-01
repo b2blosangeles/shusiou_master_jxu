@@ -20,7 +20,7 @@ try {
 		getVideos:function() {
 			var me = this;
 			console.log('---me.props.route--');
-			console.log(me.props.parent.route.env.state.auth);
+			console.log(me.props.parent.route);
 			
 			$.ajax({
 				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=getMyActiveVideos',
