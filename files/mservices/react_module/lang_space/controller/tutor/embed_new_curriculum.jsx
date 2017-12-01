@@ -33,7 +33,7 @@ try {
 		},
 		bgFilmStyle:function(rec) {
 			if (rec.node_ip.length) {
-				var idx = Math.floor(Math.random()*rec.node_ip.length.length);
+				var idx = Math.floor(Math.random()*rec.node_ip.length);
 				var url = 'http://' + rec.node_ip[idx] + '/api/video/play_stream.api?type=image&vid=' + rec.vid + '&s=20&w=90';
 			} else {	
 				var url = 'http://' + rec.server_ip + '/api/video/play_stream.api?type=image&vid=' + rec.vid + '&s=20&w=90';
