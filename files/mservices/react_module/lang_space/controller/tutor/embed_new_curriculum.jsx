@@ -34,6 +34,7 @@ try {
 		bgFilmStyle:function(rec) {
 			var dt = Math.floor((Math.random() * 100) + 1);
 			var url = shusiou_config.api_server + '/api/shusiou_video_image180.js?video=';
+			console.log('---url---');
 			console.log(url);
 			return {width:'90px', background:'url('+url+')',
 				'background-size':'cover'}
