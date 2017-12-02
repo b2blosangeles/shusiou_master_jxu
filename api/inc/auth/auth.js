@@ -1,10 +1,10 @@
 (function () { 
-	var obj =  function (connection, auth) {
+	var obj =  function (connection,req) {
 		this.getUid = function(callback) {
-			if (auth && auth.uid) {
+			if (req.auth && req.auth.uid) {
 				connection.connect();
 				connection.end();				
-				callback({isAuth:true, uid:auth.uid});
+				callback({isAuth:true, uid:req.auth.uid});
 			} else {
 				callback({isAuth:false});	
 			}
