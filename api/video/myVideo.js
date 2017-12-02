@@ -6,13 +6,11 @@ var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
 var connection = mysql.createConnection(cfg0);
 
 var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
-    auth = new AUTH(connection, function() {
-	if  (req.body.auth) {
-		res.send('auth on');
-	} else {
-    		res.send('auth off');
-	}	
-    });
+    auth = new AUTH(connection);
+
+auth.getUid(function(data) {
+	res.send(data);	
+});
 	
 return true;
 var opt = req.query['opt'];
