@@ -1,15 +1,16 @@
 var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
     mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     config = require(env.config_path + '/config.json'),
-    cfg0 = config.db,
-    connection = mysql.createConnection(cfg0);
+    cfg0 = config.db;
+
+var connection = mysql.createConnection(cfg0);
 
 delete require.cache[env.site_path + '/api/inc/auth/auth.js'];
 var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
     auth = new AUTH(env, pkg, req);
 
-var opt = req.query['opt'];
-auth.getUid(function(auth_data) {	
+	var opt = req.query['opt'];
+
 	switch(opt) {
 		case 'add':
 			var source = req.body.source || 'ytdl-core',
@@ -28,7 +29,7 @@ auth.getUid(function(auth_data) {
 				});			
 			};		
 			_f['A0'] = function(cbk) {  /* Clean old download_falure related record */
-				var uid = auth_data.uid;
+				var uid = CP.data.auth.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = "SELECT A.`id`"+    
@@ -86,7 +87,7 @@ auth.getUid(function(auth_data) {
 				});  
 			};
 			_f['PV'] = function(cbk) {
-				var uid = auth_data.uid;
+				var uid = CP.data.auth.uid;
 				if ((CP.data.P0) || (CP.data.P1)) {
 					var code = '';
 					if (CP.data.P1) code = CP.data.P1.vid;
@@ -121,7 +122,7 @@ auth.getUid(function(auth_data) {
 			};
 
 			_f['P3'] = function(cbk) {
-				var uid = auth_data.uid;
+				var uid = CP.data.auth.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`, `video_length`, `org_thumbnail`, `created`, `status`) ' +
@@ -146,7 +147,7 @@ auth.getUid(function(auth_data) {
 				});  
 			};
 			_f['P4'] = function(cbk) {
-				var uid = auth_data.uid;
+				var uid = CP.data.auth.uid;
 				if (CP.data.P3) {
 					var connection = mysql.createConnection(cfg0);
 					connection.connect();
@@ -205,7 +206,7 @@ auth.getUid(function(auth_data) {
 				});			
 			};		
 			_f['P2'] = function(cbk) {
-				var uid = auth_data.uid;
+				var uid = CP.data.auth.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -278,7 +279,7 @@ auth.getUid(function(auth_data) {
 				});			
 			};		
 			_f['P0'] = function(cbk) {
-				var uid = auth_data.uid;
+				var uid = CP.data.auth.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -305,7 +306,7 @@ auth.getUid(function(auth_data) {
 			};
 			*/
 			_f['P2'] = function(cbk) {
-				var uid = auth_data.uid;
+				var uid = CP.data.auth.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -397,7 +398,7 @@ auth.getUid(function(auth_data) {
 				});			
 			};			
 			_f['P1'] = function(cbk) {
-				var uid = auth_data.uid;
+				var uid = CP.data.auth.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -423,5 +424,4 @@ auth.getUid(function(auth_data) {
 			break;			
 		default:
 			res.send({status:'error', message:'Wrong opt value!'});
-	}	
-});
+	}
