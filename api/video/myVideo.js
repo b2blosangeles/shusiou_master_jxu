@@ -5,6 +5,7 @@ var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
 
 var connection = mysql.createConnection(cfg0);
 
+delete require.cache[env.site_path + '/api/inc/auth/auth.js'];
 var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
     auth = new AUTH(connection);
 
