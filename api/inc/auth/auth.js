@@ -3,7 +3,7 @@
 		this.getUid = function(callback) {
 			connection.connect();
 			connection.end();
-			callback('req.body.auth');
+			callback();
 		}	
 	};
 	module.exports = obj;
