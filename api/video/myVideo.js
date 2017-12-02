@@ -337,7 +337,7 @@ switch(opt) {
 			_f,
 			function(data) {
 				if (!CP.data.auth.isAuth) {
-					res.send({status:'failure', message:'Auth failure'});
+					res.send({status:'failure', message:'Auth failure--'});
 					return true;
 				}				
 				var d = [];
