@@ -295,11 +295,8 @@ auth.getUid(function(auth_data) {
 				var uid = CP.data.auth.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
-
 				var str = 'SELECT A.*, B.`created` AS addtime FROM  `download_failure` A  LEFT JOIN `video_user` B on A.`vid` = B.`vid` ' +
 				    " WHERE B.`uid` = '" + uid +" '";
-
-
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (results.length)  cbk(results);
