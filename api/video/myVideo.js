@@ -370,10 +370,21 @@ switch(opt) {
 		});		
 		break;
 	case 'removeUserVideo':
-		var uid = req.body.auth.uid, vid = req.body.vid;
+		var vid = req.body.vid;
 		var CP = new pkg.crowdProcess();
 		var _f = {};
+		_f['auth'] = function(cbk) {
+			auth.getUid(function(data) {
+				if (!data.isAuth) {
+					cbk(false);
+					CP.exit = 1;
+				} else {
+					cbk(data);
+				}	
+			});			
+		};			
 		_f['P1'] = function(cbk) {
+			var uid = CP.data.auth.uid;
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
@@ -387,7 +398,11 @@ switch(opt) {
 		};		
 		CP.serial(
 			_f,
-			function(data) {				
+			function(data) {
+				if (!CP.data.auth.isAuth) {
+					res.send({status:'failure', message:'Auth failure'});
+					return true;
+				}					
 				res.send({status:data.status, _spent_time:data._spent_time, data:data.results});
 			},
 			3000
