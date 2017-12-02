@@ -19,11 +19,12 @@ try {
 			$.ajax({
 				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=getMyVideos',
 				method: "POST",
-				data: me.props.route.env.state.auth,
+				data: {auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}).done(function( data) {
-				me.setState({list:data.data});
-				console.log(data);
+				if (data.status == 'success') {
+					me.setState({list:data.data});
+				}	
 			}).fail(function( jqXHR, textStatus ) {
 				console.log('error');
 			});			
