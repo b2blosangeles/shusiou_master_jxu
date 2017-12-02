@@ -1,14 +1,16 @@
-var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
-    mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-    config = require(env.config_path + '/config.json'),
-    cfg0 = config.db;
 
-var connection = mysql.createConnection(cfg0);
 
 delete require.cache[env.site_path + '/api/inc/auth/auth.js'];
 var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
     auth = new AUTH(env, pkg, req);
 var app = function() { 
+	var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
+	    mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+	    config = require(env.config_path + '/config.json'),
+	    cfg0 = config.db;
+
+	var connection = mysql.createConnection(cfg0);	
+	
 	var opt = req.query['opt'];
 	switch(opt) {
 		case 'add':
