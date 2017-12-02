@@ -28,7 +28,7 @@ auth.getUid(function(auth_data) {
 				});			
 			};		
 			_f['A0'] = function(cbk) {  /* Clean old download_falure related record */
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = "SELECT A.`id`"+    
@@ -86,7 +86,7 @@ auth.getUid(function(auth_data) {
 				});  
 			};
 			_f['PV'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				if ((CP.data.P0) || (CP.data.P1)) {
 					var code = '';
 					if (CP.data.P1) code = CP.data.P1.vid;
@@ -121,7 +121,7 @@ auth.getUid(function(auth_data) {
 			};
 
 			_f['P3'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`, `video_length`, `org_thumbnail`, `created`, `status`) ' +
@@ -146,7 +146,7 @@ auth.getUid(function(auth_data) {
 				});  
 			};
 			_f['P4'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				if (CP.data.P3) {
 					var connection = mysql.createConnection(cfg0);
 					connection.connect();
@@ -205,7 +205,7 @@ auth.getUid(function(auth_data) {
 				});			
 			};		
 			_f['P2'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -278,7 +278,7 @@ auth.getUid(function(auth_data) {
 				});			
 			};		
 			_f['P0'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -308,7 +308,7 @@ auth.getUid(function(auth_data) {
 			};
 			*/
 			_f['P2'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -400,7 +400,7 @@ auth.getUid(function(auth_data) {
 				});			
 			};			
 			_f['P1'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
