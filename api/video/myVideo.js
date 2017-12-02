@@ -9,7 +9,7 @@ var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
     auth = new AUTH(connection);
 
 auth.getUid(function(data) {
-	res.send(data);	
+	res.send('data');	
 });
 	
 return true;
