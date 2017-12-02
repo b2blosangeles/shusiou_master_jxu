@@ -425,4 +425,8 @@ var app = function() {
 			res.send({status:'error', message:'Wrong opt value!'});
 	}
 };
-app();
+
+
+auth.getUid(function(data) {
+	app();	
+});
