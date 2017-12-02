@@ -7,7 +7,7 @@ var connection = mysql.createConnection(cfg0);
 
 delete require.cache[env.site_path + '/api/inc/auth/auth.js'];
 var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
-    auth = new AUTH(connection, req.body.auth);
+    auth = new AUTH(connection, req);
 
 var opt = req.query['opt'];
 
