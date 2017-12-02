@@ -176,14 +176,19 @@ switch(opt) {
 		});		
 		break;
 	case 'getMyActiveVideos':
-		var uid = req.body.uid;
-		if (!uid) {
-			res.send({status:'failure', message:'Missing uid'});
-			return true;
-		}
 		var CP = new pkg.crowdProcess();
 		var _f = {};
+		_f['auth'] = function(cbk) {
+			auth.getUid(function(data) {
+				if (!data.isAuth) {
+					cbk(false);
+				} else {
+					cbk(data);
+				}	
+			});			
+		};		
 		_f['P2'] = function(cbk) {
+			var uid = CP.data.auth.uid;
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 
@@ -227,6 +232,10 @@ switch(opt) {
 		CP.serial(
 			_f,
 			function(data) {
+				if (!CP.data.auth.isAuth) {
+					res.send({status:'failure', message:'Auth failure'});
+					return true;
+				}
 				var d = [];
 				for (var i = 0; i < data.results.P2A.length; i++) {
 					d[d.length] = data.results.P2[i];
