@@ -3,7 +3,7 @@
 		this.getUid = function(callback) {
 			connection.connect();
 			connection.end();
-			res.send('niu');
+			callback('niu');
 		}	
 	};
 	module.exports = obj;
