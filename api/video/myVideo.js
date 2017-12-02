@@ -182,6 +182,7 @@ switch(opt) {
 			auth.getUid(function(data) {
 				if (!data.isAuth) {
 					cbk(false);
+					CP.exit = 1;
 				} else {
 					cbk(data);
 				}	
