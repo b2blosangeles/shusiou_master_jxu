@@ -7,7 +7,11 @@ var connection = mysql.createConnection(cfg0);
 
 var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
     auth = new AUTH(connection, function() {
-    	res.send('auth');
+	if  (req.body.auth) {
+		res.send('auth on');
+	} else {
+    		res.send('auth off');
+	}	
     });
 	
 return true;
