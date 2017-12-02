@@ -9,7 +9,7 @@ delete require.cache[env.site_path + '/api/inc/auth/auth.js'];
 var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
     auth = new AUTH(env, pkg, req);
 
-auth.getUid(function(data) {
+
 	var opt = req.query['opt'];
 	switch(opt) {
 		case 'add':
@@ -425,4 +425,4 @@ auth.getUid(function(data) {
 		default:
 			res.send({status:'error', message:'Wrong opt value!'});
 	}
-});
+
