@@ -3,8 +3,10 @@ var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
     config = require(env.config_path + '/config.json'),
     cfg0 = config.db;
 
+var connection = mysql.createConnection(cfg0);
+
 var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
-    auth = new AUTH(mysql, function() {
+    auth = new AUTH(connection, function() {
     	res.send('auth');
     });
 	
