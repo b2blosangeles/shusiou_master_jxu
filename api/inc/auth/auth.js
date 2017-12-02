@@ -1,9 +1,9 @@
 (function () { 
-	var obj =  function (connection) {
+	var obj =  function (connection, post) {
 		this.getUid = function(callback) {
 			connection.connect();
 			connection.end();
-			callback('niu');
+			callback(post);
 		}	
 	};
 	module.exports = obj;
