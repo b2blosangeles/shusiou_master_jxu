@@ -427,6 +427,6 @@ var app = function() {
 };
 
 
-// auth.getUid(function(data) {
+auth.getUid(function(data) {
 	app();	
-// });
+});
