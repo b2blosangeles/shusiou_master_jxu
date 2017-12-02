@@ -7,10 +7,10 @@ var connection = mysql.createConnection(cfg0);
 
 delete require.cache[env.site_path + '/api/inc/auth/auth.js'];
 var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
-    auth = new AUTH(connection);
+    auth = new AUTH(connectionn, req.post);
 
 auth.getUid(function(data) {
-	res.send('data');	
+	res.send(data);	
 });
 	
 return true;
