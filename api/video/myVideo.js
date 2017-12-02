@@ -13,14 +13,23 @@ var opt = req.query['opt'];
 
 switch(opt) {
 	case 'add':
-		var uid = req.body.auth.uid, 
-		    source = req.body.source || 'ytdl-core',
+		var source = req.body.source || 'ytdl-core',
 		    code = req.body.code;
 
 		var CP = new pkg.crowdProcess();
 		var _f = {};
-		
+		_f['auth'] = function(cbk) {
+			auth.getUid(function(data) {
+				if (!data.isAuth) {
+					cbk(false);
+					CP.exit = 1;
+				} else {
+					cbk(data);
+				}	
+			});			
+		};		
 		_f['A0'] = function(cbk) {  /* Clean old download_falure related record */
+			var uid = CP.data.auth.uid;
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 			var str = "SELECT A.`id`"+    
@@ -39,6 +48,7 @@ switch(opt) {
 			});  
 		};
 		_f['A1'] = function(cbk) {  /* Clean old download_falure related record */
+			
 			if (CP.data.A0) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
@@ -77,6 +87,7 @@ switch(opt) {
 			});  
 		};
 		_f['PV'] = function(cbk) {
+			var uid = CP.data.auth.uid;
 			if ((CP.data.P0) || (CP.data.P1)) {
 				var code = '';
 				if (CP.data.P1) code = CP.data.P1.vid;
@@ -111,6 +122,7 @@ switch(opt) {
 		};
 
 		_f['P3'] = function(cbk) {
+			var uid = CP.data.auth.uid;
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 			var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`, `video_length`, `org_thumbnail`, `created`, `status`) ' +
@@ -135,6 +147,7 @@ switch(opt) {
 			});  
 		};
 		_f['P4'] = function(cbk) {
+			var uid = CP.data.auth.uid;
 			if (CP.data.P3) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
@@ -154,6 +167,10 @@ switch(opt) {
 		CP.serial(
 			_f,
 			function(data) {
+				if (!CP.data.auth.isAuth) {
+					res.send({status:'failure', message:'Auth failure'});
+					return true;
+				}				
 				if (data.results.PV) {
 					res.send({status:'error', _spent_time:data._spent_time, message:'video exists'});
 				} else if (data.results.P2 == 'ERR') {
