@@ -4,12 +4,6 @@ var CP = new pkg.crowdProcess(),
     cfg0 = config.db;
 
 
-var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
-    auth = new AUTH(mysql, function() {
-    	res.send('auth');
-    });
-	
-return true;
 var connection = mysql.createConnection(cfg0);
 switch(req.body.cmd) {
 	case 'getCurriculumById':
