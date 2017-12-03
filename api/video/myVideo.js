@@ -303,7 +303,7 @@ var app = function(auth_data) {
 				function(data) {			
 					var d = [];
 					for (var i = 0; i < data.results.P0.length; i++) {
-						data.results.P0[i].type = 'pending';
+						data.results.P0[i].status = 'pending';
 						d[d.length] = data.results.P0[i];
 					}	
 					/*
@@ -312,7 +312,7 @@ var app = function(auth_data) {
 					}
 					*/
 					for (var i = 0; i < data.results.P2.length; i++) {
-						data.results.P2[i].type = 'ready';
+						data.results.P2[i].status = 'ready';
 						d[d.length] = data.results.P2[i];
 					}
 					res.send({status:data.status, _spent_time:data._spent_time, 
