@@ -430,6 +430,10 @@ delete require.cache[env.site_path + '/api/inc/auth/auth.js'];
 var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
     auth = new AUTH(env, pkg, req);
 
-auth.getUid(function(data) {
-	app();	
-});
+auth.getUid(
+	(function(app) {
+		return function(data) {
+			app();
+		}	
+	})(app)	
+);
