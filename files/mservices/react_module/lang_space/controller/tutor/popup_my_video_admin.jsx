@@ -57,7 +57,7 @@ try {
 			$.ajax({
 				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=getYouTubeInfo',
 				method: "POST",
-				data: {video_url: me.state.video_url},
+				data: {video_url: me.state.video_url, auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}).done(function( data) {
 				me.setState({vid:data.vid, title:data.title, length_seconds:data.length_seconds, thumbnail_url:data.thumbnail_url});
