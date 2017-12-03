@@ -13,17 +13,9 @@ var app = function(auth_data) {
 			    code = req.body.code;
 
 			var CP = new pkg.crowdProcess();
-			var _f = {};
-			_f['auth'] = function(cbk) {
-				if (!auth_data.isAuth) {
-					cbk(false);
-					CP.exit = 1;
-				} else {
-					cbk(auth_data);
-				}				
-			};		
+			var _f = {};		
 			_f['A0'] = function(cbk) {  /* Clean old download_falure related record */
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = "SELECT A.`id`"+    
@@ -81,7 +73,7 @@ var app = function(auth_data) {
 				});  
 			};
 			_f['PV'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				if ((CP.data.P0) || (CP.data.P1)) {
 					var code = '';
 					if (CP.data.P1) code = CP.data.P1.vid;
@@ -116,7 +108,7 @@ var app = function(auth_data) {
 			};
 
 			_f['P3'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`, `video_length`, `org_thumbnail`, `created`, `status`) ' +
@@ -141,7 +133,7 @@ var app = function(auth_data) {
 				});  
 			};
 			_f['P4'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				if (CP.data.P3) {
 					var connection = mysql.createConnection(cfg0);
 					connection.connect();
@@ -160,11 +152,7 @@ var app = function(auth_data) {
 			};
 			CP.serial(
 				_f,
-				function(data) {
-					if (!CP.data.auth.isAuth) {
-						res.send({status:'failure', message:'Auth failure'});
-						return true;
-					}				
+				function(data) {				
 					if (data.results.PV) {
 						res.send({status:'error', _spent_time:data._spent_time, message:'video exists'});
 					} else if (data.results.P2 == 'ERR') {
@@ -188,17 +176,9 @@ var app = function(auth_data) {
 			break;
 		case 'getMyActiveVideos':
 			var CP = new pkg.crowdProcess();
-			var _f = {};
-			_f['auth'] = function(cbk) {
-				if (!auth_data.isAuth) {
-					cbk(false);
-					CP.exit = 1;
-				} else {
-					cbk(auth_data);
-				}				
-			};			
+			var _f = {};			
 			_f['P2'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -242,10 +222,6 @@ var app = function(auth_data) {
 			CP.serial(
 				_f,
 				function(data) {
-					if (!CP.data.auth.isAuth) {
-						res.send({status:'failure', message:'Auth failure'});
-						return true;
-					}
 					var d = [];
 					for (var i = 0; i < data.results.P2A.length; i++) {
 						d[d.length] = data.results.P2[i];
@@ -259,17 +235,9 @@ var app = function(auth_data) {
 			break;		
 		case 'getMyVideos':
 			var CP = new pkg.crowdProcess();
-			var _f = {};
-			_f['auth'] = function(cbk) {
-				if (!auth_data.isAuth) {
-					cbk(false);
-					CP.exit = 1;
-				} else {
-					cbk(auth_data);
-				}				
-			};			
+			var _f = {};			
 			_f['P0'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -296,7 +264,7 @@ var app = function(auth_data) {
 			};
 			*/
 			_f['P2'] = function(cbk) {
-				var uid = CP.data.auth.uid;
+				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -339,11 +307,7 @@ var app = function(auth_data) {
 			};		
 			CP.serial(
 				_f,
-				function(data) {
-					if (!CP.data.auth.isAuth) {
-						res.send({status:'failure', message:'Auth failure'});
-						return true;
-					}				
+				function(data) {			
 					var d = [];
 					for (var i = 0; i < data.results.P0.length; i++) {
 						d[d.length] = data.results.P0[i];
@@ -376,15 +340,7 @@ var app = function(auth_data) {
 		case 'removeUserVideo':
 			var vid = req.body.vid;
 			var CP = new pkg.crowdProcess();
-			var _f = {};
-			_f['auth'] = function(cbk) {
-				if (!auth_data.isAuth) {
-					cbk(false);
-					CP.exit = 1;
-				} else {
-					cbk(auth_data);
-				}				
-			};			
+			var _f = {};			
 			_f['P1'] = function(cbk) {
 				var uid = CP.data.auth.uid;
 				var connection = mysql.createConnection(cfg0);
@@ -400,11 +356,7 @@ var app = function(auth_data) {
 			};		
 			CP.serial(
 				_f,
-				function(data) {
-					if (!CP.data.auth.isAuth) {
-						res.send({status:'failure', message:'Auth failure'});
-						return true;
-					}					
+				function(data) {					
 					res.send({status:data.status, _spent_time:data._spent_time, data:data.results});
 				},
 				3000
@@ -422,6 +374,10 @@ var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
 // app();
 
 auth.getUid(function(auth_data) {
-	app(auth_data);
+	if (!auth_data.isAuth || !auth_data.uid) {
+		res.send({status:'failure', message:'Auth failure'});
+	} else {	
+		app(auth_data);
+	}
 });
 
