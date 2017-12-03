@@ -1,4 +1,4 @@
-var app = function() { 
+var app = function(auth_data) { 
 	var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
 	    mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 	    config = require(env.config_path + '/config.json'),
@@ -15,14 +15,12 @@ var app = function() {
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['auth'] = function(cbk) {
-				auth.getUid(function(data) {
-					if (!data.isAuth) {
-						cbk(false);
-						CP.exit = 1;
-					} else {
-						cbk(data);
-					}	
-				});			
+				if (!auth_data.isAuth) {
+					cbk(false);
+					CP.exit = 1;
+				} else {
+					cbk(auth_data);
+				}				
 			};		
 			_f['A0'] = function(cbk) {  /* Clean old download_falure related record */
 				var uid = CP.data.auth.uid;
@@ -192,15 +190,13 @@ var app = function() {
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['auth'] = function(cbk) {
-				auth.getUid(function(data) {
-					if (!data.isAuth) {
-						cbk(false);
-						CP.exit = 1;
-					} else {
-						cbk(data);
-					}	
-				});			
-			};		
+				if (!auth_data.isAuth) {
+					cbk(false);
+					CP.exit = 1;
+				} else {
+					cbk(auth_data);
+				}				
+			};			
 			_f['P2'] = function(cbk) {
 				var uid = CP.data.auth.uid;
 				var connection = mysql.createConnection(cfg0);
@@ -265,15 +261,13 @@ var app = function() {
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['auth'] = function(cbk) {
-				auth.getUid(function(data) {
-					if (!data.isAuth) {
-						cbk(false);
-						CP.exit = 1;
-					} else {
-						cbk(data);
-					}	
-				});			
-			};		
+				if (!auth_data.isAuth) {
+					cbk(false);
+					CP.exit = 1;
+				} else {
+					cbk(auth_data);
+				}				
+			};			
 			_f['P0'] = function(cbk) {
 				var uid = CP.data.auth.uid;
 				var connection = mysql.createConnection(cfg0);
@@ -384,14 +378,12 @@ var app = function() {
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['auth'] = function(cbk) {
-				auth.getUid(function(data) {
-					if (!data.isAuth) {
-						cbk(false);
-						CP.exit = 1;
-					} else {
-						cbk(data);
-					}	
-				});			
+				if (!auth_data.isAuth) {
+					cbk(false);
+					CP.exit = 1;
+				} else {
+					cbk(auth_data);
+				}				
 			};			
 			_f['P1'] = function(cbk) {
 				var uid = CP.data.auth.uid;
@@ -429,7 +421,7 @@ var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
 
 // app();
 
-auth.getUid(function(data) {
-	app();
+auth.getUid(function(auth_data) {
+	app(auth_data);
 });
 
