@@ -431,6 +431,7 @@ var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
     auth = new AUTH(env, pkg, req);
 
 app();
+/*
 auth.getUid(
 	(function(app) {
 		return function(data) {
@@ -438,3 +439,4 @@ auth.getUid(
 		}	
 	})(app)	
 );
+*/
