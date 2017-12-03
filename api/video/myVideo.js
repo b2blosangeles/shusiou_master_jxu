@@ -18,6 +18,7 @@ var app = function(auth_data) {
 			var _f = {};
 			var uid = auth_data.uid;
 			_f['A0'] = function(cbk) {  /* Clean old download_falure related record */
+				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = "SELECT A.`id`"+    
 					" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`vid` = B.`vid` " +
@@ -36,6 +37,7 @@ var app = function(auth_data) {
 			};
 			_f['A1'] = function(cbk) {  /* Clean old download_falure related record */
 				if (CP.data.A0) {
+					var connection = mysql.createConnection(cfg0);
 					connection.connect();
 					var str ="DELETE FROM `video_user` WHERE `vid` IN (" + CP.data.A0 + "); ";
 					connection.query(str, function (error, results, fields) {
@@ -50,6 +52,7 @@ var app = function(auth_data) {
 				}
 			};		
 			_f['P0'] = function(cbk) {
+				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
 				var str = "SELECT `id`, `vid` FROM `download_queue` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
@@ -60,6 +63,7 @@ var app = function(auth_data) {
 				});  
 			};
 			_f['P1'] = function(cbk) {
+				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
 				var str = "SELECT `id`, `vid` FROM `video` WHERE `source` = '" + source + "' AND code = '" + code.replace(/\'/g, "\\\'") + "'; ";
@@ -74,7 +78,8 @@ var app = function(auth_data) {
 					var code = '';
 					if (CP.data.P1) code = CP.data.P1.vid;
 					else if (CP.data.P0) code = CP.data.P0.vid;
-					
+
+					var connection = mysql.createConnection(cfg0);
 					connection.connect();
 					var str = 'INSERT INTO `video_user` ' +
 					    '(`vid`, `uid`, `created`) VALUES (' +
@@ -103,6 +108,7 @@ var app = function(auth_data) {
 			};
 
 			_f['P3'] = function(cbk) {
+				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`, `video_length`, `org_thumbnail`, `created`, `status`) ' +
 							"values ('" + source + "', '" + code.replace(/\'/g, "\\\'") + "', '" + uid + "', "+
@@ -125,6 +131,7 @@ var app = function(auth_data) {
 			};
 			_f['P4'] = function(cbk) {
 				if (CP.data.P3) {
+					var connection = mysql.createConnection(cfg0);
 					connection.connect();
 					var str = 'INSERT INTO `video_user` ' +
 					    '(`vid`, `uid`, `created`) VALUES (' +
@@ -167,6 +174,8 @@ var app = function(auth_data) {
 			var CP = new pkg.crowdProcess();
 			var _f = {};			
 			_f['P2'] = function(cbk) {
+				
+				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
 				var str = 'SELECT A.*, B.`created` AS addtime FROM  `video` A LEFT JOIN `video_user` B on A.`vid` = B.`vid` ' +
@@ -183,6 +192,8 @@ var app = function(auth_data) {
 				for (var i = 0; i < CP.data.P2.length; i++) {
 					vstr += ',' +  CP.data.P2[i].vid; 
 				}
+
+				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
 				var str = 'SELECT * FROM  `video_node` WHERE `vid` IN (' + vstr + ')';
@@ -222,6 +233,7 @@ var app = function(auth_data) {
 			var CP = new pkg.crowdProcess();
 			var _f = {};			
 			_f['P0'] = function(cbk) {
+				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
 				var str = 'SELECT *, `created` AS addtime FROM  `download_queue` WHERE `uid` = "' + uid +'"';
@@ -247,6 +259,7 @@ var app = function(auth_data) {
 			};
 			*/
 			_f['P2'] = function(cbk) {
+				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
 				var str = 'SELECT A.*, B.`created` AS addtime FROM  `video` A LEFT JOIN `video_user` B on A.`vid` = B.`vid` ' +
@@ -264,6 +277,7 @@ var app = function(auth_data) {
 					vstr += ',' +  CP.data.P2[i].vid; 
 				}
 
+				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
 				var str = 'SELECT * FROM  `video_node` WHERE `vid` IN (' + vstr + ')';
@@ -322,6 +336,7 @@ var app = function(auth_data) {
 			var CP = new pkg.crowdProcess();
 			var _f = {};			
 			_f['P1'] = function(cbk) {
+				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
 				var str = "DELETE FROM  `video_user` WHERE `uid` = '" + uid +"'  AND `vid` = '" + vid + "'";
@@ -348,6 +363,8 @@ var app = function(auth_data) {
 delete require.cache[env.site_path + '/api/inc/auth/auth.js'];
 var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
     auth = new AUTH(env, pkg, req);
+
+// app();
 
 auth.getUid(function(auth_data) {
 	if (!auth_data.isAuth || !auth_data.uid) {
