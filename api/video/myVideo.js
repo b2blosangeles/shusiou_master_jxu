@@ -3,19 +3,21 @@ var app = function(auth_data) {
 	    mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 	    config = require(env.config_path + '/config.json'),
 	    cfg0 = config.db;
-
-	var connection = mysql.createConnection(cfg0);	
 	
 	var opt = req.query['opt'];
+	var uid = auth_data.uid;
+	
+	var connection = mysql.createConnection(cfg0);	
+	
 	switch(opt) {
 		case 'add':
 			var source = req.body.source || 'ytdl-core',
 			    code = req.body.code;
 
 			var CP = new pkg.crowdProcess();
-			var _f = {};		
+			var _f = {};
+			var uid = auth_data.uid;
 			_f['A0'] = function(cbk) {  /* Clean old download_falure related record */
-				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = "SELECT A.`id`"+    
@@ -34,7 +36,6 @@ var app = function(auth_data) {
 				});  
 			};
 			_f['A1'] = function(cbk) {  /* Clean old download_falure related record */
-
 				if (CP.data.A0) {
 					var connection = mysql.createConnection(cfg0);
 					connection.connect();
@@ -73,7 +74,6 @@ var app = function(auth_data) {
 				});  
 			};
 			_f['PV'] = function(cbk) {
-				var uid = auth_data.uid;
 				if ((CP.data.P0) || (CP.data.P1)) {
 					var code = '';
 					if (CP.data.P1) code = CP.data.P1.vid;
@@ -108,7 +108,6 @@ var app = function(auth_data) {
 			};
 
 			_f['P3'] = function(cbk) {
-				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = 'INSERT INTO `download_queue` (`source`, `code`, `uid`, `info`, `video_length`, `org_thumbnail`, `created`, `status`) ' +
@@ -119,11 +118,9 @@ var app = function(auth_data) {
 							'NOW(), 0 ); ';
 
 				connection.query(str, function (error, results, fields) {
-					// connection.end();
 					if (results.insertId) {
 						var vid = results.insertId * 1000000000000 + Math.floor(new Date().getTime() * 0.001);
 						var str1 = 'UPDATE `download_queue` SET `vid` = "' + vid + '" WHERE `id` = "' + results.insertId + '"';
-					//	connection.connect();
 						connection.query(str1, function (error1, results1, fields1) {
 							connection.end();
 							cbk(vid);
@@ -133,7 +130,6 @@ var app = function(auth_data) {
 				});  
 			};
 			_f['P4'] = function(cbk) {
-				var uid = auth_data.uid;
 				if (CP.data.P3) {
 					var connection = mysql.createConnection(cfg0);
 					connection.connect();
@@ -178,7 +174,7 @@ var app = function(auth_data) {
 			var CP = new pkg.crowdProcess();
 			var _f = {};			
 			_f['P2'] = function(cbk) {
-				var uid = auth_data.uid;
+				
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -237,7 +233,6 @@ var app = function(auth_data) {
 			var CP = new pkg.crowdProcess();
 			var _f = {};			
 			_f['P0'] = function(cbk) {
-				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -264,7 +259,6 @@ var app = function(auth_data) {
 			};
 			*/
 			_f['P2'] = function(cbk) {
-				var uid = auth_data.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -342,7 +336,6 @@ var app = function(auth_data) {
 			var CP = new pkg.crowdProcess();
 			var _f = {};			
 			_f['P1'] = function(cbk) {
-				var uid = CP.data.auth.uid;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
