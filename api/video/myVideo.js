@@ -356,4 +356,3 @@ auth.getUid(function(auth_data) {
 		app(auth_data);
 	}
 });
-
