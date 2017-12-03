@@ -1,6 +1,3 @@
-
-
-
 var app = function() { 
 	var ytdl = require(env.site_path + '/api/inc/ytdl-core/node_modules/ytdl-core'),
 	    mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
@@ -428,7 +425,7 @@ var app = function() {
 
 delete require.cache[env.site_path + '/api/inc/auth/auth.js'];
 var AUTH = require(env.site_path + '/api/inc/auth/auth.js'),
-    auth = new AUTH(env, pkg, req, app);
+    auth = new AUTH(env, pkg, req);
 
 // app();
 
