@@ -16,7 +16,6 @@ var app = function(auth_data) {
 
 			var CP = new pkg.crowdProcess();
 			var _f = {};
-			var uid = auth_data.uid;
 			_f['A0'] = function(cbk) {  /* Clean old download_falure related record */
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
