@@ -10,7 +10,7 @@ var app = function(auth_data) {
 	
 	switch(opt) {
 		case 'add':
-			/*
+
 			
 			var str = 'INSERT INTO  curriculums (`uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
 			' VALUES (' +
@@ -22,8 +22,8 @@ var app = function(auth_data) {
 			'"' + req.body.level  + '",' +
 			'NOW()' +	
 			'); ';
-			*/
-    res.send(({status:'error', message:'Wrong opt value!'})
+			
+    			res.send(str);
 			break;
 		default:
 			res.send({status:'error', message:'Wrong opt value!'});
