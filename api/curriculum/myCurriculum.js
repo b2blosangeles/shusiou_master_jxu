@@ -3,13 +3,35 @@ var app = function(auth_data) {
 	    config = require(env.config_path + '/config.json'),
 	    cfg0 = config.db;
 	
-	var opt = req.query['opt'];
+	var opt = req.body.opt;
 	var uid = auth_data.uid;
 	
 	var connection = mysql.createConnection(cfg0);	
 	
 	switch(opt) {
 		case 'add':
+			/*
+			var CP = new pkg.crowdProcess();
+			var _f = {};
+			_f['A0'] = function(cbk) {  
+				var connection = mysql.createConnection(cfg0);
+				connection.connect();
+				var str = "SELECT A.`id`"+    
+					" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`vid` = B.`vid` " +
+					" WHERE B.`uid` = '" + uid + "' AND NOW() - B.`created` > 36000; ";
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					if (error)  cbk(false);
+					else if (results) { 
+						var v = [];
+						for (var i = 0; i < results.length; i++) {
+							v[v.length] = results[i].id;
+						}
+						cbk(v.join(','));
+					} else cbk(false);
+				});  
+			};	
+			*/	
 				/*
 				connection.query(str, function (error, results, fields) {
 					if (results.insertId) {
@@ -23,7 +45,7 @@ var app = function(auth_data) {
 					} else cbk(false);
 				});  
 				*/
-			var str = 'INSERT INTO  curriculums (`uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
+			var str = '--INSERT INTO  curriculums (`uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
 			' VALUES (' +
 			'"' + req.body.auth.uid + '",' +
 			'"' + req.body.vid + '",' +
