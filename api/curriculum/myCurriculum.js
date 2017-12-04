@@ -3,7 +3,7 @@ var app = function(auth_data) {
 	    config = require(env.config_path + '/config.json'),
 	    cfg0 = config.db;
 	
-	var opt = req.body.opt;
+	var opt = req.body.cmd;
 	var uid = auth_data.uid;
 	
 	var connection = mysql.createConnection(cfg0);	
