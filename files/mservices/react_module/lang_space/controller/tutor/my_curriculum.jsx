@@ -196,9 +196,9 @@ try {
 			}
 			
 			me.props.route.env.engine({
-				url: shusiou_config.api_server + '/api/shusiou_curriculum.js',
+				url: shusiou_config.api_server + '/api/myCurriculum.js',
 				method: "POST",
-				data: data,
+				data: {data:data, auth:me.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
 				if ((data.data) && v === '') {
