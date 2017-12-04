@@ -10,8 +10,19 @@ var app = function(auth_data) {
 	
 	switch(opt) {
 		case 'add':
+				/*
+				connection.query(str, function (error, results, fields) {
+					if (results.insertId) {
+						var vid = results.insertId * 1000000000000 + Math.floor(new Date().getTime() * 0.001);
+						var str1 = 'UPDATE `download_queue` SET `vid` = "' + vid + '" WHERE `id` = "' + results.insertId + '"';
+						connection.query(str1, function (error1, results1, fields1) {
+							connection.end();
+							cbk(vid);
+						});	
 
-			
+					} else cbk(false);
+				});  
+				*/
 			var str = 'INSERT INTO  curriculums (`uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
 			' VALUES (' +
 			'"' + req.body.auth.uid + '",' +
