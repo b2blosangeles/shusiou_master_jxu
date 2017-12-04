@@ -185,20 +185,23 @@ try {
 					name:me.state.curriculum.name, 
 					section:me.state.section,
 					published:(me.state.curriculum.published)?me.state.curriculum.published:0,
-				        sections:me.state.sections};
+				        sections:me.state.sections,
+				        auth:me.props.route.env.state.auth
+				};
 			} else {
 				data = {cmd:'add', vid: me.state.video.id, name:me.state.curriculum.name, 
 					mother_lang:me.state.curriculum.mother_lang, 
 					learning_lang:me.state.curriculum.learning_lang, 
 					level:me.state.curriculum.level, 					
-				        sections:me.state.sections
+				        sections:me.state.sections,
+					auth:me.props.route.env.state.auth
 				       };
 			}
 			
 			me.props.route.env.engine({
 				url: shusiou_config.api_server + '/api/curriculum/myCurriculum.api?opt=add',
 				method: "POST",
-				data: {data:data, auth:me.props.route.env.state.auth},
+				data: data,
 				dataType: "JSON"
 			}, function( data) {
 				if ((data.data) && v === '') {
