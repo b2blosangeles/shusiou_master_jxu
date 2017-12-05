@@ -21,7 +21,7 @@ var app = function(auth_data) {
 				var tm = Math.floor((new Date().getTime()- new Date('2017-12-01').getTime()) * 0.001 / 60) * 10000000000;
 				
 				var str = 'INSERT INTO  curriculums (`curriculum_id`, `uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
-				' VALUES (' + '"0"' +
+				' VALUES (' + '"0",' +
 				'"' + uid + '",' +
 				'"' + req.body.vid + '",' +
 				'"' + req.body.name + '",' +
