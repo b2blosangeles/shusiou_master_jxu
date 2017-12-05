@@ -28,8 +28,6 @@ var app = function(auth_data) {
 				'"' + req.body.level  + '",' +
 				'NOW()' +	
 				'); ';	
-				cbk(str);
-				return true;
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error)  cbk(false);
