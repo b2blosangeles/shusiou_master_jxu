@@ -20,7 +20,7 @@ var app = function(auth_data) {
 				connection.connect();
 				var tm = Math.floor((new Date().getTime()- new Date('2017-12-01').getTime()) * 0.001 / 60) * 10000000000;
 				
-				var str = 'INSERT INTO  curriculums (`curriculum_id`, `uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
+				var str = 'INSERT INTO  `curriculums` (`curriculum_id`, `uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
 				' VALUES (' + '"0",' +
 				'"' + uid + '",' +
 				'"' + req.body.vid + '",' +
@@ -30,7 +30,7 @@ var app = function(auth_data) {
 				'"' + req.body.level  + '",' +
 				'NOW()' +	
 				'); ' +
-				'UPDATE  curriculums SET `curriculum_id` = ' + tm + ' + `id` WHERE `curriculum_id` = "0" ';   
+				'UPDATE  curriculums SET `curriculum_id` = ' + tm + ' + `id` WHERE `curriculum_id` = "0" AND `uid` = '"' + uid + '"';   
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error)  cbk(false);
