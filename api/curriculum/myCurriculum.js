@@ -19,7 +19,7 @@ var app = function(auth_data) {
 				
 				var str = 'INSERT INTO  curriculums (`curriculum_id`, `uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
 				' VALUES (' +
-				'`id`' + tm + ',' +
+				'`id` + ' + tm + ',' +
 				'"' + uid + '",' +
 				'"' + req.body.vid + '",' +
 				'"' + req.body.name + '",' +
@@ -29,20 +29,11 @@ var app = function(auth_data) {
 				'NOW()' +	
 				'); ';	
 				
-				cbk(str);
-				return true;
-				var str = "SELECT A.`id`"+    
-					" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`vid` = B.`vid` " +
-					" WHERE B.`uid` = '" + uid + "' AND NOW() - B.`created` > 36000; ";
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error)  cbk(false);
 					else if (results) { 
-						var v = [];
-						for (var i = 0; i < results.length; i++) {
-							v[v.length] = results[i].id;
-						}
-						cbk(v.join(','));
+						cbk(results);
 					} else cbk(false);
 				});  
 			};	
