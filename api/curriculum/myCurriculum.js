@@ -15,11 +15,11 @@ var app = function(auth_data) {
 			_f['A0'] = function(cbk) {  
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
-				var str =  (Math.floor(new Date().getTime() * 0.001 / 60) * 10000000000);
-				/*
+				var tm =  (Math.floor(new Date().getTime()- new Date('2017-12-01').getTime()) * 0.001 / 60) * 10000000000;
+				
 				var str = 'INSERT INTO  curriculums (`curriculum_id`, `uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
 				' VALUES (' +
-				'`' + id + '`' + (Math.floor(new Date().getTime() * 0.001 / 60) * 10000000000) + ',' +
+				'`id`' + tm + ',' +
 				'"' + uid + '",' +
 				'"' + req.body.vid + '",' +
 				'"' + req.body.name + '",' +
