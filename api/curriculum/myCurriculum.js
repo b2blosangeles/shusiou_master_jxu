@@ -12,11 +12,11 @@ var app = function(auth_data) {
 	
 	switch(opt) {
 		case 'add':
-			var connection = mysql.createConnection(cfg);
+		//	var connection = mysql.createConnection(cfg);
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['A0'] = function(cbk) {  
-				var connection = mysql.createConnection(cfg0);
+				var connection = mysql.createConnection(cfg);
 				connection.connect();
 				var tm = Math.floor((new Date().getTime()- new Date('2017-12-01').getTime()) * 0.001 / 60) * 10000000000;
 				
