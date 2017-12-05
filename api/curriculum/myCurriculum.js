@@ -6,10 +6,13 @@ var app = function(auth_data) {
 	var opt = req.body.cmd;
 	var uid = auth_data.uid;
 	
-	var connection = mysql.createConnection(cfg0);	
+	 var cfg = JSON.parse(JSON.stringify());
+	 cfg.multipleStatements = true;
+	// var connection = mysql.createConnection(cfg0);	
 	
 	switch(opt) {
 		case 'add':
+			var connection = mysql.createConnection(cfg);
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['A0'] = function(cbk) {  
@@ -18,8 +21,7 @@ var app = function(auth_data) {
 				var tm = Math.floor((new Date().getTime()- new Date('2017-12-01').getTime()) * 0.001 / 60) * 10000000000;
 				
 				var str = 'INSERT INTO  curriculums (`curriculum_id`, `uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
-				' VALUES (' +
-				tm + ' + `id`,' +
+				' VALUES (' + '"0"' +
 				'"' + uid + '",' +
 				'"' + req.body.vid + '",' +
 				'"' + req.body.name + '",' +
@@ -27,7 +29,8 @@ var app = function(auth_data) {
 				'"' + req.body.learning_lang  + '",' +
 				'"' + req.body.level  + '",' +
 				'NOW()' +	
-				'); ';	
+				'); ' +
+				'UPDATE  curriculums SET `curriculum_id` = ' + tm + ' + `id` WHERE `curriculum_id` = "0"; ';   
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error)  cbk(false);
