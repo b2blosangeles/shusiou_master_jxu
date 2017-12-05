@@ -42,7 +42,15 @@ var app = function(auth_data) {
 					} else cbk(false);
 				});  
 			};	
-				
+			CP.serial(
+				_f,
+				function(data) {
+					connection.end();
+					res.send({_spent_time:data._spent_time, status:data.status, curriculum: data.results});
+				},
+				3000
+			);
+			break;				
 				/*
 				connection.query(str, function (error, results, fields) {
 					if (results.insertId) {
@@ -70,7 +78,6 @@ var app = function(auth_data) {
 			
     			res.send(str);
 			*/
-			break;
 		default:
 			res.send({status:'error', message:'Wrong opt value!'});
 	}
