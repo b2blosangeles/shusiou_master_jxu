@@ -15,6 +15,8 @@ var app = function(auth_data) {
 			_f['A0'] = function(cbk) {  
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
+				var str =  (Math.floor(new Date().getTime() * 0.001 / 60) * 10000000000);
+				/*
 				var str = 'INSERT INTO  curriculums (`curriculum_id`, `uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
 				' VALUES (' +
 				'`' + id + '`' + (Math.floor(new Date().getTime() * 0.001 / 60) * 10000000000) + ',' +
@@ -26,6 +28,7 @@ var app = function(auth_data) {
 				'"' + req.body.level  + '",' +
 				'NOW()' +	
 				'); ';	
+				*/
 				cbk(str);
 				return true;
 				var str = "SELECT A.`id`"+    
