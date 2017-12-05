@@ -12,7 +12,6 @@ var app = function(auth_data) {
 	
 	switch(opt) {
 		case 'add':
-		//	var connection = mysql.createConnection(cfg);
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['A0'] = function(cbk) {  
@@ -28,9 +27,8 @@ var app = function(auth_data) {
 				'"' + req.body.mother_lang  + '",' +
 				'"' + req.body.learning_lang  + '",' +
 				'"' + req.body.level  + '",' +
-				'NOW()' +	
-				'); ' +
-				'UPDATE  curriculums SET `curriculum_id` = ' + tm + ' + `id` WHERE `curriculum_id` = "0" AND `uid` = '"' + uid + '"';   
+				'NOW()); ' +
+				'UPDATE  curriculums SET `curriculum_id` = ' + tm + ' + `id` WHERE `curriculum_id` = "0" AND `uid` = "' + uid + '"';   
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error)  cbk(false);
