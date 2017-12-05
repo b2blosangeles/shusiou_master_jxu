@@ -31,6 +31,8 @@ var app = function(auth_data) {
 				'NOW()' +	
 				'); ' +
 				'UPDATE  curriculums SET `curriculum_id` = ' + tm + ' + `id` WHERE `curriculum_id` = "0"; ';   
+				cbk(str);
+				return true;
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error)  cbk(false);
