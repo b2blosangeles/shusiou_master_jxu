@@ -30,9 +30,7 @@ var app = function(auth_data) {
 				'"' + req.body.level  + '",' +
 				'NOW()' +	
 				'); ' +
-				'UPDATE  curriculums SET `curriculum_id` = ' + tm + ' + `id` WHERE `curriculum_id` = "0"; ';   
-				cbk(str);
-				return true;
+				'UPDATE  curriculums SET `curriculum_id` = ' + tm + ' + `id` WHERE `curriculum_id` = "0" ';   
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error)  cbk(false);
