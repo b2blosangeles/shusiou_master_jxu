@@ -17,7 +17,7 @@ var app = function(auth_data) {
 				connection.connect();
 				var str = 'INSERT INTO  curriculums (`curriculum_id`, `uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
 				' VALUES (' +
-				'`' + id + '`' + (Math.ceil(new Date().getTime() * 0.001 / 60) * 10000000000) + ',' +
+				// '`' + id + '`' + (Math.ceil(new Date().getTime() * 0.001 / 60) * 10000000000) + ',' +
 				'"' + uid + '",' +
 				'"' + req.body.vid + '",' +
 				'"' + req.body.name + '",' +
