@@ -19,7 +19,7 @@ var app = function(auth_data) {
 				
 				var str = 'INSERT INTO  curriculums (`curriculum_id`, `uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
 				' VALUES (' +
-				'`id` + ' + tm + ',' +
+				' + tm + ' + `id`,' +
 				'"' + uid + '",' +
 				'"' + req.body.vid + '",' +
 				'"' + req.body.name + '",' +
