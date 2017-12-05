@@ -6,7 +6,7 @@ var app = function(auth_data) {
 	var opt = req.body.cmd;
 	var uid = auth_data.uid;
 	
-	 var cfg = JSON.parse(JSON.stringify());
+	 var cfg = JSON.parse(JSON.stringify(cfg0));
 	 cfg.multipleStatements = true;
 	// var connection = mysql.createConnection(cfg0);	
 	
