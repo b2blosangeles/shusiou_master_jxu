@@ -10,12 +10,23 @@ var app = function(auth_data) {
 	
 	switch(opt) {
 		case 'add':
-			/*
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['A0'] = function(cbk) {  
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
+				var str = 'INSERT INTO  curriculums (`uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
+				' VALUES (' +
+				'"' + uid + '",' +
+				'"' + req.body.vid + '",' +
+				'"' + req.body.name + '",' +
+				'"' + req.body.mother_lang  + '",' +
+				'"' + req.body.learning_lang  + '",' +
+				'"' + req.body.level  + '",' +
+				'NOW()' +	
+				'); ';	
+				cbk(str);
+				return true;
 				var str = "SELECT A.`id`"+    
 					" FROM `download_failure` A LEFT JOIN `video_user` B ON A.`vid` = B.`vid` " +
 					" WHERE B.`uid` = '" + uid + "' AND NOW() - B.`created` > 36000; ";
@@ -31,7 +42,7 @@ var app = function(auth_data) {
 					} else cbk(false);
 				});  
 			};	
-			*/	
+				
 				/*
 				connection.query(str, function (error, results, fields) {
 					if (results.insertId) {
@@ -45,6 +56,7 @@ var app = function(auth_data) {
 					} else cbk(false);
 				});  
 				*/
+			/*
 			var str = '--INSERT INTO  curriculums (`uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
 			' VALUES (' +
 			'"' + req.body.auth.uid + '",' +
@@ -57,6 +69,7 @@ var app = function(auth_data) {
 			'); ';
 			
     			res.send(str);
+			*/
 			break;
 		default:
 			res.send({status:'error', message:'Wrong opt value!'});
