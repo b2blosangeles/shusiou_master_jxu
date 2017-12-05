@@ -28,7 +28,7 @@ var app = function(auth_data) {
 				'"' + req.body.level  + '",' +
 				'NOW()' +	
 				'); ';	
-				*/
+				
 				cbk(str);
 				return true;
 				var str = "SELECT A.`id`"+    
