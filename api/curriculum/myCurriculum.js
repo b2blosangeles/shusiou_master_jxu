@@ -6,8 +6,8 @@ var app = function(auth_data) {
 	var opt = req.body.cmd;
 	var uid = auth_data.uid;
 	
-	 var cfg = JSON.parse(JSON.stringify(cfg0));
-	 cfg.multipleStatements = true;
+	 var cfgM = JSON.parse(JSON.stringify(cfg0));
+	 cfgm.multipleStatements = true;
 	// var connection = mysql.createConnection(cfg0);	
 	
 	switch(opt) {
@@ -16,7 +16,7 @@ var app = function(auth_data) {
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['A0'] = function(cbk) {  
-				var connection = mysql.createConnection(cfg);
+				var connection = mysql.createConnection(cfgM);
 				connection.connect();
 				var tm = Math.floor((new Date().getTime()- new Date('2017-12-01').getTime()) * 0.001 / 60) * 10000000000;
 				
@@ -31,8 +31,6 @@ var app = function(auth_data) {
 				'NOW()' +	
 				'); ' +
 				'UPDATE  curriculums SET `curriculum_id` = ' + tm + ' + `id` WHERE `curriculum_id` = "0"; ';   
-				cbk(str)
-				return true;
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error)  cbk(false);
