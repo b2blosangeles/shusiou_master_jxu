@@ -83,7 +83,7 @@ try {
 							<div className="dropdown">
 							 	<button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">  
 								{(function(){ 		
-								if ((me.props.parent.state.video) && (me.props.parent.state.video.code)) return(	  
+								if ((me.props.parent.state.video) && (me.props.parent.state.video.vid)) return(	  
 								<table className="container-fluid">
 									<tr>
 										<td width="90" valign="top">
