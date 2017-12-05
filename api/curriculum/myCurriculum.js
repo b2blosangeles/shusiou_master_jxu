@@ -7,7 +7,7 @@ var app = function(auth_data) {
 	var uid = auth_data.uid;
 	
 	 var cfgM = JSON.parse(JSON.stringify(cfg0));
-	 cfgm.multipleStatements = true;
+	 cfgM.multipleStatements = true;
 	// var connection = mysql.createConnection(cfg0);	
 	
 	switch(opt) {
