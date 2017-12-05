@@ -15,8 +15,9 @@ var app = function(auth_data) {
 			_f['A0'] = function(cbk) {  
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
-				var str = 'INSERT INTO  curriculums (`uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
+				var str = 'INSERT INTO  curriculums (`curriculum_id`, `uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
 				' VALUES (' +
+				'`' + id + '` + Math.ceil(new Date().getTime() * 0.0001 * / 60) * 100000000000 +
 				'"' + uid + '",' +
 				'"' + req.body.vid + '",' +
 				'"' + req.body.name + '",' +
