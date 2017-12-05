@@ -189,7 +189,7 @@ try {
 				        auth:me.props.route.env.state.auth
 				};
 			} else {
-				data = {cmd:'add', vid: me.state.video.id, name:me.state.curriculum.name, 
+				data = {cmd:'add', vid: me.state.video.vid, name:me.state.curriculum.name, 
 					mother_lang:me.state.curriculum.mother_lang, 
 					learning_lang:me.state.curriculum.learning_lang, 
 					level:me.state.curriculum.level, 					
