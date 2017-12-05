@@ -46,7 +46,6 @@ var app = function(auth_data) {
 			CP.serial(
 				_f,
 				function(data) {
-					connection.end();
 					res.send({_spent_time:data._spent_time, status:data.status, curriculum: data.results});
 				},
 				3000
