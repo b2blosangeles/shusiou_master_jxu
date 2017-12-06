@@ -47,9 +47,10 @@ try {
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
 		},
-		videoImageFilm:function(rec, t) {
-			var url = shusiou_config.api_server + '/api/video/play_stream.api?type=image&vid='+rec.vid+'&w=180&s='+t;
-			return url;
+		videoImageFilm:function(t, rec) {
+			var url = 'http://' + a.server_ip + '/api/video/play_stream.api?type=image&vid='+ a.vid +'&w=180&s='+t;
+			return {width:'100%', background:'url('+url+')',
+				'background-size':'cover'}
 		},		
 		bgFilmThumbnail:function(v) {
 			return {width:'100%', height:'100%', background:'url('+v+')','background-size':'contain'}	
@@ -92,7 +93,7 @@ try {
 										<div className="video_thumbnail_text_top">
 											{a.name}	
 										</div>
-										<img src={me.videoImageFilm(a.code, 10)} style={{width:'100%'}}/>
+										<img src={me.videoImageFilm(10,a)} style={{width:'100%'}}/>
 										<div className="video_thumbnail_text">
 											<a href={'#/tutor/my_curriculum/edit/' + a.id}>
 												<button type="button" 
