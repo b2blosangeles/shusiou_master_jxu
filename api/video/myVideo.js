@@ -118,7 +118,8 @@ var app = function(auth_data) {
 
 				connection.query(str, function (error, results, fields) {
 					if (results.insertId) {
-						var vid = results.insertId * 1000000000000 + Math.floor(new Date().getTime() * 0.001);
+						var tm = Math.floor((new Date().getTime()- new Date('2017-12-01').getTime()) * 0.001 / 60) * 10000000000;
+						var vid = results.insertId + tm;
 						var str1 = 'UPDATE `download_queue` SET `vid` = "' + vid + '" WHERE `id` = "' + results.insertId + '"';
 						connection.query(str1, function (error1, results1, fields1) {
 							connection.end();
