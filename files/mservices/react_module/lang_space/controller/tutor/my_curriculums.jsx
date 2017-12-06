@@ -102,7 +102,7 @@ try {
 												<button type="button" 
 													className="btn btn-warning">
 													<i className="fa fa-pencil" aria-hidden="true"></i> 
-													&nbsp;&nbsp;Edit{me.videoImageFilm(10,a)}
+													&nbsp;&nbsp;Edit
 												</button>
 											</a>	
 										</div>										
