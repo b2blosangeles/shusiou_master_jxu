@@ -13,11 +13,12 @@ var app = function(auth_data) {
 			var _f = {};
 			_f['S1'] = function(cbk) {
 				var connection = mysql.createConnection(cfg0);
+				connection.connect();
 				var str = 'SELECT A.*, B.vid FROM  `video` B JOIN `curriculums` A  ON A.vid = B.vid AND A.uid = "' + 
 				    uid + '";';
 
 				connection.query(str, function (error, results, fields) {
-
+					connection.end();
 					if (error) {
 						cbk(error.message);
 						return true;
@@ -26,11 +27,11 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			connection.connect();
+			
 			CP.serial(
 				_f,
 				function(data) {
-					connection.end();
+					
 					res.send({_spent_time:data._spent_time, status:data.status, data:data.results.S1});
 				},
 				3000
