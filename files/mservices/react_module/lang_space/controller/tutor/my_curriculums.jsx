@@ -47,8 +47,8 @@ try {
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
 		},
-		videoImageFilm:function(a, t) {
-			var url = shusiou_config.api_server + '/api/shusiou_video_image180.js?video='+a+'|'+t;
+		videoImageFilm:function(rec, t) {
+			var url = shusiou_config.api_server + '/api/video/play_stream.api?type=image&vid='+rec.vid+'&w=180&s='+t;
 			return url;
 		},		
 		bgFilmThumbnail:function(v) {
