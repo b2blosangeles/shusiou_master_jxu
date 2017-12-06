@@ -98,7 +98,7 @@ try {
 										<div className="video_thumbnail_text_top">
 											{a.name}	
 										</div>
-										<img src={me.videoImageFilm(30,a)} style={{width:'100%'}}/>
+										<img src={me.videoImageFilm(77,a)} style={{width:'100%'}}/>
 										<div className="video_thumbnail_text">
 											<a href={'#/tutor/my_curriculum/edit/' + a.id}>
 												<button type="button" 
