@@ -8,8 +8,6 @@ var app = function(auth_data) {
 	
 	 var cfgM = JSON.parse(JSON.stringify(cfg0));
 	 cfgM.multipleStatements = true;
-	// var connection = mysql.createConnection(cfg0);	
-	
 	switch(opt) {
 		case 'getList':
 			var _f = {};
