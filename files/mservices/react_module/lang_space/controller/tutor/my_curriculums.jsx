@@ -53,7 +53,7 @@ try {
 		},*/
 		videoImageFilm:function(t, a) {
 			var svr = a.server_ip;
-			if (a.node_ip.length) {
+			if ((a.node_ip) && (a.node_ip.length)) {
 				var idx = Math.floor(Math.random()*a.node_ip.length);
 				svr = a.node_ip[idx];
 			}
