@@ -51,12 +51,7 @@ try {
 				'background-size':'cover'}
 		},
 		videoImageFilm:function(t, a) {
-			
 			var url = 'http://' + a.server_ip + '/api/video/play_stream.api?type=image&vid='+ a.vid +'&w=180&s='+t;
-			console.log('---url---');
-			console.log(url);
-			return '';
-			console.log(url);
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
 		},		
