@@ -52,7 +52,13 @@ try {
 				'background-size':'cover'}
 		},*/
 		videoImageFilm:function(t, a) {
-			var url = 'http://' + a.server_ip + '/api/video/play_stream.api?type=image&vid='+ a.vid +'&w=180&s='+t;
+			var svr = a.server_ip;
+			if (a.node_ip.length) {
+				var idx = Math.floor(Math.random()*a.node_ip.length);
+				scr = a.node_ip[idx];
+			}
+			var url = 'http://' +scr + '/api/video/play_stream.api?type=image&vid='+ a.vid +
+			    '&w=180&s='+t+'&server='+a.server_ip;
 			console.log(url);
 			return url;
 			return {width:'100%', background:'url('+url+')',
