@@ -43,6 +43,8 @@ try {
 			}
 		},		
 		bgFilmStyle:function(t, a) {
+						console.log('---url-A--');
+			console.log(url);
 			var url = 'http://' + a.server_ip + '/api/video/play_stream.api?type=image&vid='+ a.vid +'&w=180&s='+t;
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
