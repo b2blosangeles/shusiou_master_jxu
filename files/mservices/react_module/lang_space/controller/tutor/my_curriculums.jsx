@@ -11,9 +11,9 @@ try {
 		pullList:function() {
 			var me = this;
 			me.props.route.env.engine({
-				url: shusiou_config.api_server + '/api/shusiou_curriculum.js',
+				url: shusiou_config.api_server + '/api/curriculum/myCurriculum.api',
 				method: "POST",
-				data: {cmd:'getList'},
+				data: {cmd:'getList', auth:me.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
 				me.setState({list:data.data});
