@@ -11,6 +11,33 @@ var app = function(auth_data) {
 	// var connection = mysql.createConnection(cfg0);	
 	
 	switch(opt) {
+		case 'getList':
+			var _f = {};
+			_f['S1'] = function(cbk) {
+				var connection = mysql.createConnection(cfg0);
+				var str = 'SELECT A.*, B.code FROM  `video` B JOIN `curriculums` A  ON A.vid = B.id AND A.uid = "' + 
+				    uid + '";';
+
+				connection.query(str, function (error, results, fields) {
+
+					if (error) {
+						cbk(error.message);
+						return true;
+					} else {
+						cbk(results);
+					}
+				});  
+			};
+			connection.connect();
+			CP.serial(
+				_f,
+				function(data) {
+					connection.end();
+					res.send({_spent_time:data._spent_time, status:data.status, data:data.results.S1});
+				},
+				3000
+			);
+			break;				
 		case 'add':
 			var CP = new pkg.crowdProcess();
 			var _f = {};
@@ -46,33 +73,6 @@ var app = function(auth_data) {
 				3000
 			);
 			break;				
-				/*
-				connection.query(str, function (error, results, fields) {
-					if (results.insertId) {
-						var vid = results.insertId * 1000000000000 + Math.floor(new Date().getTime() * 0.001);
-						var str1 = 'UPDATE `download_queue` SET `vid` = "' + vid + '" WHERE `id` = "' + results.insertId + '"';
-						connection.query(str1, function (error1, results1, fields1) {
-							connection.end();
-							cbk(vid);
-						});	
-
-					} else cbk(false);
-				});  
-				*/
-			/*
-			var str = '--INSERT INTO  curriculums (`uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
-			' VALUES (' +
-			'"' + req.body.auth.uid + '",' +
-			'"' + req.body.vid + '",' +
-			'"' + req.body.name + '",' +
-			'"' + req.body.mother_lang  + '",' +
-			'"' + req.body.learning_lang  + '",' +
-			'"' + req.body.level  + '",' +
-			'NOW()' +	
-			'); ';
-			
-    			res.send(str);
-			*/
 		default:
 			res.send({status:'error', message:'Wrong opt value!'});
 	}
