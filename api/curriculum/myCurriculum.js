@@ -10,6 +10,7 @@ var app = function(auth_data) {
 	 cfgM.multipleStatements = true;
 	switch(opt) {
 		case 'getList':
+			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['S1'] = function(cbk) {
 				var connection = mysql.createConnection(cfg0);
