@@ -41,7 +41,8 @@ try {
 			} else {
 				return {'font-size':'1em'}	
 			}
-		},		
+		},
+		/*
 		bgFilmStyle:function(t, a) {
 						console.log('---url-A--');
 			console.log(url);
@@ -49,18 +50,19 @@ try {
 			var url = 'http://' + a.server_ip + '/api/video/play_stream.api?type=image&vid='+ a.vid +'&w=180&s='+t;
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
-		},
+		},*/
 		videoImageFilm:function(t, a) {
 			var url = 'http://' + a.server_ip + '/api/video/play_stream.api?type=image&vid='+ a.vid +'&w=180&s='+t;
 			console.log(url);
 			return url;
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
-		},		
+		},
+		/*
 		bgFilmThumbnail:function(v) {
 			return {width:'100%', height:'100%', background:'url('+v+')','background-size':'contain'}	
 		},
-		
+		*/
 		newAddThumbnail:function(t) {
 			 var idx = Math.floor(Math.random() * (6 - 1) ) + 1;
 			var url = '/images/teacher_' + idx + '.jpg';
