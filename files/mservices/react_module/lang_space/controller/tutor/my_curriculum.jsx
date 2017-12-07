@@ -129,8 +129,10 @@ try {
 			} else if (me.props.params['opt'] == 'edit') {
 				var cid = me.props.params['id'];
 				me.getCurriculumById(cid, function(data) {
-					console.log(data);
+					
 					if (data.curriculum_id) {
+						console.log('===data>>');
+						console.log(data);
 						me.setState({curriculum:data,
 						    sections:data.curriculum.script});
 					} 
@@ -220,6 +222,7 @@ try {
 			if (!this.props.route || !this.props.route.env ||!this.props.route.env.dictionary) return v;
 			return this.props.route.env.dictionary(v);
 		},
+		/*
 		getVideoInfo: function(vid, cbk) {
 			var me = this;
 			
@@ -235,7 +238,8 @@ try {
 			},function( jqXHR, textStatus ) {
 				console.log( "Request failed: " + textStatus );
 			});			
-		},		
+		},
+		*/
 		getCurriculumById: function(curriculum_id, cbk) {
 			var me = this;
 			me.props.route.env.engine({
