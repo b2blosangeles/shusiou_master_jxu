@@ -249,7 +249,6 @@ try {
 				dataType: "JSON"
 			}, function( data) {
 				if (typeof cbk == 'function') {
-					console.log(data);
 					cbk(data);
 				}
 			},function( jqXHR, textStatus ) {
