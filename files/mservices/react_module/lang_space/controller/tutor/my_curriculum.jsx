@@ -128,11 +128,10 @@ try {
 				);
 			} else if (me.props.params['opt'] == 'edit') {
 				var cid = me.props.params['id'];
-				
-				
 				me.getCurriculumById(cid, function(data) {
-					if (data.vid) {
-						me.setState({vid:data.vid, curriculum:data,
+					console.log(data);
+					if (data.curriculum_id) {
+						me.setState({curriculum:data,
 						    sections:data.curriculum.script});
 					} 
 					me.leftBox(me.props.params);
