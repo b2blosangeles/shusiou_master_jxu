@@ -225,7 +225,7 @@ try {
 			var me = this;
 			
 			me.props.route.env.engine({
-				url: shusiou_config.api_server + '/api/shusiou_get_videoinfo_byid.js',
+				url: shusiou_config.api_server + '/api/',
 				method: "POST",
 				data: { vid:vid},
 				dataType: "JSON"
@@ -240,7 +240,7 @@ try {
 		getCurriculumById: function(cid, cbk) {
 			var me = this;
 			me.props.route.env.engine({
-				url: shusiou_config.api_server + '/api/shusiou_curriculum.js',
+				url: shusiou_config.api_server + '/api/curriculum/myCurriculum.api',
 				method: "POST",
 				data: { cmd:'getCurriculumById', cid:cid},
 				dataType: "JSON"
