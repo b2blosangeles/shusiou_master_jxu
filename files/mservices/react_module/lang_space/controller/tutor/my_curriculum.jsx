@@ -146,6 +146,7 @@ try {
 		deleteCurriculum: function(params, track) {
 			var me = this;
 			var id = new Date().getTime();
+			alert('delete');
 			me.setState({ModalPlus:{type:'popup',  hold:0,
 				box_style:{top:'28px'},
 				header: (<span/>),		
