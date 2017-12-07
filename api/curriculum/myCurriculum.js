@@ -106,19 +106,8 @@ var app = function(auth_data) {
 			_f['A0'] = function(cbk) {  
 				var connection = mysql.createConnection(cfgM);
 				connection.connect();
-				var tm = Math.floor((new Date().getTime()- new Date('2017-12-01').getTime()) * 0.001 / 60) * 10000000000;
-				
-				var str = 'INSERT INTO  `curriculums` (`curriculum_id`, `uid`,`vid`,`name`,`mother_lang`,`learning_lang`,`level`, `created`) '+
-				' VALUES (' + '"' + tm + '",' +
-				'"' + uid + '",' +
-				'"' + req.body.vid + '",' +
-				'"' + req.body.name + '",' +
-				'"' + req.body.mother_lang  + '",' +
-				'"' + req.body.learning_lang  + '",' +
-				'"' + req.body.level  + '",' +
-				'NOW()); ' +
-				'UPDATE  curriculums SET `curriculum_id` = ' + tm + ' + `id` WHERE `curriculum_id` = "' + 
-				  tm + '" AND `uid` = "' + uid + '"';   
+				var curriculum_id = req.body.curriculum_id;
+				var str = 'DELETE FROM `curriculums` WHERE `curriculum_id` = "' + curriculum_id + '" AND `uid` = "' + uid + '"';   
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error)  cbk(false);
