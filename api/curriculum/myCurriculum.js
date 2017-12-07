@@ -60,7 +60,7 @@ var app = function(auth_data) {
 						CP.data.S1[i].node_ip = CP.data.S2[CP.data.S1[i].vid];
 						d[d.length] =  CP.data.S1[i];
 					}
-					res.send({_spent_time:data._spent_time, status:data.status, data:d[0]});
+					res.send({_spent_time:data._spent_time, status:data.status, data:d});
 				},
 				3000
 			);
