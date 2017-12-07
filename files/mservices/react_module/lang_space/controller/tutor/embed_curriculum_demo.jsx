@@ -16,14 +16,15 @@ try {
 		},	
 		render: function() {
 			var me = this;
-			if ((me.props.params.id) && (me.props.parent.state.video)) {
-				return (<div>Embed_curriculum_demo
+			if ((me.props.params.id) && (me.props.parent.state.curriculum)) {
+				return (<div>Embed_curriculum_demo 1
 						<div>
 							<h4>{me.props.parent.state.video.title}</h4>	
-							<p><b>Video ID</b>:{me.props.parent.state.video.id}</p>  
+							<p><b>Video ID</b>:{me.props.parent.state.curriculum.vid}</p>  
 							<p><b>Video Length</b>:({me.props.parent.state.video.length} Secs)</p>
-							<img src={shusiou_config.api_server + '/api/shusiou_video_image180.js?video='+me.props.parent.state.video.code+'|10'}/>
-						</div>	
+							<img src={shusiou_config.api_server + 
+							'/api/video/play_stream?type:=image&vid='+me.props.parent.state.curriculum.vid+
+							'&w=180&s=10'}/></div>	
 					
 					</div>)
 			} else {
