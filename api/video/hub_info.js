@@ -1,3 +1,4 @@
+/* --- get master file status ---*/
 if (!req.body['fn']) {
 	res.send('fn error ');
 	return true;
