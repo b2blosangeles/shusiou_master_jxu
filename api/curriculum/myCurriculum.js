@@ -31,7 +31,7 @@ var app = function(auth_data) {
 			_f['S2'] = function(cbk) {
 				var vstr = '0';
 				for (var i = 0; i < CP.data.S1.length; i++) {
-					vstr += ',' +  CP.data.P0[i].vid; 
+					vstr += ',' +  CP.data.S1[i].vid; 
 				}
 
 				var connection = mysql.createConnection(cfg0);
