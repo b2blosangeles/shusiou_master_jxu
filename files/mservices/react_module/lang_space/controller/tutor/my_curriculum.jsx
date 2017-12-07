@@ -135,7 +135,7 @@ try {
 						console.log('===data>>');
 						console.log(data);
 						me.setState({curriculum:data,
-						    sections:data.curriculum.script});
+						    sections:data.data.script});
 					} 
 					me.leftBox(me.props.params);
 					me.rightBox(me.props.params);
