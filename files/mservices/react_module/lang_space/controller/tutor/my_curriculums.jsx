@@ -108,7 +108,7 @@ try {
 										</div>
 										<img src={me.videoImageFilm(77,a)} style={{width:'100%'}}/>
 										<div className="video_thumbnail_text">
-											<a href={'#/tutor/my_curriculum/edit/' + a.id}>
+											<a href={'#/tutor/my_curriculum/edit/' + a.curriculum.id}>
 												<button type="button" 
 													className="btn btn-warning">
 													<i className="fa fa-pencil" aria-hidden="true"></i> 
