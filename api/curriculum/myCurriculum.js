@@ -49,7 +49,7 @@ var app = function(auth_data) {
 							v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
 						}
 						cbk(v);
-					} else cbk(v);
+					} else cbk({});
 				});  
 			};			
 			CP.serial(
@@ -60,7 +60,7 @@ var app = function(auth_data) {
 						CP.data.S1[i].node_ip = CP.data.S2[CP.data.S1[i].vid];
 						d[d.length] =  CP.data.S1[i];
 					}
-					res.send({_spent_time:data._spent_time, status:data.status, data:d});
+					res.send({_spent_time:data._spent_time, status:data.status, data:d[0]});
 				},
 				3000
 			);
