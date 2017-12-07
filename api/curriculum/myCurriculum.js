@@ -155,7 +155,7 @@ var app = function(auth_data) {
 					var v = [];
 					if (results.length) {
 						for (var i = 0; i < results.length; i++) {
-							v[v.length] = results[i].node;
+							v[v.length] = results[i].node_ip;
 						}	
 					} 
 					cbk(v);
