@@ -23,7 +23,7 @@ try {
 							<p><b>Video ID</b>:{me.props.parent.state.curriculum.vid}</p>  
 							<p><b>Video Length</b>:({me.props.parent.state.video.length} Secs)</p>
 							<img src={shusiou_config.api_server + 
-							'/api/video/play_stream?type:=image&vid='+me.props.parent.state.curriculum.vid+
+							'/api/video/play_stream.api?type=image&vid='+me.props.parent.state.curriculum.vid+
 							'&w=180&s=10'}/></div>	
 					
 					</div>)
