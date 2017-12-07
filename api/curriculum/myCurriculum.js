@@ -41,14 +41,15 @@ var app = function(auth_data) {
 
 				connection.query(str, function (error, results, fields) {
 					connection.end();
+					var v = {};
 					if (results.length) {
-						var v = {};
+						
 						for (var i = 0; i < results.length; i++) {
 							if (!v[results[i].vid]) v[results[i].vid] = [];
 							v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
 						}
 						cbk(v);
-					} else cbk([]);
+					} else cbk(v);
 				});  
 			};			
 			CP.serial(
