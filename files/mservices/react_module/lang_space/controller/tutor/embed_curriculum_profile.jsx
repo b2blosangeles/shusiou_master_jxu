@@ -62,7 +62,7 @@ try {
 		render: function() {
 			var me = this;
 			return (<div>	
-					mother language:{me.props.parent.state.curriculum.mother_lang} - 
+					mother language:{me.props.parent.state.curriculum.mother_lang} = 
 					learning language:{me.props.parent.state.curriculum.learning_lang} - 
 					training level:{me.props.parent.state.curriculum.level}
 					<div style={{'background-color':'lightyellow', 'color':'red', 'padding':'0.5em',
