@@ -132,11 +132,9 @@ _f_s['before_cached']  = function(cbk_s) {
 				v[results[i].node_ip] = results[i];
 				_f[results[i].node_ip] = (function(i) {
 					return function(cbk) {
-						console.log('http://'+results[i].node_ip+'/api/video/play_stream.api?type=video&vid='+
-					results[i].vid + '&node_cache_only=1&server='+results[i].server_ip+'&=tm'+new Date().getTime());
 						request({
 						      url: 'http://'+results[i].node_ip+'/api/video/play_stream.api?type=video&vid='+
-							results[i].vid + '&node_cache_only=1&server='+results[i].server_ip+'&=tm'+new Date().getTime(),
+							results[i].vid + '&node_cache_only=1&server='+results[i].server_ip,
 						      headers: {
 							"content-type": "application/json"
 						      },
@@ -169,7 +167,6 @@ _f_s['cached']  = function(cbk_s) {
 	for (var o in node_videos) {
 		_f[o] = (function(o)  {
 			return function(cbk) {
-				console.log('==http://'+o+'/api/node_audit.api?opt=files_status==');
 				request({url:  'http://'+o+'/api/node_audit.api?opt=files_status',
 				      headers: {
 					"content-type": "application/json"
