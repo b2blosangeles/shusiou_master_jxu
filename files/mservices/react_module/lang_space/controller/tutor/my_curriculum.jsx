@@ -132,9 +132,8 @@ try {
 				
 				me.getCurriculumById(cid, function(data) {
 					console.log(data);
-					return true;
 					if (data.vid) {
-						me.setState({vid:data.vid, curriculum:data.curriculum,
+						me.setState({vid:data.vid, curriculum:data,
 						    sections:data.curriculum.script});
 					} 
 					me.leftBox(me.props.params);
