@@ -167,6 +167,7 @@ _f_s['cached']  = function(cbk_s) {
 	for (var o in node_videos) {
 		_f[o] = (function(o)  {
 			return function(cbk) {
+				console.log('==http://'+o+'/api/node_audit.api?opt=files_status==');
 				request({url:  'http://'+o+'/api/node_audit.api?opt=files_status',
 				      headers: {
 					"content-type": "application/json"
