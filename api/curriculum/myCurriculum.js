@@ -127,7 +127,7 @@ var app = function(auth_data) {
 		case 'getCurriculumById':
 			var CP = new pkg.crowdProcess();
 			var _f = {};
-			var curriculum_id = res.body.curriculum_id;
+			var curriculum_id = req.body.curriculum_id;
 			_f['S1'] = function(cbk) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
