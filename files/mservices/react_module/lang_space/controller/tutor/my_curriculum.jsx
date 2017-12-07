@@ -237,12 +237,14 @@ try {
 				console.log( "Request failed: " + textStatus );
 			});			
 		},		
-		getCurriculumById: function(cid, cbk) {
+		getCurriculumById: function(curriculum_id, cbk) {
 			var me = this;
 			me.props.route.env.engine({
 				url: shusiou_config.api_server + '/api/curriculum/myCurriculum.api',
 				method: "POST",
-				data: { cmd:'getCurriculumById', cid:cid},
+				data: { cmd:'getCurriculumById',
+				       curriculum_id:curriculum_id,
+				      auth:me.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
 				if (typeof cbk == 'function') {
