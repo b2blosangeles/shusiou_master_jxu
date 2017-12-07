@@ -131,8 +131,10 @@ try {
 				
 				
 				me.getCurriculumById(cid, function(data) {
-					if (data.video.id) {
-						me.setState({vid:data.video.id, video:data.video, curriculum:data.curriculum,
+					console.log(data);
+					return true;
+					if (data.vid) {
+						me.setState({vid:data.vid, curriculum:data.curriculum,
 						    sections:data.curriculum.script});
 					} 
 					me.leftBox(me.props.params);
