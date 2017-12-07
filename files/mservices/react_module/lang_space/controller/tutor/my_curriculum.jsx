@@ -131,7 +131,6 @@ try {
 				
 				
 				me.getCurriculumById(cid, function(data) {
-					console.log(data);
 					if (data.vid) {
 						me.setState({vid:data.vid, curriculum:data,
 						    sections:data.curriculum.script});
