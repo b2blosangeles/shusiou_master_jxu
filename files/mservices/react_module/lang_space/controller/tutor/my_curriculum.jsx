@@ -130,8 +130,8 @@ try {
 				var cid = me.props.params['id'];
 				me.getCurriculumById(cid, function(data) {
 					console.log(data);
-					console.log(data.curriculum_id);
-					if (data.curriculum_id) {
+					console.log(data.data.curriculum_id);
+					if (data.data.curriculum_id) {
 						console.log('===data>>');
 						console.log(data);
 						me.setState({curriculum:data,
