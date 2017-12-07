@@ -148,24 +148,23 @@ var app = function(auth_data) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
-				var str = 'SELECT * FROM  `video_node` WHERE `vid` = "' + CP.data.S1[i].vid + '"';
+				var str = 'SELECT * FROM  `video_node` WHERE `vid` = "' + CP.data.S1.vid + '"';
 
 				connection.query(str, function (error, results, fields) {
 					connection.end();
-					var v = {};
+					var v = [];
 					if (results.length) {
 						for (var i = 0; i < results.length; i++) {
-							if (!v[results[i].vid]) v[results[i].vid] = [];
-							v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
-						}
-						cbk(v);
-					} else cbk(v);
+							v[v.length] = results[i].node;
+						}	
+					} 
+					cbk(v);
 				});  
 			};			
 			CP.serial(
 				_f,
 				function(data) {
-					CP.data.S1.node_ip = CP.data.S2[CP.data.S1.vid];
+					CP.data.S1.node_ip = CP.data.S2;
 					res.send({_spent_time:data._spent_time, status:data.status, data:CP.data.S1});
 				},
 				3000
