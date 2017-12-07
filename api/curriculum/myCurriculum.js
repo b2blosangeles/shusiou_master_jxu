@@ -15,8 +15,7 @@ var app = function(auth_data) {
 			_f['S1'] = function(cbk) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
-				var str = 'SELECT A.curriculum_id, B.*, C.`node_ip` FROM `curriculums` A LEFT JOIN  `video` B  ON A.vid = B.vid '+
-				    ' LEFT JOIN `video_node` C ON A.vid = C.vid '+
+				var str = 'SELECT A.curriculum_id, B.* FROM `curriculums` A LEFT JOIN  `video` B  ON A.vid = B.vid '+
 				    ' WHERE A.uid = "' + uid + '";';
 
 				connection.query(str, function (error, results, fields) {
@@ -29,12 +28,34 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			
+			_f['S2'] = function(cbk) {
+				var vstr = '0';
+				for (var i = 0; i < CP.data.S1.length; i++) {
+					vstr += ',' +  CP.data.P0[i].vid; 
+				}
+
+				var connection = mysql.createConnection(cfg0);
+				connection.connect();
+
+				var str = 'SELECT * FROM  `video_node` WHERE `vid` IN (' + vstr + ')';
+
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					if (results.length) {
+						var v = {};
+						for (var i = 0; i < results.length; i++) {
+							if (!v[results[i].vid]) v[results[i].vid] = [];
+							v[results[i].vid][v[results[i].vid].length] = results[i].node_ip;
+						}
+						cbk(v);
+					} else cbk([]);
+				});  
+			};			
 			CP.serial(
 				_f,
 				function(data) {
 					
-					res.send({_spent_time:data._spent_time, status:data.status, data:data.results.S1});
+					res.send({_spent_time:data._spent_time, status:data.status, data:data.results});
 				},
 				3000
 			);
