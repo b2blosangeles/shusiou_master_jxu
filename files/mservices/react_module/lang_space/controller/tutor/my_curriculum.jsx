@@ -239,7 +239,6 @@ try {
 		},		
 		getCurriculumById: function(cid, cbk) {
 			var me = this;
-			alert(cid);
 			me.props.route.env.engine({
 				url: shusiou_config.api_server + '/api/shusiou_curriculum.js',
 				method: "POST",
