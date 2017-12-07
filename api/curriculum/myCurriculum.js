@@ -131,7 +131,7 @@ var app = function(auth_data) {
 			_f['S1'] = function(cbk) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
-				var str = 'SELECT A.curriculum_id, B.* FROM `curriculums` A LEFT JOIN  `video` B  ON A.vid = B.vid '+
+				var str = 'SELECT A.*, B.* FROM `curriculums` A LEFT JOIN  `video` B  ON A.vid = B.vid '+
 				    ' WHERE A.curriculum_id = "' + curriculum_id + '" AND  A.uid = "' + uid + '";';
 
 				connection.query(str, function (error, results, fields) {
