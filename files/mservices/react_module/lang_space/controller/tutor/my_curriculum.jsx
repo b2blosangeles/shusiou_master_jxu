@@ -160,7 +160,9 @@ try {
 		},		
 		execDeleteCurriculum:function() {
 			var me = this;
+			
 			if ((me.state.curriculum) && (me.state.curriculum.id)) {
+				alert((me.state.curriculum.id);
 				me.props.route.env.engine({
 					url: shusiou_config.api_server + '/api/shusiou_curriculum.js',
 					method: "POST",
