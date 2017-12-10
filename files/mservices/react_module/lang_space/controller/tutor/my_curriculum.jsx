@@ -143,8 +143,6 @@ try {
 		},
 		deleteCurriculum: function(params, track) {
 			var me = this;
-			var id = new Date().getTime();
-			alert('delete--' + id);
 			me.setState({ModalPlus:{type:'popup',  hold:0,
 				box_style:{top:'28px'},
 				header: (<span/>),		
@@ -159,12 +157,12 @@ try {
 		},		
 		execDeleteCurriculum:function() {
 			var me = this;
-			
-			if ((me.state.curriculum) && (me.state.curriculum.id)) {
+			alert(me.state.curriculum_id);
+			if ((me.state.curriculum) && (me.state.curriculum_id)) {
 				me.props.route.env.engine({
 					url: shusiou_config.api_server + '/api/shusiou_curriculum.js',
 					method: "POST",
-					data: {cmd:'delete', cid:me.state.curriculum.id},
+					data: {cmd:'delete', cid:me.state.curriculum_id},
 					dataType: "JSON"
 				}, function( data) {
 					me.closePopup();
