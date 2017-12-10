@@ -156,13 +156,13 @@ try {
 			return true;
 		},		
 		execDeleteCurriculum:function() {
-			var me = this;
-			alert(me.state.curriculum_id);
-			if ((me.state.curriculum) && (me.state.curriculum_id)) {
+			var me = this, curriculum_id = me.state.curriculum.curriculum_id;
+			alert(curriculum_id);
+			if (curriculum_id) {
 				me.props.route.env.engine({
 					url: shusiou_config.api_server + '/api/shusiou_curriculum.js',
 					method: "POST",
-					data: {cmd:'delete', cid:me.state.curriculum_id},
+					data: {cmd:'delete', curriculum_id:curriculum_id},
 					dataType: "JSON"
 				}, function( data) {
 					me.closePopup();
