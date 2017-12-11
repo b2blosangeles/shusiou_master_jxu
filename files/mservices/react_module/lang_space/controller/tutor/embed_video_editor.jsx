@@ -190,12 +190,12 @@ try {
 		},	
 		render: function() {
 			var me = this;
-			if (me.props.parent.state.curriculum.id) return (
+			if (me.props.parent.state.curriculum.curriculum_id) return (
 			<div className="container-fluid">
 				<table width="100%" className="section_template_frame">	
 				<tr>
 						<td width="48%">
-							Original Movie:
+							Original Movie -- :
 							
 						</td>
 						<td width="1%" style={{'border-right':'2px solid #ccc'}}></td>
