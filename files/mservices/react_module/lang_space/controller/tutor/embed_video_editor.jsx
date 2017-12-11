@@ -307,7 +307,7 @@ try {
 				<div className="container-fluid">
 					<span className="overlayer_box_body"
 						dangerouslySetInnerHTML={{__html: ''}} />
-					<span style={{'margin':'0px', 'padding':'0px'}}> 
+					<span style={{'margin':'0px', 'padding':'0px'}}> ===
 						<video id="preview_video" width="100%" controls>
 							<source src={me.state.video_url}  type="video/mp4"/>
 						</video>									
