@@ -13,7 +13,7 @@ try {
 			var me = this, code = '';
 			me.setState({section:me.props.parent.state.section.track});
 			var p_video = $('#preview_video')[0];
-			alert('niu');
+			alert(me.props.params['opt']);
 			if (p_video) {
 				p_video.ontimeupdate = function() {
 					var v = Math.floor(p_video.currentTime);
