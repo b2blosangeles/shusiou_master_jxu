@@ -13,6 +13,7 @@ try {
 			var me = this, code = '';
 			me.setState({section:me.props.parent.state.section.track});
 			var p_video = $('#preview_video')[0];
+			
 			if (p_video) {
 				p_video.ontimeupdate = function() {
 					var v = Math.floor(p_video.currentTime);
@@ -23,7 +24,6 @@ try {
 				code = me.props.params['id'];
 				me.setState({vid:code});
 				p_video.src =  shusiou_config.api_server + '/api/shusiou_play_video.js?vid='+code;
-				console.log(shusiou_config.api_server + '/api/shusiou_play_video.js?vid='+code);
 			} else {
 				var _itv = setInterval(
 					function() {
