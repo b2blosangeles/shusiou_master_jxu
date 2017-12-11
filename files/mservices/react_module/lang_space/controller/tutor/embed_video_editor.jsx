@@ -13,13 +13,15 @@ try {
 			var me = this, code = '';
 			me.setState({section:me.props.parent.state.section.track});
 			var p_video = $('#preview_video')[0];
-			alert(me.props.params['opt']);
+
 			if (p_video) {
 				p_video.ontimeupdate = function() {
 					var v = Math.floor(p_video.currentTime);
 					me.setState({preview_time:v})
 				};
 			}
+						alert(me.props.params['id']);
+			
 			if (me.props.params['opt'] == 'new') {
 				code = me.props.params['id'];
 				me.setState({vid:code});
