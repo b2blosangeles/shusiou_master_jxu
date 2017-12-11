@@ -165,7 +165,7 @@ try {
 					dataType: "JSON"
 				}, function( data) {
 					me.closePopup();
-					me.componentDidMount();
+				//	me.componentDidMount();
 					me.props.router.push('/tutor/my_curriculums');
 				},function( jqXHR, textStatus ) {
 					me.closePopup();
