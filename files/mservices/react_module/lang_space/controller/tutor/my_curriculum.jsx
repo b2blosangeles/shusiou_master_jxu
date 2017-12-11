@@ -148,14 +148,14 @@ try {
 				header: (<span/>),		
 				message: (<div className="container-fluid">
 						<p>It is going to clean up the curriculum please confirm:</p>
-						<button className="btn btn-danger btn_margin6 pull-right" onClick={me.execDeleteCurriculum.bind(me)}>Confirm</button>
+						<button className="btn btn-danger btn_margin6 pull-right" onClick={me.sendDeleteCurriculum.bind(me)}>Confirm</button>
 						<button className="btn btn-warning btn_margin6 pull-right" onClick={me.closePopup.bind(me)}>Cancel</button>
 					</div>),
 				footer:(<span/>)
 			}});			
 			return true;
 		},		
-		execDeleteCurriculum:function() {
+		sendDeleteCurriculum:function() {
 			var me = this, curriculum_id = me.state.curriculum.curriculum_id;
 			if (curriculum_id) {
 				me.props.route.env.engine({
@@ -173,9 +173,7 @@ try {
 			
 		},
 		submitCurriculum:function(v, jump){
-			var me = this;
-			var data = {};
-			
+			var me = this, data = {};
 			if (me.state.curriculum.id) {
 				data = {cmd:'update', id:me.state.curriculum.id, vid: me.state.curriculum.vid, 
 					name:me.state.curriculum.name, 
@@ -215,24 +213,6 @@ try {
 			if (!this.props.route || !this.props.route.env ||!this.props.route.env.dictionary) return v;
 			return this.props.route.env.dictionary(v);
 		},
-		/*
-		getVideoInfo: function(vid, cbk) {
-			var me = this;
-			
-			me.props.route.env.engine({
-				url: shusiou_config.api_server + '/api/',
-				method: "POST",
-				data: { vid:vid},
-				dataType: "JSON"
-			}, function( data) {
-				if (typeof cbk == 'function') {
-					cbk(data);
-				}
-			},function( jqXHR, textStatus ) {
-				console.log( "Request failed: " + textStatus );
-			});			
-		},
-		*/
 		getCurriculumById: function(curriculum_id, cbk) {
 			var me = this;
 			me.props.route.env.engine({
