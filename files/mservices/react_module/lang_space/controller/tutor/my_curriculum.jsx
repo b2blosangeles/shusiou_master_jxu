@@ -159,7 +159,7 @@ try {
 			var me = this, curriculum_id = me.state.curriculum.curriculum_id;
 			if (curriculum_id) {
 				me.props.route.env.engine({
-					url: shusiou_config.api_server + '/api/curriculum/myCurriculum.api?opt=delete',
+					url: shusiou_config.api_server + '/api/curriculum/myCurriculum.api',
 					method: "POST",
 					data: {cmd:'delete', curriculum_id:curriculum_id},
 					dataType: "JSON"
