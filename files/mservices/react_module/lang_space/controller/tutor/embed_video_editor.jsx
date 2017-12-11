@@ -23,6 +23,7 @@ try {
 				code = me.props.params['id'];
 				me.setState({vid:code});
 				p_video.src =  shusiou_config.api_server + '/api/shusiou_play_video.js?vid='+code;
+				console.log(shusiou_config.api_server + '/api/shusiou_play_video.js?vid='+code);
 			} else {
 				var _itv = setInterval(
 					function() {
@@ -191,136 +192,136 @@ try {
 		render: function() {
 			var me = this;
 			if (me.props.parent.state.curriculum.curriculum_id) return (
-			<div className="container-fluid">
-				<table width="100%" className="section_template_frame">	
-				<tr>
-						<td width="48%">
-							Original Movie -- :
-							
-						</td>
-						<td width="1%" style={{'border-right':'2px solid #ccc'}}></td>
-						<td width="1%" style={{'border-left':'2px solid #ccc'}}></td>
-						<td width="50%">
-							<video id="preview_clip_video" style={{display:'none'}}>
-								<source src="" autoplay
-								type="video/mp4"/>
-							</video>							
-							Movie clip :<span 
-							style={(me.state.section.s !== null)?{display:''}:{display:'none'}}		     
-							dangerouslySetInnerHTML={{__html: (me.state.section.t)?(me.props.parent.toHHMMSS(me.state.section.s) + 
-						  	' - ' + me.props.parent.toHHMMSS(me.state.section.s + me.state.section.t)):''}} />
-							
-							<button type="button" className="btn btn-default btn-xs video_editor_button" 
-								style={(me.state.section.t)?{display:''}:{display:'none'}}
-								onClick={me.playSection.bind(this)}>
-								<i className="fa fa-play" aria-hidden="true"></i>&nbsp;Listen 
-							</button>
-							
-							<button type="button" className="btn btn-warning video_editor_button" 
-								style={(me.state.section.t)?{display:''}:{display:'none'}}
-								onClick={me.sendTrack.bind(me, me.props.params['id'])}>
-								Accept clip
-							</button>								
-						</td>
-					</tr>						
+				<div className="container-fluid">
+					<table width="100%" className="section_template_frame">	
 					<tr>
-						<td width="48%">
-							<video id="preview_video" width="100%" controls>
-								<source src="" 
-								type="video/mp4"/>
-							</video>							
-						</td>
-						<td width="1%" style={{'border-right':'2px solid #ccc'}}></td>
-						<td width="1%" style={{'border-left':'2px solid #ccc'}}></td>						
-						<td width="50%">
-						{me.showSectionImages()}
-							
-						</td>
-					</tr>
-				</table>	
-				<div id="niu1"></div>
-				<br/>	
-				{me.videoBar()}	
-				<table width="100%" className="section_template_frame">		
-					<tr>
-						<td width="48%">
-							{/*
-							<button type="button" className="btn btn-sm btn-success btn_margin3 pull-left" 
-								onClick={me.pickVideo.bind(this, true)}>
-								<i className="fa fa-scissors" aria-hidden="true"></i>
-							</button>							
-							<button type="button" className="btn btn-sm btn-info btn_margin3"
-								onClick={me.setHelp.bind(me, 'Help with Curriculum','/help/curriculum.html')}>
-								<i className="fa fa-question" aria-hidden="true"></i> Help
-							</button>*/}						
-						</td>
-						<td width="1%" style={{'border-right':'2px solid transparent'}}></td>
-						<td width="1%" style={{'border-left':'2px solid transparent'}}></td>						
-						<td width="50%">
-							<span style={me.hideNullSection()}>
-								 <button type="button" className="btn btn-sm btn-success btn_margin3"
-									  style={me.disbleAdjustSection(-0.5, 0)}
-									 onClick={me.adjustSection.bind(this, -0.5, 0)}> 									
-									 <i className="fa fa-step-backward" aria-hidden="true"></i> -&#189;</button>							
+							<td width="48%">
+								Original Movie:
 
-								<button type="button" className="btn btn-sm btn-success btn_margin3"
-									style={me.disbleAdjustSection(0.5, 0)}
-									 onClick={me.adjustSection.bind(this, 0.5, 0)}> 
-									<i className="fa fa-step-backward" aria-hidden="true"></i> +&#189;</button>
+							</td>
+							<td width="1%" style={{'border-right':'2px solid #ccc'}}></td>
+							<td width="1%" style={{'border-left':'2px solid #ccc'}}></td>
+							<td width="50%">
+								<video id="preview_clip_video" style={{display:'none'}}>
+									<source src="" autoplay
+									type="video/mp4"/>
+								</video>							
+								Movie clip :<span 
+								style={(me.state.section.s !== null)?{display:''}:{display:'none'}}		     
+								dangerouslySetInnerHTML={{__html: (me.state.section.t)?(me.props.parent.toHHMMSS(me.state.section.s) + 
+								' - ' + me.props.parent.toHHMMSS(me.state.section.s + me.state.section.t)):''}} />
 
-								<button type="button" className="btn btn-sm btn-success btn_margin3"
-									style={me.disbleAdjustSection(0,0.5)}
-									 onClick={me.adjustSection.bind(this, 0, 0.5)}> 
-									<i className="fa fa-plus-square-o" aria-hidden="true"></i>
-								</button>	
-
-								<button type="button" className="btn btn-sm btn-success btn_margin3"
-									style={me.disbleAdjustSection(0,-0.5)}
-									 onClick={me.adjustSection.bind(this, 0, -0.5)}> 
-									<i className="fa fa-minus-square-o" aria-hidden="true"></i>
+								<button type="button" className="btn btn-default btn-xs video_editor_button" 
+									style={(me.state.section.t)?{display:''}:{display:'none'}}
+									onClick={me.playSection.bind(this)}>
+									<i className="fa fa-play" aria-hidden="true"></i>&nbsp;Listen 
 								</button>
-							</span>							
-							
-						</td>
-					</tr>						
-				</table>	
 
-				<span className="pull-right text-warning" style={{'padding-top':'0.5em'}}>
-					{(function() {
-						if ((me.state.video.length) && (me.state.video.q)) {
-							return 'Lazy caching ...';
-						} else {
-							return '';
-						}
-					})()}									
+								<button type="button" className="btn btn-warning video_editor_button" 
+									style={(me.state.section.t)?{display:''}:{display:'none'}}
+									onClick={me.sendTrack.bind(me, me.props.params['id'])}>
+									Accept clip
+								</button>								
+							</td>
+						</tr>						
+						<tr>
+							<td width="48%">
+								<video id="preview_video" width="100%" controls>
+									<source src="" 
+									type="video/mp4"/>
+								</video>							
+							</td>
+							<td width="1%" style={{'border-right':'2px solid #ccc'}}></td>
+							<td width="1%" style={{'border-left':'2px solid #ccc'}}></td>						
+							<td width="50%">
+							{me.showSectionImages()}
 
-				</span>	
-				<p className="video_editor" style={me.hideNullSection()}>
-					{/*me.showSectionImages()*/}
-				</p>
-				{/*<HelpPopup url={'/help/curriculum.html'}/>*/}
-			</div>	
-	
-			)
+							</td>
+						</tr>
+					</table>	
+					<div id="niu1"></div>
+					<br/>	
+					{me.videoBar()}	
+					<table width="100%" className="section_template_frame">		
+						<tr>
+							<td width="48%">
+								{/*
+								<button type="button" className="btn btn-sm btn-success btn_margin3 pull-left" 
+									onClick={me.pickVideo.bind(this, true)}>
+									<i className="fa fa-scissors" aria-hidden="true"></i>
+								</button>							
+								<button type="button" className="btn btn-sm btn-info btn_margin3"
+									onClick={me.setHelp.bind(me, 'Help with Curriculum','/help/curriculum.html')}>
+									<i className="fa fa-question" aria-hidden="true"></i> Help
+								</button>*/}						
+							</td>
+							<td width="1%" style={{'border-right':'2px solid transparent'}}></td>
+							<td width="1%" style={{'border-left':'2px solid transparent'}}></td>						
+							<td width="50%">
+								<span style={me.hideNullSection()}>
+									 <button type="button" className="btn btn-sm btn-success btn_margin3"
+										  style={me.disbleAdjustSection(-0.5, 0)}
+										 onClick={me.adjustSection.bind(this, -0.5, 0)}> 									
+										 <i className="fa fa-step-backward" aria-hidden="true"></i> -&#189;</button>							
+
+									<button type="button" className="btn btn-sm btn-success btn_margin3"
+										style={me.disbleAdjustSection(0.5, 0)}
+										 onClick={me.adjustSection.bind(this, 0.5, 0)}> 
+										<i className="fa fa-step-backward" aria-hidden="true"></i> +&#189;</button>
+
+									<button type="button" className="btn btn-sm btn-success btn_margin3"
+										style={me.disbleAdjustSection(0,0.5)}
+										 onClick={me.adjustSection.bind(this, 0, 0.5)}> 
+										<i className="fa fa-plus-square-o" aria-hidden="true"></i>
+									</button>	
+
+									<button type="button" className="btn btn-sm btn-success btn_margin3"
+										style={me.disbleAdjustSection(0,-0.5)}
+										 onClick={me.adjustSection.bind(this, 0, -0.5)}> 
+										<i className="fa fa-minus-square-o" aria-hidden="true"></i>
+									</button>
+								</span>							
+
+							</td>
+						</tr>						
+					</table>	
+
+					<span className="pull-right text-warning" style={{'padding-top':'0.5em'}}>
+						{(function() {
+							if ((me.state.video.length) && (me.state.video.q)) {
+								return 'Lazy caching ...';
+							} else {
+								return '';
+							}
+						})()}									
+
+					</span>	
+					<p className="video_editor" style={me.hideNullSection()}>
+						{/*me.showSectionImages()*/}
+					</p>
+					{/*<HelpPopup url={'/help/curriculum.html'}/>*/}
+				</div>	
+
+				)
 			else return (
-			<div className="container-fluid">
-				<span className="overlayer_box_body"
-					dangerouslySetInnerHTML={{__html: ''}} />
-				<span style={{'margin':'0px', 'padding':'0px'}}> 
-					<video id="preview_video" width="100%" controls>
-						<source src={me.state.video_url}  type="video/mp4"/>
-					</video>									
-				</span>
+				<div className="container-fluid">
+					<span className="overlayer_box_body"
+						dangerouslySetInnerHTML={{__html: ''}} />
+					<span style={{'margin':'0px', 'padding':'0px'}}> 
+						<video id="preview_video" width="100%" controls>
+							<source src={me.state.video_url}  type="video/mp4"/>
+						</video>									
+					</span>
 
-				<address>
-					<h4>{me.props.video.title}</h4>
-					<strang style={{color:'#ffcc00'}}>Length</strang> &#187; {me.props.parent.toHHMMSS(me.props.video.length, true)}<br/>
-					<strang style={{color:'#ffcc00'}}>Size</strang> &#187; {me.bytesToSize(me.props.video.size)}<br/>
-					<strang style={{color:'#ffcc00'}}>Video Original</strang> &#187; {me.props.video.source}<br/>
-				</address>
-					
-				<ModalPlus parent={me} />	
-			</div>	
+					<address>
+						<h4>{me.props.video.title}</h4>
+						<strang style={{color:'#ffcc00'}}>Length</strang> &#187; {me.props.parent.toHHMMSS(me.props.video.length, true)}<br/>
+						<strang style={{color:'#ffcc00'}}>Size</strang> &#187; {me.bytesToSize(me.props.video.size)}<br/>
+						<strang style={{color:'#ffcc00'}}>Video Original</strang> &#187; {me.props.video.source}<br/>
+					</address>
+
+					<ModalPlus parent={me} />	
+				</div>	
 	
 			)
 		}
