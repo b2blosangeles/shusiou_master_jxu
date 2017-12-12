@@ -28,10 +28,10 @@ try {
 			} else {
 				var _itv = setInterval(
 					function() {
-						if (me.props.parent.state.video.code) {
+						//if (me.props.parent.state.video.code) {
 							clearInterval(_itv);
-							code  = me.props.parent.state.video.code;
-							me.setState({vid:code});
+						//	code  = me.props.parent.state.video.code;
+						//	me.setState({vid:code});
 							p_video.src =  vurl;
 							setTimeout(
 								function() {
@@ -43,7 +43,7 @@ try {
 									);
 								}, 1000	
 							);		
-						}
+						//}
 					}
 				,100);		
 			}
