@@ -21,11 +21,11 @@ try {
 				};
 			}
 						alert(me.props.params['id']);
-			
+			var vurl =  shusiou_config.api_server + '/api/video/play_stream.api?type=video&vid='+me.props.parent.state.curriculum.vid;
 			if (me.props.params['opt'] == 'new') {
 				code = me.props.params['id'];
 				me.setState({vid:code});
-				p_video.src =  shusiou_config.api_server + '/api/shusiou_play_video.js?vid='+code;
+				p_video.src =  vurl;
 			} else {
 				var _itv = setInterval(
 					function() {
@@ -33,7 +33,7 @@ try {
 							clearInterval(_itv);
 							code  = me.props.parent.state.video.code;
 							me.setState({vid:code});
-							p_video.src =  shusiou_config.api_server + '/api/shusiou_play_video.js?vid='+code;
+							p_video.src =  vurl;
 							setTimeout(
 								function() {
 									
