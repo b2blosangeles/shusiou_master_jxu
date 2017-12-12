@@ -22,6 +22,7 @@ try {
 			}
 						alert(me.props.params['id']);
 			var vurl =  shusiou_config.api_server + '/api/video/play_stream.api?type=video&vid='+me.props.parent.state.curriculum.vid;
+			alert(vurl);
 			if (me.props.params['opt'] == 'new') {
 				code = me.props.params['id'];
 				me.setState({vid:code});
