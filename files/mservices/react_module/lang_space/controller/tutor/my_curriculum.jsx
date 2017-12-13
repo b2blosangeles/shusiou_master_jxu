@@ -223,6 +223,7 @@ try {
 				      auth:me.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
+				console.log(data);
 				if (typeof cbk == 'function') {
 					cbk(data);
 				}
