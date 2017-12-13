@@ -57,8 +57,8 @@ try {
 			
 			var p_video = $('#preview_video')[0];
 			var c_video = $('#preview_clip_video')[0];
-			p_video.currentTime = Math.round(me.props.parent.state.video.length * v / n);
-			
+			// p_video.currentTime = Math.round(me.props.parent.state.video.length * v / n);
+			p_video.currentTime = Math.round(1000 * v / n);
 			me.setState({section:{s:p_video.currentTime, t:10}}, function() {
 				p_video.pause();
 				c_video.pause();
