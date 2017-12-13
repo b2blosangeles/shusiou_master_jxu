@@ -28,10 +28,9 @@ try {
 			} else {
 				var _itv = setInterval(
 					function() {
-						//if (me.props.parent.state.video.code) {
+						if (me.props.parent.state.curriculum.vid) {
 							clearInterval(_itv);
-						//	code  = me.props.parent.state.video.code;
-						//	me.setState({vid:code});
+							me.setState({vid:me.props.parent.state.curriculum.vid});
 							p_video.src =  vurl;
 							setTimeout(
 								function() {
@@ -43,7 +42,7 @@ try {
 									);
 								}, 1000	
 							);		
-						//}
+						}
 					}
 				,100);		
 			}
@@ -139,8 +138,8 @@ try {
 			    me.props.parent.state.curriculum.vid + '&s=' + me.state.section.s + '&t=' + me.state.section.t;
 			console.log('v===');
 			console.log(v);
-		//	$('#preview_clip_video')[0].src = v;
-		//	$('#preview_clip_video')[0].play();		
+			$('#preview_clip_video')[0].src = v;
+			$('#preview_clip_video')[0].play();		
 		},
 		
 		disbleAdjustSection:function(ds, dt) {
