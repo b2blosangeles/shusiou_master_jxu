@@ -126,7 +126,7 @@ try {
 				A[A.length] = me.state.section.s + i * 0.5;
 			}
 			return A.map(function(a,idx){
-				var v = shusiou_config.api_server + '/api/video/video_stream.api?type=video&vid=' + 
+				var v = shusiou_config.api_server + '/api/video/play_stream.api?type=image&vid=' + 
 				    me.props.parent.state.curriculum.vid +'&w=90&s=' + a;
 				if (idx < 8 || idx > A.length - 8) return (<img src={v} width="90" style={{border:'1px solid red'}} />)
 				else return (<span></span>)
