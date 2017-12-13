@@ -135,8 +135,8 @@ try {
 		
 		
 		playSection:function() {
-			var me = this, v = shusiou_config.api_server + '/api/shusiou_video_tmp_section.js?video=' + me.state.vid +'|' + 
-			    me.state.section.s  + '|' + me.state.section.t;
+			var me = this, v =  shusiou_config.api_server + '/api/video/play_stream.api?type=section&vid='+
+			    me.props.parent.state.curriculum.vid + '&s=' + me.state.section. + '&t=' + me.state.section.t;
 			console.log('v===');
 			console.log(v);
 			$('#preview_clip_video')[0].src = v;
