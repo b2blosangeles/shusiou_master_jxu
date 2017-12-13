@@ -202,12 +202,11 @@ try {
 							</td>
 							<td width="1%" style={{'border-right':'2px solid #ccc'}}></td>
 							<td width="1%" style={{'border-left':'2px solid #ccc'}}></td>
-							<td width="50%">==
-								<video id="preview_clip_video" style={{display:'none'}}>
+							<td width="50%">
+								<video id="preview_clip_video" style={{display:''}}>
 									<source src="" autoplay
 									type="video/mp4"/>
 								</video>
-								==
 								Movie clip :<span 
 								style={(me.state.section.s !== null)?{display:''}:{display:'none'}}		     
 								dangerouslySetInnerHTML={{__html: (me.state.section.t)?(me.props.parent.toHHMMSS(me.state.section.s) + 
