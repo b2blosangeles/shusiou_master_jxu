@@ -136,7 +136,7 @@ try {
 				//    me.props.parent.state.curriculum.vid +'&w=90&s=' + a;
 				var v = 'http://' + IP + '/api/video/play_stream.api?type=image&vid=' + 
 				    me.props.parent.state.curriculum.vid +'&w=90&s=' + a + '&server=' + 
-				    me.props.parent.state.curriculum.server;
+				    me.props.parent.state.curriculum.server_ip;
 				
 				if (idx < 8 || idx > A.length - 8) return (<img src={v} width="90" style={{border:'1px solid red'}} />)
 				else return (<span></span>)
