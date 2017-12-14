@@ -132,6 +132,8 @@ var app = function(auth_data) {
 				connection.connect();
 				connection.query(str, function (error, results, fields) {
 					connection.end();
+					cbk(str+'AAA');
+					/*
 					if (error) {
 						cbk(error.message);
 						return true;
@@ -143,6 +145,7 @@ var app = function(auth_data) {
 						}
 
 					}
+					*/
 				});  
 			};
 			/*
