@@ -108,7 +108,7 @@ var app = function(auth_data) {
 				'`name` = "' + req.body.name + '",' +
 				'`published` = "' + ((req.body.published)?req.body.published:0) + '",' +    
 				'`created` = NOW() ' +
-				'WHERE `curriculums_id` ="' + req.body.curriculums_id + '"; ';
+				'WHERE `curriculum_id` ="' + req.body.curriculum_id + '"; ';
 
 				connection.query(str, function (error, results, fields) {
 
