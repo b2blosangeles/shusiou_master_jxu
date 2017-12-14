@@ -130,8 +130,6 @@ var app = function(auth_data) {
 			_f['S2'] = function(cbk) {
 				var str = 'DELETE FROM  `curriculum_sections` ' +
 				'WHERE `curriculum_id` ="' + req.body.curriculum_id + '"; ';
-				cbk(str);
-				return true;
 				connection.connect();
 				connection.query(str, function (error, results, fields) {
 					connection.end();
@@ -148,6 +146,7 @@ var app = function(auth_data) {
 					}
 				});  
 			};
+			/*
 			_f['S3'] = function(cbk) {
 				var section = JSON.stringify(req.body.sections);
 				section = section.replace('"','\"');
@@ -177,7 +176,7 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			
+			*/
 			CP.serial(
 				_f,
 				function(data) {
