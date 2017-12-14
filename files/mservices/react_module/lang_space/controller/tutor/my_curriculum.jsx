@@ -193,7 +193,7 @@ try {
 			}
 			
 			me.props.route.env.engine({
-				url: shusiou_config.api_server + '/api/curriculum/myCurriculum.api?opt=add',
+				url: shusiou_config.api_server + '/api/curriculum/myCurriculum.api',
 				method: "POST",
 				data: data,
 				dataType: "JSON"
