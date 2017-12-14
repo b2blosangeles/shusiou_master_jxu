@@ -100,6 +100,86 @@ var app = function(auth_data) {
 				3000
 			);
 			break;	
+		case 'update':
+			var _f = {};
+
+			_f['S1'] = function(cbk) {
+				var str = 'UPDATE  `curriculums` SET ' +
+				'`name` = "' + req.body.name + '",' +
+				'`published` = "' + ((req.body.published)?req.body.published:0) + '",' +    
+				'`created` = NOW() ' +
+				'WHERE `id` ="' + req.body.id + '"; ';
+
+				connection.query(str, function (error, results, fields) {
+
+					if (error) {
+						cbk(error.message);
+						return true;
+					} else {
+						if (results[0]) {
+							cbk(results[0]);
+						} else {
+							cbk(false);
+						}
+
+					}
+				});  
+			};
+			_f['S2'] = function(cbk) {
+				var str = 'DELETE FROM  `curriculum_sections` ' +
+				'WHERE `cid` ="' + req.body.id + '"; ';
+
+				connection.query(str, function (error, results, fields) {
+
+					if (error) {
+						cbk(error.message);
+						return true;
+					} else {
+						if (results) {
+							cbk(results);
+						} else {
+							cbk(false);
+						}
+
+					}
+				});  
+			};
+			_f['S3'] = function(cbk) {
+				var section = JSON.stringify(req.body.sections);
+				section = section.replace('"','\"');
+				var str = 'INSERT INTO  `curriculum_sections` (`cid`,`type`,`script`, `created`) VALUES ("' +
+				req.body.id + '",' +
+				'"niuA",' +
+				// '"'+ encodeURIComponent(JSON.stringify(req.body.sections)) + '",' +
+				"'"+ section + "'," +
+				'NOW()' +	
+				'); ';
+
+				connection.query(str, function (error, results, fields) {
+
+					if (error) {
+						cbk(error.message);
+						return true;
+					} else {
+						if (results[0]) {
+							cbk(results[0]);
+						} else {
+							cbk(false);
+						}
+
+					}
+				});  
+			};		
+			connection.connect();
+			CP.serial(
+				_f,
+				function(data) {
+					connection.end();
+					res.send({_spent_time:data._spent_time, status:data.status, data:data});
+				},
+				30000
+			);
+			break;			
 		case 'delete':
 			var CP = new pkg.crowdProcess();
 			var _f = {};
