@@ -102,7 +102,7 @@ var app = function(auth_data) {
 			break;	
 		case 'update':
 			var CP = new pkg.crowdProcess();
-			var connection = mysql.createConnection(cfg0);
+			
 			var _f = {};
 			_f['S1'] = function(cbk) {
 				var str = 'UPDATE  `curriculums` SET ' +
@@ -110,6 +110,7 @@ var app = function(auth_data) {
 				'`published` = "' + ((req.body.published)?req.body.published:0) + '",' +    
 				'`created` = NOW() ' +
 				'WHERE `curriculum_id` ="' + req.body.curriculum_id + '"; ';
+				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				connection.query(str, function (error, results, fields) {
 					connection.end();
@@ -132,6 +133,7 @@ var app = function(auth_data) {
 				'`published` = "' + ((req.body.published)?req.body.published:0) + '",' +    
 				'`created` = NOW() ' +
 				'WHERE `curriculum_id` ="' + req.body.curriculum_id + '"; ';
+				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				connection.query(str, function (error, results, fields) {
 					connection.end();
