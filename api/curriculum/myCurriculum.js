@@ -130,9 +130,9 @@ var app = function(auth_data) {
 			_f['S2'] = function(cbk) {
 				var str = 'DELETE FROM  `curriculum_sections` ' +
 				'WHERE `curriculum_id` ="' + req.body.curriculum_id + '"; ';
-
+				connection.connect();
 				connection.query(str, function (error, results, fields) {
-
+					connection.end();
 					if (error) {
 						cbk(error.message);
 						return true;
@@ -156,9 +156,9 @@ var app = function(auth_data) {
 				"'"+ section + "'," +
 				'NOW()' +	
 				'); ';
-
+				connection.connect();
 				connection.query(str, function (error, results, fields) {
-
+					connection.end();
 					if (error) {
 						cbk(error.message);
 						return true;
@@ -176,7 +176,6 @@ var app = function(auth_data) {
 			CP.serial(
 				_f,
 				function(data) {
-					connection.end();
 					res.send({_spent_time:data._spent_time, status:data.status, data:data});
 				},
 				30000
