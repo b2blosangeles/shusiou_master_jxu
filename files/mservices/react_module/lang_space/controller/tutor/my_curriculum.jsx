@@ -175,7 +175,7 @@ try {
 		submitCurriculum:function(v, jump){
 			var me = this, data = {};
 			if (me.state.curriculum.id) {
-				data = {cmd:'update', id:me.state.curriculum.id, vid: me.state.curriculum.vid, 
+				data = {cmd:'update', curriculum_id:me.state.curriculum.curriculum_id, vid: me.state.curriculum.vid, 
 					name:me.state.curriculum.name, 
 					section:me.state.section,
 					published:(me.state.curriculum.published)?me.state.curriculum.published:0,
