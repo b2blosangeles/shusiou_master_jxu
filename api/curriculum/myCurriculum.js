@@ -127,12 +127,38 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			_f['S1A'] = function(cbk) {
-				var str = 'UPDATE  `curriculums` SET ' +
-				'`name` = "' + req.body.name + '",' +
-				'`published` = "' + ((req.body.published)?req.body.published:0) + '",' +    
-				'`created` = NOW() ' +
-				'WHERE `curriculum_id` ="' + req.body.curriculum_id + '"; ';
+			
+			_f['S2'] = function(cbk) {
+				var str = 'DELETE FROM  `curriculum_sections` WHERE `curriculum_id` = "' + req.body.curriculum_id + '"; ';
+				var connection = mysql.createConnection(cfg0);
+				connection.connect();
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					if (error) {
+						cbk(error.message);
+						return true;
+					} else {
+						if (results) {
+							cbk('results');
+						} else {
+							cbk(false);
+						}
+
+					}
+					
+				});  
+			}
+			_f['S3'] = function(cbk) {
+				var section = JSON.stringify(req.body.sections);
+				section = section.replace('"','\"');
+				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
+				req.body.curriculum_id + '",' +
+				'"niuA",' +
+				'"SSS",' +
+				// '"'+ encodeURIComponent(JSON.stringify(req.body.sections)) + '",' +
+				// "'"+ section + "'," +
+				'NOW()' +	
+				'); ';
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				connection.query(str, function (error, results, fields) {
@@ -150,62 +176,6 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			/*
-			_f['S2'] = function(cbk) {
-				var str = "DELETE FROM  `curriculum_sections` WHERE `curriculum_id` = '" + req.body.curriculum_id + "'; ";
-				cbk(str+'BBB');
-				return true;
-				connection.connect();
-				connection.query(str, function (error, results, fields) {
-					connection.end();
-					
-					
-					if (error) {
-						cbk(error.message);
-						return true;
-					} else {
-						if (results) {
-							cbk('results');
-						} else {
-							cbk(false);
-						}
-
-					}
-					
-				});  
-			};
-			*/
-			/*
-			_f['S3'] = function(cbk) {
-				var section = JSON.stringify(req.body.sections);
-				section = section.replace('"','\"');
-				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
-				req.body.curriculum_id + '",' +
-				'"niuA",' +
-				'"SSS",' +
-				// '"'+ encodeURIComponent(JSON.stringify(req.body.sections)) + '",' +
-				// "'"+ section + "'," +
-				'NOW()' +	
-				'); ';
-				cbk(str);
-				return true;
-				connection.connect();
-				connection.query(str, function (error, results, fields) {
-					connection.end();
-					if (error) {
-						cbk(error.message);
-						return true;
-					} else {
-						if (results[0]) {
-							cbk(results[0]);
-						} else {
-							cbk(false);
-						}
-
-					}
-				});  
-			};
-			*/
 			CP.serial(
 				_f,
 				function(data) {
