@@ -157,6 +157,8 @@ var app = function(auth_data) {
 				// "'"+ section + "'," +
 				'NOW()' +	
 				'); ';
+				cbk(str);
+				return true;
 				connection.connect();
 				connection.query(str, function (error, results, fields) {
 					connection.end();
