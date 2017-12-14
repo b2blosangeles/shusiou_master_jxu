@@ -100,7 +100,7 @@ switch(type) {
 								function() {
 									file.destroy();
 									write404('timeout')
-								}, 6000
+								}, 30000
 							);
 						}
 					}
