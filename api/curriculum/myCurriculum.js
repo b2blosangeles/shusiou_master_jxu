@@ -126,12 +126,36 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			_f['S2'] = function(cbk) {
-				var str = "DELETE FROM  `curriculum_sections` WHERE `curriculum_id` = ''; ";
+			_f['S1A'] = function(cbk) {
+				var str = 'UPDATE  `curriculums` SET ' +
+				'`name` = "' + req.body.name + '",' +
+				'`published` = "' + ((req.body.published)?req.body.published:0) + '",' +    
+				'`created` = NOW() ' +
+				'WHERE `curriculum_id` ="' + req.body.curriculum_id + '"; ';
 				connection.connect();
 				connection.query(str, function (error, results, fields) {
 					connection.end();
-					cbk(str+'BBB');
+					if (error) {
+						cbk(error.message);
+						return true;
+					} else {
+						if (results[0]) {
+							cbk(results[0]);
+						} else {
+							cbk(false);
+						}
+
+					}
+				});  
+			};			
+			_f['S2'] = function(cbk) {
+				var str = "DELETE FROM  `curriculum_sections` WHERE `curriculum_id` = '" + req.body.curriculum_id + "'; ";
+				cbk(str+'BBB');
+				return true;
+				connection.connect();
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					
 					/*
 					if (error) {
 						cbk(error.message);
