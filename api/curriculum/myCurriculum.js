@@ -147,7 +147,8 @@ var app = function(auth_data) {
 
 					}
 				});  
-			};			
+			};
+			/*
 			_f['S2'] = function(cbk) {
 				var str = "DELETE FROM  `curriculum_sections` WHERE `curriculum_id` = '" + req.body.curriculum_id + "'; ";
 				cbk(str+'BBB');
@@ -156,7 +157,7 @@ var app = function(auth_data) {
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					
-					/*
+					
 					if (error) {
 						cbk(error.message);
 						return true;
@@ -168,9 +169,10 @@ var app = function(auth_data) {
 						}
 
 					}
-					*/
+					
 				});  
 			};
+			*/
 			/*
 			_f['S3'] = function(cbk) {
 				var section = JSON.stringify(req.body.sections);
