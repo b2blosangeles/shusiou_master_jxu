@@ -130,10 +130,11 @@ try {
 				A[A.length] = me.state.section.s + i * 0.5;
 			}
 			var ips = me.props.parent.state.curriculum.node_ip;
-			var IP = ips[Math.floor(Math.random() * ips.length)];
+			
 			return A.map(function(a,idx){
 				//var v = shusiou_config.api_server + '/api/video/play_stream.api?type=image&vid=' + 
 				//    me.props.parent.state.curriculum.vid +'&w=90&s=' + a;
+				var IP = ips[Math.floor(Math.random() * ips.length)];
 				var v = 'http://' + IP + '/api/video/play_stream.api?type=image&vid=' + 
 				    me.props.parent.state.curriculum.vid +'&w=90&s=' + a + '&server=' + 
 				    me.props.parent.state.curriculum.server_ip;
