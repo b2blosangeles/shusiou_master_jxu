@@ -129,9 +129,6 @@ var app = function(auth_data) {
 			_f['S2'] = function(cbk) {
 				var str = 'DELETE FROM  `curriculum_sections` WHERE `curriculum_id` ="' + req.body.curriculum_id + '"; ';
 				connection.connect();
-				connection.end();
-					cbk(str+'BBB');
-				return true;
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					cbk(str+'BBB');
