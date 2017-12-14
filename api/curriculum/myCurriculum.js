@@ -102,6 +102,7 @@ var app = function(auth_data) {
 			break;	
 		case 'update':
 			var CP = new pkg.crowdProcess();
+			var connection = mysql.createConnection(cfg0);
 			var _f = {};
 
 			_f['S1'] = function(cbk) {
