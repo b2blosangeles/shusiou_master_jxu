@@ -137,7 +137,7 @@ var app = function(auth_data) {
 						return true;
 					} else {
 						if (results) {
-							cbk(results);
+							cbk('results');
 						} else {
 							cbk(false);
 						}
