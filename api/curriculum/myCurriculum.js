@@ -147,7 +147,8 @@ var app = function(auth_data) {
 					}
 					
 				});  
-			}
+			};
+			/*
 			_f['S3'] = function(cbk) {
 				var section = JSON.stringify(req.body.sections);
 				section = section.replace('"','\"');
@@ -176,6 +177,7 @@ var app = function(auth_data) {
 					}
 				});  
 			};
+			*/
 			CP.serial(
 				_f,
 				function(data) {
