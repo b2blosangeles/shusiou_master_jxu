@@ -127,10 +127,9 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			/*
 			_f['S2'] = function(cbk) {
 				var str = 'DELETE FROM  `curriculum_sections` ' +
-				'WHERE `cid` ="' + req.body.id + '"; ';
+				'WHERE `curriculum_id` ="' + req.body.curriculum_id + '"; ';
 
 				connection.query(str, function (error, results, fields) {
 
@@ -151,7 +150,7 @@ var app = function(auth_data) {
 				var section = JSON.stringify(req.body.sections);
 				section = section.replace('"','\"');
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
-				req.body.id + '",' +
+				req.body.curriculum_id + '",' +
 				'"niuA",' +
 				// '"'+ encodeURIComponent(JSON.stringify(req.body.sections)) + '",' +
 				"'"+ section + "'," +
@@ -173,7 +172,6 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			*/
 			
 			CP.serial(
 				_f,
