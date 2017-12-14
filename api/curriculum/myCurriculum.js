@@ -104,7 +104,6 @@ var app = function(auth_data) {
 			var CP = new pkg.crowdProcess();
 			var connection = mysql.createConnection(cfg0);
 			var _f = {};
-			/*
 			_f['S1'] = function(cbk) {
 				var str = 'UPDATE  `curriculums` SET ' +
 				'`name` = "' + req.body.name + '",' +
@@ -127,7 +126,6 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			*/
 			_f['S2'] = function(cbk) {
 				var str = 'DELETE FROM  `curriculum_sections` WHERE `curriculum_id` ="' + req.body.curriculum_id + '"; ';
 				connection.connect();
