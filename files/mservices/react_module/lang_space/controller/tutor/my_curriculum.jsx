@@ -218,6 +218,8 @@ try {
 				} else if (jump) {
 					alert(jump);
 					me.props.router.push('/tutor/my_curriculums');
+				} else {
+					alert(122);
 				}
 			},function( jqXHR, textStatus ) {
 				alert('error');
