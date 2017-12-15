@@ -113,7 +113,7 @@ try {
 				footer:(<span/>)
 			}});			
 			return true;
-		},		
+		},
 		componentDidMount:function() {
 			var me = this;
 			var vid = '';	
@@ -255,10 +255,7 @@ try {
 			section.o = v;
 			me.setState({section:section}, function() {
 				me.submitCurriculum(me.props.params);	
-				// me.componentDidMount();				
-				
 				var cid = me.props.params['id'];
-				alert(cid);
 				me.getCurriculumById(cid, function(data) {
 					if (data.data.curriculum_id) {
 						me.setState({curriculum:data.data,
@@ -267,17 +264,6 @@ try {
 					me.leftBox(me.props.params);
 					me.rightBox(me.props.params);
 				});
-				
-				var cid = me.props.params['id'];
-				me.getCurriculumById(cid, function(data) {
-					if (data.data.curriculum_id) {
-						me.setState({curriculum:data.data,
-						    sections:(data.data.script)?data.data.script:[]});
-					} 
-					me.leftBox(me.props.params);
-					me.rightBox(me.props.params);
-				});				
-				
 				me.setState({section:{track:{}}});			
 			});
 		},		
