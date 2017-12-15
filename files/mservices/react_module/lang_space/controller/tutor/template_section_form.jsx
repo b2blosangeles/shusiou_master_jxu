@@ -27,13 +27,14 @@ try {
 		},
 		componentDidMount:function() {
 			var me = this;
-			alert(12);
 			if (me.props.section.id == 'new') {
 				me.setState({c_section:me.default});
 			} else me.setState({c_section:me.props.section.o});
 		},
 		componentDidUpdate:function(prePropos, preState) {	
 			var me = this;	
+			console.log('==vvv===' + new Date());
+			return true;
 			if (me.props.section.id != prePropos.section.id) {	
  				// me.setState({c_section:me.props.parent.state.section.o});	
 				if (me.props.section.id == 'new') {
