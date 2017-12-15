@@ -250,8 +250,7 @@ try {
 			me.componentDidMount();
 		},		
 		acceptSection: function(v) {
-			var me = this;
-			var section = me.state.section;	
+			var me = this, section = me.state.section;	
 			section.o = v;
 			me.setState({section:section}, function() {
 				me.submitCurriculum(me.props.params);			
