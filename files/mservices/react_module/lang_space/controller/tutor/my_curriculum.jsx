@@ -251,24 +251,9 @@ try {
 		},		
 		acceptSection: function(v) {
 			var me = this;
-			var o = me.state.sections, v1 = me.state.section;
-			//var v1 = JSON.parse(JSON.stringify(decodeURIComponent(me.state.section)));		
-			v1.o = v;
-			if (v1.id != 'new') {
-				for (var i = 0;  i < o.length; i++) {
-					if (o[i].id == v1.id) {
-						o[i] = v1;
-						break;
-					}
-				}
-				
-			} else {
-				v1.id = new Date().getTime() + '_' + o.length;
-				o[o.length] = v1;
-				
-			}
-			console.log(v);
-			me.setState({section:v}, function() {
+			var section = me.state.section;	
+			section.o = v;
+			me.setState({section:section}, function() {
 				me.submitCurriculum(me.props.params);			
 				me.setState({section:{track:{}}});			
 			});
