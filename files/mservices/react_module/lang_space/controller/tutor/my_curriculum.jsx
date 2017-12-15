@@ -200,7 +200,17 @@ try {
 			}, function( data) {
 				if ((data.data) && v === '') {
 					me.props.router.push('/tutor/my_curriculum/edit/'+data.data);
-					me.componentDidMount();
+					
+					var cid = me.props.params['id'];
+					me.getCurriculumById(cid, function(data) {
+						if (data.data.curriculum_id) {
+							me.setState({curriculum:data.data,
+							    sections:(data.data.script)?data.data.script:[]});
+						} 
+						console.log(data.data.curriculum_id);
+
+					});					
+				//	me.componentDidMount();
 					
 				//	window.location.reload();
 				} else if (jump) {
@@ -255,18 +265,7 @@ try {
 			section.o = v;
 			me.setState({section:section}, function() {
 				me.submitCurriculum(me.props.params);	
-				var cid = me.props.params['id'];
-				me.getCurriculumById(cid, function(data) {
-					if (data.data.curriculum_id) {
-						me.setState({curriculum:data.data,
-						    sections:(data.data.script)?data.data.script:[]});
-					} 
-				//	me.leftBox(me.props.params);
-				//	me.rightBox(me.props.params);
-					console.log(data.data.curriculum_id);
-					me.setState({section:{track:{}}});
-				});
-							
+				me.setState({section:{track:{}}});			
 			});
 		},		
 		render: function() {
