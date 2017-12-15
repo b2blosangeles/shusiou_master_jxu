@@ -255,6 +255,7 @@ try {
 			section.o = v;
 			me.setState({section:section}, function() {
 				me.submitCurriculum(me.props.params);	
+				me.componentDidMount();
 				me.setState({section:{track:{}}});			
 			});
 		},		
