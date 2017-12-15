@@ -263,8 +263,9 @@ try {
 					} 
 					me.leftBox(me.props.params);
 					me.rightBox(me.props.params);
+					me.setState({section:{track:{}}});
 				});
-				me.setState({section:{track:{}}});			
+							
 			});
 		},		
 		render: function() {
