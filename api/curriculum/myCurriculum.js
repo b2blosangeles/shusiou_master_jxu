@@ -150,8 +150,8 @@ var app = function(auth_data) {
 			};
 			
 			_f['S3'] = function(cbk) {
-				var section = req.body.section;
-				var sections = req.body.section;
+				var section = (req.body.section)?req.body.section:{};
+				var sections = (req.body.sections)?req.body.sections:[];
 				if (section.id == 'new') {
 					section.id = new Date().getTime();
 					sections[sections.length] = section;
@@ -163,8 +163,6 @@ var app = function(auth_data) {
 						}
 					}
 				}
-			//	try {  if (req.body.sections) sections = JSON.stringify(req.body.sections);
-			//	} catch(e) {};
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
 				req.body.curriculum_id + '",' +
 				'"niuA",' +
