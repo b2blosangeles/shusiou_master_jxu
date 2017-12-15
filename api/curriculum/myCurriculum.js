@@ -217,7 +217,7 @@ var app = function(auth_data) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				var str = 'SELECT A.*, B.*, C.`script` AS sections FROM `curriculums` A LEFT JOIN  `video` B  ON A.vid = B.vid '+
-				    ' LEFT JOIN `curriculums_sections` ON A.curriculum_id = C.curriculum_id '
+				    ' LEFT JOIN `curriculum_sections` ON A.curriculum_id = C.curriculum_id '
 				    ' WHERE A.curriculum_id = "' + curriculum_id + '" AND  A.uid = "' + uid + '";';
 
 				connection.query(str, function (error, results, fields) {
