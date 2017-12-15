@@ -34,8 +34,10 @@ try {
 		componentDidUpdate:function(prePropos, preState) {	
 			var me = this;	
 			console.log('==vvv===' + new Date() + '==> =' + JSON.stringify(me.props.section));
-			var section = me.props.section; section.o = me.state.c_section;
-			me.props.parent.setState({section:section);
+			
+			var s = me.props.section; 
+			s.o = me.state.c_section;
+			me.props.parent.setState({section:s);
 			return true;
 			if (me.props.section.id != prePropos.section.id) {	
  				// me.setState({c_section:me.props.parent.state.section.o});	
