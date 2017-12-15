@@ -267,7 +267,7 @@ try {
 				o[o.length] = v1;
 				
 			}
-			
+			console.log(v);
 			me.setState({section:v}, function() {
 				me.submitCurriculum(me.props.params);			
 				me.setState({section:{track:{}}});			
