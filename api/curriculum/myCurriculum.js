@@ -157,7 +157,7 @@ var app = function(auth_data) {
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
 				req.body.curriculum_id + '",' +
 				'"niuA",' +
-				'"'+ section + '",' +
+				"'" + section + "'," +
 				'NOW()' +	
 				'); ';
 				var connection = mysql.createConnection(cfg0);
