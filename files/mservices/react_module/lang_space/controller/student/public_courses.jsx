@@ -52,7 +52,7 @@ try {
 			}
 		},
 		videoImageFilm:function(a, t) {
-			var url = 'http://' +svr + '/api/video/play_stream.api?type=image&vid='+ a.vid +
+			var url = 'http://' + a.server_ip + '/api/video/play_stream.api?type=image&vid='+ a.vid +
 			    '&w=180&s='+t+'&server='+a.server_ip;			
 			return url;
 		},
