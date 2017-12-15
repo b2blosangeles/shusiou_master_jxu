@@ -215,6 +215,7 @@ try {
 					
 				//	window.location.reload();
 				} else if (jump) {
+					alert(jump);
 					me.props.router.push('/tutor/my_curriculums');
 				}
 			},function( jqXHR, textStatus ) {
