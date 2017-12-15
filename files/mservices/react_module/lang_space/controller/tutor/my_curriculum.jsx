@@ -202,6 +202,7 @@ try {
 					me.props.router.push('/tutor/my_curriculum/edit/'+data.data);
 					
 					var cid = me.props.params['id'];
+					alert(cid);
 					me.getCurriculumById(cid, function(data) {
 						if (data.data.curriculum_id) {
 							me.setState({curriculum:data.data,
