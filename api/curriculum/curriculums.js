@@ -9,9 +9,8 @@ switch(req.body.cmd) {
 		var _f = {};
 		_f['S1'] = function(cbk) {
 			var connection = mysql.createConnection(cfg0);
-			var str = 'SELECT A.*, B.code FROM  `videos` B JOIN `curriculums` A  ON A.vid = B.id WHERE A.published = 1;';
+			var str = 'SELECT A.*, B.code FROM `curriculums` LEFT JOIN  A `video` B  ON A.vid = B.vid WHERE A.published = 1;';
 			connection.query(str, function (error, results, fields) {
-
 				if (error) {
 					cbk(error.message);
 					return true;
