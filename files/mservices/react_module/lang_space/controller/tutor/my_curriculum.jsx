@@ -219,6 +219,7 @@ try {
 					me.props.router.push('/tutor/my_curriculums');
 				}
 			},function( jqXHR, textStatus ) {
+				alert('error');
 				console.log('error');
 			});			
 		},
