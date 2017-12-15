@@ -201,6 +201,7 @@ try {
 				if ((data.data) && v === '') {
 					me.props.router.push('/tutor/my_curriculum/edit/'+data.data);
 					me.componentDidMount();
+					
 				//	window.location.reload();
 				} else if (jump) {
 					me.props.router.push('/tutor/my_curriculums');
@@ -253,7 +254,7 @@ try {
 			var me = this, section = me.state.section;	
 			section.o = v;
 			me.setState({section:section}, function() {
-				me.submitCurriculum(me.props.params);			
+				me.submitCurriculum(me.props.params);	
 				me.setState({section:{track:{}}});			
 			});
 		},		
