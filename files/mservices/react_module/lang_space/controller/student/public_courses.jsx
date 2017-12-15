@@ -52,7 +52,8 @@ try {
 			}
 		},
 		videoImageFilm:function(a, t) {
-			var url = shusiou_config.api_server + '/api/video/shusiou_video_image.api?vid='+a+'&s='+t+'&w=180';
+			var url = 'http://' +svr + '/api/video/play_stream.api?type=image&vid='+ a.vid +
+			    '&w=180&s='+t+'&server='+a.server_ip;			
 			return url;
 		},
 		bgFilmStyle:function(t) {
