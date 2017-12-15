@@ -162,8 +162,6 @@ var app = function(auth_data) {
 				'"'+ section + '",' +
 				'NOW()' +	
 				'); ';
-				cbk(str);
-				return true;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				connection.query(str, function (error, results, fields) {
@@ -172,8 +170,8 @@ var app = function(auth_data) {
 						cbk(error.message);
 						return true;
 					} else {
-						if (results[0]) {
-							cbk(results[0]);
+						if (results) {
+							cbk(results);
 						} else {
 							cbk(false);
 						}
