@@ -226,7 +226,6 @@ var app = function(auth_data) {
 						cbk(error.message);
 						return true;
 					} else {
-						if results.l
 						cbk(results[0]);
 					}
 				});  
