@@ -157,8 +157,6 @@ var app = function(auth_data) {
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
 				req.body.curriculum_id + '",' +
 				'"niuA",' +
-				// '"SSS",' +
-				// '"'+ encodeURIComponent(JSON.stringify(req.body.sections)) + '",' +
 				'"'+ section + '",' +
 				'NOW()' +	
 				'); ';
