@@ -251,7 +251,7 @@ try {
 		},		
 		acceptSection: function(v) {
 			alert(JSON.stringify(v))
-			retutn true;
+			return true;
 			var me = this;
 	
 			var o = me.state.sections;
