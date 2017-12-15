@@ -199,7 +199,7 @@ try {
 				dataType: "JSON"
 			}, function( data) {
 				if ((data.data) && v === '') {
-					me.props.router.push('/tutor/my_curriculum/edit/'+data.data);
+					// me.props.router.push('/tutor/my_curriculum/edit/'+data.data);
 					
 					var cid = me.props.params['id'];
 					alert(cid);
