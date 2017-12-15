@@ -156,8 +156,8 @@ var app = function(auth_data) {
 				req.body.curriculum_id + '",' +
 				'"niuA",' +
 				// '"SSS",' +
-				// '"'+ encodeURIComponent(JSON.stringify(req.body.sections)) + '",' +
-				'"'+ section + '",' +
+				'"'+ encodeURIComponent(JSON.stringify(req.body.sections)) + '",' +
+				// '"'+ section + '",' +
 				'NOW()' +	
 				'); ';
 				var connection = mysql.createConnection(cfg0);
