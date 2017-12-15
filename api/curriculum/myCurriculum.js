@@ -162,6 +162,8 @@ var app = function(auth_data) {
 				'"'+ section + '",' +
 				'NOW()' +	
 				'); ';
+				cbk(str);
+				return true;
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				connection.query(str, function (error, results, fields) {
