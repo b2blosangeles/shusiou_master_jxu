@@ -241,6 +241,7 @@ var app = function(auth_data) {
 					var v = [];
 					if (results.length) {
 						for (var i = 0; i < results.length; i++) {
+							results[i].script =  decodeURIComponent(results[i].script);
 							v[v.length] = results[i].node_ip;
 						}	
 					} 
