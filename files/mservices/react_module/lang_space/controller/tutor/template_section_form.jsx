@@ -33,6 +33,7 @@ try {
 		},
 		componentDidUpdate:function(prePropos, preState) {	
 			var me = this;	
+			/*
 			console.log('==vvv===' + new Date() + '==> =' + JSON.stringify(me.props.section));
 			
 			var s = me.props.section; 
@@ -44,7 +45,8 @@ try {
 				if (me.props.section.id == 'new') {
 					me.setState({c_section:me.default});
 				} else me.setState({c_section:me.props.section.o});
- 			}				
+ 			}
+			*/
 		},		
 		handleChange(rec, event) {
 			var me = this;
