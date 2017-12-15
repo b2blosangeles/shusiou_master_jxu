@@ -253,7 +253,7 @@ try {
 			var me = this;
 	
 			var o = me.state.sections;
-			var v1 = JSON.parse(JSON.stringify(me.state.section));		
+			var v1 = JSON.parse(JSON.stringify(decodeURIComponent(me.state.section)));		
 			v1.o = v;
 			if (v1.id != 'new') {
 				for (var i = 0;  i < o.length; i++) {
