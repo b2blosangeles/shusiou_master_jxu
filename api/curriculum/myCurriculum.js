@@ -151,7 +151,7 @@ var app = function(auth_data) {
 			
 			_f['S3'] = function(cbk) {
 				var section = '';
-				try {  section = JSON.stringify(req.body.sections);
+				try {  if (req.body.sections) section = JSON.stringify(req.body.sections);
 				} catch(e) {};
 				section = section.replace('"','\"');
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
