@@ -250,6 +250,7 @@ try {
 			me.componentDidMount();
 		},		
 		acceptSection: function(v) {
+			alert(JSON.stringify(v))
 			var me = this;
 	
 			var o = me.state.sections;
