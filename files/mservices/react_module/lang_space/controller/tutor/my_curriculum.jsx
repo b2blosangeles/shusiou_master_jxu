@@ -198,6 +198,7 @@ try {
 				data: data,
 				dataType: "JSON"
 			}, function( data) {
+				alert(121);
 				if ((data.data) && v === '') {
 					// me.props.router.push('/tutor/my_curriculum/edit/'+data.data);
 					
