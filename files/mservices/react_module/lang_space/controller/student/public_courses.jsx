@@ -71,7 +71,7 @@ try {
 										</div>
 										<img src={me.videoImageFilm(a, 10)} style={{width:'100%'}}/>
 										<div className="video_thumbnail_text">
-											<a href={'#/student/my_course/' + a.id}>
+											<a href={'#/student/my_course/' + a.curriculum.id}>
 												<button type="button" 
 													className="btn btn-success">
 													<i className="fa fa-play" aria-hidden="true"></i> 
