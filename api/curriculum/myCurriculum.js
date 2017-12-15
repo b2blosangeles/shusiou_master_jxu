@@ -157,7 +157,7 @@ var app = function(auth_data) {
 				'"niuA",' +
 				// '"SSS",' +
 				// '"'+ encodeURIComponent(JSON.stringify(req.body.sections)) + '",' +
-				"'"+ section + "'," +
+				'"'+ section + '",' +
 				'NOW()' +	
 				'); ';
 				var connection = mysql.createConnection(cfg0);
