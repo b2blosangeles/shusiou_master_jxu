@@ -153,11 +153,10 @@ var app = function(auth_data) {
 				var section = '';
 				try {  if (req.body.sections) section = JSON.stringify(req.body.sections);
 				} catch(e) {};
-				section = section.replace('"','\"');
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
 				req.body.curriculum_id + '",' +
 				'"niuA",' +
-				"'" + section + "'," +
+				'"' + encodeURIComponent(section) + '",' +
 				'NOW()' +	
 				'); ';
 				var connection = mysql.createConnection(cfg0);
