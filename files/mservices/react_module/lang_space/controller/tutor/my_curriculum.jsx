@@ -251,8 +251,6 @@ try {
 		},		
 		acceptSection: function(v) {
 			var me = this;
-			alert(v);
-			return true;
 			var o = me.state.sections, v1 = me.state.section;
 			//var v1 = JSON.parse(JSON.stringify(decodeURIComponent(me.state.section)));		
 			v1.o = v;
