@@ -148,10 +148,10 @@ var app = function(auth_data) {
 					
 				});  
 			};
-			/*
+			
 			_f['S3'] = function(cbk) {
-				var section = JSON.stringify(req.body.sections);
-				section = section.replace('"','\"');
+				//var section = JSON.stringify(req.body.sections);
+				//section = section.replace('"','\"');
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
 				req.body.curriculum_id + '",' +
 				'"niuA",' +
@@ -177,7 +177,7 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			*/
+			
 			CP.serial(
 				_f,
 				function(data) {
