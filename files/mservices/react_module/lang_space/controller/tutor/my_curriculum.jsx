@@ -261,8 +261,9 @@ try {
 						me.setState({curriculum:data.data,
 						    sections:(data.data.script)?data.data.script:[]});
 					} 
-					me.leftBox(me.props.params);
-					me.rightBox(me.props.params);
+				//	me.leftBox(me.props.params);
+				//	me.rightBox(me.props.params);
+					console.log(data.data.curriculum_id);
 					me.setState({section:{track:{}}});
 				});
 							
