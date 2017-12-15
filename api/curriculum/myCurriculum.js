@@ -251,7 +251,7 @@ var app = function(auth_data) {
 				_f,
 				function(data) {
 					try {
-						CP.data.S1.script = JSON.parse(decodeURIComponent(CP.data.S1.script));
+					//	CP.data.S1.script = JSON.parse(decodeURIComponent(CP.data.S1.script));
 					} catch (err) {};	
 					CP.data.S1.node_ip = CP.data.S2;
 					res.send({_spent_time:data._spent_time, status:data.status, data:CP.data.S1});
