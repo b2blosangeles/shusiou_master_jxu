@@ -226,6 +226,7 @@ var app = function(auth_data) {
 						cbk(error.message);
 						return true;
 					} else {
+						if results.l
 						cbk(results[0]);
 					}
 				});  
@@ -241,7 +242,6 @@ var app = function(auth_data) {
 					var v = [];
 					if (results.length) {
 						for (var i = 0; i < results.length; i++) {
-							results[i].script =  decodeURIComponent(results[i].script);
 							v[v.length] = results[i].node_ip;
 						}	
 					} 
@@ -251,6 +251,7 @@ var app = function(auth_data) {
 			CP.serial(
 				_f,
 				function(data) {
+					CP.data.S1.script = ecodeURIComponent(CP.data.S1.script);
 					CP.data.S1.node_ip = CP.data.S2;
 					res.send({_spent_time:data._spent_time, status:data.status, data:CP.data.S1});
 				},
