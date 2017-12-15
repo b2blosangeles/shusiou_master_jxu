@@ -150,13 +150,25 @@ var app = function(auth_data) {
 			};
 			
 			_f['S3'] = function(cbk) {
-				var section = '';
-				try {  if (req.body.sections) section = JSON.stringify(req.body.sections);
-				} catch(e) {};
+				var section = req.body.section;
+				var sections = req.body.section;
+				if (section.id == 'new') {
+					section.id = new Date().getTime();
+					sections[sections.length] = section;
+				} else {
+					for (var i = 0; i < sections.length; i++) {
+						if (sections[i].id == section.id) {
+							sections[i] = section;
+							break;
+						}
+					}
+				}
+			//	try {  if (req.body.sections) sections = JSON.stringify(req.body.sections);
+			//	} catch(e) {};
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
 				req.body.curriculum_id + '",' +
 				'"niuA",' +
-				'"' + encodeURIComponent(section) + '",' +
+				'"' + encodeURIComponent(JSON.stringify(sections)) + '",' +
 				'NOW()' +	
 				'); ';
 				var connection = mysql.createConnection(cfg0);
