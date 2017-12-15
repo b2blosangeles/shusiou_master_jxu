@@ -250,8 +250,10 @@ try {
 			me.componentDidMount();
 		},		
 		acceptSection: function(v) {
+			/*
 			alert(JSON.stringify(v))
 			return true;
+			*/
 			var me = this;
 	
 			var o = me.state.sections;
@@ -271,7 +273,7 @@ try {
 				
 			}
 			
-			me.setState({sections:o}, function() {
+			me.setState({section:v}, function() {
 				me.submitCurriculum(me.props.params);			
 				me.setState({section:{track:{}}});			
 			});
