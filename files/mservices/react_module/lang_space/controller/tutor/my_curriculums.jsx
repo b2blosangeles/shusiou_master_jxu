@@ -59,10 +59,7 @@ try {
 			}
 			var url = 'http://' +svr + '/api/video/play_stream.api?type=image&vid='+ a.vid +
 			    '&w=180&s='+t+'&server='+a.server_ip;
-			console.log(url);
 			return url;
-			return {width:'100%', background:'url('+url+')',
-				'background-size':'cover'}
 		},
 		/*
 		bgFilmThumbnail:function(v) {
