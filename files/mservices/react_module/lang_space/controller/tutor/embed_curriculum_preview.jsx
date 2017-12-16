@@ -17,6 +17,7 @@ try {
 		},
 		getVideos:function() {
 			var me = this;
+			/*
 			$.ajax({
 				url: shusiou_config.api_server + '/api/shusiou_get_videos.js',
 				method: "POST",
@@ -27,7 +28,8 @@ try {
 				console.log(data);
 			}).fail(function( jqXHR, textStatus ) {
 				console.log('error');
-			});			
+			});
+			*/
 		},
 		checkVideo:function(id) {
 			var me = this;
