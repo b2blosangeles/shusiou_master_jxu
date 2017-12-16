@@ -44,8 +44,14 @@ try {
 			});
 			*/
 		},
-		runCurriculum:function(code) {
+		runCurriculum:function(rec) {
+			console.log('---rec---');
+			console.log(rec);
+			return true;
 			var me = this;
+			var vurl = 'http://' + IP + '/api/video/play_stream.api?type=video&vid=' +
+			    me.props.parent.state.curriculum.vid + '&server=' +  me.props.parent.state.curriculum.server_ip;
+			
 			$('#video_ad').attr('src', shusiou_config.api_server + '/api/shusiou_play_video.js?vid='+code).attr('autoplay', true);
 			var vid = $('#video_ad')[0];	
 			vid.ontimeupdate = function() {
@@ -130,8 +136,7 @@ try {
 						
 					}
 					me.setState({list:v});
-					alert(data.vid);
-					me.runCurriculum(data.vid);
+					me.runCurriculum(data);
 				}
 			);			
 		},		
