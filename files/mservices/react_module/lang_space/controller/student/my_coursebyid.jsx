@@ -86,6 +86,8 @@ try {
 			me.getCurriculumById(me.props.params.id,
 				function(data) {
 					var v = [];
+				console.log('--data--');
+				console.log(data);
 					for (var j=0; j < data.curriculum.script.length; j++) {
 						
 						var q = [];
