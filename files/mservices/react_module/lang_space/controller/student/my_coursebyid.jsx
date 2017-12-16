@@ -85,14 +85,12 @@ try {
 			var me = this;
 			me.getCurriculumById(me.props.params.id,
 				function(data) {
-					var v = [];
-				console.log('--data--');
-				console.log(data);
-					for (var j=0; j < data.curriculum.script.length; j++) {
+					var v = [], script = data.script;
+					for (var j=0; j <script.length; j++) {
 						
 						var q = [];
-						for (var i=0; i < data.curriculum.script[j].o.pro.length; i++) {
-							var q_item = data.curriculum.script[j].o.pro[i];
+						for (var i=0; i < script[j].o.pro.length; i++) {
+							var q_item = script[j].o.pro[i];
 							me.multiSectense(q, q_item);
 						//	q[q.length] = q_item;
 							if (q_item.action) {
@@ -105,18 +103,18 @@ try {
 						}
 						var ansidx = q.length;
 						q[ansidx]= {};
-						q[ansidx].answer = data.curriculum.script[j].o.ans.text;
+						q[ansidx].answer = script[j].o.ans.text;
 						q[ansidx].lang = 'zh-CN';
-						q[ansidx].match = data.curriculum.script[j].o.match;
+						q[ansidx].match = script[j].o.match;
 						var nomatch = [];
-						for (var i=0; i < data.curriculum.script[j].o.non_match.length; i++) {
+						for (var i=0; i < script[j].o.non_match.length; i++) {
 							var nomatch_o = data.curriculum.script[j].o.non_match[i];
 							
 							
 							if (nomatch_o.action) {
 						//		nomatch[nomatch.length] = {text:"Saying",
 						//	      	lang:'en-US'};
-								nomatch[nomatch.length] =  {text:data.curriculum.script[j].o.ans.text,
+								nomatch[nomatch.length] =  {text:script[j].o.ans.text,
 							      	lang:'zh-CN'};
 							} else {
 								nomatch[nomatch.length] = nomatch_o;
@@ -125,10 +123,10 @@ try {
 						}
 						q[ansidx].nomatch = nomatch;
 						
-						q[q.length] = data.curriculum.script[j].o.done;
+						q[q.length] = script[j].o.done;
 						
-						v[v.length] = {s:data.curriculum.script[j].track.s, 
-							       t:data.curriculum.script[j].track.t, q:q}
+						v[v.length] = {s:script[j].track.s, 
+							       t:script[j].track.t, q:q}
 						
 					}
 					me.setState({list:v, video:data.video});
