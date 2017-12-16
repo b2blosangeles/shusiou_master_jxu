@@ -10,7 +10,8 @@ if (!lang) {
 var tts_dir = '/var/';
 var sh = require(env.space_path + '/api/inc/shorthash/node_modules/shorthash');
 var fn = tts_dir + sh.unique(str)+'.mp3';
-
+res.send(fn);
+return true;
  pkg.fs.stat(fn, function(err, data) {
      // if (err) {  
      if (true) { 	     
