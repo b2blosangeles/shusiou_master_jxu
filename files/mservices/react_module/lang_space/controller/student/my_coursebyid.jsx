@@ -21,8 +21,6 @@ try {
 				      auth:me.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
-				console.log('---data A-->');
-				console.log(data.data);
 				if (typeof cbk == 'function') {
 					cbk(data.data);
 				}
@@ -45,14 +43,13 @@ try {
 			*/
 		},
 		runCurriculum:function(rec) {
-			console.log('---rec---');
-			console.log(rec);
-			return true;
 			var me = this;
+			var ips =rec.node_ip;
+			var IP = ips[Math.floor(Math.random() * ips.length)];
 			var vurl = 'http://' + IP + '/api/video/play_stream.api?type=video&vid=' +
-			    me.props.parent.state.curriculum.vid + '&server=' +  me.props.parent.state.curriculum.server_ip;
+			    me.props.parent.state.curriculum.vid + '&server=' +  rec.server_ip;
 			
-			$('#video_ad').attr('src', shusiou_config.api_server + '/api/shusiou_play_video.js?vid='+code).attr('autoplay', true);
+			$('#video_ad').attr('src', vurl).attr('autoplay', true);
 			var vid = $('#video_ad')[0];	
 			vid.ontimeupdate = function() {
 				var inframe = false;
