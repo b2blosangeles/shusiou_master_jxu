@@ -41,7 +41,7 @@ try {
 		},		
 		render: function() {
 			var me = this;
-			if ((me.props.params.opt == 'new') && (me.props.parent.state.video)) {
+			if ((me.props.params.opt == 'new') && (me.props.parent.state.curriculum.vid)) {
 				return (<div>Embed_curriculum_preview
 						<div>{me.props.params.opt}
 							<h4>{me.props.parent.state.video.title}</h4>	
