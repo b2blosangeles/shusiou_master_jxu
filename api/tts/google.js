@@ -7,7 +7,7 @@ if (!lang) {
 	res.send('No lang!');
 	return false;
 }
-var tts_dir = '/var/';
+var tts_dir = '/var/' + lang + '/';
 var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
 var fn = tts_dir + sh.unique(str)+'.mp3';
 res.send(fn);
