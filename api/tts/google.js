@@ -23,10 +23,11 @@ _f['I0'] = function(cbk) { /* --- get server IP --- */
 	cbk(ips);
 };
 _f['P0'] = function(cbk) { /* --- get server IP --- */
-    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
-	if ((data) && ips.indexOf(data) != -1)  cbk(data);
-	else { cbk(false); CP.exit = 1; }
-    });	 
+	pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+		var ips = CP.data.I0;
+		if ((data) && ips.indexOf(data) != -1)  cbk(data);
+		else { cbk(false); CP.exit = 1; }
+	});	 
 };
 CP.serial(
 	_f,
