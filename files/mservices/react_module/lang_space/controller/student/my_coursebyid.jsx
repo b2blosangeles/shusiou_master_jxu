@@ -22,7 +22,7 @@ try {
 				dataType: "JSON"
 			}, function( data) {
 				console.log('---data--->');
-				console.log(data);
+				console.log(data.data);
 				if (typeof cbk == 'function') {
 					cbk(data);
 				}
