@@ -17,7 +17,6 @@ try {
 			var me = this;
 			me.props.parent.setState({video:v});	
 		},
-		/*
 		getVideos:function() {
 			var me = this;
 			$.ajax({
@@ -27,13 +26,13 @@ try {
 				dataType: "JSON"
 			}).done(function( data) {
 				if (data.status == 'success') {
-					me.setState({list:data.data});
+					me.setState({videoList:data.data});
 				}	
 				console.log(data);
 			}).fail(function( jqXHR, textStatus ) {
 				console.log('error');
 			});			
-		},*/
+		},
 		bgFilmStyle:function(rec) {
 			if (rec.node_ip.length) {
 				var idx = Math.floor(Math.random()*rec.node_ip.length);
@@ -103,7 +102,7 @@ try {
 								  })()}		  
 							  	</button>
 							  <ul className="dropdown-menu" style={{'min-width':'480px', 'max-height': '360px', 'overflow':'auto'}}>
-								{me.state.list.map(function(a){ 
+								{me.state.videoList.map(function(a){ 
 									return (
 									 <li><a href="JavaScript:void(0)" onClick={me.checkVideo.bind(me,a)}>
 									<table width="100%" style={{'margin-bottom':'6px'}}>
