@@ -15,9 +15,13 @@ function getServerIP() {
     }
     return address;
 };
-var ips = getServerIP();
+
 var CP = new pkg.crowdProcess(), _f = {};
 
+_f['I0'] = function(cbk) { /* --- get server IP --- */
+	var ips = getServerIP();
+	cbk(ips);
+};
 _f['P0'] = function(cbk) { /* --- get server IP --- */
     pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 	if ((data) && ips.indexOf(data) != -1)  cbk(data);
