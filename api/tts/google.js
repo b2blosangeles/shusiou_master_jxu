@@ -11,7 +11,7 @@ if (!lang) {
 var CP = new pkg.crowdProcess(), _f = {};
 
 _f['P0'] = function(cbk) { /* --- get server IP --- */
-    fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 	if ((data) && ips.indexOf(data) != -1)  cbk(data);
 	else { cbk(false); CP.exit = 1; }
     });	 
