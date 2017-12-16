@@ -7,6 +7,24 @@ if (!lang) {
 	res.send('No lang!');
 	return false;
 }
+var ips = getServerIP();
+var CP = new crowdProcess(), _f = {};
+
+_f['P0'] = function(cbk) { /* --- get server IP --- */
+    fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+	if ((data) && ips.indexOf(data) != -1)  cbk(data);
+	else { cbk(false); CP.exit = 1; }
+    });	 
+};
+CP.serial(
+	_f,
+	function(data) {
+		res.send(JSON.stringify({_spent_time:data._spent_time, status:data.status, data:data}));
+	},
+	58000
+);
+return true;
+
 var tts_dir = '/var/' + lang + '/';
 var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
 var code = sh.unique(str);
