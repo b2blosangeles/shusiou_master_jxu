@@ -21,10 +21,10 @@ try {
 				      auth:me.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
-				console.log('---data--->');
+				console.log('---data A-->');
 				console.log(data.data);
 				if (typeof cbk == 'function') {
-					cbk(data);
+					cbk(data.data);
 				}
 			},function( jqXHR, textStatus ) {
 				console.log( "Request failed: " + textStatus );
