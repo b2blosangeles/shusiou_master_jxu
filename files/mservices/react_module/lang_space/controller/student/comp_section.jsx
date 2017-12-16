@@ -35,6 +35,8 @@ try {
 			
 			
 			if (o.action) {
+				console.log('----q---->');
+				console.log(q);
 				var url = shusiou_config.api_server + '/api/shusiou_video_tmp_section.js?video=' + me.props.q.vid +'|' + 
 			    		me.props.q.s  + '|' + me.props.q.t;
 				$('#'+view_id).attr('src', url).attr('autoplay', true);
