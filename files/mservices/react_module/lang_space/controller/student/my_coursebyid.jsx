@@ -108,7 +108,7 @@ try {
 						q[ansidx].match = script[j].o.match;
 						var nomatch = [];
 						for (var i=0; i < script[j].o.non_match.length; i++) {
-							var nomatch_o = data.curriculum.script[j].o.non_match[i];
+							var nomatch_o = script[j].o.non_match[i];
 							
 							
 							if (nomatch_o.action) {
