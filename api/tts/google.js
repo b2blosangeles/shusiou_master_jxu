@@ -12,10 +12,6 @@ if (!lang) {
 var CP = new pkg.crowdProcess(), _f = {};
 
 _f['I0'] = function(cbk) { /* --- get server IPS --- */
-	var ips = getServerIP();
-	cbk(ips);
-};
-_f['P0'] = function(cbk) { /* --- get server IP --- */
 	function getServerIP() {
 	    var ifaces = require('os').networkInterfaces(), address=[];
 	    for (var dev in ifaces) {
@@ -24,6 +20,10 @@ _f['P0'] = function(cbk) { /* --- get server IP --- */
 	    }
 	    return address;
 	};	
+	var ips = getServerIP();
+	cbk(ips);
+};
+_f['P0'] = function(cbk) { /* --- get server IP --- */
 	pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 		var ips = CP.data.I0;
 		if ((data) && ips.indexOf(data) != -1)  cbk(data);
