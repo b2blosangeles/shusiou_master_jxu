@@ -47,7 +47,7 @@ try {
 			var ips =rec.node_ip;
 			var IP = ips[Math.floor(Math.random() * ips.length)];
 			var vurl = 'http://' + IP + '/api/video/play_stream.api?type=video&vid=' +
-			    me.props.parent.state.curriculum.vid + '&server=' +  rec.server_ip;
+			    rec.vid + '&server=' +  rec.server_ip;
 			
 			$('#video_ad').attr('src', vurl).attr('autoplay', true);
 			var vid = $('#video_ad')[0];	
