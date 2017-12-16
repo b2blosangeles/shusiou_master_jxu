@@ -17,6 +17,7 @@ try {
 			var me = this;
 			me.props.parent.setState({video:v});	
 		},
+		/*
 		getVideos:function() {
 			var me = this;
 			$.ajax({
@@ -32,7 +33,7 @@ try {
 			}).fail(function( jqXHR, textStatus ) {
 				console.log('error');
 			});			
-		},
+		},*/
 		bgFilmStyle:function(rec) {
 			if (rec.node_ip.length) {
 				var idx = Math.floor(Math.random()*rec.node_ip.length);
