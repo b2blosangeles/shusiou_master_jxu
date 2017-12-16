@@ -8,8 +8,8 @@ if (!lang) {
 	return false;
 }
 var tts_dir = '/var/';
-var sh = require(env.space_path + '/api/lang_space/inc/shorthash/node_modules/shorthash');
-var fn = '/var/vv/vr/icona/'+sh.unique(str)+'.mp3';
+var sh = require(env.space_path + '/inc/shorthash/node_modules/shorthash');
+var fn = tts_dir + sh.unique(str)+'.mp3';
 
  pkg.fs.stat(fn, function(err, data) {
      // if (err) {  
