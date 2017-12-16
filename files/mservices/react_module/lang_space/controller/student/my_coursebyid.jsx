@@ -130,7 +130,7 @@ try {
 						
 					}
 					me.setState({list:v});
-					akert(data.vid);
+					alert(data.vid);
 					me.runCurriculum(data.vid);
 				}
 			);			
