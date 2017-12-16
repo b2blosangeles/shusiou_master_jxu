@@ -8,14 +8,14 @@ if (!lang) {
 	return false;
 }
 var tts_dir = '/var/';
-var sh = require(env.space_path + '/api/inc/shorthash/node_modules/shorthash');
+var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
 var fn = tts_dir + sh.unique(str)+'.mp3';
 res.send(fn);
 return true;
  pkg.fs.stat(fn, function(err, data) {
      // if (err) {  
      if (true) { 	     
-	var googleTTS = require(env.space_path + '/api/inc/google-tts-api/node_modules/google-tts-api/');
+	var googleTTS = require(env.site_path + '/api/inc/google-tts-api/node_modules/google-tts-api/');
 	googleTTS(str, lang, 1)   // speed normal = 1 (default), slow = 0.24 
 	.then(function (url) {
 	   var fs = require('fs');
