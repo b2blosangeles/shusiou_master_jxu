@@ -27,20 +27,6 @@ try {
 			},function( jqXHR, textStatus ) {
 				console.log( "Request failed: " + textStatus );
 			});
-			/*
-			$.ajax({
-				url: shusiou_config.api_server + '/api/shusiou_curriculum.js',
-				method: "POST",
-				data: { cmd:'getCurriculumById', cid:cid},
-				dataType: "JSON"
-			}).done(function( data) {
-				if (typeof cbk == 'function') {
-					cbk(data);
-				}
-			}).fail(function( jqXHR, textStatus ) {
-				console.log( "Request failed: " + textStatus );
-			});
-			*/
 		},
 		runCurriculum:function(rec) {
 			var me = this;
