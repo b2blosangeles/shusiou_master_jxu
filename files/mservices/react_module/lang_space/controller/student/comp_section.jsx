@@ -47,7 +47,7 @@ try {
 				
 				var url = shusiou_config.api_server + '/api/shusiou_video_tmp_section.js?video=' + me.props.q.vid +'|' + 
 			    		me.props.q.s  + '|' + me.props.q.t;
-				$('#'+view_id).attr('src', url).attr('autoplay', true);
+				$('#'+view_id).attr('src', vurl).attr('autoplay', true);
 				me.props.parent.setState({message:{text:o.text}});
 				return true;			
 				
