@@ -129,8 +129,9 @@ try {
 							       t:script[j].track.t, q:q}
 						
 					}
-					me.setState({list:v, video:data.video});
-					me.runCurriculum(data.video.code);
+					me.setState({list:v});
+					akert(data.vid);
+					me.runCurriculum(data.vid);
 				}
 			);			
 		},		
