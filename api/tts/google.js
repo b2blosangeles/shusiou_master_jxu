@@ -9,8 +9,9 @@ if (!lang) {
 }
 var tts_dir = '/var/' + lang + '/';
 var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
+var code = sh.unique(str);
 var fn = tts_dir + sh.unique(str)+'.mp3';
-res.send(fn);
+res.send(code);
 return true;
  pkg.fs.stat(fn, function(err, data) {
      // if (err) {  
