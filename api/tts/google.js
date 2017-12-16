@@ -7,7 +7,7 @@ if (!lang) {
 	res.send('No lang!');
 	return false;
 }
-
+var tts_dir = '/var/';
 var sh = require(env.space_path + '/api/lang_space/inc/shorthash/node_modules/shorthash');
 var fn = '/var/vv/vr/icona/'+sh.unique(str)+'.mp3';
 
