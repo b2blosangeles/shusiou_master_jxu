@@ -18,6 +18,7 @@ try {
 		},
 		getDataApi: function(opt) {
 			var me = this, A = me.state.list;
+			alert('niu');
 			$.ajax({
 				url: shusiou_config.api_server + '/api/shusiou_curriculum.js',
 				method: "POST",
