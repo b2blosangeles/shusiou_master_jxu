@@ -13,7 +13,6 @@ try {
 		
 		getCurriculumById: function(curriculum_id, cbk) {
 			var me = this;
-			
 			me.props.route.env.engine({
 				url: shusiou_config.api_server + '/api/curriculum/myCurriculum.api',
 				method: "POST",
@@ -22,8 +21,8 @@ try {
 				      auth:me.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
+				console.log('---data--->');
 				console.log(data);
-				alert(curriculum_id);
 				if (typeof cbk == 'function') {
 					cbk(data);
 				}
