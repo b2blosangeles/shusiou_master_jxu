@@ -7,7 +7,7 @@ try {
 				buffer:{},
 				message:{},
 				list:[], 
-				video:{}
+				curriculum:{}
 			};
 		},
 		
@@ -22,6 +22,7 @@ try {
 				dataType: "JSON"
 			}, function( data) {
 				if (typeof cbk == 'function') {
+					me.setState({curriculum:data.data});
 					cbk(data.data);
 				}
 			},function( jqXHR, textStatus ) {
@@ -165,6 +166,15 @@ try {
 			var me = this, A = [];
 			for (var i = 0; i < me.state.c_t; i++) A[A.length] = me.state.c_s + i;
 			return A.map(function(a){
+				/*
+				var rec = me.state.curriculum;
+				var ips rec.node_ip;
+				
+				var IP = ips[Math.floor(Math.random() * ips.length)];
+				var vurl = 'http://' + IP + '/api/video/play_stream.api?type=section&'+
+				    '&s=' + + '&l=' +
+				    'vid=' + rec.vid + '&server=' +  rec.server_ip;				
+				*/
 				var v = '/api/lang_space/vr_img.js?video=sample.mp4|'+a;		
 				return (<img src={v} width="90"/>)	       
 			});
