@@ -198,31 +198,19 @@ try {
 				data: data,
 				dataType: "JSON"
 			}, function( data) {
-				alert(121);
 				if ((data.data) && v === '') {
-					// me.props.router.push('/tutor/my_curriculum/edit/'+data.data);
-					
-					var cid = me.props.params['id'];
-					alert(cid);
-					me.getCurriculumById(cid, function(data) {
-						if (data.data.curriculum_id) {
-							me.setState({curriculum:data.data,
-							    sections:(data.data.script)?data.data.script:[]});
-						} 
-						console.log(data.data.curriculum_id);
-
-					});					
-				//	me.componentDidMount();
-					
-				//	window.location.reload();
+					me.props.router.push('/tutor/my_curriculum/edit/'+data.data);
 				} else if (jump) {
-					alert(jump);
 					me.props.router.push('/tutor/my_curriculums');
-				} else {
-					alert(122);
-				}
+				} 
+				var cid = me.props.params['id'];
+				me.getCurriculumById(cid, function(data) {
+					if (data.data.curriculum_id) {
+						me.setState({curriculum:data.data,
+						    sections:(data.data.script)?data.data.script:[]});
+					} 
+				});
 			},function( jqXHR, textStatus ) {
-				alert('error');
 				console.log('error');
 			});			
 		},
