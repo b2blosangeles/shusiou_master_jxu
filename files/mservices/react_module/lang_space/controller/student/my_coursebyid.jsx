@@ -11,10 +11,9 @@ try {
 			};
 		},
 		
-		getCurriculumById: function(cid, cbk) {
+		getCurriculumById: function(curriculum_id, cbk) {
 			var me = this;
 			alert(cid);
-			return true;
 			me.props.route.env.engine({
 				url: shusiou_config.api_server + '/api/curriculum/myCurriculum.api',
 				method: "POST",
