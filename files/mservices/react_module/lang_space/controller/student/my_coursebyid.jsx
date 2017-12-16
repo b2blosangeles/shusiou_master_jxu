@@ -12,6 +12,25 @@ try {
 		},
 		
 		getCurriculumById: function(cid, cbk) {
+			var me = this;
+			alert(cid);
+			return true;
+			me.props.route.env.engine({
+				url: shusiou_config.api_server + '/api/curriculum/myCurriculum.api',
+				method: "POST",
+				data: { cmd:'getCurriculumById',
+				       curriculum_id:curriculum_id,
+				      auth:me.props.route.env.state.auth},
+				dataType: "JSON"
+			}, function( data) {
+				console.log(data);
+				if (typeof cbk == 'function') {
+					cbk(data);
+				}
+			},function( jqXHR, textStatus ) {
+				console.log( "Request failed: " + textStatus );
+			});
+			/*
 			$.ajax({
 				url: shusiou_config.api_server + '/api/shusiou_curriculum.js',
 				method: "POST",
@@ -24,6 +43,7 @@ try {
 			}).fail(function( jqXHR, textStatus ) {
 				console.log( "Request failed: " + textStatus );
 			});
+			*/
 		},
 		runCurriculum:function(code) {
 			var me = this;
@@ -64,7 +84,7 @@ try {
 		},
 		componentDidMount:function() {
 			var me = this;
-						alert('niu1');
+			alert('niu1--->');
 			me.getCurriculumById(me.props.params.id,
 				function(data) {
 					var v = [];
