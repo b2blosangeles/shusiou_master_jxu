@@ -5,7 +5,7 @@ try {
 			return {curriculum:{},
 				langs:me.props.parent.state.langs,
 				levels:me.props.parent.state.levels,
-				list:[]
+				videoList:[]
 			       };
 		},
 		componentDidMount:function() {
