@@ -37,6 +37,13 @@ try {
 			if (o.action) {
 				console.log('----q---->');
 				console.log(me.props.q.curriculum);
+				var rec = me.props.q.curriculum
+				var ips =rec.node_ip;
+				var IP = ips[Math.floor(Math.random() * ips.length)];
+				var vurl = 'http://' + IP + '/api/video/play_stream.api?type=video&vid=' +
+				    rec.vid + '&server=' +  rec.server_ip;
+				console.log(vurl);
+				
 				var url = shusiou_config.api_server + '/api/shusiou_video_tmp_section.js?video=' + me.props.q.vid +'|' + 
 			    		me.props.q.s  + '|' + me.props.q.t;
 				$('#'+view_id).attr('src', url).attr('autoplay', true);
