@@ -126,7 +126,7 @@ try {
 		},		
 		callQNA: function(idx, callback) {
 			var me = this, v =  me.state.list[idx];
-			var q = {id:idx, vid:me.state.curriculum.vid, s:v.s, t:v.t, q:v.q, callback:callback};
+			var q = {id:idx, vid:me.state.curriculum.vid, curriculum:me.state.curriculum, s:v.s, t:v.t, q:v.q, callback:callback};
 			me.setState({current_q:q});
 			return true;
 		},
