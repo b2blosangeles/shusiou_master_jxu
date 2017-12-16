@@ -41,7 +41,7 @@ try {
 			var me = this;
 			if ((me.props.params.opt == 'new') && (me.props.parent.state.video)) {
 				return (<div>Embed_curriculum_preview
-						<div>{me.props.params.opt}
+						<div>{me.props.params.opt}=====
 							<h4>{me.props.parent.state.video.title}</h4>	
 							<p><b>Video ID</b>:{me.props.parent.state.curriculum.vid}</p>  
 							<p><b>Video Length</b>:({me.props.parent.state.video.length} Secs)</p>
