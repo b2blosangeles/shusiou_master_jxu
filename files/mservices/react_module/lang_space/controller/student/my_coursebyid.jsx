@@ -84,7 +84,6 @@ try {
 		},
 		componentDidMount:function() {
 			var me = this;
-			alert('niu1--->');
 			me.getCurriculumById(me.props.params.id,
 				function(data) {
 					var v = [];
