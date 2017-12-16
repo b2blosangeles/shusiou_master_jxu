@@ -7,8 +7,8 @@ if (!lang) {
 	res.send('No lang!');
 	return false;
 }
-var ips = getServerIP();
-var CP = new crowdProcess(), _f = {};
+
+var CP = new pkg.crowdProcess(), _f = {};
 
 _f['P0'] = function(cbk) { /* --- get server IP --- */
     fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
