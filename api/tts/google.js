@@ -11,8 +11,10 @@ var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
 var code = sh.unique(str); 
 var tts_dir = '/var/' + lang + '/';
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
-    config = require(env.config_path + '/config.json'),
-    cfg0 = config.db;
+	config = require(env.config_path + '/config.json'),
+	folderP = require(env.site_path + '/api/inc/folderP/folderP'),
+	cfg0 = config.db,
+	fp = new folderP();
 
 var CP = new pkg.crowdProcess(), _f = {};
 
