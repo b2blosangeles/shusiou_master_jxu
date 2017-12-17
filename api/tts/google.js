@@ -84,11 +84,34 @@ _f['create_cache'] = function(cbk) {
 	});	
 	
 };
+_f['save_mark'] = function(cbk) { 
+	if (!CP.data.create_cache) {
+		cbk(false);
+		return true;
+	} else {
+		var connection = mysql.createConnection(cfg0);
+		connection.connect();
+		var str ="SELECT * FROM `tts_cache` WHERE `code` = '" + code + "' AND  `lang` = '" + lang + "'; ";
+		connection.query(str, function (err, results, fields) {
+			connection.end();
+			if (err) { 
+				cbk(err.message);
+				CP.exit = 1;
+			} else if (results[0]) { 
+				cbk(results[0]);
+				CP.exit = 1;
+			} else {
+				cbk(false);
+			}	
 
+		}); 
+	}
+};
 CP.serial(
 	_f,
 	function(data) {
-		res.send(JSON.stringify({_spent_time:data._spent_time, status:data.status, data:data}));
+		res.send(fn);
+		// res.send(JSON.stringify({_spent_time:data._spent_time, status:data.status, data:data}));
 	},
 	58000
 );
