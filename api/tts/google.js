@@ -7,7 +7,11 @@ if (!lang) {
 	res.send('No lang!');
 	return false;
 }
+
 var tts_dir = '/var/' + lang + '/';
+var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+    config = require(env.config_path + '/config.json'),
+    cfg0 = config.db;
 
 var CP = new pkg.crowdProcess(), _f = {};
 
