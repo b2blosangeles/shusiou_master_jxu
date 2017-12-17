@@ -46,12 +46,22 @@ _f['code_cache'] = function(cbk) {
 	var str ="SELECT * FROM `tts_cache` WHERE `code` = '" + code + "' AND  `lang` = '" + lang + "'; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (error)  cbk(false);
-		else if (results) { 
-			cbk(results);
-		} else cbk(false);
-		CP.exit = 1;
+		if (error) { 
+			cbk(false);
+			CP.exit = 1;
+		} else if (results[0]) { 
+			cbk(results[0]);
+		} else {
+			cbk(false);
+			CP.exit = 1;
+		}	
+		
 	});  
+};
+_f['create_cache'] = function(cbk) { 
+	var code = CP.data.code;
+	var fn = tts_dir + sh.unique(str)+'.mp3';
+	cbk(fn);
 };
 CP.serial(
 	_f,
