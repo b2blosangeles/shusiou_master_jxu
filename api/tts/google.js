@@ -77,7 +77,7 @@ _f['create_cache'] = function(cbk) {
 		};
 
 		var p = pkg.request(options, response);		
-		response.pipe(fs.createWriteStream(fn));
+		response.pipe(pkg.fs.createWriteStream(fn));
 		response.on('end', function() {
 			cbk('niu_true');
 		});
