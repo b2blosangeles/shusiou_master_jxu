@@ -67,7 +67,10 @@ _f['create_cache'] = function(cbk) {
 	var googleTTS = require(env.site_path + '/api/inc/google-tts-api/node_modules/google-tts-api/');
 	googleTTS(str, lang, 1)   // speed normal = 1 (default), slow = 0.24 
 	.then(function (url) {
-		cbk(url)
+		cbk(url);
+	}).catch(function (err) {
+	   	cbk('err.message');
+	});	
 	  // var fs = require('fs');
 	//   var text = str;
 		/*
@@ -85,11 +88,7 @@ _f['create_cache'] = function(cbk) {
 		response.on('end', function() {
 			cbk('niu_true');
 		});
-	*/	
-	}).catch(function (err) {
-	   	cbk('err.message');
-	});	
-	
+	*/		
 };
 _f['save_mark'] = function(cbk) { 
 	if (!CP.data.create_cache) {
