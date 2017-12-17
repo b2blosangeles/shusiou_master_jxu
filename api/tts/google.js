@@ -76,11 +76,11 @@ _f['create_cache'] = function(cbk) {
 		 'User-Agent': 'stagefright/1.2 (Linux;Android 5.0)'
 	      }
 	   }
-	   var p = pkg.request(options);
-	  	p.pipe(fs.createWriteStream(fn)).on('end', function() {
-			cbk(true);
-		});		
-		
+	   var p = pkg.request(options, response);		
+	  	response.pipe(fs.createWriteStream(fn));
+		response.on('end', function() {
+			cbk('niu_true');
+		});				
 	})
 	.catch(function (err) {
 	   	cbk(false);
