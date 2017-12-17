@@ -7,7 +7,7 @@ if (!lang) {
 	res.send('No lang!');
 	return false;
 }
-
+var tts_dir = '/var/' + lang + '/';
 
 var CP = new pkg.crowdProcess(), _f = {};
 
@@ -29,6 +29,11 @@ _f['P0'] = function(cbk) { /* --- get server IP --- */
 		if ((data) && ips.indexOf(data) != -1)  cbk(data);
 		else { cbk(false); CP.exit = 1; }
 	});	 
+};
+_f['P1'] = function(cbk) { /* --- get server IP --- */
+	
+	var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
+	var code = sh.unique(str); 
 };
 CP.serial(
 	_f,
