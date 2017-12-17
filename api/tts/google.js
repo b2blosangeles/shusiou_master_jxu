@@ -34,8 +34,12 @@ _f['P0'] = function(cbk) { /* --- get server IP --- */
 		else { cbk(false); CP.exit = 1; }
 	});	 
 };
-_f['P1'] = function(cbk) { /* --- get server IP --- */
-	
+_f['code'] = function(cbk) { /* --- get server IP --- */
+	var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
+	var code = sh.unique(str); 
+	cbk(code);
+};
+_f['code'] = function(cbk) { /* --- get server IP --- */
 	var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
 	var code = sh.unique(str); 
 	cbk(code);
