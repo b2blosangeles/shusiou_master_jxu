@@ -68,7 +68,17 @@ _f['create_cache'] = function(cbk) {
 	var googleTTS = require(env.site_path + '/api/inc/google-tts-api/node_modules/google-tts-api/');
 	googleTTS(str, lang, 1)   // speed normal = 1 (default), slow = 0.24 
 	.then(function (url) {
-		cbk(url);
+		var options = {
+			url: url,
+			headers: {
+				'Referer': 'http://translate.google.com/',
+				'User-Agent': 'stagefright/1.2 (Linux;Android 5.0)'
+			}
+		};
+		cbk(options);
+		
+		
+		
 	}).catch(function (err) {
 	   	cbk('err.message');
 	});
