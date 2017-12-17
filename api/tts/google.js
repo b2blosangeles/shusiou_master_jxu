@@ -63,7 +63,28 @@ _f['code_cache'] = function(cbk) {
 };
 _f['create_cache'] = function(cbk) { 
 	var fn = tts_dir + code +'.mp3';
-	cbk(fn);
+	var googleTTS = require(env.site_path + '/api/inc/google-tts-api/node_modules/google-tts-api/');
+	googleTTS(str, lang, 1)   // speed normal = 1 (default), slow = 0.24 
+	.then(function (url) {
+	   var fs = require('fs');
+	   var text = 'Hello World';
+	   var options = {
+	      url: url,
+	      headers: {
+		 'Referer': 'http://translate.google.com/',
+		 'User-Agent': 'stagefright/1.2 (Linux;Android 5.0)'
+	      }
+	   }
+	   var p = pkg.request(options);
+	      p.pipe(fs.createWriteStream(fn));
+	      //p.pipe(res);
+		cbk('A--fn');
+	})
+	.catch(function (err) {
+	   	cbk('B--fn');
+		//res.send(err.stack);
+	});	
+	
 };
 
 CP.serial(
