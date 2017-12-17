@@ -25,7 +25,7 @@ _f['DR1'] = function(cbk) { /* create tts path */
 		cbk(tts_dir);
 	});
 };
-_f['I0'] = function(cbk) { /* --- get server IPS --- */
+_f['IPS'] = function(cbk) { /* --- get server IPS --- */
 	function getServerIP() {
 	    var ifaces = require('os').networkInterfaces(), address=[];
 	    for (var dev in ifaces) {
@@ -37,9 +37,9 @@ _f['I0'] = function(cbk) { /* --- get server IPS --- */
 	var ips = getServerIP();
 	cbk(ips);
 };
-_f['P0'] = function(cbk) { /* --- get server IP --- */
+_f['IP'] = function(cbk) { /* --- get server IP --- */
 	pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
-		var ips = CP.data.I0;
+		var ips = CP.data.IPS;
 		if ((data) && ips.indexOf(data) != -1)  cbk(data);
 		else { cbk(false); CP.exit = 1; }
 	});	 
@@ -93,7 +93,8 @@ _f['save_mark'] = function(cbk) {
 	} else {
 		var connection = mysql.createConnection(cfg0);
 		connection.connect();
-		var str ="INSERT INTO `tts_cache` (`code`, `lang`) VALUES('" + code + "', '" + lang + "'); ";
+		var ip = CP.data.IP;
+		var str ="INSERT INTO `tts_cache` (`code`, `lang`, `ip`) VALUES('" + code + "', '" + lang + "', '" + ip + "'); ";
 		connection.query(str, function (err, results, fields) {
 			connection.end();
 			if (err) { 
