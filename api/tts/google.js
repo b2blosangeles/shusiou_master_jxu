@@ -50,6 +50,7 @@ _f['code_cache'] = function(cbk) {
 		else if (results) { 
 			cbk(results);
 		} else cbk(false);
+		CP.exit = 1;
 	});  
 };
 CP.serial(
