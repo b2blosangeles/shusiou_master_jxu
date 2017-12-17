@@ -76,13 +76,11 @@ _f['create_cache'] = function(cbk) {
 	      }
 	   }
 	   var p = pkg.request(options);
-	      p.pipe(fs.createWriteStream(fn));
-	      //p.pipe(res);
-		cbk('A--fn');
+	  	p.pipe(fs.createWriteStream(fn));
+		cbk(true);
 	})
 	.catch(function (err) {
-	   	cbk('B--fn');
-		//res.send(err.stack);
+	   	cbk(false);
 	});	
 	
 };
