@@ -94,7 +94,8 @@ _f['save_mark'] = function(cbk) {
 		var connection = mysql.createConnection(cfg0);
 		connection.connect();
 		var ip = CP.data.IP;
-		var str ="INSERT INTO `tts_cache` (`code`, `lang`, `ip`) VALUES('" + code + "', '" + lang + "', '" + ip + "'); ";
+		var str ="INSERT INTO `tts_cache` (`code`, `lang`, `ip`, `created`) VALUES('" + 
+		    code + "', '" + lang + "', '" + ip + "', NOW()); ";
 		connection.query(str, function (err, results, fields) {
 			connection.end();
 			if (err) { 
