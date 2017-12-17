@@ -39,10 +39,18 @@ _f['code'] = function(cbk) { /* --- get server IP --- */
 	var code = sh.unique(str); 
 	cbk(code);
 };
-_f['code'] = function(cbk) { /* --- get server IP --- */
-	var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
-	var code = sh.unique(str); 
-	cbk(code);
+_f['code_cache'] = function(cbk) { 
+	var code = CP.data.code;
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();
+	var str ="SELECT * FROM `tts_cache` WHERE `code` = '" + code + "' AND  `lang` = '" + lang + "'; ";
+	connection.query(str, function (error, results, fields) {
+		connection.end();
+		if (error)  cbk(false);
+		else if (results) { 
+			cbk(results);
+		} else cbk(false);
+	});  
 };
 CP.serial(
 	_f,
