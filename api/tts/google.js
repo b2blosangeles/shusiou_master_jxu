@@ -68,7 +68,7 @@ _f['create_cache'] = function(cbk) {
 	googleTTS(str, lang, 1)   // speed normal = 1 (default), slow = 0.24 
 	.then(function (url) {
 	   var fs = require('fs');
-	   var text = str;
+	//   var text = str;
 	   var options = {
 	      url: url,
 	      headers: {
@@ -84,8 +84,7 @@ _f['create_cache'] = function(cbk) {
 			cbk('niu_true');
 		});
 	*/	
-	})
-	.catch(function (err) {
+	}).catch(function (err) {
 	   	cbk('err.message');
 	});	
 	
