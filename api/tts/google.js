@@ -112,7 +112,7 @@ _f['save_mark'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		res.send(fn);
+		fs.createWriteStream(fn).p.pipe(res);
 		// res.send(JSON.stringify({_spent_time:data._spent_time, status:data.status, data:data}));
 	},
 	58000
