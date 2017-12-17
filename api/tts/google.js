@@ -83,7 +83,7 @@ _f['create_cache'] = function(cbk) {
 		});
 
 	}).catch(function (err) {
-	   	cbk('err.message');
+	   	cbk(err.message);
 	});
 	/*
 	  // var fs = require('fs');
