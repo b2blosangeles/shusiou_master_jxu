@@ -44,7 +44,7 @@ _f['IP'] = function(cbk) { /* --- get server IP --- */
 		else { cbk(false); CP.exit = 1; }
 	});	 
 };
-/*
+
 _f['code_cache'] = function(cbk) { 
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
@@ -63,7 +63,7 @@ _f['code_cache'] = function(cbk) {
 		
 	});  
 };
-*/
+
 _f['create_cache'] = function(cbk) { 
 	 cbk('==niu==');
 	/*
