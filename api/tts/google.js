@@ -67,8 +67,10 @@ _f['create_cache'] = function(cbk) {
 	var googleTTS = require(env.site_path + '/api/inc/google-tts-api/node_modules/google-tts-api/');
 	googleTTS(str, lang, 1)   // speed normal = 1 (default), slow = 0.24 
 	.then(function (url) {
-	   var fs = require('fs');
+		cbk(url)
+	  // var fs = require('fs');
 	//   var text = str;
+		/*
 	   var options = {
 	      url: url,
 	      headers: {
@@ -77,7 +79,7 @@ _f['create_cache'] = function(cbk) {
 	      }
 	   }
 	   cbk(options);
-	/*		
+			
 	   var p = pkg.request(options, response);		
 	  	response.pipe(fs.createWriteStream(fn));
 		response.on('end', function() {
