@@ -93,26 +93,22 @@ _f['save_mark'] = function(cbk) {
 	} else {
 		var connection = mysql.createConnection(cfg0);
 		connection.connect();
-		var str ="SELECT * FROM `tts_cache` WHERE `code` = '" + code + "' AND  `lang` = '" + lang + "'; ";
+		var str ="INSERT INTO `tts_cache` (`code`, `lang`) VALUES('" + code + "', '" + lang + "'); ";
 		connection.query(str, function (err, results, fields) {
 			connection.end();
 			if (err) { 
 				cbk(err.message);
 				CP.exit = 1;
-			} else if (results[0]) { 
-				cbk(results[0]);
-				CP.exit = 1;
-			} else {
-				cbk(false);
-			}	
-
+			} else { 
+				cbk(result);
+			} 
 		}); 
 	}
 };
 CP.serial(
 	_f,
 	function(data) {
-		res.send(fn);
+		res.send(data);
 		//var file = pkg.fs.createReadStream(fn);
 		//file.pipe(res);
 	},
