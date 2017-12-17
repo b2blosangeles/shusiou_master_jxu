@@ -46,14 +46,14 @@ _f['code_cache'] = function(cbk) {
 	var str ="SELECT * FROM `tts_cache` WHERE `code` = '" + code + "' AND  `lang` = '" + lang + "'; ";
 	connection.query(str, function (error, results, fields) {
 		connection.end();
-		if (error) { 
-			cbk(false);
+		if (err) { 
+			cbk(err.message);
 			CP.exit = 1;
 		} else if (results[0]) { 
 			cbk(results[0]);
+			CP.exit = 1;
 		} else {
 			cbk(false);
-			CP.exit = 1;
 		}	
 		
 	});  
