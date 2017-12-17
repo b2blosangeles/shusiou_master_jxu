@@ -56,7 +56,7 @@ _f['code_cache'] = function(cbk) {
 			CP.exit = 1;
 		} else if (results[0]) { 
 			cbk(results[0]);
-			CP.exit = 1;
+		// CP.exit = 1;
 		} else {
 			cbk(false);
 		}	
