@@ -54,10 +54,12 @@ _f['code_cache'] = function(cbk) {
 		
 	});  
 };
+/*
 _f['create_cache'] = function(cbk) { 
 	var fn = tts_dir + code +'.mp3';
 	cbk(fn);
 };
+*/
 CP.serial(
 	_f,
 	function(data) {
