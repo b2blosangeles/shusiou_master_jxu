@@ -53,7 +53,7 @@ _f['code_cache'] = function(cbk) {
 		connection.end();
 		if (err) { 
 			cbk(err.message);
-			CP.exit = 1;
+		//	CP.exit = 1;
 		} else if (results[0]) { 
 			cbk(results[0]);
 		// CP.exit = 1;
@@ -64,6 +64,8 @@ _f['code_cache'] = function(cbk) {
 	});  
 };
 _f['create_cache'] = function(cbk) { 
+	 cbk('==niu==');
+	/*
 	var googleTTS = require(env.site_path + '/api/inc/google-tts-api/node_modules/google-tts-api/');
 	googleTTS(str, lang, 1)   // speed normal = 1 (default), slow = 0.24 
 	.then(function (url) {
@@ -73,7 +75,7 @@ _f['create_cache'] = function(cbk) {
 	});	
 	  // var fs = require('fs');
 	//   var text = str;
-		/*
+		
 	   var options = {
 	      url: url,
 	      headers: {
