@@ -9,7 +9,7 @@ if (!lang) {
 }
 var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
 var code = sh.unique(str); 
-var tts_dir = '/var/' + lang + '/';
+var tts_dir = '/var/tts/' + lang + '/';
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 	config = require(env.config_path + '/config.json'),
 	folderP = require(env.site_path + '/api/inc/folderP/folderP'),
@@ -18,6 +18,11 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 
 var CP = new pkg.crowdProcess(), _f = {};
 
+_f['DR1'] = function(cbk) { /* create tts path */
+	fp.build(tts_dir, function() {
+		cbk(tts_dir);
+	});
+};
 _f['I0'] = function(cbk) { /* --- get server IPS --- */
 	function getServerIP() {
 	    var ifaces = require('os').networkInterfaces(), address=[];
