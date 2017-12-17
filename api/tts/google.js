@@ -35,11 +35,8 @@ _f['P0'] = function(cbk) { /* --- get server IP --- */
 		else { cbk(false); CP.exit = 1; }
 	});	 
 };
-_f['code'] = function(cbk) { /* --- get server IP --- */
-	cbk(code);
-};
+
 _f['code_cache'] = function(cbk) { 
-	var code = CP.data.code;
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
 	var str ="SELECT * FROM `tts_cache` WHERE `code` = '" + code + "' AND  `lang` = '" + lang + "'; ";
@@ -58,7 +55,6 @@ _f['code_cache'] = function(cbk) {
 	});  
 };
 _f['create_cache'] = function(cbk) { 
-	var code = CP.data.code;
 	var fn = tts_dir + code +'.mp3';
 	cbk(fn);
 };
