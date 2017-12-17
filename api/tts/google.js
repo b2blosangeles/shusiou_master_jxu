@@ -65,15 +65,14 @@ _f['code_cache'] = function(cbk) {
 };
 
 _f['create_cache'] = function(cbk) { 
-	 cbk('==niu==');
-	/*
 	var googleTTS = require(env.site_path + '/api/inc/google-tts-api/node_modules/google-tts-api/');
 	googleTTS(str, lang, 1)   // speed normal = 1 (default), slow = 0.24 
 	.then(function (url) {
 		cbk(url);
 	}).catch(function (err) {
 	   	cbk('err.message');
-	});	
+	});
+	/*
 	  // var fs = require('fs');
 	//   var text = str;
 		
