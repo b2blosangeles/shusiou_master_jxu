@@ -7,7 +7,8 @@ if (!lang) {
 	res.send('No lang!');
 	return false;
 }
-
+var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
+var code = sh.unique(str); 
 var tts_dir = '/var/' + lang + '/';
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     config = require(env.config_path + '/config.json'),
@@ -35,8 +36,6 @@ _f['P0'] = function(cbk) { /* --- get server IP --- */
 	});	 
 };
 _f['code'] = function(cbk) { /* --- get server IP --- */
-	var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
-	var code = sh.unique(str); 
 	cbk(code);
 };
 _f['code_cache'] = function(cbk) { 
@@ -60,7 +59,7 @@ _f['code_cache'] = function(cbk) {
 };
 _f['create_cache'] = function(cbk) { 
 	var code = CP.data.code;
-	var fn = tts_dir + sh.unique(str)+'.mp3';
+	var fn = tts_dir + code +'.mp3';
 	cbk(fn);
 };
 CP.serial(
