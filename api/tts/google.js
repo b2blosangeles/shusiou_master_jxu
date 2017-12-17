@@ -69,7 +69,7 @@ _f['create_cache'] = function(cbk) {
 	googleTTS(str, lang, 1)   // speed normal = 1 (default), slow = 0.24 
 	.then(function (url) {
 	   var fs = require('fs');
-	   var text = 'Hello World';
+	   var text = str;
 	   var options = {
 	      url: url,
 	      headers: {
@@ -110,9 +110,9 @@ _f['save_mark'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		res.send(data);
-		// var file = pkg.fs.createReadStream(fn);
-		// file.pipe(res);
+		// res.send(data);
+		var file = pkg.fs.createReadStream(fn);
+		file.pipe(res);
 	},
 	58000
 );
