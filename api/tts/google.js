@@ -80,9 +80,6 @@ _f['create_cache'] = function(cbk) {
 		response.on('end', function() {
 			cbk('niu_true');
 		});
-		
-		
-		
 	}).catch(function (err) {
 	   	cbk('err.message');
 	});
