@@ -10,6 +10,8 @@ if (!lang) {
 var sh = require(env.site_path + '/api/inc/shorthash/node_modules/shorthash');
 var code = sh.unique(str); 
 var tts_dir = '/var/tts/' + lang + '/';
+var fn = tts_dir + code +'.mp3';
+
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 	config = require(env.config_path + '/config.json'),
 	folderP = require(env.site_path + '/api/inc/folderP/folderP'),
@@ -62,7 +64,7 @@ _f['code_cache'] = function(cbk) {
 	});  
 };
 _f['create_cache'] = function(cbk) { 
-	var fn = tts_dir + code +'.mp3';
+	
 	var googleTTS = require(env.site_path + '/api/inc/google-tts-api/node_modules/google-tts-api/');
 	googleTTS(str, lang, 1)   // speed normal = 1 (default), slow = 0.24 
 	.then(function (url) {
