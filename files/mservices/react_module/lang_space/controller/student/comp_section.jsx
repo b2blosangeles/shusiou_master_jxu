@@ -61,7 +61,7 @@ try {
 			if (o.text) {
 				me.props.parent.setState({message:{text:o.text}});
 				
-				$('#shusiou_audio').attr('src', '/api/lang_space/test_google_tts.js?str='+o.text + '&lang=' + o.lang).attr('autoplay', true);
+				$('#shusiou_audio').attr('src', '/api/google.api?str='+o.text + '&lang=' + o.lang).attr('autoplay', true);
 				return true;
 			}
 			if (o.answer) {
