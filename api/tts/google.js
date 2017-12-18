@@ -76,11 +76,17 @@ _f['create_cache'] = function(cbk) {
 			}
 		};
 
-		var p = pkg.request(options, response);		
+		var p = pkg.request(options, function(error, response, body) {
+			response.on('end', function() {
+				cbk('niu_true');
+			});	
+		});			
 		p.pipe(pkg.fs.createWriteStream(fn));
+			/*
 		p.on('end', function() {
 			cbk('niu_true');
 		});
+		*/
 
 	}).catch(function (err) {
 	   	cbk(err.message);
