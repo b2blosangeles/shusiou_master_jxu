@@ -81,8 +81,8 @@ _f['create_cache'] = function(cbk) {
 				// cbk('niu_true');
 			//});	
 		});			
-		p.pipe(pkg.fs.createWriteStream(fn)).on('end', function() {
-			cbk('niu_true222');
+		p.pipe(pkg.fs.createWriteStream(fn)).on('finish', function() {
+			cbk('niu_true222 finish');
 		});
 			/*
 		p.on('end', function() {
