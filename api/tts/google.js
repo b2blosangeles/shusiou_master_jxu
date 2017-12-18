@@ -76,12 +76,9 @@ _f['create_cache'] = function(cbk) {
 			}
 		};
 
-		var p = pkg.request(options, function(error, response, body) {
-			//response.on('end', function() {
-				// cbk('niu_true');
-			//});	
-		});			
-		p.pipe(pkg.fs.createWriteStream(fn)).on('finish', function() {
+		var p = pkg.request(options)			
+		.pipe(pkg.fs.createWriteStream(fn))
+		.on('finish', function() {
 			cbk('niu_true222 finish');
 		});
 			/*
@@ -92,26 +89,7 @@ _f['create_cache'] = function(cbk) {
 
 	}).catch(function (err) {
 	   	cbk(err.message);
-	});
-	/*
-	  // var fs = require('fs');
-	//   var text = str;
-		
-	   var options = {
-	      url: url,
-	      headers: {
-		 'Referer': 'http://translate.google.com/',
-		 'User-Agent': 'stagefright/1.2 (Linux;Android 5.0)'
-	      }
-	   }
-	   cbk(options);
-			
-	   var p = pkg.request(options, response);		
-	  	response.pipe(fs.createWriteStream(fn));
-		response.on('end', function() {
-			cbk('niu_true');
-		});
-	*/		
+	});		
 };
 /*
 _f['save_mark'] = function(cbk) { 
@@ -139,9 +117,9 @@ _f['save_mark'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		 // res.send(data);
-		var file = pkg.fs.createReadStream(fn);
-		file.pipe(res);
+		res.send(data);
+		//var file = pkg.fs.createReadStream(fn);
+		//file.pipe(res);
 	},
 	58000
 );
