@@ -132,6 +132,7 @@ try {
 			return true;
 		},
 		dataApi: function(opt) {
+			alert('dataApi');
 			var me = this, A = me.state.list;
 			$.ajax({
 				url: '/api/lang_space/data_api.js',
