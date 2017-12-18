@@ -15,7 +15,7 @@ try {
 			var me = this;
 			alert(curriculum_id);
 			me.props.route.env.engine({
-				url: shusiou_config.api_server + '/api/curriculum/myCurriculum.api',
+				url: shusiou_config.api_server + '/api/curriculum/curriculums.api',
 				method: "POST",
 				data: { cmd:'getCurriculumById',
 				       curriculum_id:curriculum_id,
