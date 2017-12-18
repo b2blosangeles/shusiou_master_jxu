@@ -139,6 +139,8 @@ try {
 					});					
 				});
 				
+			} else {
+				alert('q');
 			}
 		},		
 		render: function() {
