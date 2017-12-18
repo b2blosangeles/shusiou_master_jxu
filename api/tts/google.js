@@ -120,7 +120,7 @@ CP.serial(
 		//res.send(data);
 		//var file = pkg.fs.createReadStream(fn);
 		//file.pipe(res);
-		 res.sendFile
+		 res.sendFile(fn);
 	},
 	58000
 );
