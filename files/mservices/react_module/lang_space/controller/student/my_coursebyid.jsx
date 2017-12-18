@@ -22,6 +22,7 @@ try {
 				      auth:me.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
+				console.log(data);
 				if (typeof cbk == 'function') {
 					me.setState({curriculum:data.data});
 					cbk(data.data);
