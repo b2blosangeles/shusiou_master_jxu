@@ -100,7 +100,6 @@ try {
 		answer:function(o, list, callback) {
 			var me = this;
 			if (annyang) {
-				alert(8);
 				annyang.removeCallback('resultNoMatch');
 				annyang.removeCommands(); // remove all commands
 				annyang.setLanguage(o.lang);
@@ -140,9 +139,7 @@ try {
 					});					
 				});
 				
-			} else {
-				alert('q');
-			}
+			} 
 		},		
 		render: function() {
 			var me = this;
