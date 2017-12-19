@@ -9,9 +9,9 @@ try {
 			var me = this;
 			$('.content_bg').find('video').attr('autoplay', true).attr('loop', true);
 			// .attr('muted', false);
-			
+			// shusiou_config.api_server + 
 			$.ajax({
-				url: shusiou_config.api_server + '/api/ad/get_default_ad.api',
+				url: '/api/ad/get_default_ad.api',
 				method: "POST",
 				dataType: "JSON"
 			}).done(function(data) {
