@@ -14,14 +14,15 @@
 <body>	
 <script>
 if (annyang) {
+	annyang.setLanguage('cn-ZH');
   // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
     'show me': function() {
       alert('bing go 7');
 	annyang.pause();
     },
-    'follow me': function() {
-      alert('flollow me');
+    '你好': function() {
+      alert('你好');
     }	  
   };
 
