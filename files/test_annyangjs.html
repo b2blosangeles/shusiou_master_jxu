@@ -13,51 +13,34 @@
 </head>	
 <body>	
 <script>
-var status = 0;
-var voiceMonitor = function () {
-	if (annyang) {
-		annyang.pause();
+	var status = 0;
+	var voiceMonitor = function () {
 		if (annyang) {
-			annyang.setLanguage('zh-CN');
-			var commands = {
-				'show me': function() {
-					alert('bing go 7');
-					// annyang.pause();
-				},
-				'你好': function() {
-					alert('你好');
-				}				
-			};
-		  	 annyang.addCommands(commands);
+			annyang.pause();
+			if (annyang) {
+				annyang.setLanguage('zh-CN');
+				annyang.start();
+				var commands = {
+					'show me': function() {
+						alert('bing go 7');
+						// annyang.pause();
+					},
+					'你好': function() {
+						alert('你好');
+					}				
+				};
+				annyang.addCommands(commands);
+				setInterval(function() {
+					var v = confirm("Stop?");
+					if (v) {
+						annyang.pause();
+						alert('over time');
+					}	
+				},12000);			
+			}
 		}
 	}
-}
-if (annyang) {
-	annyang.setLanguage('zh-CN');
-  // Let's define our first command. First the text we expect, and then the function it should call
-  var commands = {
-    'show me': function() {
-      alert('bing go 7');
-	// annyang.pause();
-    },
-    '你好': function() {
-      alert('你好');
-    }	  
-  };
-
-  // Add our commands to annyang
-  annyang.addCommands(commands);
-
-  // Start listening. You can call this here, or attach this call to an event, button, etc.
-  annyang.start();
-	setInterval(function() {
-		var v = confirm("Stop?");
-		if (v) {
-			annyang.pause();
-			alert('over time');
-		}	
-	},12000);
-}
-	</script>
+	voiceMonitor();
+</script>
 </body>	
 </html>
