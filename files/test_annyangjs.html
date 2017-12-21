@@ -14,19 +14,19 @@
 <body>	
 <script>
 	var status = 0;
-	var voiceMonitor = function () {
+	var voiceMonitor = function (callback) {
 		if (annyang) {
-			annyang.setLanguage(['zh-CN', 'en-US']);
+			annyang.setLanguage(['zh-CN']);
 		//	annyang.setLanguage('en-US');
 			annyang.start();			
 			var commands = {
 				'show me': function() {
-					console.log('bing go 7');
-					// annyang.abort();
-					// annyang.pause();
+					annyang.abort();
+					callback({result:true, text:'show me'})
 				},
 				'你好(to my little)': function() {
-					console.log('你好-');
+					annyang.abort();
+					callback({result:true, text:'你好'})
 				}
 			};
 			annyang.addCommands(commands);
@@ -50,7 +50,9 @@
 			},30000);
 		}
 	}
-	voiceMonitor();
+	voiceMonitor(function(data){
+		alert(data.text)
+	});
 </script>
 </body>	
 </html>
