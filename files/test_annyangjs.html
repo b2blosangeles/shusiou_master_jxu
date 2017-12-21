@@ -21,8 +21,9 @@
 					var resultMatch = false;
 					annyang.setLanguage([lang]);
 
-					annyang.start();			
-					var commands = {
+					annyang.start();
+					var commands = [ 'show me', '你好'];					
+					var commands1 = {
 						'show me': function() {
 						},
 						'你好(to my little)': function() {
@@ -63,7 +64,7 @@
 	
 	var v = new voiceMonitor();
 	v.run('zh-CN', function(data){
-		alert(data.text + '==2==')
+		alert(data.text + '==3==')
 	});
 </script>
 </body>	
