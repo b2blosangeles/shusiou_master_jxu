@@ -16,6 +16,7 @@
 	(function () { 
 		var obj =  function () {
 			this.run = function(lang, callback) {
+				var me = this;
 				if (annyang) {
 					var resultMatch = false;
 					annyang.setLanguage([lang]);
@@ -38,7 +39,7 @@
 						resultMatch = true;
 						annyang.abort();
 						callback({result:false, text:'Wrong answer ' + userSaid});
-						voiceMonitor(lang, function(data){
+						me.run(lang, function(data){
 							alert(data.text)
 						});
 					});									
@@ -48,7 +49,7 @@
 							var v = confirm("Timeout Stop?");
 							annyang.abort();
 							if (!v) {
-								voiceMonitor(lang, function(data){
+								me.run(lang, function(data){
 									alert(data.text)
 								});
 							}
