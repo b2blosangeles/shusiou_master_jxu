@@ -36,10 +36,12 @@
 			annyang.addCallback('resultNoMatch', function(userSaid) { 
 				resultMatch = true;
 				annyang.abort();
-				callback({result:false, text:userSaid});
-				voiceMonitor(function(data){
+				callback({result:false, text:'Wrong answer ' + userSaid});
+				/*
+				voiceMonitor(lang, function(data){
 					alert(data.text)
-				});				
+				});
+				*/
 			});									
 			
 			setTimeout(function() {
