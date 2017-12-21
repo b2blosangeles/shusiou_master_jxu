@@ -13,12 +13,60 @@
 </head>	
 <body>	
 <script>
-	var status = 0;
-	var voiceMonitor = function (lang, callback) {
+	var voiceMonitor  = new (function () { 
+		var obj =  function () {
+			this.run = function(lang, callback) {
+				if (annyang) {
+					var resultMatch = false;
+					annyang.setLanguage([lang]);
+
+					annyang.start();			
+					var commands = {
+						'show me': function() {
+						},
+						'你好(to my little)': function() {
+						}
+					};
+					annyang.addCommands(commands);
+					annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+						resultMatch = true;
+						annyang.abort();
+						callback({result:true, text:userSaid});
+					});
+
+					annyang.addCallback('resultNoMatch', function(userSaid) { 
+						resultMatch = true;
+						annyang.abort();
+						callback({result:false, text:'Wrong answer ' + userSaid});
+						voiceMonitor(lang, function(data){
+							alert(data.text)
+						});
+					});									
+
+					setTimeout(function() {
+						if (!resultMatch) {
+							var v = confirm("Timeout Stop?");
+							annyang.abort();
+							if (!v) {
+								voiceMonitor(lang, function(data){
+									alert(data.text)
+								});
+							}
+						}
+					},30000);
+				}
+			};	
+		};
+		module.exports = obj;
+	})();
+	
+	
+	//	annyang.setLanguage('en-US');
+	var voiceMonitora = function (lang, callback) {
 		if (annyang) {
 			var resultMatch = false;
 			annyang.setLanguage([lang]);
-		//	annyang.setLanguage('en-US');
+		
 			annyang.start();			
 			var commands = {
 				'show me': function() {
@@ -55,7 +103,7 @@
 			},30000);
 		}
 	}
-	voiceMonitor('zh-CN', function(data){
+	voiceMonitor.run('zh-CN', function(data){
 		alert(data.text)
 	});
 </script>
