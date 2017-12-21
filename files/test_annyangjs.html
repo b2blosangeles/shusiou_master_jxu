@@ -22,22 +22,30 @@
 			annyang.start();			
 			var commands = {
 				'show me': function() {
+					/*
 					annyang.abort();
 					resultMatch = true;
 					callback({result:true, text:'show me'})
+					*/
 				},
 				'你好(to my little)': function() {
+					/*
 					annyang.abort();
 					resultMatch = true;
 					callback({result:true, text:'你好'})
+					*/
 				}
 			};
 			annyang.addCommands(commands);
 			annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+				annyang.abort();
+				callback({result:true, text:userSaid});
+				/*
 			  console.log('resultMatch-->');
 				console.log(userSaid); // sample output: 'hello'
 				console.log(commandText); // sample output: 'hello (there)'
 				// console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
+				*/
 			});
 			annyang.addCallback('resultNoMatch', function(userSaid) {
 				console.log('resultNoMatch-->');
