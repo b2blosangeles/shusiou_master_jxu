@@ -60,9 +60,11 @@
 		if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 			module.exports = obj;
 		} else {
-			window.voiceMonitor = function() {
-				return obj; 
-			}
+			window.voiceMonitor = obj;
+				
+			// function() {
+			//	return obj; 
+			//}
 		}
 	})();
 	
