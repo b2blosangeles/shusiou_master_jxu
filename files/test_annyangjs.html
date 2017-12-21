@@ -16,16 +16,19 @@
 	var status = 0;
 	var voiceMonitor = function (callback) {
 		if (annyang) {
+			var resultMatch = false;
 			annyang.setLanguage(['zh-CN']);
 		//	annyang.setLanguage('en-US');
 			annyang.start();			
 			var commands = {
 				'show me': function() {
 					annyang.abort();
+					resultMatch = true;
 					callback({result:true, text:'show me'})
 				},
 				'你好(to my little)': function() {
 					annyang.abort();
+					resultMatch = true;
 					callback({result:true, text:'你好'})
 				}
 			};
@@ -42,10 +45,12 @@
 			});									
 
 			setTimeout(function() {
-				var v = confirm("Timeout Stop?");
-				annyang.abort();
-				if (!v) {
-					annyang.start();
+				if (!resultMatch) {
+					var v = confirm("Timeout Stop?");
+					annyang.abort();
+					if (!v) {
+						annyang.start();
+					}
 				}
 			},30000);
 		}
