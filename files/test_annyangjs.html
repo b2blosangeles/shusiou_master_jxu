@@ -13,7 +13,7 @@
 </head>	
 <body>	
 <script>
-	var voiceMonitor  = new (function () { 
+	var voiceMonitor  = (function () { 
 		var obj =  function () {
 			this.run = function(lang, callback) {
 				if (annyang) {
@@ -57,9 +57,16 @@
 				}
 			};	
 		};
-		return obj;
-	})()();
+		if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+			module.exports = obj;
+		} else {
+			window.voiceMonitor = function() {
+				return obj; 
+			}
+		}
+	})();
 	
+	var v = new voiceMonitor();
 	
 	//	annyang.setLanguage('en-US');
 	var voiceMonitora = function (lang, callback) {
@@ -103,7 +110,7 @@
 			},30000);
 		}
 	}
-	voiceMonitor.run('zh-CN', function(data){
+	v.run('zh-CN', function(data){
 		alert(data.text + '===')
 	});
 </script>
