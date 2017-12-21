@@ -22,7 +22,7 @@
 			var commands = {
 				'show me': function() {
 					console.log('bing go 7');
-					annyang.abort();
+					// annyang.abort();
 					// annyang.pause();
 				},
 				'你好(to my little)': function() {
@@ -40,15 +40,14 @@
 				console.log('resultNoMatch-->');
 				console.log(userSaid); 
 			});									
-			/*
-			setInterval(function() {
-				var v = confirm("Stop?");
-				if (v) {
-					annyang.pause();
-					alert('over time');
-				}	
-			},12000);
-			*/
+
+			setTimeout(function() {
+				var v = confirm("Timeout Stop?");
+				annyang.abort();
+				if (!v) {
+					annyang.start();
+				}
+			},30000);
 		}
 	}
 	voiceMonitor();
