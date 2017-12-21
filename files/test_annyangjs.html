@@ -16,41 +16,39 @@
 	var status = 0;
 	var voiceMonitor = function () {
 		if (annyang) {
-			if (annyang) {
-				annyang.setLanguage('zh-CN');
-			//	annyang.setLanguage('en-US');
-				annyang.start();			
-				var commands = {
-					'show me': function() {
-						console.log('bing go 7');
-						annyang.abort();
-						// annyang.pause();
-					},
-					'你好(to my little)': function() {
-						console.log('你好-');
-					}
-				};
-				annyang.addCommands(commands);
-				annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
-				  console.log('resultMatch-->');
-					console.log(userSaid); // sample output: 'hello'
-				  	console.log(commandText); // sample output: 'hello (there)'
-				  	// console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
-				});
-				annyang.addCallback('resultNoMatch', function(userSaid) {
-					console.log('resultNoMatch-->');
-				  	console.log(userSaid); 
-				});									
-				/*
-				setInterval(function() {
-					var v = confirm("Stop?");
-					if (v) {
-						annyang.pause();
-						alert('over time');
-					}	
-				},12000);
-				*/
-			}
+			annyang.setLanguage(['zh-CN', 'en-US']);
+		//	annyang.setLanguage('en-US');
+			annyang.start();			
+			var commands = {
+				'show me': function() {
+					console.log('bing go 7');
+					annyang.abort();
+					// annyang.pause();
+				},
+				'你好(to my little)': function() {
+					console.log('你好-');
+				}
+			};
+			annyang.addCommands(commands);
+			annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+			  console.log('resultMatch-->');
+				console.log(userSaid); // sample output: 'hello'
+				console.log(commandText); // sample output: 'hello (there)'
+				// console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
+			});
+			annyang.addCallback('resultNoMatch', function(userSaid) {
+				console.log('resultNoMatch-->');
+				console.log(userSaid); 
+			});									
+			/*
+			setInterval(function() {
+				var v = confirm("Stop?");
+				if (v) {
+					annyang.pause();
+					alert('over time');
+				}	
+			},12000);
+			*/
 		}
 	}
 	voiceMonitor();
