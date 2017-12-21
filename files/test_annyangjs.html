@@ -49,7 +49,9 @@
 					var v = confirm("Timeout Stop?");
 					annyang.abort();
 					if (!v) {
-						annyang.start();
+						voiceMonitor(function(data){
+							alert(data.text)
+						});
 					}
 				}
 			},30000);
