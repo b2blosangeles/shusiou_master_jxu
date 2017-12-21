@@ -17,6 +17,8 @@
 	var voiceMonitor = function () {
 		if (annyang) {
 			annyang.pause();
+			console.log('---annyang.isListening()--->');
+			console.log(annyang.isListening());
 			if (annyang) {
 				annyang.setLanguage('zh-CN');
 				annyang.start();
