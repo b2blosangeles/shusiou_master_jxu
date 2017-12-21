@@ -16,7 +16,7 @@
 	var status = 0;
 	var voiceMonitor = function () {
 		if (annyang) {
-			annyang.abort();
+			
 			console.log('---annyang.isListening()--1-->');
 			console.log(annyang.isListening());
 			if (annyang) {
@@ -27,6 +27,7 @@
 				var commands = {
 					'show me': function() {
 						console.log('bing go 7');
+						annyang.abort();
 						// annyang.pause();
 					},
 					'你好(to my little)': function() {
@@ -35,11 +36,13 @@
 				};
 				annyang.addCommands(commands);
 				annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
-				  console.log(userSaid); // sample output: 'hello'
+				  console.log('resultMatch'-->);
+					console.log(userSaid); // sample output: 'hello'
 				  console.log(commandText); // sample output: 'hello (there)'
 				  console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
 				});
 				annyang.addCallback('resultNoMatch', function(userSaid) {
+					console.log('resultNoMatch'-->);
 				  console.log(userSaid); 
 				});				
 			console.log('---annyang.isListening()-3-->');
