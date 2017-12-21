@@ -13,7 +13,7 @@
 </head>	
 <body>	
 <script>
-	var voiceMonitor = (function () { 
+	(function () { 
 		var obj =  function () {
 			this.run = function(lang, callback) {
 				if (annyang) {
@@ -57,62 +57,10 @@
 				}
 			};	
 		};
-		return obj;
-		if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-			module.exports = obj;
-		} else {
-			window.voiceMonitor = obj;
-				
-			// function() {
-			//	return obj; 
-			//}
-		}
+		window.voiceMonitor = obj;
 	})();
 	
 	var v = new voiceMonitor();
-	
-	//	annyang.setLanguage('en-US');
-	var voiceMonitora = function (lang, callback) {
-		if (annyang) {
-			var resultMatch = false;
-			annyang.setLanguage([lang]);
-		
-			annyang.start();			
-			var commands = {
-				'show me': function() {
-				},
-				'你好(to my little)': function() {
-				}
-			};
-			annyang.addCommands(commands);
-			annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
-				resultMatch = true;
-				annyang.abort();
-				callback({result:true, text:userSaid});
-			});
-		
-			annyang.addCallback('resultNoMatch', function(userSaid) { 
-				resultMatch = true;
-				annyang.abort();
-				callback({result:false, text:'Wrong answer ' + userSaid});
-				voiceMonitor(lang, function(data){
-					alert(data.text)
-				});
-			});									
-			
-			setTimeout(function() {
-				if (!resultMatch) {
-					var v = confirm("Timeout Stop?");
-					annyang.abort();
-					if (!v) {
-						voiceMonitor(lang, function(data){
-							alert(data.text)
-						});
-					}
-				}
-			},30000);
-		}
-	}
 	v.run('zh-CN', function(data){
 		alert(data.text + '==1==')
 	});
