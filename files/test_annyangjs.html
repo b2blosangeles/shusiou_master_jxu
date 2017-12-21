@@ -34,7 +34,11 @@
 					}				
 				};
 				annyang.addCommands(commands);
-				
+				annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+				  console.log(userSaid); // sample output: 'hello'
+				  console.log(commandText); // sample output: 'hello (there)'
+				  console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
+				});
 			console.log('---annyang.isListening()-3-->');
 			console.log(annyang.isListening());					
 				/*
