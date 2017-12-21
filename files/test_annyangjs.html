@@ -16,14 +16,9 @@
 	var status = 0;
 	var voiceMonitor = function () {
 		if (annyang) {
-			
-			console.log('---annyang.isListening()--1-->');
-			console.log(annyang.isListening());
 			if (annyang) {
 				annyang.setLanguage('zh-CN');
-				annyang.start();
-			console.log('---annyang.isListening()--2-->');
-			console.log(annyang.isListening());				
+				annyang.start();			
 				var commands = {
 					'show me': function() {
 						console.log('bing go 7');
@@ -44,9 +39,7 @@
 				annyang.addCallback('resultNoMatch', function(userSaid) {
 					console.log('resultNoMatch-->');
 				  console.log(userSaid); 
-				});				
-			console.log('---annyang.isListening()-3-->');
-			console.log(annyang.isListening());					
+				});									
 				/*
 				setInterval(function() {
 					var v = confirm("Stop?");
