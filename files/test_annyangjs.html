@@ -14,26 +14,16 @@
 <body>	
 <script>
 	var status = 0;
-	var voiceMonitor = function (callback) {
+	var voiceMonitor = function (lang, callback) {
 		if (annyang) {
 			var resultMatch = false;
-			annyang.setLanguage(['zh-CN']);
+			annyang.setLanguage([lang]);
 		//	annyang.setLanguage('en-US');
 			annyang.start();			
 			var commands = {
 				'show me': function() {
-					/*
-					annyang.abort();
-					resultMatch = true;
-					callback({result:true, text:'show me'})
-					*/
 				},
 				'你好(to my little)': function() {
-					/*
-					annyang.abort();
-					resultMatch = true;
-					callback({result:true, text:'你好'})
-					*/
 				}
 			};
 			annyang.addCommands(commands);
@@ -42,6 +32,7 @@
 				annyang.abort();
 				callback({result:true, text:userSaid});
 			});
+		
 			annyang.addCallback('resultNoMatch', function(userSaid) { 
 				resultMatch = true;
 				annyang.abort();
@@ -50,13 +41,13 @@
 					alert(data.text)
 				});				
 			});									
-
+			
 			setTimeout(function() {
 				if (!resultMatch) {
 					var v = confirm("Timeout Stop?");
 					annyang.abort();
 					if (!v) {
-						voiceMonitor(function(data){
+						voiceMonitor(lang, function(data){
 							alert(data.text)
 						});
 					}
@@ -64,7 +55,7 @@
 			},30000);
 		}
 	}
-	voiceMonitor(function(data){
+	voiceMonitor('zh-CN', function(data){
 		alert(data.text)
 	});
 </script>
