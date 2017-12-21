@@ -33,12 +33,12 @@
 				annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
 				  console.log('resultMatch-->');
 					console.log(userSaid); // sample output: 'hello'
-				  console.log(commandText); // sample output: 'hello (there)'
-				  console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
+				  	console.log(commandText); // sample output: 'hello (there)'
+				  	// console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
 				});
 				annyang.addCallback('resultNoMatch', function(userSaid) {
 					console.log('resultNoMatch-->');
-				  console.log(userSaid); 
+				  	console.log(userSaid); 
 				});									
 				/*
 				setInterval(function() {
