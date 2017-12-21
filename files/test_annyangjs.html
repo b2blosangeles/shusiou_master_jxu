@@ -38,18 +38,17 @@
 			};
 			annyang.addCommands(commands);
 			annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+				resultMatch = true;
 				annyang.abort();
 				callback({result:true, text:userSaid});
-				/*
-			  console.log('resultMatch-->');
-				console.log(userSaid); // sample output: 'hello'
-				console.log(commandText); // sample output: 'hello (there)'
-				// console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
-				*/
 			});
-			annyang.addCallback('resultNoMatch', function(userSaid) {
-				console.log('resultNoMatch-->');
-				console.log(userSaid); 
+			annyang.addCallback('resultNoMatch', function(userSaid) { 
+				resultMatch = true;
+				annyang.abort();
+				callback({result:false, text:userSaid});
+				voiceMonitor(function(data){
+					alert(data.text)
+				});				
 			});									
 
 			setTimeout(function() {
