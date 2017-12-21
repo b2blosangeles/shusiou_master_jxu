@@ -17,11 +17,13 @@
 	var voiceMonitor = function () {
 		if (annyang) {
 			annyang.pause();
-			console.log('---annyang.isListening()--->');
+			console.log('---annyang.isListening()--1-->');
 			console.log(annyang.isListening());
 			if (annyang) {
 				annyang.setLanguage('zh-CN');
 				annyang.start();
+			console.log('---annyang.isListening()--2-->');
+			console.log(annyang.isListening());				
 				var commands = {
 					'show me': function() {
 						alert('bing go 7');
@@ -32,6 +34,7 @@
 					}				
 				};
 				annyang.addCommands(commands);
+				
 				setInterval(function() {
 					var v = confirm("Stop?");
 					if (v) {
