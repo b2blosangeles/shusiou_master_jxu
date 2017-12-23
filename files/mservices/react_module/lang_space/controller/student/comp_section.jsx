@@ -103,14 +103,10 @@ try {
 				annyang.removeCallback('resultNoMatch');
 				annyang.removeCommands(); // remove all commands
 				annyang.setLanguage(o.lang);
-				console.log('===o.lang===');
-				console.log(o.lang);
-				console.log('====');
+
 				;
 			//	annyang.resume();
 				annyang.start({continuous:true});
-				console.log(o.answer);
-				console.log('---------');
 				var commands = {};
 				commands[o.answer] = function() {
 					var match = me.cloneArray(o.match);
@@ -134,7 +130,10 @@ try {
 				
 				annyang.addCommands(commands);
 				me.props.parent.setState({message:{text:o.message}});
-				annyang.addCallback('resultNoMatch', function() {
+				
+				annyang.addCallback('resultNoMatch', function(userSaid) {
+					
+					console.log('===========' + userSaid);
 					annyang.abort();
 					
 					var nomatch = me.cloneArray(o.nomatch);
