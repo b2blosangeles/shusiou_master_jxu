@@ -105,6 +105,8 @@ try {
 				annyang.setLanguage(o.lang);
 				console.log('===o.lang===');
 				console.log(o.lang);
+				console.log('====');
+				console.log(o.answer);
 				console.log('---------');
 			//	annyang.resume();
 				annyang.start({continuous:true});
