@@ -23,7 +23,7 @@ try {
 		submit:function() {
 			var me = this;		
 			$.ajax({
-				url: shusiou_config.api_server + '/api/auth/auth.api',
+				url:'/api/auth/auth.api',
 				method: "POST",
 				data: {cmd:'signin', username:me.state.username, password:me.state.password},
 				dataType: "JSON"
