@@ -106,7 +106,7 @@ try {
 				console.log('===o.lang===');
 				console.log(o.lang);
 				console.log('====');
-				console.log(o.answer);
+				console.log(o.match);
 				console.log('---------');
 			//	annyang.resume();
 				annyang.start({continuous:true});
