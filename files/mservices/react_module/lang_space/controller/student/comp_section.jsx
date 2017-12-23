@@ -113,6 +113,7 @@ try {
 				var commands = {};
 				commands[o.answer] = function() {
 					var match = me.cloneArray(o.match);
+					alert('match');
 					annyang.abort();
 					me.shusiouComm(match, 'rep_video', function() {
 						annyang.removeCommands([o.answer]);
