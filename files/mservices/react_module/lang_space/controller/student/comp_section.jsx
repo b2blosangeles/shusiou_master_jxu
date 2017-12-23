@@ -106,7 +106,8 @@ try {
 
 				;
 			//	annyang.resume();
-				annyang.start({continuous:true});
+				//annyang.start({continuous:true});
+				annyang.start()
 				var commands = {};
 				commands[o.answer] = function() {
 					var match = me.cloneArray(o.match);
