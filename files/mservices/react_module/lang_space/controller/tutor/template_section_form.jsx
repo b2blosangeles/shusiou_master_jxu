@@ -9,9 +9,9 @@ try {
 						{action:'play video', active:true}, 
 						{text:'Please repeat', lang:'en-US', active:false}
 					],
-					ans:{text:'Your answer', lang:'en-US', active:true},					
+					ans:{text:'你好', lang:'cn-ZH', active:true},					
 					match:[
-						{text:'你好', lang:'cn-ZH', active:true},
+						{text:'good job', lang:'en-US', active:true},
 					],
 					non_match:[
 						{text:'Incorrect, please try again.', lang:'en-US', active:false},
