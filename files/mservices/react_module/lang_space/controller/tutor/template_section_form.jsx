@@ -11,7 +11,7 @@ try {
 					],
 					ans:{text:'Your answer', lang:'en-US', active:true},					
 					match:[
-						{text:'Good Job', lang:'cn-ZH', active:true},
+						{text:'你好', lang:'cn-ZH', active:true},
 					],
 					non_match:[
 						{text:'Incorrect, please try again.', lang:'en-US', active:false},
