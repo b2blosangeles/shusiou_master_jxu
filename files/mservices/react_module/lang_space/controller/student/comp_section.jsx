@@ -125,21 +125,13 @@ try {
 					annyang.abort();
 					me.shusiouComm([{text:'OK. lets stop talking', lang:'en-US'}], 'rep_video');
 				};				
-				
-				// zh-CN -- 			
-				
 				annyang.addCommands(commands);
 				me.props.parent.setState({message:{text:o.message}});
 				
 				annyang.addCallback('resultNoMatch', function(userSaid) {
-					
-					console.log('===========' + userSaid);
 					annyang.abort();
-					
 					var nomatch = me.cloneArray(o.nomatch);
-					
 					me.shusiouComm(nomatch, 'rep_video', function() {
-					//	console.log(o.nomatch);
 						annyang.resume();
 						me.answer(o, list, callback);
 					});					
