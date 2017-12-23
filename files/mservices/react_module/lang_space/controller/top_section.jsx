@@ -155,7 +155,7 @@ try {
 		signOut:function() {
 			var me = this;	
 			$.ajax({
-				url: shusiou_config.api_server + '/api/auth/auth.api',
+				url: '/api/auth/auth.api',
 				method: "POST",
 				data: {cmd:'signout',data:me.props.env.state.auth},
 				dataType: "JSON"
