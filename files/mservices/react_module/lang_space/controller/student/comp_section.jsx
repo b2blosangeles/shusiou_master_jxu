@@ -103,8 +103,6 @@ try {
 				annyang.removeCallback('resultNoMatch');
 				annyang.removeCommands(); // remove all commands
 				annyang.setLanguage(o.lang);
-
-				;
 			//	annyang.resume();
 				//annyang.start({continuous:true});
 				annyang.start()
@@ -129,7 +127,7 @@ try {
 				me.props.parent.setState({message:{text:o.message}});
 				
 				annyang.addCallback('resultNoMatch', function(userSaid) {
-					annyang.abort();
+					annyang.pause();
 					var nomatch = me.cloneArray(o.nomatch);
 					me.shusiouComm(nomatch, 'rep_video', function() {
 						annyang.resume();
