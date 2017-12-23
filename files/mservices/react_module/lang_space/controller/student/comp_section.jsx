@@ -103,6 +103,9 @@ try {
 				annyang.removeCallback('resultNoMatch');
 				annyang.removeCommands(); // remove all commands
 				annyang.setLanguage(o.lang);
+				console.log('===o.lang===');
+				console.log(o.lang);
+				console.log('---------');
 			//	annyang.resume();
 				annyang.start({continuous:true});
 				var commands = {};
