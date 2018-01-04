@@ -22,6 +22,7 @@ if (!source[req.body.code]) {
 			pkg.fs.readFile(env.site_contents_path + fn, 'utf8', function(err, contents) {
 				if (err) {
 					res.send({
+						env:env,
 						title: (source[req.body.code])?(source[req.body.code].title):req.body.code,
 						body:'File ' + fn + ' does not exist!'
 					});		   
