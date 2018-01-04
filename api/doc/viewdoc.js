@@ -17,9 +17,9 @@ if (!source[req.body.code]) {
 	var fn = 'document/' + req.body.lang + '/' + source[req.body.code].fn,
 	fn0 = 'document/en/' + source[req.body.code].fn;
 	
-	pkg.fs.readFile(env.site_path + fn, 'utf8', function(err, contents) {
+	pkg.fs.readFile(env.site_contents_path + fn, 'utf8', function(err, contents) {
 		if (err) {
-			pkg.fs.readFile(env.site_path + fn0, 'utf8', function(err, contents) {
+			pkg.fs.readFile(env.site_contents_path + fn, 'utf8', function(err, contents) {
 				if (err) {
 					res.send({
 						title: (source[req.body.code])?(source[req.body.code].title):req.body.code,
