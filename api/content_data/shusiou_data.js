@@ -15,7 +15,8 @@ _f['S0'] = function(cbk) {
 CP.serial(
   _f,
   function(data) {
-   
+    res.send(data);
+      return true;
     pkg.fs.readFile(fn, 'utf8', function(err, contents) {
       res.send(contents);
     });
