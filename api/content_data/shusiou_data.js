@@ -1,1 +1,1 @@
-res.send(env);
+res.send(env.site_contents_path);
