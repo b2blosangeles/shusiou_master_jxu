@@ -9,7 +9,15 @@ _f['langs'] = function(cbk) {
 }
 _f['langs'] = function(cbk) {
     pkg.fs.readdir(data_folder, (err, files) => {
-      cbk(files)
+        var CP1 = new pkg.crowdProcess(), _f1 = {};
+        for (var i = 0; i < files.length; i++) {
+            _f1 = function(cbk) {
+                cbk(files[i])
+            }
+        }
+        CP1.serial(_f1, function(data) {
+             cbk(data.results)
+        });
     });
 }
 CP.serial(
