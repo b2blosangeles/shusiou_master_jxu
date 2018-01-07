@@ -16,7 +16,7 @@ _f['langs'] = function(cbk) {
             }
         }
         CP1.serial(_f1, function(data) {
-             cbk(data.data.results)
+             cbk(data)
         });
     });
 }
