@@ -11,12 +11,12 @@ _f['langs'] = function(cbk) {
     pkg.fs.readdir(data_folder, (err, files) => {
         var CP1 = new pkg.crowdProcess(), _f1 = {};
         for (var i = 0; i < files.length; i++) {
-            _f1 = function(cbk) {
-                cbk(files[i])
+            _f1 = function(cbk1) {
+                cbk1(files[i])
             }
         }
         CP1.serial(_f1, function(data) {
-             cbk(data.results)
+             cbk(data.data.results)
         });
     });
 }
