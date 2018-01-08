@@ -24,7 +24,7 @@ try {
 				url: '/api/content_data/shusiou_data.api',
 				method: "POST",
 				dataType: "JSON",
-				data:{lang:null, group:['home']}
+				data:{lang:[me.getCurrentLanguage()], group:['home_page']}
 			}).done(function(data) {
 				me.setState({text:data});
 			}).fail(function( jqXHR, textStatus ) {
