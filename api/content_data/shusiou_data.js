@@ -8,18 +8,19 @@ _f['langs'] = function(cbk) {
     });
 }
 _f['files'] = function(cbk) {
-    pkg.fs.readdir(data_folder, (err, files) => {
-        var CP1 = new pkg.crowdProcess(), _f1 = {};
-        for (var i = 0; i < files.length; i++) {
-            _f1[files[i]] = function(cbk1) {
-                cbk1(files[i])
-            }
+    var langs = CP.data.lang;
+    var CP1 = new pkg.crowdProcess(), _f1 = {};
+    for (var i = 0; i < langs.length; i++) {
+        _f1[files[i]] = function(cbk1) {
+            var lang_folder = data_folder + langs[i] + '/';
+            pkg.fs.readdir(lang_folder, (err, files) => {
+              cbk1(files)
+            });
         }
-        CP1.serial(_f1, function(data) {
-             cbk(data);
-        });    
-    });
-
+    }    
+    CP1.serial(_f1, function(data) {
+         cbk(data);
+    }); 
 }
 CP.serial(
   _f,
