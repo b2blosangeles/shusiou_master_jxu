@@ -3,8 +3,8 @@ try {
 	var Ad =  React.createClass({
 		getInitialState: function() {
 			var me = this;
-			consolt.log('_DATA_["/data/home_page.json"]');
-			consolt.log(_DATA_["/data/home_page.json"]);
+			console.log('_DATA_["/data/home_page.json"]');
+			console.log(_DATA_["/data/home_page.json"]);
 			return {text:_DATA_["/data/home_page.json"]};
 		},	
 		componentDidMount:function() {
@@ -41,6 +41,7 @@ try {
 			return this.props.route.env.getCurrentLanguage();	
 		},
 		getText:function(v) {
+			return '--';
 			return this.state.text[v][this.getCurrentLanguage()];
 		},
 		textStyle:function() {
