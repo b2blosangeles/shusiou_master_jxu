@@ -41,6 +41,7 @@ try {
 			return this.props.route.env.getCurrentLanguage();	
 		},
 		getText:function(v) {
+			return v;
 			return this.state.text[v][this.getCurrentLanguage() + '/home_page/'+v];
 		},
 		textStyle:function() {
