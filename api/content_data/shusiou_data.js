@@ -11,11 +11,13 @@ _f['files'] = function(cbk) {
     var langs = CP.data.langs;
     var CP1 = new pkg.crowdProcess(), _f1 = {};
     for (var i = 0; i < langs.length; i++) {
-        _f1[langs[i]] = function(cbk1) {
+        _f1[langs[i]] = (function(i) {
             var lang_folder = data_folder + langs[i] + '/';
-            pkg.fs.readdir(lang_folder, (err, files) => {
-              cbk1(lang_folder);
-            });
+            return function(cbk1) {
+                pkg.fs.readdir(lang_folder, (err, files) => {
+                  cbk1(lang_folder);
+                });
+            })(i);
         }
     }    
     CP1.serial(_f1, function(data) {
