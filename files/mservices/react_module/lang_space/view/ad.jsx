@@ -3,7 +3,7 @@ try {
 	var Ad =  React.createClass({
 		getInitialState: function() {
 			var me = this;
-			// return {text:_DATA_["/data/home_page.json"]};
+			return {text:{}};
 		},	
 		componentDidMount:function() {
 			var me = this;
