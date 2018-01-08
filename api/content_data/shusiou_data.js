@@ -25,9 +25,11 @@ _f['files'] = function(cbk) {
         })(i);
     }    
     CP1.serial(_f1, function(data) {
+        var list = [];
         for (var i = 0; i < langs.length; i++) {
+            list = list.concat(data.results[langs[i]])
         }
-         cbk(data.results);
+         cbk(list);
     }); 
 }
 CP.serial(
