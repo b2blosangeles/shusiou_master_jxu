@@ -23,7 +23,7 @@ try {
 			});
 			
 			$.ajax({
-				url: '/api//content_data/shusiou_data.api',
+				url: '/api/content_data/shusiou_data.api',
 				method: "POST",
 				dataType: "JSON"
 			}).done(function(data) {
@@ -41,8 +41,7 @@ try {
 			return this.props.route.env.getCurrentLanguage();	
 		},
 		getText:function(v) {
-			return v;
-			return this.state.text[v][this.getCurrentLanguage() + '/home_page/'+v];
+			return this.state.text[this.getCurrentLanguage() + '/home_page/'+v];
 		},
 		textStyle:function() {
 			var me = this;
