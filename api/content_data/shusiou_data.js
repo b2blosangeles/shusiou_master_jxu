@@ -65,11 +65,7 @@ _f['contents'] = function(cbk) {
             var file = files[i];
             return function(cbk1) {
                 pkg.fs.readFile(file, 'utf-8', (err, contents) => {
-                    var list = [];
-                   for (var j = 0; j < files.length; j++) {
-                        list[list.length] = contents;
-                   }
-                    cbk1(list);
+                    cbk1(contents);
                 });
             }
         })(i);        
@@ -77,7 +73,7 @@ _f['contents'] = function(cbk) {
     CP1.serial(_f1, function(data) {
         var list = {};
         for (var i = 0; i < files.length; i++) {
-            list[files[i].replace(env.site_contents_path + 'data/' +, '/')] = data.results[files[i]];
+            list[files[i].replace(env.site_contents_path + 'data/' + '')] = data.results[files[i]];
         }
         cbk(list);
     },1000);
