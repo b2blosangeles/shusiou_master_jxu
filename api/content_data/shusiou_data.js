@@ -7,7 +7,7 @@ _f['langs'] = function(cbk) {
       cbk(files)
     });
 }
-_f['files'] = function(cbk) {
+_f['fd'] = function(cbk) {
     var langs = CP.data.langs;
     var CP1 = new pkg.crowdProcess(), _f1 = {};
     for (var i = 0; i < langs.length; i++) {
@@ -33,7 +33,7 @@ _f['files'] = function(cbk) {
     }); 
 }
 _f['pageContents'] = function(cbk) {
-    var folders = CP.data.files;
+    var folders = CP.data.fd;
     cbk(folders);
 }
 
