@@ -30,7 +30,7 @@ _f['fd'] = function(cbk) {
             list = list.concat(data.results[langs[i]])
         }
          cbk(list);
-    }); 
+    },3000); 
 }
 _f['fds'] = function(cbk) {
     var fds = CP.data.fd;
@@ -55,7 +55,7 @@ _f['fds'] = function(cbk) {
             list = list.concat(data.results[fds[i]])
         }
         cbk(list);
-    });
+    },3000);
 }
 
 CP.serial(
@@ -70,5 +70,5 @@ CP.serial(
   
     
   },
-  3000
+  6000
 );
