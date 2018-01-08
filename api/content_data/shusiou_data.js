@@ -8,7 +8,7 @@ _f['langs'] = function(cbk) {
     });
 }
 _f['files'] = function(cbk) {
-    var langs = CP.data.lang;
+    var langs = CP.data.langs;
     var CP1 = new pkg.crowdProcess(), _f1 = {};
     for (var i = 0; i < langs.length; i++) {
         _f1[langs[i]] = function(cbk1) {
