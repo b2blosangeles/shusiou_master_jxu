@@ -64,7 +64,7 @@ _f['contents'] = function(cbk) {
         _f1[files[i]] = (function(i) {
             var file = files[i];
             return function(cbk1) {
-                pkg.fs.read(file, (err, contents) => {
+                pkg.fs.readFile(file, (err, contents) => {
                     var list = [];
                    for (var j = 0; j < files.length; j++) {
                         list[list.length] = contents;
