@@ -25,7 +25,9 @@ _f['files'] = function(cbk) {
         })(i);
     }    
     CP1.serial(_f1, function(data) {
-         cbk(data);
+        for (var i = 0; i < langs.length; i++) {
+        }
+         cbk(data.results);
     }); 
 }
 CP.serial(
