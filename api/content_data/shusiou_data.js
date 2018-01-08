@@ -11,7 +11,7 @@ _f['files'] = function(cbk) {
     var langs = CP.data.lang;
     var CP1 = new pkg.crowdProcess(), _f1 = {};
     for (var i = 0; i < langs.length; i++) {
-        _f1[files[i]] = function(cbk1) {
+        _f1[langs[i]] = function(cbk1) {
             var lang_folder = data_folder + langs[i] + '/';
             pkg.fs.readdir(lang_folder, (err, files) => {
               cbk1(files)
