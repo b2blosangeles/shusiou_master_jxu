@@ -41,8 +41,8 @@ try {
 			return this.props.route.env.getCurrentLanguage();	
 		},
 		getText:function(v) {
-			return '--';
-			return this.state.text[v][this.getCurrentLanguage()];
+			return '--'+v;
+			return this.state.text[v][this.getCurrentLanguage() + '/home_page/'];
 		},
 		textStyle:function() {
 			var me = this;
