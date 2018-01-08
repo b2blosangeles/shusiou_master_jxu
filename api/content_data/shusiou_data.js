@@ -48,7 +48,7 @@ _f['fds'] = function(cbk) {
                 pkg.fs.readdir(folder, (err, files) => {
                     var list = [];
                    for (var j = 0; j < files.length; j++) {
-                       if (param_group.indexOf(files[j]) !== -1) {
+                       if (!param_group || param_group.indexOf(files[j]) !== -1) {
                                list[list.length] = folder + '/' + files[j];
                        }    
                    }
