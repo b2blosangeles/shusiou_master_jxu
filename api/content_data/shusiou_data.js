@@ -36,8 +36,26 @@ _f['fds'] = function(cbk) {
     var fds = CP.data.fd;
     var CP1 = new pkg.crowdProcess(), _f1 = {};
     for (var i = 0; i < fds.length; i++) {
+        _f1[fds[i]] = (function(i) {
+            var folder = fds[i];
+            return function(cbk1) {
+                pkg.fs.readdir(folder, (err, files) => {
+                    var list = [];
+                   for (var j = 0; j < files.length; j++) {
+                        list[list.length] = folder + '/' + files[j];
+                   }
+                    cbk1(list);
+                });
+            }
+        })(i);        
     }
-    cbk(fds);
+    CP1.serial(_f1, function(data) {
+        var list = [];
+        for (var i = 0; i < fds.length; i++) {
+            list = list.concat(data.results[fds[i]])
+        }
+        cbk(list);
+    });
 }
 
 CP.serial(
