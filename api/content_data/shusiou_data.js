@@ -6,7 +6,11 @@ var param_lang = req.body.lang, param_group = req.body.group;
 
 _f['langs'] = function(cbk) {
     pkg.fs.readdir(data_folder, (err, files) => {
-      cbk(files)
+      if (!param_lang) {
+          cbk(files);
+      } else {
+          cbk(param_lang);  
+      }
     });
 }
 _f['fd'] = function(cbk) {
