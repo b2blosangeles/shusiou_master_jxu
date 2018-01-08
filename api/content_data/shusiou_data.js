@@ -61,7 +61,7 @@ _f['fds'] = function(cbk) {
 CP.serial(
   _f,
   function(data) {
-    res.send(data);
+    res.send(data.results.fds);
       return true;
     pkg.fs.readFile(fn, 'utf8', function(err, contents) {
       res.send(contents);
