@@ -17,8 +17,8 @@ _f['files'] = function(cbk) {
                 pkg.fs.readdir(lang_folder, (err, files) => {
                   cbk1(lang_folder);
                 });
-            })(i);
-        }
+            }
+        })(i);
     }    
     CP1.serial(_f1, function(data) {
          cbk(data);
