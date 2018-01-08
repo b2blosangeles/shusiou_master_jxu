@@ -18,6 +18,16 @@ try {
 				me.setState({adlist:data.data});
 				me.playVideo();
 			}).fail(function( jqXHR, textStatus ) {
+			});
+			
+			$.ajax({
+				url: '/api//content_data/shusiou_data.api',
+				method: "POST",
+				dataType: "JSON"
+			}).done(function(data) {
+				console.log('data--->');
+				console.log(data);
+			}).fail(function( jqXHR, textStatus ) {
 			});			
 		},
 		dictionary:function(v) {
