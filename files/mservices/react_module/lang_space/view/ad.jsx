@@ -3,9 +3,7 @@ try {
 	var Ad =  React.createClass({
 		getInitialState: function() {
 			var me = this;
-			console.log('_DATA_["/data/home_page.json"]');
-			console.log(_DATA_["/data/home_page.json"]);
-			return {text:_DATA_["/data/home_page.json"]};
+			// return {text:_DATA_["/data/home_page.json"]};
 		},	
 		componentDidMount:function() {
 			var me = this;
@@ -28,8 +26,6 @@ try {
 				dataType: "JSON"
 			}).done(function(data) {
 				me.setState({text:data});
-				console.log('data-===-->');
-				console.log(data);
 			}).fail(function( jqXHR, textStatus ) {
 			});			
 		},
