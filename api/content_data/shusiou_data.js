@@ -32,9 +32,12 @@ _f['fd'] = function(cbk) {
          cbk(list);
     }); 
 }
-_f['pageContents'] = function(cbk) {
-    var folders = CP.data.fd;
-    cbk(folders);
+_f['fds'] = function(cbk) {
+    var fds = CP.data.fd;
+    var CP1 = new pkg.crowdProcess(), _f1 = {};
+    for (var i = 0; i < fds.length; i++) {
+    }
+    cbk(fds);
 }
 
 CP.serial(
