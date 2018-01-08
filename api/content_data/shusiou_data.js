@@ -73,7 +73,7 @@ _f['contents'] = function(cbk) {
     CP1.serial(_f1, function(data) {
         var list = {};
         for (var i = 0; i < files.length; i++) {
-            list[files[i].replace(env.site_contents_path + 'data/', '')] = data.results[files[i]];
+            list[files[i].replace(env.site_contents_path + '/data/', '')] = data.results[files[i]];
         }
         cbk(list);
     },1000);
