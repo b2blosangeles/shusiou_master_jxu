@@ -21,8 +21,8 @@ try {
 		},
 		loadDocument:function(code, lang) {
 			var me = this;
-			var url = '/api/doc/viewdoc.api';
-			$.ajax({url: url, data:{code:code, lang:lang},
+			var url = '/api/content_data/shusiou_data.api';
+			$.ajax({url: url, data:{group:'content_page', lang:lang},
 				dataType:'json', 
 				method:'POST',
 				success: function(data,status,xhr){
