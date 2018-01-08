@@ -60,7 +60,7 @@ _f['fds'] = function(cbk) {
 _f['contents'] = function(cbk) {
     var files = CP.data.fds;
     var CP1 = new pkg.crowdProcess(), _f1 = {};
-    for (var i = 0; i < fds.length; i++) {
+    for (var i = 0; i < files.length; i++) {
         _f1[files[i]] = (function(i) {
             var file = files[i];
             return function(cbk1) {
