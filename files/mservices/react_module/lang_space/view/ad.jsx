@@ -25,7 +25,8 @@ try {
 				method: "POST",
 				dataType: "JSON"
 			}).done(function(data) {
-				console.log('data--->');
+				me.setState({text:data});
+				console.log('data-===-->');
 				console.log(data);
 			}).fail(function( jqXHR, textStatus ) {
 			});			
