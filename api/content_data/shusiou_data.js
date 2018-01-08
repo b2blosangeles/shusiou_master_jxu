@@ -75,9 +75,9 @@ _f['contents'] = function(cbk) {
         })(i);        
     }
     CP1.serial(_f1, function(data) {
-        var list = [];
+        var list = {};
         for (var i = 0; i < files.length; i++) {
-            list[list.length] = data.results[files[i]];
+            list[files[i]] = data.results[files[i]];
         }
         cbk(list);
     },1000);
