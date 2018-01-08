@@ -11,7 +11,7 @@ _f['files'] = function(cbk) {
     pkg.fs.readdir(data_folder, (err, files) => {
         var CP1 = new pkg.crowdProcess(), _f1 = {};
         for (var i = 0; i < files.length; i++) {
-            _f1 = function(cbk1) {
+            _f1[files[i]] = function(cbk1) {
                 cbk1(files[i])
             }
         }
