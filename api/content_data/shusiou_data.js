@@ -2,6 +2,8 @@ var CP = new pkg.crowdProcess(), _f = {};
 var data_folder = env.site_contents_path + '/data/';
 var fn = env.site_contents_path + '/data/cn/home_page/how_i_studied';
 
+var param_lang = req.body.lang, param_group = req.body.group;
+
 _f['langs'] = function(cbk) {
     pkg.fs.readdir(data_folder, (err, files) => {
       cbk(files)
