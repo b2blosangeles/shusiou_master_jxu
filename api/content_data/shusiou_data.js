@@ -85,7 +85,7 @@ _f['contents'] = function(cbk) {
 CP.serial(
   _f,
   function(data) {
-    res.send(data.results.fds);
+    res.send(data.results.contents);
   },
   6000
 );
