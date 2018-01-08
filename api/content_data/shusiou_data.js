@@ -23,7 +23,9 @@ _f['fd'] = function(cbk) {
                 pkg.fs.readdir(lang_folder, (err, files) => {
                     var list = [];
                    for (var j = 0; j < files.length; j++) {
-                        list[list.length] = lang_folder + files[j];
+                       if (!param_group || param_group.indexOf(files[j]) !== -1) {
+                            list[list.length] = lang_folder + files[j];
+                       }
                    }
                     cbk1(list);
                 });
@@ -48,9 +50,7 @@ _f['fds'] = function(cbk) {
                 pkg.fs.readdir(folder, (err, files) => {
                     var list = [];
                    for (var j = 0; j < files.length; j++) {
-                       if (!param_group || param_group.indexOf(files[j]) !== -1) {
-                               list[list.length] = folder + '/' + files[j];
-                       }    
+                       list[list.length] = folder + '/' + files[j];   
                    }
                     cbk1(list);
                 });
