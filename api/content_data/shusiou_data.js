@@ -16,9 +16,10 @@ _f['files'] = function(cbk) {
             }
         }
         CP1.serial(_f1, function(data) {
-             cbk(data)
-        });
+             cbk(data);
+        });    
     });
+
 }
 CP.serial(
   _f,
