@@ -17,7 +17,7 @@ _f['files'] = function(cbk) {
                 pkg.fs.readdir(lang_folder, (err, files) => {
                     var list = [];
                    for (var j = 0; j < files.length; j++) {
-                        list[list.length] = lang_folder + '/' + files[j];
+                        list[list.length] = lang_folder + files[j];
                    }
                     cbk1(list);
                 });
@@ -32,6 +32,11 @@ _f['files'] = function(cbk) {
          cbk(list);
     }); 
 }
+_f['pageContents'] = function(cbk) {
+    var folders = CP.data.files;
+    cbk(folders);
+}
+
 CP.serial(
   _f,
   function(data) {
