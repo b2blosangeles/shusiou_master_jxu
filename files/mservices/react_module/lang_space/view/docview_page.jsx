@@ -1,4 +1,3 @@
-
 try {
 	var DocviewPage =  React.createClass({
 		getInitialState: function() {
