@@ -30,7 +30,7 @@ _f['fd'] = function(cbk) {
             list = list.concat(data.results[langs[i]])
         }
          cbk(list);
-    },3000); 
+    },1000); 
 }
 _f['fds'] = function(cbk) {
     var fds = CP.data.fd;
@@ -55,20 +55,37 @@ _f['fds'] = function(cbk) {
             list = list.concat(data.results[fds[i]])
         }
         cbk(list);
-    },3000);
+    },1000);
 }
-
+_f['contents'] = function(cbk) {
+    var files = CP.data.fds;
+    var CP1 = new pkg.crowdProcess(), _f1 = {};
+    for (var i = 0; i < fds.length; i++) {
+        _f1[files[i]] = (function(i) {
+            var file = files[i];
+            return function(cbk1) {
+                pkg.fs.read(file, (err, contents) => {
+                    var list = [];
+                   for (var j = 0; j < files.length; j++) {
+                        list[list.length] = contents;
+                   }
+                    cbk1(list);
+                });
+            }
+        })(i);        
+    }
+    CP1.serial(_f1, function(data) {
+        var list = [];
+        for (var i = 0; i < files.length; i++) {
+            list = list.concat(data.results[files[i]])
+        }
+        cbk(list);
+    },1000);
+}
 CP.serial(
   _f,
   function(data) {
     res.send(data.results.fds);
-      return true;
-    pkg.fs.readFile(fn, 'utf8', function(err, contents) {
-      res.send(contents);
-    });
-    
-  
-    
   },
   6000
 );
