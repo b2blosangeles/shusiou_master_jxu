@@ -77,7 +77,7 @@ _f['contents'] = function(cbk) {
     CP1.serial(_f1, function(data) {
         var list = [];
         for (var i = 0; i < files.length; i++) {
-            list = list.concat(data.results[files[i]])
+            list[list.length] = data.results[files[i]];
         }
         cbk(list);
     },1000);
