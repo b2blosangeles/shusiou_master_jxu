@@ -15,7 +15,11 @@ _f['files'] = function(cbk) {
             var lang_folder = data_folder + langs[i] + '/';
             return function(cbk1) {
                 pkg.fs.readdir(lang_folder, (err, files) => {
-                  cbk1(files);
+                    var list = [];
+                   for (var j = 0; j < files.length; j++) {
+                        list[list.length] = lang_folder + '/' + files[j];
+                   }
+                    cbk1(list);
                 });
             }
         })(i);
