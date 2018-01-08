@@ -36,6 +36,23 @@ try {
 						docid:code, title:data.title, body: 'Error to access '+url}, function() {
 					});
 				}
+			});				
+			var url0 = 'http://shusiou.com/api/doc/viewdoc.api';
+			$.ajax({url0: url, data:{code:code, lang:lang},
+				dataType:'json', 
+				method:'POST',
+				success: function(data,status,xhr){
+					me.setState({
+						lang:lang,
+						docid:code, title:data.title, body: data.body}, function() {
+					});
+				},
+				error: function(xhr,status,error){
+					me.setState({
+						lang:lang,
+						docid:code, title:data.title, body: 'Error to access '+url}, function() {
+					});
+				}
 			});	
 		},		
 		render: function() {
