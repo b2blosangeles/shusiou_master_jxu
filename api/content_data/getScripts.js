@@ -1,5 +1,5 @@
 var CP = new pkg.crowdProcess(), _f = {};
-var data_folder = env.site_contents_path + '/data/script/';
+var data_folder = env.site_contents_path + '/script/';
 var fn = env.site_contents_path + '/data/cn/home_page/how_i_studied';
 
 var param_lang = req.body.lang, param_group = req.body.group;
