@@ -1,10 +1,10 @@
 var CP = new pkg.crowdProcess(), _f = {};
-var data_folder = env.site_contents_path + '/data/';
+var data_folder = env.site_contents_path + '/data/script/';
 var fn = env.site_contents_path + '/data/cn/home_page/how_i_studied';
 
 var param_lang = req.body.lang, param_group = req.body.group;
 
-_f['langs'] = function(cbk) {
+_f['script'] = function(cbk) {
     pkg.fs.readdir(data_folder, (err, files) => {
       if (!param_lang || !param_lang.length) {
           cbk(files);
@@ -13,6 +13,7 @@ _f['langs'] = function(cbk) {
       }
     });
 }
+/*
 _f['fd'] = function(cbk) {
     var langs = CP.data.langs;
     var CP1 = new pkg.crowdProcess(), _f1 = {};
@@ -86,10 +87,11 @@ _f['contents'] = function(cbk) {
         cbk(list);
     },1000);
 }
+*/
 CP.serial(
   _f,
   function(data) {
-    res.send(data.results.contents);
+    res.send(data.results);
   },
   6000
 );
