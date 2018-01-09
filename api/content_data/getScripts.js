@@ -4,9 +4,9 @@ var data_folder = env.site_contents_path + '/script/';
 var param_lang = req.body.lang, param_group = req.body.group;
 
 var getValue = function(result) {
-    var kays = {};
+    var keys = {};
     for(o in result) {
-        kays[o] = 1;
+        keys[o] = 1;
     }
     res.send(keys);
 };
