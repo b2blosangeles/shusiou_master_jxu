@@ -3,6 +3,8 @@ var data_folder = env.site_contents_path + '/script/';
 
 var param_lang = req.body.lang, param_group = req.body.group;
 
+var code = req.param('code');
+
 var getValue = function(result) {
     var keys = {};
     for(o in result) {
