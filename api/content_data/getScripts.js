@@ -6,7 +6,7 @@ var param_lang = req.body.lang, param_group = req.body.group;
 var getValue = function(result) {
     var keys = {};
     for(o in result) {
-        keys[o] = 1;
+        keys[o] = result[o].lang.code;
     }
     res.send(keys);
 };
