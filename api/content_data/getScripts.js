@@ -1,6 +1,5 @@
 var CP = new pkg.crowdProcess(), _f = {};
 var data_folder = env.site_contents_path + '/script/';
-var fn = env.site_contents_path + '/data/cn/home_page/how_i_studied';
 
 var param_lang = req.body.lang, param_group = req.body.group;
 
@@ -20,7 +19,7 @@ _f['contents'] = function(cbk) {
         _f1[files[i]] = (function(i) {
             var file = files[i];
             return function(cbk1) {
-                pkg.fs.readFile( env.site_contents_path + file, 'utf-8', (err, contents) => {
+                pkg.fs.readFile( data_folder  + file, 'utf-8', (err, contents) => {
                     cbk1(contents);
                 });
             }
