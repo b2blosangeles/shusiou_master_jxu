@@ -3,6 +3,11 @@ var data_folder = env.site_contents_path + '/script/';
 
 var param_lang = req.body.lang, param_group = req.body.group;
 
+var getValue = function(result) {
+    res.send(result);
+};
+
+
 _f['script'] = function(cbk) {
     pkg.fs.readdir(data_folder, (err, files) => {
       if (!param_lang || !param_lang.length) {
@@ -43,7 +48,7 @@ _f['contents'] = function(cbk) {
 CP.serial(
   _f,
   function(data) {
-    res.send(data.results);
+        getValue(data.results);
   },
   6000
 );
