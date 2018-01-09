@@ -48,7 +48,7 @@ _f['contents'] = function(cbk) {
 CP.serial(
   _f,
   function(data) {
-        getValue(data.results);
+        getValue(data.results.contents);
   },
   6000
 );
