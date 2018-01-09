@@ -20,7 +20,8 @@ _f['contents'] = function(cbk) {
             var file = files[i];
             return function(cbk1) {
                 pkg.fs.readFile( data_folder  + file, 'utf-8', (err, contents) => {
-                    cbk1(contents);
+                    var v = JSON.parse(contents);
+                    cbk1(v);
                 });
             }
         })(i);        
