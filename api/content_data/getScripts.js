@@ -24,6 +24,7 @@ _f['contents'] = function(cbk) {
                     try {
                         v = JSON.parse(contents.replace(/(\n|\r)+$/, ''));
                     } catch (e) {
+                        v = {err:e.message};
                     }
                     cbk1(v);
                 });
