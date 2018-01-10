@@ -7,7 +7,7 @@ var opt = req.param('opt');
 
 var getValue = function(result) {
     
-    switch(code) {
+    switch(opt) {
         case 'getAll':
             res.send(result);  
             break;            
