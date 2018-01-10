@@ -25,11 +25,10 @@ var getValue = function(result) {
             res.send(j);  
             break;
         case 'getScriptByCode':
-             var j = {};
              for(o in result) {
-                 if (o === req.param('id') {
+                 if (o === req.param('id')) {
                       res.send(result[o]);
-                      bresk;
+                      break;
                  }
             }
             res.send('No id ' + id);  
