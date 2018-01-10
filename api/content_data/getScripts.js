@@ -19,8 +19,8 @@ var getValue = function(result) {
              var j = {};
              for(o in result) {
                 var lang = result[o].lang.code;
-                if (!j[lang]) j[lang] = [result[o]];
-                else j[lang][j[lang].length] = result[o]; 
+                if (!j[lang]) j[lang] = [{code:o, desc:result[o].desc}];
+                else j[lang][j[lang].length] = {code:o, desc:result[o].desc}; 
             }
             res.send(j);  
             break;            
