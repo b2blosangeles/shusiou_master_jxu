@@ -7,10 +7,16 @@ var code = req.param('code');
 
 var getValue = function(result) {
     var keys = {};
-    for(o in result) {
-        keys[o] = result[o].lang.code;
+    switch(code) {
+        case 'getLangs':
+             for(o in result) {
+                keys[o] = result[o].lang.code;
+            }
+            res.send(keys);  
+            break;
+        default:
+            res.send('Wrong code');
     }
-    res.send(keys);
 };
 
 
