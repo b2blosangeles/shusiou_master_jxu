@@ -8,6 +8,9 @@ var code = req.param('code');
 var getValue = function(result) {
     
     switch(code) {
+        case 'getAll':
+            res.send(result);  
+            break;            
         case 'getLangs':
              var j = {};
              for(o in result) {
