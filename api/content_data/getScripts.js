@@ -27,11 +27,12 @@ var getValue = function(result) {
         case 'getScriptByCode':
              var j = {};
              for(o in result) {
-                var lang = result[o].lang.code;
-                if (!j[lang]) j[lang] = [{code:o, desc:result[o].desc}];
-                else j[lang][j[lang].length] = {code:o, desc:result[o].desc}; 
+                 if (o === req.param('id') {
+                      res.send(result[o]);
+                      bresk;
+                 }
             }
-            res.send(j);  
+            res.send('No id ' + id);  
             break;             
         default:
             res.send('Wrong code');
