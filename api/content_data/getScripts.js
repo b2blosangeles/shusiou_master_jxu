@@ -3,7 +3,7 @@ var data_folder = env.site_contents_path + '/script/';
 
 var param_lang = req.body.lang, param_group = req.body.group;
 
-var code = req.param('code');
+var opt = req.param('opt');
 
 var getValue = function(result) {
     
@@ -29,7 +29,7 @@ var getValue = function(result) {
             break;
         case 'getScriptByCode':
              for(o in result) {
-                 if (o === req.param('id')) {
+                 if (o === req.param('code')) {
                       res.send(result[o]);
                       break;
                  }
