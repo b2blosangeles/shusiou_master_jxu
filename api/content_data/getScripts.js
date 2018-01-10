@@ -15,6 +15,14 @@ var getValue = function(result) {
             }
             res.send(Object.keys(j));  
             break;
+        case 'getLangScripts':
+             var j = {};
+             for(o in result) {
+                if (!j[result[o].lang.code]) = j[result[o].lang.code] = [result[o]];
+                else j[result[o].lang.code][j[result[o].lang.code].length] = result[o]; 
+            }
+            res.send(j);  
+            break;            
         default:
             res.send('Wrong code');
     }
