@@ -6,13 +6,14 @@ var param_lang = req.body.lang, param_group = req.body.group;
 var code = req.param('code');
 
 var getValue = function(result) {
-    var keys = {};
+    
     switch(code) {
         case 'getLangs':
+             var j = {};
              for(o in result) {
-                keys[o] = result[o].lang.code;
+                j[o] = result[o].lang.code;
             }
-            res.send(keys);  
+            res.send(Object.keys(j));  
             break;
         default:
             res.send('Wrong code');
