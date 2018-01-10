@@ -11,7 +11,7 @@ var getValue = function(result) {
         case 'getLangs':
              var j = {};
              for(o in result) {
-                j[o] = result[o].lang.code;
+                j[result[o].lang.code] = true;
             }
             res.send(Object.keys(j));  
             break;
