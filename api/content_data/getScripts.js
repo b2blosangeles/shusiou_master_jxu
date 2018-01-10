@@ -34,10 +34,10 @@ var getValue = function(result) {
                       break;
                  }
             }
-            res.send('No id ' + id);  
+            res.send('No id ' + code);  
             break;             
         default:
-            res.send('Wrong code');
+            res.send('Wrong opt');
     }
 };
 
