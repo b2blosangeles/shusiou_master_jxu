@@ -18,8 +18,9 @@ var getValue = function(result) {
         case 'getLangScripts':
              var j = {};
              for(o in result) {
-                if (!j[result[o].lang.code]) = j[result[o].lang.code] = [result[o]];
-                else j[result[o].lang.code][j[result[o].lang.code].length] = result[o]; 
+                var lang = result[o].lang.code;
+                if (!j[lang]) j[lang] = [result[o]];
+                else j[lang][j[lang].length] = result[o]; 
             }
             res.send(j);  
             break;            
