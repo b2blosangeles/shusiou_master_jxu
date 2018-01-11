@@ -30,7 +30,7 @@ try {
 			me.props.parent.props.route.env.engine({
 				url: '/api/curriculum/myCurriculum.api',
 				method: "POST",
-				data: {cmd:'getList', auth:me.props.route.env.state.auth},
+				data: {cmd:'getList', auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
 				console.log(data);
