@@ -28,9 +28,9 @@ try {
 		componentDidMount:function() {
 			var me = this;
 			me.props.parent.props.route.env.engine({
-				url: '/api/curriculum/myCurriculum.api',
+				url: '/api/content_data/getScripts.js',
 				method: "POST",
-				data: {cmd:'getList', auth:me.props.parent.props.route.env.state.auth},
+				data: {cmd:'getAll', auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
 				console.log(data);
