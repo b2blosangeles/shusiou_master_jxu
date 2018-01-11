@@ -20,7 +20,7 @@ try {
 		},
 		loadDocument:function(code, lang) {
 			var me = this;
-			var url = 'http://shusiou.com/api/doc/viewdoc.api';
+			var url = '/api/doc/viewdoc.api';
 			$.ajax({url: url, data:{code:code, lang:lang},
 				dataType:'json', 
 				method:'POST',
