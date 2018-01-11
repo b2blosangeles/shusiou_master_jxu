@@ -7,7 +7,7 @@ var cmd = req.body['cmd'] | req.param('cmd');
 
 var getValue = function(result) {
     
-    switch(opt) {
+    switch(cmd) {
         case 'getAll':
             res.send(result);  
             break;            
