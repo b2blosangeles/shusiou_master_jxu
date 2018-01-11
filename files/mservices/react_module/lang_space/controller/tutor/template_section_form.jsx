@@ -27,6 +27,9 @@ try {
 		},
 		componentDidMount:function() {
 			var me = this;
+			alert(12);
+			
+			
 			if (me.props.section.id == 'new') {
 				me.setState({c_section:me.default});
 			} else me.setState({c_section:me.props.section.o});
