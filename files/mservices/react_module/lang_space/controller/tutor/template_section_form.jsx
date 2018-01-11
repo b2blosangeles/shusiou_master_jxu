@@ -27,7 +27,7 @@ try {
 		},
 		componentDidMount:function() {
 			var me = this;
-			console.log(me.props.route.parent);
+			console.log(me.props.parent.props.route.env.engine);
 			/*
 			me.props.route.env.engine({
 				url: '/api/curriculum/myCurriculum.api',
