@@ -28,7 +28,7 @@ try {
 		componentDidMount:function() {
 			var me = this;
 			me.props.parent.props.route.env.engine({
-				url: '/api/content_data/getScripts.js',
+				url: '/api/content_data/getScripts.api',
 				method: "POST",
 				data: {cmd:'getAll', auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
