@@ -1,7 +1,8 @@
 try {	
 	var protocol = location.protocol;
-	if (protocol !== 'https') {
-		window.location.href = "https://shusiou.com";
+	console.log(protocol);
+	if (protocol !== 'https:') {
+	//	window.location.href = "https://shusiou.com";
 	}
 	var viewpoint = $('.'+mapping_data.id);	
 	var { Router,
