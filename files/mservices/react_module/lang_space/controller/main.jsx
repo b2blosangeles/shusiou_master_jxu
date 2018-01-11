@@ -1,4 +1,6 @@
 try {	
+	var protocol = location.protocol;
+	console.log(location.protocol);
 	var viewpoint = $('.'+mapping_data.id);	
 	var { Router,
 		  Route,
