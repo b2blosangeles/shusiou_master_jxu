@@ -1,5 +1,9 @@
 
 try {
+	var shusiou_url = location.protocol+'//'+window.location.hostname;
+	if (shusiou_url !== 'https://shusiou.com') {
+		window.location.href = window.location.href.replace(shusiou_url, 'https://shusiou.com');
+	}	
 	var Root =  React.createClass({
 		getInitialState: function() {
 			var me = this;
