@@ -17,7 +17,7 @@ try {
 		pullList:function() {
 			var me = this;
 			$.ajax({
-				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=getMyVideos',
+				url:  '/api/video/myVideo.api?opt=getMyVideos',
 				method: "POST",
 				data: {auth:me.props.route.env.state.auth},
 				dataType: "JSON"
@@ -98,7 +98,7 @@ try {
 		videoDelete:function(vid){
 			var me = this;
 			$.ajax({
-				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=removeUserVideo',
+				url: '/api/video/myVideo.api?opt=removeUserVideo',
 				method: "POST",
 				data: {vid:vid, auth: me.props.route.env.state.auth},
 				dataType: "JSON"
