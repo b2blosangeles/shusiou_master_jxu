@@ -27,9 +27,7 @@ try {
 		},
 		componentDidMount:function() {
 			var me = this;
-			console.log(me.props.parent.props.route.env.engine);
-			/*
-			me.props.route.env.engine({
+			me.props.parent.props.route.env.engine({
 				url: '/api/curriculum/myCurriculum.api',
 				method: "POST",
 				data: {cmd:'getList', auth:me.props.route.env.state.auth},
@@ -40,7 +38,7 @@ try {
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});				
-			*/
+
 			if (me.props.section.id == 'new') {
 				me.setState({c_section:me.default});
 			} else me.setState({c_section:me.props.section.o});
