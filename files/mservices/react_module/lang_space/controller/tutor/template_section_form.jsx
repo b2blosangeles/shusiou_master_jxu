@@ -27,8 +27,17 @@ try {
 		},
 		componentDidMount:function() {
 			var me = this;
-			alert(12);
-			
+			me.props.route.env.engine({
+				url: '/api/curriculum/myCurriculum.api',
+				method: "POST",
+				data: {cmd:'getList', auth:me.props.route.env.state.auth},
+				dataType: "JSON"
+			}, function( data) {
+				console.log(data);
+				//me.setState({list:data.data});
+			},function( jqXHR, textStatus ) {
+				console.log('error');
+			});				
 			
 			if (me.props.section.id == 'new') {
 				me.setState({c_section:me.default});
