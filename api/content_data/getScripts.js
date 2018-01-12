@@ -9,7 +9,17 @@ var getValue = function(result) {
     
     switch(cmd) {
         case 'getAll':
-            res.send(result);  
+             var l = {};
+             for(o in result) {
+                l[result[o].lang.code] = true;
+            }
+             var j = {};
+             for(o in result) {
+                var lang = result[o].lang.code;
+                if (!j[lang]) j[lang] = [{code:o, desc:result[o].desc}];
+                else j[lang][j[lang].length] = {code:o, desc:result[o].desc}; 
+            }            
+            res.send({langs:Object.keys(l), langScripts: j , result:result});  
             break;            
         case 'getLangs':
              var j = {};
