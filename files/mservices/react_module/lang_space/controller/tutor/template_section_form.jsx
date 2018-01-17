@@ -87,6 +87,20 @@ try {
 				</div>	
 			)	       
 		},
+		templateField: function() {
+			var me = this;
+			return (
+				<div className="dropdown">
+				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
+					  niu&nbsp;
+				  <span className="caret"></span></button>
+				  <ul className="dropdown-menu">
+				    <li><a href="JavaScript:void(0)">AAA</a></li>
+				    <li><a href="JavaScript:void(0)"}>BBB</a></li>
+				  </ul>
+				</div>	
+			)	       
+		},		
 		recField: function(rec) {
 			var me = this;
 			if (!rec.action) return (
@@ -153,7 +167,7 @@ try {
 			return (
 				<span>
 					{me.props.parent.state.curriculum.mother_lang} - {me.props.parent.state.curriculum.learning_lang} - {me.props.parent.state.curriculum.level}
-					{me.langField()}
+					{me.templateField()}
 					<table width="100%" className="section_template_frame">						
 						<tr className="bg_op_warning">
 							<td width="8"></td>
