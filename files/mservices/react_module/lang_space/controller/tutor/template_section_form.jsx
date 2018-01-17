@@ -87,22 +87,16 @@ try {
 				</div>	
 			)	       
 		},
-		templateField: function() {
+		templateField: function(v) {
 			var me = this;
-			var v = ['aaa', 'bbb'];
-			
 			return (
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
 					  niu&nbsp;
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
-				    <li><a href="JavaScript:void(0)">AAA</a></li>
-				    <li><a href="JavaScript:void(0)">BBB</a></li>
 					{v.map(function(m) {
-						 {
-							return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
-						  }
+						return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
 					})}
 				  </ul>
 				</div>	
@@ -174,7 +168,7 @@ try {
 			return (
 				<span>
 					{me.props.parent.state.curriculum.mother_lang} - {me.props.parent.state.curriculum.learning_lang} - {me.props.parent.state.curriculum.level}
-					{me.templateField()}
+					{me.templateField(['aaa', 'bbb'])}
 					<table width="100%" className="section_template_frame">						
 						<tr className="bg_op_warning">
 							<td width="8"></td>
