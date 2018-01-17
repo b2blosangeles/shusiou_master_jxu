@@ -101,7 +101,7 @@ try {
 				    <li><a href="JavaScript:void(0)">BBB</a></li>
 					{v.map(function(m) {
 						 {
-							return (<li><a href="JavaScript:void(0)">AAA</a></li>);	
+							return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
 						  }
 					})}
 				  </ul>
