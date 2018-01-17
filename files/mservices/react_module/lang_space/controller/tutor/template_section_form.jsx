@@ -89,6 +89,8 @@ try {
 		},
 		templateField: function() {
 			var me = this;
+			var v = ['aaa', 'bbb'];
+			
 			return (
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
@@ -97,6 +99,9 @@ try {
 				  <ul className="dropdown-menu">
 				    <li><a href="JavaScript:void(0)">AAA</a></li>
 				    <li><a href="JavaScript:void(0)">BBB</a></li>
+					  {v.map( function(m) {
+				return (<li><a href="JavaScript:void(0)">AAA</a></li);	
+			})}
 				  </ul>
 				</div>	
 			)	       
