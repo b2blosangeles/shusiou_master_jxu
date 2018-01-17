@@ -99,9 +99,9 @@ try {
 				  <ul className="dropdown-menu">
 				    <li><a href="JavaScript:void(0)">AAA</a></li>
 				    <li><a href="JavaScript:void(0)">BBB</a></li>
-					  {v.map( function(m) {
+					  {( function(m) {
 						return (<li><a href="JavaScript:void(0)">AAA</a></li>);	
-						})}
+						})()}
 				  </ul>
 				</div>	
 			)	       
