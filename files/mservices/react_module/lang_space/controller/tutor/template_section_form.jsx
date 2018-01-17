@@ -96,7 +96,7 @@ try {
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
 				    <li><a href="JavaScript:void(0)">AAA</a></li>
-				    <li><a href="JavaScript:void(0)"}>BBB</a></li>
+				    <li><a href="JavaScript:void(0)">BBB</a></li>
 				  </ul>
 				</div>	
 			)	       
