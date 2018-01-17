@@ -100,8 +100,8 @@ try {
 				    <li><a href="JavaScript:void(0)">AAA</a></li>
 				    <li><a href="JavaScript:void(0)">BBB</a></li>
 					  {v.map( function(m) {
-				return (<li><a href="JavaScript:void(0)">AAA</a></li);	
-			})}
+						return (<li><a href="JavaScript:void(0)">AAA</a></li>);	
+						})}
 				  </ul>
 				</div>	
 			)	       
