@@ -98,7 +98,7 @@ try {
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
 					  langScripts
-					{v.forEach(function (m, index) {
+					{v.map(function (m, index) {
 						return (<li><a href="JavaScript:void(0)">{m}{index}</a></li>);	
 					});					  
 					{v.map(function(m) {
