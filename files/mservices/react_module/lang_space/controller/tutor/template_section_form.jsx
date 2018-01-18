@@ -36,7 +36,7 @@ try {
 				dataType: "JSON"
 			}, function( data) {
 				console.log(data);
-				me.setState({langs:data.langs});
+				me.setState({langs:data.langs, langScripts:data.langScripts});
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});				
@@ -97,6 +97,7 @@ try {
 					  niu&nbsp;
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
+					  langScripts
 					{v.map(function(m) {
 						return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
 					})}
