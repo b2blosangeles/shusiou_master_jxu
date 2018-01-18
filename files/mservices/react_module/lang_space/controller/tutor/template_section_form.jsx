@@ -97,9 +97,9 @@ try {
 					  niu&nbsp;
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
-					  langScripts
-					{v.map(function (m, index) {
-						return (<li><a href="JavaScript:void(0)">{m}{index}</a></li>);	
+					  
+					{me.state.langScripts.map(function (m, index) {
+						return (<li><a href="JavaScript:void(0)">{index}</a></li>);	
 					})}					  
 					{v.map(function(m) {
 						return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
