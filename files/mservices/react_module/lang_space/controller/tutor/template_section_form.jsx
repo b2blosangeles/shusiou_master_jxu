@@ -3,6 +3,7 @@ try {
 		getInitialState: function() {
 			var me = this; 
 			me.default = {
+					langs:[],
 					lang:{mother:'en-US', learning:'cn-ZH'},
 					pro:[
 						{text:'The next paragraph is saying something[s]Listen', lang:'en-US', active:true},
