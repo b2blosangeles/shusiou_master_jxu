@@ -99,7 +99,7 @@ try {
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
 					  
-					{me.state.langScripts.map(function (m, index) {
+					{Object.keys(me.state.langScripts).map(function (m, index) {
 						return (<li><a href="JavaScript:void(0)">{index}</a></li>);	
 					})}					  
 					{v.map(function(m) {
