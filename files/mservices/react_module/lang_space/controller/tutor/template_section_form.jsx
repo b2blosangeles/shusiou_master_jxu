@@ -23,6 +23,7 @@ try {
 				};
 			return {
 				langs:[],
+				langScripts:{},
 				form_value:{text:''},
 				c_section:me.default
 			};
