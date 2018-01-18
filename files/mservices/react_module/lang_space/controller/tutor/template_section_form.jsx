@@ -100,7 +100,9 @@ try {
 				  <ul className="dropdown-menu">
 					  
 					{Object.keys(me.state.langScripts).map(function (m, index) {
-						return (<li><a href="JavaScript:void(0)">{me.state.langScripts[m][0].desc}==</a></li>);	
+						return (<li><a href="JavaScript:void(0)">
+							{me.state.langScripts[m][0].code} - 
+							{me.state.langScripts[m][0].desc}</a></li>);	
 					})}					  
 					{v.map(function(m) {
 						return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
