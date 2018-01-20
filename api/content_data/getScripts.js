@@ -9,6 +9,8 @@ var getValue = function(result) {
     
     switch(cmd) {
         case 'getAll':
+            res.send('niu');
+            return true;
              var l = {};
              for(o in result) {
                 l[result[o].lang.code] = true;
