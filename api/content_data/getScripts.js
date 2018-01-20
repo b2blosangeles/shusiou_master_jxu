@@ -9,7 +9,7 @@ var getValue = function(result) {
     
     switch(cmd) {
         case 'getAll':
-            res.send('niu');
+            res.send(result);
             return true;
              var l = {};
              for(o in result) {
