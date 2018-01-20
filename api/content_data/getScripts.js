@@ -6,11 +6,12 @@ var param_lang = req.body.lang, param_group = req.body.group;
 var cmd = req.body['cmd'] || req.param('cmd');
 
 var getValue = function(result) {
-    
-    switch(cmd) {
-        case 'getAll':
+    if (result.err) {
             res.send(result);
             return true;
+    }
+    switch(cmd) {
+        case 'getAll':
              var l = {};
              for(o in result) {
                 l[result[o].lang.code] = true;
