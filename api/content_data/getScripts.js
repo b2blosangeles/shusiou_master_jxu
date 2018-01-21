@@ -23,11 +23,7 @@ var getValue = function(result0) {
             res.send({langs:langs, scrips:result, err:err}); 
             break; 
         case 'getLangs':
-             var j = {};
-             for(o in result) {
-                j[result[o].lang.code] = true;
-            }
-            res.send(Object.keys(j));  
+            res.send(langs);  
             break;
         case 'getLangScripts':
              var j = {};
