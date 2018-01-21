@@ -22,6 +22,7 @@ var getValue = function(result0) {
       langs[langs.length] = result[o].lang.code;
    }  
    langs = langs.filter((v, i, a) => a.indexOf(v) === i);
+   
     for(o in result) {
         if (code == result[o].lang.code) {
             list[list.length] = [{id:o, desc:result[o].description[lang]}];
@@ -29,7 +30,7 @@ var getValue = function(result0) {
     }    
    switch(cmd) {
         case 'getAll':
-            res.send({langs:langs, scriptList:scriptList, scrips:result, err:err}); 
+            res.send({langs:langs, list:list, scrips:result, err:err}); 
             break; 
         case 'getLangs':
             res.send(langs);  
