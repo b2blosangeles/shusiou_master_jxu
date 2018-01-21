@@ -120,14 +120,11 @@ try {
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
 					  
-					{Object.keys(me.state.langScripts).map(function (m, index) {
+					{me.state.list.map(function (m, index) {
 						return (<li><a href="JavaScript:void(0)">
-							{me.state.langScripts[m][0].code} - 
-							{me.state.langScripts[m][0].desc}</a></li>);	
+							{m.id} - 
+							{m.description}</a></li>);	
 					})}					  
-					{v.map(function(m) {
-						return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
-					})}
 				  </ul>
 				</div>	
 			)	       
@@ -198,7 +195,7 @@ try {
 			return (
 				<span>
 					{me.props.parent.state.curriculum.mother_lang} - {me.props.parent.state.curriculum.learning_lang} - {me.props.parent.state.curriculum.level}
-					{me.templateField(me.state.langs)} -- {me.templateSelectScript(me.state.langs)}
+					{me.templateField(me.state.langs)} -- {me.templateSelectScript(me.state.list)}
 					<table width="100%" className="section_template_frame">						
 						<tr className="bg_op_warning">
 							<td width="8"></td>
