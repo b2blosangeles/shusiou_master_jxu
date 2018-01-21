@@ -8,7 +8,7 @@ var cmd = req.body['cmd'] || req.param('cmd');
 var getValue = function(result0) {
    var result = {}, err = {};
    for(o in result0) {
-       if (!result[o].err) {
+       if (!result0[o].err) {
           result[o] = result0[o];
        }   
    }   
