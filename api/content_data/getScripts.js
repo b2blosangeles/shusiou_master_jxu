@@ -5,11 +5,6 @@ var param_lang = req.body.lang, param_group = req.body.group;
 
 var cmd = req.body['cmd'] || req.param('cmd');
 
-var unique = function(xs) {
-  return xs.filter(function(x, i) {
-    return xs.indexOf(x) === i
-  })
-}
 var getValue = function(result0) {
    var result = {}, err = {}, langs = [];
    for(o in result0) {
