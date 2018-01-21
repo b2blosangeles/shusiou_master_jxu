@@ -1,9 +1,10 @@
 var CP = new pkg.crowdProcess(), _f = {};
 var data_folder = env.site_contents_path + '/script/';
 
-var param_lang = req.body.lang || req.param('lang'), param_group = req.body.group;
-
-var cmd = req.body.cmd || req.param('cmd');
+let param_lang = req.body.code || req.param('code'), 
+    lang = req.body.lang || req.param('lang') || 'en', 
+    param_group = req.body.group,
+    cmd = req.body.cmd || req.param('cmd');
 
 var getValue = function(result0) {
    let result = {}, err = null, langs = [];
@@ -31,13 +32,13 @@ var getValue = function(result0) {
         case 'getLangScripts':
              var j = [];
              for(o in result) {
-                if (param_lang == result[o].lang.code) {
-                  j[j.length] = [{id:o, desc:result[o].description.en}];
+                if (code == result[o].lang.code) {
+                  j[j.length] = [{id:o, desc:result[o].description[lang]}];
                 }
             }
             res.send(j);  
             break;
-        case 'getScriptByCode':
+        case 'getScriptById':
              for(o in result) {
                  if (o === req.param('code')) {
                       res.send(result[o]);
