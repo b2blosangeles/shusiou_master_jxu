@@ -21,8 +21,8 @@ var getValue = function(result0) {
              var j = {};
              for(o in result) {
                 var lang = result[o].lang.code;
-                if (!j[lang]) j[lang] = [{code:o, desc:result[o].desc}];
-                else j[lang][j[lang].length] = {code:o, desc:result[o].desc}; 
+                if (!j[lang]) j[lang] = [{id:o, desc:result[o].desc}];
+                else j[lang][j[lang].length] = {id:o, desc:result[o].desc}; 
             }            
             res.send({langs:Object.keys(l), langScripts: j , result:result});  
             break;            
