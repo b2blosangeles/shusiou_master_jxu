@@ -97,13 +97,7 @@ try {
 				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
 					  niu&nbsp;
 				  <span className="caret"></span></button>
-				  <ul className="dropdown-menu">
-					  
-					{Object.keys(me.state.langScripts).map(function (m, index) {
-						return (<li><a href="JavaScript:void(0)">
-							{me.state.langScripts[m][0].code} - 
-							{me.state.langScripts[m][0].desc}</a></li>);	
-					})}					  
+				  <ul className="dropdown-menu">					  
 					{v.map(function(m) {
 						return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
 					})}
@@ -113,7 +107,7 @@ try {
 		},
 		templateSelectScript: function(v) {
 			var me = this;
-			let list = me.state.langs;
+			let list = me.state.list;
 			return (
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
@@ -121,7 +115,7 @@ try {
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
 					  
-					  {v.map(function (m, index) {
+					  {list.map(function (m, index) {
 						return (<li><a href="JavaScript:void(0)">
 							{m.id} - 
 							{m.description}</a></li>);	
