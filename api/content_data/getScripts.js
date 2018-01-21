@@ -32,9 +32,6 @@ var getValue = function(result0) {
         case 'getAll':
             res.send({langs:langs, list:list, scrips:result, err:err}); 
             break; 
-        case 'getLangs':
-            res.send(langs);  
-            break;
         case 'getScriptById':
              for(o in result) {
                  if (o === req.param('id')) {
