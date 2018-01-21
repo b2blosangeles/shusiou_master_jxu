@@ -16,9 +16,12 @@ var getValue = function(result0) {
    }
    for(o in result) {
       langs[langs.length] = result[o].lang.code;
-   }        
-    switch(cmd) {
+   }  
+   langs = langs.filter((v, i, a) => a.indexOf(v) === i);
+   switch(cmd) {
         case 'getAll':
+            res.send(langs); 
+               break; 
              var l = {};
              for(o in result) {
                 l[result[o].lang.code] = true;
