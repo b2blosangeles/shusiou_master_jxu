@@ -9,8 +9,10 @@ var getValue = function(result0) {
    var result = {}, err = {}, langs = [];
    for(o in result0) {
        if (!result0[o].err) {
-          result[o] = result0[o];
-       }   
+            result[o] = result0[o];
+       } else [
+            err[o] = result0[o].err.message;
+       }
    }
    for(o in result) {
       langs[langs.length] = result[o].lang.code;
