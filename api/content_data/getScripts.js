@@ -25,7 +25,7 @@ var getValue = function(result0) {
    
    for(o in result) {
         if (!code || (langs.indexOf(code) !==-1 && code == result[o].lang.code)) {
-            list[list.length] = [{id:o, desc:result[o].description[lang]}];
+            list[list.length] = [{id:o, lang:result[o].lang.code, description:result[o].description[lang]}];
         }
     }    
    switch(cmd) {
