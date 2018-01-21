@@ -107,7 +107,6 @@ try {
 		},
 		templateSelectScript: function(v) {
 			var me = this;
-			let list = me.state.list;
 			return (
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
@@ -115,9 +114,9 @@ try {
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
 					  
-					  {list.map(function (m, index) {
+					  {v.map(function (m, index) {
 						return (<li><a href="JavaScript:void(0)">
-							{m.id} - 
+							{m.id} - =
 							{m.description}</a></li>);	
 					})}					  
 				  </ul>
