@@ -114,10 +114,10 @@ try {
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
 					  
-					  {v.map(function (m) {
+					  {v.map(function (m, idx) {
 						return (<li><a href="JavaScript:void(0)">
-							{m.id} -  -
-							{m.description}</a></li>);	
+							{m[idx].id} -  {idx} -
+							{m[idx].description}</a></li>);	
 					})}					  
 				  </ul>
 				</div>	
