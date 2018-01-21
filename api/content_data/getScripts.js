@@ -40,12 +40,12 @@ var getValue = function(result0) {
             break;
         case 'getScriptById':
              for(o in result) {
-                 if (o === req.param('code')) {
+                 if (o === req.param('id')) {
                       res.send(result[o]);
                       break;
                  }
             }
-            res.send('No id ' + code);  
+            res.send('No id ' + id);  
             break;             
         default:
             res.send('Wrong opt');
