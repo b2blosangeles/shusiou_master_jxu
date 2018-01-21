@@ -55,11 +55,7 @@ var getValue = function(result0) {
 
 _f['script'] = function(cbk) {
     pkg.fs.readdir(data_folder, (err, files) => {
-      //if (!param_lang || !param_lang.length) {
-          cbk(files);
-      //} else {
-      //    cbk(intersect(param_lang, files));  
-      //}
+         cbk(files);
     });
 }
 _f['contents'] = function(cbk) {
@@ -97,15 +93,3 @@ CP.serial(
   },
   6000
 );
-function intersect(a, b) {
-    var d = {};
-    var results = [];
-    for (var i = 0; i < b.length; i++) {
-        d[b[i]] = true;
-    }
-    for (var j = 0; j < a.length; j++) {
-        if (d[a[j]]) 
-            results.push(a[j]);
-    }
-    return results;
-}
