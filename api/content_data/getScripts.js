@@ -20,22 +20,8 @@ var getValue = function(result0) {
    langs = langs.filter((v, i, a) => a.indexOf(v) === i);
    switch(cmd) {
         case 'getAll':
-            res.send(langs); 
+            res.send({langs:langs, scrips:result, err:err); 
             break; 
-            /*
-             var l = {};
-             for(o in result) {
-                l[result[o].lang.code] = true;
-            }
-             var j = {};
-             for(o in result) {
-                var lang = result[o].lang.code;
-                if (!j[lang]) j[lang] = [{id:o, desc:result[o].desc}];
-                else j[lang][j[lang].length] = {id:o, desc:result[o].desc}; 
-            }            
-            res.send({langs:Object.keys(l), langScripts: j , result:result});  
-            break; 
-            */
         case 'getLangs':
              var j = {};
              for(o in result) {
