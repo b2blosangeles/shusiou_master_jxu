@@ -113,6 +113,7 @@ try {
 		},
 		templateSelectScript: function(v) {
 			var me = this;
+			let list = me.state.langs;
 			return (
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
@@ -120,7 +121,7 @@ try {
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
 					  
-					{me.state.list.map(function (m, index) {
+					  {list.map(function (m, index) {
 						return (<li><a href="JavaScript:void(0)">
 							{m.id} - 
 							{m.description}</a></li>);	
