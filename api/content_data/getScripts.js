@@ -14,7 +14,7 @@ var getValue = function(result0) {
             if (!err) {
                err = [];
             }   
-            err[err.length] = {id:o, message:result0[o].err.message};
+            err[err.length] = {id:o, message:result0[o].err};
        }
    }
    for(o in result) {
