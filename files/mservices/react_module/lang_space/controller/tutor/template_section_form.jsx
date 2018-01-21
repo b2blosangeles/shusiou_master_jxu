@@ -37,7 +37,7 @@ try {
 				dataType: "JSON"
 			}, function( data) {
 				console.log(data);
-				me.setState({langs:data.langs, langScripts:data.langScripts});
+				me.setState({langs:data.langs, list:data.list});
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});				
