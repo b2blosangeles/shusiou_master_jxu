@@ -198,7 +198,7 @@ try {
 			return (
 				<span>
 					{me.props.parent.state.curriculum.mother_lang} - {me.props.parent.state.curriculum.learning_lang} - {me.props.parent.state.curriculum.level}
-					{me.templateField(me.state.langs)} -- {me.templateSelectScript(rec)}
+					{me.templateField(me.state.langs)} -- {me.templateSelectScript(me.state.langs)}
 					<table width="100%" className="section_template_frame">						
 						<tr className="bg_op_warning">
 							<td width="8"></td>
