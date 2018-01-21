@@ -6,10 +6,10 @@ var param_lang = req.body.lang, param_group = req.body.group;
 var cmd = req.body['cmd'] || req.param('cmd');
 
 var getValue = function(result) {
-    if (result.err) {
+   // if (result.err) {
             res.send(result);
             return true;
-    }
+   // }
     switch(cmd) {
         case 'getAll':
              var l = {};
