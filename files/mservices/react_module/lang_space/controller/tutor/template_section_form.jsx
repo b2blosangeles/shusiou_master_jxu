@@ -121,7 +121,7 @@ try {
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
 					  
-					  {list.map(function (m, index) {
+					  {v.map(function (m, index) {
 						return (<li><a href="JavaScript:void(0)">
 							{m.id} - 
 							{m.description}</a></li>);	
