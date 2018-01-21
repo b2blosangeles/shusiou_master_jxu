@@ -24,7 +24,7 @@ var getValue = function(result0) {
    langs = langs.filter((v, i, a) => a.indexOf(v) === i);
    
    for(o in result) {
-        if (!code || code == result[o].lang.code) {
+        if (!code || (langs.indexOf(code) !==-1 && code == result[o].lang.code)) {
             list[list.length] = [{id:o, desc:result[o].description[lang]}];
         }
     }    
