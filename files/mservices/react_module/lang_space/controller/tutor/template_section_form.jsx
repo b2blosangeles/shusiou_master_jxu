@@ -89,22 +89,29 @@ try {
 				  </ul>
 				</div>	
 			)	       
-		},
-		scriptField: function(rec) {
+		},		
+		templateField: function(v) {
 			var me = this;
 			return (
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-					  {rec.lang}&nbsp;
+					  niu&nbsp;
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
-				    <li><a href="JavaScript:void(0)" onClick={me.handleLang.bind(me, rec, me.state.c_section.lang.mother)}> {me.state.c_section.lang.mother}</a></li>
-				    <li><a href="JavaScript:void(0)" onClick={me.handleLang.bind(me, rec, me.state.c_section.lang.learning)}> {me.state.c_section.lang.learning}</a></li>
+					  
+					{Object.keys(me.state.langScripts).map(function (m, index) {
+						return (<li><a href="JavaScript:void(0)">
+							{me.state.langScripts[m][0].code} - 
+							{me.state.langScripts[m][0].desc}</a></li>);	
+					})}					  
+					{v.map(function(m) {
+						return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
+					})}
 				  </ul>
 				</div>	
 			)	       
-		},		
-		templateField: function(v) {
+		},
+		templateSelectScript: function(v) {
 			var me = this;
 			return (
 				<div className="dropdown">
@@ -136,7 +143,7 @@ try {
 									value={rec.text}  onChange={this.handleChange.bind(this, rec)}  />
 							</td>
 							<td width="80">
-								{me.langField(rec)} {me.scriptField(rec)}
+								{me.langField(rec)} 
 							</td>
 							{/*<td width="28">
 								<div className="checkbox_div  inpit-white-bg" onClick={me.handleActive.bind(me,rec)}>
@@ -191,7 +198,7 @@ try {
 			return (
 				<span>
 					{me.props.parent.state.curriculum.mother_lang} - {me.props.parent.state.curriculum.learning_lang} - {me.props.parent.state.curriculum.level}
-					{me.templateField(me.state.langs)}
+					{me.templateField(me.state.langs)} -- {me.templateSelectScript(rec)}
 					<table width="100%" className="section_template_frame">						
 						<tr className="bg_op_warning">
 							<td width="8"></td>
