@@ -6,7 +6,7 @@ var param_lang = req.body.lang || req.param('lang'), param_group = req.body.grou
 var cmd = req.body['cmd'] || req.param('cmd');
 
 var getValue = function(result0) {
-   var result = {}, err = null, langs = [];
+   let result = {}, err = null, langs = [];
    for(o in result0) {
        if (!result0[o].err) {
             result[o] = result0[o];
