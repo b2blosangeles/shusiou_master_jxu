@@ -90,6 +90,20 @@ try {
 				</div>	
 			)	       
 		},
+		scriptField: function(rec) {
+			var me = this;
+			return (
+				<div className="dropdown">
+				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
+					  {rec.lang}&nbsp;
+				  <span className="caret"></span></button>
+				  <ul className="dropdown-menu">
+				    <li><a href="JavaScript:void(0)" onClick={me.handleLang.bind(me, rec, me.state.c_section.lang.mother)}> {me.state.c_section.lang.mother}</a></li>
+				    <li><a href="JavaScript:void(0)" onClick={me.handleLang.bind(me, rec, me.state.c_section.lang.learning)}> {me.state.c_section.lang.learning}</a></li>
+				  </ul>
+				</div>	
+			)	       
+		},		
 		templateField: function(v) {
 			var me = this;
 			return (
@@ -122,7 +136,7 @@ try {
 									value={rec.text}  onChange={this.handleChange.bind(this, rec)}  />
 							</td>
 							<td width="80">
-								{me.langField(rec)}
+								{me.langField(rec)} {me.scriptField}
 							</td>
 							{/*<td width="28">
 								<div className="checkbox_div  inpit-white-bg" onClick={me.handleActive.bind(me,rec)}>
