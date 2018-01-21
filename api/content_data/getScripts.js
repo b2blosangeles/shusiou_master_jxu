@@ -1,7 +1,7 @@
 var CP = new pkg.crowdProcess(), _f = {};
 var data_folder = env.site_contents_path + '/script/';
 
-var param_lang = req.body.lang, param_group = req.body.group;
+var param_lang = req.body.lang || req.param('lang'), param_group = req.body.group;
 
 var cmd = req.body['cmd'] || req.param('cmd');
 
