@@ -6,11 +6,14 @@ var param_lang = req.body.lang, param_group = req.body.group;
 var cmd = req.body['cmd'] || req.param('cmd');
 
 var getValue = function(result0) {
-   var result = {}, err = [], langs = [];
+   var result = {}, err = null, langs = [];
    for(o in result0) {
        if (!result0[o].err) {
             result[o] = result0[o];
        } else {
+            if (!err) {
+               err = [];
+            }   
             err[err.length] = {id:o, message:result0[o].err.message};
        }
    }
