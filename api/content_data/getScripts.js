@@ -6,12 +6,12 @@ var param_lang = req.body.lang, param_group = req.body.group;
 var cmd = req.body['cmd'] || req.param('cmd');
 
 var getValue = function(result0) {
-   var result = {}, err = {}, langs = [];
+   var result = {}, err = [], langs = [];
    for(o in result0) {
        if (!result0[o].err) {
             result[o] = result0[o];
        } else {
-            err[o] = result0[o].err.message;
+            err[err.length] = {id:o, message:result0[o].err.message};
        }
    }
    for(o in result) {
@@ -20,7 +20,7 @@ var getValue = function(result0) {
    langs = langs.filter((v, i, a) => a.indexOf(v) === i);
    switch(cmd) {
         case 'getAll':
-            res.send({langs:langs, scrips:result, err:err); 
+            res.send({langs:langs, scrips:result, err:err}); 
             break; 
         case 'getLangs':
              var j = {};
