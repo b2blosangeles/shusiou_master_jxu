@@ -5,6 +5,11 @@ var param_lang = req.body.lang, param_group = req.body.group;
 
 var cmd = req.body['cmd'] || req.param('cmd');
 
+var unique = function(xs) {
+  return xs.filter(function(x, i) {
+    return xs.indexOf(x) === i
+  })
+}
 var getValue = function(result0) {
    var result = {}, err = {}, langs = [];
    for(o in result0) {
@@ -17,11 +22,12 @@ var getValue = function(result0) {
    for(o in result) {
       langs[langs.length] = result[o].lang.code;
    }  
-   langs = langs.filter((v, i, a) => a.indexOf(v) === i);
+   langs = unique(langs);
    switch(cmd) {
         case 'getAll':
             res.send(langs); 
-               break; 
+            break; 
+            /*
              var l = {};
              for(o in result) {
                 l[result[o].lang.code] = true;
@@ -33,7 +39,8 @@ var getValue = function(result0) {
                 else j[lang][j[lang].length] = {id:o, desc:result[o].desc}; 
             }            
             res.send({langs:Object.keys(l), langScripts: j , result:result});  
-            break;            
+            break; 
+            */
         case 'getLangs':
              var j = {};
              for(o in result) {
