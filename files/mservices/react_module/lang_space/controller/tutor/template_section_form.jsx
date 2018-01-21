@@ -136,7 +136,7 @@ try {
 									value={rec.text}  onChange={this.handleChange.bind(this, rec)}  />
 							</td>
 							<td width="80">
-								{me.langField(rec)} {me.scriptField}
+								{me.langField(rec)} {me.scriptField(rec)}
 							</td>
 							{/*<td width="28">
 								<div className="checkbox_div  inpit-white-bg" onClick={me.handleActive.bind(me,rec)}>
