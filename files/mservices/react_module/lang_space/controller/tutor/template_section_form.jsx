@@ -23,7 +23,7 @@ try {
 				};
 			return {
 				langs:[],
-				langScripts:{},
+				list:[],
 				form_value:{text:''},
 				c_section:me.default
 			};
