@@ -54,11 +54,11 @@ var getValue = function(result0) {
 
 _f['script'] = function(cbk) {
     pkg.fs.readdir(data_folder, (err, files) => {
-      if (!param_lang || !param_lang.length) {
+      //if (!param_lang || !param_lang.length) {
           cbk(files);
-      } else {
-          cbk(intersect(param_lang, files));  
-      }
+      //} else {
+      //    cbk(intersect(param_lang, files));  
+      //}
     });
 }
 _f['contents'] = function(cbk) {
