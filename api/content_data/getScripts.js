@@ -32,7 +32,8 @@ var getValue = function(result0) {
              var j = [];
              for(o in result) {
                 var lang = result[o].lang.code;
-                if (param_lang == lang) j[j.length] = [{id:o, desc:result[o].description.en}];
+                // if (param_lang == lang) 
+                j[j.length] = [{id:o, desc:result[o].description.en}];
             }
             res.send(j);  
             break;
