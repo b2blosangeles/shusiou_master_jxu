@@ -35,15 +35,6 @@ var getValue = function(result0) {
         case 'getLangs':
             res.send(langs);  
             break;
-        case 'getLangScripts':
-             var j = [];
-             for(o in result) {
-                if (code == result[o].lang.code) {
-                  j[j.length] = [{id:o, desc:result[o].description[lang]}];
-                }
-            }
-            res.send(j);  
-            break;
         case 'getScriptById':
              for(o in result) {
                  if (o === req.param('id')) {
