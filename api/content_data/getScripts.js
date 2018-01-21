@@ -3,7 +3,7 @@ var data_folder = env.site_contents_path + '/script/';
 
 var param_lang = req.body.lang || req.param('lang'), param_group = req.body.group;
 
-var cmd = req.body['cmd'] || req.param('cmd');
+var cmd = req.body.cmd || req.param('cmd');
 
 var getValue = function(result0) {
    let result = {}, err = null, langs = [];
