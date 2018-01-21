@@ -15,7 +15,7 @@ var getValue = function(result0) {
    for(o in result0) {
        if (!result0[o].err) {
             result[o] = result0[o];
-       } else [
+       } else {
             err[o] = result0[o].err.message;
        }
    }
