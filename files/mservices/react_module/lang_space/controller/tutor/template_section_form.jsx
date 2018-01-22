@@ -121,7 +121,9 @@ try {
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{list.map(function(m) {
+								if (!m.state.lang || m.state.lang == m.lang)
 								return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {id:m.id})}>{m.description}</a></li>);	
+								else return (<li>---</li>);
 							})}
 						  </ul>
 						</div>								
