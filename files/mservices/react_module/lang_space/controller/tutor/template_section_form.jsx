@@ -49,9 +49,10 @@ try {
 			} else me.setState({c_section:me.props.section.o});
 		},
 		componentDidUpdate:function(prePropos, prevState) {	
-			var me = this;	
-			console.log(prePropos);
-			console.log(me.state.IDD + '---' + prevState.IDD );
+			var me = this;
+			if (me.state.script_id  !== prevState.script_id) {
+				alert('script_id_' + me.state.script_id);
+			}
 		},		
 		handleChange(rec, event) {
 			var me = this;
@@ -97,7 +98,7 @@ try {
 		handleTpl: function(p) {
 			let me = this, o = me.state.tpl;
 			if (p.id) {
-				me.setState({IDD:p.id});
+				me.setState({script_id:p.id});
 			}
 			for (var k in p)  o[k] = p[k];
 			me.setState({tpl:o});
