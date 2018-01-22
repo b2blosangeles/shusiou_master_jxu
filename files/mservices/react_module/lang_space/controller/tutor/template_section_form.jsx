@@ -25,7 +25,8 @@ try {
 				langs:[],
 				list:[],
 				form_value:{text:''},
-				c_section:me.default
+				c_section:me.default,
+				tpl:{}
 			};
 		},
 		componentDidMount:function() {
@@ -89,9 +90,14 @@ try {
 				  </ul>
 				</div>	
 			)	       
-		},		
+		},
+		handleTpl: function(v) {
+			let me = this;
+			alert('handlleTpl');
+			alert(v);
+		},
 		templateSelectScript: function() {
-			var me = this, langs = me.state.langs, list = me.state.list;
+			let me = this, langs = me.state.langs, list = me.state.list;
 			return (
 				<span>
 				<table className="textRecField" width="100%"  style={{border:'0px solid transparent'}}>
@@ -103,7 +109,7 @@ try {
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{langs.map(function(m) {
-								return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
+								return (<li><a href="JavaScript:void(0)" onClick={onChange={this.handleTpl.bind(this, m)} }>{m}</a></li>);	
 							})}
 						  </ul>
 						</div>						
