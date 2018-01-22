@@ -121,7 +121,7 @@ try {
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{list.map(function(m) {
-								return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {id:m,id})}>{m.description}</a></li>);	
+								return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {id:m.id})}>{m.description}</a></li>);	
 							})}
 						  </ul>
 						</div>								
