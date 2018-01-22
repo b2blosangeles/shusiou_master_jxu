@@ -90,23 +90,23 @@ try {
 				</div>	
 			)	       
 		},		
-		templateField: function(v) {
-			var me = this;
+		templateSelectLang: function() {
+			var me = this, langs = me.state.langs;
 			return (
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
 					  niu&nbsp;
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">					  
-					{v.map(function(m) {
+					{langs.map(function(m) {
 						return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
 					})}
 				  </ul>
 				</div>	
 			)	       
 		},
-		templateSelectScript: function(v) {
-			var me = this;
+		templateSelectScript: function() {
+			let me = this, list = me.state.list;
 			return (
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
@@ -114,7 +114,7 @@ try {
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
 					  
-					  {v.map(function (m, idx) {
+					  {list.map(function (m, idx) {
 						return (<li><a href="JavaScript:void(0)">
 							{m.description}</a></li>);	
 					})}					  
@@ -188,7 +188,7 @@ try {
 			return (
 				<span>
 					{me.props.parent.state.curriculum.mother_lang} - {me.props.parent.state.curriculum.learning_lang} - {me.props.parent.state.curriculum.level}
-					{me.templateField(me.state.langs)} -- {me.templateSelectScript(me.state.list)}
+					{me.templateSelectLang()} {me.templateSelectScript()}
 					<table width="100%" className="section_template_frame">						
 						<tr className="bg_op_warning">
 							<td width="8"></td>
