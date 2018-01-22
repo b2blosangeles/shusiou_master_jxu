@@ -93,6 +93,7 @@ try {
 		templateSelectLang: function() {
 			var me = this, langs = me.state.langs;
 			return (
+				<span>
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
 					  niu&nbsp;
@@ -103,6 +104,17 @@ try {
 					})}
 				  </ul>
 				</div>	
+				<div className="dropdown">
+				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
+					  niu&nbsp;
+				  <span className="caret"></span></button>
+				  <ul className="dropdown-menu">					  
+					{langs.map(function(m) {
+						return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
+					})}
+				  </ul>
+				</div>	
+				</span>
 			)	       
 		},
 		templateSelectScript: function() {
