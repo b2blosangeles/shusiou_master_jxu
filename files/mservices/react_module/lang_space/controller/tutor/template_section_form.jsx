@@ -26,6 +26,7 @@ try {
 				list:[],
 				form_value:{text:''},
 				c_section:me.default,
+				IDD:0,
 				tpl:{}
 			};
 		},
@@ -95,6 +96,9 @@ try {
 		},
 		handleTpl: function(p) {
 			let me = this, o = me.state.tpl;
+			if (p.id) {
+				me.setState({IDD:p.id});
+			}
 			for (var k in p)  o[k] = p[k];
 			me.setState({tpl:o});
 		},
