@@ -94,31 +94,34 @@ try {
 			var me = this, langs = me.state.langs, list = me.state.list;
 			return (
 				<span>
-					<table className="textRecField" width="100%"  style={{border:'0px solid transparent'}}>
-						<tr>
-							<td>
-								<div className="dropdown">
-								  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-									  Select Language&nbsp;
-								  <span className="caret"></span></button>
-								  <ul className="dropdown-menu">					  
-									{langs.map(function(m) {
-										return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
-									})}
-								  </ul>
-								</div>						
-							</td>
-							<td>
-								  <ul className="dropdown-menu">
-
-									  {list.map(function (m, idx) {
-										return (<li><a href="JavaScript:void(0)">
-											{m.description}</a></li>);	
-									})}					  
-								  </ul>								
-							</td>						
-						</tr>
-					</table>
+				<table className="textRecField" width="100%"  style={{border:'0px solid transparent'}}>
+				<tr>
+					<td>
+						<div className="dropdown">
+						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
+							  Select Language&nbsp;
+						  <span className="caret"></span></button>
+						  <ul className="dropdown-menu">					  
+							{langs.map(function(m) {
+								return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
+							})}
+						  </ul>
+						</div>						
+					</td>
+					<td>
+						<div className="dropdown">
+						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
+							  Select Language&nbsp;
+						  <span className="caret"></span></button>
+						  <ul className="dropdown-menu">					  
+							{list.map(function(m) {
+								return (<li><a href="JavaScript:void(0)">{m.description}</a></li>);	
+							})}
+						  </ul>
+						</div>								
+					</td>						
+				</tr>
+				</table>
 				</span>	
 			)	       
 		},		
