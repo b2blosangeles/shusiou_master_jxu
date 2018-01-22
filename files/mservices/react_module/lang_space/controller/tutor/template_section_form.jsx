@@ -93,6 +93,7 @@ try {
 		},
 		handleTpl: function(v) {
 			let me = this;
+			me.setState({tpl:{lang:v}});
 			alert('handlleTpl');
 			alert(v);
 		},
