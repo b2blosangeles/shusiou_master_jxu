@@ -49,7 +49,7 @@ try {
 		},
 		componentDidUpdate:function(prePropos, preState) {	
 			var me = this;	
-			alert(123);
+			console.log(preState);
 		},		
 		handleChange(rec, event) {
 			var me = this;
