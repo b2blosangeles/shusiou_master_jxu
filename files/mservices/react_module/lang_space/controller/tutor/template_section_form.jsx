@@ -95,28 +95,32 @@ try {
 			return (
 				<div className="container">
   					<div className="row">
-						<div className="dropdown col-lg-6">
-						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							  Select Language&nbsp;
-						  <span className="caret"></span></button>
-						  <ul className="dropdown-menu">					  
-							{langs.map(function(m) {
-								return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
-							})}
-						  </ul>
-						</div>	
-						<div className="dropdown col-lg-6">
-						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							  Select Script&nbsp;
-						  <span className="caret"></span></button>
-						  <ul className="dropdown-menu">
-
-							  {list.map(function (m, idx) {
-								return (<li><a href="JavaScript:void(0)">
-									{m.description}</a></li>);	
-							})}					  
-						  </ul>
+						<div className="col-sm-6">
+							<div className="dropdown">
+							  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
+								  Select Language&nbsp;
+							  <span className="caret"></span></button>
+							  <ul className="dropdown-menu">					  
+								{langs.map(function(m) {
+									return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
+								})}
+							  </ul>
+							</div>
 						</div>
+						<div className="col-sm-6">
+							<div className="dropdown">
+							  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
+								  Select Script&nbsp;
+							  <span className="caret"></span></button>
+							  <ul className="dropdown-menu">
+
+								  {list.map(function (m, idx) {
+									return (<li><a href="JavaScript:void(0)">
+										{m.description}</a></li>);	
+								})}					  
+							  </ul>
+							</div>
+						</div>	
 					</div>		
 				</div>
 			)	       
