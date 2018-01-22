@@ -49,7 +49,7 @@ try {
 		},
 		componentDidUpdate:function(prePropos, preState) {	
 			var me = this;	
-			console.log(prePropos.tpl.id + '---' + preState.tpl.id );
+			console.log(me.state.tpl.id + '---' + preState.tpl.id );
 		},		
 		handleChange(rec, event) {
 			var me = this;
