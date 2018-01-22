@@ -99,7 +99,7 @@ try {
 					<td>
 						<div className="dropdown">
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							  Select Language&nbsp;
+							  Select Language Solution&nbsp;
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{langs.map(function(m) {
@@ -111,7 +111,7 @@ try {
 					<td>
 						<div className="dropdown">
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							  Select Language&nbsp;
+							  Select Script&nbsp;
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{list.map(function(m) {
