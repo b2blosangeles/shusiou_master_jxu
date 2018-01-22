@@ -116,7 +116,7 @@ try {
 					  
 					  {v.map(function (m, idx) {
 						return (<li><a href="JavaScript:void(0)">
-							{idx} -  {m} - {idx]}</a></li>);	
+							{idx} -  {m} - {idx}</a></li>);	
 					})}					  
 				  </ul>
 				</div>	
