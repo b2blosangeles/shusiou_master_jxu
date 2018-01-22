@@ -93,30 +93,32 @@ try {
 		templateSelectScript: function() {
 			var me = this, langs = me.state.langs, list = me.state.list;
 			return (
-				<span>
-				<div className="dropdown">
-				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-					  niu&nbsp;
-				  <span className="caret"></span></button>
-				  <ul className="dropdown-menu">					  
-					{langs.map(function(m) {
-						return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
-					})}
-				  </ul>
-				</div>	
-				<div className="dropdown">
-				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-					  niu&nbsp;
-				  <span className="caret"></span></button>
-				  <ul className="dropdown-menu">
-					  
-					  {list.map(function (m, idx) {
-						return (<li><a href="JavaScript:void(0)">
-							{m.description}</a></li>);	
-					})}					  
-				  </ul>
-				</div>		
-				</span>
+				<div className="container">
+  					<div className="row">
+						<div className="dropdown">
+						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
+							  niu&nbsp;
+						  <span className="caret"></span></button>
+						  <ul className="dropdown-menu">					  
+							{langs.map(function(m) {
+								return (<li><a href="JavaScript:void(0)">{m}</a></li>);	
+							})}
+						  </ul>
+						</div>	
+						<div className="dropdown">
+						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
+							  niu&nbsp;
+						  <span className="caret"></span></button>
+						  <ul className="dropdown-menu">
+
+							  {list.map(function (m, idx) {
+								return (<li><a href="JavaScript:void(0)">
+									{m.description}</a></li>);	
+							})}					  
+						  </ul>
+						</div>
+					</div>		
+				</div>
 			)	       
 		},		
 		recField: function(rec) {
