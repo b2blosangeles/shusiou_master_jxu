@@ -109,7 +109,7 @@ try {
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{langs.map(function(m) {
-								return (<li><a href="JavaScript:void(0)" onClick={onChange={this.handleTpl.bind(this, m)} }>{m}</a></li>);	
+								return (<li><a href="JavaScript:void(0)" onClick={this.handleTpl.bind(this, m)}>{m}</a></li>);	
 							})}
 						  </ul>
 						</div>						
