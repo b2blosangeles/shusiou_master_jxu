@@ -95,9 +95,9 @@ try {
 			return (
 				<div className="container">
   					<div className="row">
-						<div className="dropdown">
+						<div className="dropdown col-6">
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							  niu&nbsp;
+							  Select Language&nbsp;
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{langs.map(function(m) {
@@ -105,9 +105,9 @@ try {
 							})}
 						  </ul>
 						</div>	
-						<div className="dropdown">
+						<div className="dropdown col-6">
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							  niu&nbsp;
+							  Select Script&nbsp;
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">
 
