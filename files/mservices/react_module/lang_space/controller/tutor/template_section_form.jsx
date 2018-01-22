@@ -91,9 +91,9 @@ try {
 				</div>	
 			)	       
 		},
-		handleTpl: function(v) {
-			let me = this;
-			me.setState({tpl:{lang:v}});
+		handleTpl: function(idx, v) {
+			let me = this, o = me.state.tpl, o.idx = v;
+			me.setState({tpl:o});
 			alert('handlleTpl');
 			alert(v);
 		},
@@ -106,11 +106,11 @@ try {
 					<td>
 						<div className="dropdown">
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							  {(me.state.tpl.lang)?me.state.tpl.lang:'test'}Select Language Solution&nbsp;
+							  {(me.state.tpl.lang)?me.state.tpl.lang:'Select Language Solution'} 
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{langs.map(function(m) {
-								return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, m)}>{m}</a></li>);	
+								return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, 'lang', m)}>{m}</a></li>);	
 							})}
 						  </ul>
 						</div>						
