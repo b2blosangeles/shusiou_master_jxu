@@ -92,10 +92,13 @@ try {
 			)	       
 		},
 		handleTpl: function(idx, v) {
+			alert(idx); alert(v);
+			/*
 			let me = this, o = me.state.tpl, o[idx] = v;
 			me.setState({tpl:o});
 			alert('handlleTpl');
 			alert(v);
+			*/
 		},
 		templateSelectScript: function() {
 			let me = this, langs = me.state.langs, list = me.state.list;
