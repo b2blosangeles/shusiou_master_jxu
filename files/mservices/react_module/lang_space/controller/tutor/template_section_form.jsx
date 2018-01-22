@@ -106,7 +106,7 @@ try {
 					<td>
 						<div className="dropdown">
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							  Select Language Solution&nbsp;
+							  {(me.state.tpl.lang)?me.state.tpl.lang:'test'}Select Language Solution&nbsp;
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{langs.map(function(m) {
