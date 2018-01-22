@@ -51,9 +51,23 @@ try {
 		componentDidUpdate:function(prePropos, prevState) {	
 			var me = this;
 			if (me.state.script_id  !== prevState.script_id) {
-				alert('script_id_' + me.state.script_id);
+				me.loadScriptById(me.state.script_id);
 			}
-		},		
+		},
+		loadScriptById:function(id) {
+			var me = this;
+			me.props.parent.props.route.env.engine({
+				url: '/api/content_data/getScripts.api',
+				method: "POST",
+				data: {cmd:'getScriptById', id: id, auth:me.props.parent.props.route.env.state.auth},
+				dataType: "JSON"
+			}, function( data) {
+				console.log(data);
+				//me.setState({langs:data.langs, list:data.list});
+			},function( jqXHR, textStatus ) {
+				console.log('error');
+			});			
+		},
 		handleChange(rec, event) {
 			var me = this;
 			var v = me.state.c_section;
@@ -99,6 +113,7 @@ try {
 			let me = this, o = me.state.tpl;
 			if (p.id) {
 				me.setState({script_id:p.id});
+				
 			}
 			for (var k in p)  o[k] = p[k];
 			me.setState({tpl:o});
