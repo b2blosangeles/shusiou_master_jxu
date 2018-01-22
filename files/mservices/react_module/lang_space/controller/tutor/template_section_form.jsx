@@ -48,10 +48,10 @@ try {
 				me.setState({c_section:me.default});
 			} else me.setState({c_section:me.props.section.o});
 		},
-		componentDidUpdate:function(prePropos, preState) {	
+		componentDidUpdate:function(prePropos, prevState) {	
 			var me = this;	
 			console.log(prePropos);
-			console.log(me.state.tpl.id + '---' + preState.tpl.id );
+			console.log(me.state.IDD + '---' + prevState.IDD );
 		},		
 		handleChange(rec, event) {
 			var me = this;
