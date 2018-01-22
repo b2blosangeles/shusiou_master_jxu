@@ -117,11 +117,11 @@ try {
 					<td>
 						<div className="dropdown">
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							  Select Script&nbsp;
+							   {(me.state.tpl.id)?me.state.tpl.id:'Select Script'} 
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{list.map(function(m) {
-								return (<li><a href="JavaScript:void(0)">{m.description}</a></li>);	
+								return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {id:m,id})}>{m.description}</a></li>);	
 							})}
 						  </ul>
 						</div>								
