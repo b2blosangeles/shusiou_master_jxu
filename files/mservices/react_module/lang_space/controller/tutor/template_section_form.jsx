@@ -93,13 +93,8 @@ try {
 		},
 		handleTpl: function(p) {
 			let me = this, o = me.state.tpl;
-			for (key in p) {
-			    o.key = p.key
-			}  
+			for (var k in p)  o[k] = p[k];
 			me.setState({tpl:o});
-			alert('handlleTpl');
-			alert(v);
-	
 		},
 		templateSelectScript: function() {
 			let me = this, langs = me.state.langs, list = me.state.list;
