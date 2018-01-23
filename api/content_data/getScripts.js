@@ -63,7 +63,9 @@ _f['contents'] = function(cbk) {
                 pkg.fs.readFile( data_folder  + file, 'utf-8', (err, contents) => {
                     var v = {};
                     try {
-                        v = JSON.parse(contents.replace(/(\n|\r)+$/, ''));
+                        let c = contents.replace(/(\n|\r)+$/, '');
+                        v = JSON.parse(c);
+                        v.variables = c.match(patt);
                     } catch (e) {
                         v = {err:e.message};
                     }
