@@ -66,6 +66,9 @@ _f['contents'] = function(cbk) {
                         let c = contents.replace(/(\n|\r)+$/, '');
                         v = JSON.parse(c);
                         v.variables = c.match(patt);
+                        if (v.variables) {
+                            v.variables = v.variables.filter((v, i, a) => a.indexOf(v) === i);
+                        }    
                     } catch (e) {
                         v = {err:e.message};
                     }
