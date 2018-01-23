@@ -4,8 +4,9 @@ var data_folder = env.site_contents_path + '/script/';
 let code = req.body.code || req.param('code'), 
     lang = req.body.lang || req.param('lang') || 'en', 
     group = req.body.group,
-    cmd = req.body.cmd || req.param('cmd');
-
+    cmd = req.body.cmd || req.param('cmd'),
+    patt = /(\$answer|\$section)/g; 
+        
 var getValue = function(result0) {
    let result = {}, err = null, langs = [], list = [];
    for(o in result0) {
