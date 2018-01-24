@@ -154,7 +154,10 @@ try {
 				</table>
 				</span>	
 			)	       
-		},		
+		},
+		tplSection : funtion (rec) {
+			return (<span>niu</span>);
+		},
 		recField: function(rec) {
 			var me = this;
 			if (!rec.action) return (
@@ -222,6 +225,7 @@ try {
 				<span>
 					{me.props.parent.state.curriculum.mother_lang} - {me.props.parent.state.curriculum.learning_lang} - {me.props.parent.state.curriculum.level}
 					{me.templateSelectScript()}
+					{me.tplSection()}
 					<table width="100%" className="section_template_frame">						
 						<tr className="bg_op_warning">
 							<td width="8"></td>
