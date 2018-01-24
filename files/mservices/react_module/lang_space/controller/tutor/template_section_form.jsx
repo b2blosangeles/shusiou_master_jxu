@@ -157,7 +157,11 @@ try {
 		},
 		tplSection : function (rec) {
 			var me = this;
-			return (<span>{me.state.script_id}</span>);
+			if (me.state.script_id) {
+				return (<span>{JSON.stringify(me.state.c_script)}</span>);
+			} elae {
+				return (<span>select a script</span>);
+			}
 		},
 		recField: function(rec) {
 			var me = this;
