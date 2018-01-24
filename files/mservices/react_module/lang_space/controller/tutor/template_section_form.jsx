@@ -159,9 +159,9 @@ try {
 		tplSection : function (rec) {
 			var me = this;
 			if (me.state.script_id) {
-				return (<span>{JSON.stringify(me.state.c_tpl)}</span>);
+				return (<span>{JSON.stringify(me.state.c_tpl)}</span>)
 			} elae {
-				return (<span>select a script</span>);
+				return (<span>select a script</span>)
 			}
 		},
 		recField: function(rec) {
