@@ -159,7 +159,7 @@ try {
 		tplSection : function (rec) {
 			var me = this;
 			if (me.state.script_id) {
-				return (<span>{JSON.stringify(me.state.c_tpl)}</span>)
+				return (<span>{me.state.c_tpl.variables}</span>)
 			} else {
 				return (<span>select a script</span>)
 			}
