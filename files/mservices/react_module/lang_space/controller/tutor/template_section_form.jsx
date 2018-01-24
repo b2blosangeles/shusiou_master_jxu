@@ -155,7 +155,7 @@ try {
 				</span>	
 			)	       
 		},
-		tplSection : funtion (rec) {
+		tplSection : function (rec) {
 			return (<span>niu</span>);
 		},
 		recField: function(rec) {
