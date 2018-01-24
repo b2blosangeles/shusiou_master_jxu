@@ -26,8 +26,9 @@ try {
 				list:[],
 				form_value:{text:''},
 				c_section:me.default,
-				IDD:0,
-				tpl:{}
+				script_id:0,
+				tpl:{},
+				c_tpl:{}
 			};
 		},
 		componentDidMount:function() {
@@ -63,7 +64,7 @@ try {
 				dataType: "JSON"
 			}, function( data) {
 				console.log(data);
-				//me.setState({langs:data.langs, list:data.list});
+				me.setState({c_tpl:data});
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});			
