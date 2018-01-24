@@ -156,7 +156,7 @@ try {
 			)	       
 		},
 		tplSection : function (rec) {
-			return (<span>niu</span>);
+			return (<span>{me.state.script_id}</span>);
 		},
 		recField: function(rec) {
 			var me = this;
