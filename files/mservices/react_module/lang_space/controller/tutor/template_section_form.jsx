@@ -3,24 +3,23 @@ try {
 		getInitialState: function() {
 			var me = this; 
 			me.default = {
-
-					lang:{mother:'en-US', learning:'cn-ZH'},
-					pro:[
-						{text:'The next paragraph is saying something[s]Listen', lang:'en-US', active:true},
-						{action:'play video', active:true}, 
-						{text:'Please repeat', lang:'en-US', active:false}
-					],
-					ans:{text:'你好', lang:'cn-ZH', active:true},					
-					match:[
-						{text:'good job', lang:'en-US', active:true},
-					],
-					non_match:[
-						{text:'Incorrect, please try again.', lang:'en-US', active:false},
-						{action:'play video', active:true}, 
-						{text:'Please try again.', lang:'en-US', active:false}					
-					],
-					done:{text:'Lets continue', lang:'en-US', active:true}
-				};
+				lang:{mother:'en-US', learning:'cn-ZH'},
+				pro:[
+					{text:'The next paragraph is saying something[s]Listen', lang:'en-US', active:true},
+					{action:'play video', active:true}, 
+					{text:'Please repeat', lang:'en-US', active:false}
+				],
+				ans:{text:'你好', lang:'cn-ZH', active:true},					
+				match:[
+					{text:'good job', lang:'en-US', active:true},
+				],
+				non_match:[
+					{text:'Incorrect, please try again.', lang:'en-US', active:false},
+					{action:'play video', active:true}, 
+					{text:'Please try again.', lang:'en-US', active:false}					
+				],
+				done:{text:'Lets continue', lang:'en-US', active:true}
+			};
 			return {
 				langs:[],
 				list:[],
