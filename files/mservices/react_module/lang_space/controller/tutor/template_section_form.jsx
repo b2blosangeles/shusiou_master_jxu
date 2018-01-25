@@ -175,11 +175,11 @@ try {
 					</table>					
 					{variables.map(function(v) {
 						switch(v) {
-							case 'script':
+							case '$script':
 								return v+'--';
 								break;
 							 default:
-								return '====';
+								return '==' + v + '==';
 						}
 
 					})}
