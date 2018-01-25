@@ -178,7 +178,7 @@ try {
 							case '$section':
 								return (<span>								{
 									{(function() {
-										if (rec.active) return (<span dangerouslySetInnerHTML=
+										return (<span dangerouslySetInnerHTML=
 										{{__html: 'Start: ' + me.props.parent.toHHMMSS(me.props.parent.state.section.track.s) + 
 											' To:' + me.props.parent.toHHMMSS(me.props.parent.state.section.track.s + 
 												me.props.parent.state.section.track.t)}}
