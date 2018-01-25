@@ -43,7 +43,8 @@ try {
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});				
-
+			console.log('me.props.parent.state.curriculum--');
+			console.log(me.props.parent.state.curriculum);
 			if (me.props.section.id == 'new') {
 				me.setState({c_section:me.default});
 			} else me.setState({c_section:me.props.section.o});
