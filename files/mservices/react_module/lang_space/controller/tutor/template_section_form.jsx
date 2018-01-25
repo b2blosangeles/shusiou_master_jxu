@@ -176,13 +176,10 @@ try {
 					{variables.map(function(v) {
 						switch(v) {
 							case '$section':
-								return (<span>								{
-
-									<button className="btn btn-info btn-xs" 
+								return (<button className="btn btn-info btn-xs" 
 										onClick={me.props.parent.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
 									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
-									</button>
-									</span>);
+									</button>);
 								break;								
 							case '$answer':
 								return me.recField(me.state.c_section.ans);
