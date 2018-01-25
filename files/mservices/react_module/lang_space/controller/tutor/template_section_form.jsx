@@ -157,7 +157,8 @@ try {
 			)	       
 		},
 		tplSection : function (rec) {
-			var me = this;
+			let me = this;
+			let variables = me.state.c_tpl.variables;
 			if (me.state.script_id) {
 				return (<span>{me.state.c_tpl.variables}
 					<table width="100%" className="section_template_frame">	
@@ -172,7 +173,9 @@ try {
 							</div>
 						</td></tr>	
 					</table>					
-					
+						{variables.map(function(v) {
+							return v+'--';
+						})}
 					</span>)
 			} else {
 				return (<span>select a script</span>)
