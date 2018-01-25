@@ -177,10 +177,20 @@ try {
 						switch(v) {
 							case '$section':
 								return (
-								<button className="btn btn-info btn-xs" 
-									onClick={me.props.parent.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
+								<span>								{
+									(function() {
+										if (rec.active) return (<span dangerouslySetInnerHTML=
+										{{__html: 'Start: ' + me.props.parent.toHHMMSS(me.props.parent.state.section.track.s) + 
+											' To:' + me.props.parent.toHHMMSS(me.props.parent.state.section.track.s + 
+												me.props.parent.state.section.track.t)}}
+										/>)
+									})()}
+									&nbsp;&nbsp;
+									<button className="btn btn-info btn-xs" 
+										onClick={me.props.parent.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
 									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
-								</button>								
+									</button>
+								</span>		
 								);
 								break;								
 							case '$answer':
