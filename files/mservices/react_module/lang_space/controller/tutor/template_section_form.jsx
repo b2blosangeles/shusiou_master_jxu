@@ -172,6 +172,11 @@ try {
 										onClick={me.props.parent.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
 									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
 									</button>
+										
+										
+									<input className="form-control inpit-white-bg" 
+									placeholder="Input text likes The next paragraph is telling sometning" 
+									value={rec.text}  onChange={this.handleChange.bind(this, rec)}  />										
 								</span>
 								);
 								break;								
