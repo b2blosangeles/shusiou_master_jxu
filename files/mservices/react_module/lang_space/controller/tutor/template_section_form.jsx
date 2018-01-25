@@ -183,7 +183,7 @@ try {
 										onClick={me.props.parent.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
 									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
 									</button>
-								<span>
+								</span>
 								);
 								break;								
 							case '$answer':
