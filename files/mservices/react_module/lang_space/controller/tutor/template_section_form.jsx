@@ -115,7 +115,7 @@ try {
 			return (
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-					  {rec.lang}&nbsp;
+					  ===&nbsp;
 				  <span className="caret"></span></button>
 				  <ul className="dropdown-menu">
 				    <li><a href="JavaScript:void(0)" onClick={me.handleLang.bind(me, rec, me.state.c_section.lang.mother)}> {me.state.c_section.lang.mother}</a></li>
