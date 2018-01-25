@@ -195,7 +195,7 @@ try {
 								return me.textField(me.state.c_section.ans);
 								break;
 							 default:
-								return '==' + v + '==';
+								return '';
 						}
 
 					})}
@@ -228,16 +228,7 @@ try {
 							</td>
 							<td width="80">
 								{me.langField(rec)} 
-							</td>
-							{/*<td width="28">
-								<div className="checkbox_div  inpit-white-bg" onClick={me.handleActive.bind(me,rec)}>
-									{
-									(function() {
-										if (rec.active)  return (<i className="fa fa-check" aria-hidden="true"></i>)
-									})()
-									}
-								</div>	
-							</td>*/}							
+							</td>							
 						</tr>
 					</table>
 				</span>
@@ -262,16 +253,7 @@ try {
 								</button>		
 
 															
-							</td>
-							{/*<td width="28">
-								<div className="checkbox_div inpit-white-bg" onClick={me.handleActive.bind(me,rec)}>
-									{
-									(function() {
-										if (rec.active) return (<i className="fa fa-check" aria-hidden="true"></i>)	
-									})()
-									}									
-								</div>	
-							</td>*/}								
+							</td>								
 						</tr>
 					</table>
 				</span>		
