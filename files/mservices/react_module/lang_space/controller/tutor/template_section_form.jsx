@@ -279,76 +279,13 @@ try {
 		},							
 		render: function() {
 			var me = this;
-			return (
-				<span>
-					{me.props.parent.state.curriculum.mother_lang} - {me.props.parent.state.curriculum.learning_lang} - {me.props.parent.state.curriculum.level}
-					{me.templateSelectScript()}
-					{me.tplSection()}
-					<table width="100%" className="section_template_frame">						
-						<tr className="bg_op_warning">
-							<td width="8"></td>
-							<td width="60">Prompts</td>
-							<td valign="top" style={{'padding-right':'7px'}}>
-								{me.state.c_section.pro.map( function(m) {
-									return me.recField(m);	
-								})}
-							</td>
-						</tr>						
-						<tr className="bg_op_success">
-							<td width="8"></td>
-							<td width="60">Answer</td>
-							<td valign="top" style={{'padding-right':'7px'}}>
-								{me.recField(me.state.c_section.ans)}	
-							</td>
-						</tr>
-						<tr className="bg_op_success">
-							<td width="8"></td>
-							<td width="60"></td>
-							<td valign="top">
-								<table width="100%">
-									<tr  style={{border:'1px solid #ccc'}}>
-										<td width="30">Match:</td>
-										<td>
-											{me.state.c_section.match.map( function(m) {
-												return me.recField(m);	
-											})}
-										</td>										
-									</tr>
-									<tr style={{border:'1px solid #ccc'}}>
-										<td width="30">Mismatch:</td>
-										<td>
-											{me.state.c_section.non_match.map( function(m) {
-												return me.recField(m);	
-											})}
-										</td>										
-									</tr>									
-								</table>	
-							</td>
-						</tr>						
-						<tr className="bg_op_warning">
-							<td width="8"></td>
-							<td width="60">Last</td>
-							<td valign="top" style={{'padding-right':'7px'}}>
-								{me.recField(me.state.c_section.done)}
-							</td>
-						</tr>							
-					</table>					
-					
-					<table width="100%" className="section_template_frame">	
-						<tr className=""><td>
-							<div className="container-fluid" style={{padding:'6px', 'text-align':'center'}}>
-								{(function() {
-									if (me.props.parent.state.section.id != 'new') return (<button className="btn btn-danger" 
-									onClick={me.props.parent.deleteSection.bind(me, me.props.parent.state.section.id)}>Delete This Section</button>)
-								})()}	
-								<button className="btn btn-default pull-left" onClick={me.props.parent.abortSection.bind(me)}>Abort Change</button>
-								<button className="btn btn-info pull-right" onClick={me.props.parent.acceptSection.bind(me, me.state.c_section)}>Save</button>
-							</div>
-						</td></tr>	
-					</table>					
-				</span>
-				
-			)
+			return (<span>
+				{me.props.parent.state.curriculum.mother_lang} - 
+				{me.props.parent.state.curriculum.learning_lang} - 
+				{me.props.parent.state.curriculum.level}
+				{me.templateSelectScript()}
+				{me.tplSection()}					
+				</span>)
 		}
 	});	
 	
