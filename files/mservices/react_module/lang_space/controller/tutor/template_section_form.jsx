@@ -195,7 +195,7 @@ try {
 								return me.textField(me.state.c_section.ans);
 								break;
 							 default:
-								return '';
+								return '-- undefined variable' + v + ' --';
 						}
 
 					})}
