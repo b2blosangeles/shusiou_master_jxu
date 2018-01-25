@@ -110,6 +110,20 @@ try {
 				</div>	
 			)	       
 		},
+		textField: function(rec) {
+			var me = this;
+			return (
+				<div className="dropdown">
+				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
+					  {rec.lang}&nbsp;
+				  <span className="caret"></span></button>
+				  <ul className="dropdown-menu">
+				    <li><a href="JavaScript:void(0)" onClick={me.handleLang.bind(me, rec, me.state.c_section.lang.mother)}> {me.state.c_section.lang.mother}</a></li>
+				    <li><a href="JavaScript:void(0)" onClick={me.handleLang.bind(me, rec, me.state.c_section.lang.learning)}> {me.state.c_section.lang.learning}</a></li>
+				  </ul>
+				</div>	
+			)	       
+		},
 		handleTpl: function(p) {
 			let me = this, o = me.state.tpl;
 			if (p.id) {
@@ -171,17 +185,12 @@ try {
 									<button className="btn btn-info btn-xs" 
 										onClick={me.props.parent.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
 									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
-									</button>
-										
-										
-									<input className="form-control inpit-white-bg" 
-									placeholder="Input text likes The next paragraph is telling sometning" 
-									value={rec.text}  onChange={this.handleChange.bind(this, rec)}  />										
+									</button>										
 								</span>
 								);
 								break;								
 							case '$answer':
-								return me.recField(me.state.c_section.ans);
+								return me.textField(me.state.c_section.ans);
 								break;
 							 default:
 								return '==' + v + '==';
