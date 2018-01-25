@@ -160,7 +160,27 @@ try {
 			let me = this;
 			let variables = me.state.c_tpl.variables;
 			if (variables) {
-				return (<span>
+				return (<span>					
+					{variables.map(function(v) {
+						switch(v) {
+							case '$section':
+								return (
+								<span>	
+									<button className="btn btn-info btn-xs" 
+										onClick={me.props.parent.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
+									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
+									</button>
+								<span>
+								);
+								break;								
+							case '$answer':
+								return me.recField(me.state.c_section.ans);
+								break;
+							 default:
+								return '==' + v + '==';
+						}
+
+					})}
 					<table width="100%" className="section_template_frame">	
 						<tr className=""><td>
 							<div className="container-fluid" style={{padding:'6px', 'text-align':'center'}}>
@@ -172,23 +192,7 @@ try {
 								<button className="btn btn-info pull-right" onClick={me.props.parent.acceptSection.bind(me, me.state.c_section)}>Save</button>
 							</div>
 						</td></tr>	
-					</table>					
-					{variables.map(function(v) {
-						switch(v) {
-							case '$section':
-								return (<button className="btn btn-info btn-xs" 
-										onClick={me.props.parent.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
-									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
-									</button>);
-								break;								
-							case '$answer':
-								return me.recField(me.state.c_section.ans);
-								break;
-							 default:
-								return '==' + v + '==';
-						}
-
-					})}
+					</table>						
 					</span>)
 			} else {
 				return (<span>select a script</span>)
