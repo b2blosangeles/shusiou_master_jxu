@@ -214,49 +214,6 @@ try {
 			} else {
 				return (<span>select a script</span>)
 			}
-		},
-		recField: function(rec) {
-			var me = this;
-			if (!rec.action) return (
-				<span>
-					<table className="textRecField" width="100%"  style={{border:'0px solid transparent'}}>
-						<tr>
-							<td><input className="form-control inpit-white-bg" 
-									placeholder="Input text likes The next paragraph is telling sometning" 
-									value={rec.text}  onChange={this.handleChange.bind(this, rec)}  />
-							</td>
-							<td width="80">
-								{me.langField(rec)} 
-							</td>							
-						</tr>
-					</table>
-				</span>
-				)
-			else return (
-				<span>
-					<table className="textRecField" width="100%" style={{border:'0px solid transparent'}}>
-						<tr>
-							<td className="td_middle"><i className="fa fa-film" aria-hidden="true" ></i> {/*rec.action*/} 
-								{
-								(function() {
-									if (rec.active) return (<span dangerouslySetInnerHTML=
-									{{__html: 'Start: ' + me.props.parent.toHHMMSS(me.props.parent.state.section.track.s) + 
-										' To:' + me.props.parent.toHHMMSS(me.props.parent.state.section.track.s + 
-											me.props.parent.state.section.track.t)}}
-									/>)
-								})()}
-								&nbsp;&nbsp;
-								<button className="btn btn-info btn-xs" 
-									onClick={me.props.parent.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
-								<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
-								</button>		
-
-															
-							</td>								
-						</tr>
-					</table>
-				</span>		
-			)	
 		},							
 		render: function() {
 			var me = this;
