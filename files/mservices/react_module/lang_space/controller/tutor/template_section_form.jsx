@@ -46,7 +46,8 @@ try {
 			console.log('me.props.section--');
 			console.log(me.props.section);
 			if (me.props.section.id == 'new') {
-				me.setState({c_section:me.default});
+				// me.setState({c_section:me.default});
+				me.setState({c_section:me.state.tpl});	
 			} else me.setState({c_section:me.props.section.o});
 		},
 		componentDidUpdate:function(prePropos, prevState) {	
