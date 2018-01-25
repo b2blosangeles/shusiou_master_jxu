@@ -144,6 +144,14 @@ try {
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
 							  {(me.state.tpl.lang)?me.state.tpl.lang:'Select Language Solution'} 
 						  <span className="caret"></span></button>
+							{
+							(function() {
+								return (<span dangerouslySetInnerHTML=
+								{{__html: 'Start: ' + me.props.parent.toHHMMSS(me.props.parent.state.section.track.s) + 
+									' To:' + me.props.parent.toHHMMSS(me.props.parent.state.section.track.s + 
+										me.props.parent.state.section.track.t)}}
+								/>)
+							})()}							
 						  <ul className="dropdown-menu">					  
 							{langs.map(function(m) {
 							return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {lang:m})}>{m}</a></li>);	
