@@ -113,15 +113,10 @@ try {
 		textField: function(rec) {
 			var me = this;
 			return (
-				<div className="dropdown">
-				  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-					  ===&nbsp;
-				  <span className="caret"></span></button>
-				  <ul className="dropdown-menu">
-				    <li><a href="JavaScript:void(0)" onClick={me.handleLang.bind(me, rec, me.state.c_section.lang.mother)}> {me.state.c_section.lang.mother}</a></li>
-				    <li><a href="JavaScript:void(0)" onClick={me.handleLang.bind(me, rec, me.state.c_section.lang.learning)}> {me.state.c_section.lang.learning}</a></li>
-				  </ul>
-				</div>	
+				<input className="form-control inpit-white-bg" 
+				placeholder="Input text likes The next paragraph is telling sometning" 
+				value={rec.text}  onChange={this.handleChange.bind(this, rec)}  />
+							
 			)	       
 		},
 		handleTpl: function(p) {
