@@ -159,7 +159,7 @@ try {
 		tplSection : function (rec) {
 			let me = this;
 			let variables = me.state.c_tpl.variables;
-			if (me.state.script_id) {
+			if (variables) {
 				return (<span>{me.state.c_tpl.variables}
 					<table width="100%" className="section_template_frame">	
 						<tr className=""><td>
