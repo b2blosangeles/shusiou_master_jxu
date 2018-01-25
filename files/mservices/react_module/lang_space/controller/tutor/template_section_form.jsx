@@ -160,7 +160,8 @@ try {
 			let me = this;
 			let variables = me.state.c_tpl.variables;
 			if (variables) {
-				return (<span>	
+				return (
+					<span>	
 					<table width="100%" className="section_template_frame">	
 						<tr className=""><td>
 							<div className="container-fluid" style={{padding:'6px', 'text-align':'center'}}>
