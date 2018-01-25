@@ -176,7 +176,7 @@ try {
 					{variables.map(function(v) {
 						switch(v) {
 							case '$answer':
-								return v+'--';
+								return me.recField(me.state.c_section.ans);
 								break;
 							 default:
 								return '==' + v + '==';
