@@ -175,7 +175,7 @@ try {
 					</table>					
 					{variables.map(function(v) {
 						switch(v) {
-							case '$script':
+							case '$answer':
 								return v+'--';
 								break;
 							 default:
