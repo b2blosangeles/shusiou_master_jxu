@@ -160,7 +160,8 @@ try {
 			let me = this;
 			let variables = me.state.c_tpl.variables;
 			if (variables) {
-				return (<table width="100%" className="section_template_frame">	
+				return (<span>
+					<table width="100%" className="section_template_frame">	
 						<tr className=""><td>
 							<div className="container-fluid" style={{padding:'6px', 'text-align':'center'}}>
 								{(function() {
@@ -172,16 +173,16 @@ try {
 							</div>
 						</td></tr>	
 					</table>					
-						{variables.map(function(v) {
-						 	switch(v) {
-						 		case 'script':
-						 			return v+'--';
-						 			break;
-								 default:
-						 			return '====';
-							}
-							
-						})}
+					{variables.map(function(v) {
+						switch(v) {
+							case 'script':
+								return v+'--';
+								break;
+							 default:
+								return '====';
+						}
+
+					})}
 					</span>)
 			} else {
 				return (<span>select a script</span>)
