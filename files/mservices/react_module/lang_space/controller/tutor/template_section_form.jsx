@@ -167,12 +167,11 @@ try {
 		},
 		tplSection : function (rec) {
 			let me = this;
-			let variables = me.state.c_tpl.variables;
-			if (variables) {
+			if (me.state.c_tpl.variables) {
 				return (
 					<span>	
 						
-					{variables.map(function(v) {
+					{me.state.c_tpl.variables.map(function(v) {
 						switch(v) {
 							case '$section':
 								return (
