@@ -22,7 +22,7 @@ try {
 				dataType: "JSON"
 			}, function( data) {
 				console.log(data);
-				me.setState({langs:data.langs, list:data.list});
+				me.setState({scriptLangs:data.langs, scriptList:data.list});
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});				
