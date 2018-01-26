@@ -33,7 +33,7 @@ try {
 		},
 		componentDidMount:function() {
 			var me = this;
-			me.getCtemp({});
+			me.getCTemp({});
 			me.props.parent.props.route.env.engine({
 				url: '/api/content_data/getScripts.api',
 				method: "POST",
@@ -52,7 +52,8 @@ try {
 				me.loadScriptById(me.state.script_id);
 			}
 		},
-		getCtemp: function(data) {
+		getCTemp: function(data) {
+			let me = this;
 			if (me.props.section.id == 'new') {
 				me.setState({c_tpl:data});	
 			} else {
