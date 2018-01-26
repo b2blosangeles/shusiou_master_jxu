@@ -115,7 +115,10 @@ try {
 							
 			)	       
 		},
-
+		acceptSection: function() {
+			alert('me.props.parent.acceptSection.bind(me, me.state.c_section)');
+		},
+		
 		templateSelectScript: function() {
 			let me = this, scriptLangs = me.state.scriptLangs, scriptList = me.state.scriptList;
 			return (
@@ -193,7 +196,7 @@ try {
 									onClick={me.props.parent.deleteSection.bind(me, me.props.parent.state.section.id)}>Delete This Section</button>)
 								})()}	
 								<button className="btn btn-default pull-left" onClick={me.props.parent.abortSection.bind(me)}>Abort Change</button>
-								<button className="btn btn-info pull-right" onClick={me.props.parent.acceptSection.bind(me, me.state.c_section)}>Save</button>
+								<button className="btn btn-info pull-right" onClick={acceptSection()}>Save</button>
 							</div>
 						</td></tr>	
 					</table>						
