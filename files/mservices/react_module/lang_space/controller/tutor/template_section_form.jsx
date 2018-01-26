@@ -24,8 +24,7 @@ try {
 				langs:[],
 				list:[],
 				form_value:{text:''},
-				//c_section:me.default,
-				c_section:{},
+				// c_section:{},
 				script_id:0,
 				tpl:{},
 				c_tpl:{}
