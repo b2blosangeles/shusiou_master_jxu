@@ -206,6 +206,7 @@ try {
 				{me.props.parent.state.curriculum.level}
 				{me.templateSelectScript()}
 				{me.tplSection()}
+				<hr/>
 				{JSON.stringify(me.state.c_tpl)}
 				</span>)
 		}
