@@ -51,6 +51,7 @@ try {
 			var me = this;
 			if (me.state.script_id  !== prevState.script_id) {
 				me.loadScriptById(me.state.script_id);
+				console.log('me.state.script_id ==>' + me.state.script_id);
 			}
 		},
 		setCTpl: function(data) {
