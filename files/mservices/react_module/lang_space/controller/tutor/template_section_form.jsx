@@ -193,7 +193,8 @@ try {
 								);
 								break;								
 							case '$answer':
-								return me.textField(me.state.c_section.ans);
+								return me.textField({});
+								// me.state.c_section.ans
 								break;
 							 default:
 								return '-- undefined variable' + v + ' --';
