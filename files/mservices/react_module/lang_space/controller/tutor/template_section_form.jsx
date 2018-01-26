@@ -73,6 +73,7 @@ try {
 			var me = this;
 			if (me.props.section.id == 'new') {
 				me.setState({c_tpl:me.data});
+				alert(me.props.section.id);
 			} else me.setState({c_tpl:me.props.section.o});
 		},		
 		handleLang(rec, v) {
