@@ -8,6 +8,7 @@ try {
 			//	form_value:{text:''},
 				// c_section:me.default,
 				c_section:{},
+				scriptListFilter:{},
 				script_id:0,
 				tpl:{},
 				c_tpl:{}
@@ -51,6 +52,7 @@ try {
 				console.log('error');
 			});			
 		},
+		/*
 		handleChange(rec, event) {
 			var me = this;
 			var v = me.state.c_section;
@@ -62,6 +64,7 @@ try {
 			} 			
 			this.setState({c_section:v});
 		},
+		
 		handleActive(rec) {
 			var me = this;
 			if (rec.active) {
@@ -72,6 +75,7 @@ try {
 			var v = me.state.c_section;
 			this.setState({c_section:v});
 		},
+		*/
 		setTpl(data) {
 			var me = this;
 			if (me.props.section.id == 'new') {
@@ -79,11 +83,13 @@ try {
 				// alert(me.props.section.id);
 			} else me.setState({c_tpl:me.props.section.o});
 		},		
-		handleLang(rec, v) {
-			var me = this;
-			rec.lang = v;
-			var o = me.state.c_section;		
-			this.setState({c_section:o});
+		setScriptListFilter(p) {
+			let me = this, o = me.state.scriptListFilter;
+			if (p.id) {
+				me.setState({script_id:p.id});
+			}
+			for (var k in p)  o[k] = p[k];
+			me.setState({scriptListFilter:o});
 		},
 		langField: function(rec) {
 			var me = this;
