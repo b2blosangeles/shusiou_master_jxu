@@ -135,11 +135,11 @@ try {
 					<td>
 						<div className="dropdown">
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							  {(me.state.tpl.lang)?me.state.tpl.lang:'Select Language Solution'} 
+							  {(me.state.scriptListFilter.lang)?me.state.scriptListFilter.lang:'Select Language Solution'} 
 							  <span className="caret"></span></button>						
 						  <ul className="dropdown-menu">					  
 							{scriptLangs.map(function(m) {
-							return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {lang:m})}>{m}</a></li>);	
+							return (<li><a href="JavaScript:void(0)" onClick={me.setScriptListFilter.bind(me, {lang:m})}>{m}</a></li>);	
 							})}
 						  </ul>
 						</div>						
@@ -147,12 +147,12 @@ try {
 					<td>
 						<div className="dropdown">
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							   {(me.state.tpl.id)?me.state.tpl.id:'Select Script'} 
+							   {(me.state.script_id)?me.state.script_id:'Select Script'} 
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{scriptList.map(function(m) {
-								if (!me.state.tpl.lang || me.state.tpl.lang == m.lang) {
-								return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {id:m.id})}>{m.description}</a></li>);	
+								if (!me.state.scriptListFilter.lang || me.state.scriptListFilter.lang == m.lang) {
+								return (<li><a href="JavaScript:void(0)" onClick={me.setScriptListFilter.bind(me, {id:m.id})}>{m.description}</a></li>);	
 								} // else return (<li>---</li>);
 							})}
 						  </ul>
