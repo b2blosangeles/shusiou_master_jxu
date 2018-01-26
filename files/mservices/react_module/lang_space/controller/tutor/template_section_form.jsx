@@ -228,7 +228,7 @@ try {
 				{me.templateSelectScript()}
 				{me.tplSection()}
 					<hr/>
-					{JSON.stringify(me.state.c_section)}
+					{JSON.stringify(me.state.tpl)}
 				</span>)
 		}
 	});	
