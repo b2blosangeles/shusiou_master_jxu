@@ -52,7 +52,8 @@ try {
 				console.log('error');
 			});			
 		},
-		/*
+		
+		
 		handleChange(rec, event) {
 			var me = this;
 			var v = me.state.c_section;
@@ -64,7 +65,7 @@ try {
 			} 			
 			this.setState({c_section:v});
 		},
-		
+		/*
 		handleActive(rec) {
 			var me = this;
 			if (rec.active) {
