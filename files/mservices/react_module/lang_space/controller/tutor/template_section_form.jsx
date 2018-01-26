@@ -34,7 +34,7 @@ try {
 				me.loadScriptById(me.state.script_id);
 			}
 			if (me.props.section_id !== prePropos.section_id) {
-				alert('section.id changed ' + me.props.section.id);
+				me.setTpl({});
 			}
 		},
 		loadScriptById:function(id) {
