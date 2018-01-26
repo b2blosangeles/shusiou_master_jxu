@@ -205,7 +205,8 @@ try {
 				{me.props.parent.state.curriculum.learning_lang} - 
 				{me.props.parent.state.curriculum.level}
 				{me.templateSelectScript()}
-				{me.tplSection()}					
+				{me.tplSection()}
+				{JSON.stringify(me.state.c_tpl)}
 				</span>)
 		}
 	});	
