@@ -154,11 +154,11 @@ try {
 					<td>
 						<div className="dropdown">
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							   {(me.state.tpl.id)?me.state.tpl.id:'Select Script'} 
+							   {(me.state.c_tpl.id)?me.state.c_tpl.id:'Select Script'} 
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{list.map(function(m) {
-								if (!me.state.tpl.lang || me.state.tpl.lang == m.lang) {
+								if (!me.state.c_tpl.lang || me.state.c_tpl.lang == m.lang) {
 								return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {id:m.id})}>{m.description}</a></li>);	
 								} // else return (<li>---</li>);
 							})}
