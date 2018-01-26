@@ -68,7 +68,7 @@ try {
 				data: {cmd:'getScriptById', id: id, auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
-				me.me.setCTpl(data);	
+				me.setCTpl(data);	
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});			
