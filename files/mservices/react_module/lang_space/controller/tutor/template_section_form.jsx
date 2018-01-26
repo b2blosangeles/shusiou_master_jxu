@@ -33,6 +33,7 @@ try {
 		},
 		componentDidMount:function() {
 			var me = this;
+			me.getCtemp({});
 			me.props.parent.props.route.env.engine({
 				url: '/api/content_data/getScripts.api',
 				method: "POST",
@@ -51,6 +52,13 @@ try {
 				me.loadScriptById(me.state.script_id);
 			}
 		},
+		getCtemp: function(data) {
+			if (me.props.section.id == 'new') {
+				me.setState({c_tpl:data});	
+			} else {
+				me.setState({c_tpl:me.props.section.o});
+			}			
+		},
 		loadScriptById:function(id) {
 			var me = this;
 			me.props.parent.props.route.env.engine({
@@ -59,11 +67,13 @@ try {
 				data: {cmd:'getScriptById', id: id, auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
+				me.getCtemp(data);
+				/*
 				if (me.props.section.id == 'new') {
 					me.setState({c_tpl:data});	
 				} else {
 					me.setState({c_tpl:me.props.section.o});
-				}	
+				}*/	
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});			
