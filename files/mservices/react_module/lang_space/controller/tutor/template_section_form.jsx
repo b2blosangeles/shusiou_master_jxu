@@ -26,7 +26,7 @@ try {
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});				
-			me.setTpl();
+			me.setTpl({});
 		},
 		componentDidUpdate:function(prePropos, prevState) {	
 			var me = this;
@@ -69,10 +69,10 @@ try {
 			var v = me.state.c_section;
 			this.setState({c_section:v});
 		},
-		setTpl() {
+		setTpl(data) {
 			var me = this;
 			if (me.props.section.id == 'new') {
-				me.setState({c_tpl:me.default});
+				me.setState({c_tpl:me.data});
 			} else me.setState({c_tpl:me.props.section.o});
 		},		
 		handleLang(rec, v) {
