@@ -33,7 +33,7 @@ try {
 		},
 		componentDidMount:function() {
 			var me = this;
-			me.getCTemp({});
+			me.setCTpl({});
 			me.props.parent.props.route.env.engine({
 				url: '/api/content_data/getScripts.api',
 				method: "POST",
@@ -52,7 +52,7 @@ try {
 				me.loadScriptById(me.state.script_id);
 			}
 		},
-		getCTemp: function(data) {
+		setCTpl: function(data) {
 			let me = this;
 			if (me.props.section.id == 'new') {
 				me.setState({c_tpl:data});	
@@ -68,7 +68,7 @@ try {
 				data: {cmd:'getScriptById', id: id, auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
-				me.getCTemp(data);	
+				me.me.setCTpl(data);	
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});			
