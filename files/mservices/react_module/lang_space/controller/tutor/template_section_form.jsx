@@ -68,13 +68,7 @@ try {
 				data: {cmd:'getScriptById', id: id, auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
-				me.getCTemp(data);
-				/*
-				if (me.props.section.id == 'new') {
-					me.setState({c_tpl:data});	
-				} else {
-					me.setState({c_tpl:me.props.section.o});
-				}*/	
+				me.getCTemp(data);	
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});			
