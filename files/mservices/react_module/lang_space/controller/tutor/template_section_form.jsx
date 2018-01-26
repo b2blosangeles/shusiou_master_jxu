@@ -5,7 +5,7 @@ try {
 			return {
 				langs:[],
 				list:[],
-				form_value:{text:''},
+			//	form_value:{text:''},
 				// c_section:me.default,
 				c_section:{},
 				script_id:0,
@@ -76,7 +76,7 @@ try {
 			var me = this;
 			if (me.props.section.id == 'new') {
 				me.setState({c_tpl:data});
-				alert(me.props.section.id);
+				// alert(me.props.section.id);
 			} else me.setState({c_tpl:me.props.section.o});
 		},		
 		handleLang(rec, v) {
