@@ -75,7 +75,7 @@ try {
 		setTpl(data) {
 			var me = this;
 			if (me.props.section.id == 'new') {
-				me.setState({c_tpl:me.data});
+				me.setState({c_tpl:data});
 				alert(me.props.section.id);
 			} else me.setState({c_tpl:me.props.section.o});
 		},		
