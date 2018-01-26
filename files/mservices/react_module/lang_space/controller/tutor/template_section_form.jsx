@@ -130,9 +130,8 @@ try {
 				me.setState({script_id:p.id});
 			}
 			for (var k in p)  o[k] = p[k];
-			me.setState({tpl:o});
-			console.log(me.state.tpl);
-			console.log('me.state.tpl');
+		//	me.setState({tpl:o});
+		//	console.log(me.state.tpl);
 		},
 		templateSelectScript: function() {
 			let me = this, langs = me.state.langs, list = me.state.list;
