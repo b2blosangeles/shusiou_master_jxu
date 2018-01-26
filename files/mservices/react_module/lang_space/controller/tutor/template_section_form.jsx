@@ -2,7 +2,6 @@ try {
 	var TemplateSectionForm =  React.createClass({
 		getInitialState: function() {
 			var me = this; 
-			/*
 			me.default = {
 				lang:{mother:'en-US', learning:'cn-ZH'},
 				pro:[
@@ -21,20 +20,18 @@ try {
 				],
 				done:{text:'Lets continue', lang:'en-US', active:true}
 			};
-			*/
 			return {
 				langs:[],
 				list:[],
 				form_value:{text:''},
-				// c_section:{},
+				c_section:me.default,
 				script_id:0,
-				// tpl:{},
+				tpl:{},
 				c_tpl:{}
 			};
 		},
 		componentDidMount:function() {
 			var me = this;
-			me.setCTpl({});
 			me.props.parent.props.route.env.engine({
 				url: '/api/content_data/getScripts.api',
 				method: "POST",
@@ -46,34 +43,28 @@ try {
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});				
+			console.log('me.props.parent.state.curriculum--');
+			console.log(me.props.parent.state.curriculum);
+			if (me.props.section.id == 'new') {
+				me.setState({c_section:me.default});
+			} else me.setState({c_section:me.props.section.o});
 		},
 		componentDidUpdate:function(prePropos, prevState) {	
 			var me = this;
 			if (me.state.script_id  !== prevState.script_id) {
 				me.loadScriptById(me.state.script_id);
-				console.log('me.state.script_id ==>' + me.state.script_id);
 			}
-		},
-		setCTpl: function(data) {
-			let me = this;
-			if (me.props.section.id == 'new') {
-				me.setState({c_tpl:data});	
-			} else {
-				me.setState({c_tpl:me.props.section.o});
-			}			
 		},
 		loadScriptById:function(id) {
 			var me = this;
-			
 			me.props.parent.props.route.env.engine({
 				url: '/api/content_data/getScripts.api',
 				method: "POST",
 				data: {cmd:'getScriptById', id: id, auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
-				console.log('loadScriptById -> ' + id);
-				me.setCTpl(data);
-				console.log('loadScriptById -2> ' + id);
+				console.log(data);
+				me.setState({c_tpl:data});
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});			
@@ -128,17 +119,17 @@ try {
 							
 			)	       
 		},
-		switchTpl: function(p) {
-			let me = this, o = me.state.c_tpl;
+		handleTpl: function(p) {
+			let me = this, o = me.state.tpl;
 			if (p.id) {
 				me.setState({script_id:p.id});
 			}
-			console.log(p);
-		//	for (var k in p)  o[k] = p[k];
-		//	me.setState({tpl:o});
-		//	console.log(me.state.tpl);
+			for (var k in p)  o[k] = p[k];
+			me.setState({tpl:o});
+			console.log(me.state.tpl);
+			console.log('me.state.tpl');
 		},
-		selectTPlScript: function() {
+		templateSelectScript: function() {
 			let me = this, langs = me.state.langs, list = me.state.list;
 			return (
 				<span>
@@ -147,11 +138,11 @@ try {
 					<td>
 						<div className="dropdown">
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							  {(me.state.c_tpl.lang)?me.state.c_tpl.lang:'Select Language Solution'} 
+							  {(me.state.tpl.lang)?me.state.tpl.lang:'Select Language Solution'} 
 							  <span className="caret"></span></button>						
 						  <ul className="dropdown-menu">					  
 							{langs.map(function(m) {
-							return (<li><a href="JavaScript:void(0)" onClick={me.switchTpl.bind(me, {lang:m})}>{m}</a></li>);	
+							return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {lang:m})}>{m}</a></li>);	
 							})}
 						  </ul>
 						</div>						
@@ -159,12 +150,12 @@ try {
 					<td>
 						<div className="dropdown">
 						  <button className="btn btn-default dropdown-toggle  inpit-white-bg" type="button" data-toggle="dropdown">
-							   {(me.state.c_tpl.id)?me.state.c_tpl.id:'Select Script'} 
+							   {(me.state.tpl.id)?me.state.tpl.id:'Select Script'} 
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
 							{list.map(function(m) {
-								if (!me.state.c_tpl.lang || me.state.c_tpl.lang == m.lang) {
-								return (<li><a href="JavaScript:void(0)" onClick={me.switchTpl.bind(me, {id:m.id})}>{m.description}</a></li>);	
+								if (!me.state.tpl.lang || me.state.tpl.lang == m.lang) {
+								return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {id:m.id})}>{m.description}</a></li>);	
 								} // else return (<li>---</li>);
 							})}
 						  </ul>
@@ -201,13 +192,11 @@ try {
 								);
 								break;								
 							case '$answer':
-								return me.textField({});
-								// me.state.c_section.ans
+								return me.textField(me.state.c_section.ans);
 								break;
 							 default:
 								return '-- undefined variable' + v + ' --';
 						}
-
 					})}
 					<table width="100%" className="section_template_frame">	
 						<tr className=""><td>
@@ -232,10 +221,8 @@ try {
 				{me.props.parent.state.curriculum.mother_lang} - 
 				{me.props.parent.state.curriculum.learning_lang} - 
 				{me.props.parent.state.curriculum.level}
-				{me.selectTPlScript()}
-				{me.tplSection()}
-					<hr/>
-					{JSON.stringify(me.state.c_tpl)}
+				{me.templateSelectScript()}
+				{me.tplSection()}					
 				</span>)
 		}
 	});	
