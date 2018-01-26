@@ -196,7 +196,7 @@ try {
 									onClick={me.props.parent.deleteSection.bind(me, me.props.parent.state.section_id)}>Delete This Section</button>)
 								})()}	
 								<button className="btn btn-default pull-left" onClick={me.props.parent.abortSection.bind(me)}>Abort Change</button>
-								<button className="btn btn-info pull-right" onClick={me.acceptSection()}>Save</button>
+								<button className="btn btn-info pull-right" onClick={me.acceptSection.bind(me)}>Save</button>
 							</div>
 						</td></tr>	
 					</table>						
