@@ -5,12 +5,10 @@ try {
 			return {
 				scriptLangs:[],
 				scriptList:[],
-			//	form_value:{text:''},
-				// c_section:me.default,
 				c_section:{},
 				scriptListFilter:{},
 				script_id:0,
-				tpl:{},
+			//	tpl:{},
 				c_tpl:{}
 			};
 		},
