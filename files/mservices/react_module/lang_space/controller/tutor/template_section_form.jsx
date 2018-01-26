@@ -159,7 +159,7 @@ try {
 						  <ul className="dropdown-menu">					  
 							{list.map(function(m) {
 								if (!me.state.c_tpl.lang || me.state.c_tpl.lang == m.lang) {
-								return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {id:m.id})}>{m.description}</a></li>);	
+								return (<li><a href="JavaScript:void(0)" onClick={me.switchTpl.bind(me, {id:m.id})}>{m.description}</a></li>);	
 								} // else return (<li>---</li>);
 							})}
 						  </ul>
