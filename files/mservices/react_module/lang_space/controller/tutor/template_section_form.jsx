@@ -33,6 +33,9 @@ try {
 			if (me.state.script_id  !== prevState.script_id) {
 				me.loadScriptById(me.state.script_id);
 			}
+			if (me.props.section.id !== prePropos.section.id) {
+				alert('section.id changed ' + me.props.section.id);
+			}
 		},
 		loadScriptById:function(id) {
 			var me = this;
