@@ -28,7 +28,7 @@ try {
 				form_value:{text:''},
 				// c_section:{},
 				script_id:0,
-				tpl:{},
+				// tpl:{},
 				c_tpl:{}
 			};
 		},
