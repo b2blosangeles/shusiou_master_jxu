@@ -63,13 +63,14 @@ try {
 		},
 		loadScriptById:function(id) {
 			var me = this;
-			console.log('loadScriptById + ' + id);
+			
 			me.props.parent.props.route.env.engine({
 				url: '/api/content_data/getScripts.api',
 				method: "POST",
 				data: {cmd:'getScriptById', id: id, auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
+				console.log('loadScriptById -> ' + id);
 				me.setCTpl(data);	
 			},function( jqXHR, textStatus ) {
 				console.log('error');
