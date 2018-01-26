@@ -3,8 +3,8 @@ try {
 		getInitialState: function() {
 			var me = this; 
 			return {
-				langs:[],
-				list:[],
+				scriptLangs:[],
+				scriptList:[],
 			//	form_value:{text:''},
 				// c_section:me.default,
 				c_section:{},
@@ -119,7 +119,7 @@ try {
 			console.log('me.state.tpl');
 		},
 		templateSelectScript: function() {
-			let me = this, langs = me.state.langs, list = me.state.list;
+			let me = this, scriptLangs = me.state.scriptLangs, scriptList = me.state.scriptList;
 			return (
 				<span>
 				<table className="textRecField" width="100%"  style={{border:'0px solid transparent'}}>
@@ -130,7 +130,7 @@ try {
 							  {(me.state.tpl.lang)?me.state.tpl.lang:'Select Language Solution'} 
 							  <span className="caret"></span></button>						
 						  <ul className="dropdown-menu">					  
-							{langs.map(function(m) {
+							{scriptLangs.map(function(m) {
 							return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {lang:m})}>{m}</a></li>);	
 							})}
 						  </ul>
@@ -142,7 +142,7 @@ try {
 							   {(me.state.tpl.id)?me.state.tpl.id:'Select Script'} 
 						  <span className="caret"></span></button>
 						  <ul className="dropdown-menu">					  
-							{list.map(function(m) {
+							{scriptList.map(function(m) {
 								if (!me.state.tpl.lang || me.state.tpl.lang == m.lang) {
 								return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {id:m.id})}>{m.description}</a></li>);	
 								} // else return (<li>---</li>);
