@@ -124,7 +124,7 @@ try {
 							
 			)	       
 		},
-		handleTpl: function(p) {
+		switchTpl: function(p) {
 			let me = this, o = me.state.tpl;
 			if (p.id) {
 				me.setState({script_id:p.id});
@@ -133,7 +133,7 @@ try {
 		//	me.setState({tpl:o});
 		//	console.log(me.state.tpl);
 		},
-		templateSelectScript: function() {
+		selectTPlScript: function() {
 			let me = this, langs = me.state.langs, list = me.state.list;
 			return (
 				<span>
@@ -146,7 +146,7 @@ try {
 							  <span className="caret"></span></button>						
 						  <ul className="dropdown-menu">					  
 							{langs.map(function(m) {
-							return (<li><a href="JavaScript:void(0)" onClick={me.handleTpl.bind(me, {lang:m})}>{m}</a></li>);	
+							return (<li><a href="JavaScript:void(0)" onClick={me.switchTpl.bind(me, {lang:m})}>{m}</a></li>);	
 							})}
 						  </ul>
 						</div>						
@@ -227,7 +227,7 @@ try {
 				{me.props.parent.state.curriculum.mother_lang} - 
 				{me.props.parent.state.curriculum.learning_lang} - 
 				{me.props.parent.state.curriculum.level}
-				{me.templateSelectScript()}
+				{me.selectTPlScript()}
 				{me.tplSection()}
 					<hr/>
 					{JSON.stringify(me.state.c_tpl)}
