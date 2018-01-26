@@ -73,16 +73,6 @@ try {
 			}
 			var v = me.state.c_section;
 			this.setState({c_section:v});
-		},
-		handleTpl: function(p) {
-			let me = this, o = me.state.tpl;
-			if (p.id) {
-				me.setState({script_id:p.id});
-			}
-			for (var k in p)  o[k] = p[k];
-			me.setState({tpl:o});
-			console.log(me.state.tpl);
-			console.log('me.state.tpl');
 		},		
 		*/
 		setTpl(data) {
