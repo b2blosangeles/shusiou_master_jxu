@@ -193,10 +193,10 @@ try {
 							<div className="container-fluid" style={{padding:'6px', 'text-align':'center'}}>
 								{(function() {
 									if (me.props.parent.state.section.id != 'new') return (<button className="btn btn-danger" 
-									onClick={me.props.parent.deleteSection.bind(me, me.props.parent.state.section.id)}>Delete This Section</button>)
+									onClick={me.props.parent.deleteSection.bind(me, me.props.parent.state.section_id)}>Delete This Section</button>)
 								})()}	
 								<button className="btn btn-default pull-left" onClick={me.props.parent.abortSection.bind(me)}>Abort Change</button>
-								<button className="btn btn-info pull-right" onClick={acceptSection()}>Save</button>
+								<button className="btn btn-info pull-right" onClick={me.acceptSection()}>Save</button>
 							</div>
 						</td></tr>	
 					</table>						
