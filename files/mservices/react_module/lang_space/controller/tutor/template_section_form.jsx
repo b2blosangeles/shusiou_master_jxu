@@ -44,13 +44,6 @@ try {
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});				
-			console.log('me.props.section--');
-			console.log(me.props.section);
-			if (me.props.section.id == 'new') {
-				alert(me.props.section.id);
-				// me.setState({c_section:me.default});
-				me.setState({c_section:me.state.tpl});	
-			} else me.setState({c_tpl:me.props.section.o});
 		},
 		componentDidUpdate:function(prePropos, prevState) {	
 			var me = this;
@@ -66,8 +59,11 @@ try {
 				data: {cmd:'getScriptById', id: id, auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
-				console.log(data);
-				me.setState({c_tpl:data});
+				if (me.props.section.id == 'new') {
+					me.setState({c_tpl:data});	
+				} else {
+					me.setState({c_tpl:me.props.section.o});
+				}	
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});			
