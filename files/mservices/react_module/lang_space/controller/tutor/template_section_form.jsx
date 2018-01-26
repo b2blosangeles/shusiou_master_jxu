@@ -71,7 +71,8 @@ try {
 				dataType: "JSON"
 			}, function( data) {
 				console.log('loadScriptById -> ' + id);
-				me.setCTpl(data);	
+				me.setCTpl(data);
+				console.log('loadScriptById -2> ' + id);
 			},function( jqXHR, textStatus ) {
 				console.log('error');
 			});			
