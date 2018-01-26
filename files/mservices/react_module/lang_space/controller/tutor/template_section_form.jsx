@@ -63,6 +63,7 @@ try {
 		},
 		loadScriptById:function(id) {
 			var me = this;
+			console.log('loadScriptById + ' + id);
 			me.props.parent.props.route.env.engine({
 				url: '/api/content_data/getScripts.api',
 				method: "POST",
