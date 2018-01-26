@@ -68,7 +68,7 @@ try {
 				data: {cmd:'getScriptById', id: id, auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
-				me.getCtemp(data);
+				me.getCTemp(data);
 				/*
 				if (me.props.section.id == 'new') {
 					me.setState({c_tpl:data});	
