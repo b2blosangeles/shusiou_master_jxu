@@ -75,7 +75,17 @@ try {
 			var v = me.state.c_section;
 			this.setState({c_section:v});
 		},
-		
+		handleTpl: function(p) {
+			let me = this, o = me.state.tpl;
+			if (p.id) {
+				me.setState({script_id:p.id});
+			}
+			for (var k in p)  o[k] = p[k];
+			me.setState({tpl:o});
+			console.log(me.state.tpl);
+			console.log('me.state.tpl');
+		},		
+		*/
 		setTpl(data) {
 			var me = this;
 			if (me.props.section.id == 'new') {
@@ -83,7 +93,7 @@ try {
 				// alert(me.props.section.id);
 			} else me.setState({c_tpl:me.props.section.o});
 		},
-		*/
+		
 		
 		setScriptListFilter(p) {
 			let me = this, o = me.state.scriptListFilter;
@@ -116,16 +126,7 @@ try {
 							
 			)	       
 		},
-		handleTpl: function(p) {
-			let me = this, o = me.state.tpl;
-			if (p.id) {
-				me.setState({script_id:p.id});
-			}
-			for (var k in p)  o[k] = p[k];
-			me.setState({tpl:o});
-			console.log(me.state.tpl);
-			console.log('me.state.tpl');
-		},
+
 		templateSelectScript: function() {
 			let me = this, scriptLangs = me.state.scriptLangs, scriptList = me.state.scriptList;
 			return (
