@@ -2,6 +2,7 @@ try {
 	var TemplateSectionForm =  React.createClass({
 		getInitialState: function() {
 			var me = this; 
+			/*
 			me.default = {
 				lang:{mother:'en-US', learning:'cn-ZH'},
 				pro:[
@@ -20,6 +21,7 @@ try {
 				],
 				done:{text:'Lets continue', lang:'en-US', active:true}
 			};
+			*/
 			return {
 				langs:[],
 				list:[],
