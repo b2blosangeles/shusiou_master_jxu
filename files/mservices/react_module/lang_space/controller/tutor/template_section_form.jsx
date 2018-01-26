@@ -72,8 +72,8 @@ try {
 		setTpl() {
 			var me = this;
 			if (me.props.section.id == 'new') {
-				me.setState({c_section:me.default});
-			} else me.setState({c_section:me.props.section.o});
+				me.setState({c_tpl:me.default});
+			} else me.setState({c_tpl:me.props.section.o});
 		},		
 		handleLang(rec, v) {
 			var me = this;
