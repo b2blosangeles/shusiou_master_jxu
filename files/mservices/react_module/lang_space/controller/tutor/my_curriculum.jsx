@@ -271,6 +271,7 @@ try {
 					<div className="content_bg opacity_bg">
 						<video id="video_ad" className="video_ad"  src="" muted></video>
 					</div>
+					<ModalPlus parent={me} />
 				</div>
 			)
 		}
