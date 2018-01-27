@@ -88,6 +88,7 @@ try {
 		popupEditVideo: function(params, track) {
 			var me = this;
 			var id = new Date().getTime();
+			alert(id);
 			if (track == 'new') {
 				me.setState({section:{track:{}}}, function() {
 					me.setState({ModalPlus:{type:'popup',  hold:0,
