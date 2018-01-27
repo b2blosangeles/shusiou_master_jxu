@@ -204,7 +204,7 @@ try {
 									})()}	
 									me.props.parent.popupEditVideo.	me.parent.props.params
 									<button className="btn btn-info btn-xs" 
-										onClick={me.popupEditVideo.bind(me, me.props.parent.props.params, me.props.parent.state.section.track)}>
+										onClick={me.props.parent.popupEditVideo.bind(me.parent, me.parent.props.params, me.props.parent.state.section.track)}>
 									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
 									</button>										
 								</span>
