@@ -19,11 +19,12 @@ try {
 					me.setState({preview_time:v})
 				};
 			}
-			var ips = me.props.parent.state.curriculum.node_ip;
+			let curriculum = me.props.parent.state.curriculum;
+			var ips = curriculum.node_ip;
 			var IP = ips[Math.floor(Math.random() * ips.length)];
 		//	var vurl =  shusiou_config.api_server + '/api/video/play_stream.api?type=video&vid='+me.props.parent.state.curriculum.vid;
 			var vurl = 'http://' + IP + '/api/video/play_stream.api?type=video&vid=' +
-			    me.props.parent.state.curriculum.vid + '&server=' +  me.props.parent.state.curriculum.server_ip;
+			    curriculum.vid + '&server=' +  curriculum.server_ip;
 			console.log(vurl);
 			if (me.props.params['opt'] == 'new') {
 				code = me.props.params['id'];
