@@ -8,7 +8,7 @@ try {
 				c_section:{},
 				scriptListFilter:{},
 				script_id:0,
-				data:{}
+				data:{},
 				//	tpl:{},
 				c_tpl:{}
 			};
