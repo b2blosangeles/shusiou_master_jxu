@@ -33,8 +33,9 @@ try {
 			if (me.state.script_id  !== prevState.script_id) {
 				me.loadScriptById(me.state.script_id);
 			}
-			alert(JSON.stringify(me.props.section_id));
+		
 			if (me.props.section_id !== prePropos.section_id) {
+				alert(me.props.section_id);
 				me.setTpl({});
 			}
 		},
