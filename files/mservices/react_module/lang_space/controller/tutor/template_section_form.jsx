@@ -118,7 +118,7 @@ try {
 		},
 		acceptSection: function() {
 			let me = this;
-			let data = {tpl:me.state.c_tpl, data:me.state.c_section};
+			let data = {section_id:me.state.section_id, tpl:me.state.c_tpl, data:me.state.c_section};
 			alert(JSON.stringify(data));
 			alert('me.props.parent.acceptSection.bind(me, me.state.c_section)');
 		},
