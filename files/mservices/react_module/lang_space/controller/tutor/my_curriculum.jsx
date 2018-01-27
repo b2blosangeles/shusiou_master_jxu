@@ -60,11 +60,9 @@ try {
 		},
 		createSection:function() {
 			var me = this;
-			/*
 			me.setState({section:{id:'new', track:{}}}, function() {
-				me.popupEditVideo(me.props.params,{});
+				// me.popupEditVideo(me.props.params,{});
 			});
-			*/
 		},
 		editSection:function(id) {
 			var me = this;
