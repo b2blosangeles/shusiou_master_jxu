@@ -214,7 +214,7 @@ try {
 		render: function() {
 			var me = this;
 			return (<span>
-				{me.props.parent.state.curriculum.mother_lang} - |{me.me.props.section_id}|
+				{me.props.parent.state.curriculum.mother_lang} - |{me.props.section_id}|
 				{me.props.parent.state.curriculum.learning_lang} - 
 				{me.props.parent.state.curriculum.level}
 				{me.templateSelectScript()}
