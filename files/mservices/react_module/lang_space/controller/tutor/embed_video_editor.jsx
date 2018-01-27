@@ -130,7 +130,7 @@ try {
 			for (var i = 0; i < 2 * me.state.section.t; i++) {
 				A[A.length] = me.state.section.s + i * 0.5;
 			}
-			var ips = me.props.parent.state.curriculum.node_ip;
+			var ips = me.curriculum.node_ip;
 			
 			return A.map(function(a,idx){
 				//var v = shusiou_config.api_server + '/api/video/play_stream.api?type=image&vid=' + 
@@ -203,7 +203,7 @@ try {
 		},	
 		render: function() {
 			var me = this;
-			if (me.props.parent.state.curriculum.curriculum_id) return (
+			if (me.curriculum.curriculum_id) return (
 				<div className="container-fluid">
 					<table width="100%" className="section_template_frame">	
 					<tr>
