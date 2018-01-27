@@ -119,9 +119,8 @@ try {
 		},
 		acceptSection: function() {
 			let me = this;
-			let data = {section_id:me.props.section_id, tpl:me.state.c_tpl, data:me.state.data, c_section:me.state.c_section};
+			let data = {section_id:me.props.section_id, tpl:me.state.c_tpl, data:me.state.data, c_section:me.state.c_section, track:me.props.section};
 			alert(JSON.stringify(data));
-			alert('BBC- me.props.parent.acceptSection.bind(me, me.state.c_section)');
 		},
 		
 		templateSelectScript: function() {
