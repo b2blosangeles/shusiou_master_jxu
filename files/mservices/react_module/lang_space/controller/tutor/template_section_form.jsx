@@ -90,6 +90,7 @@ try {
 			var id = new Date().getTime();
 			let curriculum = me.props.parent.state.curriculum;
 			alert(JSON.stringify(curriculum));
+			alert(JSON.stringify(params));
 			if (track == 'new') {
 				me.setState({section:{track:{}}}, function() {
 					me.setState({ModalPlus:{type:'popup',  hold:0,
