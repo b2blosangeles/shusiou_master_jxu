@@ -55,14 +55,16 @@ try {
 		
 		handleChange(rec, event) {
 			var me = this;
-			var v = me.state.c_section;
+			/*
+			var v = me.state.data;
 			if (event.target.type == 'text') {
 				rec.text = event.target.value;
 			}
 			if (event.target.type == 'checkbox') {
 				rec.sctive = event.target.checked;
-			} 			
-			this.setState({c_section:v});
+			} 
+			*/
+			this.setState({data:rec});
 		},
 		/*
 		handleActive(rec) {
@@ -186,7 +188,7 @@ try {
 								);
 								break;								
 							case '$answer':
-								return me.textField({});
+								return me.textField(me.state.data);
 								break;
 							 default:
 								return '-- undefined variable' + v + ' --';
