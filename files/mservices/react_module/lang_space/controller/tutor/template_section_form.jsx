@@ -65,7 +65,7 @@ try {
 				rec.sctive = event.target.checked;
 			} 
 			*/
-			this.setState({data:rec});
+			me.setState({data:'rec'});
 		},
 		/*
 		handleActive(rec) {
@@ -115,7 +115,7 @@ try {
 			return (
 				<input className="form-control inpit-white-bg" 
 				placeholder="Input text likes The next paragraph is telling sometning" 
-				value={rec.text}  onChange={this.handleChange.bind(this, rec)}  />
+				value={rec.text}  onChange={me.handleChange.bind(me, rec)}  />
 							
 			)	       
 		},
