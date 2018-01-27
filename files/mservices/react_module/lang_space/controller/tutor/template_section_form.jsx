@@ -93,7 +93,7 @@ try {
 					me.setState({ModalPlus:{type:'popup',  hold:0,
 						box_style:{top:'28px'},
 						title: (<span>Select video section</span>),
-						message: (<Embed_video_editor parent={me} params={params} popid={new Date().getTime()} />),
+						message: (<Embed_video_editor parent={me.props.parent} params={params} popid={new Date().getTime()} />),
 						header:false,
 						footer:(<span/>)
 					}});					
@@ -104,7 +104,7 @@ try {
 			me.setState({ModalPlus:{type:'popup',  hold:0,
 				box_style:{top:'28px'},
 				title: (<span>Video Editor</span>),
-				message: (<Embed_video_editor parent={me} params={params} popid={new Date().getTime()} />),
+				message: (<Embed_video_editor parent={me.props.parent} params={params} popid={new Date().getTime()} />),
 				header:false,
 				footer:(<span/>)
 			}});			
