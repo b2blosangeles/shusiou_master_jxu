@@ -88,6 +88,8 @@ try {
 		popupEditVideo: function(params, track) {
 			var me = this;
 			var id = new Date().getTime();
+			let curriculum = me.props.parent.state.curriculum;
+			alert(JSON.stringify(curriculum));
 			if (track == 'new') {
 				me.setState({section:{track:{}}}, function() {
 					me.setState({ModalPlus:{type:'popup',  hold:0,
