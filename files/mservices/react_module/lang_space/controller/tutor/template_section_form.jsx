@@ -88,7 +88,6 @@ try {
 		popupEditVideo: function(params, track) {
 			var me = this;
 			var id = new Date().getTime();
-			alert(track);
 			if (track == 'new') {
 				me.setState({section:{track:{}}}, function() {
 					me.setState({ModalPlus:{type:'popup',  hold:0,
@@ -110,7 +109,7 @@ try {
 				footer:(<span/>)
 			}});			
 			return true;
-		},		
+		},	
 		
 		setScriptListFilter(p) {
 			let me = this, o = me.state.scriptListFilter;
@@ -202,8 +201,9 @@ try {
 												me.props.parent.state.section.track.t)}}
 										/>)
 									})()}	
+									me.props.parent.popupEditVideo.
 									<button className="btn btn-info btn-xs" 
-										onClick={me.props.parent.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
+										onClick={me.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
 									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
 									</button>										
 								</span>
