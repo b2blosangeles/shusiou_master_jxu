@@ -88,13 +88,13 @@ try {
 		popupEditVideo: function(params, track) {
 			var me = this;
 			var id = new Date().getTime();
-			alert(id);
+			alert(track);
 			if (track == 'new') {
 				me.setState({section:{track:{}}}, function() {
 					me.setState({ModalPlus:{type:'popup',  hold:0,
 						box_style:{top:'28px'},
 						title: (<span>Select video section</span>),
-						message: (<Embed_video_editor parent={me} params={params} popid={new Date().getTime()} />),
+						message: (<Embed_video_editor parent={me.parent} params={me.parent.params} popid={new Date().getTime()} />),
 						header:false,
 						footer:(<span/>)
 					}});					
