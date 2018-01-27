@@ -8,7 +8,8 @@ try {
 				c_section:{},
 				scriptListFilter:{},
 				script_id:0,
-			//	tpl:{},
+				data:{}
+				//	tpl:{},
 				c_tpl:{}
 			};
 		},
@@ -117,7 +118,8 @@ try {
 		},
 		acceptSection: function() {
 			let me = this;
-			alert(JSON.stringify(me.state.c_tpl));
+			let data = {tpl:me.state.c_tpl, data:me.c_section};
+			alert(JSON.stringify(data));
 			alert('me.props.parent.acceptSection.bind(me, me.state.c_section)');
 		},
 		
