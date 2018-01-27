@@ -55,17 +55,18 @@ try {
 		
 		
 		handleChange(idx, event) {
-			var me = this;
-			/*
+			var me = this, v = me.state.data;
+			
 			var v = me.state.data;
 			if (event.target.type == 'text') {
-				rec.text = event.target.value;
+				v[idx] = event.target.value;
 			}
+			/*
 			if (event.target.type == 'checkbox') {
 				rec.sctive = event.target.checked;
 			} 
 			*/
-			me.setState({data:idx});
+			me.setState({data:v});
 		},
 		/*
 		handleActive(rec) {
