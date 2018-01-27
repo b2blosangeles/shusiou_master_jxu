@@ -85,7 +85,31 @@ try {
 				// alert(me.props.section.id);
 			} else me.setState({c_tpl:me.props.section.o});
 		},
-		
+		popupEditVideo: function(params, track) {
+			var me = this;
+			var id = new Date().getTime();
+			if (track == 'new') {
+				me.setState({section:{track:{}}}, function() {
+					me.setState({ModalPlus:{type:'popup',  hold:0,
+						box_style:{top:'28px'},
+						title: (<span>Select video section</span>),
+						message: (<Embed_video_editor parent={me} params={params} popid={new Date().getTime()} />),
+						header:false,
+						footer:(<span/>)
+					}});					
+				});
+
+				return true;
+			}
+			me.setState({ModalPlus:{type:'popup',  hold:0,
+				box_style:{top:'28px'},
+				title: (<span>Video Editor</span>),
+				message: (<Embed_video_editor parent={me} params={params} popid={new Date().getTime()} />),
+				header:false,
+				footer:(<span/>)
+			}});			
+			return true;
+		},		
 		
 		setScriptListFilter(p) {
 			let me = this, o = me.state.scriptListFilter;
@@ -176,9 +200,10 @@ try {
 											' To:' + me.props.parent.toHHMMSS(me.props.parent.state.section.track.s + 
 												me.props.parent.state.section.track.t)}}
 										/>)
-									})()}											
+									})()}	
+									me.props.parent.popupEditVideo.	
 									<button className="btn btn-info btn-xs" 
-										onClick={me.props.parent.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
+										onClick={me.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
 									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
 									</button>										
 								</span>
