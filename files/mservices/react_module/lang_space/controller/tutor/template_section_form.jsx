@@ -54,7 +54,7 @@ try {
 		},
 		
 		
-		handleChange(rec, event) {
+		handleChange(idx, event) {
 			var me = this;
 			/*
 			var v = me.state.data;
@@ -65,7 +65,7 @@ try {
 				rec.sctive = event.target.checked;
 			} 
 			*/
-			me.setState({data:'rec'});
+			me.setState({data:idx});
 		},
 		/*
 		handleActive(rec) {
@@ -110,12 +110,12 @@ try {
 				</div>	
 			)	       
 		},
-		textField: function(rec) {
+		textField: function(idx) {
 			var me = this;
 			return (
 				<input className="form-control inpit-white-bg" 
 				placeholder="Input text likes The next paragraph is telling sometning" 
-				value={rec.text}  onChange={me.handleChange.bind(me, rec)}  />
+				value={me.state.data[idx]}  onChange={me.handleChange.bind(me, idx)}  />
 							
 			)	       
 		},
@@ -189,7 +189,7 @@ try {
 								);
 								break;								
 							case '$answer':
-								return me.textField(me.state.data);
+								return me.textField(v);
 								break;
 							 default:
 								return '-- undefined variable' + v + ' --';
