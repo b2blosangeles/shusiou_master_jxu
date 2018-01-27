@@ -149,6 +149,7 @@ try {
 		},
 		closePopup:function() {
 			var me = this;
+			alert(1);
 			me.setState({ModalPlus:'cancel'});			
 			return true;
 		},		
