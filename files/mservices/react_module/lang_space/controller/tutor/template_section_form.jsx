@@ -33,6 +33,7 @@ try {
 			if (me.state.script_id  !== prevState.script_id) {
 				me.loadScriptById(me.state.script_id);
 			}
+			alert(me.props.section_id);
 			if (me.props.section_id !== prePropos.section_id) {
 				me.setTpl({});
 			}
@@ -214,7 +215,7 @@ try {
 		render: function() {
 			var me = this;
 			return (<span>
-				{me.props.parent.state.curriculum.mother_lang} - |{me.props.section_id}|
+				{me.props.parent.state.curriculum.mother_lang} - ||
 				{me.props.parent.state.curriculum.learning_lang} - 
 				{me.props.parent.state.curriculum.level}
 				{me.templateSelectScript()}
