@@ -244,6 +244,7 @@ try {
 				{me.tplSection()}
 				<hr/>
 				{JSON.stringify(me.state.c_tpl)}
+				<ModalPlus parent={me.props.parent} />
 				</span>)
 		}
 	});	
