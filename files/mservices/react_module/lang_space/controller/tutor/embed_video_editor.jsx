@@ -19,12 +19,12 @@ try {
 					me.setState({preview_time:v})
 				};
 			}
-			let curriculum = me.props.parent.state.curriculum;
+			me.curriculum = me.props.parent.state.curriculum;
 			var ips = curriculum.node_ip;
 			var IP = ips[Math.floor(Math.random() * ips.length)];
 		//	var vurl =  shusiou_config.api_server + '/api/video/play_stream.api?type=video&vid='+me.props.parent.state.curriculum.vid;
 			var vurl = 'http://' + IP + '/api/video/play_stream.api?type=video&vid=' +
-			    curriculum.vid + '&server=' +  curriculum.server_ip;
+			    me.curriculum.vid + '&server=' +  curriculum.server_ip;
 			console.log(vurl);
 			if (me.props.params['opt'] == 'new') {
 				code = me.props.params['id'];
@@ -33,7 +33,7 @@ try {
 			} else {
 				var _itv = setInterval(
 					function() {
-						if (me.props.parent.state.curriculum.vid) {
+						if (me.curriculum.vid) {
 							clearInterval(_itv);
 							me.setState({vid:me.props.parent.state.curriculum.vid});
 							p_video.src =  vurl;
@@ -61,9 +61,9 @@ try {
 			
 			var p_video = $('#preview_video')[0];
 			var c_video = $('#preview_clip_video')[0];
-			var ips = me.props.parent.state.curriculum.node_ip;
+			var ips = me.curriculum.node_ip;
 			var IP = ips[Math.floor(Math.random() * ips.length)];
-			p_video.currentTime = Math.round(me.props.parent.state.curriculum.video_length * v / n);
+			p_video.currentTime = Math.round(me.curriculum.video_length * v / n);
 			me.setState({section:{s:p_video.currentTime, t:10}}, function() {
 				p_video.pause();
 				c_video.pause();
