@@ -116,6 +116,7 @@ try {
 			)	       
 		},
 		acceptSection: function() {
+			let me = this;
 			alert(JSON.me.state.c_tpl);
 			alert('me.props.parent.acceptSection.bind(me, me.state.c_section)');
 		},
