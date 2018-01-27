@@ -5,7 +5,6 @@ try {
 			return {
 				scriptLangs:[],
 				scriptList:[],
-				c_section:{},
 				scriptListFilter:{},
 				script_id:0,
 				data:{},
@@ -115,8 +114,7 @@ try {
 			return (
 				<input className="form-control inpit-white-bg" 
 				placeholder="Input text likes The next paragraph is telling sometning" 
-				value={me.state.data[idx]}  onChange={me.handleChange.bind(me, idx)}  />
-							
+				value={me.state.data[idx]}  onChange={me.handleChange.bind(me, idx)}  />			
 			)	       
 		},
 		acceptSection: function() {
@@ -153,7 +151,7 @@ try {
 							{scriptList.map(function(m) {
 								if (!me.state.scriptListFilter.lang || me.state.scriptListFilter.lang == m.lang) {
 								return (<li><a href="JavaScript:void(0)" onClick={me.setScriptListFilter.bind(me, {id:m.id})}>{m.description}</a></li>);	
-								} // else return (<li>---</li>);
+								} 
 							})}
 						  </ul>
 						</div>								
@@ -167,8 +165,7 @@ try {
 			let me = this;
 			if (me.state.c_tpl.variables) {
 				return (
-					<span>	
-						
+					<span>		
 					{me.state.c_tpl.variables.map(function(v) {
 						switch(v) {
 							case '$section':
