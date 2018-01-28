@@ -15,7 +15,7 @@ try {
 		},	
 		componentDidMount:function() {
 			var me = this, code = '';
-			me.setState({section:me.section.track});
+			me.setState({section:me.section});
 			var p_video = $('#preview_video')[0];
 			if (p_video) {
 				p_video.ontimeupdate = function() {
