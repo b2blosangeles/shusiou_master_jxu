@@ -38,7 +38,7 @@ try {
 					function() {
 						if (me.curriculum.vid) {
 							clearInterval(_itv);
-							me.setState({vid:me.props.parent.state.curriculum.vid});
+							me.setState({vid:me.curriculum.vid});
 							p_video.src =  vurl;
 							setTimeout(
 								function() {
@@ -140,8 +140,8 @@ try {
 				//    me.props.parent.state.curriculum.vid +'&w=90&s=' + a;
 				var IP = ips[Math.floor(Math.random() * ips.length)];
 				var v = 'http://' + IP + '/api/video/play_stream.api?type=image&vid=' + 
-				    me.props.parent.state.curriculum.vid +'&w=90&s=' + a + '&server=' + 
-				    me.props.parent.state.curriculum.server_ip;
+				    me.curriculum.vid +'&w=90&s=' + a + '&server=' + 
+				    me.curriculum.server_ip;
 				
 				if (idx < 8 || idx > A.length - 8) return (<img src={v} width="90" style={{border:'1px solid red'}} />)
 				else return (<span></span>)
@@ -151,7 +151,7 @@ try {
 		
 		playSection:function() {
 			var me = this, v =  shusiou_config.api_server + '/api/video/play_stream.api?type=section&vid='+
-			    me.props.parent.state.curriculum.vid + '&s=' + me.state.section.s + '&l=' + me.state.section.t;
+			    me.curriculum.vid + '&s=' + me.state.section.s + '&l=' + me.state.section.t;
 			$('#preview_clip_video')[0].src = v;
 			$('#preview_clip_video')[0].play();		
 		},
