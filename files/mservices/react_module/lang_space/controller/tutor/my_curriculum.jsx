@@ -88,7 +88,8 @@ try {
 				me.setState({section:{track:{}}});
 			});
 			return true;       
-		},		
+		},
+		/*
 		popupEditVideo: function(params, track) {
 			var me = this;
 			var id = new Date().getTime();
@@ -114,6 +115,7 @@ try {
 			}});			
 			return true;
 		},
+		*/
 		componentDidMount:function() {
 			var me = this;
 			var vid = '';	
@@ -243,13 +245,14 @@ try {
 			var me = this, A = me.state.list;
 			if (!me.state.c_text) return {display:'none'};
 			else return {display:''};
-		},		
+		},	
+		/*
 		closePopup:function() {
 			var me = this;
-			alert(2);
 			me.setState({ModalPlus:'cancel'});			
 			return true;
 		},
+		*/
 		abortSection: function() {
 			var me = this;
 			me.setState({section:{track:{}}});
