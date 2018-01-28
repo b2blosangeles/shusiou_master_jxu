@@ -90,6 +90,7 @@ try {
 			var id = new Date().getTime();
 			let curriculum = me.props.parent.state.curriculum;
 		//	let section = me.props.parent.state.section;
+			/*
 			if (track == 'new') {
 				me.setState({section:{track:{}}}, function() {
 					me.setState({ModalPlus:{type:'popup',  hold:0,
@@ -103,6 +104,7 @@ try {
 
 				return true;
 			}
+			*/
 			me.setState({ModalPlus:{type:'popup',  hold:0,
 				box_style:{top:'28px'},
 				title: (<span>Video Editor</span>),
