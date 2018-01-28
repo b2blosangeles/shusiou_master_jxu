@@ -2,7 +2,9 @@ try {
 	var Embed_video_editor =  React.createClass({
 		getInitialState: function() {
 			var me = this;
-			me.curriculum = me.props.parent.state.curriculum;
+			// me.curriculum = me.props.parent.state.curriculum;
+			me.curriculum = me.props.curriculum;
+			// me.props.
 			return {
 				preview_time:0,
 				section:{},
