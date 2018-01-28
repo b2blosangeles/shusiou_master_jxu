@@ -85,7 +85,7 @@ try {
 				// alert(me.props.section.id);
 			} else me.setState({c_tpl:me.props.section.o});
 		},
-		popupEditVideo: function(params, section) {
+		popupEditVideo: function(section) {
 			var me = this;
 			// var id = new Date().getTime();
 			let curriculum = me.props.parent.state.curriculum;
@@ -193,9 +193,8 @@ try {
 										' To:' + me.props.parent.toHHMMSS(me.state.data['$section'].s + me.state.data['$section'].t)}}
 										/>)
 									})()}
-									me.props.parent.state.section	
 									<button className="btn btn-info btn-xs" 
-										onClick={me.popupEditVideo.bind(me, me.props.params, me.state.data['$section'])}>
+										onClick={me.popupEditVideo.bind(me, me.state.data['$section'])}>
 									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
 									</button>										
 								</span>
