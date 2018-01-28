@@ -95,7 +95,7 @@ try {
 							return (<td width="1" style={{'background-color':'red'}}></td>)
 						}	
 						for (var j = 0; j < sections.length; j++) {
-							if (sections[j].id == me.props.parent.state.section.id) continue;
+							if (sections[j].id == me.section.id) continue;
 							if (idx >= Math.round(n * sections[j].track.s / video_length ) && 
 							    idx < Math.round((n * sections[j].track.s + n * sections[j].track.t) / video_length)) {
 								return (<td width="1" style={{'background-color':'lightgreen'}}></td>)
@@ -115,7 +115,7 @@ try {
 		componentDidUpdate:function(prePropos, preState) {
 			var me = this;
 			if (prePropos.popid != me.props.popid) {
-				me.setState({section:me.props.parent.state.section.track});
+				me.setState({section:me.section.track});
 			}
 		},
 		sendTrack: function(p) {
