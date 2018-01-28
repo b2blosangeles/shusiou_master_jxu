@@ -4,6 +4,7 @@ try {
 			var me = this;
 			// me.curriculum = me.props.parent.state.curriculum;
 			me.curriculum = me.props.curriculum;
+			me.section = me.props.section; 
 			alert(JSON.stringify(me.curriculum));
 			// me.props.
 			return {
@@ -15,7 +16,7 @@ try {
 		},	
 		componentDidMount:function() {
 			var me = this, code = '';
-			me.setState({section:me.props.parent.state.section.track});
+			me.setState({section:me.section.track});
 			var p_video = $('#preview_video')[0];
 			if (p_video) {
 				p_video.ontimeupdate = function() {
