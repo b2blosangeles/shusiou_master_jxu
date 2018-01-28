@@ -6,6 +6,7 @@ try {
 			me.curriculum = me.props.curriculum;
 			me.section = me.props.section; 
 			alert(JSON.stringify(me.curriculum));
+			alert(JSON.stringify(me.section));
 			// me.props.
 			return {
 				preview_time:0,
