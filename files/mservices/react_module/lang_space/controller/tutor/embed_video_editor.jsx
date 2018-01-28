@@ -29,11 +29,12 @@ try {
 			var vurl = 'http://' + IP + '/api/video/play_stream.api?type=video&vid=' +
 			    me.curriculum.vid + '&server=' +  me.curriculum.server_ip;
 			console.log(vurl);
+			/*
 			if (me.props.params['opt'] == 'new') {
 				code = me.props.params['id'];
 				me.setState({vid:code});
 				p_video.src =  vurl;
-			} else {
+			} else {*/
 				var _itv = setInterval(
 					function() {
 						if (me.curriculum.vid) {
@@ -53,7 +54,7 @@ try {
 						}
 					}
 				,100);		
-			}
+			// }
 		},
 		clickTime:function(v) {
 			var me = this;
