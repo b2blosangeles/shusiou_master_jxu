@@ -7,7 +7,7 @@ try {
 				scriptList:[],
 				scriptListFilter:{},
 				script_id:0,
-				data:{},
+				data:{'$section':{}},
 				c_tpl:{}
 			};
 		},
@@ -87,7 +87,6 @@ try {
 		},
 		popupEditVideo: function(params, section) {
 			var me = this;
-			if (!section) section = {};
 			var id = new Date().getTime();
 			let curriculum = me.props.parent.state.curriculum;
 			me.setState({ModalPlus:{type:'popup',  hold:0,
