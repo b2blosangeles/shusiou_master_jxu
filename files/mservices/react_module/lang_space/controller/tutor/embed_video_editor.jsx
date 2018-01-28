@@ -82,7 +82,7 @@ try {
 			
 			for (var i=0; i < n; i++) X[X.length] = '';
 			let video_length = me.curriculum.video_length, // sections = me.props.parent.state.sections;
-			sections = me.curriculum..scrip;
+			sections = me.curriculum.script;
 			alert(JSON.stringify(sections));
 			// var video_length = me.props.parent.state.video.length, sections = me.props.parent.state.sections;
 			
