@@ -189,9 +189,8 @@ try {
 								<span>
 									{(function() {
 										return (<span dangerouslySetInnerHTML=
-										{{__html: 'Start: ' + me.props.parent.toHHMMSS(me.props.parent.state.section.track.s) + 
-											' To:' + me.props.parent.toHHMMSS(me.props.parent.state.section.track.s + 
-												me.props.parent.state.section.track.t)}}
+										{{__html: 'Start: ' + me.props.parent.toHHMMSS(me.state.data['$section'].s) + 
+										' To:' + me.props.parent.toHHMMSS(me.state.data['$section'].s + me.state.data['$section'].t)}}
 										/>)
 									})()}
 									me.props.parent.state.section	
