@@ -181,7 +181,7 @@ try {
 			n = (n > MAX)?MAX:n;	
 			var s =  parseFloat(me.state.section.s) + parseFloat(ds); t = s + parseFloat(me.state.section.t) + parseFloat(dt);
 			for (var j = 0; j < sections.length; j++) {
-				if (sections[j].id == me.props.parent.state.section.id) continue;
+				if (sections[j].id == me.section.id) continue;
 				for (var d = s; d < t; d+=0.5) {
 					if (d >= sections[j].track.s &&  d < (sections[j].track.s + sections[j].track.t)) {
 						return false;
