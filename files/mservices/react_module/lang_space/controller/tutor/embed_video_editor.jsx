@@ -99,7 +99,7 @@ try {
 				{
 					X.map(function(x, idx) {
 						if (idx >= Math.round(n * me.state.section.s / video_length ) && 
-						    	idx < Math.round(n * (me.state.section.s +me.state.section.t) / me.props.parent.state.video.length)) {
+						    	idx < Math.round(n * (me.state.section.s +me.state.section.t) / video_length)) {
 							return (<td width="1" style={{'background-color':'red'}}></td>)
 						}	
 						for (var j = 0; j < sections.length; j++) {
