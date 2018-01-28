@@ -89,13 +89,14 @@ try {
 			var me = this;
 			var id = new Date().getTime();
 			let curriculum = me.props.parent.state.curriculum;
+			let section = me.props.parent.state.section;
 			alert(JSON.stringify(me.props.parent.state.section));
 			if (track == 'new') {
 				me.setState({section:{track:{}}}, function() {
 					me.setState({ModalPlus:{type:'popup',  hold:0,
 						box_style:{top:'28px'},
 						title: (<span>Select video section</span>),
-						message: (<Embed_video_editor parent={me} curriculum={curriculum} section={me.props.parent.state.section} params={params} popid={new Date().getTime()} />),
+						message: (<Embed_video_editor parent={me} curriculum={curriculum} section={section} params={params} popid={new Date().getTime()} />),
 						header:false,
 						footer:(<span/>)
 					}});					
@@ -106,7 +107,7 @@ try {
 			me.setState({ModalPlus:{type:'popup',  hold:0,
 				box_style:{top:'28px'},
 				title: (<span>Video Editor</span>),
-				message: (<Embed_video_editor parent={me} curriculum={curriculum} section={me.props.parent.state.section}  params={params} popid={new Date().getTime()} />),
+				message: (<Embed_video_editor parent={me} curriculum={curriculum} section={section}  params={params} popid={new Date().getTime()} />),
 				header:false,
 				footer:(<span/>)
 			}});			
