@@ -88,6 +88,7 @@ try {
 		popupEditVideo: function(params, track) {
 			var me = this;
 			var id = new Date().getTime();
+			alert(JSON.stringify(params));
 			let curriculum = me.props.parent.state.curriculum;
 			let section = me.props.parent.state.section;
 			if (track == 'new') {
