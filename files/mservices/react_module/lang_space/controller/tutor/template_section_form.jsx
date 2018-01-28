@@ -90,7 +90,6 @@ try {
 			var id = new Date().getTime();
 			let curriculum = me.props.parent.state.curriculum;
 			let section = me.props.parent.state.section;
-			alert(JSON.stringify(me.props.parent.state.section));
 			if (track == 'new') {
 				me.setState({section:{track:{}}}, function() {
 					me.setState({ModalPlus:{type:'popup',  hold:0,
@@ -151,7 +150,6 @@ try {
 		},
 		closePopup:function() {
 			var me = this;
-			alert(1);
 			me.setState({ModalPlus:'cancel'});			
 			return true;
 		},		
