@@ -173,7 +173,7 @@ try {
 		},		
 		
 		changeAble:function(ds, dt) {
-			// return true;
+			return true;
 			var me = this;
 			var n = me.state.video_bar_width, X = [];
 			let sections = me.curriculum.script;
