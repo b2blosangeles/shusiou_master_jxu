@@ -28,33 +28,25 @@ try {
 		//	var vurl =  shusiou_config.api_server + '/api/video/play_stream.api?type=video&vid='+me.props.parent.state.curriculum.vid;
 			var vurl = 'http://' + IP + '/api/video/play_stream.api?type=video&vid=' +
 			    me.curriculum.vid + '&server=' +  me.curriculum.server_ip;
-			console.log(vurl);
-			/*
-			if (me.props.params['opt'] == 'new') {
-				code = me.props.params['id'];
-				me.setState({vid:code});
-				p_video.src =  vurl;
-			} else {*/
-				var _itv = setInterval(
-					function() {
-						if (me.curriculum.vid) {
-							clearInterval(_itv);
-							me.setState({vid:me.curriculum.vid});
-							p_video.src =  vurl;
-							setTimeout(
-								function() {
-									
-									me.setState({video_bar_width:Math.round($('#video_bar').width())},
-										function() {
-											
-										}	    
-									);
-								}, 1000	
-							);		
-						}
+			var _itv = setInterval(
+				function() {
+					if (me.curriculum.vid) {
+						clearInterval(_itv);
+						me.setState({vid:me.curriculum.vid});
+						p_video.src =  vurl;
+						setTimeout(
+							function() {
+
+								me.setState({video_bar_width:Math.round($('#video_bar').width())},
+									function() {
+
+									}	    
+								);
+							}, 1000	
+						);		
 					}
-				,100);		
-			// }
+				}
+			,100);
 		},
 		clickTime:function(v) {
 			var me = this;
