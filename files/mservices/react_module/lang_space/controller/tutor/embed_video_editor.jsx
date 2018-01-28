@@ -82,7 +82,8 @@ try {
 			
 			for (var i=0; i < n; i++) X[X.length] = '';
 			console.log(me.curriculum.video_length);
-			var video_length = me.props.parent.state.video.length, sections = me.props.parent.state.sections;
+			let video_length = me.curriculum.video_length, sections = me.props.parent.state.sections;
+			// var video_length = me.props.parent.state.video.length, sections = me.props.parent.state.sections;
 			
 			return (
 				<table id="video_bar" width="100%" height="16" style={{'border':'1px solid #ddd'}}><tr>
