@@ -164,6 +164,7 @@ try {
 		},		
 		
 		changeAble:function(ds, dt) {
+			return true;
 			var me = this;
 			var n = me.state.video_bar_width, X = [];
 			var MAX = 1000;
