@@ -127,7 +127,7 @@ try {
 				me.setState({section:me.section.track});
 			}
 		},
-		sendTrack: function(p) {
+		sendTrack: function() {
 			var me = this;
 			var v = me.section;
 			var c_video = $('#preview_clip_video')[0];
@@ -250,7 +250,7 @@ try {
 
 								<button type="button" className="btn btn-warning video_editor_button" 
 									style={(me.state.section.t)?{display:''}:{display:'none'}}
-									onClick={me.sendTrack.bind(me, me.props.params['id'])}>
+									onClick={me.sendTrack.bind(me)}>
 									Accept clip
 								</button>								
 							</td>
