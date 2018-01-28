@@ -128,7 +128,7 @@ try {
 		},
 		sendTrack: function(p) {
 			var me = this;
-			var v = me.props.parent.state.section;
+			var v = me.section;
 			var c_video = $('#preview_clip_video')[0];
 			var p_video = $('#preview_video')[0];
 			if (c_video) c_video.pause();
