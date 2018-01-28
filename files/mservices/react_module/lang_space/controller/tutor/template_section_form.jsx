@@ -206,8 +206,7 @@ try {
 											' To:' + me.props.parent.toHHMMSS(me.props.parent.state.section.track.s + 
 												me.props.parent.state.section.track.t)}}
 										/>)
-									})()}	
-									me.props.parent.popupEditVideo.
+									})()}
 									<button className="btn btn-info btn-xs" 
 										onClick={me.popupEditVideo.bind(me, me.props.params, me.props.parent.state.section.track)}>
 									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
