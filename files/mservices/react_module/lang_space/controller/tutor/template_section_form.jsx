@@ -87,6 +87,7 @@ try {
 		},
 		popupEditVideo: function(params, section) {
 			var me = this;
+			if (!section) section = {};
 			var id = new Date().getTime();
 			let curriculum = me.props.parent.state.curriculum;
 			me.setState({ModalPlus:{type:'popup',  hold:0,
