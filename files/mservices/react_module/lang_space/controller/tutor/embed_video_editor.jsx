@@ -5,8 +5,6 @@ try {
 			// me.curriculum = me.props.parent.state.curriculum;
 			me.curriculum = me.props.curriculum;
 			me.section = me.props.section; 
-			alert(JSON.stringify(me.curriculum));
-			alert(JSON.stringify(me.section));
 			// me.props.
 			return {
 				preview_time:0,
@@ -83,7 +81,8 @@ try {
 			n = (n > MAX)?MAX:n;
 			
 			for (var i=0; i < n; i++) X[X.length] = '';
-			let video_length = me.curriculum.video_length, sections = me.props.parent.state.sections;
+			let video_length = me.curriculum.video_length, // sections = me.props.parent.state.sections;
+			sections = me.curriculum..scrip;
 			alert(JSON.stringify(sections));
 			// var video_length = me.props.parent.state.video.length, sections = me.props.parent.state.sections;
 			
