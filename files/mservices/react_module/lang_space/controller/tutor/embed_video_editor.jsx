@@ -81,8 +81,8 @@ try {
 			n = (n > MAX)?MAX:n;
 			
 			for (var i=0; i < n; i++) X[X.length] = '';
-			console.log(me.curriculum.video_length);
 			let video_length = me.curriculum.video_length, sections = me.props.parent.state.sections;
+			alert(JSON.stringify(sections));
 			// var video_length = me.props.parent.state.video.length, sections = me.props.parent.state.sections;
 			
 			return (
