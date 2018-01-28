@@ -4,6 +4,7 @@ try {
 			var me = this;
 			// me.curriculum = me.props.parent.state.curriculum;
 			me.curriculum = me.props.curriculum;
+			alert(JSON.stringify(me.curriculum));
 			// me.props.
 			return {
 				preview_time:0,
