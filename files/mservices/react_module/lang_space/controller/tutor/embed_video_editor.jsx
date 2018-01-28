@@ -133,8 +133,8 @@ try {
 			var p_video = $('#preview_video')[0];
 			if (c_video) c_video.pause();
 			if (p_video) p_video.pause();
-			// v = {s:me.state.section.s, t:me.state.section.t};
-			me.props.parent.setState({section:{s:me.state.section.s, t:me.state.section.t}}, 
+			v = {s:me.state.section.s, t:me.state.section.t};
+			me.props.parent.setState({section:v}, 
 				function() {
 					me.props.parent.closePopup();	
 				});
