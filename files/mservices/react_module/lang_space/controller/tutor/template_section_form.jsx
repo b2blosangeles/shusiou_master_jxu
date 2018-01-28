@@ -8,7 +8,6 @@ try {
 				scriptListFilter:{},
 				script_id:0,
 				data:{'$section':{}},
-				
 				c_tpl:{}
 			};
 		},
