@@ -85,12 +85,11 @@ try {
 				// alert(me.props.section.id);
 			} else me.setState({c_tpl:me.props.section.o});
 		},
-		popupEditVideo: function(params, track) {
+		popupEditVideo: function(params, section) {
 			var me = this;
 			var id = new Date().getTime();
-			alert(JSON.stringify(track));
 			let curriculum = me.props.parent.state.curriculum;
-			let section = me.props.parent.state.section;
+		//	let section = me.props.parent.state.section;
 			if (track == 'new') {
 				me.setState({section:{track:{}}}, function() {
 					me.setState({ModalPlus:{type:'popup',  hold:0,
