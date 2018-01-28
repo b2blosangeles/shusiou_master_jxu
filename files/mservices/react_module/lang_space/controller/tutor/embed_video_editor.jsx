@@ -74,6 +74,14 @@ try {
 			});
 
 		},
+		toHHMMSS:function(v, noms) {
+			if (isNaN(v)) return v;
+		  	var h = Math.floor(v / 3600),m = ("00" + Math.floor((v % 3600) / 60)).slice(-2), 
+		     		s = ("00" + (Math.floor(v) % 3600) % 60).slice(-2), ms = 1000 * (v - Math.floor(v));
+		     	if (!noms) { ms = (ms)?'&#189;':''; }
+		     	else ms = '';			
+		  	return h + ':' + m + ':' + s + ' ' + ms;
+		},		
 		videoBar:function() {
 			var me = this;
 			var n = me.state.video_bar_width, X = [];
@@ -227,8 +235,8 @@ try {
 								</video>
 								Movie clip :<span 
 								style={(me.state.section.s !== null)?{display:''}:{display:'none'}}		     
-								dangerouslySetInnerHTML={{__html: (me.state.section.t)?(me.props.parent.toHHMMSS(me.state.section.s) + 
-								' - ' + me.props.parent.toHHMMSS(me.state.section.s + me.state.section.t)):''}} />
+								dangerouslySetInnerHTML={{__html: (me.state.section.t)?(me.toHHMMSS(me.state.section.s) + 
+								' - ' + me.toHHMMSS(me.state.section.s + me.state.section.t)):''}} />
 
 								<button type="button" className="btn btn-default btn-xs video_editor_button" 
 									style={(me.state.section.t)?{display:''}:{display:'none'}}
