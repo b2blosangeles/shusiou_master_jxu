@@ -176,10 +176,10 @@ try {
 			// return true;
 			var me = this;
 			var n = me.state.video_bar_width, X = [];
+			let sections = me.curriculum.script;
 			var MAX = 1000;
 			n = (n > MAX)?MAX:n;	
 			var s =  parseFloat(me.state.section.s) + parseFloat(ds); t = s + parseFloat(me.state.section.t) + parseFloat(dt);
-			var sections = me.props.parent.state.sections;
 			for (var j = 0; j < sections.length; j++) {
 				if (sections[j].id == me.props.parent.state.section.id) continue;
 				for (var d = s; d < t; d+=0.5) {
