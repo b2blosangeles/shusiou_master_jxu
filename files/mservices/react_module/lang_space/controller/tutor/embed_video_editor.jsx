@@ -8,13 +8,14 @@ try {
 			me.section = me.props.section; 
 			return {
 				preview_time:0,
-				section:me.section,
+				section:{},
 				video:{},
 				video_bar_width:0
 			};
 		},	
 		componentDidMount:function() {
 			var me = this, code = '';
+			alert(11);
 			me.setState({section:me.section});
 			var p_video = $('#preview_video')[0];
 			if (p_video) {
