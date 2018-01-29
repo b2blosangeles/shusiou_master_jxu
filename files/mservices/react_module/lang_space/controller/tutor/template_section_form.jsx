@@ -31,7 +31,6 @@ try {
 			if (me.state.script_id  !== prevState.script_id) {
 				me.loadScriptById(me.state.script_id);
 			}
-		
 			if (me.props.section_id !== prePropos.section_id) {
 				me.setTpl({});
 			}
@@ -99,7 +98,6 @@ try {
 			me.setState({ModalPlus:{type:'popup',  hold:0,
 				box_style:{top:'28px'},
 				title: (<span>Video Editor</span>),
-				// message: (<Embed_video_editor parent={me} curriculum={curriculum} section={section}  params={params} popid={new Date().getTime()} />),
 				message: (<Embed_video_editor parent={me} video={video} sections={sections} section={section}  popid={id} />),
 				header:false,
 				footer:(<span/>)
