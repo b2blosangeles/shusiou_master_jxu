@@ -130,7 +130,7 @@ try {
 		textField: function(idx) {
 			var me = this;
 			return (<input className="form-control inpit-white-bg" 
-				placeholder="{idx}" 
+				placeholder={'input text ' + idx} 
 				value={me.state.data[idx]}  onChange={me.handleChange.bind(me, idx)}  />)	       
 		},
 		acceptSection: function() {
