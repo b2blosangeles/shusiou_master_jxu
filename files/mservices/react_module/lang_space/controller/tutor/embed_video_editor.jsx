@@ -14,7 +14,6 @@ try {
 		},	
 		componentDidMount:function() {
 			var me = this, code = '';
-		//	me.setState({section:me.section});
 			var p_video = $('#preview_video')[0];
 			if (p_video) {
 				p_video.ontimeupdate = function() {
@@ -112,10 +111,8 @@ try {
 		componentDidUpdate:function(prePropos, preState) {
 			var me = this;
 			if (prePropos.popid != me.props.popid) {
-				// alert(18);
 				me.sections = me.props.sections;
 				me.setState({section:me.section});
-				// me.setState({section:me.section.track});
 			}
 		},
 		sendTrack: function() {
@@ -129,11 +126,13 @@ try {
 			v.t = me.state.section.t;
 			// v = {s:me.state.section.s, t:me.state.section.t};
 			me.props.parent.closePopup();	
+			/*
 			return true;
 			me.props.parent.setState({section:v}, 
 				function() {
 					me.props.parent.closePopup();	
 				});
+			*/	
 		},
 		showSectionImages: function() {
 			var me = this, A = [];
