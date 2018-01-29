@@ -5,7 +5,7 @@ let code = req.body.code || req.param('code'),
     lang = req.body.lang || req.param('lang') || 'en', 
     group = req.body.group,
     cmd = req.body.cmd || req.param('cmd'),
-    patt = ['track','description', 'answer'],
+    patt = ['track','answer', 'description'],
     patt_result = [];
 
 var getValue = function(result0) {
