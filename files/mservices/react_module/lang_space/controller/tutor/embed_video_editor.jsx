@@ -59,9 +59,9 @@ try {
 			
 			var p_video = $('#preview_video')[0];
 			var c_video = $('#preview_clip_video')[0];
-			var ips = me.curriculum.node_ip;
+			var ips = me.video.node_ip;
 			var IP = ips[Math.floor(Math.random() * ips.length)];
-			p_video.currentTime = Math.round(me.curriculum.video_length * v / n);
+			p_video.currentTime = Math.round(me.video.video_length * v / n);
 			me.setState({section:{s:p_video.currentTime, t:10}}, function() {
 				p_video.pause();
 				c_video.pause();
@@ -84,8 +84,8 @@ try {
 			n = (n > MAX)?MAX:n;
 			
 			for (var i=0; i < n; i++) X[X.length] = '';
-			let video_length = me.curriculum.video_length, // sections = me.props.parent.state.sections;
-			sections = me.curriculum.script;
+			let video_length = me.video.video_length, // sections = me.props.parent.state.sections;
+			sections = me.video.script;
 		//	alert(JSON.stringify(sections));
 			// var video_length = me.props.parent.state.video.length, sections = me.props.parent.state.sections;
 			
@@ -142,15 +142,15 @@ try {
 			for (var i = 0; i < 2 * me.state.section.t; i++) {
 				A[A.length] = me.state.section.s + i * 0.5;
 			}
-			var ips = me.curriculum.node_ip;
+			var ips = me.video.node_ip;
 			
 			return A.map(function(a,idx){
 				//var v = shusiou_config.api_server + '/api/video/play_stream.api?type=image&vid=' + 
 				//    me.props.parent.state.curriculum.vid +'&w=90&s=' + a;
 				var IP = ips[Math.floor(Math.random() * ips.length)];
 				var v = 'http://' + IP + '/api/video/play_stream.api?type=image&vid=' + 
-				    me.curriculum.vid +'&w=90&s=' + a + '&server=' + 
-				    me.curriculum.server_ip;
+				    me.video.vid +'&w=90&s=' + a + '&server=' + 
+				    me.video.server_ip;
 				
 				if (idx < 8 || idx > A.length - 8) return (<img src={v} width="90" style={{border:'1px solid red'}} />)
 				else return (<span></span>)
@@ -160,7 +160,7 @@ try {
 		
 		playSection:function() {
 			var me = this, v =  shusiou_config.api_server + '/api/video/play_stream.api?type=section&vid='+
-			    me.curriculum.vid + '&s=' + me.state.section.s + '&l=' + me.state.section.t;
+			    me.video.vid + '&s=' + me.state.section.s + '&l=' + me.state.section.t;
 			$('#preview_clip_video')[0].src = v;
 			$('#preview_clip_video')[0].play();		
 		},
@@ -174,14 +174,13 @@ try {
 			return true;
 			var me = this;
 			var n = me.state.video_bar_width, X = [];
-			let sections = me.curriculum.script;
 			var MAX = 1000;
 			n = (n > MAX)?MAX:n;	
 			var s =  parseFloat(me.state.section.s) + parseFloat(ds); t = s + parseFloat(me.state.section.t) + parseFloat(dt);
-			for (var j = 0; j < sections.length; j++) {
-				if (sections[j].id == me.section.id) continue;
+			for (var j = 0; j < me.sections.length; j++) {
+				if (me.sections[j].id == me.section.id) continue;
 				for (var d = s; d < t; d+=0.5) {
-					if (d >= sections[j].track.s &&  d < (sections[j].track.s + sections[j].track.t)) {
+					if (d >= me.sections[j].track.s &&  d < (sections[j].track.s + me.sections[j].track.t)) {
 						return false;
 					}
 				}
@@ -216,7 +215,7 @@ try {
 		},	
 		render: function() {
 			var me = this;
-			if (me.curriculum.curriculum_id) return (
+			return (
 				<div className="container-fluid">
 					<table width="100%" className="section_template_frame">	
 					<tr>
@@ -325,31 +324,7 @@ try {
 						{/*me.showSectionImages()*/}
 					</p>
 					{/*<HelpPopup url={'/help/curriculum.html'}/>*/}
-				</div>	
-
-				)
-			else return (
-				<div className="container-fluid">
-					<span className="overlayer_box_body"
-						dangerouslySetInnerHTML={{__html: ''}} />
-					<span style={{'margin':'0px', 'padding':'0px'}}>
-						<video id="preview_video" width="100%" controls>
-							<source src={me.state.video_url}  type="video/mp4"/>
-						</video>									
-					</span>
-
-					<address>
-						<h4>{me.props.video.title}</h4>
-						<strang style={{color:'#ffcc00'}}>Length</strang> &#187; {me.props.parent.toHHMMSS(me.props.video.length, true)}<br/>
-						<strang style={{color:'#ffcc00'}}>Size</strang> &#187; {me.bytesToSize(me.props.video.size)}<br/>
-						<strang style={{color:'#ffcc00'}}>Video Original</strang> &#187; {me.props.video.source}<br/>
-					</address>
-
-					<ModalPlus parent={me} />	
-				</div>	
-	
-			)
-		}
+				</div>)
 	});	
 	
 } catch (err) {
