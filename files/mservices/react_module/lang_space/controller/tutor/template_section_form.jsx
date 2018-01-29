@@ -7,7 +7,7 @@ try {
 				scriptList:[],
 				scriptListFilter:{},
 				script_id:0,
-				data:{},
+				data:{'$track':{}},
 				c_tpl:{}
 			};
 		},
@@ -65,6 +65,7 @@ try {
 			*/
 			me.setState({data:v});
 		},
+		
 		/*
 		handleActive(rec) {
 			var me = this;
@@ -104,7 +105,6 @@ try {
 			}});			
 			return true;
 		},	
-		
 		setScriptListFilter(p) {
 			let me = this, o = me.state.scriptListFilter;
 			if (p.id) {
@@ -189,17 +189,17 @@ try {
 					<span>		
 					{me.state.c_tpl.variables.map(function(v) {
 						switch(v) {
-							case '$section':
+							case '$track':
 								return (
 								<span>
 									{(function() {
 										return (<span dangerouslySetInnerHTML=
-										{{__html: 'Start: ' + me.props.parent.toHHMMSS(me.state.data['$section'].s) + 
-										' To:' + me.props.parent.toHHMMSS(me.state.data['$section'].s + me.state.data['$section'].t)}}
+										{{__html: 'Start: ' + me.props.parent.toHHMMSS(me.state.data['$track'].s) + 
+										' To:' + me.props.parent.toHHMMSS(me.state.data['$track'].s + me.state.data['$track'].t)}}
 										/>)
 									})()}
 									<button className="btn btn-info btn-xs" 
-										onClick={me.popupEditVideo.bind(me, me.state.data['$section'])}>
+										onClick={me.popupEditVideo.bind(me, me.state.data['$track'])}>
 									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
 									</button>										
 								</span>
