@@ -2,22 +2,19 @@ try {
 	var Embed_video_editor =  React.createClass({
 		getInitialState: function() {
 			var me = this;
-			alert(10);
 			me.video = me.props.video;
 			me.sections = me.props.sections;
-			// me.curriculum = me.props.curriculum;
 			me.section = me.props.section; 
 			return {
 				preview_time:0,
-				section:{},
+				section:me.props.section,
 				video:{},
 				video_bar_width:0
 			};
 		},	
 		componentDidMount:function() {
 			var me = this, code = '';
-			alert(11);
-			me.setState({section:me.section});
+		//	me.setState({section:me.section});
 			var p_video = $('#preview_video')[0];
 			if (p_video) {
 				p_video.ontimeupdate = function() {
