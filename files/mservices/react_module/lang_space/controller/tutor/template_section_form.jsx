@@ -7,7 +7,7 @@ try {
 				scriptList:[],
 				scriptListFilter:{},
 				script_id:0,
-				data:{'$section':{}},
+				data:{'$section':{id:'new'}},
 				c_tpl:{}
 			};
 		},
