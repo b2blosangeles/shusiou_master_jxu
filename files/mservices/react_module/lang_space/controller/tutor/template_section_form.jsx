@@ -189,7 +189,7 @@ try {
 					<span>		
 					{me.state.c_tpl.variables.map(function(v) {
 						switch(v) {
-							case '$track':
+							case 'track':
 								return (
 								<span>
 									{(function() {
@@ -205,7 +205,7 @@ try {
 								</span>
 								);
 								break;								
-							case '$answer':
+							case 'answer':
 								return me.textField(v);
 								break;
 							 default:
