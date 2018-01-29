@@ -129,11 +129,9 @@ try {
 		},
 		textField: function(idx) {
 			var me = this;
-			return (
-				<input className="form-control inpit-white-bg" 
-				placeholder="Input text likes The next paragraph is telling sometning" 
-				value={me.state.data[idx]}  onChange={me.handleChange.bind(me, idx)}  />			
-			)	       
+			return (<input className="form-control inpit-white-bg" 
+				placeholder="{idx}" 
+				value={me.state.data[idx]}  onChange={me.handleChange.bind(me, idx)}  />)	       
 		},
 		acceptSection: function() {
 			let me = this;
@@ -206,6 +204,7 @@ try {
 								);
 								break;								
 							case 'answer':
+							case 'description':
 								return me.textField(v);
 								break;
 							 default:
