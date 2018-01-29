@@ -4,10 +4,10 @@ try {
 			var me = this;
 			me.video = me.props.video;
 			me.sections = me.props.sections;
-			me.section = me.props.section; 
+			me.section = me.props.track; 
 			return {
 				preview_time:0,
-				section:me.props.section,
+				section:me.props.track,
 				video:{},
 				video_bar_width:0
 			};
