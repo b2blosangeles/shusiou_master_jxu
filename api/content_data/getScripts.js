@@ -6,7 +6,7 @@ let code = req.body.code || req.param('code'),
     group = req.body.group,
     cmd = req.body.cmd || req.param('cmd'),
     // patt = /(\$answer|\$track|\$description)/g; 
-    patt = ['\$track', '\$answer','\$description'],
+    patt = ['track', 'answer','description'],
     patt_result = [];
 
 var getValue = function(result0) {
