@@ -8,7 +8,7 @@ try {
 			me.section = me.props.section; 
 			return {
 				preview_time:0,
-				section:{},
+				section:me.section,
 				video:{},
 				video_bar_width:0
 			};
