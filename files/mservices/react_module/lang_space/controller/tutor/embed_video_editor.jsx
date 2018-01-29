@@ -3,6 +3,8 @@ try {
 		getInitialState: function() {
 			var me = this;
 			// me.curriculum = me.props.parent.state.curriculum;
+			me.video = me.props.video;
+			me.sections = me.props.sections;
 			me.curriculum = me.props.curriculum;
 			me.section = me.props.section; 
 			// me.props.
@@ -23,16 +25,16 @@ try {
 					me.setState({preview_time:v})
 				};
 			}
-			var ips = me.curriculum.node_ip;
+			var ips = me.video.node_ip;
 			var IP = ips[Math.floor(Math.random() * ips.length)];
 		//	var vurl =  shusiou_config.api_server + '/api/video/play_stream.api?type=video&vid='+me.props.parent.state.curriculum.vid;
 			var vurl = 'http://' + IP + '/api/video/play_stream.api?type=video&vid=' +
-			    me.curriculum.vid + '&server=' +  me.curriculum.server_ip;
+			    me.video.vid + '&server=' +  me.video.server_ip;
 			var _itv = setInterval(
 				function() {
-					if (me.curriculum.vid) {
+					if (me.video.vid) {
 						clearInterval(_itv);
-						me.setState({vid:me.curriculum.vid});
+						me.setState({vid:me.video.vid});
 						p_video.src =  vurl;
 						setTimeout(
 							function() {
