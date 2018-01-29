@@ -85,10 +85,7 @@ try {
 			
 			for (var i=0; i < n; i++) X[X.length] = '';
 			let video_length = me.video.video_length, // sections = me.props.parent.state.sections;
-			sections = me.video.script;
-		//	alert(JSON.stringify(sections));
-			// var video_length = me.props.parent.state.video.length, sections = me.props.parent.state.sections;
-			
+
 			return (
 				<table id="video_bar" width="100%" height="16" style={{'border':'1px solid #ddd'}}><tr>
 				{
@@ -97,10 +94,10 @@ try {
 						    	idx < Math.round(n * (me.state.section.s +me.state.section.t) / video_length)) {
 							return (<td width="1" style={{'background-color':'red'}}></td>)
 						}	
-						for (var j = 0; j < sections.length; j++) {
-							if (sections[j].id == me.section.id) continue;
-							if (idx >= Math.round(n * sections[j].track.s / video_length ) && 
-							    idx < Math.round((n * sections[j].track.s + n * sections[j].track.t) / video_length)) {
+						for (var j = 0; j < me.sections.length; j++) {
+							if (me.sections[j].id == me.section.id) continue;
+							if (idx >= Math.round(n * me.sections[j].track.s / video_length ) && 
+							    idx < Math.round((n * me.sections[j].track.s + n * me.sections[j].track.t) / video_length)) {
 								return (<td width="1" style={{'background-color':'lightgreen'}}></td>)
 							}
 						}
@@ -180,7 +177,7 @@ try {
 			for (var j = 0; j < me.sections.length; j++) {
 				if (me.sections[j].id == me.section.id) continue;
 				for (var d = s; d < t; d+=0.5) {
-					if (d >= me.sections[j].track.s &&  d < (sections[j].track.s + me.sections[j].track.t)) {
+					if (d >= me.sections[j].track.s &&  d < (me.sections[j].track.s + me.sections[j].track.t)) {
 						return false;
 					}
 				}
