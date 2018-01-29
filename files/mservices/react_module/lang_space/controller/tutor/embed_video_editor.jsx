@@ -84,7 +84,7 @@ try {
 			n = (n > MAX)?MAX:n;
 			
 			for (var i=0; i < n; i++) X[X.length] = '';
-			let video_length = me.video.video_length, // sections = me.props.parent.state.sections;
+			let video_length = me.video.video_length;
 
 			return (
 				<table id="video_bar" width="100%" height="16" style={{'border':'1px solid #ddd'}}><tr>
