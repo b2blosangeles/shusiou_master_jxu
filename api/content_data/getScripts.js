@@ -68,7 +68,7 @@ _f['contents'] = function(cbk) {
                         let c = contents.replace(/(\n|\r)+$/, '');
                         for (var j = 0; j < patt.length; j++) {
                             var patt_j = new RegExp(patt[j]);
-                            if (patt_j.test(c) {
+                            if (patt_j.test(c)) {
                                 patt_result[patt_result.length] = patt[j];
                             }
                         }
