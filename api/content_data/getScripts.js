@@ -5,8 +5,10 @@ let code = req.body.code || req.param('code'),
     lang = req.body.lang || req.param('lang') || 'en', 
     group = req.body.group,
     cmd = req.body.cmd || req.param('cmd'),
-    patt = /(\$answer|\$track|\$description)/g; 
-        
+    // patt = /(\$answer|\$track|\$description)/g; 
+    patt = ['$track', '$answer','$description'],
+    patt_result = [];
+
 var getValue = function(result0) {
    let result = {}, err = null, langs = [], list = [];
    for(o in result0) {
@@ -64,8 +66,15 @@ _f['contents'] = function(cbk) {
                     var v = {};
                     try {
                         let c = contents.replace(/(\n|\r)+$/, '');
+                        for (var j = 0; j < patt.length; j++) {
+                            var patt_j = new RegExp(patt[j]);
+                            if (patt_j.test(c) {
+                                patt_result[patt_result.length] = patt[j];
+                            }
+                        }
                         v = JSON.parse(c);
-                        v.variables = c.match(patt);
+                        v.variables = patt_result;
+                        // v.variables = c.match(patt);
                         if (v.variables) {
                             v.variables = v.variables.filter((v, i, a) => a.indexOf(v) === i);
                         }    
