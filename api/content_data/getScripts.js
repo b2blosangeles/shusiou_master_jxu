@@ -67,7 +67,7 @@ _f['contents'] = function(cbk) {
                     try {
                         let c = contents.replace(/(\n|\r)+$/, '');
                         for (var j = 0; j < patt.length; j++) {
-                            let dola_patt = '//$'+patt[j]+'/';
+                            let dola_patt = "/$"+patt[j];
                             var patt_j = new RegExp(dola_patt);
                             if (patt_j.test(c)) {
                                 patt_result[patt_result.length] = patt[j];
