@@ -318,7 +318,6 @@ try {
 					<p className="video_editor" style={me.hideNullSection()}>
 						{/*me.showSectionImages()*/}
 					</p>
-					{/*<HelpPopup url={'/help/curriculum.html'}/>*/}
 				</div>	
 
 				)
