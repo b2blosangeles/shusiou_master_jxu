@@ -115,8 +115,9 @@ try {
 		componentDidUpdate:function(prePropos, preState) {
 			var me = this;
 			if (prePropos.popid != me.props.popid) {
-				alert(18);
-				me.setState({section:me.section.track});
+				// alert(18);
+				me.sections = me.props.sections;
+				// me.setState({section:me.section.track});
 			}
 		},
 		sendTrack: function() {
