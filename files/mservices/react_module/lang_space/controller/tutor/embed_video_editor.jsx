@@ -126,6 +126,7 @@ try {
 			v.s = me.state.section.s;
 			v.t = me.state.section.t;
 			// v = {s:me.state.section.s, t:me.state.section.t};
+			return true;
 			me.props.parent.setState({section:v}, 
 				function() {
 					me.props.parent.closePopup();	
