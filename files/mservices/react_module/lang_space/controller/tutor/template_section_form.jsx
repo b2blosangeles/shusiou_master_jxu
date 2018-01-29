@@ -93,11 +93,13 @@ try {
 				nodes:me.props.parent.state.curriculum.node_ip,
 				video_length:me.props.parent.state.curriculum.video_length
 			};
+			let sections = me.props.parent.state.curriculum.script;
+			
 			me.setState({ModalPlus:{type:'popup',  hold:0,
 				box_style:{top:'28px'},
 				title: (<span>Video Editor</span>),
 				// message: (<Embed_video_editor parent={me} curriculum={curriculum} section={section}  params={params} popid={new Date().getTime()} />),
-				message: (<Embed_video_editor parent={me} curriculum={curriculum} section={section}  popid={id} />),
+				message: (<Embed_video_editor parent={me} video={video} sections={sections} curriculum={curriculum} section={section}  popid={id} />),
 				header:false,
 				footer:(<span/>)
 			}});			
