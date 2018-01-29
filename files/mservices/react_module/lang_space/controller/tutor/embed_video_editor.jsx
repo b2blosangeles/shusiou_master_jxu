@@ -215,7 +215,7 @@ try {
 		},	
 		render: function() {
 			var me = this;
-			return (
+			if (me.curriculum.curriculum_id) return (
 				<div className="container-fluid">
 					<table width="100%" className="section_template_frame">	
 					<tr>
@@ -324,7 +324,31 @@ try {
 						{/*me.showSectionImages()*/}
 					</p>
 					{/*<HelpPopup url={'/help/curriculum.html'}/>*/}
-				</div>)
+				</div>	
+
+				)
+			else return (
+				<div className="container-fluid">
+					<span className="overlayer_box_body"
+						dangerouslySetInnerHTML={{__html: ''}} />
+					<span style={{'margin':'0px', 'padding':'0px'}}>
+						<video id="preview_video" width="100%" controls>
+							<source src={me.state.video_url}  type="video/mp4"/>
+						</video>									
+					</span>
+
+					<address>
+						<h4>{me.props.video.title}</h4>
+						<strang style={{color:'#ffcc00'}}>Length</strang> &#187; {me.props.parent.toHHMMSS(me.props.video.length, true)}<br/>
+						<strang style={{color:'#ffcc00'}}>Size</strang> &#187; {me.bytesToSize(me.props.video.size)}<br/>
+						<strang style={{color:'#ffcc00'}}>Video Original</strang> &#187; {me.props.video.source}<br/>
+					</address>
+
+					<ModalPlus parent={me} />	
+				</div>	
+	
+			)
+		}
 	});	
 	
 } catch (err) {
