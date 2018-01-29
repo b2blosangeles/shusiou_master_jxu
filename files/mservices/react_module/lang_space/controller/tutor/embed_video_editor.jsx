@@ -117,6 +117,7 @@ try {
 			if (prePropos.popid != me.props.popid) {
 				// alert(18);
 				me.sections = me.props.sections;
+				me.setState({section:me.section});
 				// me.setState({section:me.section.track});
 			}
 		},
