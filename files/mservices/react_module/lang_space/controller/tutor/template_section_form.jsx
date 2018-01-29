@@ -86,8 +86,13 @@ try {
 			} else me.setState({c_tpl:me.props.section.o});
 		},
 		popupEditVideo: function(section) {
-			var me = this, id = new Date().getTime();
+			let me = this, id = new Date().getTime();
 			let curriculum = me.props.parent.state.curriculum;
+			let video = {
+				vid:me.props.parent.state.curriculum.vid,
+				nodes:me.props.parent.state.curriculum.node_ip,
+				video_length:me.props.parent.state.curriculum.video_length
+			};
 			me.setState({ModalPlus:{type:'popup',  hold:0,
 				box_style:{top:'28px'},
 				title: (<span>Video Editor</span>),
