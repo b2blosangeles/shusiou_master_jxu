@@ -31,15 +31,11 @@ try {
 						clearInterval(_itv);
 						me.setState({vid:me.video.vid});
 						p_video.src =  vurl;
-						setTimeout(
-							function() {
-
-								me.setState({video_bar_width:Math.round($('#video_bar').width())},
-									function() {
-
-									}	    
-								);
-							}, 1000	
+						setTimeout(function() {
+							me.setState({video_bar_width:Math.round($('#video_bar').width())},
+							function() {}	    
+							);
+						}, 1000	
 						);		
 					}
 				}
@@ -50,7 +46,6 @@ try {
 			var n = me.state.video_bar_width, X = [];
 			var MAX = 1000;
 			n = (n > MAX)?MAX:n;	
-			
 			var p_video = $('#preview_video')[0];
 			var c_video = $('#preview_clip_video')[0];
 			var ips = me.video.node_ip;
@@ -82,30 +77,26 @@ try {
 
 			return (
 				<table id="video_bar" width="100%" height="16" style={{'border':'1px solid #ddd'}}><tr>
-				{
-					X.map(function(x, idx) {
-						if (idx >= Math.round(n * me.state.track.s / video_length ) && 
-						    	idx < Math.round(n * (me.state.track.s +me.state.track.t) / video_length)) {
-							return (<td width="1" style={{'background-color':'red'}}></td>)
-						}	
-						for (var j = 0; j < me.sections.length; j++) {
-							if (me.sections[j].id == me.state.track.id) continue;
-							if (idx >= Math.round(n * me.sections[j].track.s / video_length ) && 
-							    idx < Math.round((n * me.sections[j].track.s + n * me.sections[j].track.t) / video_length)) {
-								return (<td width="1" style={{'background-color':'lightgreen'}}></td>)
-							}
+				{X.map(function(x, idx) {
+					if (idx >= Math.round(n * me.state.track.s / video_length ) && 
+						idx < Math.round(n * (me.state.track.s +me.state.track.t) / video_length)) {
+						return (<td width="1" style={{'background-color':'red'}}></td>)
+					}	
+					for (var j = 0; j < me.sections.length; j++) {
+						if (me.sections[j].id == me.state.track.id) continue;
+						if (idx >= Math.round(n * me.sections[j].track.s / video_length ) && 
+						    idx < Math.round((n * me.sections[j].track.s + n * me.sections[j].track.t) / video_length)) {
+							return (<td width="1" style={{'background-color':'lightgreen'}}></td>)
 						}
-						return (<td width="1" style={{'background-color':'lightyellow'}}
-							onClick={me.clickTime.bind(me,idx)} className="videoBar"
-							></td>)
-					})
-				}
+					}
+					return (<td width="1" style={{'background-color':'lightyellow'}}
+						onClick={me.clickTime.bind(me,idx)} className="videoBar"
+						></td>)
+				})}
 				<td width="*" style={{'background-color':'#ddd'}}></td>	
 				</tr></table>
 			);	
 		},
-		
-		
 		componentDidUpdate:function(prePropos, preState) {
 			var me = this;
 			if (prePropos.popid != me.props.popid) {
@@ -131,10 +122,7 @@ try {
 				A[A.length] = me.state.track.s + i * 0.5;
 			}
 			var ips = me.video.node_ip;
-			
 			return A.map(function(a,idx){
-				//var v = shusiou_config.api_server + '/api/video/play_stream.api?type=image&vid=' + 
-				//    me.props.parent.state.curriculum.vid +'&w=90&s=' + a;
 				var IP = ips[Math.floor(Math.random() * ips.length)];
 				var v = 'http://' + IP + '/api/video/play_stream.api?type=image&vid=' + 
 				    me.video.vid +'&w=90&s=' + a + '&server=' + 
