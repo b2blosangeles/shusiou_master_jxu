@@ -194,7 +194,7 @@ try {
 						switch(v) {
 							case 'track':
 								if (!me.state.data[v]) {
-								//	me.setStateData(v, {});
+									me.setStateData(v, {});
 								}	
 								return (
 								<span>
