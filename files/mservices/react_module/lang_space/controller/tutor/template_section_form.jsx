@@ -7,7 +7,7 @@ try {
 				scriptList:[],
 				scriptListFilter:{},
 				script_id:0,
-				data:{'track':{}},
+				data:{},
 				c_tpl:{}
 			};
 		},
@@ -49,7 +49,11 @@ try {
 				console.log('error');
 			});			
 		},
-		
+		setStateData(idx, data) {
+			var me = this, v = me.state.data;
+			v[idx] = data;
+			me.setState({data:v});
+		},
 		
 		handleChange(idx, event) {
 			var me = this, v = me.state.data;
@@ -189,6 +193,9 @@ try {
 					{me.state.c_tpl.variables.map(function(v) {
 						switch(v) {
 							case 'track':
+								if (!me.state.data[v]) {
+								//	me.setStateData(v, {});
+								}	
 								return (
 								<span>
 									{(function() {
