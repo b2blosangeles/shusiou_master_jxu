@@ -85,7 +85,7 @@ try {
 				// alert(me.props.section.id);
 			} else me.setState({c_tpl:me.props.section.o});
 		},
-		popupEditVideo: function(section) {
+		popupEditVideo: function(track) {
 			let me = this, id = new Date().getTime();
 			let curriculum = me.props.parent.state.curriculum;
 			let video = {
@@ -99,7 +99,7 @@ try {
 			me.setState({ModalPlus:{type:'popup',  hold:0,
 				box_style:{top:'28px'},
 				title: (<span>Video Editor</span>),
-				message: (<Embed_video_editor parent={me} video={video} sections={sections} section={section}  popid={new Date().getTime()} />),
+				message: (<Embed_video_editor parent={me} video={video} sections={sections} track={track}  popid={new Date().getTime()} />),
 				header:false,
 				footer:(<span/>)
 			}});			
