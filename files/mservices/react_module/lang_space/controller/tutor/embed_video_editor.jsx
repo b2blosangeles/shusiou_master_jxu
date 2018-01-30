@@ -47,7 +47,6 @@ try {
 		},
 		clickTime:function(v) {
 			var me = this;
-			
 			var n = me.state.video_bar_width, X = [];
 			var MAX = 1000;
 			n = (n > MAX)?MAX:n;	
@@ -194,10 +193,10 @@ try {
 		   return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
 		},		
 		hideNullSection: function() {
-			return (me.state.track.t == null)?{display:'none'}:{diaplay:''};
+			return (this.state.track.t == null)?{display:'none'}:{diaplay:''};
 		},
 		hideValueSection: function() {
-			return (me.state.track.t != null)?{display:'none'}:{diaplay:''};
+			return (this.state.track.t != null)?{display:'none'}:{diaplay:''};
 		},		
 		preCacheImage:function() {
 			var me = this;
