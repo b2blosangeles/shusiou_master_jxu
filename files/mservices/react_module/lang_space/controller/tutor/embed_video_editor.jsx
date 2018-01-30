@@ -117,7 +117,7 @@ try {
 		},
 		sendTrack: function() {
 			var me = this;
-			var v = me.section;
+			var v = me.state.section;
 			var c_video = $('#preview_clip_video')[0];
 			var p_video = $('#preview_video')[0];
 			if (c_video) c_video.pause();
