@@ -54,20 +54,11 @@ try {
 			v[idx] = data;
 			me.setState({data:v});
 		},
-		
 		handleChange(idx, event) {
-			var me = this, v = me.state.data;
-			
-			var v = me.state.data;
+			var me = this;
 			if (event.target.type == 'text') {
-				v[idx] = event.target.value;
+				me.setStateData(idx, event.target.value)
 			}
-			/*
-			if (event.target.type == 'checkbox') {
-				rec.sctive = event.target.checked;
-			} 
-			*/
-			me.setState({data:v});
 		},
 		
 		/*
@@ -90,7 +81,6 @@ try {
 			} else me.setState({c_tpl:me.props.section.o});
 		},
 		popupEditVideo: function(track) {
-			alert(track);
 			let me = this, id = new Date().getTime();
 			let curriculum = me.props.parent.state.curriculum;
 			let video = {
