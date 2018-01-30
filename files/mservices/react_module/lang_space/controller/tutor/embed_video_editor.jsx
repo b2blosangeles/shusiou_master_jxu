@@ -4,10 +4,9 @@ try {
 			var me = this;
 			me.video = me.props.video;
 			me.sections = me.props.sections;
-		//	me.section = me.props.track; 
 			return {
 				preview_time:0,
-				section:me.props.track,
+				track:me.props.track,
 				video:{},
 				video_bar_width:0
 			};
@@ -86,12 +85,12 @@ try {
 				<table id="video_bar" width="100%" height="16" style={{'border':'1px solid #ddd'}}><tr>
 				{
 					X.map(function(x, idx) {
-						if (idx >= Math.round(n * me.state.section.s / video_length ) && 
-						    	idx < Math.round(n * (me.state.section.s +me.state.section.t) / video_length)) {
+						if (idx >= Math.round(n * me.state.track.s / video_length ) && 
+						    	idx < Math.round(n * (me.state.track.s +me.state.track.t) / video_length)) {
 							return (<td width="1" style={{'background-color':'red'}}></td>)
 						}	
 						for (var j = 0; j < me.sections.length; j++) {
-							if (me.sections[j].id == me.state.section.id) continue;
+							if (me.sections[j].id == me.state.track.id) continue;
 							if (idx >= Math.round(n * me.sections[j].track.s / video_length ) && 
 							    idx < Math.round((n * me.sections[j].track.s + n * me.sections[j].track.t) / video_length)) {
 								return (<td width="1" style={{'background-color':'lightgreen'}}></td>)
@@ -122,15 +121,15 @@ try {
 			var p_video = $('#preview_video')[0];
 			if (c_video) c_video.pause();
 			if (p_video) p_video.pause();
-			v.s = me.state.section.s;
-			v.t = me.state.section.t;
+			v.s = me.state.track.s;
+			v.t = me.state.track.t;
 			me.props.parent.closePopup();		
 		},
 		showSectionImages: function() {
 			var me = this, A = [];
 			if (!me.state.section) return false;
-			for (var i = 0; i < 2 * me.state.section.t; i++) {
-				A[A.length] = me.state.section.s + i * 0.5;
+			for (var i = 0; i < 2 * me.state.track.t; i++) {
+				A[A.length] = me.state.track.s + i * 0.5;
 			}
 			var ips = me.video.node_ip;
 			
@@ -150,7 +149,7 @@ try {
 		
 		playSection:function() {
 			var me = this, v =  shusiou_config.api_server + '/api/video/play_stream.api?type=section&vid='+
-			    me.video.vid + '&s=' + me.state.section.s + '&l=' + me.state.section.t;
+			    me.video.vid + '&s=' + me.state.track.s + '&l=' + me.state.track.t;
 			$('#preview_clip_video')[0].src = v;
 			$('#preview_clip_video')[0].play();		
 		},
@@ -166,9 +165,9 @@ try {
 			var n = me.state.video_bar_width, X = [];
 			var MAX = 1000;
 			n = (n > MAX)?MAX:n;	
-			var s =  parseFloat(me.state.section.s) + parseFloat(ds); t = s + parseFloat(me.state.section.t) + parseFloat(dt);
+			var s =  parseFloat(me.state.track.s) + parseFloat(ds); t = s + parseFloat(me.state.track.t) + parseFloat(dt);
 			for (var j = 0; j < me.sections.length; j++) {
-				if (me.sections[j].id == me.state.section.id) continue;
+				if (me.sections[j].id == me.state.track.id) continue;
 				for (var d = s; d < t; d+=0.5) {
 					if (d >= me.sections[j].track.s &&  d < (me.sections[j].track.s + me.sections[j].track.t)) {
 						return false;
@@ -181,8 +180,8 @@ try {
 		adjustSection:function(ds, dt) {
 			var me = this;
 			if (!me.changeAble(ds, dt)) return true;
-			var s = parseFloat(me.state.section.s) + parseFloat(ds); if (s<0) s=0;
-			var t = parseFloat(me.state.section.t) + parseFloat(dt); if (t>20) t=20; if (t<2) t=2;
+			var s = parseFloat(me.state.track.s) + parseFloat(ds); if (s<0) s=0;
+			var t = parseFloat(me.state.track.t) + parseFloat(dt); if (t>20) t=20; if (t<2) t=2;
 			me.setState({section:{s:s, t:t}}, function(){
 				me.playSection();	
 			});
@@ -195,10 +194,10 @@ try {
 		   return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
 		},		
 		hideNullSection: function() {
-			return (this.state.section.t == null)?{display:'none'}:{diaplay:''};
+			return (me.state.track.t == null)?{display:'none'}:{diaplay:''};
 		},
 		hideValueSection: function() {
-			return (this.state.section.t != null)?{display:'none'}:{diaplay:''};
+			return (me.state.track.t != null)?{display:'none'}:{diaplay:''};
 		},		
 		preCacheImage:function() {
 			var me = this;
@@ -221,18 +220,18 @@ try {
 									type="video/mp4"/>
 								</video>
 								Movie clip :<span 
-								style={(me.state.section.s !== null)?{display:''}:{display:'none'}}		     
-								dangerouslySetInnerHTML={{__html: (me.state.section.t)?(me.toHHMMSS(me.state.section.s) + 
-								' - ' + me.toHHMMSS(me.state.section.s + me.state.section.t)):''}} />
+								style={(me.state.track.s !== null)?{display:''}:{display:'none'}}		     
+								dangerouslySetInnerHTML={{__html: (me.state.track.t)?(me.toHHMMSS(me.state.track.s) + 
+								' - ' + me.toHHMMSS(me.state.track.s + me.state.track.t)):''}} />
 
 								<button type="button" className="btn btn-default btn-xs video_editor_button" 
-									style={(me.state.section.t)?{display:''}:{display:'none'}}
+									style={(me.state.track.t)?{display:''}:{display:'none'}}
 									onClick={me.playSection.bind(this)}>
 									<i className="fa fa-play" aria-hidden="true"></i>&nbsp;Listen 
 								</button>
 
 								<button type="button" className="btn btn-warning video_editor_button" 
-									style={(me.state.section.t)?{display:''}:{display:'none'}}
+									style={(me.state.track.t)?{display:''}:{display:'none'}}
 									onClick={me.sendTrack.bind(me)}>
 									Accept clip
 								</button>								
