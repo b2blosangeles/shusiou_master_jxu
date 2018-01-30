@@ -197,7 +197,7 @@ try {
 										/>)
 									})()}
 									<button className="btn btn-info btn-xs" 
-										onClick={me.popupEditVideo.bind(me, me.state.data['$track'])}>
+										onClick={me.popupEditVideo.bind(me, me.state.data[v])}>
 									<i className="fa fa-scissors" aria-hidden="true"></i> Clip video
 									</button>										
 								</span>
