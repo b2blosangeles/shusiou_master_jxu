@@ -117,7 +117,7 @@ try {
 		},
 		showSectionImages: function() {
 			var me = this, A = [];
-			if (!me.state.section) return false;
+			if (!me.state.track) return false;
 			for (var i = 0; i < 2 * me.state.track.t; i++) {
 				A[A.length] = me.state.track.s + i * 0.5;
 			}
