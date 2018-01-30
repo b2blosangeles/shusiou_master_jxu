@@ -4,7 +4,7 @@ try {
 			var me = this;
 			me.video = me.props.video;
 			me.sections = me.props.sections;
-			me.section = me.props.track; 
+		//	me.section = me.props.track; 
 			return {
 				preview_time:0,
 				section:me.props.track,
@@ -91,7 +91,7 @@ try {
 							return (<td width="1" style={{'background-color':'red'}}></td>)
 						}	
 						for (var j = 0; j < me.sections.length; j++) {
-							if (me.sections[j].id == me.section.id) continue;
+							if (me.sections[j].id == me.state.section.id) continue;
 							if (idx >= Math.round(n * me.sections[j].track.s / video_length ) && 
 							    idx < Math.round((n * me.sections[j].track.s + n * me.sections[j].track.t) / video_length)) {
 								return (<td width="1" style={{'background-color':'lightgreen'}}></td>)
@@ -176,7 +176,7 @@ try {
 			n = (n > MAX)?MAX:n;	
 			var s =  parseFloat(me.state.section.s) + parseFloat(ds); t = s + parseFloat(me.state.section.t) + parseFloat(dt);
 			for (var j = 0; j < me.sections.length; j++) {
-				if (me.sections[j].id == me.section.id) continue;
+				if (me.sections[j].id == me.state.section.id) continue;
 				for (var d = s; d < t; d+=0.5) {
 					if (d >= me.sections[j].track.s &&  d < (me.sections[j].track.s + me.sections[j].track.t)) {
 						return false;
