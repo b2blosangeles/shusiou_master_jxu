@@ -101,7 +101,7 @@ try {
 			var me = this;
 			if (prePropos.popid != me.props.popid) {
 				me.sections = me.props.sections;
-				me.setState({section:me.section});
+				me.setState({track:me.props.track});
 			}
 		},
 		sendTrack: function() {
