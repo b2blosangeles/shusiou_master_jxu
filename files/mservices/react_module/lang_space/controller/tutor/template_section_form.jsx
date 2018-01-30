@@ -133,6 +133,48 @@ try {
 			let data = {section_id:me.props.section_id, tpl:me.state.c_tpl, data:me.state.data, c_section:me.state.c_section};
 			alert(JSON.stringify(data));
 		},
+		submitCurriculum:function(v, jump){
+			var me = this, data = {};
+			if (me.state.curriculum.id) {
+				data = {cmd:'update', curriculum_id:me.state.curriculum.curriculum_id, vid: me.state.curriculum.vid, 
+					name:me.state.curriculum.name, 
+					section:me.state.section,
+					published:(me.state.curriculum.published)?me.state.curriculum.published:0,
+				        sections:me.state.sections,
+				        auth:me.props.route.env.state.auth
+				};
+			} else {
+				data = {cmd:'add', vid: me.state.video.vid, name:me.state.curriculum.name, 
+					mother_lang:me.state.curriculum.mother_lang, 
+					learning_lang:me.state.curriculum.learning_lang, 
+					level:me.state.curriculum.level, 					
+				        sections:me.state.sections,
+					auth:me.props.route.env.state.auth
+				       };
+			}
+			
+			me.props.route.env.engine({
+				url: '/api/curriculum/myCurriculum.api',
+				method: "POST",
+				data: data,
+				dataType: "JSON"
+			}, function( data) {
+				if ((data.data) && v === '') {
+					me.props.router.push('/tutor/my_curriculum/edit/'+data.data);
+				} else if (jump) {
+					me.props.router.push('/tutor/my_curriculums');
+				} 
+				var cid = me.props.params['id'];
+				me.getCurriculumById(cid, function(data) {
+					if (data.data.curriculum_id) {
+						me.setState({curriculum:data.data,
+						    sections:(data.data.script)?data.data.script:[]});
+					} 
+				});
+			},function( jqXHR, textStatus ) {
+				console.log('error');
+			});			
+		},		
 		closePopup:function() {
 			var me = this;
 			me.setState({ModalPlus:'cancel'});			
