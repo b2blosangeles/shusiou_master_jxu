@@ -86,6 +86,7 @@ try {
 			} else me.setState({c_tpl:me.props.section.o});
 		},
 		popupEditVideo: function(track) {
+			alert(track);
 			let me = this, id = new Date().getTime();
 			let curriculum = me.props.parent.state.curriculum;
 			let video = {
