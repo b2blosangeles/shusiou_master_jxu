@@ -56,7 +56,7 @@ try {
 			var ips = me.video.node_ip;
 			var IP = ips[Math.floor(Math.random() * ips.length)];
 			p_video.currentTime = Math.round(me.video.video_length * v / n);
-			me.setState({section:{s:p_video.currentTime, t:10}}, function() {
+			me.setState({track:{s:p_video.currentTime, t:10}}, function() {
 				p_video.pause();
 				c_video.pause();
 				me.playSection();			
@@ -149,7 +149,7 @@ try {
 		playSection:function() {
 			let me = this;
 			let v =  shusiou_config.api_server + '/api/video/play_stream.api?type=section&vid='+
-			    me.video.vid + '&s=' + me.state.track.s + '&VV=222&l=' + me.state.track.t;
+			    me.video.vid + '&s=' + me.state.track.s + '&l=' + me.state.track.t;
 			$('#preview_clip_video')[0].src = v;
 			$('#preview_clip_video')[0].play();		
 		},
