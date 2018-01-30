@@ -147,8 +147,9 @@ try {
 		
 		
 		playSection:function() {
-			var me = this, v =  shusiou_config.api_server + '/api/video/play_stream.api?type=section&vid='+
-			    me.video.vid + '&s=' + me.state.track.s + '&VV=111&l=' + me.state.track.t;
+			let me = this;
+			let v =  shusiou_config.api_server + '/api/video/play_stream.api?type=section&vid='+
+			    me.video.vid + '&s=' + me.state.track.s + '&VV=222&l=' + me.state.track.t;
 			$('#preview_clip_video')[0].src = v;
 			$('#preview_clip_video')[0].play();		
 		},
