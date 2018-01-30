@@ -193,8 +193,8 @@ try {
 								<span>
 									{(function() {
 										return (<span dangerouslySetInnerHTML=
-										{{__html: 'Start: ' + me.props.parent.toHHMMSS(me.state.data['$track'].s) + 
-										' To:' + me.props.parent.toHHMMSS(me.state.data['$track'].s + me.state.data['$track'].t)}}
+										{{__html: 'Start: ' + me.props.parent.toHHMMSS(me.state.data[v].s) + 
+										' To:' + me.props.parent.toHHMMSS(me.state.data[v].s + me.state.data[v].t)}}
 										/>)
 									})()}
 									<button className="btn btn-info btn-xs" 
