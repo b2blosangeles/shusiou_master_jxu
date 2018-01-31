@@ -10,12 +10,14 @@ var app = function(auth_data) {
 	 cfgM.multipleStatements = true;
 	switch(opt) {
 		case 'save':
-			res.send({status:'success', data:req.body.data.curriculum_id});
-			break;
+			//res.send({status:'success', data:req.body.data.curriculum_id});
+			//break;
 			let curriculum_id = req.body.data.curriculum_id;
 			var CP = new pkg.crowdProcess();
+			var _f = {};
 			_f['S1'] = function(cbk) {
-				var str = 'SELECT * FROM  `curriculum_sections` WHERE `curriculum_id` = "' + curriculum_id+ '"; ';
+				var str = 'SELECT * FROM  `curriculum_sections` WHERE `curriculum_id` = "' + 
+				    curriculum_id + '"; ';
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				connection.query(str, function (error, results, fields) {
@@ -34,7 +36,7 @@ var app = function(auth_data) {
 					
 				});  
 			};			
-			var _f = {};
+			
 			/*
 			_f['S2'] = function(cbk) {
 				var str = 'DELETE FROM  `curriculum_sections` WHERE `curriculum_id` = "' + req.body.curriculum_id + '"; ';
