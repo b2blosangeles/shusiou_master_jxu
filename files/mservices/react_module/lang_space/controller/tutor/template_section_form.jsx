@@ -131,10 +131,13 @@ try {
 		acceptSection: function() {
 			let me = this;
 			let data = {section_id:me.props.section_id, tpl:me.state.c_tpl, data:me.state.data, c_section:me.state.c_section};
-			alert(JSON.stringify(data));
+			me.saveCurriculum(data);
 		},
-		submitCurriculum:function(v, jump){
-			var me = this, data = {};
+		saveCurriculum:function(data){
+			var me = this;
+			alert(JSON.stringify(data));
+			return true;
+			
 			if (me.state.curriculum.id) {
 				data = {cmd:'update', curriculum_id:me.state.curriculum.curriculum_id, vid: me.state.curriculum.vid, 
 					name:me.state.curriculum.name, 
