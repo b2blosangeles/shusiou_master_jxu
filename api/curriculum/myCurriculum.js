@@ -101,7 +101,7 @@ var app = function(auth_data) {
 			CP.serial(
 				_f,
 				function(data) {
-					res.send({_spent_time:data._spent_time, status:data.status, data:data});
+					res.send({_spent_time:data._spent_time, status:'success', data:data});
 				},
 				30000
 			);
