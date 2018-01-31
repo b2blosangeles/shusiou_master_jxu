@@ -136,12 +136,12 @@ try {
 		saveCurriculum:function(data){
 			var me = this;
 			//alert(JSON.stringify(data));
-			me.props.route.env.engine({
+			me.props.env.engine({
 				url: '/api/curriculum/myCurriculum.api',
 				method: "POST",
 				data: { cmd:'save',
 				       data:data,
-				      auth:me.props.route.env.state.auth},
+				      auth:me.props.env.state.auth},
 				dataType: "JSON"
 			}, function( result) {
 				alert(JSON.stringify(result));
