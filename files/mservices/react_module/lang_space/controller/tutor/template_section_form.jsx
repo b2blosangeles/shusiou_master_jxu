@@ -139,10 +139,13 @@ try {
 			me.props.route.env.engine({
 				url: '/api/curriculum/myCurriculum.api',
 				method: "POST",
-				data: data,
+				data: { cmd:'save',
+				       data:data,
+				      auth:me.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( result) {
 				alert(JSON.stringify(result));
+				alert(JSON.stringify(data));
 			},function( jqXHR, textStatus ) {
 				alert(JSON.stringify('error'));
 				console.log('error');
