@@ -12,7 +12,7 @@ var app = function(auth_data) {
 		case 'save':
 			res.send({status:'success', data:req.body.data.curriculum_id});
 			break;
-			/*
+			
 			let curriculum_id = req.body.data.curriculum_id;
 			var CP = new pkg.crowdProcess();
 			var _f = {};
@@ -37,7 +37,7 @@ var app = function(auth_data) {
 					
 				});  
 			};			
-			
+			/*
 			
 			_f['S2'] = function(cbk) {
 				var str = 'DELETE FROM  `curriculum_sections` WHERE `curriculum_id` = "' + req.body.curriculum_id + '"; ';
@@ -97,7 +97,7 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			
+			*/
 			CP.serial(
 				_f,
 				function(data) {
@@ -106,7 +106,7 @@ var app = function(auth_data) {
 				30000
 			);
 			break;	
-			*/
+			
 		case 'getList':
 			var CP = new pkg.crowdProcess();
 			var _f = {};
