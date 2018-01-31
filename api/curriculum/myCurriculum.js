@@ -33,7 +33,7 @@ var app = function(auth_data) {
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
 				curriculum_id + '",' +
 				'"niuA",' +
-				'"' + encodeURIComponent(JSON.stringify(sections)) + '",' +
+				'"' + JSON.stringify(req.body.data.section) + '",' +
 				'NOW()' +	
 				'); ';
 				var connection = mysql.createConnection(cfg0);
