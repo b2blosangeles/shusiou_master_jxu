@@ -31,7 +31,7 @@ var app = function(auth_data) {
 					}
 				}
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
-				req.body.curriculum_id + '",' +
+				curriculum_id + '",' +
 				'"niuA",' +
 				'"' + encodeURIComponent(JSON.stringify(sections)) + '",' +
 				'NOW()' +	
