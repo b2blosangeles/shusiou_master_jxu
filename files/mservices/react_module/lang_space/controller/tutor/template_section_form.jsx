@@ -89,7 +89,7 @@ try {
 				server_ip:me.props.parent.state.curriculum.server_ip,
 				video_length:me.props.parent.state.curriculum.video_length
 			};
-			let sections = me.props.parent.state.curriculum.script;
+			let sections = (me.props.parent.state.curriculum.script)?me.props.parent.state.curriculum.script:[];
 			
 			me.setState({ModalPlus:{type:'popup',  hold:0,
 				box_style:{top:'28px'},
