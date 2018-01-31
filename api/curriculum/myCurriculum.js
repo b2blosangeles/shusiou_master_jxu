@@ -16,6 +16,38 @@ var app = function(auth_data) {
 			var curriculum_id = req.body.data.curriculum_id;
 			var CP = new pkg.crowdProcess();
 			var _f = {};
+			_f['S0'] = function(cbk) {
+				var section = (req.body.section)?req.body.section:{};
+				var sections = (req.body.sections)?req.body.sections:[];
+				if (section.id == 'new') {
+					section.id = new Date().getTime();
+					sections[sections.length] = section;
+				} else {
+					for (var i = 0; i < sections.length; i++) {
+						if (sections[i].id == section.id) {
+							sections[i] = section;
+							break;
+						}
+					}
+				}
+				var str = 'TRUNCATE  `curriculum_sections`; ';
+				var connection = mysql.createConnection(cfg0);
+				connection.connect();
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					if (error) {
+						cbk(error.message);
+						return true;
+					} else {
+						if (results) {
+							cbk(results);
+						} else {
+							cbk(false);
+						}
+
+					}
+				});  
+			};			
 			_f['S3'] = function(cbk) {
 				var section = (req.body.section)?req.body.section:{};
 				var sections = (req.body.sections)?req.body.sections:[];
