@@ -13,7 +13,7 @@ var app = function(auth_data) {
 			res.send({status:'success', data:req.body.data.curriculum_id});
 			break;
 			
-			let curriculum_id = req.body.data.curriculum_id;
+			let acurriculum_id = req.body.data.curriculum_id;
 			var CP = new pkg.crowdProcess();
 			var _f = {};
 			_f['S1'] = function(cbk) {
