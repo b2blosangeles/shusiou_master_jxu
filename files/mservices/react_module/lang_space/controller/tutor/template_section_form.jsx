@@ -141,7 +141,7 @@ try {
 				method: "POST",
 				data: { cmd:'save',
 				       data: {
-						curriculum_id : me.props.parent.state.curriculum.state.curriculum_id,
+						curriculum_id : me.props.parent.state.curriculum.curriculum_id,
 						section:data,
 				       },	       
 					auth:me.props.env.state.auth},
