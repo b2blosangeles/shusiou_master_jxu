@@ -9,6 +9,9 @@ var app = function(auth_data) {
 	 var cfgM = JSON.parse(JSON.stringify(cfg0));
 	 cfgM.multipleStatements = true;
 	switch(opt) {
+		case 'save':
+			res.send({status:'success', data:'new'});
+			break;
 		case 'getList':
 			var CP = new pkg.crowdProcess();
 			var _f = {};
