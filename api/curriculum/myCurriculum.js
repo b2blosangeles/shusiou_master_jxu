@@ -10,7 +10,7 @@ var app = function(auth_data) {
 	 cfgM.multipleStatements = true;
 	switch(opt) {
 		case 'save':
-			res.send({status:'success', data:data});
+			res.send({status:'success', data:req.body.data});
 			break;
 		case 'getList':
 			var CP = new pkg.crowdProcess();
