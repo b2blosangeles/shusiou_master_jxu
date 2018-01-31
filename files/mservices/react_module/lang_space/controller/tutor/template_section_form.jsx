@@ -140,9 +140,10 @@ try {
 				url: '/api/curriculum/myCurriculum.api',
 				method: "POST",
 				data: { cmd:'save',
-				       data:data,
-				      auth:me.props.env.state.auth},
-				dataType: "JSON"
+					curriculum_id : me.props.parent.state.curriculum.state.curriculum_id,
+					section:data,
+					auth:me.props.env.state.auth},
+					dataType: "JSON"
 			}, function( result) {
 				alert(JSON.stringify(result));
 				alert(JSON.stringify(data));
