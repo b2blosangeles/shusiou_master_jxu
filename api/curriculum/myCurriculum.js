@@ -12,10 +12,30 @@ var app = function(auth_data) {
 		case 'save':
 			res.send({status:'success', data:req.body.data.curriculum_id});
 			break;
+			let curriculum_id = req.body.data.curriculum_id;
 			var CP = new pkg.crowdProcess();
-			
+			_f['S1'] = function(cbk) {
+				var str = 'SELECT * FROM  `curriculum_sections` WHERE `curriculum_id` = "' + curriculum_id+ '"; ';
+				var connection = mysql.createConnection(cfg0);
+				connection.connect();
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					if (error) {
+						cbk(error.message);
+						return true;
+					} else {
+						if (results) {
+							cbk('results');
+						} else {
+							cbk(false);
+						}
+
+					}
+					
+				});  
+			};			
 			var _f = {};
-			
+			/*
 			_f['S2'] = function(cbk) {
 				var str = 'DELETE FROM  `curriculum_sections` WHERE `curriculum_id` = "' + req.body.curriculum_id + '"; ';
 				var connection = mysql.createConnection(cfg0);
@@ -74,7 +94,7 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			
+			*/
 			CP.serial(
 				_f,
 				function(data) {
