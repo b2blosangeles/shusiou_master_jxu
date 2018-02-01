@@ -1,6 +1,4 @@
-function jsonToQueryString(o) {
-	return JSON.stringisy(o).replace(/'/g, "\\'");
-}
+
 var app = function(auth_data) { 
 	var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 	    config = require(env.config_path + '/config.json'),
@@ -9,6 +7,9 @@ var app = function(auth_data) {
 	var opt = req.body.cmd;
 	var uid = auth_data.uid;
 	
+	let jsonToQueryString = function jsonToQueryString(o) {
+		return JSON.stringisy(o).replace(/'/g, "\\'");
+	}	
 	 var cfgM = JSON.parse(JSON.stringify(cfg0));
 	 cfgM.multipleStatements = true;
 	switch(opt) {
