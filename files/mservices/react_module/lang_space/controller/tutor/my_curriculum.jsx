@@ -133,7 +133,7 @@ try {
 				me.getCurriculumById(cid, function(data) {
 					if (data.data.curriculum_id) {
 						me.setState({curriculum:data.data,
-						    sections:(data.data.script)?data.data.script:[]});
+						    sections:(data.data.sections)?data.data.sections:[]});
 					} 
 					me.leftBox(me.props.params);
 					me.rightBox(me.props.params);
