@@ -25,6 +25,30 @@ var app = function(auth_data) {
 			var curriculum_id = req.body.data.curriculum_id;
 			var CP = new pkg.crowdProcess();
 			var _f = {};
+			_f['S0'] = function(cbk) {
+				var str = 'SELECT * FROM  `curriculum_sections` WHERE `curriculum_id` = "' + 
+				    curriculum_id + '"; ';
+				var connection = mysql.createConnection(cfg0);
+				connection.connect();
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					if (error) {
+						cbk(error.message);
+						return true;
+					} else {
+						if (results) {
+							cbk(queryStringToJSON(results[0].script));
+						} else {
+							cbk(false);
+						}
+
+					}
+					
+				});  
+			};
+			_f['P0'] = function(cbk) {
+				cbk(CP.data.S0);
+			};			
 			/*
 			_f['S0'] = function(cbk) {
 				var section = (req.body.section)?req.body.section:{};
@@ -97,27 +121,7 @@ var app = function(auth_data) {
 				});  
 			};
 			*/
-			_f['S3'] = function(cbk) {
-				var str = 'SELECT * FROM  `curriculum_sections` WHERE `curriculum_id` = "' + 
-				    curriculum_id + '"; ';
-				var connection = mysql.createConnection(cfg0);
-				connection.connect();
-				connection.query(str, function (error, results, fields) {
-					connection.end();
-					if (error) {
-						cbk(error.message);
-						return true;
-					} else {
-						if (results) {
-							cbk(queryStringToJSON(results[0].script));
-						} else {
-							cbk(false);
-						}
-
-					}
-					
-				});  
-			};			
+			
 			/*
 			
 			_f['S2'] = function(cbk) {
