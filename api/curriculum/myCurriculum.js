@@ -47,6 +47,7 @@ var app = function(auth_data) {
 				});  
 			};
 			_f['P0'] = function(cbk) {
+				
 				if (req.body.data.section.section_id === 'new') {
 					req.body.data.section.section_id = CP.data.S0.length + 1;
 				} else {
@@ -68,7 +69,7 @@ var app = function(auth_data) {
 						return true;
 					} else {
 						if (results) {
-							cbk(results);
+							cbk(req.body.data.section);
 						} else {
 							cbk(false);
 						}
