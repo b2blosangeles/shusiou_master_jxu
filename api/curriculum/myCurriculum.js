@@ -48,10 +48,10 @@ var app = function(auth_data) {
 			};
 			_f['P0'] = function(cbk) {
 				if (req.body.data.section.section_id === 'new') {
-					cbk('new');
+					req.body.data.section.section_id = CP.data.S0.length + 1;
+					cbk(req.body.data.section);
 				} else {
-					cbk('old');
-					// cbk(req.body.data.section);
+					cbk(req.body.data.section);
 				}
 				
 				// cbk(CP.data.S0);
