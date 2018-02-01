@@ -25,6 +25,7 @@ var app = function(auth_data) {
 			var curriculum_id = req.body.data.curriculum_id;
 			var CP = new pkg.crowdProcess();
 			var _f = {};
+			/*
 			_f['S0'] = function(cbk) {
 				var section = (req.body.section)?req.body.section:{};
 				var sections = (req.body.sections)?req.body.sections:[];
@@ -56,8 +57,9 @@ var app = function(auth_data) {
 
 					}
 				});  
-			};			
-			_f['S3'] = function(cbk) {
+			};
+			*/
+			_f['S2'] = function(cbk) {
 				var section = (req.body.section)?req.body.section:{};
 				var sections = (req.body.sections)?req.body.sections:[];
 				if (section.id == 'new') {
@@ -94,7 +96,7 @@ var app = function(auth_data) {
 					}
 				});  
 			};			
-			_f['S1'] = function(cbk) {
+			_f['S3'] = function(cbk) {
 				var str = 'SELECT * FROM  `curriculum_sections` WHERE `curriculum_id` = "' + 
 				    curriculum_id + '"; ';
 				var connection = mysql.createConnection(cfg0);
