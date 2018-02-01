@@ -41,7 +41,7 @@ try {
 			if (params.opt == 'new') {
 				return (<Embed_new_curriculum parent={me} params={params} video={me.state.video}/>);
 				
-			} else return(<Embed_curriculum_profile parent={me} params={params} video={me.state.video} />);
+			} else return(<span>===<Embed_curriculum_profile parent={me} params={params} video={me.state.video} /></span>);
 		},
 		rightBox:function(params) {
 			var me = this;	
