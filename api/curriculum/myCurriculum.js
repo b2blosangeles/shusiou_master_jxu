@@ -47,10 +47,13 @@ var app = function(auth_data) {
 				});  
 			};
 			_f['P0'] = function(cbk) {
-				
-				if (req.body.data.section.section_id === 'new') {
-					req.body.data.section.section_id = CP.data.S0.length + 1;
-				} else {
+				let v = CP.data.S0;
+				v[v.length] = req.body.data.section;
+				v.sort(function(a1, a2) {
+					return (a1.data.track.s > a2.data.track.s)
+				});
+				for (var i = 0; i < v.length; i++) {
+					req.body.data.section.section_id = i + 1;
 				}
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
 				curriculum_id + '",' +
@@ -58,7 +61,7 @@ var app = function(auth_data) {
 				"'" + jsonToQueryString(req.body.data.section) + "'," +
 				'NOW()' +	
 				') ON DUPLICATE KEY UPDATE `script` = ' + 
-				"'" + jsonToQueryString(req.body.data.section) + "'"  + 
+				"'" + jsonToQueryString(v) + "'"  + 
 				'; ';
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
