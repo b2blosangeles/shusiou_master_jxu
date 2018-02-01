@@ -1,9 +1,8 @@
 function jsonToQueryString(o) {
 	return JSON.stringify(o).replace(/'/g, "\\'");
 };
-function queryStringToJSON(s) {
-	var o = {};
-	o = JSON.parse(s.replace(/\\\'/g, "'"));
+function queryStringToJSON(s, o) {
+	try { o = JSON.parse(s.replace(/\\\'/g, "'")); } catch (e) {}
 	return o;
 };
 var app = function(auth_data) { 
@@ -37,7 +36,7 @@ var app = function(auth_data) {
 						return true;
 					} else {
 						if (results) {
-							cbk(queryStringToJSON(results[0].script));
+							cbk(queryStringToJSON(results[0].script, []));
 						} else {
 							cbk(false);
 						}
