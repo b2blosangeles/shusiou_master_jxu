@@ -47,7 +47,13 @@ var app = function(auth_data) {
 				});  
 			};
 			_f['P0'] = function(cbk) {
-				cbk(req.body.data.section);
+				if (req.body.data.section.section_id === 'new') {
+					cbk('new');
+				} else {
+					cbk('old');
+					// cbk(req.body.data.section);
+				}
+				
 				// cbk(CP.data.S0);
 			};			
 			/*
@@ -374,6 +380,7 @@ var app = function(auth_data) {
 			CP.serial(
 				_f,
 				function(data) {
+					
 					res.send({_spent_time:data._spent_time, status:data.status, data:data});
 				},
 				30000
