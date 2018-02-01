@@ -1,3 +1,6 @@
+function jsonToQueryString(o) {
+	return JSON.stringisy(o).replace(/'/g, "\\'");
+}
 var app = function(auth_data) { 
 	var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 	    config = require(env.config_path + '/config.json'),
@@ -65,8 +68,7 @@ var app = function(auth_data) {
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
 				curriculum_id + '",' +
 				'"niuA",' +
-				"'" + JSON.stringify(req.body.data.section).replace(/'/g, "\\'") + "'," +
-				//'"' + encodeURIComponent(JSON.stringify(req.body.data.section)) + '",' +
+				"'" + jsonToQueryString(req.body.data.section) + "'," +
 				'NOW()' +	
 				'); ';
 				var connection = mysql.createConnection(cfg0);
