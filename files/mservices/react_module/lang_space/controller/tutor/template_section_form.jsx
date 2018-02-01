@@ -148,7 +148,7 @@ try {
 					dataType: "JSON"
 			}, function( result) {
 				alert(JSON.stringify(result));
-				alert(JSON.stringify(data));
+				// alert(JSON.stringify(data));
 			},function( jqXHR, textStatus ) {
 				alert(JSON.stringify('error'));
 				console.log('error');
