@@ -49,29 +49,16 @@ var app = function(auth_data) {
 			_f['P0'] = function(cbk) {
 				if (req.body.data.section.section_id === 'new') {
 					req.body.data.section.section_id = CP.data.S0.length + 1;
-					cbk(req.body.data.section);
 				} else {
-					cbk(req.body.data.section);
 				}
-				
-				// cbk(CP.data.S0);
-			};			
-			/*
-			_f['S0'] = function(cbk) {
-				var section = (req.body.section)?req.body.section:{};
-				var sections = (req.body.sections)?req.body.sections:[];
-				if (section.id == 'new') {
-					section.id = new Date().getTime();
-					sections[sections.length] = section;
-				} else {
-					for (var i = 0; i < sections.length; i++) {
-						if (sections[i].id == section.id) {
-							sections[i] = section;
-							break;
-						}
-					}
-				}
-				var str = 'TRUNCATE  `curriculum_sections`; ';
+				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
+				curriculum_id + '",' +
+				'"niuA",' +
+				"'" + jsonToQueryString(req.body.data.section) + "'," +
+				'NOW()' +	
+				') ON DUPLICATE KEY UPDATE `script` = ' + 
+				"'" + jsonToQueryString(req.body.data.section) + "'"  + 
+				'; ';
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 				connection.query(str, function (error, results, fields) {
@@ -87,8 +74,10 @@ var app = function(auth_data) {
 						}
 
 					}
-				});  
+				}); 
 			};
+			
+			/*
 			
 			_f['S2'] = function(cbk) {
 				var section = (req.body.section)?req.body.section:{};
