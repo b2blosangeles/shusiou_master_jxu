@@ -58,7 +58,7 @@ var app = function(auth_data) {
 					}
 				});  
 			};
-			*/
+			
 			_f['S2'] = function(cbk) {
 				var section = (req.body.section)?req.body.section:{};
 				var sections = (req.body.sections)?req.body.sections:[];
@@ -95,7 +95,8 @@ var app = function(auth_data) {
 
 					}
 				});  
-			};			
+			};
+			*/
 			_f['S3'] = function(cbk) {
 				var str = 'SELECT * FROM  `curriculum_sections` WHERE `curriculum_id` = "' + 
 				    curriculum_id + '"; ';
