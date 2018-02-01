@@ -47,7 +47,7 @@ var app = function(auth_data) {
 				});  
 			};
 			_f['P0'] = function(cbk) {
-				cbk(req.data.section);
+				cbk(req.body.data.section);
 				// cbk(CP.data.S0);
 			};			
 			/*
