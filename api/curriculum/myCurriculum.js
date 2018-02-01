@@ -1,6 +1,11 @@
 function jsonToQueryString(o) {
 	return JSON.stringify(o).replace(/'/g, "\\'");
 };
+function queryStringToJSON(s) {
+	var o = {};
+	o = JSON.parse(s.replace(/\\\'/g, "'"));
+	return o;
+};
 var app = function(auth_data) { 
 	var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 	    config = require(env.config_path + '/config.json'),
@@ -101,7 +106,7 @@ var app = function(auth_data) {
 						return true;
 					} else {
 						if (results) {
-							cbk(results);
+							cbk(queryStringToJSON(results[0].script));
 						} else {
 							cbk(false);
 						}
