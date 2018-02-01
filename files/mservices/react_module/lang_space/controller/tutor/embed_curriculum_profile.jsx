@@ -108,7 +108,7 @@ try {
 									onClick={me.props.parent.editSection.bind(me, rec.id)}>
 									<i className="fa fa-pencil" aria-hidden="true"></i>	
 								</button>
-								{rec.data.s} 
+								{rec.data.answer} 
 							</td>
 						      </tr>)})}		    
 						    </tbody>
