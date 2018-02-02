@@ -57,15 +57,16 @@ var app = function(auth_data) {
 					}					
 					
 				} else if (opt === 'deleteSection')  {
+					/*
 					v = v.filter(function(a) {
 						a.section_id == req.body.data.section.section_id;
-					});
+					});*/
 				}
-				
+				/*
 				v.sort(function(a1, a2) {
 					return (a1.data.track.s > a2.data.track.s)
 				});
-				
+				*/
 				for (var i = 0; i < v.length; i++) {
 					req.body.data.section.section_id = i + 1;
 				}
