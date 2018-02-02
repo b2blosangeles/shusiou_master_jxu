@@ -197,7 +197,7 @@ try {
 			return this.props.route.env.dictionary(v);
 		},
 		refreshSections : function(curriculum_id) {
-			let me = this,
+			let me = this;
 			me.getCurriculumById(cid, function(data) {
 				if (data.data.curriculum_id) {
 					me.setState({curriculum:data.data,
