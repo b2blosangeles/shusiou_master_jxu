@@ -84,7 +84,7 @@ var app = function(auth_data) {
 						return true;
 					} else {
 						if (results) {
-							cbk(v); // req.body.data.section
+							cbk({AAA:req.body.data.section, BBB:v}); // req.body.data.section
 						} else {
 							cbk(false);
 						}
