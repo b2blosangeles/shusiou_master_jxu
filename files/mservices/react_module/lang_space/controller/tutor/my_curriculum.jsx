@@ -65,11 +65,11 @@ try {
 			});
 		},
 		editSection:function(id) {
-			alert(id);
 			var me = this;
 			var o = me.state.sections, v = [];	
 			for (var i = 0; i < o.length; i++) {
 				if (o[i].section_id == id) {
+					alert(JSON.stringify(o[i]));
 					me.setState({section:o[i]});
 					return true;
 				}
