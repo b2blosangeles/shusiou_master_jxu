@@ -153,7 +153,7 @@ try {
 				alert(JSON.stringify('error'));
 				console.log('error');
 			});			
-		},,		
+		},		
 		closePopup:function() {
 			var me = this;
 			me.setState({ModalPlus:'cancel'});			
