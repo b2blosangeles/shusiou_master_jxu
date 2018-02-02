@@ -57,9 +57,10 @@ var app = function(auth_data) {
 					}					
 					
 				} else if (opt === 'deleteSection')  {
-					v = v.filter(function(a) {
+					var lv = v.filter(function(a) {
 						return a.section_id != req.body.data.section.section_id;
 					});
+					v = lv;
 				}
 				/*
 				v.sort(function(a1, a2) {
