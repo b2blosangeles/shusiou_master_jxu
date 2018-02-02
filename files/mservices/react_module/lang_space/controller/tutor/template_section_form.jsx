@@ -204,7 +204,6 @@ try {
 		},
 		tplSection : function (rec) {
 			let me = this;
-			return (<span>section</span>)
 			if (me.state.c_tpl.variables) {
 				return (
 					<span>		
