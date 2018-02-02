@@ -46,11 +46,10 @@ try {
 		rightBox:function(params) {
 			var me = this;	
 			if (params.opt == 'new') return (<Embed_curriculum_preview parent={me} params={params} video={me.state.video}/>);
-			else 
-			/* if (!me.state.section.section_id) {
+			else if (!me.state.section.section_id) {
 				alert(1);
 				return (<Embed_curriculum_demo parent={me} params={params} video={me.state.video}/>);
-			} else */  {
+			} else {
 				return (<span>
 					{JSON.stringify(me.state.section)}
 					<TemplateSectionForm env={me.props.route.env} parent={me} params={params} section_id={me.state.section.section_id} section={me.state.section} />
