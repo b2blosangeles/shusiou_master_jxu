@@ -155,6 +155,11 @@ try {
 			}, function( result) {
 				alert(JSON.stringify(result));
 				// alert(JSON.stringify(data));
+				me.props.parent.getCurriculumById(me.props.parent.state.curriculum.curriculum_id, 
+				function() {
+					alert('niuniu');
+				});
+				
 			},function( jqXHR, textStatus ) {
 				alert(JSON.stringify('error'));
 				console.log('error');
