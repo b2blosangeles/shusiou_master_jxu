@@ -65,6 +65,7 @@ try {
 			});
 		},
 		editSection:function(id) {
+			alert(id);
 			var me = this;
 			var o = me.state.sections, v = [];	
 			for (var i = 0; i < o.length; i++) {
