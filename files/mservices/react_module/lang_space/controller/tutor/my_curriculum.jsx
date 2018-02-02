@@ -69,6 +69,7 @@ try {
 		createSection:function() {
 			var me = this;
 			me.setState({section:{secrion_id:'new'}}, function() {});
+			alert(1);
 		},
 		editSection:function(id) {
 			var me = this;
