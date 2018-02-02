@@ -377,8 +377,8 @@ var app = function(auth_data) {
 					try {
 						CP.data.S1.sections =queryStringToJSON(CP.data.S1.script, []);
 						for (var i=0; i < CP.data.S1.sections.length; i++) {
-							if (!CP.data.S1.sections[i].track) {
-								CP.data.S1.sections[i].track = {};
+							if (!CP.data.S1.sections[i].data.track) {
+								CP.data.S1.sections[i].data.track = {};
 							}
 						}
 					} catch (err) {
