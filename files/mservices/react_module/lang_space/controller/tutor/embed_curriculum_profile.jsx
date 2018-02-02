@@ -105,7 +105,7 @@ try {
 							</td>	    
 							<td>
 								<button className="btn btn-warning btn-xs pull-right"
-									onClick={me.props.parent.editSection.bind(me, rec.data.section_id)}>
+									onClick={me.props.parent.editSection.bind(me, rec.section_id)}>
 									<i className="fa fa-pencil" aria-hidden="true"></i>	
 								</button>
 								{rec.data.answer} 
