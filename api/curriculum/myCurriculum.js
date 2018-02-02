@@ -51,7 +51,7 @@ var app = function(auth_data) {
 					
 					for (var i = 0; i < v.length; i++) {
 						//if (v[i].section_id === req.body.data.section.section_id) {
-							v[i] = 'req.body.data.section';
+							v[i] = req.body.data.section.section_id;
 							//break;
 						//}
 					}					
