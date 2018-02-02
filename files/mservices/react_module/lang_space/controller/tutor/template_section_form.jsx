@@ -158,7 +158,9 @@ try {
 				console.log('error');
 			});			
 		},
-		deleteCurriculum:function(data){
+		deleteSection:function(data){
+			alert(JSON.stringify(data));
+			return true;
 			var me = this;
 			me.props.env.engine({
 				url: '/api/curriculum/myCurriculum.api',
@@ -259,7 +261,7 @@ try {
 							<div className="container-fluid" style={{padding:'6px', 'text-align':'center'}}>
 								{(function() {
 									if (me.props.parent.state.section.id != 'new') return (<button className="btn btn-danger" 
-									onClick={me.props.parent.deleteSection.bind(me, me.props.parent.state.section_id)}>Delete This Section</button>)
+									onClick={me.deleteSection.bind(me, me.state.section_id)}>Delete This Section</button>)
 								})()}	
 								<button className="btn btn-default pull-left" onClick={me.props.parent.abortSection.bind(me)}>Abort Change</button>
 								<button className="btn btn-info pull-right" onClick={me.acceptSection.bind(me)}>Save</button>
