@@ -68,8 +68,7 @@ try {
 		},
 		createSection:function() {
 			var me = this;
-			me.setState({section:{section_id:'new'}}, function() {});
-			alert(1);
+			me.setState({section:{section_id:'new', section:{}}}, function() {});
 		},
 		editSection:function(id) {
 			var me = this;
