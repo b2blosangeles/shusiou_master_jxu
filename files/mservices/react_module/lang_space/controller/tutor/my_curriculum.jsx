@@ -196,6 +196,15 @@ try {
 			if (!this.props.route || !this.props.route.env ||!this.props.route.env.dictionary) return v;
 			return this.props.route.env.dictionary(v);
 		},
+		refreshSections : function(curriculum_id) {
+			let me = this,
+			me.getCurriculumById(cid, function(data) {
+				if (data.data.curriculum_id) {
+					me.setState({curriculum:data.data,
+					    sections:(data.data.script)?data.data.script:[]});
+				} 
+			});			
+		},
 		getCurriculumById: function(curriculum_id, cbk) {
 			var me = this;
 			me.props.route.env.engine({
