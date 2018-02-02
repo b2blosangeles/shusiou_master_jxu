@@ -133,13 +133,39 @@ try {
 				placeholder={'input text ' + idx} 
 				value={me.state.data[idx]}  onChange={me.handleChange.bind(me, idx)}  /></p>)	       
 		},
-		saveSection:function(opt){
-			var me = this;
+		acceptSection: function() {
+			let me = this;
 			let data = {section_id:me.props.section_id, tpl:me.state.c_tpl, data:me.state.data, c_section:me.state.c_section};
+			me.saveCurriculum(data);
+		},
+		saveCurriculum:function(data){
+			var me = this;
 			me.props.env.engine({
 				url: '/api/curriculum/myCurriculum.api',
 				method: "POST",
-				data: { cmd:opt,
+				data: { cmd:'save',
+				       data: {
+						curriculum_id : me.props.parent.state.curriculum.curriculum_id,
+						section:data,
+				       },	       
+					auth:me.props.env.state.auth},
+					dataType: "JSON"
+			}, function( result) {
+				alert(JSON.stringify(result));
+				// alert(JSON.stringify(data));
+			},function( jqXHR, textStatus ) {
+				alert(JSON.stringify('error'));
+				console.log('error');
+			});			
+		},
+		deleteSection:function(data){
+			alert(JSON.stringify(data));
+			return true;
+			var me = this;
+			me.props.env.engine({
+				url: '/api/curriculum/myCurriculum.api',
+				method: "POST",
+				data: { cmd:'deleteSection',
 				       data: {
 						curriculum_id : me.props.parent.state.curriculum.curriculum_id,
 						section:data,
@@ -235,10 +261,10 @@ try {
 							<div className="container-fluid" style={{padding:'6px', 'text-align':'center'}}>
 								{(function() {
 									if (me.props.parent.state.section.id != 'new') return (<button className="btn btn-danger" 
-									onClick={me.saveSection.bind(me, 'deleteSection')}>Delete This Section</button>)
+									onClick={me.deleteSection.bind(me, me.props.section_id)}>Delete This Section</button>)
 								})()}	
 								<button className="btn btn-default pull-left" onClick={me.props.parent.abortSection.bind(me)}>Abort Change</button>
-								<button className="btn btn-info pull-right" onClick={me.saveSection.bind(me, 'saveSection')}>Save</button>
+								<button className="btn btn-info pull-right" onClick={me.acceptSection.bind(me)}>Save</button>
 							</div>
 						</td></tr>	
 					</table>						
