@@ -17,7 +17,8 @@ var app = function(auth_data) {
 	 var cfgM = JSON.parse(JSON.stringify(cfg0));
 	 cfgM.multipleStatements = true;
 	switch(opt) {
-		case 'save':
+		case 'saveSection':
+		case 'deleteSection':
 			var curriculum_id = req.body.data.curriculum_id;
 			var CP = new pkg.crowdProcess();
 			var _f = {};
@@ -44,7 +45,22 @@ var app = function(auth_data) {
 			};
 			_f['P0'] = function(cbk) {
 				let v = CP.data.S0;
-				v[v.length] = req.body.data.section;
+				if (opt === 'saveSection' && req.body.data.section.section_id === 'new') {
+					v[v.length] = req.body.data.section;
+				} else if (opt === 'saveSection') {
+					
+					for (var i = 0; i < v.length; i++) {
+						if (v.section_id === req.body.data.section.section_id) {
+							v[i] = req.body.data.section;
+							break;
+						}
+					}					
+					
+				} else if (opt === 'deleteSection')  {
+					v = v.filter(function(a) {
+						a.section_id === req.body.data.section.section_id;
+					});
+				}
 				v.sort(function(a1, a2) {
 					return (a1.data.track.s > a2.data.track.s)
 				});
