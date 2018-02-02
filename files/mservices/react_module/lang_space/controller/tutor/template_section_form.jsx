@@ -78,6 +78,7 @@ try {
 			if (me.props.section.id == 'new') {
 				me.setState({c_tpl:data});
 				// alert(me.props.section.id);
+				console.log('JNNN--->');
 			} else {
 				console.log('JSON.stringify(me.props.section)--->');
 				console.log(me.props.section);
