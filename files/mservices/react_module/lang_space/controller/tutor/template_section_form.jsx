@@ -79,8 +79,9 @@ try {
 				me.setState({c_tpl:data});
 				// alert(me.props.section.id);
 			} else {
-				alert(JSON.stringify(me.props.section));
-				me.setState({c_tpl:me.props.section.o});
+				console.log('JSON.stringify(me.props.section)--->');
+				console.log(me.props.section);
+				me.setState({c_tpl:me.props.section.tpl});
 			}	
 		},
 		popupEditVideo: function(track) {
