@@ -108,7 +108,7 @@ try {
 				var cid = me.props.params['id'];
 				me.getCurriculumById(cid, function(data) {
 					if (data.data.curriculum_id) {
-						me.setState({curriculum:data.data,
+						me.setState({curriculum:data.data, 
 						    sections:(data.data.sections)?data.data.sections:[]});
 					} 
 					me.leftBox(me.props.params);
@@ -200,7 +200,7 @@ try {
 			let me = this;
 			me.getCurriculumById(cid, function(data) {
 				if (data.data.curriculum_id) {
-					me.setState({curriculum:data.data,
+					me.setState({curriculum:data.data, section_id:null,
 					    sections:(data.data.script)?data.data.script:[]});
 				} 
 			});			
