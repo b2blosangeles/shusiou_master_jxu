@@ -140,11 +140,30 @@ try {
 		},
 		saveCurriculum:function(data){
 			var me = this;
-			//alert(JSON.stringify(data));
 			me.props.env.engine({
 				url: '/api/curriculum/myCurriculum.api',
 				method: "POST",
 				data: { cmd:'save',
+				       data: {
+						curriculum_id : me.props.parent.state.curriculum.curriculum_id,
+						section:data,
+				       },	       
+					auth:me.props.env.state.auth},
+					dataType: "JSON"
+			}, function( result) {
+				alert(JSON.stringify(result));
+				// alert(JSON.stringify(data));
+			},function( jqXHR, textStatus ) {
+				alert(JSON.stringify('error'));
+				console.log('error');
+			});			
+		},
+		deleteCurriculum:function(data){
+			var me = this;
+			me.props.env.engine({
+				url: '/api/curriculum/myCurriculum.api',
+				method: "POST",
+				data: { cmd:'deleteSection',
 				       data: {
 						curriculum_id : me.props.parent.state.curriculum.curriculum_id,
 						section:data,
