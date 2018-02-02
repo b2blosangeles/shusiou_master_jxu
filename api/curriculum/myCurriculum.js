@@ -62,11 +62,12 @@ var app = function(auth_data) {
 					});
 					v = lv;
 				}
-				/*
+				
 				v.sort(function(a1, a2) {
-					return (a1.data.track.s > a2.data.track.s)
+					let s1 = (a1.data.track)?a1.data.track.s:0, s2 = (a1.data.track)?a2.data.track.s:0
+					return (s1 > s2)
 				});
-				*/
+				
 				for (var i = 0; i < v.length; i++) {
 					req.body.data.section.section_id = i + 1;
 				}
