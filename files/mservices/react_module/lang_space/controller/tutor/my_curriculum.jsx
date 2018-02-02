@@ -67,9 +67,7 @@ try {
 		},
 		createSection:function() {
 			var me = this;
-			me.setState({section:{id:'new', track:{}}}, function() {
-				// me.popupEditVideo(me.props.params,{});
-			});
+			me.setState({section:{secrion_id:'new'}}, function() {});
 		},
 		editSection:function(id) {
 			var me = this;
@@ -80,7 +78,6 @@ try {
 					return true;
 				}
 			} 
-			me.setState({section:null});
 			return true;  			       
 		},
 		deleteSection:function(id) {
