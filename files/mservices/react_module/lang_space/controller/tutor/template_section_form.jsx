@@ -33,6 +33,7 @@ try {
 			}
 			if (me.props.section_id !== prePropos.section_id) {
 				console.log('section_id=== changed '+ me.props.section_id);
+				alert(me.props.section_id);
 				me.setTpl({});
 			}
 		},
