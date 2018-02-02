@@ -50,7 +50,10 @@ try {
 				alert(1);
 				return (<Embed_curriculum_demo parent={me} params={params} video={me.state.video}/>);
 			} else */  {
-				return (<TemplateSectionForm env={me.props.route.env} parent={me} params={params} section_id={me.state.section.id} section={me.state.section} />);		
+				return (<span>
+					<TemplateSectionForm env={me.props.route.env} parent={me} params={params} section_id={me.state.section.id} section={me.state.section} />
+					</span>
+				);		
 			}
 		},
 		toHHMMSS:function(v, noms) {
