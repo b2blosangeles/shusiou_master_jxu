@@ -47,8 +47,12 @@ try {
 			var me = this;	
 			if (params.opt == 'new') return (<Embed_curriculum_preview parent={me} params={params} video={me.state.video}/>);
 			else if (!me.state.section.id) {
+				alert(1);
 				return (<Embed_curriculum_demo parent={me} params={params} video={me.state.video}/>);
-			} else return (<TemplateSectionForm env={me.props.route.env} parent={me} params={params} section_id={me.state.section.id} section={me.state.section} />);		
+			} else {
+				alert(2);
+				return (<TemplateSectionForm env={me.props.route.env} parent={me} params={params} section_id={me.state.section.id} section={me.state.section} />);		
+			}
 		},
 		toHHMMSS:function(v, noms) {
 			if (isNaN(v)) return v;
