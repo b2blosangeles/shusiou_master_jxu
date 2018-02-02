@@ -53,7 +53,7 @@ try {
 			} else */  {
 				return (<span>
 					{JSON.stringify(me.state.section)}
-					<TemplateSectionForm env={me.props.route.env} parent={me} params={params} section_id={me.state.section.id} section={me.state.section} />
+					<TemplateSectionForm env={me.props.route.env} parent={me} params={params} section_id={me.state.section.section_id} section={me.state.section} />
 					</span>
 				);		
 			}
