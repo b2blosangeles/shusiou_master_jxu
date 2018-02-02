@@ -50,10 +50,12 @@ var app = function(auth_data) {
 				} else if (opt === 'saveSection') {
 					
 					for (var i = 0; i < v.length; i++) {
-						//if (v[i].section_id === req.body.data.section.section_id) {
+						if (v[i].section_id == req.body.data.section.section_id) {
 							v[i] = req.body.data.section;
 							//break;
-						//}
+						} else {
+							v[i] = '===niu===';
+						}
 					}					
 					
 				} else if (opt === 'deleteSection')  {
