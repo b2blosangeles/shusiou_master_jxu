@@ -58,7 +58,7 @@ var app = function(auth_data) {
 					
 				} else if (opt === 'deleteSection')  {
 					v = v.filter(function(a) {
-						a.section_id !== req.body.data.section.section_id;
+						a.section_id == req.body.data.section.section_id;
 					});
 				}
 				
