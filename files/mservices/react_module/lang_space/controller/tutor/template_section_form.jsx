@@ -225,7 +225,7 @@ try {
 		tplSection : function (rec) {
 			let me = this;
 			if (me.state.c_tpl.variables) {
-				return (<span>===niu</span>);
+				return (<span>===niu=={JOSN.stringify(me.state.data)}</span>);
 				return (
 					<span>		
 					{me.state.c_tpl.variables.map(function(v) {
