@@ -51,6 +51,7 @@ try {
 				return (<Embed_curriculum_demo parent={me} params={params} video={me.state.video}/>);
 			} else */  {
 				return (<span>
+					{JSON.stringify(me.state.section)}
 					<TemplateSectionForm env={me.props.route.env} parent={me} params={params} section_id={me.state.section.id} section={me.state.section} />
 					</span>
 				);		
