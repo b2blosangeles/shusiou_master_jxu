@@ -78,7 +78,10 @@ try {
 			if (me.props.section.id == 'new') {
 				me.setState({c_tpl:data});
 				// alert(me.props.section.id);
-			} else me.setState({c_tpl:me.props.section.o});
+			} else {
+				alert(JSON.stringify(me.props.section));
+				me.setState({c_tpl:me.props.section.o});
+			}	
 		},
 		popupEditVideo: function(track) {
 			let me = this, id = new Date().getTime();
