@@ -83,7 +83,7 @@ try {
 			} else {
 				console.log('JSON.stringify(me.props.section)--->');
 				console.log(me.props.section);
-				me.setState({c_tpl:me.props.section.tpl});
+				me.setState({c_tpl:(me.props.section.tpl)?me.props.section.tpl:{}});
 			}	
 		},
 		popupEditVideo: function(track) {
