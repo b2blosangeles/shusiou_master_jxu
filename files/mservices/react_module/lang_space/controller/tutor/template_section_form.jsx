@@ -78,13 +78,10 @@ try {
 			var me = this;
 			if (me.props.section.id == 'new') {
 				me.setState({c_tpl:data});
-				// alert(me.props.section.id);
-				console.log('JNNN--->');
 			} else {
 				console.log('JSON.stringify(me.props.section)-====->');
 				console.log(me.props.section);
-				
-				me.setState({c_tpl:(me.props.section.tpl)?me.props.section.tpl:{}});
+				me.setState({c_tpl:(me.props.section.tpl)?me.props.section.tpl:data});
 			}	
 		},
 		popupEditVideo: function(track) {
