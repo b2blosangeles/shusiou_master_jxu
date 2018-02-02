@@ -225,7 +225,7 @@ try {
 		tplSection : function (rec) {
 			let me = this;
 			if (me.state.c_tpl.variables) {
-				if (!me.state.data.) {
+				if (!me.state.data) {
 					return (<span>==niu===</span>);
 				} else return (
 					<span>		
