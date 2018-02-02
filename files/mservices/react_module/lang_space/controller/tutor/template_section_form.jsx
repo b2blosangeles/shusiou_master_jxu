@@ -82,7 +82,7 @@ try {
 				console.log('JSON.stringify(me.props.section)-====->');
 				console.log(me.props.section);
 				me.setState({c_tpl:(me.props.section.tpl)?me.props.section.tpl:data, 
-					section:me.props.section});
+					data:me.props.section.data});
 			}	
 		},
 		popupEditVideo: function(track) {
