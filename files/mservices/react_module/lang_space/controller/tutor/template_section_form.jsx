@@ -77,8 +77,8 @@ try {
 		*/
 		setTpl(data) {
 			var me = this;
-			if (me.props.section.id == 'new') {
-				alert(me.props.section.id);
+			if (me.props.section.section_id == 'new') {
+				alert(me.props.section.section_id);
 				me.setState({c_tpl:data, data:{}});
 			} else {
 				console.log('JSON.stringify(me.props.section)-====->');
