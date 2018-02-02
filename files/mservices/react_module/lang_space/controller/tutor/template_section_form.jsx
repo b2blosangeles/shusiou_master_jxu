@@ -78,7 +78,6 @@ try {
 		setTpl(data) {
 			var me = this;
 			if (me.props.section.section_id == 'new') {
-				alert(me.props.section.section_id);
 				me.setState({c_tpl:data, data:{}});
 			} else {
 				console.log('JSON.stringify(me.props.section)-====->');
@@ -227,9 +226,7 @@ try {
 		tplSection : function (rec) {
 			let me = this;
 			if (me.state.c_tpl.variables) {
-				if (!me.state.data) {
-					return (<span>==niu===</span>);
-				} else return (
+				return (
 					<span>		
 					{me.state.c_tpl.variables.map(function(v) {
 						switch(v) {
