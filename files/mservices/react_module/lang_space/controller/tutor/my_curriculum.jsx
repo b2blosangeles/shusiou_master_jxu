@@ -96,33 +96,6 @@ try {
 			});
 			return true;       
 		},
-		/*
-		popupEditVideo: function(params, track) {
-			var me = this;
-			var id = new Date().getTime();
-			if (track == 'new') {
-				me.setState({section:{track:{}}}, function() {
-					me.setState({ModalPlus:{type:'popup',  hold:0,
-						box_style:{top:'28px'},
-						title: (<span>Select video section</span>),
-						message: (<Embed_video_editor parent={me} params={params} popid={new Date().getTime()} />),
-						header:false,
-						footer:(<span/>)
-					}});					
-				});
-
-				return true;
-			}
-			me.setState({ModalPlus:{type:'popup',  hold:0,
-				box_style:{top:'28px'},
-				title: (<span>Video Editor</span>),
-				message: (<Embed_video_editor parent={me} params={params} popid={new Date().getTime()} />),
-				header:false,
-				footer:(<span/>)
-			}});			
-			return true;
-		},
-		*/
 		componentDidMount:function() {
 			var me = this;
 			var vid = '';	
@@ -252,14 +225,7 @@ try {
 			var me = this, A = me.state.list;
 			if (!me.state.c_text) return {display:'none'};
 			else return {display:''};
-		},	
-		/*
-		closePopup:function() {
-			var me = this;
-			me.setState({ModalPlus:'cancel'});			
-			return true;
 		},
-		*/
 		abortSection: function() {
 			var me = this;
 			me.setState({section:{track:{}}});
