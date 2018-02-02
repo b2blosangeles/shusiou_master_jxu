@@ -139,12 +139,13 @@ try {
 			let data = {section_id:me.props.section_id, tpl:me.state.c_tpl, data:me.state.data, c_section:me.state.c_section};
 			me.saveCurriculum(data);
 		},
-		saveCurriculum:function(data){
-			var me = this;
+		saveSection:function(opt){
+			let me = this, 
+			    data = {section_id:me.props.section_id, tpl:me.state.c_tpl, data:me.state.data, c_section:me.state.c_section};
 			me.props.env.engine({
 				url: '/api/curriculum/myCurriculum.api',
 				method: "POST",
-				data: { cmd:'save',
+				data: { cmd:opt,
 				       data: {
 						curriculum_id : me.props.parent.state.curriculum.curriculum_id,
 						section:data,
@@ -265,7 +266,7 @@ try {
 									onClick={me.deleteSection.bind(me, me.props.section_id)}>Delete This Section</button>)
 								})()}	
 								<button className="btn btn-default pull-left" onClick={me.props.parent.abortSection.bind(me)}>Abort Change</button>
-								<button className="btn btn-info pull-right" onClick={me.acceptSection.bind(me)}>Save</button>
+								<button className="btn btn-info pull-right" onClick={me.saveSection.bind(me, 'saveSection')}>Save</button>
 							</div>
 						</td></tr>	
 					</table>						
