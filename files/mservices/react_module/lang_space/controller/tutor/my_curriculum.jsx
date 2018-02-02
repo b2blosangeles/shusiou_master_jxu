@@ -68,7 +68,7 @@ try {
 		},
 		createSection:function() {
 			var me = this;
-			me.setState({section:{secrion_id:'new'}}, function() {});
+			me.setState({section:{section_id:'new'}}, function() {});
 			alert(1);
 		},
 		editSection:function(id) {
