@@ -46,7 +46,8 @@ try {
 		rightBox:function(params) {
 			var me = this;	
 			if (params.opt == 'new') return (<Embed_curriculum_preview parent={me} params={params} video={me.state.video}/>);
-			else /* if (!me.state.section.section_id) {
+			else 
+			/* if (!me.state.section.section_id) {
 				alert(1);
 				return (<Embed_curriculum_demo parent={me} params={params} video={me.state.video}/>);
 			} else */  {
