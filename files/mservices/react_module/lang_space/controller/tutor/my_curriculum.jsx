@@ -74,7 +74,7 @@ try {
 			var o = me.state.sections, v = [];	
 			for (var i = 0; i < o.length; i++) {
 				if (o[i].section_id == id) {
-					me.setState({section:o[i]});
+					me.setState({section:o[i], section_id:id});
 					return true;
 				}
 			} 
