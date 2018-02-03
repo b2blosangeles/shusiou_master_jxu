@@ -198,7 +198,6 @@ try {
 		},
 		refreshSections : function() {
 			let me = this;
-			alert('me.state.curriculum.id==>' + me.state.curriculum.curriculum_id)
 			me.getCurriculumById(me.state.curriculum.curriculum_id, function(data) {
 				if (data.data.curriculum_id) {
 					me.setState({curriculum:data.data, section_id:null,
