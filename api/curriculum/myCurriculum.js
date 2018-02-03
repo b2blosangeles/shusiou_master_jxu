@@ -69,7 +69,7 @@ var app = function(auth_data) {
 				});
 				
 				for (var i = 0; i < v.length; i++) {
-					req.body.data.section.section_id = i + 1;
+					v[i].section_id = i + 1;
 				}
 				var str = 'INSERT INTO  `curriculum_sections` (`curriculum_id`,`type`,`script`, `created`) VALUES ("' +
 				curriculum_id + '",' +
