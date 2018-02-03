@@ -196,13 +196,12 @@ try {
 			if (!this.props.route || !this.props.route.env ||!this.props.route.env.dictionary) return v;
 			return this.props.route.env.dictionary(v);
 		},
-		refreshSections : function(curriculum_id) {
+		refreshSections : function() {
 			let me = this;
-			me.getCurriculumById(curriculum_id, function(data) {
-				alert(JSON.stringify(data));
+			me.getCurriculumById(me.state.curriculum.id, function(data) {
 				if (data.data.curriculum_id) {
 					me.setState({curriculum:data.data, section_id:null,
-					    sections:(data.data.sections)?data.data.sections:[]});
+					sections:(data.data.sections)?data.data.sections:[]});
 				} 
 			});			
 		},
@@ -216,7 +215,6 @@ try {
 				      auth:me.props.route.env.state.auth},
 				dataType: "JSON"
 			}, function( data) {
-				console.log(data);
 				if (typeof cbk == 'function') {
 					cbk(data);
 				}
