@@ -202,7 +202,7 @@ try {
 				alert(JSON.stringify(data));
 				if (data.data.curriculum_id) {
 					me.setState({curriculum:data.data, section_id:null,
-					    sections:(data.data.script)?data.data.script:[]});
+					    sections:(data.data.sections)?data.data.sections:[]});
 				} 
 			});			
 		},
