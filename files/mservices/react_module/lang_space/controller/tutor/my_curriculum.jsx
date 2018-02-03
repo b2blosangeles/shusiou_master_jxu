@@ -199,9 +199,8 @@ try {
 		refreshSections : function(curriculum_id) {
 			let me = this;
 			me.getCurriculumById(curriculum_id, function(data) {
-				alert(1);
+				alert(JSON.stringify(data));
 				if (data.data.curriculum_id) {
-					alert(2);
 					me.setState({curriculum:data.data, section_id:null,
 					    sections:(data.data.script)?data.data.script:[]});
 				} 
