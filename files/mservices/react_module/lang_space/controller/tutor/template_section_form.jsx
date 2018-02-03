@@ -153,9 +153,7 @@ try {
 					auth:me.props.env.state.auth},
 					dataType: "JSON"
 			}, function( result) {
-				alert(JSON.stringify(result));
-				// alert(JSON.stringify(data));
-				me.props.parent.refreshSections(me.props.parent.state.curriculum.curriculum_id);
+				me.props.parent.refreshSections();
 				
 			},function( jqXHR, textStatus ) {
 				alert(JSON.stringify('error'));
