@@ -218,7 +218,7 @@ try {
 									{(function() {
 										return (<span dangerouslySetInnerHTML=
 										{{__html: 'Start: ' + me.props.parent.toHHMMSS(me.state.data[v].s) + 
-										' To:' + me.props.parent.toHHMMSS(me.state.data[v].s + me.state.data[v].t)}}
+										' To:' + me.props.parent.toHHMMSS(me.state.data[v].s * 1 + 1 * me.state.data[v].t)}}
 										/>)
 									})()}
 									<button className="btn btn-info btn-xs" 
