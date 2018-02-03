@@ -49,11 +49,7 @@ try {
 			else if (!me.state.section.section_id) {
 				return (<Embed_curriculum_demo parent={me} params={params} video={me.state.video}/>);
 			} else {
-				return (<span>
-					{JSON.stringify(me.state.section)}
-					<TemplateSectionForm env={me.props.route.env} parent={me} params={params} section_id={me.state.section.section_id} section={me.state.section} />
-					</span>
-				);		
+				return (<TemplateSectionForm env={me.props.route.env} parent={me} params={params} section_id={me.state.section.section_id} section={me.state.section} />);		
 			}
 		},
 		toHHMMSS:function(v, noms) {
