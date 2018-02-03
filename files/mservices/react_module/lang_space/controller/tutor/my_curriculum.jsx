@@ -198,7 +198,7 @@ try {
 		},
 		refreshSections : function(curriculum_id) {
 			let me = this;
-			me.getCurriculumById(cid, function(data) {
+			me.getCurriculumById(curriculum_id, function(data) {
 				alert(1);
 				if (data.data.curriculum_id) {
 					alert(2);
