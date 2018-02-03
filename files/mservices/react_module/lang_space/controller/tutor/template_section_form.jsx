@@ -62,26 +62,11 @@ try {
 				me.setStateData(idx, event.target.value)
 			}
 		},
-		
-		/*
-		handleActive(rec) {
-			var me = this;
-			if (rec.active) {
-				rec.active = false;
-			} else {
-				rec.active = true;
-			}
-			var v = me.state.c_section;
-			this.setState({c_section:v});
-		},		
-		*/
 		setTpl(data) {
 			var me = this;
 			if (me.props.section.section_id == 'new') {
 				me.setState({c_tpl:data, data:{}});
 			} else {
-				console.log('JSON.stringify(me.props.section)-====->');
-				console.log(me.props.section);
 				me.setState({c_tpl:(me.props.section.tpl)?me.props.section.tpl:data, 
 					data:me.props.section.data});
 			}	
