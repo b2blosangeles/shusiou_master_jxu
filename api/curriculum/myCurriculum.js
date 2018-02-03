@@ -45,6 +45,10 @@ var app = function(auth_data) {
 			};
 			_f['P0'] = function(cbk) {
 				let v = CP.data.S0;
+				if (req.body.data.section.track) {
+					if (req.body.data.section.track.s) req.body.data.section.track.s = 1 * req.body.data.section.track.s;
+					if (req.body.data.section.track.t) req.body.data.section.track.t = 1 * req.body.data.section.track.t;				
+				}
 				if (opt === 'saveSection' && req.body.data.section.section_id === 'new') {
 					v[v.length] = req.body.data.section;
 				} else if (opt === 'saveSection') {
