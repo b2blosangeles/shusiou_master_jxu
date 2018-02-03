@@ -94,7 +94,7 @@ var app = function(auth_data) {
 						return true;
 					} else {
 						if (results) {
-							cbk({AAA:req.body.data.section, BBB:v}); // req.body.data.section
+							cbk(req.body.data.section); // req.body.data.section
 						} else {
 							cbk(false);
 						}
@@ -386,9 +386,13 @@ var app = function(auth_data) {
 				function(data) {
 					try {
 						CP.data.S1.sections =queryStringToJSON(CP.data.S1.script, []);
-						for (var i=0; i < CP.data.S1.sections.length; i++) {
-							if (!CP.data.S1.sections[i].data.track) {
-								CP.data.S1.sections[i].data.track = {};
+						let v = CP.data.S1.sections;
+						for (var i=0; i < v.length; i++) {
+							if (!v[i].data.track) {
+								v[i].data.track = {};
+							} else {
+								if (v[i].data.track.s) v[i].data.track.s = 1 * v[i].data.track.s;
+								if (v[i].data.track.t) v[i].data.track.t = 1 * v[i].data.track.t;				
 							}
 						}
 					} catch (err) {
