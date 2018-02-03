@@ -200,7 +200,7 @@ try {
 			let me = this;
 			me.getCurriculumById(me.state.curriculum.curriculum_id, function(data) {
 				if (data.data.curriculum_id) {
-					me.setState({curriculum:data.data, section_id:null,
+					me.setState({curriculum:data.data, section:{section_id:null},
 					sections:(data.data.sections)?data.data.sections:[]});
 				} 
 			});			
