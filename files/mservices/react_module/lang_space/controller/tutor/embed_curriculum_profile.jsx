@@ -68,10 +68,7 @@ try {
 					<div style={{'background-color':'lightyellow', 'color':'red', 'padding':'0.5em',
 						'display':(!me.state.error)?'none':'', 'border-radius': '0.5em'  
 						    }}>{me.state.error}</div>
-
-					{/*<video id="cut_video" width="280" height="80" controls style={{display:'none'}}>
-						<source src="" type="video/mp4"/>
-					</video>*/}			
+		
 					<div className="form-group input-group">
 						<input type="text" className="form-control inpit-white-bg" 
 							value={me.state.curriculum.name}
