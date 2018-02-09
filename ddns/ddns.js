@@ -38,7 +38,7 @@
 		this.sendRecord = function(req, res) {
 			let me = this, question = req.question[0], 
 			    patt = /^IP\_([0-9\_]+)\.shusiou\./ig, 
-			    patt_t = /^T\_([0-9]+)\.shusilu\./ig, 
+			    patt_t = /^T\_([0-9]+)\.shusilou\./ig, 
 			    m;
 			m = patt.exec(question.name);
 			
