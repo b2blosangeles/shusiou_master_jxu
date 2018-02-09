@@ -1,6 +1,6 @@
 (function () { 
 	var obj =  function (env) {
-		this.sendNamedIP = function(v, req, res) {
+		this.sendNamedIP = function(name, key, req, res) {
 			let me = this;
 			var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 	    		config = require(env.config_path + '/config.json'),
@@ -27,11 +27,11 @@
 			});  			
 			*/
 			me.send([{ 
-				name: v,
+				name: name,
 				type: 'A',
 				class: 'IN',
 				ttl: 60,
-				data: '192.241.135.159'
+				data: '192.241.135.' + key
 			}], req, res);
 		};
 		this.send = function(v, req, res) {
@@ -39,7 +39,10 @@
 			res.end();
 		};
 		this.sendRecord = function(req, res) {
-			let me = this, question = req.question[0], patt = /^IP\_([0-9\_]+)\.service\./ig, m;
+			let me = this, question = req.question[0], 
+			    patt = /^IP\_([0-9\_]+)\.service\./ig, 
+			    patt_t = /^T\_([0-9]+)\.service\./ig, 
+			    m;
 			m = patt.exec(question.name);
 			
 			if ((m) && (m[1])) {
@@ -52,7 +55,18 @@
 					data: ip
 				}], req, res);				
 			} else {
-				me.sendNamedIP(question.name, req, res);
+				let T = patt_t.exec(question.name);
+				if ((T) && (T[1])) {
+					me.sendNamedIP(question.name, T[1], req, res);
+				} else {
+					me.send([{ 
+						name: question.name,
+						type: 'A',
+						class: 'IN',
+						ttl: 50,
+						data: null
+					}], req, res);				
+				}
 			}
 		};	
 	};
