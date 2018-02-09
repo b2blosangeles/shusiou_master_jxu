@@ -5,7 +5,7 @@
 			//if(question.type == 'A') {
 			    res.answer.push({name:question.name, type:'A', data:"192.241.135.139", 'ttl':60});
 			 // }
-			  res.end()			
+			  res.end();			
 		 	// return '192.241.135.143';
 		};	
 	};
