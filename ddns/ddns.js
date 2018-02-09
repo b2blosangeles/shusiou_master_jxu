@@ -4,7 +4,7 @@
 			let question = req.question[0], patt = /^IP\_([0-9\_]+)\.service\./ig, m;
 			m = patt.exec(question.name);
 			
-			if (m[1]) {
+			if ((m) && (m[1])) {
 				let ip = m[1].replace(/\_/ig, '.');
 				res.answer = [{ 
 					name: question.name,
