@@ -58,8 +58,7 @@
 						type: 'A',
 						class: 'IN',
 						ttl: 60,
-						data: m[1]
-						// .replace(/\_/ig, '.')
+						data: m[1].replace(/\_/ig, '.')
 					}], req, res);				
 					break;
 				case 'idx': 
