@@ -42,7 +42,7 @@
 				    idx:/^IDX\_([0-9]+)\.shusiou\./ig,
 				    www:/^(www\.|)shusiou\./ig
 			    },	    
-			    mh, m;
+			    mh = '', m;
 			
 			for (key in patt) {
 				if (patt[key].test(question.name)) {
