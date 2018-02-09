@@ -5,7 +5,6 @@
 			var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 	    		config = require(env.config_path + '/config.json'),
 	    		cfg0 = config.db;
-			/*
 			let ips = [];
 			var str = 'SELECT `node_ip` from `cloud_node` ORDER BY score ASC';
 			var connection = mysql.createConnection(cfg0);
@@ -17,7 +16,7 @@
 					return true;
 				} else {
 					if (results) {
-						cbk(queryStringToJSON(results[0].script, []));
+						ips = results;
 					} else {
 						cbk(false);
 					}
@@ -25,13 +24,12 @@
 				}
 
 			});  			
-			*/
 			me.send([{ 
 				name: name,
 				type: 'A',
 				class: 'IN',
 				ttl: 60,
-				data: '192.241.135.' + key
+				data: ips[key]
 			}], req, res);
 		};
 		this.send = function(v, req, res) {
