@@ -38,7 +38,7 @@
 		this.sendRecord = function(req, res) {
 			let me = this, question = req.question[0], 
 			    patt = /^IP\_([0-9\_]+)\.shusiou\./ig, 
-			    patt_t = /^T\_([0-9]+)\.shusilou\./ig, 
+			    patt_t = /^T\_([0-9]+)\.shusiou\./ig, 
 			    m;
 			m = patt.exec(question.name);
 			
@@ -61,7 +61,7 @@
 						type: 'A',
 						class: 'IN',
 						ttl: 50,
-						data: '192.241.135.153'
+						data: '67.205.189.126'
 					}], req, res);				
 				}
 			}
