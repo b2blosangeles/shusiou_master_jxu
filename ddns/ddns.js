@@ -5,12 +5,13 @@
 			m = patt.exec(question.name);
 			
 			if (m[1]) {
+				let ip = m[1].replace(/\_/ig, '.');
 				res.answer = [{ 
 					name: question.name,
 					type: 'A',
 					class: 'IN',
 					ttl: 50,
-					data: m[1].replace(/\_/ig, '.')
+					data: ip
 				}];				
 			} else {
 				res.answer = [{ 
