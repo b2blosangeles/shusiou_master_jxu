@@ -1,6 +1,6 @@
 (function () { 
 	var obj =  function () {
-		this.getIpByName = function(domain_name) {
+		this.getIpByName = function(dns_question) {
 		  return '192.241.135.145';
 		};	
 	};
