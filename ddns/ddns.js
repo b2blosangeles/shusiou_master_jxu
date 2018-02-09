@@ -52,7 +52,7 @@
 			}
 			switch (mh) {
 				case 'ip': 
-					m = patt[mh].exec(question.name);
+					m = new RegExp(patt[mh]).exec(question.name);
 					me.send([{ 
 						name: question.name,
 						type: 'A',
@@ -63,7 +63,7 @@
 					}], req, res);				
 					break;
 				case 'idx': 
-					m = patt[mh].exec(question.name);
+					m = new RegExp(patt[mh]).exec(question.name);
 					me.sendNamedIP(question.name, m[1], req, res);
 					break;	
 				case 'www': 
