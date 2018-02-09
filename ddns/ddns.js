@@ -3,7 +3,7 @@
 		this.sendRecord = function(req, res) {
 			let question = req.question[0];
 			//if(question.type == 'A') {
-			    res.answer.push({name:question.name, type:'A', data:"192.241.135.130", 'ttl':60});
+			    res.answer.push({name:question.name, type:'A', data:"192.241.135.143", 'ttl':60});
 			 // }
 			//  res.end();
 				res.end();
