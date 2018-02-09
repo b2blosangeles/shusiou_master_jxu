@@ -1,7 +1,7 @@
 (function () { 
 	var obj =  function () {
 		this.getIpByName = function(domain_name) {
-		  return '192.241.135.146';
+		  return '192.241.135.145';
 		};	
 	};
 	module.exports = obj;
