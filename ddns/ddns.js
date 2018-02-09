@@ -48,7 +48,7 @@
 					name: question.name,
 					type: 'A',
 					class: 'IN',
-					ttl: 50,
+					ttl: 60,
 					data: ip
 				}], req, res);				
 			} else {
@@ -60,7 +60,7 @@
 						name: question.name,
 						type: 'A',
 						class: 'IN',
-						ttl: 50,
+						ttl: 60,
 						data: '67.205.189.126'
 					}], req, res);				
 				}
