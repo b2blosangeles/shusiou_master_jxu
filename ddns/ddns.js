@@ -8,7 +8,7 @@
 				type: 'A',
 				class: 'IN',
 				ttl: 60,
-				data: '192.241.135.143'
+				data: '192.241.135.148'
 				}];
 			/*
 			    res.answer.push({ 
