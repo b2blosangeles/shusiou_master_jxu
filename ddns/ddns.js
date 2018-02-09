@@ -7,7 +7,7 @@
 				name: question.name,
 				type: 'A',
 				class: 'IN',
-				ttl: 60,
+				ttl: 5,
 				data: '192.241.135.143'
 				}];
 			/*
