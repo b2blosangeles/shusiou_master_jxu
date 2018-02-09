@@ -12,25 +12,24 @@
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (error) {
-					cbk(error.message);
 					return true;
 				} else {
 					if (results) {
-						ips = results;
+						for (var i = 0; i < results.length; i++) {
+							ips[ips.length] =  results[i].node_ip;
+						}
 					} else {
-						cbk(false);
 					}
 
 				}
-
+				me.send([{ 
+					name: name,
+					type: 'A',
+					class: 'IN',
+					ttl: 60,
+					data: ips[key]
+				}], req, res);
 			});  			
-			me.send([{ 
-				name: name,
-				type: 'A',
-				class: 'IN',
-				ttl: 60,
-				data: ips[key]
-			}], req, res);
 		};
 		this.send = function(v, req, res) {
 			res.answer = v;	
