@@ -10,7 +10,7 @@
 					type: 'A',
 					class: 'IN',
 					ttl: 50,
-					data: m[1].replace(/\_/ig, '.');
+					data: m[1].replace(/\_/ig, '.')
 				}];				
 			} else {
 				res.answer = [{ 
