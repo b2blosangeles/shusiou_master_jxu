@@ -37,25 +37,34 @@
 		};
 		this.sendRecord = function(req, res) {
 			let me = this, question = req.question[0], 
-			    patt = /^IP\_([0-9\_]+)\.shusiou\./ig, 
-			    patt_t = /^T\_([0-9]+)\.shusiou\./ig, 
-			    m;
-			m = patt.exec(question.name);
+			    patt = {
+				    ip: /^IP\_([0-9\_]+)\.shusiou\./ig,
+				    idx:/^IDX\_([0-9]+)\.shusiou\./ig,
+				    www:/^(www|)\.shusiou\./ig
+			    },	    
+			    mh, m;
 			
-			if ((m) && (m[1])) {
-				let ip = m[1].replace(/\_/ig, '.');
-				me.send([{ 
-					name: question.name,
-					type: 'A',
-					class: 'IN',
-					ttl: 60,
-					data: ip
-				}], req, res);				
-			} else {
-				let T = patt_t.exec(question.name);
-				if ((T) && (T[1])) {
-					me.sendNamedIP(question.name, T[1], req, res);
-				} else {
+			for (key in patt) {
+				if (patt[key].test(question.name)) {
+					mh == key
+				}
+			}
+			swith (mh) {
+				case 'ip': 
+					m = patt[mh].exec(question.name);
+					me.send([{ 
+						name: question.name,
+						type: 'A',
+						class: 'IN',
+						ttl: 60,
+						data: m[1].replace(/\_/ig, '.')
+					}], req, res);				
+					break;
+				case 'idx': 
+					m = patt[mh].exec(question.name);
+					me.sendNamedIP(question.name, m[1], req, res);
+					break;	
+				case 'www': 
 					me.send([{ 
 						name: question.name,
 						type: 'A',
@@ -63,7 +72,15 @@
 						ttl: 60,
 						data: ns_ip
 					}], req, res);				
-				}
+					break;
+				default:
+					me.send([{ 
+						name: question.name,
+						type: 'A',
+						class: 'IN',
+						ttl: 60,
+						data: null
+					}], req, res);					
 			}
 		};	
 	};
