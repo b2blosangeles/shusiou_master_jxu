@@ -61,7 +61,7 @@
 						type: 'A',
 						class: 'IN',
 						ttl: 60,
-						data: '67.205.189.127'
+						data: ns_ip
 					}], req, res);				
 				}
 			}
