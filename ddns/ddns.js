@@ -46,7 +46,8 @@
 			
 			for (key in patt) {
 				if (patt[key].test(question.name)) {
-					mh = key
+					mh = key;
+					break;
 				}
 			}
 			swith (mh) {
