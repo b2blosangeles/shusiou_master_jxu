@@ -61,7 +61,7 @@
 						type: 'A',
 						class: 'IN',
 						ttl: 50,
-						data: null
+						data: '192.241.135.153'
 					}], req, res);				
 				}
 			}
