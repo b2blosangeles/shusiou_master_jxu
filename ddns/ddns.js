@@ -58,8 +58,8 @@
 						type: 'A',
 						class: 'IN',
 						ttl: 60,
-						data: '192.241.135.143'
-						// m[1].replace(/\_/ig, '.')
+						data: m[1]
+						// .replace(/\_/ig, '.')
 					}], req, res);				
 					break;
 				case 'idx': 
