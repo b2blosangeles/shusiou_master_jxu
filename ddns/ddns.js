@@ -40,7 +40,7 @@
 			    patt = {
 				    ip: /^IP\_([0-9\_]+)\.shusiou\./ig,
 				    idx:/^IDX\_([0-9]+)\.shusiou\./ig,
-				    www:/^(www|)\.shusiou\./ig
+				    www:/^(www\.|)shusiou\./ig
 			    },	    
 			    mh, m;
 			
