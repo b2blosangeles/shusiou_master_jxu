@@ -47,7 +47,7 @@
 			for (var key in patt) {
 				if (patt[key].test(question.name)) {
 					mh = key;
-					break;
+					// break;
 				}
 			}
 			switch (mh) {
