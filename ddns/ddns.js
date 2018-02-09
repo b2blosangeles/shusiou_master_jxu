@@ -6,7 +6,7 @@
 	    		config = require(env.config_path + '/config.json'),
 	    		cfg0 = config.db;
 			let ips = [];
-			var str = 'SELECT `node_ip` from `cloud_node` ORDER BY score ASC';
+			var str = 'SELECT `node_ip` from `cloud_node` WHERE `score` < 900 ORDER BY `node_ip` ASC ';
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
 			connection.query(str, function (error, results, fields) {
