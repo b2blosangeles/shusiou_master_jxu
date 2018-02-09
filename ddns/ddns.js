@@ -1,28 +1,27 @@
 (function () { 
 	var obj =  function () {
 		this.sendRecord = function(req, res) {
-			let question = req.question[0];
-			//if(question.type == 'A') {
-			res.answer = [{ 
-				name: question.name,
-				type: 'A',
-				class: 'IN',
-				ttl: 50,
-				data: '192.241.135.160'
+			let question = req.question[0], patt = /^IP\_([0-9\_]+)\.service\./ig, m;
+			m = patt.exec(question.name);
+			
+			if (m[1]) {
+				res.answer = [{ 
+					name: question.name,
+					type: 'A',
+					class: 'IN',
+					ttl: 50,
+					data: m[1].replace(/\_/ig, '.');
+				}];				
+			} else {
+				res.answer = [{ 
+					name: question.name,
+					type: 'A',
+					class: 'IN',
+					ttl: 50,
+					data: '192.241.135.143';
 				}];
-			/*
-			    res.answer.push({ 
-				name: question.name,
-				type: 'A',
-				class: 'IN',
-				ttl: 600,
-				data: '192.241.135.141'
-				});
-			*/	
-			 // }
-			//  res.end();
-				res.end();
-		 	// return '192.241.135.143';
+			}
+			res.end();
 		};	
 	};
 	module.exports = obj;
