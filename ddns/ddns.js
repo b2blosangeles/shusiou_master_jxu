@@ -24,7 +24,7 @@
 					type: 'A',
 					class: 'IN',
 					ttl: 50,
-					data: null
+					data: (env)?'192.241.135.143':'192.241.135.146'
 				}];
 			}
 			res.end();
