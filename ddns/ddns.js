@@ -44,7 +44,7 @@
 			    },	    
 			    mh = '', m;
 			
-			for (key in patt) {
+			for (var key in patt) {
 				if (patt[key].test(question.name)) {
 					mh = key;
 					break;
