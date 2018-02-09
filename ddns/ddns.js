@@ -6,3 +6,9 @@
 	};
 	module.exports = obj;
 })();
+/*
+let ip = ddns.getIpByName(req.question[0].name);
+console.log(ip+'----------------------------------' + req.question[0].name);
+console.log(req.connection.remoteAddress + '-' + req.connection.type);
+res.end(ip);
+*/
