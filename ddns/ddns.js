@@ -1,5 +1,5 @@
 (function () { 
-	var obj =  function (env) {
+	var obj =  function (env, ns_ip) {
 		this.sendNamedIP = function(name, key, req, res) {
 			let me = this;
 			var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
