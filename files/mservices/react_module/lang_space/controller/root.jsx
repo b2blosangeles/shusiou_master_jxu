@@ -1,7 +1,7 @@
 
 try {
 	var shusiou_url = location.protocol+'//'+window.location.hostname;
-	if (shusiou_url !== 'https:') {
+	if (location.protocol !== 'https:') {
 		window.location.href = window.location.href.replace(shusiou_url, 'https://' + window.location.hostname);
 	} else {	
 		var Root =  React.createClass({
