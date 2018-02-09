@@ -50,7 +50,7 @@
 					break;
 				}
 			}
-			swith (mh) {
+			switch (mh) {
 				case 'ip': 
 					m = patt[mh].exec(question.name);
 					me.send([{ 
