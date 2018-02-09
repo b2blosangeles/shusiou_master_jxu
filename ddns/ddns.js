@@ -1,7 +1,12 @@
 (function () { 
 	var obj =  function () {
-		this.getIpByName = function(dns_question) {
-		  return '192.241.135.143';
+		this..sendRecord = function(req, res) {
+			let question = req.question[0];
+			//if(question.type == 'A') {
+			    res.answer.push({name:question.name, type:'A', data:"192.241.135.139", 'ttl':60});
+			 // }
+			  res.end()			
+		 	// return '192.241.135.143';
 		};	
 	};
 	module.exports = obj;
