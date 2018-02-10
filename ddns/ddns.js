@@ -1,4 +1,3 @@
-sdfs
 (function () { 
 	var obj =  function (env, ns_ip) {
 		this.sendNamedIP = function(name, key, req, res) {
