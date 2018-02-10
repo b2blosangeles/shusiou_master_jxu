@@ -39,7 +39,7 @@
 			let me = this, question = req.question[0], 
 			    patt = {
 				    ip: /^IP\_([0-9\_]+)\.shusiou\./ig,
-				    idx:/^IDX([0-9]+)\.shusiou\./ig,
+				    idx:/node([0-9]+)\.shusiou\./ig,
 				    www:/^(www\.|)shusiou\./ig
 			    },	    
 			    mh = '', m;
