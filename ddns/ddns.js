@@ -57,6 +57,9 @@
 			switch (mh) {
 				case 'ip': 
 					m = new RegExp(patt[mh]).exec(question.name);
+					console.log(m[1].replace(/\_/ig, '.'));
+					console.log((me.validateIPaddress(m[1].replace(/\_/ig, '.'));
+					return true;
 					if (me.validateIPaddress(m[1].replace(/\_/ig, '.')) {
 						me.send([{ 
 							name: question.name,
@@ -79,6 +82,7 @@
 					break;
 				case 'idx': 
 					m = new RegExp(patt[mh]).exec(question.name);
+					
 					me.sendNamedIP(question.name, m[1], req, res);
 					break;	
 				case 'www': 
