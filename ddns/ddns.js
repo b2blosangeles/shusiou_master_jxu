@@ -37,7 +37,6 @@
 					}], req, res);
 				});
 			} else {
-				console.log(env.dns_matrix);
 				me.send([{ 
 					name: name,
 					type: 'A',
