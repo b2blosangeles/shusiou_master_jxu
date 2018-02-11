@@ -60,6 +60,7 @@
 					console.log(m[1].replace(/\_/ig, '.'));
 					console.log((me.validateIPaddress(m[1].replace(/\_/ig, '.'));
 					return true;
+						     /*
 					if (me.validateIPaddress(m[1].replace(/\_/ig, '.'))) {
 						me.send([{ 
 							name: question.name,
@@ -78,7 +79,7 @@
 						}], req, res);							
 					}
 					break;
-			
+			*/
 					break;
 				case 'idx': 
 					m = new RegExp(patt[mh]).exec(question.name);
