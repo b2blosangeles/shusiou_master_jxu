@@ -59,16 +59,14 @@
 					m = new RegExp(patt[mh]).exec(question.name);
 					let ip = m[1].replace(/\_/ig, '.');
 					console.log(ip);
-					console.log((me.validateIPaddress(ip));
-					return true;
-						     /*
-					if (me.validateIPaddress(m[1].replace(/\_/ig, '.'))) {
+					console.log(me.validateIPaddress(ip));
+					if (me.validateIPaddress(ip)) {
 						me.send([{ 
 							name: question.name,
 							type: 'A',
 							class: 'IN',
 							ttl: 60,
-							data: m[1].replace(/\_/ig, '.')
+							data: ip
 						}], req, res);						
 					} else {
 						me.send([{ 
@@ -79,8 +77,6 @@
 							data: null
 						}], req, res);							
 					}
-					break;
-			*/
 					break;
 				case 'idx': 
 					m = new RegExp(patt[mh]).exec(question.name);
