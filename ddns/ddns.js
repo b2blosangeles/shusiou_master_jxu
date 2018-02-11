@@ -60,7 +60,7 @@
 					console.log(m[1].replace(/\_/ig, '.'));
 					console.log((me.validateIPaddress(m[1].replace(/\_/ig, '.'));
 					return true;
-					if (me.validateIPaddress(m[1].replace(/\_/ig, '.')) {
+					if (me.validateIPaddress(m[1].replace(/\_/ig, '.'))) {
 						me.send([{ 
 							name: question.name,
 							type: 'A',
