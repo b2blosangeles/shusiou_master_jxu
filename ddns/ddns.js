@@ -57,8 +57,9 @@
 			switch (mh) {
 				case 'ip': 
 					m = new RegExp(patt[mh]).exec(question.name);
-					console.log(m[1].replace(/\_/ig, '.'));
-					console.log((me.validateIPaddress(m[1].replace(/\_/ig, '.'));
+					let ip = m[1].replace(/\_/ig, '.');
+					console.log(ip);
+					console.log((me.validateIPaddress(ip));
 					return true;
 						     /*
 					if (me.validateIPaddress(m[1].replace(/\_/ig, '.'))) {
