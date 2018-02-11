@@ -2,11 +2,7 @@
 	var obj =  function (env, ns_ip) {
 		this.validateIPaddress = function (ip)  {
 			let patt = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-			if patt.test(ip) {
-			    return (true)
-			} else {
-				return false
-			}
+			return (patt.test(ip)) ?  true : false;
   		}		
 		this.sendNamedIP = function(name, key, req, res) {
 			let me = this;
