@@ -55,6 +55,7 @@
 					m = new RegExp(patt[mh]).exec(question.name);
 					console.log('---m---');
 					console.log(m);
+					break;
 					me.send([{ 
 						name: question.name,
 						type: 'A',
