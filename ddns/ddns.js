@@ -57,16 +57,25 @@
 			switch (mh) {
 				case 'ip': 
 					m = new RegExp(patt[mh]).exec(question.name);
-					console.log('---m---');
-					console.log(me.validateIPaddress(m[1]));
+					if (me.validateIPaddress(m[1].replace(/\_/ig, '.')) {
+						me.send([{ 
+							name: question.name,
+							type: 'A',
+							class: 'IN',
+							ttl: 60,
+							data: m[1].replace(/\_/ig, '.')
+						}], req, res);						
+					} else {
+						me.send([{ 
+							name: question.name,
+							type: 'A',
+							class: 'IN',
+							ttl: 60,
+							data: null
+						}], req, res);							
+					}
 					break;
-					me.send([{ 
-						name: question.name,
-						type: 'A',
-						class: 'IN',
-						ttl: 60,
-						data: m[1].replace(/\_/ig, '.')
-					}], req, res);				
+			
 					break;
 				case 'idx': 
 					m = new RegExp(patt[mh]).exec(question.name);
