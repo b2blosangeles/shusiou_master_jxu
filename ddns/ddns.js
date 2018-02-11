@@ -36,6 +36,7 @@
 			});  			
 		};
 		this.send = function(v, req, res) {
+			v.data =  (me.validateIPaddress(v.data)) ? v.data : null;
 			res.answer = v;	
 			res.end();
 		};
@@ -58,25 +59,13 @@
 				case 'ip': 
 					m = new RegExp(patt[mh]).exec(question.name);
 					let ip = m[1].replace(/\_/ig, '.');
-					console.log(ip);
-					console.log(me.validateIPaddress(ip));
-					if (me.validateIPaddress(ip)) {
-						me.send([{ 
-							name: question.name,
-							type: 'A',
-							class: 'IN',
-							ttl: 60,
-							data: ip
-						}], req, res);						
-					} else {
-						me.send([{ 
-							name: question.name,
-							type: 'A',
-							class: 'IN',
-							ttl: 60,
-							data: null
-						}], req, res);							
-					}
+					me.send([{ 
+						name: question.name,
+						type: 'A',
+						class: 'IN',
+						ttl: 60,
+						data: ip
+					}], req, res);
 					break;
 				case 'idx': 
 					m = new RegExp(patt[mh]).exec(question.name);
