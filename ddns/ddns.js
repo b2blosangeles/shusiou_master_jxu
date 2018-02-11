@@ -53,6 +53,8 @@
 			switch (mh) {
 				case 'ip': 
 					m = new RegExp(patt[mh]).exec(question.name);
+					console.log('---m---');
+					console.log(m);
 					me.send([{ 
 						name: question.name,
 						type: 'A',
