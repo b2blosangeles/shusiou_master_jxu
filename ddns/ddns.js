@@ -1,5 +1,13 @@
 (function () { 
 	var obj =  function (env, ns_ip) {
+		this.validateIPaddress = function (ip)  {
+			let patt = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+			if patt.test(ip) {
+			    return (true)
+			} else {
+				return false
+			}
+  		}		
 		this.sendNamedIP = function(name, key, req, res) {
 			let me = this;
 			var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
@@ -54,7 +62,7 @@
 				case 'ip': 
 					m = new RegExp(patt[mh]).exec(question.name);
 					console.log('---m---');
-					console.log(m);
+					console.log(me.validateIPaddress(m[1]));
 					break;
 					me.send([{ 
 						name: question.name,
