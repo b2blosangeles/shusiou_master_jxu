@@ -57,6 +57,8 @@
 			    patt = {
 				    ip: /^IP\_([0-9\_]+)\.shusiou\./ig,
 				    idx:/node([0-9]+)\.shusiou\./ig,
+				    np:/np([0-9]+)\.shusiou\./ig,
+				    nd:/nd([0-9]+)\.shusiou\./ig,
 				    www:/^(www\.|)shusiou\./ig
 			    },	    
 			    mh = '', m;
@@ -80,8 +82,9 @@
 					}], req, res);
 					break;
 				case 'idx': 
+				case 'nd':
+				case 'np':
 					m = new RegExp(patt[mh]).exec(question.name);
-					
 					me.sendNamedIP(question.name, m[1], req, res);
 					break;	
 				case 'www': 
