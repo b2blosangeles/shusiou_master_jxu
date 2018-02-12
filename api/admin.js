@@ -1,5 +1,5 @@
 
-let opt = req.body['opt'] || req.param('opt'),
+let opt = req.body['opt'] || req.param('opt');
 if (!opt) {
 	res.send('Missing opt!!');
 	return true;
