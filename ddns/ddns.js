@@ -5,7 +5,14 @@
 			return (patt.test(ip)) ?  true : false;
   		}		
 		this.sendNamedIP = function(name, key, req, res) {
-			let me = this;
+			let me = this, k;
+			 if (isNaN(key) || key === '0') { 
+			 	res.end(); 
+				return true;
+			} else {
+				k = parseInt(key) - 1;
+			}
+		
 			if (!env.dns_matrix) {
 				var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 				config = require(env.config_path + '/config.json'),
@@ -33,7 +40,7 @@
 						type: 'A',
 						class: 'IN',
 						ttl: 60,
-						data: ips[key]
+						data: ips[k]
 					}], req, res);
 				});
 			} else {
@@ -42,7 +49,7 @@
 					type: 'A',
 					class: 'IN',
 					ttl: 60,
-					data: env.dns_matrix[key]
+					data: env.dns_matrix[k]
 				}], req, res);			
 			}
 		};
