@@ -1,8 +1,10 @@
-if (!req.body['opt']) {
-	res.send('Missing optA!!');
+
+let opt = req.body['opt'] || req.param('opt'),
+if (!opt) {
+	res.send('Missing opt!!');
 	return true;
 }
-switch(req.body['opt']) {
+switch(opt) {
 		
     case 'git_frame_pull':
 	pkg.exec('cd ' + env.root_path + '&& git pull', function(error, stdout, stderr) {
