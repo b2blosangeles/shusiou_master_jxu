@@ -1,3 +1,4 @@
+/*
 var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 config = require(env.config_path + '/config.json'),
 cfg0 = config.db;
@@ -21,3 +22,5 @@ connection.query(str, function (error, results, fields) {
   env.dns_matrix = ips;
   res.send(env);
 });
+*/
+res.send(env);
