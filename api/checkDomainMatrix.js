@@ -22,7 +22,7 @@ connection.query(str, function (error, results, fields) {
   
   let mp = {};
   for (o in ips) {
-    mp[ips[o]] = o + 1; 
+    mp[ips[o]] = parseInt(o) + 1; 
   }
   
   res.send(mp);
