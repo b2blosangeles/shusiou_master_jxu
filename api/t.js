@@ -20,5 +20,5 @@ connection.query(str, function (error, results, fields) {
   }
   
   
-  res.send(results);
+  res.send(results[0].script);
 });
