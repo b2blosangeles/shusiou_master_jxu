@@ -19,7 +19,6 @@ connection.query(str, function (error, results, fields) {
     }
 
   }
-  env.dns_matrix = ips;
-  res.send(env);
+  res.send(ips);
 });
 
