@@ -19,6 +19,12 @@ connection.query(str, function (error, results, fields) {
     }
 
   }
-  res.send(ips);
+  
+  let mp = {};
+  for (o in ips) {
+    mp.ips[o] = o; 
+  }
+  
+  res.send(mp);
 });
 
