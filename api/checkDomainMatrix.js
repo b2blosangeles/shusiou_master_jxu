@@ -6,4 +6,4 @@
     mp[ips[o]] = parseInt(o) + 1; 
   }
   
-  res.send(mp);
+  res.send(env);
