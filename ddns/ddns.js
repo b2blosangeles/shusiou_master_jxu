@@ -62,11 +62,10 @@
 		this.sendRecord = function(req, res) {
 			let me = this, question = req.question[0], 
 			    patt = {
-				    ip: /^IP\_([0-9\_]+)\.shusiou\./ig,
-				    idx:/node([0-9]+)\.shusiou\./ig,
-				    np:/np([0-9]+)\.shusiou\./ig,
-				    nd:/nd([0-9]+)\.shusiou\./ig,
-				    www:/^(www\.|)shusiou\./ig
+				    ip: /^IP\_([0-9\_]+)\.service\./ig,
+				    idx:/node([0-9]+)\.service\./ig,
+				    np:/np([0-9]+)\.service\./ig,
+				    nd:/nd([0-9]+)\.service\./ig
 			    },	    
 			    mh = '', m;
 			
