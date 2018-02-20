@@ -10,10 +10,6 @@ var mnt_folder = '/mnt/shusiou-video/';
 var config = require(env.config_path + '/config.json');
 
 var folderP = require(env.site_path + '/api/inc/folderP/folderP');
-var cache_only = (req.query['cache_only'])?true:false;
-
-switch(type) {
-	case 'video':				
 
 		var file = pkg.fs.createReadStream('/var/img/niu.mp4');
 		file.pipe(res);
@@ -25,7 +21,4 @@ switch(type) {
 
 		file.on('close', function(){ 									
 		});	
-		break;			
-	default:
-		 write404('type error');  
-}
+
