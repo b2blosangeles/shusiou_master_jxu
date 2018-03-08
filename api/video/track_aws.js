@@ -17,3 +17,15 @@ splitVideo.split('_type', '_file',
       }
   );
 
+/*
+			var connection = mysql.createConnection(cfg0);
+			connection.connect();
+
+			var str = 'SELECT *  FROM  `video`';
+
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				if (results.length)  cbk(results);
+				else cbk([]);
+			});  
+*/            
