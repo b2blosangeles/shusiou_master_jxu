@@ -7,7 +7,7 @@
   };
 
   var splitVideo = new awsS3Video(cfg);	
-  splitVideo.split(
+  splitVideo.split('_type', '_file', 
       function(data) {
         res.send(data);
       }
