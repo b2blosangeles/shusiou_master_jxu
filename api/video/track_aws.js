@@ -12,3 +12,9 @@ splitVideo.split('_type', '_file',
         res.send(data);
       }
   );
+/*
+    "objectSpaceDigitalOcean":{
+        "accessKeyId": "QYF3ENCI4TEDFDWFBS6N",
+        "secretAccessKey": "7DJD8b9iAqD5qsLgRZH9OXfgOQMob/edWouwiqYeOwI"    
+    }
+    */
