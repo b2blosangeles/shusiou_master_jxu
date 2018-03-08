@@ -13,4 +13,4 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     cfg0 = config.db,
     fs = require('fs');
 
-console.log(config);
+console.log(env);
