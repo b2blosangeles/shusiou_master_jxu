@@ -13,4 +13,17 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     cfg0 = config.db,
     fs = require('fs');
 
-console.log(env);
+let awsS3Video = require(env.site_path + '/api/inc/awsS3Video/awsS3Video.js'),
+    cfg = {
+      id:'shusiou-d-01',
+      endpoint : 'nyc3.digitaloceanspaces.com',
+      accessKeyId: config.objectSpaceDigitalOcean.accessKeyId,
+      secretAccessKey: config.objectSpaceDigitalOcean.secretAccessKey
+    };
+
+var splitVideo = new awsS3Video(cfg);	
+splitVideo.split('_type', '_file', 
+      function(data) {
+        console.log(data);
+      }
+  );
