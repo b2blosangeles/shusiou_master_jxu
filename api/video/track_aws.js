@@ -5,7 +5,7 @@ let mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 let awsS3Video = require(env.site_path + '/api/inc/awsS3Video/awsS3Video.js'),
     cfg = {
       id:'shusiou-d-01',
-      endpoint : 'nyc3.digitaloceanspaces.comA',
+      endpoint : 'nyc3.digitaloceanspaces.com',
       accessKeyId: config.objectSpaceDigitalOcean.accessKeyId,
       secretAccessKey: config.objectSpaceDigitalOcean.secretAccessKey
     };
