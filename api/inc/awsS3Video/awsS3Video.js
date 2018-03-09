@@ -228,7 +228,7 @@
 				else callback(d);
 			});
 		}
-		var splitVideo = function(cbk) {
+		this.splitVideo = function(cbk) {
 			let me = this;
 			switch(me.type) {
 				case '_t':
