@@ -16,7 +16,16 @@
 			    endpoint: new AWS.Endpoint(cfg.endpoint),
 			    accessKeyId: cfg.accessKeyId,
 			    secretAccessKey: cfg.secretAccessKey
-			});			
+			});
+
+			var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+			    crowdProcess =  require(env.root_path + '/package/crowdProcess/crowdProcess'),
+			    cfg0 = config.db,
+			    fs = require('fs');			
+			
+			var CP = new pkg.crowdProcess();
+			var _f = {}; 
+			
 			_cbk(cfg);
 		};	
 	};
