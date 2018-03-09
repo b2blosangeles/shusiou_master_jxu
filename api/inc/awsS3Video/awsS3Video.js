@@ -18,7 +18,7 @@
 				connection.connect();
 				// var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP.data.ip + "'";
 				var str = "SELECT A.*, B.`status` FROM `video` A LEFT JOIN `video_space` B ON A.`vid` = B.`vid`" +
-					" WHERE A.`server_ip` = '" + CP.data.ip + "'";
+					" WHERE A.`server_ip` = '" + CP.data.ip + "' ORDER BY `status` DESC";
 				
 				connection.query(str, function (error, results, fields) {
 					connection.end();
