@@ -18,6 +18,9 @@
 				connection.connect();
 				// var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP.data.ip + "'";
 				var str = "SELECT * FROM `video` WHERE `server_ip` = '" + CP.data.ip + "'";
+				
+				// /mnt/shusiou-video/videos/75600000000001/video
+				
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error || !results.length) {
