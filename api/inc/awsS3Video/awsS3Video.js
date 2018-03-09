@@ -30,7 +30,7 @@
 			};
 			_f['get_video_name']  = function(cbk) { 
 				let vid = CP.data.db_video.vid;
-				if (vid === null) {
+				if (status === null) {
 					var connection = pkg.mysql.createConnection(config.db);
 					connection.connect();
 					var str = "INSERT INTO `video_space` (`vid`, `status`, `created`) VALUES " +
