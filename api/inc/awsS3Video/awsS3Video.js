@@ -5,7 +5,7 @@
 			var CP = new pkg.crowdProcess();
 			var _f = {};		
 			_f['ip']  = function(cbk_s) {
-			    fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+			    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 				if ((err) || !data) {
 					cbk_s(false); CP_s.exit = 1;		
 				} else {
