@@ -16,7 +16,11 @@
 				if (v !== false) { 
 					try {  v = JSON.parse(body); } catch (e) { v = false; }
 				}
-				_cbk(v);
+				if (!v || !v.status || !v.status.t) {
+					_cbk('_t')
+				} else {
+					_cbk('_s')
+				}
 			});
 		}
 		this.split = function(_type, _file, _cbk) {
