@@ -4,16 +4,16 @@
 			let me = this;
 			var CP = new pkg.crowdProcess();
 			var _f = {};		
-			_f['ip']  = function(cbk_s) {
+			_f['ip']  = function(cbk) {
 			    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 				if ((err) || !data) {
-					cbk_s(false); CP_s.exit = 1;		
+					cbk(false); CP.exit = 1;		
 				} else {
-					cbk_s(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
+					cbk(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
 				}
 			    });
 			};
-			_f['db_videos']  = function(cbk_s) { /* get database catched local videos */
+			_f['db_videos']  = function(cbk) { /* get database catched local videos */
 				var connection = pkg.mysql.createConnection(config.db);
 				connection.connect();
 				var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP.data.ip + "'";
