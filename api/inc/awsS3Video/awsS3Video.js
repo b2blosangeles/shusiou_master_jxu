@@ -1,5 +1,5 @@
 (function () { 
-	var obj =  function (cfg, env) {
+	var obj =  function (cfg) {
 		this.split = function(_type, _file, _cbk) {
 			let _p = _file.match(/(.+)\/([^\/]+)$/);
 			let source_path = _p[1] + '/',
