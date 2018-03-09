@@ -30,7 +30,17 @@
 			};
 			_f['split_videos']  = function(cbk) { 
 				let vid = CP.data.db_video.vid;
-				cbk(vid);
+				var connection = pkg.mysql.createConnection(config.db);
+				connection.connect();
+				var str = "INSERT INTO `video_space` (`vid`, `status`, `created`) VALUES " +
+					" ('" + vid + "', 0, NOW()) ON DUPLICATE KEY UPDATE `status` = `status` ";
+				
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					cbk(vid + '----');
+				});				
+				
+				
 			};			
 			CP.serial(
 				_f,
@@ -39,19 +49,6 @@
 				},
 				1000
 			);	
-			return true;
-			var connection = mysql.createConnection(cfg0);
-			connection.connect();
-			var str = "SELECT `vid` FROM `video`  WHERE `server_ip` = '" + CP_s.data.ip + "'";
-			connection.query(str, function (error, results, fields) {
-				connection.end();
-				if (error || !results.length) {
-					cbk_s(false); CP_s.exit = 1;
-				}
-				var v = [];
-				for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
-				cbk_s(v);
-			});			
 			return true;
 			
 			let _p = _file.match(/(.+)\/([^\/]+)$/);
