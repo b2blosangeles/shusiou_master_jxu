@@ -7,7 +7,8 @@ env.site_path = env.root_path + '/site';
 env.config_path = '/var/qalet_config';
 
 var config = require(env.config_path + '/config.json');
-let cfg = {
+let awsS3Video = require(env.site_path + '/api/inc/awsS3Video/awsS3Video.js'),
+    cfg = {
       id:'shusiou-d-01',
       endpoint : 'nyc3.digitaloceanspaces.com',
       accessKeyId: config.objectSpaceDigitalOcean.accessKeyId,
