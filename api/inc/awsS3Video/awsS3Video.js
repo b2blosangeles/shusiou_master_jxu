@@ -1,6 +1,67 @@
 (function () { 
 	var obj =  function (config, env, pkg) {
-		
+		this.run = function(_file, _cbk) {
+			
+			let _p = _file.match(/(.+)\/([^\/]+)$/);
+			me.source_path = _p[1] + '/';
+			me.source_file = _p[2];
+			
+			me.space_id = 'shusiou-d-01';
+			me.tmp_folder = '/var/shusiou_cache/tmpvideo/' + me.source_file + '/' + _type + '/';
+			me.space_url = 'https://shusiou-d-01.nyc3.digitaloceanspaces.com/';
+			me.space_info = 'shusiou/' + me.source_file + '/_info.txt';
+			me.space_dir = 'shusiou/' + me.source_file + '/' + _type + '/';
+			me.trunkSize = 1024 * 1024;
+			
+			var CP = new pkg.crowdProcess();
+			var _f = {}; 
+			_f['videoinfo'] = function(cbk) { 
+				pkg.request(me.space_url +  me.space_info, 
+				function (err, res, body) {
+					let v = (err) ? false : {};
+					if (v !== false) { 
+						try {  v = JSON.parse(body); } catch (e) { v = false; }
+					}
+					if (v === false) { 
+						let buff = new Buffer(100);
+						pkg.fs.stat(me.source_path + me.source_file, function(err, stat) {
+							if (err) {
+								CP.exit = 1;
+								cbk(err.message);
+								return true;
+							}
+							pkg.fs.open(me.source_path + me.source_file, 'r', function(err, fd) {
+								pkg.fs.read(fd, buff, 0, 100, 0, function(err, bytesRead, buffer) {
+									if (err) {
+										CP.exit = 1;
+										cbk(err.message);
+										return true;
+									}									
+									var start = buffer.indexOf(new Buffer('mvhd')) + 17;
+									var timeScale = buffer.readUInt32BE(start, 4);
+									var duration = buffer.readUInt32BE(start + 4, 4);
+									var movieLength = Math.floor(duration/timeScale);
+									var v = {filesize:stat.size,time_scale:timeScale, trunksize: me.trunkSize,
+										duration: duration, length:movieLength};
+									me.writeInfo(v, function() {
+										cbk(v);
+									});
+								});
+							});
+						});		
+					} else {
+						cbk(v);
+					}
+				});		
+			};				
+			CP.serial(
+				_f,
+				function(results) {
+					_cbk(results);
+				},
+				58000
+			);
+		}
 		this.split = function(_type, _file, _cbk) {
 			let me = this;
 			
