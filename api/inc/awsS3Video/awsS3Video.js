@@ -48,16 +48,26 @@
 			_f['get_video_name']  = function(cbk) { 
 				let vid = CP.data.get_vid, 
 				    mnt_folder = '/mnt/shusiou-video/',
-				    video_folder = mnt_folder + 'videos/';
-					pkg.exec('cd ' + video_folder + vid + '/video/ ' +
-						 '&& cp -f video.mp4 ' +  vid + '.mp4', 					 
-						function(err, stdout, stderr) {
-							cbk(video_folder + vid + '/video/ ' + vid + '.mp4');
-						});				
+				    video_folder = mnt_folder + 'videos/',
+				    _file = video_folder + vid + '/video/' + vid + '.mp4';
+				
+				pkg.fs.stat(_file, function(err, stat) {
+					if (err) {
+						pkg.exec('cp -f ' + video_folder + vid + '/video/video.mp4 ' +  _file, 					 
+							function(err, stdout, stderr) {
+								cbk(_file);
+							});
+					} else {
+						cbk(_file);
+					}
+				});	
+				
 				
 			};
 			_f['split_video']  = function(cbk) { 
+				let _file = CP.data.get_video_name;
 				let _p = CP.data.get_video_name.match(/(.+)\/([^\/]+)$/);
+				
 				me.source_path = _p[1] + '/';
 				me.source_file = _p[2];
 				
