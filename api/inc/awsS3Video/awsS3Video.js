@@ -11,10 +11,10 @@
 			me.source_file = _p[2];
 			
 			me.space_id = 'shusiou-d-01';
-			me.tmp_folder = '/var/shusiou_cache/tmpvideo/' + source_file + '/' + _type + '/';
+			me.tmp_folder = '/var/shusiou_cache/tmpvideo/' + me.source_file + '/' + _type + '/';
 			me.space_url = 'https://shusiou-d-01.nyc3.digitaloceanspaces.com/';
-			me.space_info = 'shusiou/' + source_file + '/_info.txt';
-			me.space_dir = 'shusiou/' + source_file + '/' + _type + '/';
+			me.space_info = 'shusiou/' + me.source_file + '/_info.txt';
+			me.space_dir = 'shusiou/' + me.source_file + '/' + _type + '/';
 			me.trunkSize = 1024 * 1024;			
 			
 			var CP = new pkg.crowdProcess();
