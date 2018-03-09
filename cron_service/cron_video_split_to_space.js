@@ -14,7 +14,15 @@ let awsS3Video = require(env.site_path + '/api/inc/awsS3Video/awsS3Video.js'),
       accessKeyId: config.objectSpaceDigitalOcean.accessKeyId,
       secretAccessKey: config.objectSpaceDigitalOcean.secretAccessKey
     };
-var splitVideo = new awsS3Video(cfg, env);	
+
+let pkg = {
+    mysql:require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+    crowdProcess:require(env.root_path + '/package/crowdProcess/crowdProcess'),
+	fs : require('fs')
+};  
+
+var splitVideo = new awsS3Video(cfg, env, pkg);	
+	
 splitVideo.split('_t', '/var/img/video.mp4', 
       function(data) {
         console.log(data);
