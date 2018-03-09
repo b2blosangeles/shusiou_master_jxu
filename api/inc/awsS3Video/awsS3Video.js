@@ -44,7 +44,7 @@
 				else    cbk(v);
 			});		
 		}
-		me.removeObjects = function(folder, list, callback) {
+		this.removeObjects = function(folder, list, callback) {
 			var params = {
 				Bucket: me.space_id,
 				Delete: {Objects:[]}
