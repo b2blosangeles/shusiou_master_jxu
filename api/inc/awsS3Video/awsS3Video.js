@@ -2,6 +2,28 @@
 	var obj =  function (config, env, pkg) {
 		this.run = function(_file, _cbk) {
 			let me = this;
+			pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+				if ((err) || !data) {
+					_cbk(err.message);	
+				} else {
+					_cbk(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
+				}
+			});	
+			return true;
+			var connection = mysql.createConnection(cfg0);
+			connection.connect();
+			var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "'";
+			connection.query(str, function (error, results, fields) {
+				connection.end();
+				if (error || !results.length) {
+					cbk_s(false); CP_s.exit = 1;
+				}
+				var v = [];
+				for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
+				cbk_s(v);
+			});			
+			return true;
+			
 			let _p = _file.match(/(.+)\/([^\/]+)$/);
 			me.source_path = _p[1] + '/';
 			me.source_file = _p[2];
