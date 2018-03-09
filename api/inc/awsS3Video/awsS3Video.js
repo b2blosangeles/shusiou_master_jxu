@@ -84,25 +84,26 @@
 					});
 				}
 			};
-			/*
+			
 			_f['space'] = function(cbk) { 
 				var params = { 
-				  Bucket: space_id,
+				  Bucket: me.space_id,
 				  Delimiter: '',
-				  Prefix: space_dir
+				  Prefix: me.space_dir
 				}, v = {};
 
-				s3.listObjects(params, function (err, data) {
+				me.s3.listObjects(params, function (err, data) {
 					if(err)cbk(err.message);
 					else {
 						for (var o in data.Contents) {
-							let key = data.Contents[o].Key.replace(space_dir, '');
-							if (key != '_info.txt') v[key] = data.Contents[o].Size;
+							let key = data.Contents[o].Key.replace(me.space_dir, '');
+							v[key] = data.Contents[o].Size;
 						}
 						cbk(v);
 					}
 				});
 			}
+			/*
 			_f['clean_space'] = function(cbk) { 
 				let tracks = CP.data.tracks, objs = Object.keys(CP.data.space);
 				let diff = objs.filter(x => !tracks.includes(x));
