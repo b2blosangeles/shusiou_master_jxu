@@ -13,7 +13,7 @@
 				}
 			    });
 			};
-			_f['db_videos']  = function(cbk) { /* get database catched local videos */
+			_f['db_video']  = function(cbk) { /* get database catched local videos */
 				var connection = pkg.mysql.createConnection(config.db);
 				connection.connect();
 				var str = "SELECT A.*, B.`status` FROM `video` A LEFT JOIN `video_space` B ON A.`vid` = B.`vid`" +
