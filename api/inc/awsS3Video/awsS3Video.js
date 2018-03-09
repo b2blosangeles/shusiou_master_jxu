@@ -3,7 +3,11 @@
 		this.run = function(_file, _cbk) {
 			let me = this;
 			var CP = new pkg.crowdProcess();
-			var _f = {};		
+			var _f = {};	
+			
+			var mnt_folder = '/mnt/shusiou-video/';
+			var video_folder = mnt_folder + 'videos/';
+			
 			_f['ip']  = function(cbk) {
 			    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 				if ((err) || !data) {
@@ -38,10 +42,10 @@
 
 					connection.query(str, function (error, results, fields) {
 						connection.end();
-						cbk(vid + '----');
+						cbk(video_folder + vid + '/video.mp4');
 					});
 				} else {
-					cbk(vid + '+++');
+					cbk(video_folder + vid + '/video.mp4' + '+++');
 				}
 			};			
 			CP.serial(
