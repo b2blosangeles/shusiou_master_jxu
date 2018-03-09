@@ -18,7 +18,7 @@
 				connection.connect();
 				var str = "SELECT A.*, B.`status` FROM `video` A LEFT JOIN `video_space` B ON A.`vid` = B.`vid`" +
 					" WHERE A.`server_ip` = '" + CP.data.ip + "' AND B.`status` < 1 OR B.`status` IS NULL " +
-					" ORDER BY `status` DESC";
+					" ORDER BY `status` DESC LIMIT 3";
 				
 				connection.query(str, function (error, results, fields) {
 					connection.end();
@@ -29,8 +29,8 @@
 				});
 			};
 			_f['split_videos']  = function(cbk) { 
-				let vid = CP.data.db_video;
-				cbk(CP.data.db_video);
+				let vid = CP.data.db_video.vid;
+				cbk(vid);
 			};			
 			CP.serial(
 				_f,
