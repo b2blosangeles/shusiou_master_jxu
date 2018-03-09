@@ -2,13 +2,24 @@
 	var obj =  function (config, env, pkg) {
 		this.run = function(_file, _cbk) {
 			let me = this;
-			pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+			var CP = new pkg.crowdProcess();
+			var _f = {};		
+			_f['ip']  = function(cbk_s) {
+			    fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 				if ((err) || !data) {
-					_cbk(err.message);	
+					cbk_s(false); CP_s.exit = 1;		
 				} else {
-					_cbk(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
+					cbk_s(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
 				}
-			});	
+			    });
+			};			
+			CP.serial(
+				_f,
+				function(data_s) {
+					_cbk(data_s);
+				},
+				1000
+			);	
 			return true;
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
