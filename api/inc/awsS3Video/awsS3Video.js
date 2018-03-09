@@ -39,10 +39,10 @@
 
 					connection.query(str, function (error, results, fields) {
 						connection.end();
-						cbk(video_folder + vid);
+						cbk(vid);
 					});
 				} else {
-					cbk(video_folder + vid );
+					cbk(vid);
 				}
 			};
 			_f['get_video_name']  = function(cbk) { 
