@@ -1,7 +1,7 @@
 (function () { 
 	var obj =  function (config, env, pkg) {
 		this.run = function(_file, _cbk) {
-			
+			let me = this;
 			let _p = _file.match(/(.+)\/([^\/]+)$/);
 			me.source_path = _p[1] + '/';
 			me.source_file = _p[2];
