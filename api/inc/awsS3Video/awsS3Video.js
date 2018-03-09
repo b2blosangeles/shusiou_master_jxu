@@ -28,19 +28,21 @@
 					cbk(results[0]);
 				});
 			};
-			_f['split_videos']  = function(cbk) { 
+			_f['get_video_name']  = function(cbk) { 
 				let vid = CP.data.db_video.vid;
-				var connection = pkg.mysql.createConnection(config.db);
-				connection.connect();
-				var str = "INSERT INTO `video_space` (`vid`, `status`, `created`) VALUES " +
-					" ('" + vid + "', 0, NOW()) ON DUPLICATE KEY UPDATE `status` = `status` ";
-				
-				connection.query(str, function (error, results, fields) {
-					connection.end();
-					cbk(vid + '----');
-				});				
-				
-				
+				if (vid === null) {
+					var connection = pkg.mysql.createConnection(config.db);
+					connection.connect();
+					var str = "INSERT INTO `video_space` (`vid`, `status`, `created`) VALUES " +
+						" ('" + vid + "', 0, NOW()) ON DUPLICATE KEY UPDATE `status` = `status` ";
+
+					connection.query(str, function (error, results, fields) {
+						connection.end();
+						cbk(vid + '----');
+					});
+				} else {
+					cbk(vid + '+++');
+				}
 			};			
 			CP.serial(
 				_f,
