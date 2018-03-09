@@ -49,7 +49,7 @@
 				let vid = CP.data.get_vid, 
 				    mnt_folder = '/mnt/shusiou-video/',
 				    video_folder = mnt_folder + 'videos/',
-				    _file = video_folder + vid + '/video/' + vid + '.mp4';
+				    _file = video_folder + vid + '/video/' + vid;
 				
 				pkg.fs.stat(_file, function(err, stat) {
 					if (err) {
