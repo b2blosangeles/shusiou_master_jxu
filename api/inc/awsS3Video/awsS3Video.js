@@ -26,7 +26,7 @@
 			var CP = new pkg.crowdProcess();
 			var _f = {}; 
 			
-			_cbk(cfg);
+			_cbk('==niu===');
 		};	
 	};
 	module.exports = obj;
