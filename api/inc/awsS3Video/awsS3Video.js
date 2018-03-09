@@ -3,6 +3,9 @@
 		
 		this.split = function(_type, _file, _cbk) {
 			let me = this;
+			
+			me.type = _type;
+			
 			let _p = _file.match(/(.+)\/([^\/]+)$/);
 			me.source_path = _p[1] + '/';
 			me.source_file = _p[2];
@@ -45,6 +48,7 @@
 			});		
 		}
 		this.removeObjects = function(folder, list, callback) {
+			let me = this;
 			var params = {
 				Bucket: me.space_id,
 				Delete: {Objects:[]}
@@ -57,7 +61,39 @@
 				else callback(d);
 			});
 		}
-		
+		var splitVideo = function(cbk) {
+			let me = this;
+			switch(me.type) {
+				case '_t':
+					pkg.exec('rm -f ' + me.tmp_folder + '* ' + ' && rm -f ' + me.tmp_folder + '*.* ' +
+						 '&& split -b ' + me.trunkSize + ' ' + me.source_path +  me.source_file +  ' ' + me.tmp_folder + '', 					 
+						function(err, stdout, stderr) {
+							if (err) {
+								cbk(err.message);
+							} else {
+								pkg.fs.readdir( me.tmp_folder, (err1, files) => {
+									cbk((err1) ? err1.message : files);
+								});			
+							}
+						});
+					break;
+				case '_s':
+					pkg.exec('ffmpeg -i ' + me.source_path +  me.source_file + 
+						 ' -c copy -map 0 -segment_time 5 -reset_timestamps 1 -f segment ' + me.tmp_folder + 's_%d.mp4', 					 
+						function(err, stdout, stderr) {
+							if (err) {
+								cbk(err.message);
+							} else {
+								pkg.fs.readdir( me.tmp_folder, (err1, files) => {
+									cbk((err1) ? err1.message : files);
+								});			
+							}
+						});
+					break;	
+				default:
+					cbk('Missing _type');
+			}		
+		}		
 		
 		this.init();
 	};
