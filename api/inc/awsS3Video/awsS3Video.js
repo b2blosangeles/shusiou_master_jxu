@@ -12,6 +12,20 @@
 					cbk_s(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
 				}
 			    });
+			};
+			_f['db_videos']  = function(cbk_s) { /* get database catched local videos */
+				var connection = pkg.mysql.createConnection(config.db);
+				connection.connect();
+				var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP.data.ip + "'";
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					if (error || !results.length) {
+						cbk(false); CP.exit = 1;
+					}
+					var v = [];
+					for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
+					cbk(v);
+				});
 			};			
 			CP.serial(
 				_f,
