@@ -17,9 +17,8 @@
 				var connection = pkg.mysql.createConnection(config.db);
 				connection.connect();
 				// var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP.data.ip + "'";
-				var str = "SELECT * FROM `video` WHERE `server_ip` = '" + CP.data.ip + "'";
-				
-				// /mnt/shusiou-video/videos/75600000000001/video
+				var str = "SELECT A.*, B.`status` FROM `video` A LEFT JOIN `video_space` B ON A.`vid` = B.`vid`" +
+					" WHERE A.`server_ip` = '" + CP.data.ip + "'";
 				
 				connection.query(str, function (error, results, fields) {
 					connection.end();
@@ -42,7 +41,7 @@
 			return true;
 			var connection = mysql.createConnection(cfg0);
 			connection.connect();
-			var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP_s.data.ip + "'";
+			var str = "SELECT `vid` FROM `video`  WHERE `server_ip` = '" + CP_s.data.ip + "'";
 			connection.query(str, function (error, results, fields) {
 				connection.end();
 				if (error || !results.length) {
