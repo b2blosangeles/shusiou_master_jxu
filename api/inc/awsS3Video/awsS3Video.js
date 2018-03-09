@@ -18,8 +18,10 @@
 				}
 				if (!v || !v.status || !v.status.t) {
 					_cbk('_t')
+				} else if if (!v.status.s) {
+					_cbk('_s') 
 				} else {
-					_cbk('_s')
+					_cbk('This video has been processed.') 
 				}
 			});
 		}
