@@ -27,6 +27,10 @@
 					}
 					cbk(results[0]);
 				});
+			};
+			_f['split_videos']  = function(cbk) { 
+				let vid = CP.data.db_video;
+				cbk(CP.data.db_video);
 			};			
 			CP.serial(
 				_f,
