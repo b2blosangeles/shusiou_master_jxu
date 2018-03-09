@@ -29,7 +29,7 @@
 				});
 			};
 			_f['get_video_name']  = function(cbk) { 
-				let vid = CP.data.db_video.vid;
+				let vid = CP.data.db_video.vid, status = CP.data.db_video.vid;
 				if (status === null) {
 					var connection = pkg.mysql.createConnection(config.db);
 					connection.connect();
@@ -46,8 +46,8 @@
 			};			
 			CP.serial(
 				_f,
-				function(data_s) {
-					_cbk(data_s);
+				function(result) {
+					_cbk(result);
 				},
 				1000
 			);	
