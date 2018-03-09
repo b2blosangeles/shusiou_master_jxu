@@ -6,6 +6,8 @@
 			let _p = _file.match(/(.+)\/([^\/]+)$/);
 			me.source_path = _p[1] + '/';
 			me.source_file = _p[2];
+			
+			me.space_id = 'shusiou-d-01';
 			me.tmp_folder = '/var/shusiou_cache/tmpvideo/' + source_file + '/' + _type + '/';
 			me.space_url = 'https://shusiou-d-01.nyc3.digitaloceanspaces.com/';
 			me.space_info = 'shusiou/' + source_file + '/_info.txt';
@@ -25,7 +27,7 @@
 			    accessKeyId: config.objectSpaceDigitalOcean.accessKeyId,
 			    secretAccessKey: config.objectSpaceDigitalOcean.secretAccessKey
 			});
-			me.space_id = 'shusiou-d-01',
+			
 		}
 		this.writeInfo = function(v, cbk) {
 			let me = this,
@@ -41,7 +43,22 @@
 				if (err) cbk(false);
 				else    cbk(v);
 			});		
-		}		
+		}
+		me.removeObjects = function(folder, list, callback) {
+			var params = {
+				Bucket: me.space_id,
+				Delete: {Objects:[]}
+			};		
+			for (var i = 0; i < Math.min(list.length,100); i++) {
+				params.Delete.Objects.push({Key: folder + list[i]});
+			};
+			me.s3.deleteObjects(params, function(err, d) {
+				if (err) return callback(err);
+				else callback(d);
+			});
+		}
+		
+		
 		this.init();
 	};
 	module.exports = obj;
