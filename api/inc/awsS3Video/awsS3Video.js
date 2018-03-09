@@ -42,10 +42,10 @@
 
 					connection.query(str, function (error, results, fields) {
 						connection.end();
-						cbk(video_folder + vid + '/video.mp4');
+						cbk(video_folder + vid + '/video/video.mp4');
 					});
 				} else {
-					cbk(video_folder + vid + '/video.mp4' + '+++');
+					cbk(video_folder + vid + '/video/video.mp4' + '+++');
 				}
 			};			
 			CP.serial(
