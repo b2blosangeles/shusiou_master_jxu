@@ -28,7 +28,7 @@
 					var v = [];
 					// for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
 					for (var i=0; i < results.length; i++) v[v.length] = JSON.stringify(results[i]);
-					cbk(v);
+					cbk(v[0].vid);
 				});
 			};			
 			CP.serial(
