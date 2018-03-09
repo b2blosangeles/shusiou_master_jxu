@@ -59,23 +59,23 @@
 					}
 				});		
 			};
-			/*
+			
 			_f['tracks'] = function(cbk) {
 				if (CP.data.videoinfo === false) {
 					cbk('no videoinfo');
 				} else {
 					var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 					var fp = new folderP();		
-					fp.build(tmp_folder, () => {
-						pkg.fs.readdir( tmp_folder, (err, files) => {
+					fp.build(me.tmp_folder, () => {
+						pkg.fs.readdir( me.tmp_folder, (err, files) => {
 							if (_type === '_t')
-								var condition = (files.length != Math.ceil(CP.data.videoinfo.filesize / trunkSize));
+								var condition = (files.length != Math.ceil(CP.data.videoinfo.filesize / me.trunkSize));
 							else if (_type === '_s')
 								var condition = (files.length != Math.ceil(CP.data.videoinfo.length / 5));
 							else var condition = false;
 
 							if (err || condition) {
-								splitVideo(function(data) { cbk(data); });
+								me.splitVideo(function(data) { cbk(data); });
 							} else {
 								cbk(files);					
 							}
@@ -84,7 +84,7 @@
 					});
 				}
 			};
-
+			/*
 			_f['space'] = function(cbk) { 
 				var params = { 
 				  Bucket: space_id,
