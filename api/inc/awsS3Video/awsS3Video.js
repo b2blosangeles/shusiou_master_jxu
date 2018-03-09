@@ -25,10 +25,7 @@
 					if (error || !results.length) {
 						cbk(false); CP.exit = 1;
 					}
-					var v = [];
-					// for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
-					for (var i=0; i < results.length; i++) v[v.length] = JSON.stringify(results[i]);
-					cbk(v[0].vid);
+					cbk(results[0]);
 				});
 			};			
 			CP.serial(
