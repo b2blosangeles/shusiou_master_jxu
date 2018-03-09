@@ -18,7 +18,7 @@ let pkg = {
 
 let awsS3Video = require(env.site_path + '/api/inc/awsS3Video/awsS3Video.js');
 var splitVideo = new awsS3Video(config, env, pkg);		
-splitVideo.run('_t', '/var/img/video1.mp4', 
+splitVideo.run('/var/img/video1.mp4', 
       function(data) {
         console.log(data);
       }
