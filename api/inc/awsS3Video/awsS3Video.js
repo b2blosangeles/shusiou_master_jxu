@@ -16,14 +16,16 @@
 			_f['db_videos']  = function(cbk) { /* get database catched local videos */
 				var connection = pkg.mysql.createConnection(config.db);
 				connection.connect();
-				var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP.data.ip + "'";
+				// var str = "SELECT `vid` FROM `video` WHERE `server_ip` = '" + CP.data.ip + "'";
+				var str = "SELECT * FROM `video` WHERE `server_ip` = '" + CP.data.ip + "'";
 				connection.query(str, function (error, results, fields) {
 					connection.end();
 					if (error || !results.length) {
 						cbk(false); CP.exit = 1;
 					}
 					var v = [];
-					for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
+					// for (var i=0; i < results.length; i++) v[v.length] = results[i]['vid'].toString();
+					for (var i=0; i < results.length; i++) v[v.length] = results[i];
 					cbk(v);
 				});
 			};			
