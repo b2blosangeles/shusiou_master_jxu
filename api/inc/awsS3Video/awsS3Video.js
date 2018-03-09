@@ -16,9 +16,9 @@
 				if (v !== false) { 
 					try {  v = JSON.parse(body); } catch (e) { v = false; }
 				}
-				if (!v || !v.status || !v.status.t) {
+				if (!v || !v.status || !v.status._t) {
 					_cbk('_t')
-				} else if (!v.status.s) {
+				} else if (!v.status._s) {
 					_cbk('_s') 
 				} else {
 					_cbk('This video has been processed.') 
