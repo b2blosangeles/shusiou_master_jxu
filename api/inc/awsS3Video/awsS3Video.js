@@ -17,7 +17,8 @@
 				var connection = pkg.mysql.createConnection(config.db);
 				connection.connect();
 				var str = "SELECT A.*, B.`status` FROM `video` A LEFT JOIN `video_space` B ON A.`vid` = B.`vid`" +
-					" WHERE A.`server_ip` = '" + CP.data.ip + "' AND `status` < 1 ORDER BY `status` DESC";
+					" WHERE A.`server_ip` = '" + CP.data.ip + "' AND B.`status` < 1 OR B.`status` IS NULL " +
+					" ORDER BY `status` DESC";
 				
 				connection.query(str, function (error, results, fields) {
 					connection.end();
