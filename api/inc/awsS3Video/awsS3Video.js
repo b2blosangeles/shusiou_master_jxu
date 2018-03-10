@@ -105,7 +105,7 @@
 				function(result) {
 					_cbk(result);
 				},
-				1000
+				59000
 			);	
 			return true;
 			
