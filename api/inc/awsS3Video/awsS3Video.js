@@ -301,6 +301,14 @@
 			});
 			
 		}
+		this.doneDBVideoStatus = function(v, cbk) {
+			let me = this;
+			if ((v) && (v.status) && (v.status._t) && (v.status._s)) {
+				cbk(v);
+			} else {
+				cbk(v);
+			}
+		}		
 		this.writeInfo = function(v, cbk) {
 			let me = this,
 			    params = {
@@ -313,7 +321,7 @@
 
 			me.s3.putObject(params, function(err, data) {
 				if (err) cbk(false);
-				else    cbk(v);
+				else  me.doneDBVideoStatus(v, cbk);
 			});		
 		}
 		this.removeObjects = function(folder, list, callback) {
