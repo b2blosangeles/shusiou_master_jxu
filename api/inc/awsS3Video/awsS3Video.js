@@ -30,7 +30,7 @@
 				});
 			};
 			_f['get_vid']  = function(cbk) { 
-				let vid = CP.data.db_video.vid, status = CP.data.db_video.vid;
+				let vid = CP.data.db_video.vid, status = CP.data.db_video.status;
 				if (status === null) {
 					var connection = pkg.mysql.createConnection(config.db);
 					connection.connect();
@@ -107,7 +107,15 @@
 		this.doneDBVideoStatus = function(v, cbk) {
 			let me = this;
 			if ((v) && (v.status) && (v.status._t) && (v.status._s)) {
-				cbk(v);
+				var connection = pkg.mysql.createConnection(config.db);
+				connection.connect();
+				var str = "INSERT INTO `video_space` (`vid`, `status`, `created`) VALUES " +
+					" ('" + me.vid + "', 1, NOW()) ON DUPLICATE KEY UPDATE `status` = 1 ";
+
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					cbk(v);
+				});
 			} else {
 				cbk(v);
 			}
