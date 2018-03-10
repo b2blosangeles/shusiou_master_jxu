@@ -371,6 +371,7 @@
 			});
 		}
 		this.splitVideo = function(_type, tmp_folder, cbk) {
+			let me = this;
 			switch(_type) {
 				case '_t':
 					pkg.exec('rm -f ' + tmp_folder + '* ' + ' && rm -f ' + tmp_folder + '*.* ' +
