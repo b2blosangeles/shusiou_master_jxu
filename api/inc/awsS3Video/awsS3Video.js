@@ -89,7 +89,7 @@
 						me.split('_s', _file, cbk);
 					} else {
 						me.doneDBVideoStatus(v, function() {
-							cbk('This video has been processed.') 
+							cbk('This video has been processed.' + me.vid) 
 						});
 						
 					}
