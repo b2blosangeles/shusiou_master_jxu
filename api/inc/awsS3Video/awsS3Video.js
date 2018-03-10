@@ -273,7 +273,7 @@
 				for (var t in tracks) {
 					_f1['P_' + t] = (function(t) { 
 						return function(cbk1) {
-							if (new Date().getTime() - tm > 30000) {
+							if (new Date().getTime() - tm > 40000) {
 								cbk1(true); return true;
 							}
 							pkg.fs.stat( tmp_folder + tracks[t], function (err, stat) {
@@ -321,7 +321,7 @@
 
 						}
 					},
-					50000
+					45000
 				);
 			}	
 			CP.serial(
