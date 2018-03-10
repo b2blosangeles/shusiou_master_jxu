@@ -91,15 +91,15 @@
 					*/
 	
 					if (!v || !v.status || !v.status._s || !v.status._t) {
-						let CP_A = new pkg.crowdProcess(), +fA = {};
-						fA['_s'] = function (cbks) {
+						let CP_A = new pkg.crowdProcess(), _fA = {};
+						_fA['_s'] = function (cbks) {
 							me.split('_s', _file, cbks);
 						}
-						fA['_t'] = function (cbks) {
+						_fA['_t'] = function (cbks) {
 							me.split('_t', _file, cbks);
 						}						
 						
-						CP.parallel(
+						CP_A.parallel(
 							_fA,
 							function(results) {
 								cbk(results);
@@ -155,7 +155,7 @@
 			me.tmp_folder = '/var/shusiou_cache/tmpvideo/' + me.source_file + '/' + _type + '/';
 			me.space_url = 'https://shusiou-d-01.nyc3.digitaloceanspaces.com/';
 			me.space_info = 'shusiou/' + me.source_file + '/_info.txt';
-			me.space_dir = 'shusiou/' + me.source_file + '/' + _type + '/';
+			let space_dir = 'shusiou/' + me.source_file + '/' + _type + '/';
 			me.trunkSize = 1024 * 1024;			
 			
 			var CP = new pkg.crowdProcess();
@@ -230,14 +230,14 @@
 				var params = { 
 				  Bucket: me.space_id,
 				  Delimiter: '',
-				  Prefix: me.space_dir
+				  Prefix: space_dir
 				}, v = {};
 
 				me.s3.listObjects(params, function (err, data) {
 					if(err)cbk(err.message);
 					else {
 						for (var o in data.Contents) {
-							let key = data.Contents[o].Key.replace(me.space_dir, '');
+							let key = data.Contents[o].Key.replace(space_dir, '');
 							v[key] = data.Contents[o].Size;
 						}
 						cbk(v);
@@ -250,7 +250,7 @@
 				let diff = objs.filter(x => !tracks.includes(x));
 				if (diff.length) {
 					CP.exit = 1;
-					me.removeObjects(me.space_dir, diff, cbk);
+					me.removeObjects(space_dir, diff, cbk);
 				} else {
 					cbk(true);
 				}
@@ -283,7 +283,7 @@
 									     var params = {
 										 Body: base64data,
 										 Bucket: me.space_id,
-										 Key: me.space_dir + tracks[t],
+										 Key: space_dir + tracks[t],
 										 ContentType: 'video/mp4',
 										 ACL: 'public-read'
 									     };	
