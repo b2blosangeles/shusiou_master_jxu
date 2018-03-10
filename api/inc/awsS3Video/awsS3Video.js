@@ -144,17 +144,20 @@
 		}		
 		this.split = function(_type, _file, _cbk) {
 			let me = this;
-			
 			let _p = _file.match(/(.+)\/([^\/]+)$/);
 			me.source_path = _p[1] + '/';
 			me.source_file = _p[2];
 			
 			me.space_id = 'shusiou-d-01';
-			let tmp_folder = '/var/shusiou_cache/tmpvideo/' + me.source_file + '/' + _type + '/';
+			
 			me.space_url = 'https://shusiou-d-01.nyc3.digitaloceanspaces.com/';
 			me.space_info = 'shusiou/' + me.source_file + '/_info.txt';
-			let space_dir = 'shusiou/' + me.source_file + '/' + _type + '/';
+			
 			me.trunkSize = 1024 * 1024;			
+			
+			let tmp_folder = '/var/shusiou_cache/tmpvideo/' + me.source_file + '/' + _type + '/';
+			let space_dir = 'shusiou/' + me.source_file + '/' + _type + '/';
+			let tm = new Date().getTime();
 			
 			var CP = new pkg.crowdProcess();
 			var _f = {}; 
@@ -263,7 +266,7 @@
 				} 
 				let objs = CP.data.space;
 				let CP1 = new pkg.crowdProcess(), _f1 = {};
-				let tm = new Date().getTime();
+				
 
 				let uploaded = 0;
 
