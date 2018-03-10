@@ -34,7 +34,7 @@
 				if (status === null) {
 					var connection = pkg.mysql.createConnection(config.db);
 					connection.connect();
-					var str = "INSERT INTO `video_space` (`vid`, `status`, `created`) VALUES " +
+					var str = "INSERT INTO `video_space` (`vid`, `status`, `added`) VALUES " +
 						" ('" + vid + "', 0, NOW()) ON DUPLICATE KEY UPDATE `status` = `status` ";
 
 					connection.query(str, function (error, results, fields) {
@@ -111,7 +111,7 @@
 			if ((v) && (v.status) && (v.status._t) && (v.status._s)) {
 				var connection = pkg.mysql.createConnection(config.db);
 				connection.connect();
-				var str = "INSERT INTO `video_space` (`vid`, `status`, `created`) VALUES " +
+				var str = "INSERT INTO `video_space` (`vid`, `status`, `added`) VALUES " +
 					" ('" + me.vid + "', 1, NOW()) ON DUPLICATE KEY UPDATE `status` = 1 ";
 
 				connection.query(str, function (error, results, fields) {
