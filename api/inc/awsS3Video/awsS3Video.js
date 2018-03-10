@@ -31,7 +31,6 @@
 			};
 			_f['get_vid']  = function(cbk) { 
 				let vid = CP.data.db_video.vid, status = CP.data.db_video.vid;
-				me.vid = vid;
 				if (status === null) {
 					var connection = pkg.mysql.createConnection(config.db);
 					connection.connect();
@@ -83,14 +82,11 @@
 						try {  v = JSON.parse(body); } catch (e) { v = false; }
 					}
 					if (!v || !v.status || !v.status._t) {
-						me.split('_t', _file, cbk);
+						me.split('_t', _file, _cbk);
 					} else if (!v.status._s) {
-						me.split('_s', _file, cbk);
+						me.split('_s', _file, _cbk);
 					} else {
-						me.changeDBVideoStatus(v, function() {
-							cbk('This video has been processed.');
-						});
-						
+						_cbk('This video has been processed.') 
 					}
 				});
 			};			
@@ -305,14 +301,6 @@
 			});
 			
 		}
-		this.changeDBVideoStatus = function(v, cbk) {
-			let me = this;
-			if ((v) && (v.status) && (v.status._t) && (v.status._s)) {
-				cbk('=A=' + me.vid);
-			} else {
-				cbk('===' + me.vid);
-			}
-		}		
 		this.writeInfo = function(v, cbk) {
 			let me = this,
 			    params = {
@@ -322,12 +310,10 @@
 				ContentType: 'text/plain',
 				ACL: 'public-read'
 			};	
-			
-				
-			}
+
 			me.s3.putObject(params, function(err, data) {
 				if (err) cbk(false);
-				else    me.changeDBVideoStatus(v, cbk);
+				else    cbk(v);
 			});		
 		}
 		this.removeObjects = function(folder, list, callback) {
