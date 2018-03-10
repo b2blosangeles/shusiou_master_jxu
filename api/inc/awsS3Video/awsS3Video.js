@@ -152,7 +152,7 @@
 			me.source_file = _p[2];
 			
 			me.space_id = 'shusiou-d-01';
-			me.tmp_folder = '/var/shusiou_cache/tmpvideo/' + me.source_file + '/' + _type + '/';
+			let tmp_folder = '/var/shusiou_cache/tmpvideo/' + me.source_file + '/' + _type + '/';
 			me.space_url = 'https://shusiou-d-01.nyc3.digitaloceanspaces.com/';
 			me.space_info = 'shusiou/' + me.source_file + '/_info.txt';
 			let space_dir = 'shusiou/' + me.source_file + '/' + _type + '/';
@@ -207,8 +207,8 @@
 				} else {
 					var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 					var fp = new folderP();		
-					fp.build(me.tmp_folder, () => {
-						pkg.fs.readdir( me.tmp_folder, (err, files) => {
+					fp.build(tmp_folder, () => {
+						pkg.fs.readdir( tmp_folder, (err, files) => {
 							if (_type === '_t')
 								var condition = (files.length != Math.ceil(CP.data.videoinfo.filesize / me.trunkSize));
 							else if (_type === '_s')
@@ -216,7 +216,7 @@
 							else var condition = false;
 
 							if (err || condition) {
-								me.splitVideo(function(data) { cbk(data); });
+								me.splitVideo(tmp_folder, function(data) { cbk(data); });
 							} else {
 								cbk(files);					
 							}
@@ -275,9 +275,9 @@
 							if (new Date().getTime() - tm > 30000) {
 								cbk1(true); return true;
 							}
-							pkg.fs.stat( me.tmp_folder + tracks[t], function (err, stat) {
+							pkg.fs.stat( tmp_folder + tracks[t], function (err, stat) {
 								if (stat.size !== objs[tracks[t]] || !objs[tracks[t]]) {
-									pkg.fs.readFile( me.tmp_folder + tracks[t], function (err, data0) {
+									pkg.fs.readFile( tmp_folder + tracks[t], function (err, data0) {
 									  if (err) { throw err; }
 									     var base64data = new Buffer(data0, 'binary');
 									     var params = {
@@ -372,17 +372,17 @@
 				else callback(d);
 			});
 		}
-		this.splitVideo = function(cbk) {
+		this.splitVideo = function(me.tmp_folder, cbk) {
 			let me = this;
 			switch(me.type) {
 				case '_t':
-					pkg.exec('rm -f ' + me.tmp_folder + '* ' + ' && rm -f ' + me.tmp_folder + '*.* ' +
-						 '&& split -b ' + me.trunkSize + ' ' + me.source_path +  me.source_file +  ' ' + me.tmp_folder + '', 					 
+					pkg.exec('rm -f ' + tmp_folder + '* ' + ' && rm -f ' + tmp_folder + '*.* ' +
+						 '&& split -b ' + me.trunkSize + ' ' + me.source_path +  me.source_file +  ' ' + tmp_folder + '', 					 
 						function(err, stdout, stderr) {
 							if (err) {
 								cbk(err.message);
 							} else {
-								pkg.fs.readdir( me.tmp_folder, (err1, files) => {
+								pkg.fs.readdir( tmp_folder, (err1, files) => {
 									cbk((err1) ? err1.message : files);
 								});			
 							}
@@ -390,12 +390,12 @@
 					break;
 				case '_s':
 					pkg.exec('ffmpeg -i ' + me.source_path +  me.source_file + 
-						 ' -c copy -map 0 -segment_time 5 -reset_timestamps 1 -f segment ' + me.tmp_folder + 's_%d.mp4', 					 
+						 ' -c copy -map 0 -segment_time 5 -reset_timestamps 1 -f segment ' + tmp_folder + 's_%d.mp4', 					 
 						function(err, stdout, stderr) {
 							if (err) {
 								cbk(err.message);
 							} else {
-								pkg.fs.readdir( me.tmp_folder, (err1, files) => {
+								pkg.fs.readdir( tmp_folder, (err1, files) => {
 									cbk((err1) ? err1.message : files);
 								});			
 							}
