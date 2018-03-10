@@ -104,6 +104,14 @@
 			
 
 		}
+		this.doneDBVideoStatus = function(v, cbk) {
+			let me = this;
+			if ((v) && (v.status) && (v.status._t) && (v.status._s)) {
+				cbk(v);
+			} else {
+				cbk(v);
+			}
+		}		
 		this.split = function(_type, _file, _cbk) {
 			let me = this;
 			
@@ -304,14 +312,7 @@
 			});
 			
 		}
-		this.doneDBVideoStatus = function(v, cbk) {
-			let me = this;
-			if ((v) && (v.status) && (v.status._t) && (v.status._s)) {
-				cbk(v);
-			} else {
-				cbk(v);
-			}
-		}		
+		
 		this.writeInfo = function(v, cbk) {
 			let me = this,
 			    params = {
