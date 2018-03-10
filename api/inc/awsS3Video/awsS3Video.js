@@ -83,12 +83,12 @@
 						try {  v = JSON.parse(body); } catch (e) { v = false; }
 					}
 					if (!v || !v.status || !v.status._t) {
-						me.split('_t', _file, _cbk);
+						me.split('_t', _file, cbk);
 					} else if (!v.status._s) {
-						me.split('_s', _file, _cbk);
+						me.split('_s', _file, cbk);
 					} else {
 						me.changeDBVideoStatus(v, function() {
-							_cbk('This video has been processed.');
+							cbk('This video has been processed.');
 						});
 						
 					}
@@ -306,6 +306,7 @@
 			
 		}
 		this.changeDBVideoStatus = function(v, cbk) {
+			let me = this;
 			if ((v) && (v.status) && (v.status._t) && (v.status._s)) {
 				cbk('=A=' + me.vid);
 			} else {
