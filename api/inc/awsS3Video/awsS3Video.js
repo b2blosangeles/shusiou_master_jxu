@@ -51,6 +51,8 @@
 				    video_folder = mnt_folder + 'videos/',
 				    _file = video_folder + vid + '/video/' + vid;
 				
+				me.vid = vid;
+				
 				pkg.fs.stat(_file, function(err, stat) {
 					if (err) {
 						pkg.exec('cp -f ' + video_folder + vid + '/video/video.mp4 ' +  _file, 					 
