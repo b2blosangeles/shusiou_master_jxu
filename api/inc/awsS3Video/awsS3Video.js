@@ -83,15 +83,30 @@
 					if (v !== false) { 
 						try {  v = JSON.parse(body); } catch (e) { v = false; }
 					}
+					/*
 					if (!v || !v.status || !v.status._t) {
 						me.split('_t', _file, cbk);
 					} else if (!v.status._s) {
 						me.split('_s', _file, cbk);
-					/*
-					if (!v || !v.status || !v.status._s || !v.status._t) {
-						me.split('_t', _file, cbk);
-						me.split('_s', _file, cbk);					
 					*/
+	
+					if (!v || !v.status || !v.status._s || !v.status._t) {
+						let CP_A = new pkg.crowdProcess(), +fA = {};
+						fA['_s'] = function (cbks) {
+							me.split('_s', _file, cbks);
+						}
+						fA['_t'] = function (cbks) {
+							me.split('_t', _file, cbks);
+						}						
+						
+						CP.parallel(
+							_fA,
+							function(results) {
+								cbk(results);
+							},
+							58000
+						);											
+				
 					} else {
 						me.doneDBVideoStatus(v, function() {
 							cbk('This video has been processed.' + me.vid) 
