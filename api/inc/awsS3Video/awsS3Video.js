@@ -82,11 +82,14 @@
 						try {  v = JSON.parse(body); } catch (e) { v = false; }
 					}
 					if (!v || !v.status || !v.status._t) {
-						me.split('_t', _file, _cbk);
+						me.split('_t', _file, cbk);
 					} else if (!v.status._s) {
-						me.split('_s', _file, _cbk);
+						me.split('_s', _file, cbk);
 					} else {
-						_cbk('This video has been processed.') 
+						me.doneDBVideoStatus(v, function() {
+							cbk('This video has been processed.') 
+						});
+						
 					}
 				});
 			};			
