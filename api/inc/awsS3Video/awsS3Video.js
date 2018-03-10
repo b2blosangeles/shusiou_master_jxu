@@ -31,6 +31,7 @@
 			};
 			_f['get_vid']  = function(cbk) { 
 				let vid = CP.data.db_video.vid, status = CP.data.db_video.vid;
+				me.vid = vid;
 				if (status === null) {
 					var connection = pkg.mysql.createConnection(config.db);
 					connection.connect();
@@ -86,7 +87,10 @@
 					} else if (!v.status._s) {
 						me.split('_s', _file, _cbk);
 					} else {
-						_cbk('This video has been processed.') 
+						me.changeDBVideoStatus(v, function() {
+							_cbk('This video has been processed.');
+						});
+						
 					}
 				});
 			};			
@@ -301,6 +305,13 @@
 			});
 			
 		}
+		this.changeDBVideoStatus = function(v, cbk) {
+			if ((v) && (v.status) && (v.status._t) && (v.status._s)) {
+				cbk('=A=' + me.vid);
+			} else {
+				cbk('===' + me.vid);
+			}
+		}		
 		this.writeInfo = function(v, cbk) {
 			let me = this,
 			    params = {
@@ -310,10 +321,12 @@
 				ContentType: 'text/plain',
 				ACL: 'public-read'
 			};	
-
+			
+				
+			}
 			me.s3.putObject(params, function(err, data) {
 				if (err) cbk(false);
-				else    cbk(v);
+				else    me.changeDBVideoStatus(v, cbk);
 			});		
 		}
 		this.removeObjects = function(folder, list, callback) {
