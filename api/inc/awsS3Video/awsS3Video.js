@@ -372,7 +372,7 @@
 				else callback(d);
 			});
 		}
-		this.splitVideo = function(me.tmp_folder, cbk) {
+		this.splitVideo = function(tmp_folder, cbk) {
 			let me = this;
 			switch(me.type) {
 				case '_t':
