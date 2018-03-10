@@ -145,8 +145,6 @@
 		this.split = function(_type, _file, _cbk) {
 			let me = this;
 			
-			me.type = _type;
-			
 			let _p = _file.match(/(.+)\/([^\/]+)$/);
 			me.source_path = _p[1] + '/';
 			me.source_file = _p[2];
@@ -216,7 +214,7 @@
 							else var condition = false;
 
 							if (err || condition) {
-								me.splitVideo(tmp_folder, function(data) { cbk(data); });
+								me.splitVideo(_type, tmp_folder, function(data) { cbk(data); });
 							} else {
 								cbk(files);					
 							}
@@ -372,9 +370,8 @@
 				else callback(d);
 			});
 		}
-		this.splitVideo = function(tmp_folder, cbk) {
-			let me = this;
-			switch(me.type) {
+		this.splitVideo = function(_type, tmp_folder, cbk) {
+			switch(_type) {
 				case '_t':
 					pkg.exec('rm -f ' + tmp_folder + '* ' + ' && rm -f ' + tmp_folder + '*.* ' +
 						 '&& split -b ' + me.trunkSize + ' ' + me.source_path +  me.source_file +  ' ' + tmp_folder + '', 					 
