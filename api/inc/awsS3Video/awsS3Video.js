@@ -67,6 +67,9 @@
 				
 			};
 			_f['split_video']  = function(cbk) { 
+				cbk(true);
+				CP.skip = 1;
+				return true;
 				let _file = CP.data.get_video_name;
 				let _p = CP.data.get_video_name.match(/(.+)\/([^\/]+)$/);
 				
