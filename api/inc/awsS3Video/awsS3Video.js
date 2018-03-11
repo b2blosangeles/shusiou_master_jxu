@@ -274,6 +274,7 @@
 					_f1['P_' + t] = (function(t) { 
 						return function(cbk1) {
 							if (new Date().getTime() - tm > 40000) {
+								CP1.exit = 1;
 								cbk1(true); return true;
 							}
 							pkg.fs.stat( tmp_folder + tracks[t], function (err, stat) {
