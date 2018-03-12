@@ -300,7 +300,7 @@
 				CP1.serial(
 					_f1,
 					function(results) {
-						if (!uploaded) {
+					//	if (!uploaded) {
 							if (Object.keys(CP.data.space).length == CP.data.tracks.length && (CP.data.tracks.length)) {
 								let v = CP.data.videoinfo;
 								v[_type] = tracks; 
@@ -313,9 +313,9 @@
 								cbk(false);
 							}
 
-						} else {
-							cbk(false);
-						}
+					//	} else {
+					//		cbk(false);
+					//	}
 					},
 					45000
 				);
