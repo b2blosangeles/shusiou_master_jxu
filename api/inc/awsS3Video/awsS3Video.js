@@ -22,12 +22,10 @@
 						    _fA = {};
 						
 						_fA['_s'] = function (cbks) {
-							cbks('_s');
-						//	me.split('_s', _file, cbks);
+							me.split('_s', video_name, cbks);
 						}
 						_fA['_t'] = function (cbks) {
-							cbks('_t');
-						//	me.split('_t', _file, cbks);
+							me.split('_t', video_name, cbks);
 						}						
 
 						CP_A.parallel(
