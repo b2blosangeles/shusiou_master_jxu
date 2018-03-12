@@ -268,8 +268,7 @@
 						return function(cbk1) {
 							if (new Date().getTime() - tm > 20000) {
 								CP1.exit = 1;
-								console.log('=======over time ====');
-								cbk1(true); return true;
+								cbk1(' -- skip to next time session ---'); return true;
 							}
 							pkg.fs.stat( tmp_folder + tracks[t], function (err, stat) {
 								if (stat.size !== objs[tracks[t]] || !objs[tracks[t]]) {
@@ -315,8 +314,7 @@
 							}
 
 						} else {
-							console.log('=======  not finished process ====');
-							cbk('=== not finished process ===');
+							cbk(false);
 						}
 					},
 					45000
