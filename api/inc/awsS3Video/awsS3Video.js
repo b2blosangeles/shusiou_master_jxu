@@ -266,8 +266,7 @@
 				for (var t in tracks) {
 					_f1['P_' + t] = (function(t) { 
 						return function(cbk1) {
-							console.log('niu===' + (new Date().getTime() - tm) + '===' + _type);
-							if (new Date().getTime() - tm > 40000) {
+							if (new Date().getTime() - tm > 20000) {
 								CP1.exit = 1;
 								console.log('=======over time ====');
 								cbk1(true); return true;
