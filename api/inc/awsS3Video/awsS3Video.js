@@ -323,7 +323,7 @@
 			CP.serial(
 				_f,
 				function(results) {
-					_cbk(results);
+					_cbk(JSON.stringify(results.results));
 				},
 				58000
 			);			
