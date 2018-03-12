@@ -155,6 +155,14 @@
 			var _f = {}; 
 
 			_f['videoinfo'] = function(cbk) { 
+				me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
+					function(v) {
+						// if (v === false)
+						CP.exit = 1;
+						cbk(v);
+					}
+				);
+				/*
 				pkg.request(me.space_url +  me.space_info, 
 				function (err, res, body) {
 					let v = (err) ? false : {};
@@ -191,7 +199,8 @@
 					} else {
 						cbk(v);
 					}
-				});		
+				});
+				*/
 			};
 			
 			_f['tracks'] = function(cbk) {
@@ -339,6 +348,7 @@
 			
 		}
 		this.getInfo = function(space_infoname, south_name, cbk) {
+			let me = this;
 			pkg.request(space_infoname, 
 			function (err, res, body) {
 				let v = (err) ? false : {};
@@ -347,10 +357,9 @@
 				}
 				if (v === false) { 
 					let buff = new Buffer(100);
-					pkg.fs.stat(me.source_path + me.source_file, function(err, stat) {
+					pkg.fs.stat(south_name, function(err, stat) {
 						if (err) {
-							CP.exit = 1;
-							cbk(err.message);
+							cbk(false);
 							return true;
 						}
 						pkg.fs.open(south_name, 'r', function(err, fd) {
