@@ -85,7 +85,7 @@
 					}
 				);
 			};
-			
+			/*
 			_f['tracks'] = function(cbk) {
 				if (CP.data.videoinfo === false) {
 					cbk('no videoinfo');
@@ -210,11 +210,13 @@
 					},
 					45000
 				);
-			}	
+			}
+			*/
 			CP.serial(
 				_f,
 				function(results) {
-					_cbk(JSON.stringify(results.results));
+					console.log(results.result);
+				//	_cbk(JSON.stringify(results.results));
 				},
 				55000
 			);			
