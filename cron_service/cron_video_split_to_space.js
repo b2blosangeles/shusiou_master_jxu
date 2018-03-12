@@ -97,7 +97,11 @@ _f['get_video_name']  = function(cbk) {
 CP.serial(
 	_f,
 	function(result) {
-		console.log({vid:CP.data.get_vid, video_name:CP.data.get_video_name});
+		let awsS3Video = require(env.site_path + '/api/inc/awsS3Video/awsS3Video.js');
+		var splitVideo = new awsS3Video(config, env, pkg);		
+		splitVideo.run(CP.data.get_vid, CP.data.get_video_name, function(data) {
+			console.log(data);
+		});		
 	},
 	58000
 );
