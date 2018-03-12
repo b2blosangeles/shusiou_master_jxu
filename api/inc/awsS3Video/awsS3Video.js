@@ -142,7 +142,6 @@
 			me.source_file = _p[2];
 			
 			me.space_id = 'shusiou-d-01';
-			
 			me.space_url = 'https://shusiou-d-01.nyc3.digitaloceanspaces.com/';
 			me.space_info = 'shusiou/' + me.source_file + '/_info.txt';
 			
@@ -339,7 +338,45 @@
 			});
 			
 		}
-		
+		this.getInfo = function(space_infoname, south_name, cbk) {
+			pkg.request(space_infoname, 
+			function (err, res, body) {
+				let v = (err) ? false : {};
+				if (v !== false) { 
+					try {  v = JSON.parse(body); } catch (e) { v = false; }
+				}
+				if (v === false) { 
+					let buff = new Buffer(100);
+					pkg.fs.stat(me.source_path + me.source_file, function(err, stat) {
+						if (err) {
+							CP.exit = 1;
+							cbk(err.message);
+							return true;
+						}
+						pkg.fs.open(south_name, 'r', function(err, fd) {
+							pkg.fs.read(fd, buff, 0, 100, 0, function(err, bytesRead, buffer) {
+								if (err) {
+									CP.exit = 1;
+									cbk(err.message);
+									return true;
+								}									
+								var start = buffer.indexOf(new Buffer('mvhd')) + 17;
+								var timeScale = buffer.readUInt32BE(start, 4);
+								var duration = buffer.readUInt32BE(start + 4, 4);
+								var movieLength = Math.floor(duration/timeScale);
+								var v = {filesize:stat.size,time_scale:timeScale, trunksize: me.trunkSize,
+									duration: duration, length:movieLength};
+								me.writeInfo(v, function() {
+									cbk(v);
+								});
+							});
+						});
+					});		
+				} else {
+					cbk(v);
+				}
+			});			
+		}
 		this.writeInfo = function(v, cbk) {
 			let me = this,
 			    params = {
