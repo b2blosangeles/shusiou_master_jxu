@@ -75,10 +75,9 @@
 			_f['videoinfo'] = function(cbk) { 
 				me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
 					function(v) {
-						// if (v === false)
-						CP.exit = 1;
-						console.log('videoinfo--->');
-						console.log(v);
+						if (v === false) {
+							CP.exit = 1;
+						}	
 						cbk(v);
 					}
 				);
