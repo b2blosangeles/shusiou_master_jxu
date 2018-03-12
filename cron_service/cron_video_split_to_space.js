@@ -97,7 +97,7 @@ _f['get_video_name']  = function(cbk) {
 CP.serial(
 	_f,
 	function(result) {
-		console.log(result);
+		console.log({vid:CP.data.get_vid, video_name:CP.data.video_name});
 	},
 	58000
 );
