@@ -315,6 +315,7 @@
 							}
 
 						} else {
+							console.log('=======  not finished process ====');
 							cbk('=== not finished process ===');
 						}
 					},
