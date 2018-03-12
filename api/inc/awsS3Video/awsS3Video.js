@@ -268,6 +268,7 @@
 						return function(cbk1) {
 							if (new Date().getTime() - tm > 40000) {
 								CP1.exit = 1;
+								console.log('=======over time ====');
 								cbk1(true); return true;
 							}
 							pkg.fs.stat( tmp_folder + tracks[t], function (err, stat) {
