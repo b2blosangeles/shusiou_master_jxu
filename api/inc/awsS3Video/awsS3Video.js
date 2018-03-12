@@ -65,8 +65,6 @@
 		}		
 		this.split = function(_type, _file, _cbk) {
 			let me = this;
-			_cbk('--->'+_type);
-			return false;
 			let tmp_folder = '/var/shusiou_cache/tmpvideo/' + me.source_file + '/' + _type + '/';
 			let space_dir = 'shusiou/' + me.source_file + '/' + _type + '/';
 			let tm = new Date().getTime();
