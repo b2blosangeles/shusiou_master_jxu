@@ -16,15 +16,6 @@ let pkg = {
 	fs 		: require('fs')
 }; 
 
-/*
-let awsS3Video = require(env.site_path + '/api/inc/awsS3Video/awsS3Video.js');
-var splitVideo = new awsS3Video(config, env, pkg);		
-splitVideo.run(function(data) {
-        console.log(data);
-      }
-  );
-*/
-
 var CP = new pkg.crowdProcess();
 var _f = {};	
 
