@@ -7,6 +7,8 @@
 			me.source_path = _p[1] + '/';
 			me.source_file = _p[2];
 
+			cbk(_p); return true;
+			
 			me.space_id = 'shusiou-d-01';
 			me.space_url = 'https://shusiou-d-01.nyc3.digitaloceanspaces.com/';
 			me.space_info = 'shusiou/' + me.source_file + '/_info.txt';
