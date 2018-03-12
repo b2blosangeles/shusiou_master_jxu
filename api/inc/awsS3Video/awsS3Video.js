@@ -159,48 +159,11 @@
 					function(v) {
 						// if (v === false)
 						CP.exit = 1;
+						console.log('videoinfo--->');
+						console.log(v);
 						cbk(v);
 					}
 				);
-				/*
-				pkg.request(me.space_url +  me.space_info, 
-				function (err, res, body) {
-					let v = (err) ? false : {};
-					if (v !== false) { 
-						try {  v = JSON.parse(body); } catch (e) { v = false; }
-					}
-					if (v === false) { 
-						let buff = new Buffer(100);
-						pkg.fs.stat(me.source_path + me.source_file, function(err, stat) {
-							if (err) {
-								CP.exit = 1;
-								cbk(err.message);
-								return true;
-							}
-							pkg.fs.open(me.source_path + me.source_file, 'r', function(err, fd) {
-								pkg.fs.read(fd, buff, 0, 100, 0, function(err, bytesRead, buffer) {
-									if (err) {
-										CP.exit = 1;
-										cbk(err.message);
-										return true;
-									}									
-									var start = buffer.indexOf(new Buffer('mvhd')) + 17;
-									var timeScale = buffer.readUInt32BE(start, 4);
-									var duration = buffer.readUInt32BE(start + 4, 4);
-									var movieLength = Math.floor(duration/timeScale);
-									var v = {filesize:stat.size,time_scale:timeScale, trunksize: me.trunkSize,
-										duration: duration, length:movieLength};
-									me.writeInfo(v, function() {
-										cbk(v);
-									});
-								});
-							});
-						});		
-					} else {
-						cbk(v);
-					}
-				});
-				*/
 			};
 			
 			_f['tracks'] = function(cbk) {
