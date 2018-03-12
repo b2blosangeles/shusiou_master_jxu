@@ -97,7 +97,7 @@
 							function(results) {
 								cbk(results);
 							},
-							98000
+							56000
 						);											
 				
 					} else {
@@ -113,7 +113,7 @@
 				function(result) {
 					_cbk(result);
 				},
-				99000
+				58000
 			);	
 			return true;
 			
@@ -266,7 +266,7 @@
 				for (var t in tracks) {
 					_f1['P_' + t] = (function(t) { 
 						return function(cbk1) {
-							if (new Date().getTime() - tm > 20000) {
+							if (new Date().getTime() - tm > 50000) {
 								CP1.exit = 1;
 								cbk1(' -- skip to next time session ---'); return true;
 							}
@@ -325,7 +325,7 @@
 				function(results) {
 					_cbk(JSON.stringify(results.results));
 				},
-				58000
+				55000
 			);			
 			
 		};
