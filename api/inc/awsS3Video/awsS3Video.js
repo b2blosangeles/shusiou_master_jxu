@@ -266,6 +266,7 @@
 				for (var t in tracks) {
 					_f1['P_' + t] = (function(t) { 
 						return function(cbk1) {
+							console.log(new Date().getTime() - tm);
 							if (new Date().getTime() - tm > 40000) {
 								CP1.exit = 1;
 								console.log('=======over time ====');
