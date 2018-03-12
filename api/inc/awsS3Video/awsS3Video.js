@@ -2,20 +2,18 @@
 	var obj =  function (config, env, pkg) {
 		this.run = function(_cbk) {
 			let me = this;
-			var CP = new pkg.crowdProcess();
-			var _f = {};	
-			_f['split_video']  = function(cbk) { 
-				let _file = CP.data.get_video_name;
-				let _p = CP.data.get_video_name.match(/(.+)\/([^\/]+)$/);
-				
-				me.source_path = _p[1] + '/';
-				me.source_file = _p[2];
-				
-				me.space_id = 'shusiou-d-01';
-				me.space_url = 'https://shusiou-d-01.nyc3.digitaloceanspaces.com/';
-				me.space_info = 'shusiou/' + me.source_file + '/_info.txt';
 
-				pkg.request(me.space_url +  me.space_info, 
+			let _file = CP.data.get_video_name;
+			let _p = CP.data.get_video_name.match(/(.+)\/([^\/]+)$/);
+				
+			me.source_path = _p[1] + '/';
+			me.source_file = _p[2];
+
+			me.space_id = 'shusiou-d-01';
+			me.space_url = 'https://shusiou-d-01.nyc3.digitaloceanspaces.com/';
+			me.space_info = 'shusiou/' + me.source_file + '/_info.txt';
+
+			pkg.request(me.space_url +  me.space_info, 
 				function (err, res, body) {
 					let v = (err) ? false : {};
 					if (v !== false) { 
@@ -29,7 +27,7 @@
 						_fA['_t'] = function (cbks) {
 							me.split('_t', _file, cbks);
 						}						
-						
+
 						CP_A.parallel(
 							_fA,
 							function(results) {
@@ -37,23 +35,14 @@
 							},
 							56000
 						);											
-				
+
 					} else {
 						me.doneDBVideoStatus(v, function() {
 							cbk('This video has been processed.' + me.vid) 
 						});
-						
+
 					}
 				});
-			};			
-			CP.serial(
-				_f,
-				function(result) {
-					_cbk(result);
-				},
-				58000
-			);	
-			return true;
 			
 
 		}
