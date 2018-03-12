@@ -323,7 +323,7 @@
 				function(results) {
 					_cbk(results);
 				},
-				98000
+				58000
 			);			
 			
 		};
