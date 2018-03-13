@@ -184,15 +184,15 @@
 								me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
 									function(v) {
 										if (v === false) {
+											cbk(me.space_url +  me.space_info + ' on ' + _type + ' Error!');
 											CP.exit = 1;
-										}	
-										v[_type] = tracks; 
-										if (!v['status']) v['status'] = {}; 
-										v['status'][_type] = 1;	
-										me.writeInfo(v, function() {
-											console.log('-EE-->' + JSON.stringify(v));
-											cbk('---v---' + _type);
-										});									
+										} else {	
+											v[_type] = tracks; 
+											v['status'][_type] = 1;	
+											me.writeInfo(v, function() {
+												cbk('-EE-->' + JSON.stringify(v));
+											});
+										}
 									
 									}
 								);								
@@ -256,7 +256,7 @@
 								var duration = buffer.readUInt32BE(start + 4, 4);
 								var movieLength = Math.floor(duration/timeScale);
 								var v = {filesize:stat.size,time_scale:timeScale, trunksize: me.trunkSize,
-									duration: duration, length:movieLength};
+									duration: duration, length:movieLength, status:{}};
 								me.writeInfo(v, function() {
 									cbk(v);
 								});
