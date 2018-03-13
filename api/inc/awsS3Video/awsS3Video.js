@@ -92,10 +92,10 @@
 					var fp = new folderP();		
 					fp.build(tmp_folder, () => {
 						pkg.fs.readdir( tmp_folder, (err, files) => {
-							if (_type === '_t')
+							if (_type === '_t') {
 								var condition = (files.length != Math.ceil(CP.data.videoinfo.filesize / me.trunkSize));
 							console.log('-AA-->' + files.length);
-							else if (_type === '_s')
+							} else if (_type === '_s')
 								var condition = (files.length != Math.ceil(CP.data.videoinfo.length / 5));
 							else var condition = false;
 	
