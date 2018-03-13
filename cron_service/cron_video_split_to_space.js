@@ -1,8 +1,7 @@
-/* ---  This cron is to appoint node for video. add record link only */
-/* ---  chennel only related with user video, not related with video only */
+/* ---  This cron is to upload video to a aws standard object space.  */
+
 var path = require('path');
 var env = {root_path:path.join(__dirname, '../..')};
-env.site_path = env.root_path + '/site';
 env.site_path = env.root_path + '/site';
 env.config_path = '/var/qalet_config';
 
