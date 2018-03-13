@@ -188,7 +188,7 @@
 								if (!v['status']) v['status'] = {}; 
 								v['status'][_type] = 1;						
 								me.writeInfo(v, function() {
-									cbk('---v---');
+									cbk('---v---' + _type);
 								});
 							} else {
 								cbk('falseA');
