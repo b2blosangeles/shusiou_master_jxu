@@ -124,7 +124,7 @@
 							v[key] = data.Contents[o].Size;
 						}
 						let tracks = CP.data.tracks;
-						let diff = v.filter(x => !tracks.includes(x));
+						let diff = Object.keys(v).filter(x => !tracks.includes(x));
 						cbk({v:v, T:tracks, diff:'diff'});
 					}
 				});
