@@ -94,6 +94,7 @@
 						pkg.fs.readdir( tmp_folder, (err, files) => {
 							if (_type === '_t')
 								var condition = (files.length != Math.ceil(CP.data.videoinfo.filesize / me.trunkSize));
+							console.log('-AA-->' + files.length);
 							else if (_type === '_s')
 								var condition = (files.length != Math.ceil(CP.data.videoinfo.length / 5));
 							else var condition = false;
@@ -102,7 +103,7 @@
 								me.splitVideo(_type, tmp_folder, function(data) { cbk(data); });
 							} else {
 								CP.exit = 1;
-								console.log('--->' + _type);
+								
 								cbk(files);					
 							}
 						
