@@ -190,7 +190,7 @@
 								if (!v['status']) v['status'] = {}; 
 								v['status'][_type] = 1;						
 								me.writeInfo(v, function() {
-									console.log('-CC-->' + _type);
+									console.log('-CC-->' + JSON.stringify(v));
 									cbk('---v---' + _type);
 								});
 							} else {
