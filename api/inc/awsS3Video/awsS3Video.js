@@ -3,11 +3,11 @@
 		let _space = { 
 			space_id : 'shusiou-d-01',
 			space_url :'https://shusiou-d-01.nyc3.digitaloceanspaces.com/',
-			mnt_folder : '/mnt/shusiou-video/',
+			mnt_folder : '/mnt/shusiou-video/'
 		};
 
 		// find next need processed vid from table video_space
-		this.start = function() {
+		this.load = function() {
 			let me = this;
 			var CP = new pkg.crowdProcess();
 			var _f = {};	
@@ -92,7 +92,7 @@
 			);		
 		
 		}	
-		this.load = function(space, vid, video_name, cbk) {
+		this.loadvid = function(space, vid, video_name, cbk) {
 			console.log('process vid ' + vid + ' ... ');
 			let me = this,
 			    _p = video_name.match(/(.+)\/([^\/]+)$/);
