@@ -182,7 +182,7 @@
 				CP1.serial(
 					_f1,
 					function(results) {
-						console.log('-BB-->' + _type);
+						
 						if (!uploaded) {
 							if (Object.keys(CP.data.space).length == CP.data.tracks.length && (CP.data.tracks.length)) {
 								let v = CP.data.videoinfo;
@@ -190,7 +190,7 @@
 								if (!v['status']) v['status'] = {}; 
 								v['status'][_type] = 1;						
 								me.writeInfo(v, function() {
-									
+									console.log('-CC-->' + _type);
 									cbk('---v---' + _type);
 								});
 							} else {
