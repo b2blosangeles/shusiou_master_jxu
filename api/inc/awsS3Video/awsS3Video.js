@@ -21,14 +21,9 @@
 						let CP_A = new pkg.crowdProcess(), 
 						    _fA = {};
 						
-						_fA['_s'] = function (cbks) {
-							me.split('_s', video_name, cbks);
-						}
-						_fA['_t'] = function (cbks) {
-							me.split('_t', video_name, cbks);
-						}
-						CP_A.parallel(
-							_fA,
+						_fA['_s'] = function (cbks) { me.split('_s', video_name, cbks); }
+						_fA['_t'] = function (cbks) { me.split('_t', video_name, cbks); }
+						CP_A.parallel( _fA,
 							function(results) {
 								cbk(results);
 							},
@@ -38,7 +33,7 @@
 					} else {
 						me.doneDBVideoStatus(vid, v, function(d) {
 							if (d) {
-								cbk(d);
+								console.log(d);
 							}
 						});
 
