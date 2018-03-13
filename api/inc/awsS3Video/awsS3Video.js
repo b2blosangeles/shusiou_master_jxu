@@ -85,6 +85,7 @@
 			
 			_f['tracks'] = function(cbk) {
 				if (CP.data.videoinfo === false) {
+					CP.exit = 1;
 					cbk('no videoinfo');
 				} else {
 					var folderP = require(env.site_path + '/api/inc/folderP/folderP');
@@ -100,6 +101,7 @@
 							if (err || condition) {
 								me.splitVideo(_type, tmp_folder, function(data) { cbk(data); });
 							} else {
+								CP.exit = 1;
 								cbk(files);					
 							}
 						
@@ -134,25 +136,9 @@
 					}
 				});
 			}
-			/*
-			_f['clean_space'] = function(cbk) { 
-				let tracks = CP.data.tracks, objs = Object.keys(CP.data.space);
-				let diff = objs.filter(x => !tracks.includes(x));
-				if (diff.length) {
-					CP.exit = 1;
-					me.removeObjects(space_dir, diff, cbk);
-				} else {
-					cbk(true);
-				}
-			}
 			
 			_f['upload'] = function(cbk) { 
 				let tracks = CP.data.tracks;
-				if (typeof tracks === 'string') {
-					cbk(tracks);
-					CP.exit = 1;
-					return true;
-				} 
 				let objs = CP.data.space;
 				let CP1 = new pkg.crowdProcess(), _f1 = {};
 				
@@ -216,7 +202,7 @@
 					45000
 				);
 			}
-			*/
+		
 			CP.serial(
 				_f,
 				function(results) {
