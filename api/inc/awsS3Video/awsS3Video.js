@@ -187,11 +187,6 @@
 						
 						if (!uploaded) {
 							if (Object.keys(CP.data.space).length == CP.data.tracks.length && (CP.data.tracks.length)) {
-							//	let v = CP.data.videoinfo;
-							//	v[_type] = tracks; 
-							//	if (!v['status']) v['status'] = {}; 
-							//	v['status'][_type] = 1;	
-								
 								me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
 									function(v) {
 										if (v === false) {
@@ -224,7 +219,6 @@
 			CP.serial(
 				_f,
 				function(results) {
-				//	console.log(results.results);
 					_cbk(JSON.stringify(results.results));
 				},
 				55000
@@ -280,6 +274,7 @@
 				}
 			});			
 		}
+
 		this.writeInfo = function(v, cbk) {
 			let me = this,
 			    params = {
