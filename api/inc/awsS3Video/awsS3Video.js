@@ -69,21 +69,8 @@
 			
 			var CP = new pkg.crowdProcess();
 			var _f = {}; 
-
-			_f['videoinfo'] = function(cbk) { 
-				me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
-					function(v) {
-						if (v === false) {
-							CP.exit = 1;
-						}	
-						cbk(v);
-					}
-				);
-			};
-			// == check if need make temp tracks ===
+			// look for trackes exist temp directory
 			_f['tracks'] = function(cbk) {
-				
-				
 				me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
 					function(v) {
 						if (v === false) {
