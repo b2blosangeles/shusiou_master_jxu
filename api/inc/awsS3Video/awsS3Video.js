@@ -117,7 +117,7 @@
 				  Delimiter: '',
 				  Prefix: space_dir
 				}, v = {};
-
+				console.log('--->' + _type);
 				me.s3.listObjects(params, function (err, data) {
 					if(err)cbk(err.message);
 					else {
@@ -143,7 +143,7 @@
 				
 				let CP1 = new pkg.crowdProcess(), _f1 = {};
 				let uploaded = 0;
-				console.log('====' + _type);
+				
 				for (var t in tracks) {
 					_f1['P_' + t] = (function(t) { 
 						return function(cbk1) {
