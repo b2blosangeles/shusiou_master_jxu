@@ -123,7 +123,8 @@
 							let key = data.Contents[o].Key.replace(space_dir, '');
 							v[key] = data.Contents[o].Size;
 						}
-						cbk(v);
+						let tracks = CP.data.tracks;
+						cbk({v:v, T:tracks});
 					}
 				});
 			}
