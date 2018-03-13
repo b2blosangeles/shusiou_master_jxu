@@ -21,15 +21,6 @@
 				}
 			    });
 			};
-			_f['ip']  = function(cbk) {
-			    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
-				if ((err) || !data) {
-					cbk(false); CP.exit = 1;		
-				} else {
-					cbk(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
-				}
-			    });
-			};
 			_f['db_video']  = function(cbk) { /* get database catched local videos */
 				var connection = pkg.mysql.createConnection(config.db);
 				connection.connect();
@@ -79,12 +70,16 @@
 			};
 			CP.serial(
 				_f,
-				function(result) {		
-					me.load(
-						_space,
-						CP.data.get_vid, CP.data.get_video_name, function(data) {
-						console.log(data);
-					});		
+				function(result) {
+					if ((CP.data.get_vid) && (CP.data.get_video_name)) {
+						me.load(
+							_space,
+							CP.data.get_vid, CP.data.get_video_name, function(data) {
+							console.log(data);
+						});
+					} else {
+						console.log(result.results);
+					}
 				},
 				58000
 			);		
