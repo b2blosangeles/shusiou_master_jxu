@@ -195,7 +195,7 @@
 
 
 						} else {
-							cbk('falseA');
+							cbk(false);
 						}
 					},
 					48000
