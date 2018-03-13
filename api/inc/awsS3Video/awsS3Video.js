@@ -109,7 +109,7 @@
 				}
 			};
 			
-			_f['clean_space'] = function(cbk) { 
+			_f['clean_dirty_files_on_space'] = function(cbk) { 
 				var params = { 
 				  Bucket: me.space_id,
 				  Delimiter: '',
