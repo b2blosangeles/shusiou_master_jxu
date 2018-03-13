@@ -75,7 +75,7 @@
 					function(v) {
 						if (v === false) {
 							CP.exit = 1;
-							cbk({err:no videoinfo'});
+							cbk({err:'no videoinfo'});
 						} else {
 							var folderP = require(env.site_path + '/api/inc/folderP/folderP');
 							var fp = new folderP();		
