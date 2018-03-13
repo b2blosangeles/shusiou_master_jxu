@@ -128,9 +128,13 @@
 						let diff = Object.keys(v).filter(x => !tracks.includes(x));
 						if (diff.length) {
 							CP.exit = 1;
-							me.removeObjects(space_dir, diff, cbk);
+							me.removeObjects(space_dir, diff, 
+								function(data) {
+									cbk(v);
+								}		
+							);
 						} else {
-							cbk(v);
+							cbk(Object.keys(v));
 						}						
 					}
 				});
@@ -138,10 +142,9 @@
 			
 			_f['upload'] = function(cbk) { 
 				let tracks = CP.data.tracks,
-				    space_tracks = Object.keys(CP.data.space_tracks);
+				    space_tracks = CP.data.space_tracks;
 				
 				if (tracks.length == space_tracks.length) {
-					
 					me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
 						function(v) {
 							if (v === false) {
@@ -150,7 +153,7 @@
 							} else {	
 								v['status'][_type] = 1;	
 								me.writeInfo(v, function() {
-									cbk('-EE-->' + JSON.stringify(v));
+									cbk('completed ' + _type);
 								});
 							}
 
@@ -168,21 +171,23 @@
 								}
 								pkg.fs.stat( tmp_folder + diff[t], function (err, stat) {
 									pkg.fs.readFile( tmp_folder + diff[t], function (err, data0) {
-									  if (err) { throw err; }
-									     var base64data = new Buffer(data0, 'binary');
-									     var params = {
-										 Body: base64data,
-										 Bucket: me.space_id,
-										 Key: space_dir + tracks[t],
-										 ContentType: 'video/mp4',
-										 ACL: 'public-read'
-									     };	
-									     me.s3.putObject(params, function(err, data) {
-										 if (err) cbk1(err.message);
-										 else {
-											 cbk1(diff[t])
-										 }	 
-									     });
+										if (err) { cbk1({err:err.message}); }
+										else {		
+											var params = {
+												Body: new Buffer(data0, 'binary'),
+												Bucket: me.space_id,
+												Key: space_dir + diff[t],
+												ContentType: 'video/mp4',
+												ACL: 'public-read'
+											};	
+											me.s3.putObject(params, function(err, data) {
+												if (err) {
+													cbk1({err:err.message});
+												} else {
+													cbk1(diff[t]);
+												}	 
+											});
+										}
 									});
 								});
 							}
@@ -194,8 +199,8 @@
 
 				CP1.serial(
 					_f1,
-					function(results) {
-						cbk(true);
+					function(results1) {
+						cbk(results.results);
 					},
 					48000
 				);
@@ -203,8 +208,8 @@
 		
 			CP.serial(
 				_f,
-				function(results) {
-					_cbk(JSON.stringify(results.results));
+				function(results2) {
+					_cbk(JSON.stringify(results.results2));
 				},
 				55000
 			);			
