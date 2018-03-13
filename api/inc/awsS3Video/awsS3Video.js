@@ -143,6 +143,8 @@
 				let CP1 = new pkg.crowdProcess(), _f1 = {};
 				let uploaded = 0;
 				
+				console.log('-AA-->' + _type);
+				
 				for (var t in tracks) {
 					_f1['P_' + t] = (function(t) { 
 						return function(cbk1) {
