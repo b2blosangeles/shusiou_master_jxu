@@ -128,7 +128,7 @@
 					}
 				});
 			}
-		
+			/*
 			_f['clean_space'] = function(cbk) { 
 				let tracks = CP.data.tracks, objs = Object.keys(CP.data.space);
 				let diff = objs.filter(x => !tracks.includes(x));
@@ -139,7 +139,7 @@
 					cbk(true);
 				}
 			}
-			/*
+			
 			_f['upload'] = function(cbk) { 
 				let tracks = CP.data.tracks;
 				if (typeof tracks === 'string') {
