@@ -110,8 +110,8 @@
 					});
 				}
 			};
-			
-			_f['clean_dirty_files_on_space'] = function(cbk) { 
+			// clean_dirty_files_on_space
+			_f['space'] = function(cbk) { 
 				var params = { 
 				  Bucket: me.space_id,
 				  Delimiter: '',
@@ -131,18 +131,17 @@
 							CP.exit = 1;
 							me.removeObjects(space_dir, diff, cbk);
 						} else {
-							cbk(true);
+							cbk(v);
 						}						
 					}
 				});
 			}
 			
 			_f['upload'] = function(cbk) { 
-				let tracks = CP.data.tracks;
-				let objs = CP.data.space;
-				let CP1 = new pkg.crowdProcess(), _f1 = {};
+				let tracks = CP.data.tracks,
+				    objs = CP.data.space;
 				
-
+				let CP1 = new pkg.crowdProcess(), _f1 = {};
 				let uploaded = 0;
 
 				for (var t in tracks) {
