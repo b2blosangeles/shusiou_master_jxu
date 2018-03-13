@@ -90,7 +90,7 @@ CP.serial(
 	function(result) {
 		let awsS3Video = require(env.site_path + '/api/inc/awsS3Video/awsS3Video.js');
 		var splitVideo = new awsS3Video(config, env, pkg);		
-		splitVideo.run(
+		splitVideo.load(
 			{
 				space_id : 'shusiou-d-01',
 				space_url :'https://shusiou-d-01.nyc3.digitaloceanspaces.com/'
