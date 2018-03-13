@@ -6,7 +6,7 @@
 			mnt_folder : '/mnt/shusiou-video/',
 		};
 
-		// fund next need processed vid
+		// find next need processed vid from table video_space
 		this.start = function() {
 			let me = this;
 			var CP = new pkg.crowdProcess();
