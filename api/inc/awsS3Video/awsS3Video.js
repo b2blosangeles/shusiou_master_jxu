@@ -127,7 +127,7 @@
 						me.doneDBVideoStatus(vid, v, function(d) {
 							if (d) {
 								console.log(d);
-								me.start(); 
+								// me.start(); 
 							}
 						});
 
