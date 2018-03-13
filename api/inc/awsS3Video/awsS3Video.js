@@ -103,7 +103,7 @@
 				);
 			};
 			// clean_dirty_files_on_space
-			_f['space'] = function(cbk) { 
+			_f['space_tracks'] = function(cbk) { 
 				var params = { 
 				  Bucket: me.space_id,
 				  Delimiter: '',
@@ -131,20 +131,23 @@
 			
 			_f['upload'] = function(cbk) { 
 				let tracks = CP.data.tracks,
-				    objs = CP.data.space;
+				    space_tracks = Object.keys(CP.data.space_tracks);
 				
-				let CP1 = new pkg.crowdProcess(), _f1 = {};
-
-				for (var t in tracks) {
-					_f1['P_' + t] = (function(t) { 
-						return function(cbk1) {
-							if (new Date().getTime() - tm > 45000) {
-								CP1.exit = 1;
-								cbk1(' -- skip to next time session ---'); return true;
-							}
-							pkg.fs.stat( tmp_folder + tracks[t], function (err, stat) {
-								if (stat.size !== objs[tracks[t]] || !objs[tracks[t]]) {
-									pkg.fs.readFile( tmp_folder + tracks[t], function (err, data0) {
+				if (tracks.length == space_tracks.length) {
+					
+					
+					
+				} else {
+					let diff = space_tracks.filter(x => !tracks.includes(x));
+					for (var t in diff) {
+						_f1['P_' + t] = (function(t) { 
+							return function(cbk1) {
+								if (new Date().getTime() - tm > 45000) {
+									CP1.exit = 1;
+									cbk1(' -- skip to next time session ---'); return true;
+								}
+								pkg.fs.stat( tmp_folder + diff[t], function (err, stat) {
+									pkg.fs.readFile( tmp_folder + diff[t], function (err, data0) {
 									  if (err) { throw err; }
 									     var base64data = new Buffer(data0, 'binary');
 									     var params = {
@@ -157,17 +160,18 @@
 									     me.s3.putObject(params, function(err, data) {
 										 if (err) cbk1(err.message);
 										 else {
-											 cbk1(tracks[t])
+											 cbk1(diff[t])
 										 }	 
 									     });
-									});					
-								} else {
-									cbk1('Skip ' + tracks[t]);
-								}
-							});
-						}
-					})(t);			
+									});
+								});
+							}
+						})(t);			
+					}					
 				}
+				
+				let CP1 = new pkg.crowdProcess(), _f1 = {};
+
 				CP1.serial(
 					_f1,
 					function(results) {
@@ -187,7 +191,6 @@
 
 								}
 							);								
-
 
 						} else {
 							cbk(false);
