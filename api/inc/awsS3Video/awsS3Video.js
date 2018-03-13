@@ -139,8 +139,7 @@
 				    objs = CP.data.space;
 				
 				let CP1 = new pkg.crowdProcess(), _f1 = {};
-				let uploaded = 0;
-				
+
 				for (var t in tracks) {
 					_f1['P_' + t] = (function(t) { 
 						return function(cbk1) {
@@ -163,7 +162,6 @@
 									     me.s3.putObject(params, function(err, data) {
 										 if (err) cbk1(err.message);
 										 else {
-											 uploaded++;
 											 cbk1(tracks[t])
 										 }	 
 									     });
@@ -178,32 +176,26 @@
 				CP1.serial(
 					_f1,
 					function(results) {
-						
-						if (!uploaded) {
-							if (Object.keys(CP.data.space).length == CP.data.tracks.length && (CP.data.tracks.length)) {
-								me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
-									function(v) {
-										if (v === false) {
-											cbk(me.space_url +  me.space_info + ' on ' + _type + ' Error!');
-											CP.exit = 1;
-										} else {	
-											v[_type] = tracks; 
-											v['status'][_type] = 1;	
-											me.writeInfo(v, function() {
-												cbk('-EE-->' + JSON.stringify(v));
-											});
-										}
-									
+						if (Object.keys(CP.data.space).length == CP.data.tracks.length && (CP.data.tracks.length)) {
+							me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
+								function(v) {
+									if (v === false) {
+										cbk(me.space_url +  me.space_info + ' on ' + _type + ' Error!');
+										CP.exit = 1;
+									} else {	
+										v[_type] = tracks; 
+										v['status'][_type] = 1;	
+										me.writeInfo(v, function() {
+											cbk('-EE-->' + JSON.stringify(v));
+										});
 									}
-								);								
-								
 
-							} else {
-								cbk('falseA');
-							}
+								}
+							);								
+
 
 						} else {
-							cbk('falseB');
+							cbk('falseA');
 						}
 					},
 					48000
