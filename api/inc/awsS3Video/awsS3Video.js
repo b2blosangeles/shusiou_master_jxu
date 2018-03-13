@@ -82,7 +82,7 @@
 					}
 				);
 			};
-			/*
+			
 			_f['tracks'] = function(cbk) {
 				if (CP.data.videoinfo === false) {
 					cbk('no videoinfo');
@@ -107,7 +107,7 @@
 					});
 				}
 			};
-			
+			/*
 			_f['space'] = function(cbk) { 
 				var params = { 
 				  Bucket: me.space_id,
