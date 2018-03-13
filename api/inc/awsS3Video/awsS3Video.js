@@ -15,7 +15,7 @@
 			_f['ip']  = function(cbk) {
 			    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
 				if ((err) || !data) {
-					cbk(false); CP.exit = 1;		
+					cbk({err:'Missing ip'}); CP.exit = 1;		
 				} else {
 					cbk(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
 				}
@@ -28,12 +28,15 @@
 					" WHERE A.`server_ip` = '" + CP.data.ip + "' AND B.`status` < 1 OR B.`status` IS NULL " +
 					" ORDER BY `status` DESC LIMIT 3";
 
-				connection.query(str, function (error, results, fields) {
+				connection.query(str, function (err, results, fields) {
 					connection.end();
-					if (error || !results.length) {
-						cbk(false); CP.exit = 1;
+					if (err) {
+						cbk({err:err.message}); CP.exit = 1;
+					} else if (!results.length) {
+						cbk(true); CP.exit = 1;
+					} else {
+						cbk(results[0]);
 					}
-					cbk(results[0]);
 				});
 			};
 			_f['get_vid']  = function(cbk) { 
@@ -71,14 +74,18 @@
 			CP.serial(
 				_f,
 				function(result) {
-					if ((CP.data.get_vid) && (CP.data.get_video_name)) {
-						me.load(
-							_space,
-							CP.data.get_vid, CP.data.get_video_name, function(data) {
-							console.log(data);
-						});
+					if (CP.data.db_video === true) {
+						console.log('No new id at all');
 					} else {
-						console.log(result.results);
+						if ((CP.data.get_vid) && (CP.data.get_video_name)) {
+							me.load(
+								_space,
+								CP.data.get_vid, CP.data.get_video_name, function(data) {
+								console.log(data);
+							});
+						} else {
+							console.log(result.results);
+						}
 					}
 				},
 				58000
