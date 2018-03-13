@@ -144,7 +144,7 @@
 				for (var t in tracks) {
 					_f1['P_' + t] = (function(t) { 
 						return function(cbk1) {
-							if (new Date().getTime() - tm > 50000) {
+							if (new Date().getTime() - tm > 45000) {
 								CP1.exit = 1;
 								cbk1(' -- skip to next time session ---'); return true;
 							}
@@ -206,7 +206,7 @@
 							cbk('falseB');
 						}
 					},
-					45000
+					48000
 				);
 			}
 		
