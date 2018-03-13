@@ -95,6 +95,8 @@
 							if (_type === '_t') {
 								var condition = (files.length != Math.ceil(CP.data.videoinfo.filesize / me.trunkSize));
 							console.log('-AA-->' + files.length);
+								console.log('-BB-->' + CP.data.videoinfo.filesiz);
+								console.log('-CC-->' + me.trunkSize);
 							} else if (_type === '_s')
 								var condition = (files.length != Math.ceil(CP.data.videoinfo.length / 5));
 							else var condition = false;
