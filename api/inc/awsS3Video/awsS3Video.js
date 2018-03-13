@@ -96,14 +96,14 @@
 							else if (_type === '_s')
 								var condition = (files.length != Math.ceil(CP.data.videoinfo.length / 5));
 							else var condition = false;
-							cbk(files);
-							/*
+	
 							if (err || condition) {
-								me.splitVideo(_type, tmp_folder, function(data) { cbk(data); });
+								cbk({c:condition});
+								// me.splitVideo(_type, tmp_folder, function(data) { cbk(data); });
 							} else {
 								cbk(files);					
 							}
-							*/
+						
 						});			
 
 					});
