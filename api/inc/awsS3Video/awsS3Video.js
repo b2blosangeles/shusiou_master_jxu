@@ -135,7 +135,20 @@
 				
 				if (tracks.length == space_tracks.length) {
 					
-					
+					me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
+						function(v) {
+							if (v === false) {
+								cbk(me.space_url +  me.space_info + ' on ' + _type + ' Error!');
+								CP.exit = 1;
+							} else {	
+								v['status'][_type] = 1;	
+								me.writeInfo(v, function() {
+									cbk('-EE-->' + JSON.stringify(v));
+								});
+							}
+
+						}
+					);					
 					
 				} else {
 					let diff = space_tracks.filter(x => !tracks.includes(x));
@@ -175,26 +188,7 @@
 				CP1.serial(
 					_f1,
 					function(results) {
-						if (Object.keys(CP.data.space).length == CP.data.tracks.length && (CP.data.tracks.length)) {
-							me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
-								function(v) {
-									if (v === false) {
-										cbk(me.space_url +  me.space_info + ' on ' + _type + ' Error!');
-										CP.exit = 1;
-									} else {	
-										v[_type] = tracks; 
-										v['status'][_type] = 1;	
-										me.writeInfo(v, function() {
-											cbk('-EE-->' + JSON.stringify(v));
-										});
-									}
-
-								}
-							);								
-
-						} else {
-							cbk(false);
-						}
+						cbk(true);
 					},
 					48000
 				);
