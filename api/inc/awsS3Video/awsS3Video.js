@@ -1,6 +1,6 @@
 (function () { 
 	var obj =  function (config, env, pkg) {
-		this.run = function(space, vid, video_name, cbk) {
+		this.load = function(space, vid, video_name, cbk) {
 			let me = this,
 			    _p = video_name.match(/(.+)\/([^\/]+)$/);
 				
