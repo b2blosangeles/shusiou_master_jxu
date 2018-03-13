@@ -36,8 +36,10 @@
 						);											
 
 					} else {
-						me.doneDBVideoStatus(vid, v, function() {
-							cbk('This video has been processed.' + vid) 
+						me.doneDBVideoStatus(vid, v, function(d) {
+							if (d) {
+								cbk(d);
+							}
 						});
 
 					}
@@ -55,10 +57,10 @@
 
 				connection.query(str, function (error, results, fields) {
 					connection.end();
-					cbk(v);
+					cbk('This video has been processed.' + vid) 
 				});
 			} else {
-				cbk(v);
+				cbk(false);
 			}
 		}		
 		this.split = function(_type, _file, _cbk) {
@@ -153,7 +155,9 @@
 							} else {	
 								v['status'][_type] = 1;	
 								me.writeInfo(v, function() {
-									cbk('completed ' + _type);
+									me.doneDBVideoStatus(vid, v, function() {
+										cbk('This video has been processed.' + vid) 
+									});
 								});
 							}
 
