@@ -212,7 +212,7 @@
 			CP.serial(
 				_f,
 				function(results) {
-					console.log(results.results);
+				//	console.log(results.results);
 					_cbk(JSON.stringify(results.results));
 				},
 				55000
