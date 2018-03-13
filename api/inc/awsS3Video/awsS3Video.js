@@ -89,7 +89,14 @@
 
 									if (err || condition) {
 										me.splitVideo(_type, tmp_folder, function(data) { 	
-											cbk(data); });
+											if (data.err) {
+												CP.exit = 1;
+												cbk({err:data.err});
+											} else {
+												cbk(data.list); 
+											}
+											
+										});
 									} else {
 										cbk(files);					
 									}
@@ -289,10 +296,10 @@
 						 '&& split -b ' + me.trunkSize + ' ' + me.source_path +  me.source_file +  ' ' + tmp_folder + '', 					 
 						function(err, stdout, stderr) {
 							if (err) {
-								cbk(err.message);
+								cbk({err:err.message});
 							} else {
 								pkg.fs.readdir( tmp_folder, (err1, files) => {
-									cbk((err1) ? err1.message : files);
+									cbk((err1) ? {err:err1.message} : files);
 								});			
 							} 
 						});
@@ -302,16 +309,16 @@
 						 ' -c copy -map 0 -segment_time 5 -reset_timestamps 1 -f segment ' + tmp_folder + 's_%d.mp4', 					 
 						function(err, stdout, stderr) {
 							if (err) {
-								cbk(err.message);
+								cbk({err:err.message});
 							} else {
 								pkg.fs.readdir( tmp_folder, (err1, files) => {
-									cbk((err1) ? err1.message : files);
+									cbk((err1) ? {err:err1.message} : files);
 								});			
 							}
 						});
 					break;	
 				default:
-					cbk('Missing _type');
+					cbk({err:'Missing _type'});
 			}		
 		}		
 		
