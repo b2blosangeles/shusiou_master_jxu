@@ -5,6 +5,7 @@
 			space_url :'https://shusiou-d-01.nyc3.digitaloceanspaces.com/',
 			mnt_folder : '/mnt/shusiou-video/',
 		};
+
 		// fund next need processed vid
 		this.start = function() {
 			let me = this;
@@ -90,6 +91,7 @@
 		
 		}	
 		this.load = function(space, vid, video_name, cbk) {
+			console.log('process vid ' + vid + ' ... ');
 			let me = this,
 			    _p = video_name.match(/(.+)\/([^\/]+)$/);
 				
@@ -123,6 +125,7 @@
 						me.doneDBVideoStatus(vid, v, function(d) {
 							if (d) {
 								console.log(d);
+								me.start(); 
 							}
 						});
 
