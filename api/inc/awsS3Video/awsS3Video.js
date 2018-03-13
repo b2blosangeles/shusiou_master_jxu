@@ -125,7 +125,12 @@
 						}
 						let tracks = CP.data.tracks;
 						let diff = Object.keys(v).filter(x => !tracks.includes(x));
-						cbk({v:v, T:tracks, diff:diff});
+						if (diff.length) {
+							CP.exit = 1;
+							me.removeObjects(space_dir, diff, cbk);
+						} else {
+							cbk(true);
+						}						
 					}
 				});
 			}
