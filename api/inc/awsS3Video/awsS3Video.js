@@ -98,8 +98,7 @@
 							else var condition = false;
 	
 							if (err || condition) {
-								cbk({c:condition});
-								// me.splitVideo(_type, tmp_folder, function(data) { cbk(data); });
+								me.splitVideo(_type, tmp_folder, function(data) { cbk(data); });
 							} else {
 								cbk(files);					
 							}
