@@ -109,7 +109,7 @@
 				}
 			};
 			
-			_f['space'] = function(cbk) { 
+			_f['clean_space'] = function(cbk) { 
 				var params = { 
 				  Bucket: me.space_id,
 				  Delimiter: '',
