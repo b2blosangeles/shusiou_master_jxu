@@ -91,7 +91,7 @@
 										me.splitVideo(_type, tmp_folder, function(data) { 	
 											if (data.err) {
 												CP.exit = 1;
-												cbk({err:data.err});
+												cbk(data);
 											} else {
 												cbk(data.list); 
 											}
@@ -299,7 +299,7 @@
 								cbk({err:err.message});
 							} else {
 								pkg.fs.readdir( tmp_folder, (err1, files) => {
-									cbk((err1) ? {err:err1.message} : files);
+									cbk((err1) ? {err:err1.message} : {list:files});
 								});			
 							} 
 						});
@@ -312,7 +312,7 @@
 								cbk({err:err.message});
 							} else {
 								pkg.fs.readdir( tmp_folder, (err1, files) => {
-									cbk((err1) ? {err:err1.message} : files);
+									cbk((err1) ? {err:err1.message} : {list:files});
 								});			
 							}
 						});
