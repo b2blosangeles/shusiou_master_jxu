@@ -188,7 +188,7 @@
 								if (!v['status']) v['status'] = {}; 
 								v['status'][_type] = 1;						
 								me.writeInfo(v, function() {
-									cbk(true);
+									cbk(v);
 								});
 							} else {
 								cbk('falseA');
