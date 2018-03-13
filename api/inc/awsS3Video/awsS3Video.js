@@ -1,5 +1,94 @@
 (function () { 
 	var obj =  function (config, env, pkg) {
+		let _space = { 
+			space_id : 'shusiou-d-01',
+			space_url :'https://shusiou-d-01.nyc3.digitaloceanspaces.com/',
+			mnt_folder : '/mnt/shusiou-video/',
+		};
+		// fund next need processed vid
+		this.start = function() {
+			let me = this;
+			var CP = new pkg.crowdProcess();
+			var _f = {};	
+
+			_f['ip']  = function(cbk) {
+			    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+				if ((err) || !data) {
+					cbk(false); CP.exit = 1;		
+				} else {
+					cbk(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
+				}
+			    });
+			};
+			_f['ip']  = function(cbk) {
+			    pkg.fs.readFile('/var/.qalet_whoami.data', 'utf8', function(err,data) {
+				if ((err) || !data) {
+					cbk(false); CP.exit = 1;		
+				} else {
+					cbk(data.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' '));
+				}
+			    });
+			};
+			_f['db_video']  = function(cbk) { /* get database catched local videos */
+				var connection = pkg.mysql.createConnection(config.db);
+				connection.connect();
+				var str = "SELECT A.*, B.`status` FROM `video` A LEFT JOIN `video_space` B ON A.`vid` = B.`vid`" +
+					" WHERE A.`server_ip` = '" + CP.data.ip + "' AND B.`status` < 1 OR B.`status` IS NULL " +
+					" ORDER BY `status` DESC LIMIT 3";
+
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					if (error || !results.length) {
+						cbk(false); CP.exit = 1;
+					}
+					cbk(results[0]);
+				});
+			};
+			_f['get_vid']  = function(cbk) { 
+				let vid = CP.data.db_video.vid, status = CP.data.db_video.status;
+				if (status === null) {
+					var connection = pkg.mysql.createConnection(config.db);
+					connection.connect();
+					var str = "INSERT INTO `video_space` (`vid`, `status`, `added`) VALUES " +
+						" ('" + vid + "', 0, NOW()) ON DUPLICATE KEY UPDATE `status` = `status` ";
+
+					connection.query(str, function (error, results, fields) {
+						connection.end();
+						cbk(vid);
+					});
+				} else {
+					cbk(vid);
+				}
+			};
+			_f['get_video_name']  = function(cbk) { 
+				let vid = CP.data.get_vid,
+				    video_folder = _space.mnt_folder + 'videos/',
+				    _file = video_folder + vid + '/video/' + vid;
+
+				pkg.fs.stat(_file, function(err, stat) {
+					if (err) {
+						pkg.exec('cp -f ' + video_folder + vid + '/video/video.mp4 ' +  _file, 					 
+							function(err, stdout, stderr) {
+								cbk(_file);
+							});
+					} else {
+						cbk(_file);
+					}
+				});
+			};
+			CP.serial(
+				_f,
+				function(result) {		
+					me.load(
+						_space,
+						CP.data.get_vid, CP.data.get_video_name, function(data) {
+						console.log(data);
+					});		
+				},
+				58000
+			);		
+		
+		}	
 		this.load = function(space, vid, video_name, cbk) {
 			let me = this,
 			    _p = video_name.match(/(.+)\/([^\/]+)$/);
