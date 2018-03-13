@@ -80,32 +80,40 @@
 					}
 				);
 			};
-			
+			// == check if need make temp tracks ===
 			_f['tracks'] = function(cbk) {
-				if (CP.data.videoinfo === false) {
-					CP.exit = 1;
-					cbk('no videoinfo');
-				} else {
-					var folderP = require(env.site_path + '/api/inc/folderP/folderP');
-					var fp = new folderP();		
-					fp.build(tmp_folder, () => {
-						pkg.fs.readdir( tmp_folder, (err, files) => {
-							if (_type === '_t') {
-								var condition = (files.length != Math.ceil(CP.data.videoinfo.filesize / me.trunkSize));
-							} else if (_type === '_s')
-								var condition = (files.length != Math.ceil(CP.data.videoinfo.length / 5));
-							else var condition = false;
-	
-							if (err || condition) {
-								me.splitVideo(_type, tmp_folder, function(data) { cbk(data); });
-							} else {
-								cbk(files);					
-							}
-						
-						});			
+				
+				
+				me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
+					function(v) {
+						if (v === false) {
+							CP.exit = 1;
+							cbk({err:no videoinfo'});
+						} else {
+							var folderP = require(env.site_path + '/api/inc/folderP/folderP');
+							var fp = new folderP();		
+							fp.build(tmp_folder, () => {
+								pkg.fs.readdir( tmp_folder, (err, files) => {
+									if (_type === '_t') {
+										var condition = (files.length != Math.ceil(v.filesize / me.trunkSize));
+									} else if (_type === '_s')
+										var condition = (files.length != Math.ceil(v.length / 5));
+									else var condition = false;
 
-					});
-				}
+									if (err || condition) {
+										me.splitVideo(_type, tmp_folder, function(data) { 	
+											cbk(data); });
+									} else {
+										cbk(files);					
+									}
+
+								});			
+
+							});						
+						}
+						cbk(v);
+					}
+				);
 			};
 			// clean_dirty_files_on_space
 			_f['space'] = function(cbk) { 
