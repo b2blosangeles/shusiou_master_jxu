@@ -185,14 +185,28 @@
 						
 						if (!uploaded) {
 							if (Object.keys(CP.data.space).length == CP.data.tracks.length && (CP.data.tracks.length)) {
-								let v = CP.data.videoinfo;
-								v[_type] = tracks; 
-								if (!v['status']) v['status'] = {}; 
-								v['status'][_type] = 1;						
-								me.writeInfo(v, function() {
-									console.log('-CC-->' + JSON.stringify(v));
-									cbk('---v---' + _type);
-								});
+							//	let v = CP.data.videoinfo;
+							//	v[_type] = tracks; 
+							//	if (!v['status']) v['status'] = {}; 
+							//	v['status'][_type] = 1;	
+								
+								me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
+									function(v) {
+										if (v === false) {
+											CP.exit = 1;
+										}	
+										v[_type] = tracks; 
+										if (!v['status']) v['status'] = {}; 
+										v['status'][_type] = 1;	
+										me.writeInfo(v, function() {
+											console.log('-EE-->' + JSON.stringify(v));
+											cbk('---v---' + _type);
+										});									
+									
+									}
+								);								
+								
+
 							} else {
 								cbk('falseA');
 							}
