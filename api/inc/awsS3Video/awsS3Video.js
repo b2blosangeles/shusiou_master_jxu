@@ -39,7 +39,7 @@
 
 					} else {
 						me.doneDBVideoStatus(v, function() {
-							cbk('This video has been processed.' + me.vid) 
+							cbk('This video has been processed.' + vid) 
 						});
 
 					}
