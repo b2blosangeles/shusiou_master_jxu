@@ -297,7 +297,7 @@
 								pkg.fs.readdir( tmp_folder, (err1, files) => {
 									cbk((err1) ? err1.message : files);
 								});			
-							}
+							} 
 						});
 					break;
 				case '_s':
