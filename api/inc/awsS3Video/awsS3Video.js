@@ -125,7 +125,7 @@
 						}
 						let tracks = CP.data.tracks;
 						let diff = Object.keys(v).filter(x => !tracks.includes(x));
-						cbk({v:v, T:tracks, diff:'diff'});
+						cbk({v:v, T:tracks, diff:diff});
 					}
 				});
 			}
