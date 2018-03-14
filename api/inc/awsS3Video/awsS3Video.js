@@ -178,8 +178,9 @@
 									} else if (_type === '_s')
 										var condition = (files.length != Math.ceil(v.length / 5));
 									else var condition = false;
-
+									if (_type === '_s') {
 									console.log(files.length + '---' + Math.ceil(v.length / 5) + '======condition=====' + _type);
+									}
 									console.log(condition);
 									if (err || condition) {
 										me.splitVideo(_type, tmp_folder, function(data) { 	
