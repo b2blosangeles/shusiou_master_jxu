@@ -250,7 +250,7 @@ var app = function(auth_data) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
-				var str = 'SELECT A.*, B.`created` AS addtime, C.`status` AS video_space  FROM  `video` A ' +
+				var str = 'SELECT A.*, B.`created` AS addtime, C.`status` AS space_status, C.`space` FROM  `video` A ' +
 				    ' LEFT JOIN `video_user` B ON A.`vid` = B.`vid` ' +
 				    ' LEFT JOIN `video_space` AS C ON A.`vid` = C.`vid` ' +
 				    " WHERE B.`uid` = '" + uid +"'";
