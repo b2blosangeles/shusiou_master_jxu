@@ -317,13 +317,13 @@ var app = function(auth_data) {
 					for (var i = 0; i < data.results.P1.length; i++) {
 						d[d.length] = data.results.P1[i];
 					}
-					*/
-					for (var i = 0; i < data.results.P2.length; i++) {
-						data.results.P2[i].status = 'ready';
-						d[d.length] = data.results.P2[i];
+					
+					for (var i = 0; i < CP.data.P2.length; i++) {
+						CP.data.P2[i].status = 'ready';
+						d.push(data.results.P2[i]);
 					}
-					res.send('SELECT A.*, B.`created` AS addtime FROM  `video` A LEFT JOIN `video_user` B on A.`vid` = B.`vid` ' +
-				    " WHERE B.`uid` = '" + uid +" '");
+					*/
+					res.send(CP.data.P2);
 					return true;
 					/*
 					res.send({status:data.status, _spent_time:data._spent_time, 
