@@ -32,7 +32,7 @@ try {
 				var url =  '//' + IP + '/api/video/play_stream.api?type=video&vid=' + me.props.rec.vid +
 				    '&server=' + me.props.rec.server_ip ;
 			} else { 
-				var url = '//' + me.props.rec.server_ip + 
+				var url = 'http://' + me.props.rec.server_ip + 
 				    '/api/video/play_stream.api?type=video&vid=' + me.props.rec.vid;
 			}
 			return url;
