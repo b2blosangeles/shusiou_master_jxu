@@ -21,7 +21,7 @@ _f['P1'] = function(cbk) {
 	var str = 'SELECT A.*, B.`created` AS addtime, C.`status` AS space_status, C.`space` FROM  `video` A ' +
 	    ' LEFT JOIN `video_user` B ON A.`vid` = B.`vid` ' +
 	    ' LEFT JOIN `video_space` AS C ON A.`vid` = C.`vid` ' +
-	    " WHERE space_status = 1 ORDER BY A.`uploaded` DESC LIMIT 3";
+	    " WHERE C.`status` = 1 ORDER BY A.`uploaded` DESC LIMIT 3";
 
 	connection.query(str, function (error, results, fields) {
 		connection.end();
