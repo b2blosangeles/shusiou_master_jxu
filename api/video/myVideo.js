@@ -230,6 +230,8 @@ var app = function(auth_data) {
 			);
 			break;		
 		case 'getMyVideos':
+			res.send([]);
+			return true;
 			var CP = new pkg.crowdProcess();
 			var _f = {};			
 			_f['P0'] = function(cbk) {
