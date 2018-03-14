@@ -294,7 +294,7 @@
 				CP1.serial(
 					_f1,
 					function(results1) {
-						cbk(results.results);
+						cbk(results1.results);
 					},
 					48000
 				);
@@ -303,7 +303,7 @@
 			CP.serial(
 				_f,
 				function(results2) {
-					_cbk(JSON.stringify(results.results2));
+					_cbk(JSON.stringify(results2.results));
 				},
 				55000
 			);			
