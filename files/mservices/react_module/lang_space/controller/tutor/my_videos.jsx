@@ -51,7 +51,7 @@ try {
 			}
 		},		
 		bgFilmStyle:function(t, a) {
-			var url = '//' + a.server_ip + '/api/video/play_stream.api?type=image&vid='+ a.vid +'&w=180&s='+t;
+			var url = 'http://' + a.server_ip + '/api/video/play_stream.api?type=image&vid='+ a.vid +'&w=180&s='+t;
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
 		},
