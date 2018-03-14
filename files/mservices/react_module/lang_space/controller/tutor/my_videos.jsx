@@ -56,7 +56,7 @@ try {
 				var url = 'http://' + a.server_ip + '/api/video/play_stream.api?type=image&vid='+ a.vid +'&w=180&s='+t;
 			} else {
 				
-				var url = 'https://'+ (Math.floor(Math.random() * a.dns_matrix) + 1) + 
+				var url = 'https://nd'+ (Math.floor(Math.random() * a.dns_matrix) + 1) + 
 				    '.service.shuwiou.win' +  '/api/video/pipe.api?video_fn='+ a.vid +'&size=180&ss='+t;
 			}
 			return {width:'100%', background:'url('+url+')',
