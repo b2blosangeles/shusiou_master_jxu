@@ -244,6 +244,7 @@
 								CP.exit = 1;
 							} else {	
 								v['status'][_type] = 1;	
+								v[_type] = tracks;	
 								me.writeInfo(v, function() {
 									me.doneDBVideoStatus(v, function() {
 										cbk('This video has been processed.' + me.vid) 
