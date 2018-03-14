@@ -7,7 +7,7 @@ function write404(msg) {
 var type= req.query['type'], vid = req.query['vid'];
 if (!type || !vid) {  write404('vid or type error '); return true; }
 
-var mnt_folder = '/mnt/shusiou-video/',  
+var mnt_folder = '/var/shusiou_video/',  
     video_folder = mnt_folder  + 'videos/' + vid + '/', 
     file_video =  video_folder + 'video/video.mp4',
     folder_image = video_folder + 'images/',
