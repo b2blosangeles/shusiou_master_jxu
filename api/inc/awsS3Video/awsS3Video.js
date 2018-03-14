@@ -189,10 +189,10 @@
 												CP.exit = 1;
 												cbk(data);
 											} else {
-												if (_type === '_s') {
-													console.log('---data.list---');
+												//if (_type === '_s') {
+													console.log('---data.list---' +_type);
 													console.log(data.list);
-												}
+												//}
 												cbk(data.list); 
 											}
 											
