@@ -30,8 +30,10 @@ try {
 			    r = me.props.rec;
 			if (!r.space_status) {
 				var url = 'http://' + r.server_ip + '/api/video/play_stream.api?type=video&vid='+ r.vid;
-			} else {
-				var url = 'http://198.199.120.18' +  '/api/video/pipe_stream.api?video_fn='+ r.vid;
+			} else {				
+				
+				var url = 'https://nd'+ (Math.floor(Math.random() * r.dns_matrix) + 1) + 
+				    '.service.shusiou.win' +  '/api/video/pipe_stream.api?video_fn='+ r.vid;
 			}			
 			return url;
 		},			
