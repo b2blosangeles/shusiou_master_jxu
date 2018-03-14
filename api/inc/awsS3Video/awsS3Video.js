@@ -179,8 +179,8 @@
 										var condition = (files.length != Math.ceil(v.length / 5));
 									else var condition = false;
 									if (_type === '_s') {
-									console.log(files.length + '---' + Math.ceil(v.length / 5) + '======condition=====' + _type);
-									console.log(condition);
+										console.log(files.length + '---' + Math.ceil(v.length / 5) + '======condition=====' + _type);
+										console.log(condition);
 									}
 									
 									if (err || condition) {
@@ -189,6 +189,10 @@
 												CP.exit = 1;
 												cbk(data);
 											} else {
+												if (_type === '_s') {
+													console.log('---data.list---');
+													console.log(data.list);
+												}
 												cbk(data.list); 
 											}
 											
