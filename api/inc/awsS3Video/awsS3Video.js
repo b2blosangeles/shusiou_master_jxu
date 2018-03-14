@@ -287,18 +287,15 @@
 								});
 							}
 						})(t);			
-					}					
+					}
+					CP1.serial(
+						_f1,
+						function(results1) {
+							cbk(results1.results);
+						},
+						48000
+					);					
 				}
-				
-				
-
-				CP1.serial(
-					_f1,
-					function(results1) {
-						cbk(results1.results);
-					},
-					48000
-				);
 			}
 		
 			CP.serial(
