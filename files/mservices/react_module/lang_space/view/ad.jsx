@@ -17,6 +17,11 @@ try {
 			}).done(function(data) {
 				me.setState({adlist:data.data});
 				me.playVideo();
+				setInterval(
+					function() {
+						me.playVideo();	
+					}, 10
+				)
 			}).fail(function( jqXHR, textStatus ) {
 			});
 			
@@ -60,9 +65,6 @@ try {
 			    + '&t=9';			
 					
 			$('.content_bg').find('video').attr("src", l);
-			$('.content_bg').find('video').on('ended',function(){
-			    alert("The audio has ended");
-			});
 		},
 		render: function() {
 			var me = this;
