@@ -235,8 +235,8 @@
 				let tracks = CP.data.tracks,
 				    space_tracks = CP.data.space_tracks;
 				
-				console.log('tracks--->');
-				console.log(tracks);
+				console.log(' space_tracks--->');
+				console.log( space_tracks);
 				if (tracks.length == space_tracks.length) {
 					me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
 						function(v) {
