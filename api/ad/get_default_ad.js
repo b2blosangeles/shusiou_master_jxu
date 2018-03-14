@@ -1,9 +1,10 @@
-var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+let mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
     config = require(env.config_path + '/config.json'),
     cfg0 = config.db;
 
-var CP = new pkg.crowdProcess();
-var _f = {};
+let CP = new pkg.crowdProcess(),
+    _f = {};
+
 _f['dns_matrix'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();	
@@ -33,7 +34,7 @@ _f['P1'] = function(cbk) {
 CP.serial(
 	_f,
 	function(data) {
-		var d = [];
+		let d = [];
 		for (var i = 0; i < CP.data.P1.length; i++) {
 			CP.data.P1[i].dns_matrix = CP.data.dns_matrix;
 			d.push(data.results.P1[i]);
