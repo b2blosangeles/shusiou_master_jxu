@@ -245,22 +245,8 @@ var app = function(auth_data) {
 					else cbk([]);
 				});  
 			};
-			
-			/*		
+
 			_f['P1'] = function(cbk) {
-				var uid = CP.data.auth.uid;
-				var connection = mysql.createConnection(cfg0);
-				connection.connect();
-				var str = 'SELECT A.*, B.`created` AS addtime FROM  `download_failure` A  LEFT JOIN `video_user` B on A.`vid` = B.`vid` ' +
-				    " WHERE B.`uid` = '" + uid +" '";
-				connection.query(str, function (error, results, fields) {
-					connection.end();
-					if (results.length)  cbk(results);
-					else cbk([]);
-				});  
-			};
-			*/
-			_f['P2'] = function(cbk) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
 
@@ -273,59 +259,19 @@ var app = function(auth_data) {
 					else cbk([]);
 				});  
 			};
-			/*
-			_f['P2A'] = function(cbk) {
-				var vstr = '0';
-				for (var i = 0; i < CP.data.P2.length; i++) {
-					vstr += ',' +  CP.data.P2[i].vid; 
-				}
 
-				var connection = mysql.createConnection(cfg0);
-				connection.connect();
-
-				var str = 'SELECT * FROM  `video_node` WHERE `vid` IN (' + vstr + ')';
-
-				connection.query(str, function (error1, results1, fields1) {
-					connection.end();
-					if (results1.length) {
-						var v = {};
-						for (var i = 0; i < results1.length; i++) {
-							if (!v[results1[i].vid]) v[results1[i].vid] = [];
-							v[results1[i].vid][v[results1[i].vid].length] = results1[i].node_ip;
-						}
-						cbk(v);
-					} else cbk({});
-					for (var i = 0; i < CP.data.P2.length; i++) {
-						if (v[CP.data.P2[i].vid]) CP.data.P2[i].node_ip = v[CP.data.P2[i].vid];
-						else CP.data.P2[i].node_ip = [];
-					}	
-					cbk(CP.data.P2);
-				});  
-			};
-			*/
 			CP.serial(
 				_f,
 				function(data) {			
 					var d = [];
-					/*
-					for (var i = 0; i < data.results.P0.length; i++) {
-						data.results.P0[i].status = 'pending';
-						d[d.length] = data.results.P0[i];
+					for (var i = 0; i < CP.data.P0.length; i++) {
+						CP.data.P0[i].status = 'pending';
+						d.push(CP.data.P0[i]);
 					}
-					*/
-					/*
-					for (var i = 0; i < data.results.P1.length; i++) {
-						d[d.length] = data.results.P1[i];
+					for (var i = 0; i < CP.data.P1.length; i++) {
+						CP.data.P1[i].status = 'ready';
+						d.push(data.results.P1[i]);
 					}
-					*/
-					for (var i = 0; i < CP.data.P2.length; i++) {
-						CP.data.P2[i].status = 'ready';
-						d.push(data.results.P2[i]);
-					}
-					/*
-					res.send(CP.data.P2);
-					return true;
-					*/
 					res.send({status:data.status, _spent_time:data._spent_time, 
 						data:d.sort(function(a,b) { return ( a.addtime < b.addtime )?1:-1} )});
 					
