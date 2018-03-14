@@ -53,7 +53,7 @@ try {
 			var idx = Math.floor(Math.random()*me.state.adlist.length);
 			//var l = 'http://' + me.state.adlist[idx].node_ip + '/api/video/play_stream.api?type=section&vid='+
 			//    me.state.adlist[idx].vid+'&s=30&l=30&server=' + me.state.adlist[idx].server_ip;
-			var l = 'http://198.199.120.18/api/video/pipe_stream.api?video_fn=' + me.state.adlist[idx].vid +
+			var l = 'http://198.199.120.18/api/video/pipe.api?video_fn=' + me.state.adlist[idx].vid +
 				'&ss=30&t=30';
 			//var l = 'https://nd1.service.shusiou.win/api/video/play_stream.api?type=section&vid='+
 			//    me.state.adlist[idx].vid+'&s=30&l=30&server=' + me.state.adlist[idx].server_ip;			
