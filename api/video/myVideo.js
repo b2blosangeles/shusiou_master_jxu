@@ -271,6 +271,7 @@ var app = function(auth_data) {
 					else cbk([]);
 				});  
 			};
+			/*
 			_f['P2A'] = function(cbk) {
 				var vstr = '0';
 				for (var i = 0; i < CP.data.P2.length; i++) {
@@ -298,15 +299,18 @@ var app = function(auth_data) {
 					}	
 					cbk(CP.data.P2);
 				});  
-			};		
+			};
+			*/
 			CP.serial(
 				_f,
 				function(data) {			
 					var d = [];
+					/*
 					for (var i = 0; i < data.results.P0.length; i++) {
 						data.results.P0[i].status = 'pending';
 						d[d.length] = data.results.P0[i];
-					}	
+					}
+					*/
 					/*
 					for (var i = 0; i < data.results.P1.length; i++) {
 						d[d.length] = data.results.P1[i];
@@ -316,7 +320,8 @@ var app = function(auth_data) {
 						data.results.P2[i].status = 'ready';
 						d[d.length] = data.results.P2[i];
 					}
-					res.send([]);
+					res.send('SELECT A.*, B.`created` AS addtime FROM  `video` A LEFT JOIN `video_user` B on A.`vid` = B.`vid` ' +
+				    " WHERE B.`uid` = '" + uid +" '");
 					return true;
 					/*
 					res.send({status:data.status, _spent_time:data._spent_time, 
