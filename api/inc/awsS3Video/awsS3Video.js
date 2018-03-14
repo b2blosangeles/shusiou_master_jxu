@@ -147,7 +147,7 @@
 
 				connection.query(str, function (error, results, fields) {
 					connection.end();
-					cbk('This video has been processed.' + vid) 
+					cbk('This video has been processed.' + me.vid) 
 				});
 			} else {
 				cbk(false);
