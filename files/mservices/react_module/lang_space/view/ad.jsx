@@ -53,7 +53,7 @@ try {
 			    idx = Math.floor(Math.random()*me.state.adlist.length),
 			    r = me.state.adlist[idx];
 			var l = 'https://nd'+ (Math.floor(Math.random() * r.dns_matrix) + 1) + 
-			    '.service.shusiou.win' +  '/api/video/pipe.api?video_fn='+ r.vid + '&ss=' + 10 + '&t=20';			
+			    '.service.shusiou.win' +  '/api/video/pipe.api?video_fn='+ r.vid + '&ss=' + 52 + '&t=9';			
 					
 			$('.content_bg').find('video').attr("src", l);
 		},
