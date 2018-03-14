@@ -27,6 +27,8 @@ try {
 		},		
 		videoLink:function(){
 			var me = this; 
+			alert(JSON.stringify(me.props.rec));
+			return true;
 			var IP = me.props.rec.node_ip[Math.floor(Math.random() * me.props.rec.node_ip.length)];
 			if (me.props.rec.node_ip.length) {
 				var url =  '//' + IP + '/api/video/play_stream.api?type=video&vid=' + me.props.rec.vid +
