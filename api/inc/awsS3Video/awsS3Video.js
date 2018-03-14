@@ -256,8 +256,7 @@
 					
 				} else {
 					let diff = tracks.filter(x => !space_tracks.includes(x));
-				console.log(' diff--->');
-				console.log( diff);					
+					let CP1 = new pkg.crowdProcess(), _f1 = {};
 					for (var t in diff) {
 						_f1['P_' + t] = (function(t) { 
 							return function(cbk1) {
@@ -291,7 +290,7 @@
 					}					
 				}
 				
-				let CP1 = new pkg.crowdProcess(), _f1 = {};
+				
 
 				CP1.serial(
 					_f1,
