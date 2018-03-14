@@ -232,7 +232,7 @@ var app = function(auth_data) {
 		case 'getMyVideos':
 			var CP = new pkg.crowdProcess();
 			var _f = {};
-			/*
+			
 			_f['P0'] = function(cbk) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
@@ -245,7 +245,7 @@ var app = function(auth_data) {
 					else cbk([]);
 				});  
 			};
-			*/
+			
 			/*		
 			_f['P1'] = function(cbk) {
 				var uid = CP.data.auth.uid;
