@@ -370,7 +370,8 @@
 
 			me.s3.putObject(params, function(err, data) {
 				if (err) cbk(false);
-				else  me.doneDBVideoStatus(v, cbk);
+				else cbk(true);
+				// me.doneDBVideoStatus(v, cbk);
 			});		
 		}
 		this.removeObjects = function(folder, list, callback) {
