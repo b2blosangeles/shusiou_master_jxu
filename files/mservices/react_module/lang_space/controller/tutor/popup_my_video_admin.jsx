@@ -36,7 +36,7 @@ try {
 		videoUrlSubmit:function(){
 			var me = this;
 			$.ajax({
-				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=add',
+				url: '/api/video/myVideo.api?opt=add',
 				method: "POST",
 				data: {code: me.state.video_url, auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
@@ -55,7 +55,7 @@ try {
 		videoUrlDecode:function(){
 			var me = this;
 			$.ajax({
-				url: shusiou_config.api_server + '/api/video/myVideo.api?opt=getYouTubeInfo',
+				url:  '/api/video/myVideo.api?opt=getYouTubeInfo',
 				method: "POST",
 				data: {video_url: me.state.video_url, auth:me.props.parent.props.route.env.state.auth},
 				dataType: "JSON"
