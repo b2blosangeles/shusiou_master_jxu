@@ -3,7 +3,7 @@
 		let _space = { 
 			space_id : 'shusiou-d-01',
 			space_url :'https://shusiou-d-01.nyc3.digitaloceanspaces.com/',
-			mnt_folder : '/mnt/shusiou-video/'
+			mnt_folder : '/var/shusiou_video/'
 		};
 
 		// find next need processed vid from table video_space
