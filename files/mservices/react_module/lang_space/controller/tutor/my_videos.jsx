@@ -52,9 +52,12 @@ try {
 		},		
 		bgFilmStyle:function(t, a) {
 			if (!a.space_status) {
+				
 				var url = 'http://' + a.server_ip + '/api/video/play_stream.api?type=image&vid='+ a.vid +'&w=180&s='+t;
 			} else {
-				var url = 'http://198.199.120.18' +  '/api/video/pipe.api?video_fn='+ a.vid +'&size=180&ss='+t;
+				
+				var url = 'https://'+ (Math.floor(Math.random() * a.dns_matrix) + 1) + 
+				    '.service.shuwiou.win' +  '/api/video/pipe.api?video_fn='+ a.vid +'&size=180&ss='+t;
 			}
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
