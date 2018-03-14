@@ -13,8 +13,10 @@ try {
 		},
 		componentDidUpdate:function(prePropos, preState) {
 			var me = this;
-			$('.pop_preview')[0].src = me.videoLink();
-			$('.pop_preview')[0].play();			
+			setInterval(function{
+				$('.pop_preview')[0].src = me.videoLink();
+				$('.pop_preview')[0].play();
+			}, 30000);			
 		},		
 		close_admin:function(){
 			var me = this;  $('.pop_preview')[0].src = ''; me.props.parent.closeAdmin();
