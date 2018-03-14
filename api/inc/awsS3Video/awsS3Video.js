@@ -77,8 +77,6 @@
 					if (CP.data.db_video === true) {
 						console.log('No new id at all');
 					} else {
-						console.log('---' + CP.data.get_vid);
-						/*
 						if ((CP.data.get_vid) && (CP.data.get_video_name)) {
 							me.loadvid(
 								_space,
@@ -88,7 +86,6 @@
 						} else {
 							console.log(result.results);
 						}
-						*/
 					}
 				},
 				58000
