@@ -20,7 +20,7 @@ try {
 				setInterval(
 					function() {
 						me.playVideo();	
-					}, 10
+					}, 1000
 				)
 			}).fail(function( jqXHR, textStatus ) {
 			});
