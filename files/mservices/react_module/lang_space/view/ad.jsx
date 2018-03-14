@@ -60,6 +60,9 @@ try {
 			    + '&t=9';			
 					
 			$('.content_bg').find('video').attr("src", l);
+			$('.content_bg').find('video').onended = function() {
+			    alert("The audio has ended");
+			};
 		},
 		render: function() {
 			var me = this;
