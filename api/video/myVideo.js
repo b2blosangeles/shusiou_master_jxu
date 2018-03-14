@@ -230,8 +230,6 @@ var app = function(auth_data) {
 			);
 			break;		
 		case 'getMyVideos':
-			res.send([]);
-			return true;
 			var CP = new pkg.crowdProcess();
 			var _f = {};			
 			_f['P0'] = function(cbk) {
@@ -318,9 +316,12 @@ var app = function(auth_data) {
 						data.results.P2[i].status = 'ready';
 						d[d.length] = data.results.P2[i];
 					}
+					res.send([]);
+					return true;
+					/*
 					res.send({status:data.status, _spent_time:data._spent_time, 
 						data:d.sort(function(a,b) { return ( a.addtime < b.addtime )?1:-1} )});
-
+					*/
 				},
 				3000
 			);
