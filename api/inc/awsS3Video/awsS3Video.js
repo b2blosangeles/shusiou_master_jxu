@@ -178,21 +178,13 @@
 									} else if (_type === '_s')
 										var condition = (files.length != Math.ceil(v.length / 5));
 									else var condition = false;
-									if (_type === '_s') {
-										console.log(files.length + '---' + Math.ceil(v.length / 5) + '======condition=====' + _type);
-										console.log(condition);
-									}
-									
+
 									if (err || condition) {
 										me.splitVideo(_type, tmp_folder, function(data) { 	
 											if (data.err) {
 												CP.exit = 1;
 												cbk(data);
 											} else {
-												//if (_type === '_s') {
-													console.log('---data.list---' +_type);
-													console.log(data.list);
-												//}
 												cbk(data.list); 
 											}
 											
@@ -243,6 +235,8 @@
 				let tracks = CP.data.tracks,
 				    space_tracks = CP.data.space_tracks;
 				
+				console.log('tracks--->');
+				console.log(tracks);
 				if (tracks.length == space_tracks.length) {
 					me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
 						function(v) {
