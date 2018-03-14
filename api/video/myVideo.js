@@ -245,7 +245,18 @@ var app = function(auth_data) {
 					else cbk([]);
 				});  
 			};
-
+			_f['dns_matrix'] = function(cbk) {
+				var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+				config = require(env.config_path + '/config.json'),
+				cfg0 = config.db;
+				let ips = [];
+				var str = 'SELECT `node_ip` from `cloud_node` WHERE `score` < 900 ORDER BY `node_ip` ASC ';
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					if (results.length)  cbk(results.length);
+					else cbk(0);
+				}); 				
+			}	
 			_f['P1'] = function(cbk) {
 				var connection = mysql.createConnection(cfg0);
 				connection.connect();
@@ -272,6 +283,7 @@ var app = function(auth_data) {
 					}
 					for (var i = 0; i < CP.data.P1.length; i++) {
 						CP.data.P1[i].status = 'ready';
+						CP.data.P1[i].dns_matrix = CP.data.dns_matrix;
 						d.push(data.results.P1[i]);
 					}
 					res.send({status:data.status, _spent_time:data._spent_time, 
