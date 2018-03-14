@@ -179,7 +179,7 @@
 										var condition = (files.length != Math.ceil(v.length / 5));
 									else var condition = false;
 
-									console.log('======condition=====' + _type);
+									console.log(tmp_folder + '======condition=====' + _type);
 									console.log(condition);
 									if (err || condition) {
 										me.splitVideo(_type, tmp_folder, function(data) { 	
