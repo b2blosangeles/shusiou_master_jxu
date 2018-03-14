@@ -35,7 +35,7 @@ _f['P0'] = function(cbk) { /* --- get server IP --- */
 _f['I0'] = function(cbk) { /* --- check mnt exist --- */
 	fs.stat(mnt_folder, function (err, stats){
 		if (err) { 
-			fp.build(tmp_folder, () => {
+			fp.build(mnt_folder, () => {
 				cbk(true);
 			}); 
 		} else if (!stats.isDirectory()) {
