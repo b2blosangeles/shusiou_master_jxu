@@ -54,7 +54,7 @@ try {
 			if (!a.space_status) {
 				var url = 'http://' + a.server_ip + '/api/video/play_stream.api?type=image&vid='+ a.vid +'&w=180&s='+t;
 			} else {
-				var url = a.space +  '/api/video/pipe.api?vid='+ a.vid +'&w=180&ss='+t;
+				var url = 'http://198.199.120.18' +  '/api/video/pipe.api?vid='+ a.vid +'&w=180&ss='+t;
 			}
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
