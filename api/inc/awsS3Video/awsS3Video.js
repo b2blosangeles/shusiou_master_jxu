@@ -78,7 +78,7 @@
 						console.log('No new id at all');
 					} else {
 						if ((CP.data.get_vid) && (CP.data.get_video_name)) {
-							me.load(
+							me.loadvid(
 								_space,
 								CP.data.get_vid, CP.data.get_video_name, function(data) {
 								console.log(data);
