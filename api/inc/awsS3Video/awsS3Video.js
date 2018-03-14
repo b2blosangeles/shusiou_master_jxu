@@ -145,8 +145,8 @@
 			if ((v) && (v.status) && (v.status._t) && (v.status._s)) {
 				var connection = pkg.mysql.createConnection(config.db);
 				connection.connect();
-				var str = "INSERT INTO `video_space` (`vid`, `status`, `added`) VALUES " +
-					" ('" + me.vid + "', 1, NOW()) ON DUPLICATE KEY UPDATE `status` = 1 ";
+				var str = "INSERT INTO `video_space` (`vid`, `space`, `status`, `added`) VALUES " +
+					" ('" + me.vid + "', '" + _space.space_url + "', 1, NOW()) ON DUPLICATE KEY UPDATE `status` = 1 ";
 
 				connection.query(str, function (error, results, fields) {
 					connection.end();
