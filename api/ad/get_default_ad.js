@@ -5,6 +5,8 @@ var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 var CP = new pkg.crowdProcess();
 var _f = {};
 _f['dns_matrix'] = function(cbk) {
+	var connection = mysql.createConnection(cfg0);
+	connection.connect();	
 	var str = 'SELECT `node_ip` from `cloud_node` WHERE `score` < 900 ORDER BY `node_ip` ASC ';
 	connection.query(str, function (error, results, fields) {
 		connection.end();
@@ -15,7 +17,6 @@ _f['dns_matrix'] = function(cbk) {
 _f['P1'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();
-
 	var str = 'SELECT A.*, B.`created` AS addtime, C.`status` AS space_status, C.`space` FROM  `video` A ' +
 	    ' LEFT JOIN `video_user` B ON A.`vid` = B.`vid` ' +
 	    ' LEFT JOIN `video_space` AS C ON A.`vid` = C.`vid` ' +
