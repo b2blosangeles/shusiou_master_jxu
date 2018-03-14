@@ -161,9 +161,6 @@ var app = function(auth_data) {
 			);
 			break;
 		case 'getYouTubeInfo':
-			res.send('r');			
-			return false;
-			
 			ytdl.getInfo(req.body.video_url, {},  function(err, info){
 			  if ((err) || !info) {
 			    res.send(false);
