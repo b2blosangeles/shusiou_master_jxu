@@ -246,7 +246,7 @@
 								v['status'][_type] = 1;	
 								me.writeInfo(v, function() {
 									me.doneDBVideoStatus(v, function() {
-										cbk('This video has been processed.' + vid) 
+										cbk('This video has been processed.' + me.vid) 
 									});
 								});
 							}
