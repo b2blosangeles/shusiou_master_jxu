@@ -235,8 +235,7 @@
 				let tracks = CP.data.tracks,
 				    space_tracks = CP.data.space_tracks;
 				
-				console.log(' space_tracks--->');
-				console.log( space_tracks);
+
 				if (tracks.length == space_tracks.length) {
 					me.getInfo(me.space_url +  me.space_info, me.source_path + me.source_file,
 						function(v) {
@@ -256,7 +255,9 @@
 					);					
 					
 				} else {
-					let diff = space_tracks.filter(x => !tracks.includes(x));
+					let diff = tracks.filter(x => !space_tracks.includes(x));
+				console.log(' diff--->');
+				console.log( diff);					
 					for (var t in diff) {
 						_f1['P_' + t] = (function(t) { 
 							return function(cbk1) {
