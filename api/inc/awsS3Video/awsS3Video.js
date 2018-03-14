@@ -128,7 +128,7 @@
 						me.doneDBVideoStatus(v, function(d) {
 							if (d) {
 								let tmp_root = '/var/shusiou_cache/tmpvideo/' + me.source_file + '/';
-								pkg.exec('rm -fr ' + tmp_root, function(err, stdout, stderr) {
+								pkg.exec('rm -fr ' + tmp_root + ' && rm -fr ' + video_name, function(err, stdout, stderr) {
 									cbk('This video already been processed.' + me.vid);
 									me.load();
 								});								 
@@ -249,11 +249,7 @@
 								v['status'][_type] = 1;	
 								v[_type] = tracks;	
 								me.writeInfo(v, function() {
-									me.doneDBVideoStatus(v, function() {
-										pkg.exec('rm -fr ' + tmp_folder, function(err, stdout, stderr) {
-											cbk('This video has been processed.' + me.vid);
-										});										
-									});
+									cbk('This video ' + me.vid + ' ' + _type + ' has been processed.');
 								});
 							}
 
