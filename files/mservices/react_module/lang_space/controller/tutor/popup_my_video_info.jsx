@@ -26,17 +26,13 @@ try {
 			
 		},		
 		videoLink:function(){
-			var me = this; 
-			alert(JSON.stringify(me.props.rec));
-			return true;
-			var IP = me.props.rec.node_ip[Math.floor(Math.random() * me.props.rec.node_ip.length)];
-			if (me.props.rec.node_ip.length) {
-				var url =  '//' + IP + '/api/video/play_stream.api?type=video&vid=' + me.props.rec.vid +
-				    '&server=' + me.props.rec.server_ip ;
-			} else { 
-				var url = 'http://' + me.props.rec.server_ip + 
-				    '/api/video/play_stream.api?type=video&vid=' + me.props.rec.vid;
-			}
+			let me = this,
+			    r = me.props.rec;
+			if (!r.space_status) {
+				var url = 'http://' + r.server_ip + '/api/video/play_stream.api?type=video&vid='+ r.vid;
+			} else {
+				var url = 'http://198.199.120.18' +  '/api/video/pipe_stream.api?video_fn='+ r.vid;
+			}			
 			return url;
 		},			
 		render:function() {
