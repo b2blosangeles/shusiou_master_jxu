@@ -4,7 +4,7 @@ let mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 
 let CP = new pkg.crowdProcess(),
     _f = {};
-
+/*
 _f['dns_matrix'] = function(cbk) {
 	var connection = mysql.createConnection(cfg0);
 	connection.connect();	
@@ -29,7 +29,7 @@ _f['P1'] = function(cbk) {
 		else cbk([]);
 	});  
 };
-
+*/
 
 CP.serial(
 	_f,
