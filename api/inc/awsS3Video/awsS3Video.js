@@ -103,6 +103,7 @@
 			me.space_url = space.space_url;
 			me.space_info = 'shusiou/' + me.source_file + '/_info.txt';
 			me.trunkSize = 1024 * 1024;
+			me.vid = vid;
 			
 			pkg.request(me.space_url +  me.space_info, 
 				function (err, res, body) {
@@ -124,7 +125,7 @@
 						);											
 
 					} else {
-						me.doneDBVideoStatus(vid, v, function(d) {
+						me.doneDBVideoStatus(v, function(d) {
 							if (d) {
 								console.log(d);
 								// me.start(); 
@@ -136,7 +137,7 @@
 			
 
 		}
-		this.doneDBVideoStatus = function(vid, v, cbk) {
+		this.doneDBVideoStatus = function(v, cbk) {
 			let me = this;
 			if ((v) && (v.status) && (v.status._t) && (v.status._s)) {
 				var connection = pkg.mysql.createConnection(config.db);
@@ -244,7 +245,7 @@
 							} else {	
 								v['status'][_type] = 1;	
 								me.writeInfo(v, function() {
-									me.doneDBVideoStatus(vid, v, function() {
+									me.doneDBVideoStatus(v, function() {
 										cbk('This video has been processed.' + vid) 
 									});
 								});
