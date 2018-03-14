@@ -44,8 +44,8 @@
 				if (status === null) {
 					var connection = pkg.mysql.createConnection(config.db);
 					connection.connect();
-					var str = "INSERT INTO `video_space` (`vid`, `status`, `added`) VALUES " +
-						" ('" + vid + "', 0, NOW()) ON DUPLICATE KEY UPDATE `status` = `status` ";
+					var str = "INSERT INTO `video_space` (`vid`, `space`, `status`, `added`) VALUES " +
+						" ('" + vid + "', '" + _space.space_url + ", 0, NOW()) ON DUPLICATE KEY UPDATE `status` = `status` ";
 
 					connection.query(str, function (error, results, fields) {
 						connection.end();
