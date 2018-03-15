@@ -102,7 +102,7 @@
 			me.space_id = space.space_id;
 			me.space_url = space.space_url;
 			me.space_info = 'shusiou/' + me.source_file + '/_info.txt';
-			me.trunkSize = 1024 * 1024;
+			me.trunkSize = 512 * 1024;
 			me.vid = vid;
 			
 			pkg.request(me.space_url +  me.space_info, 
