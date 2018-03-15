@@ -57,7 +57,7 @@ try {
 			} else {
 				
 				var url = 'https://nd'+ (Math.floor(Math.random() * a.dns_matrix) + 1) + 
-				    '.service.shusiou.win' +  '/api/video/pipe.api?video_fn='+ a.vid +'&size=180&ss='+t;
+				    '.service.shusiou.win' +  '/api/video/pipe.api?video_fn='+ a.vid +'&size=320&ss='+t;
 			}
 			return {width:'100%', background:'url('+url+')',
 				'background-size':'cover'}
