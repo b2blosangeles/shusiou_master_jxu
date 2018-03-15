@@ -65,7 +65,9 @@
 				    ip: /^IP\_([0-9\_]+)\.service\./ig,
 				    idx:/node([0-9]+)\.service\./ig,
 				    np:/np([0-9]+)\.service\./ig,
-				    nd:/nd([0-9]+)\.service\./ig
+				    nd:/nd([0-9]+)\.service\./ig,
+				    sp:/sp([0-9]+)\.service\./ig,
+				    sd:/sd([0-9]+)\.service\./ig
 			    },	    
 			    mh = '', m;
 			
@@ -90,6 +92,8 @@
 				case 'idx': 
 				case 'nd':
 				case 'np':
+				case 'sd':
+				case 'sp':	
 					m = new RegExp(patt[mh]).exec(question.name);
 					me.sendNamedIP(question.name, m[1], req, res);
 					break;	
