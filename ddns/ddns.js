@@ -115,8 +115,8 @@
 				    idx:/node([0-9]+)\.service\./ig,
 				    np:/np([0-9]+)\.service\./ig,
 				    nd:/nd([0-9]+)\.service\./ig,
-				    mp:/sp([0-9]+)\.service\./ig,
-				    md:/sd([0-9]+)\.service\./ig
+				    mp:/mp([0-9]+)\.service\./ig,
+				    md:/md([0-9]+)\.service\./ig
 			    },	    
 			    mh = '', m;
 			
@@ -142,12 +142,12 @@
 				case 'nd':
 				case 'np':
 					m = new RegExp(patt[mh]).exec(question.name);
-					me.sendMasterNamedIP(question.name, m[1], req, res);
+					me.sendNodeNamedIP(question.name, m[1], req, res);
 					break;						
 				case 'md':
 				case 'mp':	
 					m = new RegExp(patt[mh]).exec(question.name);
-					me.sendNodeNamedIP(question.name, m[1], req, res);
+					me.sendMasterNamedIP(question.name, m[1], req, res);
 					break;	
 				case 'www': 
 					me.send([{ 
