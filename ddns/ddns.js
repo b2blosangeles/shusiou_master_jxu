@@ -4,7 +4,7 @@
 			let patt = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 			return (patt.test(ip)) ?  true : false;
   		}		
-		this.sendNamedIP = function(name, key, req, res) {
+		this.sendNodeNamedIP = function(name, key, req, res) {
 			let me = this, k;
 			 if (isNaN(key) || key === '0') { 
 			 	res.end(); 
@@ -13,7 +13,7 @@
 				k = parseInt(key) - 1;
 			}
 		
-			if (!env.dns_matrix) {
+			if (!env.node_matrix) {
 				var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
 				config = require(env.config_path + '/config.json'),
 				cfg0 = config.db;
@@ -34,7 +34,7 @@
 						}
 
 					}
-					env.dns_matrix = ips;
+					env.node_matrix = ips;
 					me.send([{ 
 						name: name,
 						type: 'A',
@@ -49,10 +49,59 @@
 					type: 'A',
 					class: 'IN',
 					ttl: 60,
-					data: env.dns_matrix[k]
+					data: env.node_matrix[k]
 				}], req, res);			
 			}
 		};
+		this.sendMasterNamedIP = function(name, key, req, res) {
+			let me = this, k;
+			 if (isNaN(key) || key === '0') { 
+			 	res.end(); 
+				return true;
+			} else {
+				k = parseInt(key) - 1;
+			}
+		
+			if (!env.master_matrix) {
+				var mysql = require(env.site_path + '/api/inc/mysql/node_modules/mysql'),
+				config = require(env.config_path + '/config.json'),
+				cfg0 = config.db;
+				let ips = [];
+				var str = 'SELECT `server_ip` from `cloud_server` WHERE 1 ORDER BY `server_ip` ASC ';
+				var connection = mysql.createConnection(cfg0);
+				connection.connect();
+				connection.query(str, function (error, results, fields) {
+					connection.end();
+					if (error) {
+						return true;
+					} else {
+						if (results) {
+							for (var i = 0; i < results.length; i++) {
+								ips[ips.length] =  results[i].server_ip;
+							}
+						} else {
+						}
+
+					}
+					env.master_matrix = ips;
+					me.send([{ 
+						name: name,
+						type: 'A',
+						class: 'IN',
+						ttl: 60,
+						data: ips[k]
+					}], req, res);
+				});
+			} else {
+				me.send([{ 
+					name: name,
+					type: 'A',
+					class: 'IN',
+					ttl: 60,
+					data: env.master_matrix[k]
+				}], req, res);			
+			}
+		};		
 		this.send = function(v, req, res) {
 			let me = this;
 			v.data =  (me.validateIPaddress(v.data)) ? v.data : null;
@@ -92,10 +141,13 @@
 				case 'idx': 
 				case 'nd':
 				case 'np':
+					m = new RegExp(patt[mh]).exec(question.name);
+					me.sendMasterNamedIP(question.name, m[1], req, res);
+					break;						
 				case 'md':
 				case 'mp':	
 					m = new RegExp(patt[mh]).exec(question.name);
-					me.sendNamedIP(question.name, m[1], req, res);
+					me.sendNodeNamedIP(question.name, m[1], req, res);
 					break;	
 				case 'www': 
 					me.send([{ 
