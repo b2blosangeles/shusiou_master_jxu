@@ -17,11 +17,6 @@ try {
 			}).done(function(data) {
 				me.setState({adlist:data.data});
 				me.playVideo();
-				setInterval(
-					function() {
-						me.playVideo();	
-					}, 20000
-				)
 			}).fail(function( jqXHR, textStatus ) {
 			});
 			
