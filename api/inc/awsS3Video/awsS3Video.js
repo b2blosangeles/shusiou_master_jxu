@@ -44,6 +44,7 @@
 				let vid = CP.data.db_video.vid, status = CP.data.db_video.status;
 				if (status === null || status === '') {
 					console.log('====b====');
+					console.log(CP.data.db_video);
 					var connection = pkg.mysql.createConnection(config.db);
 					connection.connect();
 					var str = "INSERT INTO `video_space` (`vid`, `space`, `status`, `added`) VALUES " +
