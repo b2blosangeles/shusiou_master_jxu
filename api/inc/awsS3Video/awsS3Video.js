@@ -44,12 +44,13 @@
 				let vid = CP.data.db_video.vid, status = CP.data.db_video.status;
 				if (status === null || status === '') {
 					console.log('====b====');
-					console.log(CP.data.db_video);
+					
 					var connection = pkg.mysql.createConnection(config.db);
 					connection.connect();
 					var str = "INSERT INTO `video_space` (`vid`, `space`, `status`, `added`) VALUES " +
 						" ('" + vid + "', '" + _space.space_url + ", 0, NOW()) ON DUPLICATE KEY UPDATE `status` = `status` ";
 				
+					console.log(str);
 					connection.query(str, function (error, results, fields) {
 						connection.end();
 						cbk(vid);
