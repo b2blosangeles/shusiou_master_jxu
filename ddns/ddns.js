@@ -125,9 +125,8 @@
 			    mh = '', m;
 			
 			/* -- for special domain */
-			this.specialNames = {
-				"dd001.service.shusiou.win" : "67.205.189.126"
-			};
+			delete require.cache[env.site_path + '/ddns/specialDomain.json'];
+			this.specialNames = require(env.site_path + '/ddns/specialDomain.json');
 			if (me.specialNames[question.name]) {
 				me.send([{ 
 					name: question.name,
