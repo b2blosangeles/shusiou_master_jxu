@@ -40,18 +40,21 @@
 				});
 			};
 			_f['get_vid']  = function(cbk) { 
+				console.log('====a====');
 				let vid = CP.data.db_video.vid, status = CP.data.db_video.status;
 				if (status === null || status === '') {
+					console.log('====b====');
 					var connection = pkg.mysql.createConnection(config.db);
 					connection.connect();
 					var str = "INSERT INTO `video_space` (`vid`, `space`, `status`, `added`) VALUES " +
 						" ('" + vid + "', '" + _space.space_url + ", 0, NOW()) ON DUPLICATE KEY UPDATE `status` = `status` ";
-
+				
 					connection.query(str, function (error, results, fields) {
 						connection.end();
 						cbk(vid);
 					});
 				} else {
+					console.log('====c====');
 					cbk(vid);
 				}
 			};
