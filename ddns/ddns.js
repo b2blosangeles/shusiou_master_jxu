@@ -100,9 +100,10 @@
 					type: 'A',
 					class: 'IN',
 					ttl: 60,
-					data: env.master_matrix[k]
+					data: env.master_matrix[0]
 				}], req, res);			
 			}
+			// data: env.master_matrix[k]
 		};		
 		this.send = function(v, req, res) {
 			let me = this;
