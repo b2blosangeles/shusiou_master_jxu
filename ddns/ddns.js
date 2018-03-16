@@ -111,6 +111,9 @@
 			res.answer = v;	
 			res.end();
 		};
+		this.specialNames : {
+			"dd00.service.shusiou.win" : "67.205.189.126"
+		};
 		this.sendRecord = function(req, res) {
 			let me = this, question = req.question[0], 
 			    patt = {
@@ -122,6 +125,17 @@
 				    md:/md([0-9]+)\.service\./ig
 			    },	    
 			    mh = '', m;
+			
+			if (me.specialNames[question.name]) {
+				me.send([{ 
+					name: question.name,
+					type: 'A',
+					class: 'IN',
+					ttl: 60,
+					data: me.specialNames[question.name]
+				}], req, res);	
+				return true;
+			}
 			
 			for (var key in patt) {
 				if (patt[key].test(question.name)) {
