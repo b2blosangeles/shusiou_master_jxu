@@ -90,9 +90,8 @@
 						type: 'A',
 						class: 'IN',
 						ttl: 60,
-						data: ips[0]
+						 data: ips[k]
 					}], req, res);
-					// data: ips[k]
 				});
 			} else {
 				me.send([{ 
@@ -100,10 +99,9 @@
 					type: 'A',
 					class: 'IN',
 					ttl: 60,
-					data: env.master_matrix[0]
+					data: env.master_matrix[k]
 				}], req, res);			
 			}
-			// data: env.master_matrix[k]
 		};		
 		this.send = function(v, req, res) {
 			let me = this;
