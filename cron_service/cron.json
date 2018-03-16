@@ -1,5 +1,5 @@
 [
-	{"id":"_cron_video_split_to_space","schedule":"10 * * * * *", "script":"cron_video_split_to_space111.js"},
+	{"id":"_cron_video_split_to_space","schedule":"10 * * * * *", "script":"cron_video_split_to_space.js"},
 	{"id":"_video_download","schedule":"41 * * * * *", "script":"video_download.js"},
 	{"id":"_cron_whoami.js","schedule":"1 * * * * *", "script":"cron_whoami.js"}
 ]
