@@ -84,13 +84,15 @@
 
 					}
 					env.master_matrix = ips;
+					
 					me.send([{ 
 						name: name,
 						type: 'A',
 						class: 'IN',
 						ttl: 60,
-						data: ips[k]
+						data: ips[0]
 					}], req, res);
+					// data: ips[k]
 				});
 			} else {
 				me.send([{ 
