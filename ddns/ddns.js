@@ -125,7 +125,7 @@
 				    md:/md([0-9]+)\.service\./ig
 			    },	    
 			    mh = '', m;
-			
+			/*
 			if (me.specialNames[question.name]) {
 				me.send([{ 
 					name: question.name,
@@ -136,7 +136,7 @@
 				}], req, res);	
 				return true;
 			}
-			
+			*/
 			for (var key in patt) {
 				if (patt[key].test(question.name)) {
 					mh = key;
