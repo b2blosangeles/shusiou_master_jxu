@@ -10,17 +10,11 @@
 	<title>Shusiou demo</title>
 </head>	
 <body>	
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=10"/>
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=20"/>
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=30"/>
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=40"/>
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=50"/>
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=60"/>
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=70"/>
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=80"/>
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=90"/>
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=100"/>
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=110"/>
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=120"/>
-	<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=130"/>
+	<div id="niu"></div>
 </html>
+<script>
+	let str = '';
+	for (var i = 0; i < 100; i++) {
+		str += '<img src="https://nd1.service.shusiou.win/api/video/pipe.api?video_fn=1496760000000003&size=320&ss=' + i + '"/>';
+	}
+</script>
