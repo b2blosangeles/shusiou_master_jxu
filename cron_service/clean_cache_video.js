@@ -45,7 +45,7 @@ finder.on('end', function (file, stat) {
                     if ((goalsize - list[i].size) > 0) {
                          goalsize -= list[i].size;
 			 let dt = Math.floor((new Date().getTime() - new Date(list[i].mtime).getTime()) / (3600 * 1000) );
-			 if (dt > 64) {
+			 if (dt < 32) {
                          	clean_list.push({fn:list[i].fn, size:list[i].size, mtime:list[i].mtime, dt : dt});
 			 }
                     } 
