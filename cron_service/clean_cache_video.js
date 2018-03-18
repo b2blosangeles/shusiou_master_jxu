@@ -34,11 +34,11 @@ finder.on('end', function (file, stat) {
      });
      let clean_list= [];
      let minsize = 2000000000
-     
+
      var diskspace = require(env.root_path + '/package/diskspace/node_modules/diskspace');
      diskspace.check('/', function (err, space) {
          space.free_rate =  Math.floor(space.free  * 100 /  space.total); 
-         if  (space.free < minsize|| true) {
+         if  (space.free < minsize) {
 		// let goalsize = minsize - space.free;
 		 let goalsize = minsize;
                for (var i = 0; i < list.length; i++) {
