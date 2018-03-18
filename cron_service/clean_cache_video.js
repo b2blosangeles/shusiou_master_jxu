@@ -44,7 +44,8 @@ finder.on('end', function (file, stat) {
                for (var i = 0; i < list.length; i++) {
                     if ((goalsize - list[i].size) > 0) {
                          goalsize -= list[i].size;
-                         clean_list.push({fn:list[i].fn, size:list[i].size, ctime:list[i].ctime});
+			    let dt = new Date().getTime() - new Date(list[i].ctime).getTime();
+                         clean_list.push({fn:list[i].fn, size:list[i].size, ctime:list[i].ctime}, dt : dt);
                     } 
                }
                batchDelete(clean_list, function(data) {
@@ -71,7 +72,7 @@ var batchDelete = function(list, cbk) {
           _f['P_'+i] = (function(i) {
                return function(cbk1) {
                   //  pkg.fs.unlink(list[i],function(err){
-                         cbk1('deleted -- ' + list[i].fn + '--' +  list[i].size);
+                         cbk1('deleted -- ' + list[i].fn + '--' +  list[i].size + '==' + list[i].dt);
                   //  });
                } 
           })(i);
