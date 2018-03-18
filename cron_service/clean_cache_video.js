@@ -39,9 +39,8 @@ finder.on('end', function (file, stat) {
      diskspace.check('/', function (err, space) {
          space.free_rate =  Math.floor(space.free  * 100 /  space.total); 
          if  (space.free < minsize) {
-		// let goalsize = minsize - space.free;
-		 let goalsize = minsize;
-               for (var i = 0; i < list.length; i++) {
+		let goalsize = minsize - space.free;
+		for (var i = 0; i < list.length; i++) {
                     if ((goalsize - list[i].size) > 0) {
                          goalsize -= list[i].size;
 			 let dt = Math.floor((new Date().getTime() - new Date(list[i].mtime).getTime()) / (3600 * 1000) );
@@ -49,8 +48,8 @@ finder.on('end', function (file, stat) {
                          	clean_list.push({fn:list[i].fn, size:list[i].size, mtime:list[i].mtime, dt : dt});
 			 }
                     } 
-               }
-               batchDelete(clean_list, function(data) {
+               	}
+              	batchDelete(clean_list, function(data) {
                     data.space = space;
                     console.log(data);    
                });                
