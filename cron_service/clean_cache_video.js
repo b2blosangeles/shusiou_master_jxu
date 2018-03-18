@@ -44,7 +44,7 @@ finder.on('end', function (file, stat) {
                for (var i = 0; i < list.length; i++) {
                     if ((goalsize - list[i].size) > 0) {
                          goalsize -= list[i].size;
-                         clean_list.push({fn:list[i].fn, size:list[i].size, ctime::list[i].ctime);
+                         clean_list.push({fn:list[i].fn, size:list[i].size, ctime:list[i].ctime);
                     } 
                }
                batchDelete(clean_list, function(data) {
