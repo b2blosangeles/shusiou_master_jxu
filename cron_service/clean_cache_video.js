@@ -73,7 +73,7 @@ var batchDelete = function(list, cbk) {
      for (var i = 0; i < list.length; i++) {
           _f['P_'+i] = (function(i) {
                return function(cbk1) {
-                    pkg.fs.unlink(list[i],function(err){
+                    pkg.fs.unlink(list[i].fn,function(err){
                          cbk1('deleted -- ' + list[i].fn + '--' +  list[i].size + '==' + list[i]. dt);
                     });
                } 
