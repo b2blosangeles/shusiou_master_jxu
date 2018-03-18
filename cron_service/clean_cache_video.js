@@ -44,13 +44,13 @@ finder.on('end', function (file, stat) {
                for (var i = 0; i < list.length; i++) {
                     if ((goalsize - list[i].size) > 0) {
                          goalsize -= list[i].size;
-			    let dt = Math.floor((new Date().getTime() - new Date(list[i].mtime).getTime()) / 3600) ;
+			    let dt = Math.floor((new Date().getTime() - new Date(list[i].mtime).getTime()) / (3600 * 1000) ) ;
                          clean_list.push({fn:list[i].fn, size:list[i].size, mtime:list[i].mtime, dt : dt});
                     } 
                }
                batchDelete(clean_list, function(data) {
                     data.space = space;
-                    console.log(data);    
+                    console.log(data);    *
                });                
           } else {         
               console.log(space);
