@@ -50,7 +50,7 @@ finder.on('end', function (file, stat) {
                }
                batchDelete(clean_list, function(data) {
                     data.space = space;
-                    console.log(data);    *
+                    console.log(data);    
                });                
           } else {         
               console.log(space);
