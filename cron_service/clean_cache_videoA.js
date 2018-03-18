@@ -23,12 +23,8 @@ finder.on('file', function (file, stat) {
           list.push({fn:file, mtime:stat.mtime, size:stat.size});
      }     
 });
-
-finder.on('link', function (link, stat) {
-    
-});
+finder.on('link', function (link, stat) {});
 finder.on('end', function (file, stat) {
-     
      list = list.sort(function(a, b) {
           return (new Date(a.mtime) > new Date(b.mtime))? 1 : -1;
      });
@@ -59,7 +55,6 @@ finder.on('end', function (file, stat) {
      });	
 
 });
-
 var batchDelete = function(list, cbk) {
      let CP = new pkg.crowdProcess();
      let _f = {}, fn = []; 
