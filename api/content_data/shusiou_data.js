@@ -1,7 +1,7 @@
 var CP = new pkg.crowdProcess(), _f = {};
 var data_folder = env.site_contents_path + '/data/';
 
-var param_lang = req.body.lang || [], param_group = req.body.group;
+var param_lang = req.body.lang, param_group = req.body.group;
 
 _f['langs'] = function(cbk) {
     pkg.fs.readdir(data_folder, (err, files) => {
@@ -14,6 +14,8 @@ _f['langs'] = function(cbk) {
 }
 _f['fd'] = function(cbk) {
     var langs = CP.data.langs;
+    console.log('---langs---');
+    console.log(langs);
     var CP1 = new pkg.crowdProcess(), _f1 = {};
     for (var i = 0; i < langs.length; i++) {
         _f1[langs[i]] = (function(i) {
