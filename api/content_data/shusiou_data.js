@@ -14,8 +14,6 @@ _f['langs'] = function(cbk) {
 }
 _f['fd'] = function(cbk) {
     var langs = CP.data.langs || [];
-    console.log('---langs---' + data_folder);
-    console.log(langs);
     var CP1 = new pkg.crowdProcess(), _f1 = {};
     for (var i = 0; i < langs.length; i++) {
         _f1[langs[i]] = (function(i) {
