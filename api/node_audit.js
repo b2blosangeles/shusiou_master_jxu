@@ -1,5 +1,5 @@
 var opt = req.query['opt'];
-var channel = require(env.site_path + '/api/cfg/channel.json');
+// var channel = require(env.site_path + '/api/cfg/channel.json');
 switch(opt) {
 	case 'status':
 		var CP = new pkg.crowdProcess();
@@ -20,7 +20,7 @@ switch(opt) {
 			    space.free = Math.round(space.free * 0.000001);
 			    space.used = Math.round(space.used * 0.000001); 
 			    space.free_rate =  Math.floor(space.free  * 100 /  space.total); 
-			    space.channel = channel.channel;
+			 //   space.channel = channel.channel;
 			    cbk(space);
 			});	
 		};
